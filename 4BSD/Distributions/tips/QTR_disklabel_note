@@ -1,0 +1,168 @@
+	Overcoming disklabel problems when installing 4.3BSD-Quasijarus0,
+			4.3BSD-Tahoe, or 4.3BSD-Reno
+
+				By Michael Sokolov
+
+1. Scope
+
+This note applies to my 4.3BSD-Quasijarus0 release, as well as to VAX builds of
+CSRG's 4.3BSD-Tahoe and 4.3BSD-Reno releases. It does NOT apply to plain 4.3BSD
+which does not have disk labels of any kind.
+
+2. Problem Description
+
+Suppose you want to install one of the above systems on a typical MicroVAX with
+all MSCP disks made by hell knows whom and attached to MSCP controllers also
+made by hell knows whom. Such disks are clearly not present in the kernel's
+hard-coded tables, and clearly one must use disk labels in order to use such
+disks. This is just an example, a large VAX can also have funny MSCP disks and
+hey, the kernel just can't know about every disk in the world. Also it may be
+the case that you consider the kernel's default partitioning unusable, in which
+case you would also want disk labels.
+
+The problem is that when CSRG added disk labels to the system in the Tahoe
+release, they didn't bother to make any kind of standalone disk labeling
+facility. Eventually I will implement one in Quasijarus, but I haven't got
+around to that yet. Thus for 4.3BSD-Quasijarus0 you still have to use some
+dirty tricks to get the initial label on the disk.
+
+How exactly does the lack of standalone disklabel support hit you? What happens
+is that when the kernel or any of the standalone utilities sees an unlabeled
+MSCP disk for which it doesn't have a default label, it creates an in-core
+label that defines partition a covering the entire disk and no other
+partitions. In particular, there is no partition for swapping. Therefore, even
+if you do manage to get the miniroot onto the disk somehow, you will not be
+able to boot it. The BSD UNIX kernel is not designed to run without swap space,
+ever. Custom kernels have swap device major and minor numbers compiled in, and
+the generic kernel always puts swap on partition b. That's right, _ALWAYS_.
+Even when you boot the miniroot from parition b itself. The reason it doesn't
+swap on top of itself is not because it disables swapping (it can't do that),
+but because it excludes the first n sectors from swapping (n being the size of
+the miniroot) and swaps on the rest of partition b. Gettind back to unlabeled
+disks, if you try to boot the miniroot from an unlabeled MSCP disk for which
+there is no default label, the kernel will panic because there is no partition
+b defined.
+
+Therefore, the often-suggested approach of making a MicroVAX boot tape with
+tmscpboot at the beginning, booting from it, copying the miniroot, and booting
+it won't do you any good in most cases. Instead, I offer an alternative
+approach, which I have used myself to get my OS running for the very first
+time.
+
+3. Proposed Solution
+
+3.1. Requirements
+
+This approach does not use the miniroot or the tape bootstrap file, so you
+don't need to download them. You only need the full root dump, the tar image of
+/usr and, if you want them, the sources. (The kernel sources are practically
+mandatory.)
+
+However, there is another significant requirement. You need a copy of Ultrix,
+either the distribution tapes or an existing installation.
+
+You also need at least two disks, one to hold Ultrix (at least during
+installation) and one to actually install BSD on. One of them must be unit 0.
+
+3.2. Procedure
+
+First, if Ultrix isn't already installed on the VAX, install it. You need to
+actually install it and not just boot from the Ultrix tape and go into
+maintenance mode, since you'll need to compile and run a program under it
+(described below). Generally things are simpler when the BSD disk is unit 0, so
+I recommend installing Ultrix on a disk other than 0. This is not critical,
+however, so if you have Ultrix on disk 0 you can still install BSD on another
+disk.
+
+Then you will need to download the special package I have prepared. It consists
+of the 4.3BSD-Quasijarus0 disklabel program sources packaged up to compile
+under Ultrix. It is is the file bsd_dlabel_under_ult.tar.gz. Download, unpack,
+and compile it (there is a Makefile in there). This is how you will put the BSD
+disk label on the disk.
+
+The essense of the procedure is to label the disk under Ultrix, use Ultrix to
+extract the root and /usr filesystems onto it, and then just boot from it. What
+makes this possible in the first place is that BSD and Ultrix have compatible
+filesystems. However, you have to make sure that when you create filesystems
+under Ultrix, you put them precisely in the right locations on the disk where
+BSD will expect to find them. In practice this means that you will need to put
+both a BSD label and an Ultrix label on the disk, and that the two must agree
+on the locations and sizes of all partitions. (Ultrix has its own disk labeling
+mechanism completely independent from and incompatible with the BSD one.
+However, BSD and Ultrix put their labels in completely different locations on
+the disk, so they can coexist.)
+
+First you need to decide on how you are going to partition your disk and create
+a disktab(5) entry for it. If you are a fan of diskpart(8), there is a copy of
+this program on the Ultrix unsupported subsets tape. (It's an ancient version,
+though, so you'll have to manually edit its output a bit before putting it into
+/etc/disktab.) If you aren't comfortable with diskpart(8), don't worry about
+it. A handheld calculator will do just as fine.
+
+The BSD disklabel program you have just compiled will use this disktab(5) entry
+to create the label, thus this entry must have the required fields. For each
+partition from a to h, you need a px#n entry and an ox#m entry, where x is the
+partition letter, n is the size in sectors, and m is the starting sector.
+
+Now it's time to actually do it: put the BSD and Ultrix labels on the disk and
+create the root and /usr filesystems. However, because of the way Ultrix
+chpt, Ultrix newfs, and BSD disklabel work, this must be done in a very
+specific and non-trivial order. Under Ultrix whenever you newfs partition a, it
+automatically smacks the Ultrix bootblocks to it. This means that if you try
+to put the BSD label on the disk before creating the root filesystem, the
+Ultrix newfs will simply trash the BSD label you have just created. Thus the
+BSD label must be created last. The Ultrix label must be created first,
+however, since without it you won't be able to create the filesystems.
+
+The normal procedure is thus to create the Ultrix label with chpt, newfs the
+root and /usr filesystems, and then create the BSD label with disklabel. There
+is one more gotcha, though. Ultrix keeps its label in the superblock, so chpt
+won't work unless there is a filesystem on partition a or c already. Therefore,
+unless you have chosen to use the Ultrix default as your partitioning, you'll
+have to newfs a dummy filesystem on partition a, chpt the disk with the
+partitioning you want, newfs partition a and your /usr partition again, and
+then create the BSD label with disklabel.
+
+When you run the BSD disklabel program, you will usually need to specify the
+bootblock filenames on its command line. For MicroVAXen these are rdboot and
+bootrd. They are present in the distributed /usr image under mdec.
+
+When your filesystems and labels are all done, mount the filesystems under
+Ultrix and extract the distributed root and /usr images onto them normally.
+
+If your BSD disk is unit 0, you are all set! Shut down Ultrix and reboot! Yay!
+
+If, however, unit 0 is the Ultrix disk, there is one more step. The currently
+existing MicroVAX boot mechanism always loads the /boot program from unit 0.
+Thus you will need to copy it from the extracted BSD root filesystem to your
+Ultrix root filesystem. The Ultrix boot program is called /ultrixboot instead
+of /boot, so putting the BSD /boot in the root partition of the Ultrix disk
+won't interfere with Ultrix in any way.
+
+Then when you want to boot BSD, you will have to do B/2 or B/3 and enter
+ra(n,0)vmunix at the ':' prompt, where n is the unit number of the BSD disk.
+Doing this every time is a royal pita, which is why I recommend putting BSD on
+unit 0.
+
+3.3. Final remarks
+
+The above procedure will get you going. When you are satisfied with your new
+BSD system, there is one more step you can do. There are two filesystem flavors
+out there: 4.2/4.3 vintage and Tahoe vintage. Ultrix filesystems are exactly
+the same as 4.3BSD ones, so initially your new BSD filesystems will be 4.2/4.3
+vintage, since they have been created under Ultrix.
+
+The versions of BSD described in this note normally have Tahoe vintage
+filesystems, which have certain improvements, but they also fully support
+4.2/4.3 vintage ones, which makes the installation procedure described in this
+note possible.
+
+Since Tahoe vintage filesystems are better and more native for the systems in
+question, when you are fully satisfied with your new BSD system, you will
+probably want to convert its filesystems to Tahoe vintage. This is done by
+running fsck -c on each of them.
+
+According to Tahoe docs, 4.2/4.3 vintage systems treat Tahoe vintage
+filesystems as read-only, but experiment shows that Ultrix refuses to mount
+them at all. Therefofe, convert your filesystems only when you are sure that
+you will never need to mount them under Ultrix again.

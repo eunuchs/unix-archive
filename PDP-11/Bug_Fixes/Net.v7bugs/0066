@@ -1,0 +1,8 @@
+Asdcarl.144
+net.bugs.v7
+utcsrgv!utzoo!decvax!ucbvax!ucsfcgl!sdcarl!rusty
+Sun Jan 24 16:00:59 1982
+mkfs
+When making a filesystem using a proto file, if one of the
+files to be made (regular most likely) would use more than
+NINDIR indirect blocks mkfs punts. Not documented.

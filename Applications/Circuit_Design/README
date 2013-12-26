@@ -1,0 +1,26 @@
+Physical Paper Label on the tape says:
+        Bell Laboratories, Inc.
+        UNIX Circuit Design System
+        Version III   May 6, 1981
+
+Hi Ron,
+	I mentioned to you at USENIX that there is a hope that
+we might be able to free up the old UNIX Draw package and give it to
+the PUPS folks.  Dennis Ritchie suggested we might try to take the
+approach that it was part of the V7 intellectual property that AT&T
+sold to Novell, who in turn sold it to SCO (and you folks are now
+selling to Caldera). Anyway before we get another company involved, I'd
+love to see if we can get path to output cleared up.
+
+        My part of the bargain as to see if I could recover the
+bits.  Well, I was able to get my hands (temporarily) on a tri-density
+9-track and I have found a distribution dated May 6, 1981 which maps to
+the 3rd version of the system.  And I have read the tape!!  It turns
+out, I may know of a later version but it's not clear that we can
+recover those bits (although I'm still trying).  I believe the version
+I found is post Belle and Greg Chesson and my hacking of the Tek41xx
+terminals.  The other version I know about is a copy that was around
+Whippany and it may have some later updates - but again I do not have
+access to that tape at the moment and the media quality is unknown.
+
+Clem Cole clemc@mro.cpqcorp.net

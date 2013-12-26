@@ -1,0 +1,37 @@
+Note: these files were read from 9-track, and as per the following note,
+the 2nd and 3rd "raw tape files" are themselves already compressed.  file01 is
+4080 records of 1024 bytes each, file02 is 1610 records of 20480
+bytes each (except for the last one which is 4329 bytes), and file03
+is 2677 records of 20480 bytes each (except for the last one which
+is 14435 bytes).  Note that the suggested 'dd' command in the
+letter below uses a blocksize of 10240 bytes.  Tim.
+
+Letter attached to tape:
+
+						August 23, 1992 
+
+	This is a distribution tape for the 4.4BSD-Alpha release.
+The package you received should have contained one 2400' 6250 BPI 9-track
+magnetic tape or one Exabyte 8mm cassette.  Both distribution tapes
+contain three files, however, the second and third files on the 9-track
+distribution format are compressed (see compress(1)).  The three files are
+as follows:
+
+  1) A dump(8) of the root file system
+  2) A tar format archive of the "/usr" file system
+  3) A tar format archive of the "/usr/src" file system.
+
+	The binaries and kernel on the tape support the Hewlett-Packard
+9000/300 68000-based workstations, as detailed on the next page.  The dump
+does not contain a kernel, however, a compiled, generic kernel is part of the
+third file, in "/usr/src/sys/compile/GENERIC.hp300/vmunix".  The
+tar format archives can be extracted into the current directory with a
+command such as:
+
+  tar xpf /dev/tapename
+
+or, for the 9-track distribution format, with a command such as:
+
+  dd if=/dev/tapename bs-10240 | uncompress | tar xf -
+
+

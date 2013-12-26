@@ -1,0 +1,31 @@
+Autzoo.1287
+net.bugs.v7
+utcsrgv!utzoo!henry
+Tue Jan 19 01:35:19 1982
+ptx(1) obscurity
+The manual page for ptx gives a fairly good description of the program,
+but it is not obvious to non-troff-hackers how to get decent formatting
+of the output (i.e. what ".xx" macro to supply).  After digging through
+the stuff used to prepare the manual and doing a bit of experimenting,
+I added the following to our ptx(1) manual page (sorry about all the
+backslashes, that's troff for you):
+
+.SH EXAMPLE
+The following is a reasonably-minimal
+set of
+.I nroff
+statements which will format
+.I ptx
+output reasonably;  the style is similar to the index for this manual.
+The spacings may need adjustment for different output devices.
+.PP
+.RS
+.nf
+\&.de xx
+\&.if !""\\\\$1" \\\\$1\\fI\\a\\fR\\\\$2\\t\\\\$3\\fI\\a\\fR\\t\\\\$5
+\&.if !""\\\\$4" \\t\\\\$2\\t\\\\$3\\fI\\a\\fR\\\\$4\\t\\\\$5
+\&.if ""\\\\$1\\\\$4" \\t\\\\$2\\t\\\\$3\\fI\\a\\fR\\t\\\\$5
+\&..
+\&.nf
+\&.ta 3.7iR 3.95iL 7.65iR 7.8iR
+.RE

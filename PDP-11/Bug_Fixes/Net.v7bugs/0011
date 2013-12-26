@@ -1,0 +1,9 @@
+Acmevax.10
+NET.v7bugs
+utzoo!duke!vax135!ucbvax!cmevax!rusty
+Mon Aug 25 10:41:35 1980
+learn bug
+A bug in dounit.c can cause one to run out of file descriptors which can
+eventually reward you with a "Core dumped". There is a goto which goes up to
+retry which reopens scrin but scrin should be closed before this is done;
+insert an fclose just before the goto.

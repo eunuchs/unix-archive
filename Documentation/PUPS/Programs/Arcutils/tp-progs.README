@@ -1,0 +1,49 @@
+		Tp, Dtp and Itp Archive Programs
+		--------------------------------
+
+These programs list the table of contents and extract files from tp, dtp
+and itp Unix archives. These archive formats were used in 6th and 7th
+Edition Unix, and predate tar(1) format.
+
+
+How do I know if my file is in tp/dtp/itp format?
+-------------------------------------------------
+
+Simple. Compile tp, dtp and itp, and try doing a table of contents using
+each program:
+
+   % tp  t file
+   % dtp t file
+   % itp t file
+
+If one of them gives something sane-looking, you have probably found the
+right one, and you can use the `x' option with the same command to extract
+files.
+
+
+Caveats
+-------
+
+The programs do not use the checksums available in the archives. If the
+archive is corrupt, the programs will merrily extract garbage.
+
+mkdir -p is used to recursively make directory hierachies if they are needed.
+This could be recoded, but the programs were hacked up to do what I needed
+and I haven't fixed this yet.
+
+The programs have only had a small sample of input archives to extract. Thus,
+they may not extract all tp/dtp/itp archives. Bug reports and patches most
+welcome.
+
+
+Other Notes
+-----------
+
+I wrote these to extract archives of this type off old backup tapes. I
+hope some other people find the programs useful.
+
+I am _very_ interested in finding programs that can extract from 7th
+Edition dump/restor archives, and also from 6th and 7th Edition filesystem
+images. If you have any of these or know of them, please email me!
+
+	Warren Toomey	wkt@cs.adfa.edu.au    March 1995

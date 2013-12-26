@@ -1,0 +1,12 @@
+Asii.124
+net.bugs.v7
+utzoo!decvax!ittvax!sii!wje
+Fri May  7 08:31:34 1982
+fopen bug
+I have just encountered a bug in fopen(3). When a file is opened in
+"a" mode and a line written out to that file, the first two chars
+in the line turn to junk. This does not happen if an explicit
+fseek(file,0L,2) is done first! Is this a known bug or just a
+peculiarity of our stdio library?
+	-Bill Ezell, Software Innovations, Inc.
+	decvax!ittvax!sii!wje

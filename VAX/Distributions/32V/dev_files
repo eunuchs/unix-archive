@@ -1,0 +1,406 @@
+Contents of /dev directory:
+
+Name:		rp0a
+Inode number:	93
+	Mode:		60644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 05:57:33 1979
+	Modify time:	Tue Mar 13 05:57:33 1979
+	Block numbers:
+		         0           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		rp0h
+Inode number:	92
+	Mode:		60644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 05:57:45 1979
+	Modify time:	Tue Mar 13 05:57:45 1979
+	Block numbers:
+		         7           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		swap
+Inode number:	91
+	Mode:		60644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 05:57:56 1979
+	Modify time:	Tue Mar 13 05:57:56 1979
+	Block numbers:
+		         1           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		mem
+Inode number:	90
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 05:59:02 1979
+	Modify time:	Tue Mar 13 05:59:02 1979
+	Block numbers:
+		       768           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		null
+Inode number:	89
+	Mode:		20666
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 05:59:10 1979
+	Modify time:	Tue Mar 13 05:59:10 1979
+	Block numbers:
+		       770           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		kmem
+Inode number:	88
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 05:59:18 1979
+	Modify time:	Tue Mar 13 05:59:18 1979
+	Block numbers:
+		       769           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		kUmem
+Inode number:	87
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 05:59:23 1979
+	Modify time:	Tue Mar 13 05:59:23 1979
+	Block numbers:
+		       771           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		rrp0a
+Inode number:	86
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:00:57 1979
+	Modify time:	Tue Mar 13 06:00:57 1979
+	Block numbers:
+		      1024           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		rrp0h
+Inode number:	85
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:01:04 1979
+	Modify time:	Tue Mar 13 06:01:04 1979
+	Block numbers:
+		      1031           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		mt0
+Inode number:	84
+	Mode:		60666
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:01:27 1979
+	Modify time:	Tue Mar 13 06:01:27 1979
+	Block numbers:
+		       256           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		mt1
+Inode number:	83
+	Mode:		60666
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:01:32 1979
+	Modify time:	Tue Mar 13 06:01:32 1979
+	Block numbers:
+		       264           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		mt4
+Inode number:	82
+	Mode:		60666
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:01:42 1979
+	Modify time:	Tue Mar 13 06:01:42 1979
+	Block numbers:
+		       260           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		mt5
+Inode number:	81
+	Mode:		60666
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:01:53 1979
+	Modify time:	Tue Mar 13 06:01:53 1979
+	Block numbers:
+		       268           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		rmt0
+Inode number:	80
+	Mode:		20666
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:02:01 1979
+	Modify time:	Tue Mar 13 06:02:01 1979
+	Block numbers:
+		      1280           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		rmt1
+Inode number:	79
+	Mode:		20666
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:02:06 1979
+	Modify time:	Tue Mar 13 06:02:06 1979
+	Block numbers:
+		      1288           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		rmt4
+Inode number:	78
+	Mode:		20666
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:02:18 1979
+	Modify time:	Tue Mar 13 06:02:18 1979
+	Block numbers:
+		      1284           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		rmt5
+Inode number:	77
+	Mode:		20666
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:02:30 1979
+	Modify time:	Tue Mar 13 06:02:30 1979
+	Block numbers:
+		      1292           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		tty
+Inode number:	60
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 07:54:32 1979
+	Modify time:	Tue Mar 13 06:12:19 1979
+	Block numbers:
+		       512           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		tty0
+Inode number:	69
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:11:44 1979
+	Modify time:	Tue Mar 13 06:11:44 1979
+	Block numbers:
+		       256           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		tty1
+Inode number:	68
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:11:44 1979
+	Modify time:	Tue Mar 13 06:11:44 1979
+	Block numbers:
+		       257           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		tty2
+Inode number:	67
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:11:44 1979
+	Modify time:	Tue Mar 13 06:11:44 1979
+	Block numbers:
+		       258           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		tty3
+Inode number:	66
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:11:45 1979
+	Modify time:	Tue Mar 13 06:11:45 1979
+	Block numbers:
+		       259           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		tty4
+Inode number:	65
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:11:45 1979
+	Modify time:	Tue Mar 13 06:11:45 1979
+	Block numbers:
+		       260           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		tty5
+Inode number:	64
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:11:45 1979
+	Modify time:	Tue Mar 13 06:11:45 1979
+	Block numbers:
+		       261           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		tty6
+Inode number:	63
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:11:45 1979
+	Modify time:	Tue Mar 13 06:11:45 1979
+	Block numbers:
+		       262           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		tty7
+Inode number:	62
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:11:45 1979
+	Modify time:	Tue Mar 13 06:11:45 1979
+	Block numbers:
+		       263           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  
+
+Name:		console
+Inode number:	61
+	Mode:		20644
+	Size:		0
+	Link count:	1
+	Uid:		0
+	Gid:		1
+	Access time:	Tue Mar 13 06:12:06 1979
+	Modify time:	Tue Mar 13 06:12:06 1979
+	Block numbers:
+		         0           0           0           0  
+		         0           0           0           0  
+		         0           0           0           0  
+		         0  

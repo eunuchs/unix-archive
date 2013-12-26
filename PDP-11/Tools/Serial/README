@@ -1,0 +1,21 @@
+kermit4f.85.tar.gz is a C version of that should compile (split I/D) under
+7th Edition Unix. I haven't tried it.
+
+uue.shar is a short pair of programs quickly hacked together to move a binary
+file over a 7-bit terminal line to V7. There is no checksumming.
+
+kserve.mac is a kermit server for RT-11, by John Wilson. Here's the README:
+
+	Server-only Kermit for RT-11.  Written entirely from scratch (well,
+        based partly on another RT-11 Kermit I wrote), it has nothing to do
+        with K11.  It has no long packet or sliding window support, but on the
+        bright side it can be assembled under V4 and is FAR smaller than K11
+        (which for some reason is written in the style of compiler output).
+        Use "REM K SET FILE TYPE BINARY" to set binary mode (as opposed to just
+        "REM SET FILE TYPE BINARY", the protocol for this command is not in the
+        on-line Kermit spec and I didn't find out how to do it until after I'd
+        written the REM K version).  It uses double-buffered file I/O and
+        maintains 9600 baud even with DECtape.  There's no prompt or anything
+        since it's just a server, just type "RUN KSERVE" and escape back to
+        your local Kermit.
+

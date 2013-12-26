@@ -1,0 +1,16 @@
+Autzoo.1178
+net.v7bugs
+utzoo!henry
+Wed Dec  2 22:14:57 1981
+du vs big dirs
+Du(1), as distributed, fails on large directories ( >= 32KB ).  Such
+directories are unlikely (and unwieldy) but not impossible, particularly
+if you have a mail/news system that creates lots of little files in the
+same place.  The fix is to declare du.c/descend()'s variables "dirsize" and
+"offset" to be long instead of int.
+
+Also, du has an inherent problem:  it has no way to tell whether a file
+has "holes" in it, i.e. whether all the bytes indicated by st_size really
+are allocated.  This can result in overreporting of disk consumption,
+although this is not a major problem since holes in files are uncommon.
+Just as well:  there is no easy fix for this one.

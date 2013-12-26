@@ -1,0 +1,16 @@
+Dennis Ritchie has unearthed the on-line manuals for 4th Edition UNIX,
+and they are in v4mans.tar.gz. His email says:
+ 
+        It turns out that the source ?roff for the 3rd and 4th edition
+        manuals exists online here.  These are versions from bowell, which
+        Norman Wilson will remember, and are all owned (according to the
+        bowell passwd file) by andrew (Hume).  The Plan 9 file date marks
+        (inherited, probably faithfully, from bowell, and  most probably
+        faithfully from whatever tape Andrew loaded) are in the range around
+        Feb 1973 for the 3rd edition, and Nov 1973 for the 4th.  The dates
+        inside the files themselves are consistent with this.
+ 
+        This was clearly a feverish period.  The manual pages are only a
+        few months apart, but besides all the system changes, the manual
+        was redone from nroff to troff, which appeared in the 4th and not
+        the 3rd.  Ah, the energy of youth.

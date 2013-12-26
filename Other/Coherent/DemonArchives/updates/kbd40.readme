@@ -1,0 +1,12 @@
+The shell script update_kernel has a bug in line 67. Change
+
+	/conf/gen/kdb
+to
+	/conf/gen/kbd
+
+I may not change the copyrighted updates from MWC, so you have to do
+it by your selfe. There is no need to report this bug to MWC, I already
+have done it.
+
+Regards,
+Udo

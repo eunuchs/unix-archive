@@ -1,0 +1,17 @@
+Autzoo.1415
+net.bugs.v7
+utcsrgv!utzoo!henry
+Mon Feb 22 21:34:08 1982
+versatec plot software
+The documentation in plot(5) lies about the "natural" space() setting
+of the Versatec.  The Versatec filter appears to have been crudely
+converted for use with fanfold paper, with the result that the size
+of the plot space is constrained by the 8.5-inch height of Versatec
+fanfold sheets (and the Versatec's unwillingness to plot too close to
+the folds).  The true space() specification for the Versatec is:
+
+	space(0, 0, 1536, 1536)
+
+Since sensible installations generally use roll paper, the filter
+should be modified appropriately.  This shouldn't be hard but I
+haven't tried it yet.

@@ -1,0 +1,16 @@
+Asdcsvax.389
+net.v7bugs
+utzoo!decvax!ucbvax!ucsfcgl!sdcarl!sdcatta!sdcsvax!phil
+Tue Dec  8 10:06:12 1981
+uucp'ing across more than one site
+
+
+The problem of using uucp to send files through several 
+machines occurred when pur-ee!scott and I were trying
+to exchange some source files.  
+
+Our solution was to build an archive file containing
+the desired files and use mail to transmit the archive.
+
+
+	Phil  

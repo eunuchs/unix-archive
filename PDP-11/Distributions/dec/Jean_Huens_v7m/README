@@ -1,0 +1,95 @@
+This directory contains a full copy of Unix V7M Release 2.1, as donated by
+Jean Huens. His description of the tape follows:
+
+UnixV7m was distributed by Digital Equipment on a 9 track 800 bpi
+magnetic tape (at least that's what we got.)
+
+The label on the tape read :
+
+   "UNIX/V7M RELEASE 2.1
+    800 BPI      10/1/81"
+and
+   "The contents of this tape
+    are distributed to UNIX
+    licensees only, subject to
+    your software agrements with
+    Western Electric Co., Inc."
+
+
+The tape consists of 8 files described on file 3 :
+
+idefix$ cat tapefile3
+ 
+File 1:
+        2 copies of magtape bootstrap (2 blocks total)
+        The standalone bootstrap
+File 2:
+        A file to console copy program
+File 3:
+        This file
+File 4:
+        The program mkfs
+File 5:
+        The program restor
+File 6:
+        A dump of rp0 (root file system)
+File 7:
+        Tar format dump of rp2 (/sys - system sources)
+File 8:
+        Tar format dump of rp3 (/usr - all other sources)
+
+
+The tape was accompagned by a document on paper describing how to boot
+the system. I do not have a copy of that document and cannot find it on
+tape, so the rest is from my memory...
+
+With the initial bootstrap the boot program was read from tape file 1.
+
+Then you could start copy (I do not remember what copy was used for.), 
+mkfs, restor and with restor you could
+restore the dump on tape file6 to disk.
+
+On that root filesystem were a lot of unix systems :
+hptmunix
+hptsunix  
+hmhtunix 
+hmtmunix
+hmtsunix
+rphtunix
+rptmunix
+rptsunix
+hkhtunix
+hktmunix
+hktsunix
+rl01htunix
+rl01tmunix 
+rl01tsunix
+rl02htunix
+rl02tmunix
+rl02tsunix
+u45z_id
+unixold
+rl02tsunix_i
+hkhtunix_id
+hktmunix_id
+hptsunix_id
+rphtunix_id
+u45z_ov
+unix.obg
+rptmunix_id
+rl02htunix_id
+rl02tmunix_id
+rl02tsunix_id
+rptsunix_id
+hktsunix_id 
+hmhtunix_id
+hmhtunix_i 
+
+(these names are extracted from the inode table on the dump in tape file 6.)
+
+You had to select the correct system depending on your disk, 
+tape and processor (separate I & D or not).
+
+
+					8/april/1998
+					Jean.Huens@cs.kuleuven.ac.be

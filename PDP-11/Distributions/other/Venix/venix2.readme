@@ -1,0 +1,9 @@
+I have split the orginal 2 MB venix2.zip into two parts, each of
+which is small enough to fit on a 1.2 MB DOS floppy.
+
+Two of the teledisk images in the original venix2.zip were reported
+to have CRC errors. I have uploaded the two images again in vnx2u2u5.zip. 
+If you previously downloaded the 2MB version of venix2.zip, you
+will need to patch it with vnx2u2u5.zip.
+
+The new 1MB archives have the corrected images in them.

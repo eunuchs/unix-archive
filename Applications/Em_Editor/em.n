@@ -1,0 +1,188 @@
+.th EM I 4/2/76
+.if t .ds q \(aa
+.if n .ds q '
+.sh NAME
+em \*- editor for mortals
+.sh SYNOPSIS
+em
+[
+.bd \*-
+] [ -p ] [ name ]
+.sh DESCRIPTION
+.it Em
+is a QMC variant of the standard Unix text editor - ed.
+It includes all of ed, so the documentation for ed
+is fully applicable to em.
+Em also has a number of new commands and facilities designed to
+improve its interaction
+and increase its usefulness to users at fast vdu terminals (such
+as the ITT's at QMC).
+
+.it Em
+differs from ed in that it normally prefixes command lines with a '>'.
+For those who prefer silence, if the editor is invoked by any
+name not having 'm' as its second character, no prompts will appear.
+Other ways of controlling prompts are described below.
+
+Commands to em may be typed in upper- or lower-case letters.
+
+.it Em
+has the following extra commands. They are designed principally
+for use at
+any Teletype-compatible terminal operating at speeds of 1200 baud
+or more.
+.s3
+.lp +5 5
+b
+.lp+5 5
+b-
+.br
+The 'break' command 'b'
+turns on automatic line breaks. During subsequent input to the 'open'
+command (see below), the first space after character position
+60 of each line typed will be replaced by a 'newline'.
+Automatic line breaks are inserted only during input with one of
+the variants of the 'o' command.
+They may be suppressed by the command 'b-'.
+If the current saved filename ends in '.n' or '.r', then 'b' is automatically
+invoked.
+.s3
+.lp +5 5
+h
+.br
+The 'help' command displays a summary of the commands available in em.
+The summary resides
+in /usr/lib/emhelp, and is designed to fill exactly 18 lines of
+80 characters. 
+.s3
+.lp +5 5
+( \fB. \fR, \fB. \fR)o
+.lp +5 5
+( \fB. \fR, \fB. \fR)o/regular expression/
+.lp+5 5
+( \fB. \fR, \fB. \fR)o+
+.lp+5 5
+( \fB. \fR, \fB. \fR)o-
+.lp+5 5
+( \fB. \fR, \fB. \fR)o\\
+.br
+The 'open' command provides an additional level of editing
+for interactive corrections during input of new lines of text
+and for alterations to existing lines.
+The first two forms of the 'o' command operate on an existing
+line. The line
+is opened with the cursor positioned at the first occurence of the regular
+expression if present,
+otherwise at the start of the line.
+
+The commands 'o+', 'o-' and 'o\\' are equivalent to the 'a', 'i'
+and 'c' commands respectively, except in their use of the control
+keys listed below, and in that they are not terminated by a line
+containing a single '.', but by an ESCAPE or ^D. 'o;' is equivalent
+to 'o+'.
+In all variants of the 'o' command it is possible to position
+the cursor within the line, to delete characters, words or portions
+of the line, 
+and to insert new text at any point, using control keys
+as follows:
+
+.nf
+.in +5
+ 
+^A              re-display curent line to cursor
+^B        	move cursor back one word
+ESCAPE or ^D    exit from 'o' mode
+^E              display all of current line
+^F              delete forwards to end of current line
+^H              gives summary of control keys
+^Q              display next character
+^R              Release margin
+^S              re-scan from start of current line
+^V		verify spelling of preceding alphabetic
+			string (see "spell(I)")
+^W              display next word
+^Z              delete preceding word
+# or ^X         delete preceding character
+@               delete backwards to start of current line
+RUBOUT          exit with current line unchanged
+.in -5
+.fi
+
+
+Other characters (including RETURN) are inserted as typed.
+In this mode, diagnostic information is provided on ITT terminals
+in the form of a
+backward '?' when control keys are used inappropriately. When the automatic
+line break facility is operative, a 'bell' is transmitted to
+the terminal before each newline is inserted. The newline may
+be inhibited by the '^R' code.
+
+.s3
+.lp +5 5
+( \fB. \fR, \fB. \fR)x/regular expression/replacement/
+.br
+The exchange command performs exactly the same functions
+as an equivalent substitute command 's', except that it enables
+the user to determine
+interactively whether or not each replacement is to be
+performed.
+Each instance of the specified regular expression
+is displayed, underscored with '^' characters.
+The user must type '.' RETURN to perform the replacement or
+just RETURN to omit it.
+
+.s3
+.lp +5 5
+( \fB. \fR)
+"
+.br
+The " command is equivalent to '.+1,.+17p'.
+.s3
+.lp +5 5
+( \fB. \fR)
+%
+.br
+The % command is equivalent to '.-7,.+7p', except that the value
+of '.' is unchanged by it, and the current line is separated from its
+neighbours on the screen by a line of '-'s.
+.s3
+.lp +5 5
+( \fB. \fR)
+&
+.br
+This is equivalent to '.-16,.p'.
+.s3
+.lp +5 5
+!
+.br
+Two additional facilities are available under the '!' (escape to UNIX)
+command. '!!'repeats the last command executed in ! mode.
+ '%' anywhere in a '!' line is replaced by the currently selected
+filename.
+.s3
+.lp +5 5
+>
+.lp +5 5
+<
+.br
+ '>' turns prompting off, '<' turns it on again.
+
+.in -5
+When using 'x' or 's' in em it is possible to obtain a count of the
+number of replacements performed by postfixing the command with an 'n'.
+Unsuccessful searches for strings in em are indicated by '??'.
+.sh FILES
+ /usr/emhelp
+.sh "SEE ALSO"
+ed(I), spell(I)
+.br
+A Tutorial Introduction to the ED Text Editor
+(B. W. Kernighan)
+.sh BUGS
+The underscoring in the 'x' command is sometimes incorrect on ITT terminals,
+especially when the
+line contains {,},\\- or \\!.
+The
+",% and & commands should restrict their scope to the dimensions
+of whatever screen is in use.
+Tab settings are assumed to be at every eighth character position.

@@ -1,0 +1,1101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta6 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Unix Archive FAQ</TITLE>
+<META NAME="description" CONTENT="Unix Archive FAQ">
+<META NAME="keywords" CONTENT="pupsfaq">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta6">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="pupsfaq.css">
+
+</HEAD>
+
+<BODY BGCOLOR="#ffffff">
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<P>
+<DIV ALIGN="CENTER">
+<FONT SIZE="+2"><B>FAQ on the Unix Archive and Unix on the PDP-11</B></FONT>
+
+</DIV>
+
+<P>
+Welcome to the FAQ on the Unix Archive of PDP-11 Unix material, and how
+to make use of it, either on a real PDP-11 or on an emulator. This FAQ doesn't
+cover general Unix history or politics; you will have to go elsewhere for
+that information.
+
+<P>
+If you have just obtained an Ancient UNIX license and want to run some old
+versions, go straight to the section on <A HREF="pupsfaq.html#emulators">PDP-11 Emulators</A>.
+
+<P>
+Last FAQ update: May 2000
+
+<P>
+
+<H1><A NAME="SECTION00010000000000000000">
+Table of Contents</A>
+</H1>
+
+<P>
+
+<H2><A NAME="SECTION00011000000000000000"></A>
+<BR>
+<A HREF="pupsfaq.html#intro">Introduction</A>
+</H2>
+
+<UL>
+<LI>What is the copyright/ownership status of these old versions of Unix?
+</LI>
+<LI>What's in the Unix Archive?
+</LI>
+<LI>How do I access the Unix Archive?
+</LI>
+<LI>What happened to the early versions of Unix?
+</LI>
+<LI>I do have a PDP-11, can I use this old Unix software?
+</LI>
+<LI>I don't have a PDP-11, can I still use this old Unix software?
+</LI>
+</UL>
+
+<P>
+
+<H2><A NAME="SECTION00012000000000000000"></A>
+<BR>
+<A HREF="pupsfaq.html#licenses">Unix Source Licenses</A>
+</H2>
+
+<UL>
+<LI>I'm covered by a Unix source license, can you give me access to the
+	Unix Archive?
+</LI>
+<LI>I've got the Lions' book, can you give me access to the Unix Archive?
+</LI>
+<LI>Ok, where do I get a license from?
+</LI>
+<LI>I have the SCO license, can I get 2.xBSD? 
+</LI>
+<LI>I have the SCO license, can I get 4.xBSD? 
+</LI>
+<LI>The SCO license mentions DESIGNATED CPUs? What gives? 
+</LI>
+</UL>
+<H2><A NAME="SECTION00013000000000000000"></A>
+<BR>
+<A HREF="pupsfaq.html#pdp_versions">PDP-11 Versions of Unix</A>
+</H2>
+
+<UL>
+<LI>What versions of Unix are in the archive?
+</LI>
+<LI>I have a PDP-11; which version of Unix do you recommend I run on it?
+</LI>
+</UL>
+<H2><A NAME="SECTION00014000000000000000"></A>
+<BR>
+<A HREF="pupsfaq.html#hardware">Hardware</A>
+</H2>
+
+<UL>
+<LI>What CPU, memory management, FPU, is in my PDP-11?
+</LI>
+<LI>What hardware does 5th Edition Unix support?
+</LI>
+<LI>What hardware does 6th Edition Unix support?
+</LI>
+<LI>What hardware does Mini-UNIX support?
+</LI>
+<LI>What hardware does 7th Edition Unix support?
+</LI>
+<LI>What hardware does V7m support?
+</LI>
+<LI>What hardware does 2.9BSD support?
+</LI>
+<LI>What hardware does 2.11BSD support?
+</LI>
+<LI>I have a Pro 350 or 380. What can I do?
+</LI>
+<LI>I want to run the XXX flavour of Unix on my PDP-11, but it doesn't support
+	my hardware. What can I do?
+</LI>
+</UL>
+<H2><A NAME="SECTION00015000000000000000"></A>
+<BR>
+<A HREF="pupsfaq.html#emulators">PDP-11 Emulators</A>
+</H2>
+
+<UL>
+<LI>What PDP-11 emulators are available?
+</LI>
+<LI>Which emulator do you recommend?
+</LI>
+<LI>Where can I get disk images for the emulators?
+</LI>
+</UL>
+<H2><A NAME="SECTION00016000000000000000"></A>
+<BR>
+<A HREF="pupsfaq.html#install">Installing Unix on a PDP-11</A>
+</H2>
+
+<UL>
+<LI>How do I install the XXX flavour of Unix on my PDP-11? I do have a tape
+	drive supported by this flavour.
+</LI>
+<LI>How do I install the XXX flavour of Unix on my PDP-11? I don't have a tape
+	drive supported by this flavour.
+</LI>
+<LI>How do I install the XXX flavour of Unix on my PDP-11? I'm currently
+	running RT-11.
+</LI>
+</UL>
+<H2><A NAME="SECTION00017000000000000000"></A>
+<BR>
+<A HREF="pupsfaq.html#problems">Problem Solving</A>
+</H2>
+
+<UL>
+<LI>I'm having a hardware problem with my PDP-11. Where can I get help?
+</LI>
+<LI>I'm having a Unix software problem with my PDP-11. Where can I get help?
+</LI>
+</UL>
+
+<P>
+<A NAME="intro"></A>
+<H1><A NAME="SECTION00020000000000000000">
+Introduction</A>
+</H1>
+
+<P>
+<DL>
+<DT><STRONG>What is the copyright/ownership status of these old versions of Unix?</STRONG></DT>
+<DD>The Santa Cruz Operation (SCO) own (at least): Unix research editions 1 to 7,
+PWB/UNIX, Mini-UNIX, 32V, System III and System V. Those parts of 2.xBSD
+which are derived from SCO's stuff is also copyright by SCO. Non-derived
+parts of anything are owned by someone else (e.g the Regents of the University
+of California for the BSD stuff).
+
+<P>
+None of the stuff owned by SCO is freely available, nor is it in the public
+domain. You must still be covered by a Unix source license in order to have
+legal access to this material. However, you can <A NAME="tex2html1"
+  HREF="http://www.sco.com/offers/ancient.html">obtain
+a UNIX source</A>
+for free from SCO's
+web site.
+
+<P>
+</DD>
+<DT><STRONG>What's in the Unix Archive?</STRONG></DT>
+<DD>5th, 6th and 7th Edition Unix. All versions of 2BSD, including 2.11BSD.
+Some versions of 4BSD. 32V. System III for the PDP-11. Xinu. Venix.
+Several PDP-11 emulators. Many tools which can work with old Unix disk
+and tape formats. Lots of documentation and other useful information.
+For more details, see the sections below on 
+<A HREF="pupsfaq.html#pdp_versions">PDP-11 Versions of Unix</A> and
+<A HREF="pupsfaq.html#emulators">PDP-11 Emulators.</A>
+
+<P>
+</DD>
+<DT><STRONG>How do I access the Unix Archive?</STRONG></DT>
+<DD><P>
+You first need to obtain an <A NAME="tex2html2"
+  HREF="http://www.sco.com/offers/ancient.html">Ancient UNIX license</A>
+from SCO's web site. Once you
+have clicked on the license, go to the bottom and follow the hyperlink
+to obtain access to the Unix Archive.
+
+<P>
+After you fill in your details, you will be emailed the access details.
+The go to the <A NAME="tex2html3"
+  HREF="../TUHSarchive_sites.html">Unix Archive sites list</A>
+to find your nearest mirror of the archive.
+
+<P>
+Once you have been granted access, you can also 
+<A NAME="tex2html4"
+  HREF="/cgi-bin/pups_req.cgi">order the Unix Archive</A>
+on CD-ROM
+or other media. This is done on a volunteer basis, so it may take some
+time. Please volunteer to help out with this effort if you can.
+
+<P>
+</DD>
+<DT><STRONG>What happened to the early versions of Unix</STRONG></DT>
+<DD>The earliest complete system we have found is 6th Edition UNIX. 5th Edition
+has its on-line manual pages missing. We have source code to a kernel
+written in C from just before 4th Edition. We have two versions of the C
+compiler from around 3rd Edition, and we have some application binaries
+and application source from around 1st and 2nd Edition UNIX.
+
+<P>
+Fortunately, we do have paper copies of all the research editions of UNIX
+from 1st to 7th Edition, and these will be scanned in and OCR'd.
+We would be <B>extremely</B> pleased if anybody could unearth any of the first
+four research editions of Unix, in <I>any</I> format. That includes printouts!
+
+<P>
+</DD>
+<DT><STRONG>I do have a PDP-11, can I use this old Unix software?</STRONG></DT>
+<DD><P>
+Yes, depending on what type of hardware you own and once you have a source
+license (see next section). Consult the sections on
+<A HREF="pupsfaq.html#pdp_versions">PDP-11 Versions of Unix</A> and
+<A HREF="pupsfaq.html#hardware">Hardware</A> to
+determine what versions of Unix can run on your hardware.
+
+<P>
+</DD>
+<DT><STRONG>I don't have a PDP-11, can I still use this old Unix software?</STRONG></DT>
+<DD><P>
+Yes, once you have a source license (see above). There are several
+high-quality PDP-11 emulators which will run most
+of the versions of Unix in the Unix Archive. Now you can read the Lions'
+commentary <I>and</I> run the software. You still need a source license. See
+the Section on <A HREF="pupsfaq.html#emulators">PDP-11 Emulators</A> for more details on the
+available emulators.
+</DD>
+</DL>
+
+<P>
+<A NAME="licenses"></A>
+<H1><A NAME="SECTION00030000000000000000">
+Unix Source Licenses</A>
+</H1>
+<DL>
+<DT><STRONG>I'm covered by a Unix source license, can you give me access to the
+Unix Archive?</STRONG></DT>
+<DD><P>
+Yes. If you have a Western Electric or AT&amp;T source license, please photocopy
+the pages which give the license number, name of licensed institution, and
+details of which versions of Unix are covered. Get the institution to draft
+a letter affirming that you are an employee of the institution and are
+covered by the source license. Then send the license details and the letter
+from your institution, via snail mail or fax, to:
+
+<P>
+<BLOCKQUOTE>
+Warren Toomey
+<BR>
+School of Computer Science
+<BR>
+ADFA. ACT. 2600. 
+<BR>
+AUSTRALIA. 
+<BR>
+Fax: +61 2 6268 8581
+
+</BLOCKQUOTE>
+
+<P>
+Alternatively, obtain a free SCO source license as described in
+the <A HREF="pupsfaq.html#intro">Introduction</A> to get automatic access to the archive.
+
+<P>
+</DD>
+<DT><STRONG>I've got the Lions' book, can you give me access to the
+Unix Archive?</STRONG></DT>
+<DD><P>
+No. The copyright on John Lions' commentary specifically states that:
+
+<P>
+<BLOCKQUOTE>
+None of the computer software source code contained in this
+	publication may be copied, distributed, modified, transferred
+	or used in any way.
+
+</BLOCKQUOTE>
+
+<P>
+Therefore, you can only read the book, and nothing else. You must still
+be covered by a Unix source license in order to get access to the archive.
+
+<P>
+</DD>
+<DT><STRONG>Ok, where do I get a license from?</STRONG></DT>
+<DD>See the <A HREF="pupsfaq.html#intro">Introduction</A> for details on how to obtain a
+free Unix source code from SCO.
+
+<P>
+</DD>
+<DT><STRONG>I have the SCO license, can I get 2.xBSD?</STRONG></DT>
+<DD><P>
+Yes, they count as 16-bit ``successor systems''.
+
+<P>
+</DD>
+<DT><STRONG>I have the SCO license, can I get 4.xBSD?</STRONG></DT>
+<DD><P>
+Yes. You need a 32V license to obtain 4.xBSD, and 32V is covered by the SCO
+license. Kirk McKusick is now selling a 4CD set which contains all the BSD
+releases from CSRG: 1BSD, 2.xBSD, 3BSD and 4.xBSD. See
+<A NAME="tex2html5"
+  HREF="http://www.mckusick.com/csrg/">Kirk's web site</A>
+for more details.
+
+<P>
+Some of the 4.xBSD releases on Kirk's CD set are available in the Unix
+Archive. We don't keep all of Kirk's CDs in the archive, because he put
+so much effort into writing 4.xBSD and deserves some compensation. However,
+if you need a specific 4.xBSD release, then please e-mail
+<A NAME="tex2html6"
+  HREF="mailto:wkt@tuhs.org">Warren</A>
+and he will
+work something out for you.
+
+<P>
+</DD>
+<DT><STRONG>The SCO license mentions DESIGNATED CPUs? What gives?</STRONG></DT>
+<DD><P>
+My contact at SCO says ``on SCO's request, you must furnish the list,
+but we don't demand it up front.'' I can't wait for them to ask me, I've
+only got emulators!
+</DD>
+</DL>
+
+<P>
+<A NAME="pdp_versions"></A>
+<H1><A NAME="SECTION00040000000000000000">
+PDP-11 Versions of Unix</A>
+</H1>
+
+<P>
+<DL>
+<DT><STRONG>What versions of Unix are in the archive?</STRONG></DT>
+<DD><P>
+The PUPS archive contains full, bootable distributions of 5th, 6th and 7th
+Edition Unix, 2.9BSD &amp; 2.11BSD, Mini-UNIX and 32V. Other versions of Unix in
+the archive, but which are either not complete or not bootable are PWB/UNIX,
+AUSAM, 2.79BSD, 2.8BSD and 2.10BSD. The archive contains some of the 4.xBSD
+releases as well, Ultrix-11 and System III for the PDP-11. There is also
+a copy of Xinu for the LSI 11/23: Xinu is not Unix, but it embodies many
+of the ideas in Unix.
+
+<P>
+There are several distributions of `patches' to the above systems, such as
+1BSD, 2BSD, V7-addenda and V7M. Finally, there are several modified versions
+of Unix, such as the V6 with RL02 support from Tim Shoppa, and the heavily
+modified V7 from Torsten Hippe.
+
+<P>
+</DD>
+<DT><STRONG>I have a PDP-11; which version of Unix do you recommend I run on it?</STRONG></DT>
+<DD><P>
+<I>[Answered by: Warren Toomey wkt@tuhs.org]</I>
+<BR>
+Firstly, you need to restrict the list of choices to those flavours of Unix
+which will run on your PDP-11: see the next section on
+<A HREF="pupsfaq.html#hardware">Hardware</A> for details on this. Assuming you have worked
+that out, I would suggest the following:
+
+<P>
+Try to run 2.11BSD if possible, because it is the most modern flavour of
+PDP-11 Unix, and it is being supported by Steven Schultz (in his spare time).
+If you can't run 2.11BSD, then try 2.9BSD which is more modern than 7th
+Edition.
+
+<P>
+If you have a historical bent, then you can run 5th, 6th or 7th Edition Unix.
+These tend to be limited in the hardware that they support. I'd recommend that
+you use one of the <A HREF="pupsfaq.html#emulators">PDP-11 emulators</A> for these systems,
+as it will give you less heartache then trying to install it on a real -11,
+and you probably will get frustrated by these old systems anyway.
+</DD>
+</DL>
+
+<P>
+<A NAME="hardware"></A>
+<H1><A NAME="SECTION00050000000000000000">
+Hardware</A>
+</H1>
+
+<P>
+<DL>
+<DT><STRONG>What CPU, memory management, FPU, is in my PDP-11?</STRONG></DT>
+<DD><P>
+You'll need to know this so as to work out what versions of Unix you can
+run. If you don't have any DEC technical manuals about your box, try the
+<A NAME="tex2html7"
+  HREF="http://www.village.org/pdp11/faq.html">PDP-11 FAQ</A>
+at
+www.village.org. If that doesn't help, you might post a message in the
+Usenet newsgroup <TT>vmsnet.pdp-11</TT>: there are a lot of
+hardware-oriented people there. Be as descriptive as possible!
+
+<P>
+</DD>
+<DT><STRONG>What hardware does 5th Edition Unix support?</STRONG></DT>
+<DD><P>
+<I>[Answered by: Warren Toomey wkt@tuhs.org]</I> 
+<BR>
+I've only ever seen V5 distributed as RK05 disk images, and we don't have
+the manuals so it's impossible to tell if it was distributed like this, as
+tapes, or both. Dennis Ritchie says that V5 isn't too much different from V6,
+and that most of the V6 manuals can be used for V5.
+
+<P>
+The V5 in the archive, from Dennis, expects an 11/40-style machine: 18-bit
+addressing with kernel and user modes and EIS, and around 40Kw of memory. You
+will need a line-frequency clock or a real-time clock (KW11-L). There is
+support for 11/45-style machines with supervisor mode in sys/conf; however,
+split I/D is actually used. Floating point is required to run
+some programs; this is FP11-B only.
+
+<P>
+The V5 kernel as distributed supports the following devices (quoted from
+the sources in sys/dmr):
+
+<P>
+<BLOCKQUOTE>
+DR11C, DC-11, DH-11, DM11-B, DN-11, DP-11, KL/DL-11, LP-11, PC-11, RS11,
+RK05, RP03, TC-11, TM11, VT01.
+
+</BLOCKQUOTE>
+
+<P>
+The following devices have boot code written for them:
+
+<P>
+<BLOCKQUOTE>
+RK03/05, rp, rk. I've got to grok the V5 mdec stuff a bit more to
+complete this list.
+
+</BLOCKQUOTE>
+
+<P>
+It's likely that some of the device drivers in V6 could be backported to V5
+with little difficulty.
+
+<P>
+</DD>
+<DT><STRONG>What hardware does 6th Edition Unix support?</STRONG></DT>
+<DD><P>
+<I>[Answered by: Warren Toomey wkt@tuhs.org]</I> 
+<BR>
+I've only ever seen V6 distributed as disk images, although the manuals
+describe how to load it from tape. It would be nice if someone recreated
+the tape records.
+
+<P>
+As distributed, virgin V6 expects an 11/40-style machine: 18-bit addressing
+with kernel and user modes and EIS, and around 96Kw of memory. You will need
+a line-frequency clock or a real-time clock (KW11-L). There is support for
+11/45-style machines with supervisor mode in sys/conf; split I/D is supported.
+Floating point is required to run some programs:
+
+<P>
+<BLOCKQUOTE>
+UNIX only supports the 11/45 FP11-B floating point
+	unit. For machines without this hardware, there is a user
+	subroutine available that will catch illegal instruction
+	traps and interpret floating point operations. (See fptrap(3)).
+	The system as delivered has this code included in all
+	commands that have floating point. This code is never used
+	if the FP hardware is available and therefore does not need
+	to be changed. The penalty is a little bit of disk space
+	and loading time for the few floating commands.
+
+</BLOCKQUOTE>
+
+<P>
+The V6 kernel as distributed supports the following devices (quoted from
+the sources in sys/dmr):
+
+<P>
+<BLOCKQUOTE>
+DR11C, DC-11, DH-11, DM11-B, DN-11, DP-11, RP04, RS03/04, TJU16, KL/DL-11,
+LP-11, PC-11, RS11, RK05, RP03, TC-11, TM11, VT01, TU56, TU10, 
+
+</BLOCKQUOTE>
+
+<P>
+The following devices have boot code written for them:
+
+<P>
+<BLOCKQUOTE>
+TU10, TU16, RP03, RP04, ht, hp, RK03/05, DECtape, TM11. I've got to grok the
+V6 mdec stuff a bit more to complete this list.
+
+</BLOCKQUOTE>
+
+<P>
+The Boot_Images directory has an RL02 image of V6. I haven't have a look
+at this yet, but it may contain kernel source for RL02 support.
+
+<P>
+</DD>
+<DT><STRONG>What hardware does Mini-UNIX support?</STRONG></DT>
+<DD><P>
+<I>[Answered by: Warren Toomey wkt@tuhs.org]</I> 
+<BR>
+This is very interesting. Mini-UNIX is a <I>very</I> cut-down 6th Edition
+that appears to run on PDP-11s without memory management.
+The documentation in Mini-UNIX says:
+
+<P>
+<BLOCKQUOTE>
+The MINI-UNIX system running is configured to run on an
+11/10 with the given disk and the console teletype (KL)  and
+using  the EIS (extended instruction set) software emulation
+package. <TT>emul.s</TT> contains the software emulation package
+to handle the extended instruction set, i.e. those instructions
+which are not implemented in the PDP-11/20 and PDP-11/10 processor hardware.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>MINI-UNIX  uses  12K  words of memory for the system and 16K
+words for user programs.  Most  of  the  MINI-UNIX  software
+will  run  with 12K words of memory, but some things require
+much more.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>MINI-UNIX only supports the 11/45 FP11-B floating point
+unit.  For machines without this hardware, there is  a  user
+subroutine  available  that  will  catch illegal instruction
+traps and interpret floating point operations. 
+</BLOCKQUOTE>
+<P>
+As well, the setup documentation describes the essential differences
+between Mini-UNIX and 6th Edition:
+
+<P>
+<BLOCKQUOTE>
+There are a number of differences between the capabilities
+of MINI-UNIX and standard UNIX of which the user should
+be aware.  The concept of ``groups'' is not supported in MINI-UNIX; 
+no profiling is done in MINI-UNIX; it is not possible
+to interactively debug another running process in MINI-UNIX.
+User programs are limited to 16K words in size and the sharing
+of text is not possible.  Pipes are not  implemented  in
+the system; rather they are implemented as ``pseudo-pipes'' in
+the Shell command.  Thus complex commands such as:
+</BLOCKQUOTE>
+<P><PRE>
+nm a.out | grep _c | pr -3
+</PRE>
+<P>
+<BLOCKQUOTE>are still  possible.   However  the  commands  are  executed
+sequentially,  saving  data  in  intermediate files.  The <TT>bc</TT>
+command, in particular, works as in the standard UNIX system
+but  cannot be used interactively since pipes are not implemented
+in the system.  The source for the yacc compiler  has
+been edited to change some table sizes to make it run in 16K
+words of memory.
+
+</BLOCKQUOTE>
+
+<P>
+Apart from that, I haven't given this a really good look. At the moment,
+the Unix Archive has Mini-UNIX on three RK05 disk images.
+
+<P>
+</DD>
+<DT><STRONG>What hardware does 7th Edition Unix support?</STRONG></DT>
+<DD><P>
+<I>[Answered by: Warren Toomey wkt@tuhs.org]</I> 
+<BR>
+As distributed, virgin V7 expects an 11/45-style machine: 18-bit addressing
+with kernel, supervisor, user modes, EIS, split I/D, and around 128Kw of
+memory. You will need a line-frequency clock or a real-time clock (KW11-L).
+There is support for 11/40-style machines without supervisor mode in sys/conf.
+According to /usr/sys/40/README, V7 can be compiled to run ``on the 11/40,
+11/60, and 11/23. It has, in fact, worked on the latter machine ... Support
+is included for FP11-style floating point but I can't vouch for it.''
+The V7 setup document has this to say about floating-point:
+
+<P>
+<BLOCKQUOTE>
+UNIX only supports (and really expects to have) the
+	FP11-B/C floating point unit. For machines without this
+	hardware, there is a user subroutine available that will
+	catch illegal instruction traps and interpret floating point
+	operations. (See fptrap(3).) To install this subroutine in
+	the library, change to /usr/src/libfpsim and execute the
+	shell files compall and mklib.
+	The system as delivered does not have this code included in
+	any command, although the operating system adapts 
+	automatically to the presence or absence of the FP11.
+
+</BLOCKQUOTE>
+
+<P>
+Henry Spencer says:
+
+<P>
+<BLOCKQUOTE>
+It was difficult to run V7 on a non-split-I/D machine.  Possible, yes, but
+it required a severely cut-down kernel and was really only practical as a
+single-user machine.  The bigger utilities (f77 is the example that comes
+to mind) simply could not run that way.
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>Note that there was a bug in V7's long-divide library routines which was
+largely invisible on pre-44 machines but made itself quite visible on the
+44 and later CPUs. 
+
+</BLOCKQUOTE>
+
+<P>
+The V7 kernel as distributed supports the following devices (quoted from
+the sources in sys/dev):
+
+<P>
+<BLOCKQUOTE>
+DR11C, DC-11, DH-11, DM11-B, DN-11, DU-11, DZ11, RP04/RP06, TJU16, KL/DL-11,
+RF11, RK05, RP03, TC-11, TM-11. 
+
+</BLOCKQUOTE>
+
+<P>
+You will also find bootable disk images (and kernel sources in Trees/V7)
+with suport for RL02.
+
+<P>
+The following devices are supported for the initial tape installation:
+
+<P>
+<BLOCKQUOTE>
+RP04/RP06, TJU16, RK05, RL02, RP03, TM11, Virtual tape driver.
+
+</BLOCKQUOTE>
+
+<P>
+The following disks have boot code written for them:
+
+<P>
+<BLOCKQUOTE>
+RP04/5/6, RK05, RL02, RP03.
+
+</BLOCKQUOTE>
+
+<P>
+</DD>
+<DT><STRONG>What hardware does V7M support?</STRONG></DT>
+<DD><P>
+The PUPS archive contains two modifications to V7: v7appenda and V7M.
+The first modification came out of Bell Labs. V7M was done at DEC, and
+contains v7addenda. The top-level V7M README says:
+
+<P>
+<BLOCKQUOTE>
+<DIV ALIGN="CENTER">
+UNIX/V7M SOURCE FILES
+
+</DIV>
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>This directory contains the source files for unix/v7m, which
+        is unix version 7 modified to support the new DEC devices.
+        Such as, the PDP 1144, rm02/3, rk06/7, rl02, and ts11.
+        Unix/v7m has an overlay kernel for non-separate I/D space CPU's.
+        Unix/v7m also contains maintainability enhancements and bug fixes.
+</BLOCKQUOTE>
+<P>
+<UL>
+<LI><B>addenda</B> - The Western Electric UNIX/V7 addenda dated 12/2/80.
+</LI>
+<LI><B>h</B>       - Header files used by the source files.
+</LI>
+<LI><B>conf</B>    - Assembley language and configuration files.
+</LI>
+<LI><B>dev</B>     - Device drivers.
+</LI>
+<LI><B>ovdev</B>   - Driver object modules for overlay kernel.
+</LI>
+<LI><B>sys</B>     - The unix kernel.
+</LI>
+<LI><B>ovsys</B>   - System object modules &amp; LIB1 for overlay kernel.
+</LI>
+<LI><B>sas</B>     - Standalone stuff, unix/v7m two stage bootstrap monitor.
+</LI>
+<LI><B>mdec</B>    - Unix/v7m rp,rl,hp,hk disks, block zero boot code.
+</LI>
+</UL>
+
+<P>
+New devices (by looking in dev/) are:
+
+<P>
+<BLOCKQUOTE>
+RK06/7, RM02/3, RL02, RP04/5/6, ML11, RS03/04, LP11, RX02, TS11 (bootable)
+
+</BLOCKQUOTE>
+
+<P>
+</DD>
+<DT><STRONG>What hardware does 2.9BSD support?</STRONG></DT>
+<DD><P>
+<I>[Answered by: Warren Toomey wkt@tuhs.org]</I> 
+<BR>
+The 2.9BSD setup instructions state:
+
+<P>
+<BLOCKQUOTE>
+This distribution can be booted on a PDP-11/23, 24, 34,
+	34A,  40, 44, 45, 55, 60, or 70 CPU with at least 192 Kbytes
+	of memory and any of the following disks:
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">DEC MASSBUS:</TD>
+<TD ALIGN="LEFT">RM03, RM05, RP04, RP05, RP06</TD>
+</TR>
+<TR><TD ALIGN="LEFT">DEC UNIBUS:</TD>
+<TD ALIGN="LEFT">RK05, RK06, RK07, RL01, RL02,</TD>
+</TR>
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">RM02, RP03, RP04, RP05, RP06</TD>
+</TR>
+<TR><TD ALIGN="LEFT">AED 8000 UNIBUS:</TD>
+<TD ALIGN="LEFT">AMPEX DM980 (emulating RP03)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">AED STORM-II</TD>
+<TD ALIGN="LEFT">AMPEX DM980 (emulating RM02)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">DIVA COMP V MASSBUS:</TD>
+<TD ALIGN="LEFT">AMPEX 9300</TD>
+</TR>
+<TR><TD ALIGN="LEFT">EMULEX SC-21 UNIBUS:</TD>
+<TD ALIGN="LEFT">AMPEX 9300, CDC 9766 (emulating RM05)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">EMULEX SC-11 or SC-21 UNIBUS:</TD>
+<TD ALIGN="LEFT">CDC 9762, AMPEX DM980</TD>
+</TR>
+</TABLE>
+</DIV>
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>The tape drives supported by this distribution are:
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">DEC MASSBUS:</TD>
+<TD ALIGN="LEFT">TE16, TU45, TU77</TD>
+</TR>
+<TR><TD ALIGN="LEFT">DEC UNIBUS:</TD>
+<TD ALIGN="LEFT">TE10, TE16, TS11, TU45, TU77</TD>
+</TR>
+<TR><TD ALIGN="LEFT">DATUM 15X20 UNIBUS:</TD>
+<TD ALIGN="LEFT">KENNEDY 9100 (emulating TE10)</TD>
+</TR>
+<TR><TD ALIGN="LEFT">EMULEX TC-11 UNIBUS:</TD>
+<TD ALIGN="LEFT">KENNEDY 9100, 9300 (emulating TE10)</TD>
+</TR>
+</TABLE>
+</DIV>
+</BLOCKQUOTE>
+
+<P>
+The 2.9BSD kernel as distributed supports the following devices (quoted from
+the sources in sys/dev):
+
+<P>
+<BLOCKQUOTE>
+DR11C, DH11, DM11-B, DN-11, Diva Comp V, DZ-11, RK611/RK0[67], 
+RJP04/RWP04/RJP06/RWP06, RS03/04, TJU77/TWU77/TJE16/TWE16, KL/DL-11, 
+LP-11, RF11, RK05, RL01/RL02, RJM02/RWM03, RP03, TM11, TS11, 
+RM02/03/05, RP04/05/06.
+
+</BLOCKQUOTE>
+
+<P>
+</DD>
+<DT><STRONG>What hardware does 2.11BSD support?</STRONG></DT>
+<DD><P>
+<I>[Answered by: Steven Schultz sms@moe.2bsd.com]</I> 
+<BR>
+The 2.11BSD system can be booted on a PDP-11
+with 1Mb of memory or more (the kernel would probably only require a moderate 
+amount of squeezing to fit on machines with less memory, but it would also 
+be very unhappy about the prospect), separate I&amp;D, FP11B/C type of hardware
+floating point, supervisor mode (if networking is to be used) and with any 
+of the following disks:
+
+<P>
+RK06, RK07
+<BR>
+Any MSCP disk, including but not limited to: RD53, RD54, RA81, RZ2x (this also
+includes SCSI disks attached to SCSI&lt;-&gt;MSCP adaptors such as the Emulex UC08
+or CMD440)
+<BR>
+RM03, RM05, RM80
+<BR>
+RP04, RP05, RP06, RP07
+<BR>
+Many other SMD disks, for example: CDC 9766, Fuji 160, Fuji Eagle
+
+<P>
+Other disks are supported (RX23, RX33, RX50, RD51) but are not large
+enough to hold a root filesystem plus a swap partition.  The old restriction
+of using RL02 drives in pairs has been lifted.  It is now possible to define
+a root (`a') partition and a swap partition (`b') and load at least the
+root filesystem to a single RL02.
+Discs which are too small to hold even a root filesystem (floppies for 
+example)
+may be used as data disks or as standalone boot media, but are not useable
+for loading the distribution.  Others, while listed above, are not very
+well suited to loading the distribution.  The RK06/07 drives are hard pressed
+to even hold the system binaries, much less the sources.
+
+<P>
+The tape drives supported by this distribution are:
+
+<P>
+TS11, TU80, TK25
+<BR>
+TM11, AVIV 6250/1600
+<BR>
+TE16, TU45, TU77
+<BR>
+TK50, TU81, TU81+, TZ30
+<BR>
+<P>
+4mm and 8mm SCSI tape drives are known to work when used with SCSI&lt;-&gt;TMSCP
+adaptors.
+
+<P>
+QIC drives (such as the QIC-80, which use the DC2120 cartridges) are known
+NOT to work.  Other SCSI tapes which correctly do `variable record mode'
+should work.
+
+<P>
+Although 2.11BSD contains a kernel level floating point simulator, it has
+never been tested.  In fact it would not even compile/assemble without
+errors!  That problem has been fixed but it is still not known if the
+simulator works. KDJ-11 based systems have builtin floating point so the
+simulator can not be tested.  At the release of 2.10BSD some thought was given
+to the possibility of lifting the separate I&amp;D restriction, but that
+thought has languished.  The work will
+never be done.  As time passes more and more programs have
+become almost too large even with separate I&amp;D.
+
+<P>
+2.11BSD is known to work on the 11/44, 11/70, 11/73, 11/83, 11/84, 11/93.  It
+should work on the 11/53 but this has not (that I know of) been tested.  The 
+11/94 is a faster 11/84 and should also work fine.  The 11/23,24,34,35,40,60 
+are NOT supported becuase they lack separate I/D capability.  While the 11/45 
+does have separate I/D (and supervisor space) the 45 can not run 2.11BSD due 
+to lack of memory (248kb maximum on the 11/45 and that is far too little).
+
+<P>
+</DD>
+<DT><STRONG>I have a Pro 350 or 380. What can I do?</STRONG></DT>
+<DD>Get Venix from
+<A NAME="tex2html8"
+  HREF="ftp://sunsite.unc.edu/pub/academic/computer-science/history/pdp-11/venix/">sunsite.unc.edu</A>.
+This is a System III variant, in binary-only format.
+
+<P>
+</DD>
+<DT><STRONG>I want to run the XXX flavour of Unix on my PDP-11, but it doesn't support
+my hardware. What can I do?</STRONG></DT>
+<DD><P>
+<I>[Answered by: Warren Toomey wkt@tuhs.org]</I> 
+<BR>
+At worst, you will have to write kernel device drivers and possibly bootstrap
+code to get Unix to use your hardware. However, you might want to look through
+the archive for other flavours of Unix (such as 2.9BSD and 2.11BSD), and
+even the modified versions of Unix (e.g the V7 modifications from Torsten
+Hippe) for appropriate device drivers. You may have to `port' code from one
+flavour of Unix to the one you wish to use.
+
+<P>
+If you are going to embark on this process, and you can't get Unix onto your
+PDP-11 `as is', I'd suggest you use the PDP-11 emulators plus your desired
+Unix flavour as a development environment to build Unix kernels and disk
+images with your source code modifications.
+
+<P>
+At best, the flavour of Unix you want already supports your hardware; the
+distribution kernel just hasn't had the code compiled in. Again, use the
+PDP-11 emulators plus your desired Unix flavour as a development environment
+to build a Unix kernel appropriate for your hardware. Then all you have to
+do is install the distribution plus the new kernel onto your hardware.
+
+<P>
+</DD>
+</DL>
+
+<P>
+<A NAME="emulators"></A>
+<H1><A NAME="SECTION00060000000000000000">
+PDP-11 Emulators</A>
+</H1>
+
+<P>
+<DL>
+<DT><STRONG>What PDP-11 emulators are available?</STRONG></DT>
+<DD><P>
+There are half a dozen emulators in
+<A NAME="tex2html9"
+  HREF="ftp://minnie.tuhs.org/pub/PDP-11/Sims">ftp://minnie.tuhs.org/pub/PDP-11/Sims</A>. One runs under MS-DOS, and
+the others run under 32-bit Unix.
+
+<P>
+</DD>
+<DT><STRONG>Which emulator do you recommend?</STRONG></DT>
+<DD><I>[Answered by: Warren Toomey wkt@tuhs.org]</I> 
+<BR>
+That depends on why you need an emulator. If all you want to do is to
+play with these old Unixes, then nearly any of the emulators will be fine.
+However, if you are going to be using it as a development environment, then
+each emulator has its own particular advantage. Here's a summary from my
+own experience.
+
+<P>
+John Wilson's Ersatz emulator is the fastest emulator, and it can emulate
+a number of different CPU types. It also has the largest range of emulated
+devices. It runs under MS-DOS though, and you need a license from John if
+you want to use it for commercial work. If you want speed, use this one.
+
+<P>
+If you require an emulator which runs under 32-bit Unix, then I would
+recommend Bob Supnik's emulator, as it is fast and configurable. However,
+it only gives you one terminal device (the console). If you need multiple
+logins, then try Begemot from Joerg Micheel &amp; Harti Brandt. It's more
+cumbersome than Bob Supnik's emulator, but you can telnet in to the emulator.
+
+<P>
+The above programs emulate the whole box, and are great for working with
+or creating disk images and tape images. However, it's hard to import/export
+individual files: I normally build tar images outside the emulator, and
+then <TT>tar vxf /dev/mt0</TT> inside the emulator.
+
+<P>
+Another solution is to just emulate the PDP-11 user-mode, and to get the
+real underlying operating system to perform the system calls. The Apout
+emulator works this way. You can edit a file (using your normal tools) in one
+xterm window, and then compile it inside the emulator in another xterm window.
+I use this emulator for building new Unix kernels. The main drawbacks of
+Apout is that it only runs V6 and V7 binaries, and there is no floating
+point support.
+
+<P>
+</DD>
+<DT><STRONG>Where can I get disk images for the emulators?</STRONG></DT>
+<DD>The directory <TT>Boot_Images</TT> in the Unix Archive contains disk images for
+several versions of PDP-11 Unix. Read the documentation in there to work out
+how to boot each disk image on the emulators.
+
+<P>
+If you are using the Apout emulator, just unpack the binaries from the
+appropriate version(s) of Unix in the <TT>Distributions</TT> directories
+in the Unix Archive.
+</DD>
+</DL>
+
+<P>
+<A NAME="install"></A>
+<H1><A NAME="SECTION00070000000000000000">
+Installing Unix on a PDP-11</A>
+</H1>
+
+<P>
+<DL>
+<DT><STRONG>How do I install the XXX flavour of Unix on my PDP-11? I do have a tape
+drive supported by this flavour.</STRONG></DT>
+<DD><P>
+Excellent! What you need to do is to get one of the PUPS volunteers to
+cut you a tape with a Unix installation on it and send it to you. Then
+you can use the standard installation instructions to load the system.
+
+<P>
+If you have the archive CD-ROM, you might even be able to create your
+own tape image (via one of the emulators), write the image to a real tape,
+and then load it as above. Let us know how you go so we can update this FAQ.
+
+<P>
+Note that, currently, 5th and 6th Edition are not in a state which can be
+loaded via tape. It might be possible to rectify this for V6, but no one
+has tried it, and you might like to volunteer!
+
+<P>
+</DD>
+<DT><STRONG>How do I install the XXX flavour of Unix on my PDP-11? I don't have a tape
+drive supported by this flavour.</STRONG></DT>
+<DD><P>
+This is more difficult. If you have removable disk media, you might be able to
+convince one of the PUPS volunteers to write a distribution onto the disk
+pack, and ship it back to you. This might cost $$$ for postage.
+
+<P>
+If you have RT-11, see the answer to the next question.
+
+<P>
+One solution here is to pull the installation over via serial line. You're
+going to need a lot of patience. In Tools/Tapes/Vtserver in the archive
+you will find a program which installs 7th Edition Unix over a serial line
+from a nearby 32-bit Unix box. This hasn't been ported to V5, V6 or 2.xBSD.
+Again, any help we can get here would be appreciated.
+
+<P>
+Finally, if you have any other ideas or working solutions to solve this
+problem, please let us know!
+
+<P>
+</DD>
+<DT><STRONG>How do I install the XXX flavour of Unix on my PDP-11? I'm currently
+running RT-11.</STRONG></DT>
+<DD><P>
+You can use the KSERVE program under RT-11, which is a
+cut-down Kermit client, to pull a disk image over a serial line. You will
+need a Kermit server at the other end, but any PC or Unix box will do here.
+You can obtain KSERVE in source form at
+<A NAME="tex2html10"
+  HREF="ftp://minnie.tuhs.org/pub/PDP-11/ftp.dbit.com/rt11/kserve.mac">ftp://minnie.tuhs.org/pub/PDP-11/ftp.dbit.com/rt11/kserve.mac</A>
+or in the Unix Archive itself.
+</DD>
+</DL>
+
+<P>
+<A NAME="problems"></A>
+<H1><A NAME="SECTION00080000000000000000">
+Problem Solving</A>
+</H1>
+
+<P>
+<DL>
+<DT><STRONG>I'm having a hardware problem with my PDP-11. Where can I get help?</STRONG></DT>
+<DD><P>
+Try the Usenet newsgroup <TT>vmsnet.pdp-11</TT> first: there are a lot of
+hardware-oriented people there. You can ask the PUPS mailing list in
+desperation, as this is really only for questions about Unix. You might
+even try Mentec, who do support PDP-11 hardware (I think).
+
+<P>
+</DD>
+<DT><STRONG>I'm having a Unix software problem with my PDP-11. Where can I get help?</STRONG></DT>
+<DD><P>
+Read the manuals on your version of Unix. Look through the PUPS archive
+(especially the Documentation section and the mail archive) for answers.
+Ask the PUPS mailing list, which is for people interested in these old
+versions of Unix: make sure you give as much detail as possible. Finally,
+you can try the Usenet newsgroup <TT>vmsnet.pdp-11</TT>, but the readers there
+tend to be more into RT-11 and RSX.
+</DD>
+</DL><HR>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Warren Toomey <BR>
+2001-05-04</I>
+</ADDRESS>
+</BODY>
+</HTML>

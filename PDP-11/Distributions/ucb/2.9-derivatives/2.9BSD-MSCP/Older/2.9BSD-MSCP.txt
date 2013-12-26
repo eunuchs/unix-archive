@@ -1,0 +1,356 @@
+Introduction
+------------
+
+This describes a port of 2.9BSD that includes support for MSCP hard
+disks and VTserver. It will run on a very minimal PDP-11/23.
+
+I developed this using simh on a PC, debugged it under Ersatz-11 and
+tested it on a real PDP-11/23 consisting of the following configuration:
+  - KDF11-AA CPU
+  - MSV11-L 256 Kbyte RAM
+  - Andromeda UDC11 MSCP hard drive controller (including boot ROM)
+  - a custom 3M board including 2 SLU and LTC
+  - a 20 megabyte Seagate ST-225 hard drive
+  - a dual-sided 5 1/4" floppy
+
+While I have many years experience in C and assembly programming,
+embedded firmware, and operating systems, this is my first experience
+with porting or modifying UNIX, or working intimately with a PDP-11. I
+seem to have gotten this working, but there is no guarantee that I've
+done it right. I welcome any suggestions for improvements, and will make
+neccessary corrections. On the other hand, I do not want maintenance of
+2.9BSD to become a major continuing project. I have several small
+PDP-11/23 systems in my collection. My main motivation for doing this
+was to have a decent and interesting operating system for these
+machines, a legal operating system for those I wish to dispose of, and 
+to make UNIX available to others who have or want to build similar
+PDP-11/23s. After this project I would like to turn my attention to the
+PDP-11/53 and 2.11BSD.
+
+
+Differences
+-----------
+
+This version of 2.9BSD UNIX is the same as the standard distribution on
+the PUPS archive, with the following changes:
+
+- the MSCP (ra) hard disk driver from the pro350 release has been ported
+  in. The block device number is 2, the character number is 6. The
+  autoconfig probe routine in uprobe1 is hardwired to always return
+  "device present". If you recompile this system with a different disk
+  as root, and then try to access a non-existant ra drive, the system
+  will panic.
+
+- only the ra (4 units), rl (4 units), and xp (3 units) disk drivers
+  have been compiled in. The other drivers have been commented out in
+  dtab. One reason is to save space. Another is that simh seemed to get
+  confused while autoconfiging xp disks if certain other devices were
+  compiled in. I included the rl mainly for the simulators, for
+  compatibility with released disk images. I have no idea what an xp is, I
+  just needed a large hard drive for the simulator.
+
+- The system boots from ra0, and ra0a is the root.
+
+- the partitions are as follows:
+    ra0a: 3200 1K blocks (/)
+    ra0b: 1920 1K blocks (swap)
+    ra0c: the remainder (/usr)
+    ra0h: the entire disk
+  There are other partitions defined, that I left as found, but I've
+  never used them.  The pro350 version of the partition table had a bug:
+  the virtual cylinder size in rareg.h and the partition table disagreed.
+  It has been consistantly set to 64 disk (512 byte) blocks. 3200 might
+  be rather smalll for a root partition, but it was neccessary in order
+  to fit a sysgenable system onto a 20 meg hard drive. I have not tested
+  this with a second drive.
+
+- The standalone ra driver has been built into the standalones. I had to
+  modify this slightly to make it work.
+
+- The standalone vt driver (for VTserver) has been built into the
+  standalones.
+
+- a new ra boot block has been written, based on the 2.11 version of
+  rauboot.s. The boot program must be named "boot", and must be located
+  in the root directory. This boot block prints characters on the terminal
+  to report its progress:
+    I         Initializing the MSCP device
+    B         reading a block of the root directory
+    -<name>   checking a filename. Only the characters checked are printed.
+    .         reading a block of "boot"
+    S         starting the boot program
+    F         failed to find the boot program
+
+- a debug boot block, testboot, has been written. It implements two
+  terminal commands:
+    d <addr> <size>      -- dump memory
+    m <addr> <data> ...  -- modify memory
+
+
+Distribution
+------------
+
+The distribution is setup to be loaded onto a clean PDP-11/23 using
+VTserver. The following files are included:
+
+- boot: the boot program. It can load programs from several devices,
+  including ra and vt.
+
+- testboot: a standalone debug program that can be loaded from the boot
+  sector or via boot.
+
+- mkfs: initialize a partition with a file system
+
+- icheck: check a partition
+
+- restor: restore a dump file onto a partition
+
+- root.dump: dump of the root partition
+
+- usrsmall.dump: a dump of /usr that will fit onto a 17 megabyte
+  partition. Many  files and directories have been stripped in order to
+  get this to fit, including:
+     /usr/70
+     /usr/ingres
+     /usr/src except what is neccessary to rebuild unix
+     /usr/man/cat*/*
+     /usr/contrib
+     /usr/net
+     /usr/lib/learn
+     and probably some other stuff
+
+- usrmid.dump: a dump of /usr that will fit onto a 37 megabyte
+  partition. It is missing only /usr/ingres and the "learn" package.
+
+- usrfull.dump: the entire contents of the original usr.tar in dump
+  format. A df of a full /usr reports 38398 blocks used.
+
+- vtserver.exe: this is a PC executable of VTserver that has been
+modified to work with a PDP-11/23. The regular VTserver for some reason
+doesn't work with the 11/23. I had to add initialization of SP, PS, and
+PC, then send "p", rather than "140000g" to start the bootstrap. This
+version will probably go away once Fred van Kempen releases the next
+official version of VTserver.
+
+- .vtrc: a sample Vtserver init file.
+
+- vtserver.c: the source code for vtserver.
+
+- vtserver.dsw and vtserver.dsp: Visual Studio project files.
+
+- vtreadme.txt: Warren Toomey's vtserver documentation.
+
+- 2.9BSD-MSCP.txt: this document.
+
+I have tested usrsmall.dump, but not  usrmid and usrfull.
+
+The original pro350 patches have been added under /usr/src/sys/pro350.
+
+
+How to load 2.9BSD onto your PDP-11/23
+--------------------------------------
+
+I assume that you have a PDP-11/23 with a Seagate ST-225 hard drive, and
+a PC acting as host. If you have a larger hard drive, the procedure is
+much the same, except you will have more space left over, and you might
+be able to load a larger /usr image.
+
+It might be best if you can first use some other software, such as
+RT-11, to make sure your hardware, including the disk subsystem, is
+setup and working. So far I have only used the Andromeda UDC11
+controller. The UDC11 stores the hard drive configuration in an onboard
+non-volatile memory. The setup and formatting utilities run under RT-11.
+I have several RQDX3s that I eventually have to conquer. I understand
+that these need to be set up using a standalone diagnostic system called
+XXDP.
+
+The UDC11 can partition a hard drive into several logical drives. For
+2.9BSD, it is best to setup the disk as a single logical drive, and let
+UNIX handle the partitioning. 2.9BSD uses a more primitive hard drive
+partitioning scheme than 2.11: the partition table is hard-coded into
+UNIX, as ra_sizes in ioconf.c. If you want to change it, you will have
+to recompile.
+
+Configure, format, and qualify the hard drive. THe UDC11 utilities setup
+the controller to reserve the last track for a transparent bad block
+replacement scheme, so UNIX will see an ST-225 as having only 614
+cylinders. The ST-255 has a good reputation for robustnes and longevity.
+I have found quite a few that are 15 years old and still work well.
+After formatting I run the qualify routine overnight (about 200 passes).
+Do not use a disk that generates many errors.
+
+If you are using the RQDX3 or another controller, you are on you own
+for now.
+
+I assume you have Kermit or another terminal emulator on your PC.
+
+Unpack the distribution into its own directory on the PC.
+
+Run VTserver. Make sure that any other program that might allocate COM1:
+is closed. I have found that if you have run Kermit in a DOS box, and
+then run Vtserver, VTserver will not be able to allocate COM1:. You will
+have to close the DOS box and open a new one.
+
+My flavor of VTserver implements a couple control characters: ^B sends a
+break, and ^A resends the VT boot block. Once you have the PDP-11's
+attention by sending break hit ^A and return. VTserver should transmit
+the boot block, then load "boot" from file 0. If you are not familar
+with VTserver, read Warren's document, vtreadme.txt.
+
+Boot will ask you what program you want to load. The standalone programs
+(boot, mkfs, icheck, and restor) use device names of the form dd(a,b) or
+dd(a,b)name, where dd is a device name, such as "ra" or "vt", a is a unit
+number, and b is an offset. For vt, the offset is the index of the file
+in .vtrc. For ra, the offset is the number of the first 512 byte disk
+block of the partition.
+
+The default .vtrc organizes the distribution files like this:
+ 0: boot
+ 1: testboot
+ 2: mkfs
+ 3: restor
+ 4: icheck
+ 5: root.dump
+ 6: usrsmall.dump
+ 7: usrmid.dump
+ 8: usrfull.dump
+
+First, load mkfs from vt(0,2). Initalize ra0a as ra(0,0) with a size of
+3200. Mkfs (and the rest of the standalone programs) use 512 byte disk
+blocks to locate partitions, but 1K blocks for the rest of their logic. I
+have not experimented with different interleave factors yet, I just
+accept the defaults. When mkfs is complete, it should return to the boot
+program. If not, hit ^B, ^A, and "return" to reload boot.
+
+Next load restor from vt(0,3). Restore root.dump from vt(0,5) to ra(0,0).
+
+At this point you can boot unix via VTserver. Tell boot to load
+"ra(0,0)unix". At this point you may have to quickly quit VTserver and
+switch to Kermit, because UNIX will soon set the terminal to 7 bits even
+parity. You should see the UNIX banner and the autoconfig report. When
+you see a # prompt, you will be at a UNIX shell prompt.
+
+The next task is to copy the boot block using:
+ "dd if=/mdec/rauboot of=/dev/rra0a count=1"
+
+Sync and restart the system. The PDP-11 should now boot UNIX on it's
+own without help from Vtserver.
+
+Next, create a file system on /dev/ra0c using the regular (not
+standalone) mkfs. The size calculation is as follows for an ST-225:
+
+cylinders: 615
+tracks/cyl: 4
+sectors per track: 18
+controller reserved area: 1 cyl
+
+total 1K blocks = (615-1)*4*18/2 = 22104
+
+blocks for ra0a: 3200
+blocks for ra0b: 1920
+blocks for ra0c: 22104-3200-1920 = 16984
+
+standalone offset for ra0c: (3200+1920)*2 = 10240
+
+The command to init ra0c would be:
+ mkfs /dev/ra0c 16984
+
+Sync and reboot VTserver. Double check the disk formatting by running
+icheck from vt(0,4). Check both ra(0,0) a.k.a. ra0a, and ra(0,10240)
+a.k.a. ra0c.
+
+Load restor from vt(0,3). Restore usrsmall.dump from vt(0,6) to ra0c at
+ra(0,10240). If you have a larger hard drive, you can load usrmid or
+usrfull instead. The destination address will be the same. This will
+take several hours.
+
+When this restor is complete, reboot. When you get the # prompt, hit ^D.
+The next prompt should be "User:". Log in as "root" and you should get a
+shell prompt. UNIX installation should now be complete.
+
+To verify a correct installation, you can cd to /usr/src/sys/RA, and
+recomplile the system by typing "make unix". This will take a while.
+When complete, "diff unix /unix". They should be the same.
+
+
+To rebuild UNIX
+---------------
+
+This unix is built in /usr/src/sys/RA. Do not reconfig from conf: I've
+edited files in RA by hand.
+
+cd /usr/sys/src/RA                      # unix
+make unix
+cp unix /unix
+
+cd /usr/src/sys/stand                   # boot program
+make
+cp boot /boot
+
+cd /usr/src/sys/mdec                    # boot block
+sh -v mkra
+cp rauboot /mdec
+dd if=/mdec/rauboot of=/dev/ra0a count=1
+
+Note that if you regen boot for VTserver, you will have to strip the
+header from the copy of boot that VTserver uses via "dd if=boot
+of=boot.vt bs=16 skip=1".
+
+
+How to set the correct year
+--------------------------- 
+
+This software probably has Y2K bugs in it. UNIX will keep the right year
+if you can get it set. The "date" command can't handle dates outside
+19xx. To set the year to (for example) 2001, do this:
+
+date 9912312359
+wait for a minute until the year rools over to 2000.
+date 12312359
+wait until it rolls over to 2001
+set the correct date, omitting the year.
+
+After that, every time you boot, you will have to set MMDDHHMM again, but
+the year will be correct, since UNIX evidently remembers this somehow.
+
+
+Hints for developing UNIX software using simh and E11
+-----------------------------------------------------
+
+If you cannot boot UNIX after installing it, you will have to do some
+debug. I debugged the boot block, boot, and unix "main" by pepperring
+them with printfs and recompiling. I edited and managed files on the PC
+using normal PC tools, compiled on an rl and xp based 2.9BSD system
+running under simh, and debugged the ra drivers using E11. I transferred
+files between the PC and simh as tar files via /dev/xp2h. Files were
+transferred between simh and E11 via disk images.
+
+You can gather files on the PC and send them to a running simh like so:
+ emacs whatever.c                           # microemacs
+ fix whatever.c                             # utility to strip \r
+ tar cvf \pdp-11\simh\xfer.tar whatever.c   # MKS or Cygwin tar program
+           # xfer.tar is attached to rp2 and available in UNIX as /dev/xp2h
+
+Then unpack them from UNIX under simh by typing
+ tar xvf /dev/xp2h
+
+Going from UNIX to PC, under simh:
+ tar cvf /dev/xp2h whatever.c
+ sync
+
+and on the PC
+ tar xvf \pdp-11\simh\xfer.tar
+
+When transfering files from simh to E11, the only sure way to make sure
+that the changes are flushed to the hard drive is to sync UNIX, then ^E
+to break to the simh command shell, and detach the disk image that will
+be transferred to E11: "det rl3".
+
+
+--
+Jonathan Engdahl             Rockwell Automation
+Principal Research Engineer  24800 Tungsten Road
+Advanced Technology          Euclid, OH 44117  USA
+Euclid Labs                  engdahl@cle.ab.com
+
+http://users.safeaccess.com/engdahl

@@ -1,0 +1,40 @@
+Welcome to the VTserver software archive at
+ftp://minnie.cs.adfa.oz.au/pub/PDP-11/Vtserver
+
+The VTserver software allows you to install 7th Edition UNIX
+onto a PDP-11 without requiring a tape drive.
+
+You will want to retrieve the file vtserver1.1.tar.gz and the
+file v7rootdump.gz. You will probably also want the v7*.Z files.
+Don't uncompress these .Z files, they can be used as is.
+
+Once you have extracted the files from vtserver1.0.tar.gz, read the file
+vtreadme.txt (or its PostScript or HTML equivalent).
+
+
+Current shortcomings (as of 2nd February 1998):
+
+	+ I haven't been able to test the rp or hp disk devices.
+	+ /dev/tty1 doesn't work once you've booted UNIX.
+
+If you want to try this out with a root filesystem that is faster to
+download, also get v7shortroot.gz. This only contains:
+
+dev/*
+etc/*
+mdec/*
+*unix
+bin/cat
+bin/chmod
+bin/dd
+bin/echo
+bin/ls
+bin/make
+bin/sh
+bin/stty
+bin/sync
+bin/uncompress
+bin/vtcat
+boot
+
+	Warren Toomey	wkt@cs.adfa.oz.au

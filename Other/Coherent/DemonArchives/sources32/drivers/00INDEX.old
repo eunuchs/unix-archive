@@ -1,0 +1,12 @@
+/usr/spool/uucppublic/drivers/files from site umunk, last updated at 01/28/95
+
+All files in this directory are compressed with gzip, a port for COHERENT
+is available in the cohsrc directory.
+
+In this directory you'll always find the latest versions of the device drivers
+for Coherent, I take care of my self.
+
+bmps-1.0.tgz	 5786 PS/2 bus mouse driver
+cdu31-1.5.tgz	16780 Sony CDU31A/CDU33A CD-ROM driver
+hai-1.9.tgz	87285 Host Adapter Independend SCSI driver
+mcd-1.3.tgz	11918 Mitsumi LU005, FX001, FX001H and FX001D CD-ROM driver

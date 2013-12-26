@@ -1,0 +1,34 @@
+Here are two RL02 disk images containing a bootable Ultrix-3.1 installation,
+from Bill Gunshannon (bill@cs.scranton.edu). He writes:
+
+Install root.dsk as RL0 and user1.dsk as RL1 and boot RL0.
+
+I built the disk images on a MicroPDP-11/23. Configuration:
+
+                CPU 11/23+
+                Memory 3072K
+                2 RL02 disks
+                1 TS11 tape
+
+Apparently, this means more to the Ultrix than to something like
+RT11.  Using the Supnik emulator, I was unable to build a kernel
+and even vi core dumps.  But then, I am not really sure just what
+the Supnik emulator is emulating.  Could it perhaps be emulating
+a UNIBUS box and the fact that I do not have support for the map
+be a problem??  We'll see eventually, I'm sure.
+
+I tried the demo version of E11 but it lacks sufficient memory
+for this to do anything. No vi (just says :too big"), no sysgen
+(just hangs). I still haven't been able to get into the Begemot
+site, so I don't know if it will work with their emulator or not.
+
+
+[ I have got these images to work with Bob Supnik's 2.3d simulator
+  using this configuration file:
+
+  set cpu 18b
+  att rl0 /usr/tmp/root.dsk
+  att rl1 /usr/tmp/user1.dsk
+  boot rl
+
+  There is no root password.		- Warren ]

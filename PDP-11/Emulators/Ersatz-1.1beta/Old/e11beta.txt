@@ -1,0 +1,245 @@
+                       ERSATZ-11 BETA VERSION 0.8
+                        PDP-11 SYSTEM SIMULATOR
+                       Release date: 29-Mar-1994
+                   Copyright (C) 1994 by John Wilson
+                          All rights reserved
+
+     E11.COM is a beta test version of a full system simulator for the
+PDP-11.  It runs on any AT-class machine with an 80186 or better CPU,
+requires around 300KB of free memory, and emulates the following
+configuration:
+
+  * PDP-11/34a CPU (no FP11)
+  * 248KB main memory
+  * RL11/RL01-02 disk drives (up to 4)
+  * DL11 console terminal (VT100, or uses COM port)
+  * KW11L 60 Hz line clock
+
+     The emulator has been tested with RT-11 V04 (FB, XM), RSTS/E
+V7.0-07 and V9.7-08, and XXDP+ (passes some diags, fails others due to
+use of maintenance modes which E11 doesn't support), but for some reason
+fails to boot RSX-11M V4.0 ("SAV -- Cannot find home block").  It has
+not been tested with any flavor of UNIX or anything else not listed
+above.
+
+     The emulator speed depends on the application (changing MMU
+registers is an expensive operation so multiuser OSes tend to run more
+slowly than RT-11FB does, for example), but for simple tasks it runs
+about half the speed of a real PDP-11/34a on a 386-DX/40.  Your mileage
+may vary.  It has successfully booted and run RT-11FB on a 4.77 MHz IBM
+PC with a V20 processor (80186-compatible) but I wouldn't recommend
+this!
+
+     I consider this program to be a beta test release because there are
+several known problems, many incomplete (or unbegun!)  features, and the
+documentation isn't even worth distributing as it stands now.
+
+Known problems:
+
+  * Fails to boot RSX-11.  Tracing shows that it reads blocks a
+    fixed distance apart in ascending order across most of the disk
+    before announcing that it can't find the home block, perhaps
+    some RSX whiz can shed some light on this.  I have vague
+    suspicions about my RL11 emulation.
+
+  * Console DL11 output uses simulated interrupts (delay is based
+    on number of instructions executed after writing TTBUF) even
+    when the console is redirected to a COM port, which uses real
+    interrupts.  The result is that the output runs needlessly
+    slowly.  Incidentally, the instruction-based interrupt delay is
+    necessary in cases (like RSX) where the PDP-11 program assumes
+    that the interrupt will take at least a certain time to happen,
+    and blithely issues a WAIT instruction even if the transfer is
+    already finished.  I may add commands to alter these delays so
+    that the system will run faster under software that contains no
+    such assumptions (such as RT-11).
+
+  * DL11 emulation is incomplete.  The plan is to emulate up to 16
+    DL11s total (including the console), 12 of which are displayed
+    on the screen (selected by the Alt-function keys) and 4 of which
+    may be the four COM ports.  For now only the console DL11 (TT0:)
+    works.
+
+  * The T bit (single step) doesn't work correctly.  This will
+    screw up any debugger that uses it.
+
+Planned additions:
+
+  * Separate I/D space and supervisor mode.  The code for this
+    exists (under assembly conditionals) but is disabled so as not
+    to confuse CPU-detection code which (justifiably) assumes that
+    anything with I/D space also has a working MMR1 (MMR1 is not
+    supported, it would slow down the operand fetch/store routines).
+    I'm considering the possibility of upgrading the program to
+    11/44 (or 11/73 etc.)  compatibility but this would require
+    converting it to run in protected mode (using EMS/XMS swapping
+    instead would kill performance) to take advantage of the 3.9MB
+    address space.
+
+  * Floating point hardware.  This is not yet started.  Emulating
+    all the various operations is no big deal, but the flags and
+    exceptions are really annoying, so I've procrastinated so far.
+    This will probably require a math coprocessor (you paid
+    thousands to get it for your PDP-11, dropping a $50 chip in your
+    PC doesn't seem like too much to ask).
+
+  * Network hardware.  The idea I'm toying with is having an init
+    file which says which protocol numbers the 11 needs to receive
+    and then registering those with a packet driver, then simulating
+    a DELUA which only "hears" those packet types.  That way it
+    wouldn't interfere with other network software on the PC.  A
+    possible stopgap might be adding a small server for some
+    commercial TCP/IP package to connect incoming Telnet calls to
+    simulated DL11 ports.
+
+  * MSCP disks.  Don't get me started on this one...  (DEC is
+    still cagey about documentation even though all the competitors
+    they were trying to fool got their clones working years ago.)
+    It might be cute to simulate these using their own partitions on
+    the hard disk, then write real DSRs for a few popular
+    controllers (i.e.  bypassing DOS) so that disk I/O would be
+    truly asynchronous (like real hardware), that would speed things
+    up considerably.  But remember, this section is intentionally
+    omitted.
+
+  * Floppies.  I have code in another program which simulates
+    RX01/02/03-like disk formats on 1.2MB floppies, and goddammit
+    *I* think it's cute!  You won't have to use it if you don't want
+    to.  RX50 emulation would be easy except the controllers use
+    MSCP, see above (right?  I've never seen a RUX50, maybe it's
+    different).  I may make some feeble attempt at emulating 1/2"
+    magtape using QIC-40/80 drives while I'm at it, but don't hold
+    your breath.
+
+Using the program:
+
+     For a regular user, there are very few commands to
+remember.  All commands are entered at the command prompt, which
+is displayed on TT0:  (normally the screen) whenever the PDP-11
+is halted, or may be brought up any time if you press the SysRq
+key (which is Alt/Print Screen on Enhanced keyboards).  The most
+important commands are the MOUNT, BOOT, and QUIT commands.
+
+MOUNT ddu:  filename.ext [/switch]
+
+This specifies a DOS file to attach to a simulated disk unit.
+"ddu:"  is the name of the PDP-11 disk drive to which the file
+will be attached (currently the only valid names are DL0:
+through DL3:).  "filename.ext" is the DOS file which contains a
+byte-by-byte image of the disk (at the moment this file must be
+either 5MB or 10MB long, the program uses the length to decide
+whether it's an RL01 or an RL02).  The optional "/switch" is
+either /RW or /RO (/WP is a synonym for /RO) and specifies
+whether the disk should be set for read/write or read-only
+access (the default is /RW).
+
+BOOT ddu:  [/switch]
+
+Boots the system from the specified disk.  There is a bug that
+causes this command to not always work properly if the system
+has already been running -- quit and restart for now.  The disk
+must have been mounted with the MOUNT command.  The optional
+switch is an OS name;  for now the only meaningful one is /RT11,
+although /RSTS and /RSX are defined too.  This has to do with
+the method used to pass time and date information to a newly
+booted monitor.  RT-11 ignores the time and date passed at
+005000 unless the NOP in the first word of the bootstrap is
+cleared to 0 (HALT) and the bootstrap is entered at 000002.
+RSTS believes the time and date at 001000 (in a different format
+from RT-11) regardless of whether its NOP was nuked, but later
+versions of RSTS save the first word of the bootstrap and
+execute it later, so they will halt if the system was booted the
+RT-11 way.  Hence the need for the switch.  If you like typing
+the time and date manually (or your PC has no RTC) then don't
+worry about the switch.  I don't know enough about RSX to set up
+the time/date for it.
+
+QUIT
+
+Should be obvious.
+
+The other commands are mostly useful for debugging so I won't go
+into them, except to say that there's a mostly functional PDP-11
+debugger/disassembler, most of the commands are modeled after
+those from the RAID debugger, DECUS #11-772.
+
+Initialization:
+
+At startup, the program looks for an init file named E11.INI,
+first in the current directory, and then in the directory where
+the executable is stored (for DOS V3.0 and later) or in the
+directories listed in the PATH environment variable (for DOS
+V2.X).  This is a regular ASCII file, which is fed to the E11
+command interpreter one line at a time at each command prompt
+until the end of file is reached, at which point command input
+is redirected back to the keyboard.  Keyboard input to the
+PDP-11 DL11 port comes from the keyboard even if an init file is
+in use.
+
+Typical E11.INI file:
+
+mount dl0: rt11.dsk
+; uncomment the ASSIGN command to use a COM port for console I/O
+; (must have been initialized from DOS using a MODE command)
+;assign kb0: com3: irq5
+boot/rt11 dl0:
+; control returns to the next line when the user presses SysRq
+quit
+
+Notes:
+
+Getting a snapshot of a bootable RL01 or RL02 disk for your OS
+into a huge DOS file is your problem, I don't want to get
+involved in DEC licensing infringements.  BTW, my local (Albany,
+NY) DEC office has no problem with the concept of selling a real
+license for a PDP-11 that doesn't really exist.  Anyway I used
+Kermit to slurp the disk images out of a real PDP-11.  I'm
+working on a separate utility program to manipulate DEC file
+systems, stay tuned if you care.
+
+Source code is not being released at this time.  The program
+contains a lot of proprietary code (most notably the VT100
+emulation) which I don't want floating around.
+
+It's important that you quit out of the emulator before powering
+the machine down.  The disk image files aren't closed until the
+simulated disks are dismounted, so just because your PDP-11 OS
+thinks it has flushed all its data to disk doesn't mean that it
+has actually been written to the PC's disk yet, especially if
+you have a disk cache running.  You've been warned.  I may add a
+timer-based periodic flush to the program to lessen the impact
+of this problem.
+
+"Why didn't you write a Mac version" etc., etc.  etc.  etc.  The
+program is written entirely in 80186 assembly language;  porting
+the devices, debugger, interrupt system etc.  to another
+architecture would be very straightforward but the instruction
+set simulator depends heavily on similarities between the 80x86
+and the PDP-11 (most notably byte order and the condition
+flags).  Also the VT100 emulator gets pretty intimate with the
+video hardware.
+
+That should cover most of the important stuff.  Basically I'm
+tired of sitting on this thing tearing my hair out over the bugs
+and I think it works well enough to be useful to some people.
+It took eight days to go from scratch to booting RT-11FB, and
+I've accomplished almost nothing of value in the 5 months since
+then.  I would appreciate any and all feedback (good or bad)
+about the program, particularly if it's specific enough to help
+me improve it (i.e., "it crashes sometimes" is nice but "the
+ASHC instruction sets the V bit wrong" is a lot better, yeah I
+know I'm dreaming).
+
+AS ALWAYS, MAKE A BACKUP OF ANYTHING YOU CARE ABOUT BEFORE
+RUNNING THIS PROGRAM.  Yeah I know you won't (I didn't) but
+think about how mad you'll be if you lose something important...
+
+
+John Wilson
+46 Bank Street, Apt. 2
+Troy, NY  12180
+(518) 271-1982
+
+wilsonj@rpi.edu
+John_Wilson@MTS.RPI.EDU  (if RPI.EDU is in AFS never-never land)
+USERHA8G@RPITSMTS.BITNET (if *you're* in never-never land)

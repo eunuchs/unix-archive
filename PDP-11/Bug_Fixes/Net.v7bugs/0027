@@ -1,0 +1,18 @@
+Autzoo.855
+net.v7bugs,NET.v7bugs
+utzoo!henry
+Wed Aug  5 21:04:34 1981
+uucp break-sending speed
+V7 uucp (actually, uucico) sends BREAK by dropping the speed momentarily
+(to the value specified by Bspeed) and transmitting NULs.  The value
+of Bspeed is 150 baud, which is reasonable.  BUG:  Bspeed is initialized
+to "150", NOT "B150".  Fix:  make the change, in the declaration of
+Bspeed in uucpdefs.h.  This introduces one problem:  uucpdefs.h now needs
+the system include file sgtty.h (for the definition of B150).  Either
+one can run around putting "#include <sgtty.h>" in all six uucp source
+files that include uucpdefs.h, or one can put the include in uucpdefs.h
+and delete any independent includes of sgtty.h in source files that also
+pick up uucpdefs.h (there is only one such, in cico.c).  The former may
+be cleaner, the latter is easier.
+
+Thanks to Ron Gomes of Human Computing Resources, who noticed this.

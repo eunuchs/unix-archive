@@ -1,0 +1,12 @@
+Autzoo.1632
+net.bugs.v7
+utzoo!henry
+Tue May  4 20:47:19 1982
+pwd vs permissions
+There are several setuid programs, notably uux, which invoke pwd and
+expect to get coherent results.  This doesn't work too well if the
+current directory, or a parent, is off-limits to anyone but the owner.
+There are two possible fixes.  One is to run down such programs and
+fiddle them in some manner to reset the uid before invoking pwd (this
+is awkward when pwd is being invoked using system()).  The alternative,
+which I've done here, is to simply make pwd setuid-root.

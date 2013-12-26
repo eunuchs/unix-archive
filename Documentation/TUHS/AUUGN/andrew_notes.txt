@@ -1,0 +1,89 @@
+From mh3bcl!research!wild!andrew:mulga Fri Dec 2 08:466:05 1983
+Subject: Unix edition one
+To: auugn
+
+This is the first in a series of notes on the early editions of Unix.
+They are random remarks on what interested me in reading the programmer's
+manuals for the various editions of Unix. These notes are not proprietary
+and will be produced at random times.
+
+EDITION ONE: (November 1971)
+----------------------------
+
+1)	the 'tm' command was analogous to the `time command. If invoked with
+	arguments, it executed the command and gave the times used during that
+	command. If invoked without arguments, it gave two columns of numbers:
+	the times since boot, and the times since the last `tm' command.
+
+	The categories of times were:
+			"tim"	(real time)	    hrs:mins:secs
+			"ovh"	(time in sys)	        ditto
+			"dsk"	(waiting for disk)      ditto
+			"idl"	(idle time)		ditto
+			"usr"	(user time)
+			"der"	(RK disk error count!!)
+	The second column was given with one decimal place in units of seconds.
+
+2)	the `time' system call returned the number of sixtieth of seconds since
+	Jan 1, 1971. This is different because the maximum time was about 2.5
+	years.
+
+3)	file names were limited to 8 bytes; accordingly directory entries were
+	10 bytes long.
+
+4)	the permission bits were quite different:
+		01	write, non-owner
+		02	read, non-owner
+		04	write, owner
+		10	read, owner
+		20	executable
+		40	set user id on execution
+
+5)	userid - username mapping was kept in /etc/uids.
+_____________________________
+
+that's all folks! I would welcome any feedback or questions!
+andrew
+
+
+From mh3bcl!research!wild!andrew:mulga Wed Feb 15 11:45:09 1984
+Subject: edition 2
+To: auugn:elecvax
+Some random comments on Unix, 2nd edition, June 12 , 1972.
+
+The list of authors has grown. It now includes Thompson, Ritchie, Ossana
+Morris, McIlroy, McMahon, Lorinda Cherry and Roberts.
+The manual was done with ~ed' and 'roff' (as was the first).
+
+1) cc only has one option (-c)!!
+
+2) the bugs section for dsw reads:
+	'The name "dsw" is a carryover from the ancient past. Its etymology
+	is amusing but the name is nonetheless ill-advised.'
+
+3) find(1) takes file names or inode numbers and prints pwds of all matches.
+
+4) pr(l) takes only 3 options (l==78 lines, c==current date, m=-modify date)
+
+5) ls(1) takes five (ltasd)
+
+6) sort has no options!!
+7) there is a cemt(2) system call to catch EMT traps.
+8) there is a hog(2) system call (somewhat equivalent to nice(20))
+
+9) catching interrupts is done by intr(2). The bugs reads
+	'It should be easier to resume after an interrupt but I don't
+	know how to make it work.'
+
+10) setting the modified date on a file is done by mdate(2)
+11) sleep(2) sleeps for n/60 seconds. The bugs reads
+	'Due to the implementation the sleep interval is only accurate to
+	256/60 (4.26) seconds. Even then, the process is placed on a low
+	priority queue and must be scheduled.'
+
+12) qsort(3) uses its own comparison routine
+
+13) the switch statement in C was supplied as a library function.
+	(C was just starting)
+------------------
+andrew

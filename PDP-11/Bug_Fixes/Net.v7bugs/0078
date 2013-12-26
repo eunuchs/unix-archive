@@ -1,0 +1,10 @@
+Autzoo.1406
+net.bugs.v7
+utcsrgv!utzoo!henry
+Thu Feb 18 22:38:03 1982
+plot(1,3) incompletenesses
+Support for some of the graphics primitives described in plot(5) is
+rather incomplete.  Notably, in the software as supplied, only the
+4014 supports circles and arcs.  The 4014 code could probably be
+transplanted easily enough -- it does them "by hand" rather than
+using terminal smarts -- but I haven't tried this yet.

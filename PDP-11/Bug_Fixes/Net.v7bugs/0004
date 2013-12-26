@@ -1,0 +1,29 @@
+Aucbvax.114
+NET.v7bugs
+utzoo!duke!vax135!ucbvax!mark
+Sun May 18 22:59:08 1980
+c2
+>From mark Sat Apr 19 01:18:51 1980
+To: v7bugs
+Subject: bug in pdp-11 C optimizer
+The following program demonstrates a bug in the V7 pdp-11 /lib/c2.
+#include <stdio.h>
+main () {
+	int x;
+	int t1;
+
+	x = 0;
+	x += 1;
+	t1 = x != 1;
+	printf("x=%d, t1=%d\n", x, t1);
+	exit(0);
+}
+It should print 1, 0, but it prints 1, 1.  Seems that the optimizer has
+correctly noticed that the value of x can be predicted at compile time
+and hence the comparison can be precomputed, but it does the precomputation
+wrong.  Changing the 2 assignments to x to "x = 1" works properly.
+
+I don't have a fix for this, but dmr's (more recent than v7) version of
+c2 seems to handle it correctly.
+	Mark
+

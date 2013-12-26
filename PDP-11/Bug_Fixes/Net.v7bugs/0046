@@ -1,0 +1,14 @@
+Asri-unix.162
+net.v7bugs
+utzoo!decvax!ucbvax!menlo70!sri-unix!sjk
+Fri Dec  4 10:52:49 1981
+uucp lossage
+when i issue the following "uucp" command:
+
+uucp -r stty.c 'prmh\!tsca\!vlsia\!~uucp'
+
+the resulting /usr/spool/uucp/C.* file is amusing:
+
+S /a/sjk/src/stty.c /a/sjk/src/tsca!vlsia!~uucp sjk - D.prmhn0131 644
+
+should multi-site "uucp"s work?   scott

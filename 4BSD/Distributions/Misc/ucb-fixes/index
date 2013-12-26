@@ -1,0 +1,84 @@
+V1.1	| 03/19/87	| intro message
+V1.2	| 03/20/87	| cover letter
+V1.3	| 03/20/87	| lib/libc/net/res_send.c
+V1.4	| 03/20/87	| lib/libc/gen/getusershell.c
+V1.5	| 03/20/87	| sys/netinet/tcp_output.c
+V1.6	| 03/20/87	| sys/netinet/in_pcb.c
+V1.7	| 03/22/87	| sys/h/mbuf.h
+V1.8	| 03/22/87	| sys/netinet/ip_icmp.c
+V1.9	| 03/22/87	| sys/netinet/icmp_var.h
+V1.10	| 03/22/87	| sys/netinet/in.c
+V1.11	| 03/22/87	| sys/netinet/if_ether.c
+V1.12	| 03/22/87	| sys/vaxif/if_ex.c
+V1.13	| 03/27/87	| minimal ctime fix
+V1.14	| 03/27/87	| real ctime fix #1
+V1.15	| 03/27/87	| real ctime fix #2
+V1.16	| 03/27/87	| real ctime fix #3
+V1.17	| 03/27/87	| V7 directory reading routines, update
+V1.18	| 04/08/87	| ctime/jove fixes for new ctime routines
+V1.19	| 04/09/87	| sys/netinet/tcp_output.c
+V1.20	| 04/23/87	| adding service in inetd.conf may not work
+V1.21	| 04/30/87	| ttycheckoutq
+V1.22	| 04/30/87	| np100 notification
+V1.23	| 05/08/87	| PRU_PERRADDR in uipc_usrreq.c
+V1.24	| 05/08/87	| PRU_PERRADDR in uipc_usrreq.c -- CORRECTED
+V1.25	| 05/11/87	| XNS driver can't handle PRC_QUENCH
+V1.26	| 06/04/87	| if_uba.c, panic rcv_xmtbuf fix for DEUNAs
+V1.27	| 06/16/87	| setenv(3) length comparison fix
+V1.28	| 06/18/87	| dump fails to write highest numbered inode to tape
+V1.29	| 06/18/87	| bad144 can incorrectly mark bad blocks
+V1.30	| 06/21/87	| freeing NULL mbuf pointers
+V1.31	| 06/23/87	| V1.28 retraction
+V1.32	| 06/23/87	| splimp fix for microvaxes
+V1.33	| 06/29/87	| fixes to the uucp 'g' protocol
+V1.34	| 08/10/87	| case insensitive string compare routines
+V1.35	| 09/17/87	| fix for telnetd CR-NL mapping
+V1.36	| 09/17/87	| refuse to accept connections from ports below 512
+V1.37	| 09/17/87	| IP options
+V1.38	| 10/01/87	| login problem
+V1.39	| 10/06/87	| kernel tty indirect through zero
+V1.40	| 11/12/87	| fodkluster() and pagein() fixes
+V1.41	| 11/12/87	| Freeing free frag when using the cooked disk
+V1.42	| 11/13/87	| V1.41 retraction
+V1.43	| 11/23/87	| Fix for 4.3 BSD C compiler schain botch bug
+V1.44	| 12/15/87	| Fixes for bin/mail
+V1.45	| 02/16/88	| File System reorganization
+V1.46	| 04/04/88	| (README) updated IP/TCP and XNS sources for 4.3BSD
+V1.47	| 04/04/88	| (inet 1 of 4) updated IP/TCP and XNS sources for 4.3BSD
+V1.48	| 04/04/88	| (inet 2 of 4) updated IP/TCP and XNS sources for 4.3BSD
+V1.49	| 04/04/88	| (inet 3 of 4) updated IP/TCP and XNS sources for 4.3BSD
+V1.50	| 04/04/88	| (inet 4 of 4) updated IP/TCP and XNS sources for 4.3BSD
+V1.51	| 04/04/88	| (netns 1 of 2) updated IP/TCP and XNS sources for 4.3BSD
+V1.52	| 04/04/88	| (netns 2 of 2) updated IP/TCP and XNS sources for 4.3BSD
+V1.53	| 04/04/88	| (socket 1 of 2) updated IP/TCP and XNS sources for 4.3BSD
+V1.54	| 04/04/88	| (socket 2 of 2) updated IP/TCP and XNS sources for 4.3BSD
+V1.55	| 04/04/88	| (tcp 1 of 2) updated IP/TCP and XNS sources for 4.3BSD
+V1.56	| 04/04/88	| (tcp 2 of 2) updated IP/TCP and XNS sources for 4.3BSD
+V1.57	| 04/05/88	| spp_timer.h for updated IP/TCP and XNS sources for 4.3BSD
+V1.58	| 05/05/88	| Bug in forwarding XNS packets on Suns, CCI's
+V1.59	| 05/22/88	| setuid/setgid shell scripts are a security risk
+V1.60	| 05/22/88	| rlogind/telnetd security problem
+V1.61	| 06/15/88	| tahoe announcement
+V1.62	| 07/21/88	| Request for user-contributed software
+V1.63	| 09/13/88	| ISO BSD Licensees
+V1.64	| 09/26/88	| How to tune d1,d2,d3 params in /etc/disktab
+V1.65	| 10/31/88	| security problem in ftpd.
+V1.66	| 11/02/88	| MicroVAX 3000 support
+V1.67	| 11/03/88	| Virus posting
+V1.68	| 11/03/88	| Virus posting #2
+V1.69	| 11/03/88	| Virus posting #3
+V1.70	| 11/03/88	| Virus (really worm) posting #4
+V1.71	| 11/16/88	| MicroVAX 3000 support, #2
+V1.72	| 11/18/88	| Fix for posted version of ftpd.
+V1.73	| 11/29/88	| BSD Networking Software, Release #1
+V1.74	| 12/20/88	| security problem in passwd
+V1.75	| 01/16/89	| chown security problem
+V1.76	| 01/23/89	| new version of sendmail available
+V1.77	| 01/26/89	| re-fix for chown security problem
+V1.78	| 04/14/89	| VAX serial line driver attach routines
+V1.79	| 04/18/89	| Running 4.3BSD-tahoe on a VAX
+V1.80	| 04/20/89	| Running 4.3BSD-tahoe on a VAX, #2
+V1.81	| 05/08/89	| Shadow passwords
+V1.82	| 05/24/89	| Rcp/rdist security patch
+V1.83	| 05/25/89	| Rcp/rdist security patch, #2
+V1.84	| 06/27/89	| Fsck may not convert filesystem types correctly

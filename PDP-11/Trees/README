@@ -1,0 +1,14 @@
+The directories here contain `exploded' UNIX distributions, so that you can
+access individual files easily. This saves you from having to extract them
+from the original distribution. However, in some instances files and
+directories have had their permissions changed, to allow browsing regardless
+of user-id or group-id. File ownership has been kept intact in the on-line
+version, but may have default values on a CD-ROM distribution. Consult the
+original distribution for correct permissions.
+
+V6 comes from the files in Distributions/research/Dennis_v6
+V7 comes from the files in Distributions/research/Henry_v7
+2.11BSD comes from the files in Distributions/ucb/2.11BSD
+
+The V7 directory has been modified to include the vt client used by the
+virtual tape server in Tools/Tapes/Vtserver.

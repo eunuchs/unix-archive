@@ -1,0 +1,26 @@
+This directory contains sources for 512restor and 1024restor, restore
+programs which can read V7-style dump tapes generated on 512-block
+file systems (straight V7), and 1024-block file systems (Ultrix-11),
+respectively.
+
+Table of contents:
+
+	1024:		directory where 1024restor is made
+	512:		ditto, 512restor
+	Makefile:	the Magic Makefile (invokes make in 512 and 1024)
+	README:		this file
+
+	rstr.h:
+	dir.c:		Source code for the programs, #ifdef'd on ULTRIX_11
+	getfile.c:	to produce two different executables.
+	interact.c:	
+	rstr.c:	
+
+	dump.5.v7:	N/troff source for standard V7 documents giving
+	filsys.5.v7:	helpful information about the environment where
+	types.5.v7:	the V7 dump tapes were created.
+
+	v7restor.c:	Source for original V7 restor program, here for
+			reference.
+
+Scott Narveson, August 1988

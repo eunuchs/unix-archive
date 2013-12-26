@@ -1,0 +1,658 @@
+<!--Converted with LaTeX2HTML 97.1 (release) (July 13th, 1997)
+ by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippman, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>No Title</TITLE>
+<META NAME="description" CONTENT="No Title">
+<META NAME="keywords" CONTENT="vtreadme">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso_8859_1">
+<LINK REL="STYLESHEET" HREF="vtreadme.css">
+</HEAD>
+<BODY >
+<BR> <P>
+<P><!--End of Navigation Panel-->
+<DIV ALIGN="CENTER">
+<FONT SIZE="+2"><B>VTserver: Installing V7 UNIX with No Tape Drive</FONT></B>
+<P><BIG><B>Warren Toomey</BIG></B>
+<P><BIG><I>wkt@cs.adfa.oz.au</BIG></I>
+<P><BIG>Version 1.1, 3rd February 1998</BIG>
+</DIV><H1><A NAME="SECTION00010000000000000000">
+Caveat</A>
+</H1>
+<P>
+Before you even start looking at this software, there are some caveats
+which go with it.
+<P><DL COMPACT>
+<DT>1.
+<DD>The VTserver software should be considered in alpha release.
+Your feedback is most definitely requested, to fix any bugs and to improve
+the software.
+<DT>2.
+<DD>I have never owned or used a real PDP-11. The VTserver software
+was developed using a number of PDP-11 emulators. For this reason, there
+may be hardware-specific bugs in the software which were not found using the
+emulators. As well, the terminology in this manual may not be correct PDP-11
+speak. Again, please send me your suggestions and improvements!
+</DL><H1><A NAME="SECTION00020000000000000000">
+Introduction</A>
+</H1>
+<P>
+Several members of the PUPS mailing list (see
+http://minnie.cs.adfa.oz.au/PUPS/) have wanted a way of installing UNIX
+onto a PDP-11 which has no tape drive. One solution, if the PDP-11 has
+software already installed (RT-11, RSX etc.) is to leverage from the
+installed software to download and write UNIX onto a spare disk.
+This approach is not covered here, and someone who has done this
+should be encouraged to write it up.
+<P>
+The approach here has been to modify the initial UNIX tape loading software
+so that bits can be downloaded from a nearby computer over a serial cable.
+The modified boot straps thus perceive a <I>Virtual Tape</I> drive; hence
+the name of the software.
+<P>
+The VTserver software comes as two components: a set of PDP-11
+software which acts as the client, and the server which is hosted on a
+second machine, running Unix.
+<P>
+The two computers are connected via an RS-232 null modem with hardware
+handshaking. A KL/DL-11 unit on the PDP-11 is used as the serial port: the
+highest transfer rate is 9,600 bps. Although this is a way to install UNIX on
+a PDP-11, its a pretty slow way.
+<P><H1><A NAME="SECTION00030000000000000000">
+Manifest</A>
+</H1>
+<P>
+The VTserver software is available from
+ftp://minnie.cs.adfa.oz.au/pub/PDP-11/Vtserver as the file <BR>
+<TT>vtserver1.0.tar.gz</TT>.
+You should have received the following files as part of the VTserver
+software:
+<P><DL>
+<DT><STRONG>README:</STRONG>
+<DD>A quick overview of the software.
+<DT><STRONG>vtreadme.txt:</STRONG>
+<DD>This document in plain ASCII. There may be an
+equivalent PostScript file, <B>vtreadme.ps</B>.
+<DT><STRONG>v7_setup.txt:</STRONG>
+<DD>The original Bell Labs description on setting up
+	7th Edition UNIX. There may be an equivalent PostScript file,
+	<B>v7_setup.ps</B>.
+<DT><STRONG>unix_license.txt:</STRONG>
+<DD>SCO licence covering 7th Edition UNIX binary
+	distribution.
+<DT><STRONG>vtserver.c:</STRONG>
+<DD>The source code to the server program.
+<DT><STRONG>.vtrc:</STRONG>
+<DD>The server's configuration file.
+<DT><STRONG>vtboot.pdp:</STRONG>
+<DD>The machine code to bootstrap using the <TT>vtserver</TT>.
+<DT><STRONG>boot:</STRONG>
+<DD>Second stage bootstrap.
+<DT><STRONG>cat:</STRONG>
+<DD>Standalone cat(1) program.
+<DT><STRONG>tape_contents:</STRONG>
+<DD>A brief description of the fictitious tape's contents.
+<DT><STRONG>mkfs:</STRONG>
+<DD>Standalone mkfs(1) program.
+<DT><STRONG>icheck:</STRONG>
+<DD>Standalone icheck(1) program.
+<DT><STRONG>restor:</STRONG>
+<DD>Standalone restor(1) program.
+</DL>
+<P>
+Additional files, which are described in Section&nbsp;<A HREF="vtreadme.html#restofv7">17</A>, are also
+available in this directory. You will need at least <TT>v7rootdump</TT>. This
+comes as a Gzip'd file, and you will need to unzip it. You probably want to
+get all of the .Z files from the FTP site above. Don't uncompress them,
+as they can be loaded onto the PDP-11 `as is'.
+<P><H1><A NAME="SECTION00040000000000000000">
+Required Seventh Edition Manuals</A>
+</H1>
+<P>
+Before you being installing 7th Edition UNIX, you should print out the
+original installation instructions. These are contained in the files
+<TT>v7_setup.txt</TT> and <TT>v7_setup.ps</TT>. You will need to reference these
+instructions when you get to Section&nbsp;<A HREF="vtreadme.html#boot2">10</A>.
+<P>
+It is a good idea to have the other Seventh Edition UNIX manuals on-hand as you
+start using the system. You can install them onto your PDP-11 (see
+Section&nbsp;<A HREF="vtreadme.html#restofv7">17</A>), or you can access them over the web at <BR>
+<P>
+http://www.de.freebsd.org/de/cgi/man.cgi?manpath=Unix+Seventh+Edition
+<P><H1><A NAME="SECTION00050000000000000000">
+Compiling <TT>vtserver</TT></A>
+</H1>
+<P>
+The first thing to do is to compile <TT>vtserver.c</TT>:
+<P><PRE>
+  $ cc -o vtserver vtserver.c
+</PRE>
+<P>
+The code is pretty vanilla ANSI C. The only system-specific section is
+that on setting the serial port to raw mode. I have used the Posix
+<I>termios</I> system calls, and you may need to port this if your system
+isn't Posix-compatible. Please send patches back to me for this.
+<P>
+The file <TT>.vtrc</TT> is the server's configuration file. Lines beginning
+with hashes are ignored. The first (non-hashed) line names the serial
+device. Remaining lines name the fictitious tape's records, and should be
+<I>boot</I>, <I>cat</I>, <I>tape_contents</I>, <I>mkfs</I>, <I>icheck</I>,
+<I>restor</I> and <I>v7rootdump</I>, in that order.
+<P>
+You will most likely need to change the name of the serial port device.
+<P><H1><A NAME="SECTION00060000000000000000">
+Connecting the PDP-11 to the <TT>vtserver</TT></A>
+</H1>
+<P>
+The next KL-11 unit after the console (i.e the one at vector 0176500)
+needs to be connected via RS-232 to the serial port on the Unix server where
+you compiled <TT>vtserver.c</TT>. Ok, I have no experience here as I don't have a
+real PDP-11. I'd strongly recommend using a null modem cable with full hardware
+handshaking lines (RTS/CTS and DTR/DSR).
+<P>
+You should configure the KL-11 for 9600 baud, 8 bits, no parity, and
+you should do the same for the Unix server. On my FreeBSD box, I did:
+<P><PRE>
+  $ stty -f /dev/ttyid1 9600 cs8 clocal -crtscts
+</PRE>
+<P>
+If you are using hardware handshaking lines (and you should), change this to
+<P><PRE>
+  $ stty -f /dev/ttyid1 9600 cs8 -clocal crtscts
+</PRE>
+<P>
+I'd also recommend having a copy of Kermit on the Unix server end. If no
+communication seems to be taking place, open the serial line with Kermit,
+and see if characters are being received from the PDP-11. An RS-232
+breakout box here could also be useful.
+<P><H1><A NAME="SECTION00070000000000000000">
+Starting <TT>vtserver</TT></A>
+</H1>
+<P><TT>vtserver</TT> is started with no arguments, and reads its configuration
+file <TT>.vtrc</TT>. You should have done the serial port settings before this.
+<TT>vtserver</TT> starts up with a short description of the tape's contents:
+<P><PRE>
+  Virtual tape server, Revision: 1.13 
+  Records are:
+     0 boot
+     1 cat
+     2 tape_contents
+     3 mkfs
+     4 icheck
+     5 restor
+     6 v7rootdump
+
+  Opening port /dev/ttyd1 .... Port open
+</PRE>
+<P>
+It will then sit there waiting for commands from the PDP-11. When commands
+are being performed, you will see something like the following:
+<P><PRE>
+  Opened boot
+  qrqrqrqrqrqrqrqrqrqrqrqrqrqrqrqrqr EOF
+
+  Opened mkfs
+  rrrrrrrrrrrrrrrrrrrrrrrr
+</PRE>
+<P>
+As each file is opened, it is shown on the screen. `r' signifies a read of
+512 bytes. `qr' signifies a read of 512 bytes at boot time. If the PDP-11
+tries to read past the file's end, an EOF is shown. Finally, a progress
+message is shown every 100K of a file's download.
+<P><TT>vtserver</TT> is terminated with a ctrl-C.
+<P><H1><A NAME="SECTION00080000000000000000">
+Tape Records: Original V7 and VTserver</A>
+</H1>
+<P>
+The VT server has virtual tape records which match those on the original
+V7 installation tape. One thing to note here is that the <TT>restor</TT> program
+is described as being at record 4 in <TT>v7_setup.txt</TT>. With VT server, I
+have included the standalone <I>icheck</I> program at record 4. This allows you
+to do a rough filesystem check once you have a filesystem on a disk.
+<P>
+Therefore, <TT>restor</TT> is now at record 5, and the root filesystem dump is at
+record 6. Make sure you cross check with the initial <TT>vtserver</TT> screen
+(shown above) as you do the installation.
+<P><H1><A NAME="SECTION00090000000000000000">
+Booting via <TT>vtserver</TT></A>
+</H1>
+<P>
+The first stage of the boot process is to hand-enter the boot code which
+retrieves the file <TT>boot</TT> from the <TT>vtserver</TT>. This code should
+be entered at address 070000 onwards. The code is given in the
+<TT>vtboot.pdp</TT>, and in octal below.
+<P><PRE>
+0070000:  010706 005001 012703 176500 012704 070102 112400 100406
+0070020:  105763 000004 100375 110063 000006 000770 005267 000046
+0070040:  004767 000024 001401 005007 012702 001000 004767 000010
+0070060:  110021 005302 001373 000750 105713 100376 116300 000002
+0070100:  000207 025037 000000 000000 177777
+</PRE>
+<P>
+Toggle in the code, and start execution at address 70000. If all goes well,
+you will see ``Opened boot qrqrr...'' from <TT>vtserver</TT>,
+and you will receive the following on the PDP-11 console.
+<P><H1><A NAME="SECTION000100000000000000000">
+Second-Stage Bootstrap</A>
+</H1>
+<A NAME="boot2">&#160;</A>
+You should have the following on the PDP-11 console:
+<P><PRE>
+  New Boot, known devices are hp ht rp rk rl tm vt 
+  :
+</PRE>
+<P>
+This is the UNIX second stage bootstrap, slightly modified to name the
+devices it knows about. You should now read the file <TT>v7_setup.txt</TT>
+(or its PostScript equivalent) as we will be following the boot process
+described there.
+<P>
+At the present, the UNIX second stage bootstrap only knows about:
+<P><DL>
+<DT><STRONG>hp:</STRONG>
+<DD>RP04, RP05 and RP06 disks.
+<DT><STRONG>rp:</STRONG>
+<DD>RP03 disks.
+<DT><STRONG>rk:</STRONG>
+<DD>RK05 disks.
+<DT><STRONG>rl:</STRONG>
+<DD>RL01 and RL02 disks.
+<DT><STRONG>ht:</STRONG>
+<DD>TU16 or TE16 tape drive.
+<DT><STRONG>tm:</STRONG>
+<DD>TU10 tape drive.
+<DT><STRONG>vt:</STRONG>
+<DD>The Virtual Tape drive described here.
+</DL>
+<P>
+If you don't have any of the named disks, you're outta luck. The next
+project (perhaps with someone else's help) is to add extra disk devices
+to the list. It should be relatively easy to modify the existing boot
+code from 2.9BSD or 2.11BSD to work here. The 7th Edition UNIX kernel
+would also have to be modified.
+<P><H1><A NAME="SECTION000110000000000000000">
+Filesystem Sizes</A>
+</H1>
+<P>
+For some of the disk types, 7th Edition UNIX reserves space on the boot disk
+for swap. Therefore, you must ensure that your root filesystem doesn't
+overlap the swap space. Each compiled UNIX kernel has a different idea
+where the swap space is. Section&nbsp;<A HREF="vtreadme.html#conffiles">18</A> gives the configuration
+files for each UNIX kernel image supplied.
+<P>
+Note that for some disk types, the swap space is on the <B>second</B>
+disk unit, and starts at block zero. For these systems, any filesystem
+you create on the second disk unit (e.g <TT>/usr</TT>) must come <I>after</I>
+the swap space.
+<P>
+The following table shows you how big the root filesystem can be,
+on a device basis.
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TH ALIGN="LEFT" NOWRAP><B>Device</B></TH>
+<TH ALIGN="CENTER" NOWRAP><B>Root (blocks)</B></TH>
+<TH ALIGN="CENTER" NOWRAP><B>Swap (blocks)</B></TH>
+<TH ALIGN="CENTER" NOWRAP><B>Description</B></TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>hp</TD>
+<TD ALIGN="CENTER" NOWRAP>9614</TD>
+<TD ALIGN="CENTER" NOWRAP>8778</TD>
+<TD ALIGN="CENTER" NOWRAP>Swap on 2nd disk</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>rp</TD>
+<TD ALIGN="CENTER" NOWRAP>5000</TD>
+<TD ALIGN="CENTER" NOWRAP>2000</TD>
+<TD ALIGN="CENTER" NOWRAP>Swap on 2nd disk</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>rk</TD>
+<TD ALIGN="CENTER" NOWRAP>4000</TD>
+<TD ALIGN="CENTER" NOWRAP>872</TD>
+<TD ALIGN="CENTER" NOWRAP>Swap on boot disk</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>rl2</TD>
+<TD ALIGN="CENTER" NOWRAP>18000</TD>
+<TD ALIGN="CENTER" NOWRAP>2480</TD>
+<TD ALIGN="CENTER" NOWRAP>Swap on boot disk</TD>
+</TR>
+</TABLE></DIV>
+<P>
+You need to use the values in the second column when using <TT>mkfs</TT> below.
+<P><H1><A NAME="SECTION000120000000000000000">
+Making a Filesystem</A>
+</H1>
+<P>
+Let's quickly go through the steps of installing the V7 root dump onto
+RK05 unit 0. Load the <TT>mkfs</TT> program, and enter a filesystem size of
+4000 blocks on rk unit 0:
+<P><PRE>
+  New Boot, known devices are hp ht rp rk rl tm vt
+  : vt(0,3)
+  .*.*.*.*.*.*.*.*.*.*.*.*.file sys size: 4000
+  file system: rk(0,0)
+  isize = 1280
+  m/n = 3 500
+</PRE>
+<P>
+The VT tape software prints `.' and `*' alternating as it receives the
+512-byte blocks from the <TT>vtserver</TT>. <TT>mkfs</TT> has printed out
+the number of i-nodes (1280), and the `M' and `N' values.
+<P><H1><A NAME="SECTION000130000000000000000">
+Restoring the Root Filesystem Dump</A>
+</H1>
+<P>
+After <TT>mkfs</TT> has finished, the second stage boot command line should
+reappear. You can now run <TT>icheck</TT> (record 4) to verify the filesystem:
+use the same disk name as you did before (e.g rk(0,0)).
+<P>
+With that done, you can restore the root filesystem on to the newly-created
+disk system by using <TT>restor</TT> (record 5):
+<P><PRE>
+  New Boot, known devices are hp ht rp rk rl tm vt
+  : vt(0,5)
+  *.*.*.*.*.*.*.*.*.*.*.*.*Tape? vt(0,6)
+  .Disk? rk(0,0)
+  Last chance before scribbling on disk. 
+  *.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*.*. (etc)
+</PRE>
+<P>
+Given the size of the root filesystem, it should take around 45 minutes at
+9600 bps to complete the restore.
+<P><H1><A NAME="SECTION000140000000000000000">
+Installing Disk Bootstraps</A>
+</H1>
+<P>
+If the restor has worked, you now have a UNIX root filesystem on your disk.
+To boot the appropriate kernel for your disk type: type one of the following
+at the boot prompt:
+<P><PRE>
+  New Boot, known devices are hp ht rp rk rl tm vt
+  : rk(0,0)rkunix
+  : rl(0,0)rl2unix
+  : hp(0,0)hptmunix
+  : rp(0,0)rptmunix
+</PRE>
+<P>
+You can now follow the rest of the installation instructions in <TT>
+v7_setup.txt</TT>.
+<P>
+One of the first things you should do once you have booted to a shell prompt
+is to `cd' into <TT>/dev</TT> and make appropriate devices for your system.
+Read <TT>/dev/makefile</TT> and <TT>v7_setup.txt</TT> for details.
+<P>
+With this done, you must then write the disk bootstrap code into the
+first block of the boot disk. Change into the <TT>/mdec</TT> directory and do:
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TH ALIGN="LEFT" NOWRAP><B>Device</B></TH>
+<TH ALIGN="LEFT" NOWRAP>1|c|<B>Command</B></TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>hp</TD>
+<TD ALIGN="LEFT" NOWRAP>dd if=hpuboot of=/dev/rhp0</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>rp</TD>
+<TD ALIGN="LEFT" NOWRAP>dd if=rpuboot of=/dev/rrp0</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>rk</TD>
+<TD ALIGN="LEFT" NOWRAP>dd if=rkuboot of=/dev/rrk0</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>rl1</TD>
+<TD ALIGN="LEFT" NOWRAP>dd if=rluboot of=/dev/rrl0</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>rl2</TD>
+<TD ALIGN="LEFT" NOWRAP>dd if=rluboot of=/dev/rrl0</TD>
+</TR>
+</TABLE></DIV>
+<P>
+depending on your disk type. Fingers crossed, you can shut UNIX down
+(gracefully), and reboot using the disk.
+<P><H1><A NAME="SECTION000150000000000000000">
+Booting UNIX from Disk</A>
+</H1>
+<P>
+At the moment there is a small problem which makes booting slightly more
+cumbersome than it should be. The RK and RL disk boot blocks come from
+a non-vanilla 7th Edition UNIX: vanilla V7 didn't have bootstraps for RKs or RLs.
+To boot from either of these disks, you first have to boot the VT bootloader.
+For example:
+<P><PRE>
+  @boot			&lt;=== Normally you could type rl2unix here
+  New Boot, known devices are hp ht rk rl rp tm vt 
+  : rl(0,0)rl2unix
+  mem = 178048
+  # STTY -LCASE
+  # sync
+</PRE>
+<P><H1><A NAME="SECTION000160000000000000000">
+Comments on <TT>hp</TT> and <TT>rp</TT> Disks</A>
+</H1>
+<P>
+Unlike the <TT>rk</TT> and <TT>rl</TT> devices, where <TT>/dev/rl0</TT> is the
+whole disk unit, the UNIX drivers for <TT>hp</TT> and <TT>rp</TT> disks create
+`virtual' devices, each of which cover only a portion of the disk surface.
+The following table gives the available disk devices.
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TH ALIGN="LEFT" NOWRAP><B>Device</B></TH>
+<TH ALIGN="CENTER" NOWRAP><B># Blocks</B></TH>
+<TH ALIGN="CENTER" NOWRAP><B>Start Blocks</B></TH>
+<TH ALIGN="LEFT" NOWRAP>1|c|<B>Comment</B></TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>/dev/hp0</TD>
+<TD ALIGN="CENTER" NOWRAP>9614</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>cyl 0 thru 22</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>/dev/hp1</TD>
+<TD ALIGN="CENTER" NOWRAP>8778</TD>
+<TD ALIGN="CENTER" NOWRAP>9614</TD>
+<TD ALIGN="LEFT" NOWRAP>cyl 23 thru 43</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>/dev/hp4</TD>
+<TD ALIGN="CENTER" NOWRAP>161348</TD>
+<TD ALIGN="CENTER" NOWRAP>19228</TD>
+<TD ALIGN="LEFT" NOWRAP>cyl 44 thru 429</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>/dev/hp5</TD>
+<TD ALIGN="CENTER" NOWRAP>160930</TD>
+<TD ALIGN="CENTER" NOWRAP>187910</TD>
+<TD ALIGN="LEFT" NOWRAP>cyl 430 thru 814</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>/dev/hp6</TD>
+<TD ALIGN="CENTER" NOWRAP>153406</TD>
+<TD ALIGN="CENTER" NOWRAP>19228</TD>
+<TD ALIGN="LEFT" NOWRAP>cyl 44 thru 410 (rp04, rp05)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>/dev/hp7</TD>
+<TD ALIGN="CENTER" NOWRAP>322278</TD>
+<TD ALIGN="CENTER" NOWRAP>19228</TD>
+<TD ALIGN="LEFT" NOWRAP>cyl 44 thru 814 (rp06)</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>/dev/rp0</TD>
+<TD ALIGN="CENTER" NOWRAP>81000</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>cyl 0 thru 405</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>/dev/rp1</TD>
+<TD ALIGN="CENTER" NOWRAP>5000</TD>
+<TD ALIGN="CENTER" NOWRAP>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>cyl 0 thru 24</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>/dev/rp2</TD>
+<TD ALIGN="CENTER" NOWRAP>2000</TD>
+<TD ALIGN="CENTER" NOWRAP>5000</TD>
+<TD ALIGN="LEFT" NOWRAP>cyl 25 thru 34</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>/dev/rp3</TD>
+<TD ALIGN="CENTER" NOWRAP>74000</TD>
+<TD ALIGN="CENTER" NOWRAP>7000</TD>
+<TD ALIGN="LEFT" NOWRAP>cyl 35 thru 405</TD>
+</TR>
+</TABLE></DIV>
+<P>
+This means, for example, that you could use <TT>/dev/hp0</TT> as your root
+partition, <TT>/dev/hp1</TT> for <TT>/usr</TT> and <TT>/dev/hp4</TT> for <TT>home</TT>.
+<P><H1><A NAME="SECTION000170000000000000000">
+The Rest of Seventh Edition</A>
+</H1>
+<A NAME="restofv7">&#160;</A>
+The distributed <TT>v7rootdump</TT> file contains just enough of a root
+filesystem to fit into 4,000 disk blocks (i.e an RK05). You will want to
+load the rest of the root filesystem, and <TT>/usr</TT>, onto your PDP-11.
+<P>
+It is up to you to partition your hard disk and mount <TT>/usr</TT> as required.
+An optional part of the VTserver software is the rest of the 7th Edition binary
+distribution in tar files. These are broken up into small units, because
+you'd get frustrated if you had to wait several hours to load a single
+file over to the PDP-11 using VT server.
+<P>
+The available files at the FTP site named above are:
+<P><DL>
+<DT><STRONG>v7doc.tar.Z</STRONG>
+<DD>contains usr/dict usr/doc usr/man usr/pub usr/spool
+and a few files that I couldn't fit onto the root dump.
+<DT><STRONG>v7lib.tar.Z</STRONG>
+<DD>contains usr/games usr/include usr/lib and the
+	/lib/*.a files which again didn't fit onto the root dump.
+</DL>
+<P>
+Note that all of the tarballs have been created so that they can be extracted
+from&nbsp; <TT>/</TT>. The distribution does not contain any source code, due to
+licensing reasons. The files <TT>v7rootdump</TT>, <TT>v7doc.tar.Z</TT> and
+<TT>v7lib.tar.Z</TT> are copyright SCO and you must agree to the binary license
+described in the file <TT>unix_license.txt</TT> before you use them.
+<P><BIG><I>N.B /dev/tty1 doesn't seem to work yet!</BIG></I>
+<P>
+I have added two programs for extracting these files to <TT>/bin</TT>:
+<TT>uncompress</TT> and <TT>vtcat</TT>. Once you have rebooted and partitioned
+your disks, you can used these tools to load the files from the two compressed
+tarballs.
+<P>
+For example, assume you have v7lib.tar.Z as record 7 on the <TT>vtserver</TT>.
+[You can shutdown <TT>vtserver</TT>, edit <TT>.vtrc</TT> and restart the server to do
+this.] To extract v7lib.tar.Z, do the following commands on the PDP-11:
+<P><PRE>
+  $ cd /
+  $ vtcat /dev/tty1 7 | uncompress | tar vxf -
+</PRE>
+<P>
+For those who are tight on disk space, you can untar both tarballs, and
+build new tarballs with only those parts of 7th Edition UNIX you require.
+You need to create `old style' tarballs (use the Gnu <TT>tar</TT> -o option), and
+compress the tarballs with the -b12 option to <TT>compress</TT>.
+<P><H1><A NAME="SECTION000180000000000000000">
+System-specific Kernel Configuration Files</A>
+</H1>
+<A NAME="conffiles">&#160;</A>
+Nearly all of the supplied UNIX kernel images were built by someone else.
+Below, I give what I believe are the configuration files for each kernel.
+See the 7th Edition mkconf(1) for more details.
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TH ALIGN="LEFT" NOWRAP><B>hphtunix</B></TH>
+<TH ALIGN="LEFT" NOWRAP><B>hptmunix</B></TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>hp</TD>
+<TD ALIGN="LEFT" NOWRAP>hp</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>ht</TD>
+<TD ALIGN="LEFT" NOWRAP>tm</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>root hp 0</TD>
+<TD ALIGN="LEFT" NOWRAP>root hp 0</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>swap hp 1</TD>
+<TD ALIGN="LEFT" NOWRAP>swap hp 1</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>swplo 0</TD>
+<TD ALIGN="LEFT" NOWRAP>swplo 0</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>nswap 8778</TD>
+<TD ALIGN="LEFT" NOWRAP>nswap 8778</TD>
+</TR>
+</TABLE>
+<P><TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TH ALIGN="LEFT" NOWRAP><B>rphtunix</B></TH>
+<TH ALIGN="LEFT" NOWRAP><B>rptmunix</B></TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>rp</TD>
+<TD ALIGN="LEFT" NOWRAP>rp</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>ht</TD>
+<TD ALIGN="LEFT" NOWRAP>tm</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>root rp 1</TD>
+<TD ALIGN="LEFT" NOWRAP>root rp 1</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>swap rp 2</TD>
+<TD ALIGN="LEFT" NOWRAP>swap rp 2</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>swplo 0</TD>
+<TD ALIGN="LEFT" NOWRAP>swplo 0</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>nswap 2000</TD>
+<TD ALIGN="LEFT" NOWRAP>nswap 2000</TD>
+</TR>
+</TABLE>
+<P><TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="TOP"><TH ALIGN="LEFT" NOWRAP><B>rkunix</B></TH>
+<TH ALIGN="LEFT" NOWRAP><B>rl2unix</B></TH>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>rk</TD>
+<TD ALIGN="LEFT" NOWRAP>rl</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>tm</TD>
+<TD ALIGN="LEFT" NOWRAP>tm</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>root rk 0</TD>
+<TD ALIGN="LEFT" NOWRAP>root rl 0</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>swap rk 0</TD>
+<TD ALIGN="LEFT" NOWRAP>swap rl 0</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>swplo 4000</TD>
+<TD ALIGN="LEFT" NOWRAP>swplo 18000</TD>
+</TR>
+<TR VALIGN="TOP"><TD ALIGN="LEFT" NOWRAP>nswap 872</TD>
+<TD ALIGN="LEFT" NOWRAP>nswap 2480</TD>
+</TR>
+</TABLE></DIV><H1><A NAME="SECTION000190000000000000000">
+Changes from Vanilla 7th Edition UNIX</A>
+</H1>
+<P>
+The following files have been added or changed from the vanilla 7th
+Edition UNIX given to the PUPS archive by Henry Spencer.
+<P><UL>
+<LI> New kernel images <TT>rkunix</TT>, <TT>rl1unix</TT> and <TT>rl2unix</TT>.
+<LI> A new directory <TT>/mdec</TT>, with the disk bootstrap blocks.
+	<TT>hpuboot</TT> and <TT>rpuboot</TT> come from the directory
+	<TT>/usr/mdec</TT>: the others come from a modified UNIX distribution
+	given to the PUPS archive by Torsten Hippe.
+<LI> A new <TT>/boot</TT> which groks RL02s.
+<LI> New programs <TT>/bin/vtcat</TT>, <TT>/bin/compress</TT>, <TT>/bin/uncompress</TT>
+	and <TT>/bin/zcat</TT>.
+<LI> A new program <TT>/etc/fsck</TT>, from Torsten Hippe, which works on V7
+	filesystems.
+</UL>
+<P>
+For those people who have valid source licenses for 7th Edition UNIX, I can
+give you the VT modifications to <TT>/usr/src/cmd/standalone</TT>. There are a
+few changes to the existing code, plus two new source files: the first stage
+bootstrap code, <TT>vtboot.s</TT>, and the VT client code, <TT>vt.c</TT>. I have
+also borrowed the <TT>rl.c</TT> code from 2.9BSD, to allow RL02s to be used.
+<HR>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Warren Toomey <BR>
+2/3/1998</I>
+</ADDRESS>
+</BODY>
+</HTML>

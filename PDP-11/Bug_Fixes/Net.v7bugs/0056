@@ -1,0 +1,26 @@
+Aresearch.203
+net.bugs.v7
+utzoo!decvax!ucbvax!ihnss!mhtsa!research!dmr
+Thu Jan  7 01:42:24 1982
+sizeof feature
+been officially unsigned.  I believe this was documented with the distribution,
+although it is not in the C book.  Unfortunately (some would say fortunately,
+I gather),  I have not yet prevailed on the proprietors of any PCC
+compiler, including that for the Vax, to go along.  The reasoning was that it
+is easy, as utzoo!henry found, to declare objects whose size, on a 16-bit
+machine, looks negative when interpreted as an int.  I felt that the least
+painful way to deal with this was to make the expression unsigned,
+rather than ignoring the issue altogether or making sizeof either
+long or short depending on its operand.
+
+In practice, the change caused us trouble only in the one case pointed
+out by utah-cs!lepreau, namely
+	(long) -sizeof(...)
+It may look canonical, but as I recall it occurred only in one place
+(though that place was init.c!)
+
+Finally, the code sequence produced for a[i][j] %= k  is indeed wrong
+in the distributed v7.  I can no longer point to the offending line,
+but I'm pretty sure it is an obvious lack of a 'B1' in the code
+tables for %=.
+		Dennis Ritchie

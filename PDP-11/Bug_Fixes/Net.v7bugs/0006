@@ -1,0 +1,19 @@
+Aduke.473
+NET.v7bugs
+utzoo!duke!swd
+Thu Jul 10 10:42:51 1980
+mkconf bug
+Some time ago a bug was reported in scanf relating to
+scanning the format string "%d%c".  (This bug is fixed
+in the duke version of stdio.)
+It seems that mkconf.c REQUIRES this bug in order to work.
+Thus we suggest the following fix to mkconf.c:
+
+diff mkconf.c.good mkconf.c.original
+107c107
+< 	"	trap; br7+10.		/ 11/70 parity\n",
+---
+> 	"	trap; br7+7.		/ 11/70 parity\n",
+739,740d738
+< 	if (n == 0)
+< 		n = sscanf(line, "%s%s%ld", keyw, dev, &num);

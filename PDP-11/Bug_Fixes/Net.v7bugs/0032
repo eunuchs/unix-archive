@@ -1,0 +1,10 @@
+Autzoo.903
+net.v7bugs
+utzoo!henry
+Tue Aug 18 17:16:03 1981
+non-I/D floating point, cont.
+Fred Canter of Dec Merrimack informs me that the fpp bug will be fixed
+in their next release [they knew about it already].  Dennis Ritchie
+says the bug is still in the current research Unix;  apparently only
+Ken's chess machine has a non-I/D cpu with floating point, and it
+seems Ken doesn't multiprogram much...

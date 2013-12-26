@@ -1,0 +1,1918 @@
+drwxrwxr-x 0/10              0 Aug 11 13:00 1983 ./
+drwxrwxr-x 0/10              0 Aug  6 04:29 1983 ./cpm/
+-r--r--r-- 0/10            219 Jul 28 03:10 1983 ./cpm/Makefile
+-r--r--r-- 0/10            279 Jul 27 18:00 1983 ./cpm/README
+drwxrwxr-x 0/10              0 Aug 11 13:00 1983 ./cpm/src/
+-r--r--r-- 0/10           2601 Jun 24 08:20 1983 ./cpm/src/bitmap.c
+-r--r--r-- 0/10           1495 Jun 24 08:20 1983 ./cpm/src/blockio.c
+-r--r--r-- 0/10           1072 Jun 24 08:20 1983 ./cpm/src/cclose.c
+-r--r--r-- 0/10           1669 Jun 24 08:21 1983 ./cpm/src/ccreat.c
+-r--r--r-- 0/10            686 Jun 24 08:20 1983 ./cpm/src/cfillbuf.c
+-r--r--r-- 0/10           1620 Jun 24 08:21 1983 ./cpm/src/cflsbuf.c
+-r--r--r-- 0/10           2648 Jul 28 08:59 1983 ./cpm/src/cmdhdl.c
+-r--r--r-- 0/10            359 Jun 24 08:21 1983 ./cpm/src/command.h
+-r--r--r-- 0/10           1731 Jun 24 08:20 1983 ./cpm/src/copen.c
+-r--r--r-- 0/10           1283 Jun 24 08:21 1983 ./cpm/src/copy.c
+-r--r--r-- 0/10           4662 Jun 24 08:21 1983 ./cpm/src/cpm.c
+-r--r--r-- 0/10           1009 Jun 24 08:20 1983 ./cpm/src/cpmfio.h
+-r--r--r-- 0/10            841 Jun 24 08:20 1983 ./cpm/src/cpmio.h
+-r--r--r-- 0/10            740 Jun 24 08:19 1983 ./cpm/src/delete.c
+-r--r--r-- 0/10           1760 Jun 24 08:19 1983 ./cpm/src/dirhdl.c
+-r--r--r-- 0/10           1431 Jun 24 08:20 1983 ./cpm/src/extent.c
+-r--r--r-- 0/10            810 Jun 24 08:20 1983 ./cpm/src/ffc.c
+-r--r--r-- 0/10            735 Jun 24 08:20 1983 ./cpm/src/gensktab.c
+-r--r--r-- 0/10            875 Jun 24 08:21 1983 ./cpm/src/hexdmp.c
+-r--r--r-- 0/10           1295 Jul 28 09:00 1983 ./cpm/src/interact.c
+-r--r--r-- 0/10           1520 Jul 19 06:09 1983 ./cpm/src/physio.c
+-r--r--r-- 0/10           1191 Jun 24 08:20 1983 ./cpm/src/pip.c
+-r--r--r-- 0/10            986 Jun 24 08:20 1983 ./cpm/src/rename.c
+-r--r--r-- 0/10           2508 Jul 28 08:29 1983 ./cpm/src/Makefile
+-r--r--r-- 0/10            708 Jun 24 08:21 1983 ./cpm/src/cpm.hlp
+drwxrwxr-x 0/10              0 Aug  6 04:29 1983 ./cpm/man/
+-r--r--r-- 0/10           4395 Jul 29 08:19 1983 ./cpm/man/cpm.1
+-r--r--r-- 0/10             65 Jul 28 03:09 1983 ./cpm/man/Makefile
+-r--r--r-- 0/10             78 May 15 12:36 1983 ./cpm/...
+-r--r--r-- 0/10           2737 Aug 11 09:19 1983 ./README
+drwxrwxr-x 0/10              0 Aug  6 04:30 1983 ./apl/
+drwxrwxr-x 0/10              0 Aug  6 04:30 1983 ./apl/lib/
+drwxrwxr-x 0/10              0 Aug  6 04:30 1983 ./apl/lib/fn/
+-r--r--r-- 0/10            119 Jun 23 07:31 1983 ./apl/lib/fn/time
+-r--r--r-- 0/10            435 Jun 23 07:31 1983 ./apl/lib/fn/dstat
+-r--r--r-- 0/10             88 Jun 23 07:31 1983 ./apl/lib/fn/lst
+-r--r--r-- 0/10            112 Jun 23 07:31 1983 ./apl/lib/fn/vread
+-r--r--r-- 0/10           1360 Jun 23 07:31 1983 ./apl/lib/fn/operation
+-r--r--r-- 0/10             29 Jun 23 07:31 1983 ./apl/lib/fn/enc
+-r--r--r-- 0/10            104 Jun 23 07:31 1983 ./apl/lib/fn/addline
+-r--r--r-- 0/10            138 Jun 23 07:31 1983 ./apl/lib/fn/vwrite
+-r--r--r-- 0/10            132 Jun 23 07:31 1983 ./apl/lib/fn/vap
+-r--r--r-- 0/10            275 Jun 23 07:31 1983 ./apl/lib/fn/vrd
+-r--r--r-- 0/10            791 Jun 23 07:31 1983 ./apl/lib/fn/dft
+-r--r--r-- 0/10             59 Jun 23 07:31 1983 ./apl/lib/fn/ttime
+-r--r--r-- 0/10            128 Jun 23 07:31 1983 ./apl/lib/fn/readargs
+-r--r--r-- 0/10            249 Jun 23 07:31 1983 ./apl/lib/fn/vrnum
+-r--r--r-- 0/10            528 Jun 23 07:31 1983 ./apl/lib/fn/eft
+-r--r--r-- 0/10            607 Jun 23 07:31 1983 ./apl/lib/fn/asave
+-r--r--r-- 0/10            865 Jun 23 07:31 1983 ./apl/lib/fn/load
+-r--r--r-- 0/10            639 Jun 23 07:31 1983 ./apl/lib/fn/edmx
+-r--r--r-- 0/10            242 Jun 23 07:31 1983 ./apl/lib/fn/det
+-r--r--r-- 0/10             52 Jun 23 07:31 1983 ./apl/lib/fn/if
+-r--r--r-- 0/10            352 Jun 23 07:31 1983 ./apl/lib/fn/edtxt
+-r--r--r-- 0/10             67 Jun 23 07:31 1983 ./apl/lib/fn/convolve
+-r--r--r-- 0/10           1705 Jun 23 07:31 1983 ./apl/lib/AW
+-r--r--r-- 0/10           3769 Jun 23 07:31 1983 ./apl/lib/anovaws
+-r--r--r-- 0/10            738 Jun 23 07:31 1983 ./apl/lib/READ_ME
+-r--r--r-- 0/10          17676 Jun 23 07:31 1983 ./apl/lib/ngradesys
+-r--r--r-- 0/10           1705 Jun 23 07:31 1983 ./apl/lib/aw
+-r--r--r-- 0/10           3830 Jun 23 07:31 1983 ./apl/lib/base
+-r--r--r-- 0/10           5583 Jun 23 07:31 1983 ./apl/lib/editws
+-r--r--r-- 0/10           1515 Jun 23 07:31 1983 ./apl/lib/fftws
+-r--r--r-- 0/10           1517 Jun 23 07:31 1983 ./apl/lib/getws
+-r--r--r-- 0/10           5827 Jun 23 07:31 1983 ./apl/lib/gradesys
+-r--r--r-- 0/10           3044 Jun 23 07:31 1983 ./apl/lib/graph2ws
+-r--r--r-- 0/10           4942 Jun 23 07:31 1983 ./apl/lib/graphws
+-r--r--r-- 0/10           3007 Jun 23 07:31 1983 ./apl/lib/iows
+-r--r--r-- 0/10           7523 Jun 23 07:31 1983 ./apl/lib/news
+-r--r--r-- 0/10           2619 Jun 23 07:31 1983 ./apl/lib/plotws
+-r--r--r-- 0/10            995 Jun 23 07:31 1983 ./apl/lib/shapews
+-r--r--r-- 0/10            250 Jul  4 12:35 1983 ./apl/lib/Makefile
+-r--r--r-- 0/10            270 Jul 28 04:07 1983 ./apl/Makefile
+-r--r--r-- 0/10           3361 Jul 28 04:01 1983 ./apl/README
+drwxrwxr-x 0/10              0 Aug  6 04:30 1983 ./apl/doc/
+-r--r--r-- 0/10           6222 Jun 23 07:57 1983 ./apl/doc/xed.doc
+-r--r--r-- 0/10           5685 Jun 23 07:32 1983 ./apl/doc/ibeams
+-r--r--r-- 0/10           2203 Jun 23 07:32 1983 ./apl/doc/charset
+-r--r--r-- 0/10           6206 Jun 23 07:57 1983 ./apl/doc/eed.doc
+-r--r--r-- 0/10            333 Jun 23 07:32 1983 ./apl/doc/READ_ME
+-r--r--r-- 0/10           4291 Jul 29 09:13 1983 ./apl/doc/man.0
+-r--r--r-- 0/10           1226 Jun 23 07:32 1983 ./apl/doc/man.2
+-r--r--r-- 0/10           1995 Jun 23 07:32 1983 ./apl/doc/man.1
+-r--r--r-- 0/10           1965 Jun 23 07:32 1983 ./apl/doc/man.3
+-r--r--r-- 0/10           2386 Jun 23 07:32 1983 ./apl/doc/man.4
+-r--r--r-- 0/10           5625 Jun 23 07:32 1983 ./apl/doc/man.5
+-r--r--r-- 0/10           2090 Jul 29 09:17 1983 ./apl/doc/man.6
+-r--r--r-- 0/10           7231 Jun 23 07:32 1983 ./apl/doc/man.7
+-r--r--r-- 0/10           3632 Jul 29 09:18 1983 ./apl/doc/man.8
+-r--r--r-- 0/10           2354 Jun 23 07:32 1983 ./apl/doc/purdue
+-rwxr-xr-x 0/10            121 Jun 23 07:32 1983 ./apl/doc/mkman
+-r--r--r-- 0/10             32 Jun 23 07:32 1983 ./apl/doc/mktman
+-r--r--r-- 0/10           9306 Jun 23 07:32 1983 ./apl/doc/syscom
+-r--r--r-- 0/10            315 Jun 23 07:32 1983 ./apl/doc/man.9
+-r--r--r-- 0/10           7297 Jul 29 09:20 1983 ./apl/doc/quadf
+drwxrwxr-x 0/10              0 Aug  6 04:30 1983 ./apl/man/
+-r--r--r-- 0/10          36272 Aug  4 02:57 1983 ./apl/man/xed.1
+-r--r--r-- 0/10            370 Jul 28 04:05 1983 ./apl/man/Makefile
+-r--r--r-- 0/10           5573 Aug  4 03:05 1983 ./apl/man/apl.1
+-r--r--r-- 0/10           1716 Aug  4 02:53 1983 ./apl/man/aplcvt.1
+drwxrwxr-x 0/10              0 Aug 11 12:50 1983 ./apl/src/
+-r--r--r-- 0/10            288 Jun 23 07:51 1983 ./apl/src/Llx.c
+-r--r--r-- 0/10          15324 Jul  4 12:25 1983 ./apl/src/a0.c
+-r--r--r-- 0/10           6533 Jun 23 07:51 1983 ./apl/src/a1.c
+-r--r--r-- 0/10           8535 Jun 23 07:51 1983 ./apl/src/a2.c
+-r--r--r-- 0/10           1431 Jun 23 07:51 1983 ./apl/src/a3.c
+-r--r--r-- 0/10           3573 Jun 23 07:55 1983 ./apl/src/a4.c
+-r--r--r-- 0/10           2076 Jun 23 07:51 1983 ./apl/src/a5.c
+-r--r--r-- 0/10           1356 Jun 23 07:51 1983 ./apl/src/a6.c
+-r--r--r-- 0/10           2533 Jun 23 07:51 1983 ./apl/src/a7.c
+-r--r--r-- 0/10           4248 Jun 23 07:51 1983 ./apl/src/a8.c
+-r--r--r-- 0/10           4227 Jun 23 07:54 1983 ./apl/src/a9.c
+-r--r--r-- 0/10           1703 Jun 23 07:51 1983 ./apl/src/aa.c
+-r--r--r-- 0/10           4262 Jun 23 07:51 1983 ./apl/src/ab.c
+-r--r--r-- 0/10           1068 Jun 23 07:51 1983 ./apl/src/ac.c
+-r--r--r-- 0/10           2532 Jun 23 07:51 1983 ./apl/src/ad.c
+-r--r--r-- 0/10           1604 Jun 23 07:51 1983 ./apl/src/ae.c
+-r--r--r-- 0/10            827 Jun 23 07:51 1983 ./apl/src/af.c
+-r--r--r-- 0/10            840 Jun 23 07:53 1983 ./apl/src/ag.c
+-r--r--r-- 0/10           4193 Jun 23 07:51 1983 ./apl/src/ah.c
+-r--r--r-- 0/10          13090 Jun 23 07:54 1983 ./apl/src/ai.c
+-r--r--r-- 0/10           5981 Jun 23 07:54 1983 ./apl/src/aj.c
+-r--r--r-- 0/10           1752 Jun 23 07:51 1983 ./apl/src/ak.c
+-r--r--r-- 0/10          10407 Jun 23 07:52 1983 ./apl/src/al.c
+-r--r--r-- 0/10           2212 Jul  4 11:13 1983 ./apl/src/am.c
+-r--r--r-- 0/10            133 Jun 23 07:52 1983 ./apl/src/an.c
+-r--r--r-- 0/10           5316 Jun 23 07:52 1983 ./apl/src/ao.c
+-r--r--r-- 0/10          10440 Jun 23 07:54 1983 ./apl/src/aplcvt.c
+-r--r--r-- 0/10           4755 Jun 23 07:52 1983 ./apl/src/aq.c
+-r--r--r-- 0/10           5387 Jun 23 07:52 1983 ./apl/src/at.c
+-r--r--r-- 0/10           3618 Jun 23 07:52 1983 ./apl/src/aw.c
+-r--r--r-- 0/10            913 Jun 23 07:52 1983 ./apl/src/ax.c
+-r--r--r-- 0/10          16867 Jun 23 07:52 1983 ./apl/src/ay.c
+-r--r--r-- 0/10           5306 Jun 23 07:52 1983 ./apl/src/az.c
+-r--r--r-- 0/10           4741 Jun 23 07:52 1983 ./apl/src/cata.c
+-r--r--r-- 0/10           2139 Jun 23 07:52 1983 ./apl/src/gamma.c
+-r--r--r-- 0/10           5134 Jun 23 07:54 1983 ./apl/src/lex.c
+-r--r--r-- 0/10           6504 Jun 23 07:55 1983 ./apl/src/tab.c
+-r--r--r-- 0/10         103856 Jun 23 07:53 1983 ./apl/src/xed.c
+-r--r--r-- 0/10           1567 Jun 23 07:54 1983 ./apl/src/ax.pdp.s
+-r--r--r-- 0/10            369 Jun 23 07:54 1983 ./apl/src/reset.s
+-r--r--r-- 0/10          12337 Jul  4 11:14 1983 ./apl/src/apl.h
+-r--r--r-- 0/10           6122 Jun 23 07:54 1983 ./apl/src/aplmap.h
+-r--r--r-- 0/10           6804 Jun 23 07:55 1983 ./apl/src/apl.y
+-r--r--r-- 0/10            141 Jun 23 07:56 1983 ./apl/src/MAKE.pdp
+-r--r--r-- 0/10             87 Jun 23 07:56 1983 ./apl/src/MAKE.vax
+-r--r--r-- 0/10           1485 Jul  4 12:30 1983 ./apl/src/makefile
+-r--r--r-- 0/10            994 Jun 23 07:32 1983 ./apl/src/makefile.pdp
+-r--r--r-- 0/10             28 Jun 23 07:32 1983 ./apl/src/aplws.abort
+-r--r--r-- 0/10           1451 Jun 23 07:32 1983 ./apl/src/aplHelp
+-r--r--r-- 0/10          16455 Jul  8 04:14 1983 ./apl/src/y.tab.c
+-r--r--r-- 0/10           1626 Aug  6 05:16 1983 ./apl/src/gamma.o
+drwxrwxr-x 0/10              0 Aug  6 04:32 1983 ./courier/
+drwxrwxr-x 0/10              0 Aug 11 12:50 1983 ./courier/daemon/
+-r--r--r-- 0/10            232 Jul  4 11:35 1983 ./courier/daemon/Makefile
+-r--r--r-- 0/10           3083 Jul  8 16:39 1983 ./courier/daemon/courierd.c
+drwxrwxr-x 0/10              0 Aug  6 04:32 1983 ./courier/examples/
+drwxrwxr-x 0/10              0 Aug 11 12:58 1983 ./courier/examples/passwd/
+-r--r--r-- 0/10            568 Jun 24 04:53 1983 ./courier/examples/passwd/Makefile
+-r--r--r-- 0/10            656 May 13 07:24 1983 ./courier/examples/passwd/lookup.c
+-r--r--r-- 0/10            454 Aug 11 12:58 1983 ./courier/examples/passwd/PasswordLookup.cr
+-r--r--r-- 0/10            397 May 13 04:24 1983 ./courier/examples/passwd/PasswordLookup.c
+drwxrwxr-x 0/10              0 Aug 11 12:59 1983 ./courier/examples/time/
+-r--r--r-- 0/10            699 Jun 24 04:54 1983 ./courier/examples/time/Makefile
+-r--r--r-- 0/10            216 May 13 04:24 1983 ./courier/examples/time/Time.c
+-r--r--r-- 0/10            536 May 13 04:24 1983 ./courier/examples/time/datime.c
+-r--r--r-- 0/10            375 May 13 04:24 1983 ./courier/examples/time/Time.cr
+-r--r--r-- 0/10            545 May 13 04:24 1983 ./courier/examples/time/timex.c
+drwxrwxr-x 0/10              0 Aug 11 12:56 1983 ./courier/compiler/
+-r--r--r-- 0/10           9237 Sep 28 08:44 1983 ./courier/compiler/code1.c
+-r--r--r-- 0/10            437 Jul  8 16:38 1983 ./courier/compiler/Makefile
+-r--r--r-- 0/10           5109 Jul  8 16:38 1983 ./courier/compiler/courier.y
+-r--r--r-- 0/10           1092 Jul  8 16:38 1983 ./courier/compiler/scanner.l
+-r--r--r-- 0/10           3317 Jul  4 11:36 1983 ./courier/compiler/Courier.h
+-r--r--r-- 0/10           6578 Jul  4 11:36 1983 ./courier/compiler/code2.c
+-r--r--r-- 0/10           4667 Jul  4 11:36 1983 ./courier/compiler/main.c
+-r--r--r-- 0/10           6538 Jul  4 11:36 1983 ./courier/compiler/sem.c
+drwxrwxr-x 0/10              0 Aug 11 12:50 1983 ./courier/lib/
+-r--r--r-- 0/10            822 Jul  8 17:03 1983 ./courier/lib/Makefile
+drwxrwxr-x 0/10              0 Aug 11 12:50 1983 ./courier/lib/profiled/
+-r--r--r-- 0/10           1587 Jul  8 16:46 1983 ./courier/lib/bind.c
+-r--r--r-- 0/10           2740 Jul  8 16:46 1983 ./courier/lib/client.c
+-r--r--r-- 0/10            957 Jul  8 16:46 1983 ./courier/lib/misc.c
+-r--r--r-- 0/10           2895 Jul  8 16:46 1983 ./courier/lib/server.c
+-r--r--r-- 0/10           2032 Jul  4 11:20 1983 ./courier/lib/courier.h
+-r--r--r-- 0/10            610 Sep 28 08:43 1983 ./courier/Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:32 1983 ./courier/man/
+-r--r--r-- 0/10            789 Jul 29 08:18 1983 ./courier/man/courier.1
+-r--r--r-- 0/10             73 Jul 27 17:32 1983 ./courier/man/Makefile
+-r--r--r-- 0/10           1125 Sep 28 08:43 1983 ./courier/README
+drwxrwxr-x 0/10              0 Aug  6 04:32 1983 ./courier/doc/
+-r--r--r-- 0/10          14997 May 13 04:25 1983 ./courier/doc/courier.tbl.me
+-r--r--r-- 0/10           2676 May 13 04:25 1983 ./courier/doc/grammar
+drwxrwxr-x 0/10              0 Aug  6 04:38 1983 ./spms/
+drwxrwxr-x 0/10              0 Aug  6 04:35 1983 ./spms/src/
+drwxrwxr-x 0/10              0 Aug  6 04:35 1983 ./spms/src/lib/
+drwxrwxr-x 0/10              0 Aug  6 04:33 1983 ./spms/src/lib/libslist/
+drwxrwxr-x 0/10              0 Aug  6 04:32 1983 ./spms/src/lib/libslist/work/
+drwxrwxr-x 0/10              0 Aug  6 04:32 1983 ./spms/src/lib/libslist/test/
+-r--r--r-- 0/10            938 May 15 00:51 1983 ./spms/src/lib/libslist/test/slappend.a
+-r--r--r-- 0/10            962 May 15 00:51 1983 ./spms/src/lib/libslist/test/slget.a
+-r--r--r-- 0/10           1858 May 15 00:51 1983 ./spms/src/lib/libslist/test/slpop.a
+-r--r--r-- 0/10            956 May 15 00:51 1983 ./spms/src/lib/libslist/test/slprepend.a
+-r--r--r-- 0/10           1044 May 15 00:51 1983 ./spms/src/lib/libslist/test/slprint.a
+-r--r--r-- 0/10           1668 May 15 00:51 1983 ./spms/src/lib/libslist/test/slrm.a
+-r--r--r-- 0/10           1324 May 15 00:51 1983 ./spms/src/lib/libslist/test/slsappend.a
+-r--r--r-- 0/10           1320 May 15 00:51 1983 ./spms/src/lib/libslist/test/slsget.a
+-r--r--r-- 0/10            982 May 15 00:51 1983 ./spms/src/lib/libslist/test/slsort.a
+-r--r--r-- 0/10           1776 May 15 00:51 1983 ./spms/src/lib/libslist/test/slsplice.a
+-r--r--r-- 0/10           1342 May 15 00:51 1983 ./spms/src/lib/libslist/test/slsprepend.a
+-r--r--r-- 0/10           1222 May 15 00:51 1983 ./spms/src/lib/libslist/test/slsprint.a
+-r--r--r-- 0/10           1730 May 15 00:51 1983 ./spms/src/lib/libslist/test/slsrm.a
+-r--r--r-- 0/10           1812 May 15 00:51 1983 ./spms/src/lib/libslist/test/slssort.a
+drwxrwxr-x 0/10              0 Aug 11 13:04 1983 ./spms/src/lib/libslist/src/
+-r--r--r-- 0/10           1683 May 15 00:51 1983 ./spms/src/lib/libslist/src/slssort.c
+-r--r--r-- 0/10           3707 Sep 26 11:04 1983 ./spms/src/lib/libslist/src/Makefile
+-r--r--r-- 0/10           1079 May 15 00:51 1983 ./spms/src/lib/libslist/src/slappend.c
+-r--r--r-- 0/10           1430 May 15 00:51 1983 ./spms/src/lib/libslist/src/slrm.c
+-r--r--r-- 0/10           1106 May 15 00:51 1983 ./spms/src/lib/libslist/src/slprepend.c
+-r--r--r-- 0/10            519 May 15 00:51 1983 ./spms/src/lib/libslist/src/slinit.c
+-r--r--r-- 0/10           1583 May 15 00:51 1983 ./spms/src/lib/libslist/src/slsrm.c
+-r--r--r-- 0/10            279 May 15 00:51 1983 ./spms/src/lib/libslist/src/slsrewind.c
+-r--r--r-- 0/10           2201 May 15 00:51 1983 ./spms/src/lib/libslist/src/slsprint.c
+-r--r--r-- 0/10           1391 May 15 00:51 1983 ./spms/src/lib/libslist/src/slsprepend.c
+-r--r--r-- 0/10            564 May 15 00:51 1983 ./spms/src/lib/libslist/src/slsinit.c
+-r--r--r-- 0/10            476 May 15 00:51 1983 ./spms/src/lib/libslist/src/slsget.c
+-r--r--r-- 0/10           1361 May 15 00:51 1983 ./spms/src/lib/libslist/src/slsappend.c
+-r--r--r-- 0/10            443 May 15 00:51 1983 ./spms/src/lib/libslist/src/slget.c
+-r--r--r-- 0/10            523 May 15 00:51 1983 ./spms/src/lib/libslist/src/slsplice.c
+-r--r--r-- 0/10            264 May 15 00:51 1983 ./spms/src/lib/libslist/src/slrewind.c
+-r--r--r-- 0/10           1606 May 15 00:51 1983 ./spms/src/lib/libslist/src/slsort.c
+-r--r--r-- 0/10           2177 May 15 00:51 1983 ./spms/src/lib/libslist/src/slprint.c
+-r--r--r-- 0/10           1606 May 15 00:51 1983 ./spms/src/lib/libslist/src/slpop.c
+drwxrwxr-x 0/10              0 Aug  6 04:33 1983 ./spms/src/lib/libslist/lib/
+-r--r--r-- 0/10            262 May 15 00:51 1983 ./spms/src/lib/libslist/lib/t.Makefile
+-r--r--r-- 0/10            304 May 16 02:52 1983 ./spms/src/lib/libslist/...
+drwxrwxr-x 0/10              0 Aug  6 04:33 1983 ./spms/src/lib/libtree/
+drwxrwxr-x 0/10              0 Aug  6 04:33 1983 ./spms/src/lib/libtree/work/
+drwxrwxr-x 0/10              0 Aug  6 04:33 1983 ./spms/src/lib/libtree/test/
+-r--r--r-- 0/10           2698 May 15 00:51 1983 ./spms/src/lib/libtree/test/treerm.a
+-r--r--r-- 0/10           2154 May 15 00:51 1983 ./spms/src/lib/libtree/test/tree.a
+-r--r--r-- 0/10            978 May 15 00:51 1983 ./spms/src/lib/libtree/test/treesearch.a
+drwxrwxr-x 0/10              0 Aug 11 13:04 1983 ./spms/src/lib/libtree/src/
+-r--r--r-- 0/10           1817 Sep 26 11:04 1983 ./spms/src/lib/libtree/src/Makefile
+-r--r--r-- 0/10           1024 May 15 00:51 1983 ./spms/src/lib/libtree/src/tree.c
+-r--r--r-- 0/10            550 May 15 00:51 1983 ./spms/src/lib/libtree/src/treesearch.c
+-r--r--r-- 0/10           1577 May 15 00:51 1983 ./spms/src/lib/libtree/src/treerm.c
+drwxrwxr-x 0/10              0 Aug  6 04:33 1983 ./spms/src/lib/libtree/lib/
+-r--r--r-- 0/10            261 May 15 00:51 1983 ./spms/src/lib/libtree/lib/t.Makefile
+-r--r--r-- 0/10            293 May 16 02:52 1983 ./spms/src/lib/libtree/...
+drwxrwxr-x 0/10              0 Aug  6 04:34 1983 ./spms/src/lib/libspms/
+drwxrwxr-x 0/10              0 Aug 11 13:04 1983 ./spms/src/lib/libspms/src/
+-r--r--r-- 0/10            772 May 15 00:51 1983 ./spms/src/lib/libspms/src/rm_dir.c
+-r--r--r-- 0/10            324 May 15 00:51 1983 ./spms/src/lib/libspms/src/pfxcpy.c
+-r--r--r-- 0/10           1425 May 15 00:51 1983 ./spms/src/lib/libspms/src/argvtos.c
+-r--r--r-- 0/10            936 May 15 00:51 1983 ./spms/src/lib/libspms/src/chproject.c
+-r--r--r-- 0/10            738 May 15 00:51 1983 ./spms/src/lib/libspms/src/diff.c
+-r--r--r-- 0/10            407 May 15 00:51 1983 ./spms/src/lib/libspms/src/fatal.c
+-r--r--r-- 0/10           2079 May 15 00:51 1983 ./spms/src/lib/libspms/src/getcpd.c
+-r--r--r-- 0/10            436 May 15 00:51 1983 ./spms/src/lib/libspms/src/getcwp.c
+-r--r--r-- 0/10           1132 May 15 00:51 1983 ./spms/src/lib/libspms/src/gethdir.c
+-r--r--r-- 0/10            551 May 15 00:51 1983 ./spms/src/lib/libspms/src/getproject.c
+-r--r--r-- 0/10            494 May 15 00:51 1983 ./spms/src/lib/libspms/src/getshell.c
+-r--r--r-- 0/10           2697 May 15 00:51 1983 ./spms/src/lib/libspms/src/getwd.c
+-r--r--r-- 0/10           1058 Jun 26 09:32 1983 ./spms/src/lib/libspms/src/isfg.c
+-r--r--r-- 0/10           1146 Jun 26 09:32 1983 ./spms/src/lib/libspms/src/isintract.c
+-r--r--r-- 0/10            592 May 15 00:51 1983 ./spms/src/lib/libspms/src/mk_dir.c
+-r--r--r-- 0/10            406 May 15 00:51 1983 ./spms/src/lib/libspms/src/mkalias.c
+-r--r--r-- 0/10            397 May 15 00:51 1983 ./spms/src/lib/libspms/src/mustfopen.c
+-r--r--r-- 0/10           1970 May 15 00:51 1983 ./spms/src/lib/libspms/src/optpath.c
+-r--r--r-- 0/10            792 May 15 00:51 1983 ./spms/src/lib/libspms/src/pathcat.c
+-r--r--r-- 0/10            467 May 15 00:51 1983 ./spms/src/lib/libspms/src/pathhead.c
+-r--r--r-- 0/10            429 May 15 00:51 1983 ./spms/src/lib/libspms/src/pathtail.c
+-r--r--r-- 0/10           5208 May 15 00:51 1983 ./spms/src/lib/libspms/src/pdtyp.c
+-r--r--r-- 0/10            854 May 15 00:51 1983 ./spms/src/lib/libspms/src/ppathcat.c
+-r--r--r-- 0/10            490 May 15 00:51 1983 ./spms/src/lib/libspms/src/ppathhead.c
+-r--r--r-- 0/10            348 May 15 00:51 1983 ./spms/src/lib/libspms/src/pperror.c
+-r--r--r-- 0/10           1647 May 15 00:51 1983 ./spms/src/lib/libspms/src/readpath.c
+-r--r--r-- 0/10           1487 May 15 00:51 1983 ./spms/src/lib/libspms/src/readpld.c
+-r--r--r-- 0/10            269 May 15 00:51 1983 ./spms/src/lib/libspms/src/strpcpy.c
+-r--r--r-- 0/10            472 May 15 00:51 1983 ./spms/src/lib/libspms/src/strsav.c
+-r--r--r-- 0/10            349 May 15 00:51 1983 ./spms/src/lib/libspms/src/warn.c
+-r--r--r-- 0/10            476 May 15 00:51 1983 ./spms/src/lib/libspms/src/xorpath.c
+-r--r--r-- 0/10            436 May 15 00:51 1983 ./spms/src/lib/libspms/src/yes.c
+-r--r--r-- 0/10           5685 May 15 00:51 1983 ./spms/src/lib/libspms/src/pdtparse.c
+-r--r--r-- 0/10           1312 May 15 00:51 1983 ./spms/src/lib/libspms/src/pdtmatch.c
+-r--r--r-- 0/10           7140 May 15 00:51 1983 ./spms/src/lib/libspms/src/xppath.c
+-r--r--r-- 0/10            662 May 15 00:51 1983 ./spms/src/lib/libspms/src/getpwdir.c
+-r--r--r-- 0/10           6697 Sep 26 11:04 1983 ./spms/src/lib/libspms/src/Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:33 1983 ./spms/src/lib/libspms/work/
+drwxrwxr-x 0/10              0 Aug  6 04:34 1983 ./spms/src/lib/libspms/test/
+-r--r--r-- 0/10            656 May 15 00:52 1983 ./spms/src/lib/libspms/test/argvtos.a
+-r--r--r-- 0/10           1028 May 15 00:52 1983 ./spms/src/lib/libspms/test/chproject.a
+-r--r--r-- 0/10            580 May 15 00:52 1983 ./spms/src/lib/libspms/test/fatal.a
+-r--r--r-- 0/10            694 May 15 00:52 1983 ./spms/src/lib/libspms/test/diff.a
+-r--r--r-- 0/10            920 May 15 00:52 1983 ./spms/src/lib/libspms/test/getcpd.a
+-r--r--r-- 0/10            836 May 15 00:52 1983 ./spms/src/lib/libspms/test/getcwp.a
+-r--r--r-- 0/10            800 May 15 00:52 1983 ./spms/src/lib/libspms/test/getpwdir.a
+-r--r--r-- 0/10            988 May 15 00:52 1983 ./spms/src/lib/libspms/test/gethdir.a
+-r--r--r-- 0/10            932 May 15 00:52 1983 ./spms/src/lib/libspms/test/getshell.a
+-r--r--r-- 0/10            610 May 15 00:52 1983 ./spms/src/lib/libspms/test/getwd.a
+-r--r--r-- 0/10            694 May 15 00:52 1983 ./spms/src/lib/libspms/test/ispdt.a
+-r--r--r-- 0/10            466 May 15 00:52 1983 ./spms/src/lib/libspms/test/mk_dir.a
+-r--r--r-- 0/10            660 May 15 00:52 1983 ./spms/src/lib/libspms/test/mkalias.a
+-r--r--r-- 0/10            584 May 15 00:52 1983 ./spms/src/lib/libspms/test/mustfopen.a
+-r--r--r-- 0/10           1142 May 15 00:52 1983 ./spms/src/lib/libspms/test/optpath.a
+-r--r--r-- 0/10           1318 May 15 00:52 1983 ./spms/src/lib/libspms/test/pathcat.a
+-r--r--r-- 0/10            560 May 15 00:52 1983 ./spms/src/lib/libspms/test/pathhead.a
+-r--r--r-- 0/10            542 May 15 00:52 1983 ./spms/src/lib/libspms/test/pathtail.a
+-r--r--r-- 0/10           4390 May 15 00:52 1983 ./spms/src/lib/libspms/test/pdtmatch.a
+-r--r--r-- 0/10           1184 May 15 00:52 1983 ./spms/src/lib/libspms/test/pdtparse.a
+-r--r--r-- 0/10           3612 May 15 00:52 1983 ./spms/src/lib/libspms/test/pdtyp.a
+-r--r--r-- 0/10            536 May 15 00:52 1983 ./spms/src/lib/libspms/test/pfxcpy.a
+-r--r--r-- 0/10           1024 May 15 00:52 1983 ./spms/src/lib/libspms/test/ppathcat.a
+-r--r--r-- 0/10            572 May 15 00:52 1983 ./spms/src/lib/libspms/test/ppathhead.a
+-r--r--r-- 0/10            474 May 15 00:52 1983 ./spms/src/lib/libspms/test/pperror.a
+-r--r--r-- 0/10           8428 May 15 00:52 1983 ./spms/src/lib/libspms/test/readpld.a
+-r--r--r-- 0/10           6158 May 15 03:30 1983 ./spms/src/lib/libspms/test/readpath.a
+-r--r--r-- 0/10            566 May 15 00:52 1983 ./spms/src/lib/libspms/test/rm_dir.a
+-r--r--r-- 0/10            750 May 15 00:52 1983 ./spms/src/lib/libspms/test/warn.a
+-r--r--r-- 0/10            724 May 15 00:52 1983 ./spms/src/lib/libspms/test/xorpath.a
+-r--r--r-- 0/10            364 May 15 00:52 1983 ./spms/src/lib/libspms/test/yes.a
+-r--r--r-- 0/10           3292 May 15 03:34 1983 ./spms/src/lib/libspms/test/xppath.a
+drwxrwxr-x 0/10              0 Aug  6 04:34 1983 ./spms/src/lib/libspms/lib/
+-r--r--r-- 0/10             53 May 15 00:52 1983 ./spms/src/lib/libspms/lib/...
+-r--r--r-- 0/10            290 Jun 28 12:15 1983 ./spms/src/lib/libspms/lib/t.Makefile
+-r--r--r-- 0/10            292 May 16 02:52 1983 ./spms/src/lib/libspms/...
+drwxrwxr-x 0/10              0 Aug  6 04:34 1983 ./spms/src/lib/libhash/
+drwxrwxr-x 0/10              0 Aug  6 04:34 1983 ./spms/src/lib/libhash/work/
+drwxrwxr-x 0/10              0 Aug 11 13:04 1983 ./spms/src/lib/libhash/src/
+-r--r--r-- 0/10           2067 Sep 26 11:04 1983 ./spms/src/lib/libhash/src/Makefile
+-r--r--r-- 0/10            351 May 15 00:52 1983 ./spms/src/lib/libhash/src/hthash.c
+-r--r--r-- 0/10            568 May 15 00:52 1983 ./spms/src/lib/libhash/src/htlookup.c
+-r--r--r-- 0/10           1986 May 15 00:52 1983 ./spms/src/lib/libhash/src/htrm.c
+-r--r--r-- 0/10            684 May 15 00:52 1983 ./spms/src/lib/libhash/src/htinit.c
+-r--r--r-- 0/10           1238 May 15 00:52 1983 ./spms/src/lib/libhash/src/htinstall.c
+drwxrwxr-x 0/10              0 Aug  6 04:34 1983 ./spms/src/lib/libhash/test/
+-r--r--r-- 0/10           1820 May 15 00:52 1983 ./spms/src/lib/libhash/test/htinstall.a
+-r--r--r-- 0/10           2190 May 15 00:52 1983 ./spms/src/lib/libhash/test/htrm.a
+drwxrwxr-x 0/10              0 Aug  6 04:34 1983 ./spms/src/lib/libhash/lib/
+-r--r--r-- 0/10            261 May 15 00:52 1983 ./spms/src/lib/libhash/lib/t.Makefile
+-r--r--r-- 0/10            292 May 16 02:51 1983 ./spms/src/lib/libhash/...
+drwxrwxr-x 0/10              0 Aug  6 04:35 1983 ./spms/src/lib/libpdb/
+drwxrwxr-x 0/10              0 Aug  6 04:34 1983 ./spms/src/lib/libpdb/work/
+drwxrwxr-x 0/10              0 Aug  6 04:34 1983 ./spms/src/lib/libpdb/test/
+-r--r--r-- 0/10           2164 May 15 00:52 1983 ./spms/src/lib/libpdb/test/openpdb.a
+-r--r--r-- 0/10           1350 May 15 00:52 1983 ./spms/src/lib/libpdb/test/_closepdb.a
+-r--r--r-- 0/10           1698 May 15 00:52 1983 ./spms/src/lib/libpdb/test/closepdb.a
+-r--r--r-- 0/10            942 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbaddflag.a
+-r--r--r-- 0/10           1060 May 15 00:52 1983 ./spms/src/lib/libpdb/test/paddkey.a
+-r--r--r-- 0/10           1400 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbaddkey.a
+-r--r--r-- 0/10           1056 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbaddstring.a
+-r--r--r-- 0/10           1080 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbchgkey.a
+-r--r--r-- 0/10            946 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbclear.a
+-r--r--r-- 0/10            904 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbfndflag.a
+-r--r--r-- 0/10            836 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbfndkey.a
+-r--r--r-- 0/10            906 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbfndstring.a
+-r--r--r-- 0/10            932 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbgetkey.a
+-r--r--r-- 0/10            968 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbgetstring.a
+-r--r--r-- 0/10            808 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pblenkey.a
+-r--r--r-- 0/10            922 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbrmflag.a
+-r--r--r-- 0/10            998 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbrmkey.a
+-r--r--r-- 0/10            912 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbrmstring.a
+-r--r--r-- 0/10           1386 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pbstretch.a
+-r--r--r-- 0/10           1042 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pfndent.a
+-r--r--r-- 0/10           1048 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pchgkey.a
+-r--r--r-- 0/10           1262 May 15 00:52 1983 ./spms/src/lib/libpdb/test/resetpdb.a
+-r--r--r-- 0/10           1704 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pgetent.a
+-r--r--r-- 0/10           1254 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pputflag.a
+-r--r--r-- 0/10           1370 May 15 00:52 1983 ./spms/src/lib/libpdb/test/pputstring.a
+-r--r--r-- 0/10           1000 May 15 00:52 1983 ./spms/src/lib/libpdb/test/prment.a
+-r--r--r-- 0/10           1042 May 15 00:52 1983 ./spms/src/lib/libpdb/test/prmflag.a
+-r--r--r-- 0/10           1042 May 15 00:52 1983 ./spms/src/lib/libpdb/test/prmkey.a
+-r--r--r-- 0/10           1048 May 15 00:52 1983 ./spms/src/lib/libpdb/test/prmstring.a
+-r--r--r-- 0/10           1390 May 15 00:52 1983 ./spms/src/lib/libpdb/test/rewindpdb.a
+drwxrwxr-x 0/10              0 Aug 11 13:04 1983 ./spms/src/lib/libpdb/src/
+-r--r--r-- 0/10            511 May 15 00:52 1983 ./spms/src/lib/libpdb/src/resetpdb.c
+-r--r--r-- 0/10            300 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pbskipfield.c
+-r--r--r-- 0/10            983 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pbaddflag.c
+-r--r--r-- 0/10            677 May 15 00:52 1983 ./spms/src/lib/libpdb/src/_closepdb.c
+-r--r--r-- 0/10            417 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pbcpykey.c
+-r--r--r-- 0/10            875 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pbgetstring.c
+-r--r--r-- 0/10            796 May 15 00:52 1983 ./spms/src/lib/libpdb/src/closepdb.c
+-r--r--r-- 0/10           1096 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pbaddkey.c
+-r--r--r-- 0/10            676 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pbrmkey.c
+-r--r--r-- 0/10           1419 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pbaddstring.c
+-r--r--r-- 0/10            574 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pbfndkey.c
+-r--r--r-- 0/10            331 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pblenfield.c
+-r--r--r-- 0/10            551 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pbshrink.c
+-r--r--r-- 0/10            895 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pbchgkey.c
+-r--r--r-- 0/10            633 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pchgkey.c
+-r--r--r-- 0/10           3135 May 15 00:52 1983 ./spms/src/lib/libpdb/src/openpdb.c
+-r--r--r-- 0/10            578 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pbcmpfield.c
+-r--r--r-- 0/10            641 May 15 00:52 1983 ./spms/src/lib/libpdb/src/errpdb.c
+-r--r--r-- 0/10            316 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pbskipkey.c
+-r--r--r-- 0/10           6402 Sep 26 11:04 1983 ./spms/src/lib/libpdb/src/Makefile
+-r--r--r-- 0/10            725 May 15 00:52 1983 ./spms/src/lib/libpdb/src/paddkey.c
+-r--r--r-- 0/10           1164 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pputent.c
+-r--r--r-- 0/10            347 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pblenkey.c
+-r--r--r-- 0/10            534 May 15 00:52 1983 ./spms/src/lib/libpdb/src/prmkey.c
+-r--r--r-- 0/10            579 May 15 00:52 1983 ./spms/src/lib/libpdb/src/prment.c
+-r--r--r-- 0/10            673 May 15 00:52 1983 ./spms/src/lib/libpdb/src/prmflag.c
+-r--r--r-- 0/10           1083 May 15 00:52 1983 ./spms/src/lib/libpdb/src/pputflag.c
+-r--r--r-- 0/10            697 May 15 00:52 1983 ./spms/src/lib/libpdb/src/rewindpdb.c
+-r--r--r-- 0/10           1182 May 15 00:53 1983 ./spms/src/lib/libpdb/src/pputstring.c
+-r--r--r-- 0/10            912 May 15 00:53 1983 ./spms/src/lib/libpdb/src/pgetent.c
+-r--r--r-- 0/10            558 May 15 00:53 1983 ./spms/src/lib/libpdb/src/pbcmpkey.c
+-r--r--r-- 0/10            705 May 15 00:53 1983 ./spms/src/lib/libpdb/src/pbrmstring.c
+-r--r--r-- 0/10            589 May 15 00:53 1983 ./spms/src/lib/libpdb/src/pbfndstring.c
+-r--r--r-- 0/10           1259 May 15 00:53 1983 ./spms/src/lib/libpdb/src/pbstretch.c
+-r--r--r-- 0/10            575 May 15 00:53 1983 ./spms/src/lib/libpdb/src/pbfndflag.c
+-r--r--r-- 0/10            423 May 15 00:53 1983 ./spms/src/lib/libpdb/src/pbcpyfield.c
+-r--r--r-- 0/10            608 May 15 00:53 1983 ./spms/src/lib/libpdb/src/pbrmflag.c
+-r--r--r-- 0/10            688 May 15 00:53 1983 ./spms/src/lib/libpdb/src/prmstring.c
+-r--r--r-- 0/10            915 May 15 00:53 1983 ./spms/src/lib/libpdb/src/pfndent.c
+-r--r--r-- 0/10            403 May 15 00:53 1983 ./spms/src/lib/libpdb/src/pbgetkey.c
+-r--r--r-- 0/10            314 May 15 00:53 1983 ./spms/src/lib/libpdb/src/pbclear.c
+-r--r--r-- 0/10           1930 May 15 00:53 1983 ./spms/src/lib/libpdb/src/mustopenpdb.c
+drwxrwxr-x 0/10              0 Aug  6 04:35 1983 ./spms/src/lib/libpdb/lib/
+-r--r--r-- 0/10            260 May 15 00:53 1983 ./spms/src/lib/libpdb/lib/t.Makefile
+-r--r--r-- 0/10            286 May 16 02:52 1983 ./spms/src/lib/libpdb/...
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/lib/pgrep/
+-r--r--r-- 0/10           5607 Jun 27 10:08 1983 ./spms/src/lib/pgrep/Pgrep.c
+-r--r--r-- 0/10           4587 May 15 00:53 1983 ./spms/src/lib/pgrep/readmf.c
+-r--r--r-- 0/10            302 May 15 00:53 1983 ./spms/src/lib/pgrep/pgrep.h
+-r--r--r-- 0/10           2453 Jul 27 18:02 1983 ./spms/src/lib/pgrep/Makefile
+-r--r--r-- 0/10           2930 May 15 00:53 1983 ./spms/src/lib/pgrep/grep.c
+drwxrwxr-x 0/10              0 Aug  6 04:35 1983 ./spms/src/lib/phelp/
+-r--r--r-- 0/10            513 Jul 27 18:07 1983 ./spms/src/lib/phelp/Makefile
+-r--r--r-- 0/10            421 May 15 00:53 1983 ./spms/src/lib/phelp/phelp.cmd
+-r--r--r-- 0/10            901 May 15 00:53 1983 ./spms/src/lib/phelp/phelp.help
+drwxrwxr-x 0/10              0 Aug  6 04:35 1983 ./spms/src/lib/x.Makefile/
+-r--r--r-- 0/10            818 Jun 19 02:55 1983 ./spms/src/lib/x.Makefile/p.Makefile
+-r--r--r-- 0/10            574 Jul 27 18:07 1983 ./spms/src/lib/x.Makefile/Makefile
+-r--r--r-- 0/10            167 May 15 00:53 1983 ./spms/src/lib/x.Makefile/t.Makefile
+-r--r--r-- 0/10            868 Jun 18 03:16 1983 ./spms/src/lib/x.Makefile/l.Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:37 1983 ./spms/src/bin/
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/chproject/
+-r--r--r-- 0/10           1845 Sep 26 11:04 1983 ./spms/src/bin/chproject/Makefile
+-r--r--r-- 0/10           3302 May 15 00:53 1983 ./spms/src/bin/chproject/chproject.c
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/mkmf/
+-r--r--r-- 0/10           6330 Jul  2 00:00 1983 ./spms/src/bin/mkmf/misc.c
+-r--r--r-- 0/10           4790 May 21 10:39 1983 ./spms/src/bin/mkmf/suffix.c
+-r--r--r-- 0/10           1668 May 21 10:39 1983 ./spms/src/bin/mkmf/iolin.c
+-r--r--r-- 0/10            513 May 21 10:38 1983 ./spms/src/bin/mkmf/defaultsfx.h
+-r--r--r-- 0/10           3604 Sep 26 11:04 1983 ./spms/src/bin/mkmf/Makefile
+-r--r--r-- 0/10           4184 Jul  2 00:03 1983 ./spms/src/bin/mkmf/Mkmf.c
+-r--r--r-- 0/10            643 May 21 10:39 1983 ./spms/src/bin/mkmf/suffix.h
+-r--r--r-- 0/10           1260 Jul  1 10:45 1983 ./spms/src/bin/mkmf/Mkmf.h
+-r--r--r-- 0/10           4518 May 21 10:39 1983 ./spms/src/bin/mkmf/hash.c
+-r--r--r-- 0/10           3434 Jun 27 08:51 1983 ./spms/src/bin/mkmf/editmf.c
+-r--r--r-- 0/10          18725 Aug  7 02:52 1983 ./spms/src/bin/mkmf/depend.c
+-r--r--r-- 0/10           6454 Jul  6 07:25 1983 ./spms/src/bin/mkmf/buildlist.c
+-r--r--r-- 0/10           4310 May 21 10:39 1983 ./spms/src/bin/mkmf/macro.c
+-r--r--r-- 0/10           1127 Aug  7 02:52 1983 ./spms/src/bin/mkmf/hash.h
+-r--r--r-- 0/10            232 Jul  1 10:51 1983 ./spms/src/bin/mkmf/target.h
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/mkproject/
+-r--r--r-- 0/10           2180 Sep 26 11:04 1983 ./spms/src/bin/mkproject/Makefile
+-r--r--r-- 0/10          16441 Jul  6 09:22 1983 ./spms/src/bin/mkproject/mkproject.c
+-r--r--r-- 0/10           1777 Jul 27 16:57 1983 ./spms/src/bin/mkproject/9119Mf
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/pcp/
+-r--r--r-- 0/10           1567 Sep 26 11:04 1983 ./spms/src/bin/pcp/Makefile
+-r--r--r-- 0/10           1767 Jul  1 10:04 1983 ./spms/src/bin/pcp/pcp.c
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/pd/
+-r--r--r-- 0/10           1705 Sep 26 11:04 1983 ./spms/src/bin/pd/Makefile
+-r--r--r-- 0/10           2929 May 15 00:53 1983 ./spms/src/bin/pd/pd.c
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/pdiff/
+-r--r--r-- 0/10           1914 Sep 26 11:04 1983 ./spms/src/bin/pdiff/Makefile
+-r--r--r-- 0/10           1799 May 15 00:53 1983 ./spms/src/bin/pdiff/ptree.c
+-r--r--r-- 0/10           9896 May 15 00:53 1983 ./spms/src/bin/pdiff/pdiff.c
+-r--r--r-- 0/10            357 May 15 00:53 1983 ./spms/src/bin/pdiff/ptree.h
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/pexec/
+-r--r--r-- 0/10           3490 Sep 26 11:04 1983 ./spms/src/bin/pexec/Makefile
+-r--r--r-- 0/10           3504 May 15 00:53 1983 ./spms/src/bin/pexec/exec.c
+-r--r--r-- 0/10           4139 Jun 27 10:02 1983 ./spms/src/bin/pexec/execcmd.c
+-r--r--r-- 0/10           3403 May 15 00:53 1983 ./spms/src/bin/pexec/pdlist.c
+-r--r--r-- 0/10           1004 May 15 00:53 1983 ./spms/src/bin/pexec/pdlist.h
+-r--r--r-- 0/10           1447 May 15 00:53 1983 ./spms/src/bin/pexec/misc.c
+-r--r--r-- 0/10            872 May 15 00:53 1983 ./spms/src/bin/pexec/pdset.h
+-r--r--r-- 0/10           4553 May 15 00:53 1983 ./spms/src/bin/pexec/Pexec.c
+-r--r--r-- 0/10          14041 May 15 00:53 1983 ./spms/src/bin/pexec/pdset.c
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/pfind/
+-r--r--r-- 0/10           1355 May 15 00:53 1983 ./spms/src/bin/pfind/binary.c
+-r--r--r-- 0/10           5211 Jul  6 07:26 1983 ./spms/src/bin/pfind/Pfind.c
+-r--r--r-- 0/10           2122 Sep 26 11:04 1983 ./spms/src/bin/pfind/Makefile
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/pgrep/
+-r--r--r-- 0/10           1505 Sep 26 11:04 1983 ./spms/src/bin/pgrep/Makefile
+-r--r--r-- 0/10           3391 May 15 00:53 1983 ./spms/src/bin/pgrep/pgrep.c
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/phelp/
+-r--r--r-- 0/10           2548 Sep 26 11:04 1983 ./spms/src/bin/phelp/Makefile
+-r--r--r-- 0/10           6844 May 15 00:53 1983 ./spms/src/bin/phelp/requestq.c
+-r--r--r-- 0/10            520 May 15 00:53 1983 ./spms/src/bin/phelp/phelp.h
+-r--r--r-- 0/10           3699 Jul  6 07:27 1983 ./spms/src/bin/phelp/index.c
+-r--r--r-- 0/10           5082 Jul  6 07:27 1983 ./spms/src/bin/phelp/Phelp.c
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/plog/
+-r--r--r-- 0/10           2153 Sep 26 11:04 1983 ./spms/src/bin/plog/Makefile
+-r--r--r-- 0/10          12074 May 21 05:33 1983 ./spms/src/bin/plog/Plog.c
+-r--r--r-- 0/10           2859 May 20 18:22 1983 ./spms/src/bin/plog/date.c
+-r--r--r-- 0/10            186 May 20 18:22 1983 ./spms/src/bin/plog/date.h
+-r--r--r-- 0/10           5650 May 21 00:32 1983 ./spms/src/bin/plog/from.c
+-r--r--r-- 0/10            337 May 20 18:22 1983 ./spms/src/bin/plog/from.h
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/pman/
+-r--r--r-- 0/10           1713 May 15 00:54 1983 ./spms/src/bin/pman/pman.c
+-r--r--r-- 0/10           1556 Sep 26 11:04 1983 ./spms/src/bin/pman/Makefile
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/pmkdir/
+-r--r--r-- 0/10           2113 Sep 26 11:04 1983 ./spms/src/bin/pmkdir/Makefile
+-r--r--r-- 0/10          12248 Jul  6 09:22 1983 ./spms/src/bin/pmkdir/pmkdir.c
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/pmv/
+-r--r--r-- 0/10           1567 Sep 26 11:04 1983 ./spms/src/bin/pmv/Makefile
+-r--r--r-- 0/10           1899 Jul  1 10:08 1983 ./spms/src/bin/pmv/pmv.c
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/ppd/
+-r--r--r-- 0/10           1939 Sep 26 11:04 1983 ./spms/src/bin/ppd/Makefile
+-r--r--r-- 0/10          13201 May 15 00:54 1983 ./spms/src/bin/ppd/ppd.c
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/prmdir/
+-r--r--r-- 0/10           8575 Jun 27 08:53 1983 ./spms/src/bin/prmdir/prmdir.c
+-r--r--r-- 0/10           2231 Sep 26 11:04 1983 ./spms/src/bin/prmdir/Makefile
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/ptest/
+-r-xr-xr-x 0/10           2785 Jun 28 12:37 1983 ./spms/src/bin/ptest/ptest.sh
+-r--r--r-- 0/10            774 Sep 26 11:04 1983 ./spms/src/bin/ptest/Makefile
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/pwp/
+-r--r--r-- 0/10           1811 Sep 26 11:04 1983 ./spms/src/bin/pwp/Makefile
+-r--r--r-- 0/10           3416 May 15 00:54 1983 ./spms/src/bin/pwp/pwp.c
+drwxrwxr-x 0/10              0 Aug 11 13:03 1983 ./spms/src/bin/rmproject/
+-r--r--r-- 0/10           2407 Sep 26 11:04 1983 ./spms/src/bin/rmproject/Makefile
+-r--r--r-- 0/10          14144 Jun 27 08:53 1983 ./spms/src/bin/rmproject/rmproject.c
+-r--r--r-- 0/10           2168 May 15 00:54 1983 ./spms/src/bin/rmproject/...
+-r--r--r-- 0/10           2022 Jun 27 10:03 1983 ./spms/src/bin/rmproject/savepld.c
+drwxrwxr-x 0/10              0 Aug  6 04:37 1983 ./spms/man/
+drwxrwxr-x 0/10              0 Aug  6 04:37 1983 ./spms/man/cat3/
+drwxrwxr-x 0/10              0 Aug  6 04:37 1983 ./spms/man/man1/
+drwxrwxr-x 0/10              0 Aug  6 04:37 1983 ./spms/man/man3/
+-r--r--r-- 0/10           2501 Jul 27 15:33 1983 ./spms/man/man3/pgrep.3p
+drwxrwxr-x 0/10              0 Aug  6 04:37 1983 ./spms/man/cat1/
+drwxrwxr-x 0/10              0 Aug  6 04:37 1983 ./spms/man/mann/
+-r--r--r-- 0/10            641 Jul 27 18:07 1983 ./spms/man/mann/Makefile
+-r--r--r-- 0/10           1307 Jul 27 15:28 1983 ./spms/man/mann/chproject.n
+-r--r--r-- 0/10           8258 Jul 27 15:28 1983 ./spms/man/mann/mkmf.n
+-r--r--r-- 0/10           2642 Jul 27 15:29 1983 ./spms/man/mann/mkproject.n
+-r--r--r-- 0/10           1307 Jul 27 15:29 1983 ./spms/man/mann/pcp.n
+-r--r--r-- 0/10           1075 Jul 27 15:29 1983 ./spms/man/mann/pd.n
+-r--r--r-- 0/10           1770 Jul 27 15:29 1983 ./spms/man/mann/pdiff.n
+-r--r--r-- 0/10           4836 Jul 27 15:29 1983 ./spms/man/mann/pexec.n
+-r--r--r-- 0/10           1068 Jul 27 15:29 1983 ./spms/man/mann/pfind.n
+-r--r--r-- 0/10           3506 Jul 27 15:30 1983 ./spms/man/mann/pgrep.n
+-r--r--r-- 0/10           3157 Jul 27 15:30 1983 ./spms/man/mann/phelp.n
+-r--r--r-- 0/10           1613 Jul 29 10:22 1983 ./spms/man/mann/plog.n
+-r--r--r-- 0/10           1704 Jul 27 15:30 1983 ./spms/man/mann/pman.n
+-r--r--r-- 0/10           2423 Jul 27 15:30 1983 ./spms/man/mann/pmkdir.n
+-r--r--r-- 0/10           1959 Jul 27 15:30 1983 ./spms/man/mann/pmv.n
+-r--r--r-- 0/10           1659 Jul 27 15:31 1983 ./spms/man/mann/ppd.n
+-r--r--r-- 0/10              0 May 15 00:54 1983 ./spms/man/mann/print
+-r--r--r-- 0/10           1957 Jul 27 15:31 1983 ./spms/man/mann/prmdir.n
+-r--r--r-- 0/10           4263 Jul 27 15:31 1983 ./spms/man/mann/ptest.n
+-r--r--r-- 0/10            612 Jul 27 15:31 1983 ./spms/man/mann/pwp.n
+-r--r--r-- 0/10           2929 Jul 27 15:31 1983 ./spms/man/mann/rmproject.n
+-r--r--r-- 0/10           7692 Jul 29 11:35 1983 ./spms/man/mann/spmsintro.n
+drwxrwxr-x 0/10              0 Aug  6 04:37 1983 ./spms/man/catn/
+-r--r--r-- 0/10           8087 Jun 22 15:05 1983 ./spms/man/catn/spmsintro.n
+drwxrwxr-x 0/10              0 Aug  6 04:38 1983 ./spms/include/
+-r--r--r-- 0/10           1291 May 15 00:54 1983 ./spms/include/pdtyp.h
+-r--r--r-- 0/10            936 May 15 00:54 1983 ./spms/include/tags
+-r--r--r-- 0/10            518 Jul 27 17:58 1983 ./spms/include/Makefile
+-r--r--r-- 0/10            122 May 15 00:54 1983 ./spms/include/truefalse.h
+-r--r--r-- 0/10            559 May 15 00:54 1983 ./spms/include/macro.h
+-r--r--r-- 0/10           1348 May 15 00:54 1983 ./spms/include/slslist.h
+-r--r--r-- 0/10            145 May 15 00:54 1983 ./spms/include/null.h
+-r--r--r-- 0/10            114 May 15 00:54 1983 ./spms/include/yesno.h
+-r--r--r-- 0/10           1207 May 15 00:54 1983 ./spms/include/pld.h
+-r--r--r-- 0/10           1161 May 15 00:54 1983 ./spms/include/slist.h
+-r--r--r-- 0/10            785 Jun 27 09:22 1983 ./spms/include/system.h
+-r--r--r-- 0/10            309 May 15 00:54 1983 ./spms/include/bin.h
+-r--r--r-- 0/10           2442 May 15 00:54 1983 ./spms/include/pdb.h
+-r--r--r-- 0/10            512 May 15 00:54 1983 ./spms/include/spms.h
+-r--r--r-- 0/10            273 May 15 00:54 1983 ./spms/include/getarg.h
+-r--r--r-- 0/10            503 May 15 00:54 1983 ./spms/include/tree.h
+-r--r--r-- 0/10            836 May 15 00:54 1983 ./spms/include/hash.h
+-r--r--r-- 0/10           2048 May 15 00:54 1983 ./spms/include/path.h
+-r--r--r-- 0/10           1815 May 15 00:54 1983 ./spms/include/pdbuf.h
+drwxrwxr-x 0/10              0 Aug 12 02:27 1983 ./spms/doc/
+-r--r--r-- 0/10            983 Jul 29 10:18 1983 ./spms/doc/0.abstract.ms
+-r--r--r-- 0/10           2153 Jun 26 10:38 1983 ./spms/doc/1.intro.ms
+-r--r--r-- 0/10          19411 Aug 12 06:36 1983 ./spms/doc/2.simple.ms
+-r--r--r-- 0/10          15754 Aug 12 07:16 1983 ./spms/doc/3.advanced.ms
+-r--r--r-- 0/10          16951 Aug 12 02:27 1983 ./spms/doc/4.manage.ms
+-r--r--r-- 0/10           2139 Jul  1 08:28 1983 ./spms/doc/5.retro.ms
+-r--r--r-- 0/10           1155 Aug 12 02:27 1983 ./spms/doc/6.acknow.ms
+-r--r--r-- 0/10           1861 Jun 26 10:48 1983 ./spms/doc/7.ref.ms
+-r--r--r-- 0/10           1997 Jun 26 10:49 1983 ./spms/doc/A.appendix.ms
+-r--r--r-- 0/10           3055 Jul  1 08:31 1983 ./spms/doc/B.appendix.ms
+-r--r--r-- 0/10            157 Jun 26 10:49 1983 ./spms/doc/C.appendix.ms
+-r--r--r-- 0/10            819 Jun 26 10:50 1983 ./spms/doc/D.appendix.ms
+-r--r--r-- 0/10           3771 Jul  1 08:37 1983 ./spms/doc/Fig1.g
+-r--r--r-- 0/10           4620 Jul  1 08:37 1983 ./spms/doc/Fig10.g
+-r--r--r-- 0/10           5108 Jul  1 08:37 1983 ./spms/doc/Fig11.g
+-r--r--r-- 0/10           3501 Jul  1 08:37 1983 ./spms/doc/Fig12.g
+-r--r--r-- 0/10           5183 Jul  1 08:37 1983 ./spms/doc/Fig13.g
+-r--r--r-- 0/10            873 Jul  1 08:37 1983 ./spms/doc/Fig2.g
+-r--r--r-- 0/10           2449 Jul  1 08:37 1983 ./spms/doc/Fig3.g
+-r--r--r-- 0/10           3189 Jul  1 08:37 1983 ./spms/doc/Fig4.g
+-r--r--r-- 0/10           3374 Jul  1 08:37 1983 ./spms/doc/Fig5.g
+-r--r--r-- 0/10           3791 Jul  1 08:37 1983 ./spms/doc/Fig6.g
+-r--r--r-- 0/10           7044 Jul  1 08:37 1983 ./spms/doc/Fig7.g
+-r--r--r-- 0/10           4716 Jul  1 08:37 1983 ./spms/doc/Fig8.g
+-r--r--r-- 0/10           2741 Jul  1 08:37 1983 ./spms/doc/Fig9.g
+-r--r--r-- 0/10              4 Jun 26 09:22 1983 ./spms/doc/TOC.ms
+-r--r--r-- 0/10            802 Jul  1 08:43 1983 ./spms/doc/Makefile
+-r--r--r-- 0/10            288 Jun  2 06:24 1983 ./spms/doc/construct.tbl
+-r--r--r-- 0/10            141 Jun  2 06:17 1983 ./spms/doc/cwp.tbl
+-r--r--r-- 0/10            300 Jun  8 06:08 1983 ./spms/doc/develop.tbl
+-r--r--r-- 0/10            409 Jun 26 03:50 1983 ./spms/doc/help.tbl
+-r--r--r-- 0/10            353 May 31 15:25 1983 ./spms/doc/label.tbl
+-r--r--r-- 0/10            233 Jun  2 06:19 1983 ./spms/doc/layer.tbl
+-r--r--r-- 0/10            322 May 16 08:22 1983 ./spms/doc/pathname.tbl
+-r--r--r-- 0/10              0 Jun 26 09:29 1983 ./spms/doc/print
+-r--r--r-- 0/10             95 Jun  2 01:19 1983 ./spms/doc/print.tbl
+-r--r--r-- 0/10            266 Aug 12 02:27 1983 ./spms/doc/src.tbl
+-r--r--r-- 0/10            131 Jun 26 10:35 1983 ./spms/doc/test.tbl
+-r--r--r-- 0/10             85 Aug 12 02:27 1983 ./spms/doc/install.tbl
+drwxrwxr-x 0/10              0 Aug 11 12:53 1983 ./spms/lib/
+-r--r--r-- 0/10           1100 Jun 18 03:11 1983 ./spms/lib/p.Makefile
+-r--r--r-- 0/10            361 Jun 18 03:11 1983 ./spms/lib/Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:38 1983 ./spms/work/
+-r--r--r-- 0/10             35 May 15 00:55 1983 ./spms/work/.emacs_968
+drwxrwxr-x 0/10              0 Sep 26 11:04 1983 ./spms/bin/
+-rwxr-xr-x 0/10            373 Sep 26 11:04 1983 ./spms/bin/pclean
+-rwxr-xr-x 0/10            333 Sep 26 11:04 1983 ./spms/bin/pdepend
+-rwxr-xr-x 0/10           1205 Nov  3 10:51 1983 ./spms/bin/pinstall
+-rwxr-xr-x 0/10            414 Sep 26 11:04 1983 ./spms/bin/pmake
+-r--r--r-- 0/10           3081 Jul 27 17:51 1983 ./spms/...
+-r--r--r-- 0/10            209 Jul  8 04:37 1983 ./spms/Makefile
+-r--r--r-- 0/10           1513 Jul 27 17:51 1983 ./spms/README
+drwxrwxr-x 0/10              0 Aug  6 04:38 1983 ./hyper/
+-r--r--r-- 0/10           2573 Jul 28 02:14 1983 ./hyper/README
+-r--r--r-- 0/10            220 Jul 28 02:14 1983 ./hyper/Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:38 1983 ./hyper/man/
+-r--r--r-- 0/10           2422 Aug  7 04:47 1983 ./hyper/man/hyroute.8
+-r--r--r-- 0/10             73 Jul 28 02:10 1983 ./hyper/man/Makefile
+drwxrwxr-x 0/10              0 Aug 11 12:51 1983 ./hyper/src/
+-r--r--r-- 0/10           3236 Jul  8 19:28 1983 ./hyper/src/hylog.c
+-r--r--r-- 0/10           3430 Jul  8 19:29 1983 ./hyper/src/hyr_lex.l
+-r--r--r-- 0/10           9251 Jul  8 19:29 1983 ./hyper/src/hyr_main.c
+-r--r--r-- 0/10            491 Jul  4 12:05 1983 ./hyper/src/hyr_sym.h
+-r--r--r-- 0/10            616 Feb 21 18:15 1983 ./hyper/src/test.input
+-r--r--r-- 0/10            436 Jul 27 18:25 1983 ./hyper/src/Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:43 1983 ./icon/
+drwxrwxr-x 0/10              0 Aug  6 04:41 1983 ./icon/int/
+drwxrwxr-x 0/10              0 Aug 11 12:51 1983 ./icon/int/bin/
+-r--r--r-- 0/10            885 Jun 25 20:26 1983 ./icon/int/bin/Makefile
+-r--r--r-- 0/10           3954 Jun 24 06:56 1983 ./icon/int/bin/icont.c
+-r--r--r-- 0/10            885 Jul  9 17:12 1983 ./icon/int/bin/Makefile.gen
+-r-xr-xr-x 0/10           2483 May 12 14:18 1983 ./icon/int/bin/icon-setup
+-r--r--r-- 0/10           1197 May 12 14:18 1983 ./icon/int/bin/ixhdr.c.gen
+-r--r--r-- 0/10           1206 Jun 24 06:56 1983 ./icon/int/bin/ixhdr.c
+-r--r--r-- 0/10           3928 May 12 14:18 1983 ./icon/int/bin/icont.c.gen
+drwxrwxr-x 0/10              0 Aug  6 04:39 1983 ./icon/int/h/
+-r--r--r-- 0/10           2128 May 12 14:19 1983 ./icon/int/h/gc.h
+-r--r--r-- 0/10            774 May 12 14:19 1983 ./icon/int/h/ctype.h
+-r--r--r-- 0/10           4698 May 12 14:19 1983 ./icon/int/h/defs.s
+-r--r--r-- 0/10           1442 May 12 14:19 1983 ./icon/int/h/err.h
+-r--r--r-- 0/10            201 May 12 14:19 1983 ./icon/int/h/record.h
+-r--r--r-- 0/10            154 May 12 14:19 1983 ./icon/int/h/Makefile
+-r--r--r-- 0/10            102 May 12 14:19 1983 ./icon/int/h/config.h.gen
+-r--r--r-- 0/10           2685 May 21 06:02 1983 ./icon/int/h/pnames.h
+-r--r--r-- 0/10            171 Jun 24 06:56 1983 ./icon/int/h/config.h
+-r--r--r-- 0/10          19290 Jun 25 14:44 1983 ./icon/int/h/rt.h
+drwxrwxr-x 0/10              0 Aug 11 12:51 1983 ./icon/int/link/
+-r--r--r-- 0/10            608 May 12 14:19 1983 ./icon/int/link/Makefile
+-r--r--r-- 0/10           1208 May 12 14:19 1983 ./icon/int/link/builtin.c
+-r--r--r-- 0/10          18366 May 12 14:19 1983 ./icon/int/link/code.c
+-r--r--r-- 0/10           4607 May 12 14:19 1983 ./icon/int/link/ulink.c
+-r--r--r-- 0/10           1029 May 12 14:19 1983 ./icon/int/link/code.h
+-r--r--r-- 0/10           3699 May 12 14:19 1983 ./icon/int/link/datatype.h
+-r--r--r-- 0/10           1989 May 12 14:19 1983 ./icon/int/link/glob.c
+-r--r--r-- 0/10           5093 May 12 14:19 1983 ./icon/int/link/lex.c
+-r--r--r-- 0/10           6042 May 12 14:19 1983 ./icon/int/link/mem.c
+-r--r--r-- 0/10           2174 May 12 14:19 1983 ./icon/int/link/opcode.c
+-r--r--r-- 0/10           2951 May 12 14:19 1983 ./icon/int/link/opcode.h
+-r--r--r-- 0/10           7973 May 12 14:19 1983 ./icon/int/link/sym.c
+-r--r--r-- 0/10           8379 Jun 24 06:56 1983 ./icon/int/link/ulink.h
+-r--r--r-- 0/10           8362 May 12 14:19 1983 ./icon/int/link/ulink.h.gen
+drwxrwxr-x 0/10              0 Aug 11 12:51 1983 ./icon/int/rt/
+-r--r--r-- 0/10           2133 Jun 25 16:16 1983 ./icon/int/rt/Makefile
+-r--r--r-- 0/10           2008 May 12 14:19 1983 ./icon/int/rt/anycmp.c
+-r--r--r-- 0/10           1188 May 12 14:19 1983 ./icon/int/rt/arith.s
+-r--r--r-- 0/10           1164 May 12 14:19 1983 ./icon/int/rt/cplist.c
+-r--r--r-- 0/10           1289 May 12 14:19 1983 ./icon/int/rt/csv.s
+-r--r--r-- 0/10           1696 May 12 14:19 1983 ./icon/int/rt/ctype.c
+-r--r--r-- 0/10            676 May 12 14:19 1983 ./icon/int/rt/cvcset.c
+-r--r--r-- 0/10            690 May 12 14:19 1983 ./icon/int/rt/cvint.c
+-r--r--r-- 0/10           4572 May 12 14:19 1983 ./icon/int/rt/cvnum.c
+-r--r--r-- 0/10            355 May 12 14:19 1983 ./icon/int/rt/cvpos.c
+-r--r--r-- 0/10            368 May 12 14:19 1983 ./icon/int/rt/cvreal.c
+-r--r--r-- 0/10           1666 May 12 14:19 1983 ./icon/int/rt/cvstr.c
+-r--r--r-- 0/10           4097 May 12 14:19 1983 ./icon/int/rt/dblocks.c
+-r--r--r-- 0/10            226 May 12 14:19 1983 ./icon/int/rt/defany.c
+-r--r--r-- 0/10            353 May 12 14:19 1983 ./icon/int/rt/defcset.c
+-r--r--r-- 0/10            316 May 12 14:19 1983 ./icon/int/rt/deffile.c
+-r--r--r-- 0/10            338 May 12 14:19 1983 ./icon/int/rt/defint.c
+-r--r--r-- 0/10            543 May 12 14:19 1983 ./icon/int/rt/defshort.c
+-r--r--r-- 0/10            348 May 12 14:19 1983 ./icon/int/rt/defstr.c
+-r--r--r-- 0/10           1920 May 12 14:19 1983 ./icon/int/rt/deref.c
+-r--r--r-- 0/10           3926 May 12 14:19 1983 ./icon/int/rt/doasgn.c
+-r--r--r-- 0/10           1214 May 12 14:19 1983 ./icon/int/rt/dump.c
+-r--r--r-- 0/10           1331 May 12 14:19 1983 ./icon/int/rt/equiv.c
+-r--r--r-- 0/10           1044 May 12 14:19 1983 ./icon/int/rt/exp.c
+-r--r--r-- 0/10           1296 May 12 14:19 1983 ./icon/int/rt/fail.s
+-r--r--r-- 0/10            307 May 12 14:19 1983 ./icon/int/rt/floor.c
+-r--r--r-- 0/10          19397 May 12 14:19 1983 ./icon/int/rt/gc.c
+-r--r--r-- 0/10           1079 May 12 14:19 1983 ./icon/int/rt/gcvt.c
+-r--r--r-- 0/10            410 May 12 14:19 1983 ./icon/int/rt/getstr.c
+-r--r--r-- 0/10            913 May 21 06:02 1983 ./icon/int/rt/hash.c
+-r--r--r-- 0/10            132 May 12 14:19 1983 ./icon/int/rt/ldfps.s
+-r--r--r-- 0/10            429 May 12 14:19 1983 ./icon/int/rt/lexcmp.c
+-r--r--r-- 0/10           1113 May 12 14:19 1983 ./icon/int/rt/log.c
+-r--r--r-- 0/10            517 May 12 14:19 1983 ./icon/int/rt/mkint.c
+-r--r--r-- 0/10            265 May 12 14:20 1983 ./icon/int/rt/mkreal.c
+-r--r--r-- 0/10            968 May 12 14:20 1983 ./icon/int/rt/mksubs.c
+-r--r--r-- 0/10            966 May 12 14:20 1983 ./icon/int/rt/numcmp.c
+-r--r--r-- 0/10           7537 May 12 14:20 1983 ./icon/int/rt/outimage.c
+-r--r--r-- 0/10            446 May 12 14:20 1983 ./icon/int/rt/pow.c
+-r--r--r-- 0/10            176 May 12 14:20 1983 ./icon/int/rt/putstr.c
+-r--r--r-- 0/10            359 May 12 14:20 1983 ./icon/int/rt/qtos.c
+-r--r--r-- 0/10           3981 May 12 14:20 1983 ./icon/int/rt/suspend.s
+-r--r--r-- 0/10           2465 May 12 14:20 1983 ./icon/int/rt/trace.c
+-r--r--r-- 0/10           5963 Jun 25 14:39 1983 ./icon/int/rt/alc.c
+-r--r--r-- 0/10           1343 May 12 14:20 1983 ./icon/int/rt/setbound.s
+-r--r--r-- 0/10           1700 May 21 06:02 1983 ./icon/int/rt/strprc.c
+-r--r--r-- 0/10           2007 May 12 14:20 1983 ./icon/int/rt/gcollect.s
+-r--r--r-- 0/10           1009 May 12 14:20 1983 ./icon/int/rt/host.c
+-r--r--r-- 0/10            733 Jun 23 18:42 1983 ./icon/int/rt/mon.c
+drwxrwxr-x 0/10              0 Aug 11 12:51 1983 ./icon/int/functions/
+-r--r--r-- 0/10           1785 May 12 14:21 1983 ./icon/int/functions/Makefile
+-r--r--r-- 0/10            633 May 12 14:21 1983 ./icon/int/functions/abs.c
+-r--r--r-- 0/10            820 May 12 14:21 1983 ./icon/int/functions/any.c
+-r--r--r-- 0/10           1514 May 12 14:21 1983 ./icon/int/functions/bal.c
+-r--r--r-- 0/10           1682 May 12 14:21 1983 ./icon/int/functions/center.c
+-r--r--r-- 0/10            696 May 12 14:21 1983 ./icon/int/functions/close.c
+-r--r--r-- 0/10           2033 May 12 14:21 1983 ./icon/int/functions/copy.c
+-r--r--r-- 0/10            699 May 12 14:21 1983 ./icon/int/functions/cset.c
+-r--r--r-- 0/10            320 May 12 14:21 1983 ./icon/int/functions/exit.c
+-r--r--r-- 0/10           1127 May 12 14:21 1983 ./icon/int/functions/find.c
+-r--r--r-- 0/10            243 May 12 14:21 1983 ./icon/int/functions/get.c
+-r--r--r-- 0/10           7502 May 12 14:21 1983 ./icon/int/functions/image.c
+-r--r--r-- 0/10            453 May 12 14:21 1983 ./icon/int/functions/integer.c
+-r--r--r-- 0/10           1126 May 12 14:21 1983 ./icon/int/functions/left.c
+-r--r--r-- 0/10           1026 May 12 14:21 1983 ./icon/int/functions/list.c
+-r--r--r-- 0/10            964 May 12 14:21 1983 ./icon/int/functions/many.c
+-r--r--r-- 0/10           1443 May 12 14:21 1983 ./icon/int/functions/map.c
+-r--r--r-- 0/10           1086 May 12 14:21 1983 ./icon/int/functions/match.c
+-r--r--r-- 0/10            971 May 12 14:21 1983 ./icon/int/functions/move.c
+-r--r--r-- 0/10            545 May 12 14:21 1983 ./icon/int/functions/numeric.c
+-r--r--r-- 0/10           2578 May 12 14:21 1983 ./icon/int/functions/open.c
+-r--r--r-- 0/10            829 May 12 14:21 1983 ./icon/int/functions/pop.c
+-r--r--r-- 0/10            488 May 12 14:21 1983 ./icon/int/functions/pos.c
+-r--r--r-- 0/10            834 May 12 14:21 1983 ./icon/int/functions/pull.c
+-r--r--r-- 0/10           1035 May 12 14:21 1983 ./icon/int/functions/push.c
+-r--r--r-- 0/10           1019 May 12 14:21 1983 ./icon/int/functions/put.c
+-r--r--r-- 0/10            669 May 12 14:21 1983 ./icon/int/functions/read.c
+-r--r--r-- 0/10            813 May 12 14:21 1983 ./icon/int/functions/reads.c
+-r--r--r-- 0/10            447 May 12 14:21 1983 ./icon/int/functions/real.c
+-r--r--r-- 0/10           1066 May 12 14:21 1983 ./icon/int/functions/repl.c
+-r--r--r-- 0/10            702 May 12 14:21 1983 ./icon/int/functions/reverse.c
+-r--r--r-- 0/10           1195 May 12 14:21 1983 ./icon/int/functions/right.c
+-r--r--r-- 0/10           3282 May 12 14:21 1983 ./icon/int/functions/sort.c
+-r--r--r-- 0/10            931 May 12 14:21 1983 ./icon/int/functions/stop.c
+-r--r--r-- 0/10            533 May 12 14:21 1983 ./icon/int/functions/string.c
+-r--r--r-- 0/10            541 May 12 14:21 1983 ./icon/int/functions/system.c
+-r--r--r-- 0/10            862 May 12 14:21 1983 ./icon/int/functions/tab.c
+-r--r--r-- 0/10            441 May 12 14:21 1983 ./icon/int/functions/table.c
+-r--r--r-- 0/10            746 May 12 14:21 1983 ./icon/int/functions/trim.c
+-r--r--r-- 0/10           1637 May 12 14:21 1983 ./icon/int/functions/type.c
+-r--r--r-- 0/10            958 May 12 14:21 1983 ./icon/int/functions/upto.c
+-r--r--r-- 0/10           1233 May 12 14:21 1983 ./icon/int/functions/write.c
+-r--r--r-- 0/10           1165 May 12 14:21 1983 ./icon/int/functions/writes.c
+-r--r--r-- 0/10           5436 May 12 14:21 1983 ./icon/int/functions/display.c
+-r--r--r-- 0/10            607 May 12 14:21 1983 ./icon/int/functions/seq.c
+drwxrwxr-x 0/10              0 Aug 11 12:51 1983 ./icon/int/lib/
+-r--r--r-- 0/10           1014 May 12 14:22 1983 ./icon/int/lib/Makefile
+-r--r--r-- 0/10            946 May 12 14:22 1983 ./icon/int/lib/bscan.c
+-r--r--r-- 0/10           6337 May 12 14:23 1983 ./icon/int/lib/coact.s
+-r--r--r-- 0/10           2879 May 12 14:23 1983 ./icon/int/lib/cofail.s
+-r--r--r-- 0/10           4875 May 12 14:23 1983 ./icon/int/lib/coret.s
+-r--r--r-- 0/10           1177 May 12 14:23 1983 ./icon/int/lib/escan.c
+-r--r--r-- 0/10           3768 Jul  8 17:35 1983 ./icon/int/lib/keywd.c
+-r--r--r-- 0/10            453 May 12 14:23 1983 ./icon/int/lib/limit.c
+-r--r--r-- 0/10            702 May 12 14:23 1983 ./icon/int/lib/llist.c
+-r--r--r-- 0/10            756 May 12 14:23 1983 ./icon/int/lib/mkrec.c
+-r--r--r-- 0/10           1985 May 12 14:23 1983 ./icon/int/lib/pfail.s
+-r--r--r-- 0/10           4660 May 12 14:23 1983 ./icon/int/lib/pret.s
+-r--r--r-- 0/10           7165 May 12 14:23 1983 ./icon/int/lib/psusp.s
+-r--r--r-- 0/10            920 May 12 14:23 1983 ./icon/int/lib/field.c
+-r--r--r-- 0/10           6989 May 12 14:23 1983 ./icon/int/lib/create.c
+-r--r--r-- 0/10           4657 May 12 14:23 1983 ./icon/int/lib/efail.s
+-r--r--r-- 0/10           3869 May 12 14:23 1983 ./icon/int/lib/esusp.s
+-r--r--r-- 0/10          12296 May 21 06:02 1983 ./icon/int/lib/invoke.s
+-r--r--r-- 0/10           5462 May 12 14:23 1983 ./icon/int/lib/lsusp.s
+drwxrwxr-x 0/10              0 Aug 11 12:51 1983 ./icon/int/operators/
+-r--r--r-- 0/10           1800 May 12 14:23 1983 ./icon/int/operators/Makefile
+-r--r--r-- 0/10            424 May 12 14:23 1983 ./icon/int/operators/asgn.c
+-r--r--r-- 0/10           3154 May 12 14:23 1983 ./icon/int/operators/bang.c
+-r--r--r-- 0/10            781 May 12 14:23 1983 ./icon/int/operators/cat.c
+-r--r--r-- 0/10            637 May 12 14:23 1983 ./icon/int/operators/compl.c
+-r--r--r-- 0/10            766 May 12 14:23 1983 ./icon/int/operators/diff.c
+-r--r--r-- 0/10            765 May 12 14:23 1983 ./icon/int/operators/div.c
+-r--r--r-- 0/10            414 May 12 14:23 1983 ./icon/int/operators/eqv.c
+-r--r--r-- 0/10            773 May 12 14:23 1983 ./icon/int/operators/inter.c
+-r--r--r-- 0/10           1065 May 12 14:23 1983 ./icon/int/operators/lconcat.c
+-r--r--r-- 0/10            724 May 12 14:23 1983 ./icon/int/operators/lexeq.c
+-r--r--r-- 0/10            745 May 12 14:23 1983 ./icon/int/operators/lexge.c
+-r--r--r-- 0/10            732 May 12 14:23 1983 ./icon/int/operators/lexgt.c
+-r--r--r-- 0/10            742 May 12 14:23 1983 ./icon/int/operators/lexle.c
+-r--r--r-- 0/10            729 May 12 14:23 1983 ./icon/int/operators/lexlt.c
+-r--r--r-- 0/10            730 May 12 14:23 1983 ./icon/int/operators/lexne.c
+-r--r--r-- 0/10            742 May 12 14:23 1983 ./icon/int/operators/minus.c
+-r--r--r-- 0/10            794 May 12 14:23 1983 ./icon/int/operators/mod.c
+-r--r--r-- 0/10            708 May 12 14:23 1983 ./icon/int/operators/mult.c
+-r--r--r-- 0/10            582 May 12 14:23 1983 ./icon/int/operators/neg.c
+-r--r--r-- 0/10            421 May 12 14:23 1983 ./icon/int/operators/neqv.c
+-r--r--r-- 0/10            395 May 12 14:23 1983 ./icon/int/operators/nonnull.c
+-r--r--r-- 0/10            382 May 12 14:23 1983 ./icon/int/operators/null.c
+-r--r--r-- 0/10            523 May 12 14:23 1983 ./icon/int/operators/number.c
+-r--r--r-- 0/10            385 May 12 14:23 1983 ./icon/int/operators/numeq.c
+-r--r--r-- 0/10            397 May 12 14:23 1983 ./icon/int/operators/numge.c
+-r--r--r-- 0/10            390 May 21 06:02 1983 ./icon/int/operators/numgt.c
+-r--r--r-- 0/10            399 May 12 14:23 1983 ./icon/int/operators/numle.c
+-r--r--r-- 0/10            386 May 12 14:23 1983 ./icon/int/operators/numlt.c
+-r--r--r-- 0/10            391 May 12 14:23 1983 ./icon/int/operators/numne.c
+-r--r--r-- 0/10            733 May 12 14:23 1983 ./icon/int/operators/plus.c
+-r--r--r-- 0/10           1175 May 12 14:23 1983 ./icon/int/operators/power.c
+-r--r--r-- 0/10           3449 May 12 14:23 1983 ./icon/int/operators/random.c
+-r--r--r-- 0/10            570 May 12 14:23 1983 ./icon/int/operators/rasgn.c
+-r--r--r-- 0/10           1526 May 12 14:24 1983 ./icon/int/operators/rswap.c
+-r--r--r-- 0/10           1503 May 12 14:24 1983 ./icon/int/operators/sect.c
+-r--r--r-- 0/10           1153 May 12 14:24 1983 ./icon/int/operators/size.c
+-r--r--r-- 0/10           2949 May 12 14:24 1983 ./icon/int/operators/subsc.c
+-r--r--r-- 0/10           1212 May 12 14:24 1983 ./icon/int/operators/swap.c
+-r--r--r-- 0/10            834 May 12 14:24 1983 ./icon/int/operators/tabmat.c
+-r--r--r-- 0/10            731 May 12 14:24 1983 ./icon/int/operators/toby.c
+-r--r--r-- 0/10            773 May 12 14:24 1983 ./icon/int/operators/unioncs.c
+-r--r--r-- 0/10            326 May 12 14:24 1983 ./icon/int/operators/value.c
+-r--r--r-- 0/10           5954 May 12 14:24 1983 ./icon/int/operators/refresh.c
+drwxrwxr-x 0/10              0 Aug 11 12:51 1983 ./icon/int/tran/
+-r--r--r-- 0/10           8523 May 12 14:25 1983 ./icon/int/tran/ucon.g
+-r--r--r-- 0/10           3439 May 12 14:25 1983 ./icon/int/tran/char.c
+-r--r--r-- 0/10           1053 May 12 14:25 1983 ./icon/int/tran/char.h
+-r--r--r-- 0/10            476 May 12 14:25 1983 ./icon/int/tran/code.h
+-r--r--r-- 0/10           1904 May 12 14:25 1983 ./icon/int/tran/err.c
+-r--r--r-- 0/10           2872 May 12 14:25 1983 ./icon/int/tran/err.h
+-r--r--r-- 0/10            726 May 12 14:25 1983 ./icon/int/tran/keyword.h
+-r--r--r-- 0/10            261 May 12 14:25 1983 ./icon/int/tran/keywords
+-r--r--r-- 0/10           9653 May 12 14:25 1983 ./icon/int/tran/lex.c
+-r--r--r-- 0/10           3468 May 12 14:25 1983 ./icon/int/tran/lex.h
+-r--r--r-- 0/10           4153 May 12 14:25 1983 ./icon/int/tran/mem.c
+-r--r--r-- 0/10           1358 May 12 14:25 1983 ./icon/int/tran/mkkeytab.icn
+-r--r--r-- 0/10           5067 May 12 14:25 1983 ./icon/int/tran/mktoktab.icn
+-r--r--r-- 0/10          11797 May 12 14:25 1983 ./icon/int/tran/optab
+-r--r--r-- 0/10             89 May 12 14:25 1983 ./icon/int/tran/pscript
+-r--r--r-- 0/10          11071 May 12 14:25 1983 ./icon/int/tran/sym.c
+-r--r--r-- 0/10           4931 May 12 14:25 1983 ./icon/int/tran/sym.h
+-r--r--r-- 0/10           4626 May 12 14:25 1983 ./icon/int/tran/tokens
+-r--r--r-- 0/10           6058 May 12 14:25 1983 ./icon/int/tran/tree.h
+-r--r--r-- 0/10           1514 May 12 14:25 1983 ./icon/int/tran/utran.h
+-r--r--r-- 0/10           1338 Jun 24 06:56 1983 ./icon/int/tran/Makefile
+-r--r--r-- 0/10          21058 May 12 14:25 1983 ./icon/int/tran/code.c
+-r--r--r-- 0/10           2185 May 12 14:25 1983 ./icon/int/tran/token.h
+-r--r--r-- 0/10           6307 May 12 14:25 1983 ./icon/int/tran/utran.c
+-r--r--r-- 0/10          24699 May 12 14:25 1983 ./icon/int/tran/parse.c
+-r--r--r-- 0/10            854 May 12 14:25 1983 ./icon/int/tran/keyword.c
+-r--r--r-- 0/10           8367 May 12 14:25 1983 ./icon/int/tran/toktab.c
+-r--r--r-- 0/10          11797 May 12 14:25 1983 ./icon/int/tran/optab.c
+-r--r--r-- 0/10           1338 May 12 14:25 1983 ./icon/int/tran/Makefile.gen
+drwxrwxr-x 0/10              0 Aug 11 12:51 1983 ./icon/int/iconx/
+-r--r--r-- 0/10          16770 Jun 23 17:51 1983 ./icon/int/iconx/init.c
+-r--r--r-- 0/10           8545 May 12 14:26 1983 ./icon/int/iconx/start.s
+-r--r--r-- 0/10          20584 May 12 14:26 1983 ./icon/int/iconx/interp.s
+-r--r--r-- 0/10            708 Jun 26 10:12 1983 ./icon/int/iconx/Makefile
+-r--r--r-- 0/10            110 May 12 14:26 1983 ./icon/int/iconx/pstart.s
+-r--r--r-- 0/10             93 May 12 14:26 1983 ./icon/int/iconx/pstop.s
+-r--r--r-- 0/10            720 Jun 23 18:46 1983 ./icon/int/iconx/Makefile.gen
+drwxrwxr-x 0/10              0 Aug  6 04:42 1983 ./icon/cmp/
+drwxrwxr-x 0/10              0 Aug 11 12:50 1983 ./icon/cmp/tran/
+-r--r--r-- 0/10              0 Jun 24 06:56 1983 ./icon/cmp/tran/Makefile link to ./icon/int/tran/Makefile
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/char.c link to ./icon/int/tran/char.c
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/char.h link to ./icon/int/tran/char.h
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/code.c link to ./icon/int/tran/code.c
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/code.h link to ./icon/int/tran/code.h
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/err.c link to ./icon/int/tran/err.c
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/err.h link to ./icon/int/tran/err.h
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/keyword.c link to ./icon/int/tran/keyword.c
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/keyword.h link to ./icon/int/tran/keyword.h
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/keywords link to ./icon/int/tran/keywords
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/lex.c link to ./icon/int/tran/lex.c
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/lex.h link to ./icon/int/tran/lex.h
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/mem.c link to ./icon/int/tran/mem.c
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/ucon.g link to ./icon/int/tran/ucon.g
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/mkkeytab.icn link to ./icon/int/tran/mkkeytab.icn
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/mktoktab.icn link to ./icon/int/tran/mktoktab.icn
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/optab link to ./icon/int/tran/optab
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/optab.c link to ./icon/int/tran/optab.c
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/parse.c link to ./icon/int/tran/parse.c
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/pscript link to ./icon/int/tran/pscript
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/sym.c link to ./icon/int/tran/sym.c
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/sym.h link to ./icon/int/tran/sym.h
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/token.h link to ./icon/int/tran/token.h
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/tokens link to ./icon/int/tran/tokens
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/toktab.c link to ./icon/int/tran/toktab.c
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/tree.h link to ./icon/int/tran/tree.h
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/utran.c link to ./icon/int/tran/utran.c
+-r--r--r-- 0/10              0 May 12 14:25 1983 ./icon/cmp/tran/utran.h link to ./icon/int/tran/utran.h
+drwxrwxr-x 0/10              0 Aug 11 12:50 1983 ./icon/cmp/rt/
+-r--r--r-- 0/10           2249 Jun 25 16:17 1983 ./icon/cmp/rt/Makefile
+-r--r--r-- 0/10              0 Jun 25 14:39 1983 ./icon/cmp/rt/alc.c link to ./icon/int/rt/alc.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/anycmp.c link to ./icon/int/rt/anycmp.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/arith.s link to ./icon/int/rt/arith.s
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/cplist.c link to ./icon/int/rt/cplist.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/csv.s link to ./icon/int/rt/csv.s
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/ctype.c link to ./icon/int/rt/ctype.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/cvcset.c link to ./icon/int/rt/cvcset.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/cvint.c link to ./icon/int/rt/cvint.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/cvnum.c link to ./icon/int/rt/cvnum.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/cvpos.c link to ./icon/int/rt/cvpos.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/cvreal.c link to ./icon/int/rt/cvreal.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/cvstr.c link to ./icon/int/rt/cvstr.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/dblocks.c link to ./icon/int/rt/dblocks.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/defany.c link to ./icon/int/rt/defany.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/defcset.c link to ./icon/int/rt/defcset.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/deffile.c link to ./icon/int/rt/deffile.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/defint.c link to ./icon/int/rt/defint.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/defshort.c link to ./icon/int/rt/defshort.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/defstr.c link to ./icon/int/rt/defstr.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/deref.c link to ./icon/int/rt/deref.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/doasgn.c link to ./icon/int/rt/doasgn.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/dump.c link to ./icon/int/rt/dump.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/equiv.c link to ./icon/int/rt/equiv.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/exp.c link to ./icon/int/rt/exp.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/fail.s link to ./icon/int/rt/fail.s
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/floor.c link to ./icon/int/rt/floor.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/gc.c link to ./icon/int/rt/gc.c
+-r--r--r-- 0/10              0 May 12 14:20 1983 ./icon/cmp/rt/gcollect.s link to ./icon/int/rt/gcollect.s
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/gcvt.c link to ./icon/int/rt/gcvt.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/getstr.c link to ./icon/int/rt/getstr.c
+-r--r--r-- 0/10              0 May 21 06:02 1983 ./icon/cmp/rt/hash.c link to ./icon/int/rt/hash.c
+-r--r--r-- 0/10          16770 May 12 14:27 1983 ./icon/cmp/rt/init.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/ldfps.s link to ./icon/int/rt/ldfps.s
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/lexcmp.c link to ./icon/int/rt/lexcmp.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/log.c link to ./icon/int/rt/log.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/rt/mkint.c link to ./icon/int/rt/mkint.c
+-r--r--r-- 0/10              0 May 12 14:20 1983 ./icon/cmp/rt/mkreal.c link to ./icon/int/rt/mkreal.c
+-r--r--r-- 0/10              0 May 12 14:20 1983 ./icon/cmp/rt/mksubs.c link to ./icon/int/rt/mksubs.c
+-r--r--r-- 0/10              0 May 12 14:20 1983 ./icon/cmp/rt/numcmp.c link to ./icon/int/rt/numcmp.c
+-r--r--r-- 0/10              0 May 12 14:20 1983 ./icon/cmp/rt/outimage.c link to ./icon/int/rt/outimage.c
+-r--r--r-- 0/10              0 May 12 14:20 1983 ./icon/cmp/rt/pow.c link to ./icon/int/rt/pow.c
+-r--r--r-- 0/10              0 May 12 14:20 1983 ./icon/cmp/rt/putstr.c link to ./icon/int/rt/putstr.c
+-r--r--r-- 0/10              0 May 12 14:20 1983 ./icon/cmp/rt/qtos.c link to ./icon/int/rt/qtos.c
+-r--r--r-- 0/10              0 May 12 14:20 1983 ./icon/cmp/rt/suspend.s link to ./icon/int/rt/suspend.s
+-r--r--r-- 0/10              0 May 12 14:20 1983 ./icon/cmp/rt/trace.c link to ./icon/int/rt/trace.c
+-r--r--r-- 0/10            110 May 12 14:27 1983 ./icon/cmp/rt/pstart.s
+-r--r--r-- 0/10             93 May 12 14:27 1983 ./icon/cmp/rt/pstop.s
+-r--r--r-- 0/10           8545 May 12 14:27 1983 ./icon/cmp/rt/start.s
+-r--r--r-- 0/10              0 May 12 14:20 1983 ./icon/cmp/rt/setbound.s link to ./icon/int/rt/setbound.s
+-r--r--r-- 0/10              0 Jun 23 18:42 1983 ./icon/cmp/rt/mon.c link to ./icon/int/rt/mon.c
+drwxrwxr-x 0/10              0 Aug  6 04:41 1983 ./icon/cmp/h/
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/h/Makefile link to ./icon/int/h/Makefile
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/h/ctype.h link to ./icon/int/h/ctype.h
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/h/defs.s link to ./icon/int/h/defs.s
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/h/err.h link to ./icon/int/h/err.h
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/h/gc.h link to ./icon/int/h/gc.h
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/h/record.h link to ./icon/int/h/record.h
+-r--r--r-- 0/10              0 Jun 25 14:44 1983 ./icon/cmp/h/rt.h link to ./icon/int/h/rt.h
+-r--r--r-- 0/10            168 Jun 24 06:56 1983 ./icon/cmp/h/config.h
+-r--r--r-- 0/10             99 May 12 14:27 1983 ./icon/cmp/h/config.h.gen
+drwxrwxr-x 0/10              0 Aug 11 12:50 1983 ./icon/cmp/functions/
+-r--r--r-- 0/10           1787 May 12 14:27 1983 ./icon/cmp/functions/Makefile
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/display.c link to ./icon/int/functions/display.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/seq.c link to ./icon/int/functions/seq.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/reverse.c link to ./icon/int/functions/reverse.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/abs.c link to ./icon/int/functions/abs.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/any.c link to ./icon/int/functions/any.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/bal.c link to ./icon/int/functions/bal.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/center.c link to ./icon/int/functions/center.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/close.c link to ./icon/int/functions/close.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/copy.c link to ./icon/int/functions/copy.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/cset.c link to ./icon/int/functions/cset.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/exit.c link to ./icon/int/functions/exit.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/find.c link to ./icon/int/functions/find.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/get.c link to ./icon/int/functions/get.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/image.c link to ./icon/int/functions/image.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/integer.c link to ./icon/int/functions/integer.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/left.c link to ./icon/int/functions/left.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/list.c link to ./icon/int/functions/list.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/many.c link to ./icon/int/functions/many.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/map.c link to ./icon/int/functions/map.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/match.c link to ./icon/int/functions/match.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/move.c link to ./icon/int/functions/move.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/numeric.c link to ./icon/int/functions/numeric.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/open.c link to ./icon/int/functions/open.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/pop.c link to ./icon/int/functions/pop.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/pos.c link to ./icon/int/functions/pos.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/pull.c link to ./icon/int/functions/pull.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/push.c link to ./icon/int/functions/push.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/put.c link to ./icon/int/functions/put.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/read.c link to ./icon/int/functions/read.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/reads.c link to ./icon/int/functions/reads.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/real.c link to ./icon/int/functions/real.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/repl.c link to ./icon/int/functions/repl.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/right.c link to ./icon/int/functions/right.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/sort.c link to ./icon/int/functions/sort.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/stop.c link to ./icon/int/functions/stop.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/string.c link to ./icon/int/functions/string.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/system.c link to ./icon/int/functions/system.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/tab.c link to ./icon/int/functions/tab.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/table.c link to ./icon/int/functions/table.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/trim.c link to ./icon/int/functions/trim.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/type.c link to ./icon/int/functions/type.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/upto.c link to ./icon/int/functions/upto.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/write.c link to ./icon/int/functions/write.c
+-r--r--r-- 0/10              0 May 12 14:21 1983 ./icon/cmp/functions/writes.c link to ./icon/int/functions/writes.c
+-r--r--r-- 0/10              0 Aug  6 05:54 1983 ./icon/cmp/functions/Lib
+drwxrwxr-x 0/10              0 Aug 11 12:50 1983 ./icon/cmp/operators/
+-r--r--r-- 0/10           1806 May 12 14:29 1983 ./icon/cmp/operators/Makefile
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/asgn.c link to ./icon/int/operators/asgn.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/bang.c link to ./icon/int/operators/bang.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/cat.c link to ./icon/int/operators/cat.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/compl.c link to ./icon/int/operators/compl.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/diff.c link to ./icon/int/operators/diff.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/div.c link to ./icon/int/operators/div.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/eqv.c link to ./icon/int/operators/eqv.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/inter.c link to ./icon/int/operators/inter.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/lconcat.c link to ./icon/int/operators/lconcat.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/lexeq.c link to ./icon/int/operators/lexeq.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/lexge.c link to ./icon/int/operators/lexge.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/lexgt.c link to ./icon/int/operators/lexgt.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/lexle.c link to ./icon/int/operators/lexle.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/lexlt.c link to ./icon/int/operators/lexlt.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/lexne.c link to ./icon/int/operators/lexne.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/minus.c link to ./icon/int/operators/minus.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/mod.c link to ./icon/int/operators/mod.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/mult.c link to ./icon/int/operators/mult.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/neg.c link to ./icon/int/operators/neg.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/neqv.c link to ./icon/int/operators/neqv.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/nonnull.c link to ./icon/int/operators/nonnull.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/null.c link to ./icon/int/operators/null.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/number.c link to ./icon/int/operators/number.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/numeq.c link to ./icon/int/operators/numeq.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/numge.c link to ./icon/int/operators/numge.c
+-r--r--r-- 0/10              0 May 21 06:02 1983 ./icon/cmp/operators/numgt.c link to ./icon/int/operators/numgt.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/numle.c link to ./icon/int/operators/numle.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/numlt.c link to ./icon/int/operators/numlt.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/numne.c link to ./icon/int/operators/numne.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/plus.c link to ./icon/int/operators/plus.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/power.c link to ./icon/int/operators/power.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/random.c link to ./icon/int/operators/random.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/operators/rasgn.c link to ./icon/int/operators/rasgn.c
+-r--r--r-- 0/10              0 May 12 14:24 1983 ./icon/cmp/operators/refresh.c link to ./icon/int/operators/refresh.c
+-r--r--r-- 0/10              0 May 12 14:24 1983 ./icon/cmp/operators/rswap.c link to ./icon/int/operators/rswap.c
+-r--r--r-- 0/10              0 May 12 14:24 1983 ./icon/cmp/operators/sect.c link to ./icon/int/operators/sect.c
+-r--r--r-- 0/10              0 May 12 14:24 1983 ./icon/cmp/operators/size.c link to ./icon/int/operators/size.c
+-r--r--r-- 0/10              0 May 12 14:24 1983 ./icon/cmp/operators/subsc.c link to ./icon/int/operators/subsc.c
+-r--r--r-- 0/10              0 May 12 14:24 1983 ./icon/cmp/operators/swap.c link to ./icon/int/operators/swap.c
+-r--r--r-- 0/10              0 May 12 14:24 1983 ./icon/cmp/operators/tabmat.c link to ./icon/int/operators/tabmat.c
+-r--r--r-- 0/10              0 May 12 14:24 1983 ./icon/cmp/operators/toby.c link to ./icon/int/operators/toby.c
+-r--r--r-- 0/10              0 May 12 14:24 1983 ./icon/cmp/operators/unioncs.c link to ./icon/int/operators/unioncs.c
+-r--r--r-- 0/10              0 May 12 14:24 1983 ./icon/cmp/operators/value.c link to ./icon/int/operators/value.c
+drwxrwxr-x 0/10              0 Aug 11 12:51 1983 ./icon/cmp/bin/
+-r--r--r-- 0/10            816 Jun 25 20:27 1983 ./icon/cmp/bin/Makefile
+-r--r--r-- 0/10           5337 Jun 25 11:12 1983 ./icon/cmp/bin/iconc.c
+-r--r--r-- 0/10           5320 May 12 14:35 1983 ./icon/cmp/bin/iconc.c.gen
+drwxrwxr-x 0/10              0 Aug 11 12:50 1983 ./icon/cmp/lib/
+-r--r--r-- 0/10           1060 May 12 14:35 1983 ./icon/cmp/lib/Makefile
+-r--r--r-- 0/10              0 May 12 14:22 1983 ./icon/cmp/lib/bscan.c link to ./icon/int/lib/bscan.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/coact.s link to ./icon/int/lib/coact.s
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/cofail.s link to ./icon/int/lib/cofail.s
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/coret.s link to ./icon/int/lib/coret.s
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/create.c link to ./icon/int/lib/create.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/efail.s link to ./icon/int/lib/efail.s
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/escan.c link to ./icon/int/lib/escan.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/esusp.s link to ./icon/int/lib/esusp.s
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/field.c link to ./icon/int/lib/field.c
+-r--r--r-- 0/10              0 May 21 06:02 1983 ./icon/cmp/lib/invoke.s link to ./icon/int/lib/invoke.s
+-r--r--r-- 0/10              0 Jul  8 17:35 1983 ./icon/cmp/lib/keywd.c link to ./icon/int/lib/keywd.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/limit.c link to ./icon/int/lib/limit.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/llist.c link to ./icon/int/lib/llist.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/lsusp.s link to ./icon/int/lib/lsusp.s
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/mkrec.c link to ./icon/int/lib/mkrec.c
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/pfail.s link to ./icon/int/lib/pfail.s
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/pret.s link to ./icon/int/lib/pret.s
+-r--r--r-- 0/10              0 May 12 14:23 1983 ./icon/cmp/lib/psusp.s link to ./icon/int/lib/psusp.s
+-r--r--r-- 0/10           1009 May 12 14:35 1983 ./icon/cmp/lib/host.c
+drwxrwxr-x 0/10              0 Aug 11 12:50 1983 ./icon/cmp/link/
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/link/Makefile link to ./icon/int/link/Makefile
+-r--r--r-- 0/10           1279 May 12 14:36 1983 ./icon/cmp/link/builtin.c
+-r--r--r-- 0/10          38204 May 12 14:36 1983 ./icon/cmp/link/code.c
+-r--r--r-- 0/10           1561 May 12 14:36 1983 ./icon/cmp/link/code.h
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/link/datatype.h link to ./icon/int/link/datatype.h
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/link/glob.c link to ./icon/int/link/glob.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/link/lex.c link to ./icon/int/link/lex.c
+-r--r--r-- 0/10           5396 May 12 14:36 1983 ./icon/cmp/link/mem.c
+-r--r--r-- 0/10              0 May 12 14:19 1983 ./icon/cmp/link/opcode.c link to ./icon/int/link/opcode.c
+-r--r--r-- 0/10           2320 May 12 14:36 1983 ./icon/cmp/link/opcode.h
+-r--r--r-- 0/10           7965 May 12 14:36 1983 ./icon/cmp/link/sym.c
+-r--r--r-- 0/10           3488 May 12 14:36 1983 ./icon/cmp/link/ulink.c
+-r--r--r-- 0/10           7031 May 12 14:36 1983 ./icon/cmp/link/ulink.h
+drwxrwxr-x 0/10              0 Aug  6 04:42 1983 ./icon/samples/
+-r--r--r-- 0/10           4025 May 12 14:36 1983 ./icon/samples/Results.ic
+-r--r--r-- 0/10            708 May 12 14:36 1983 ./icon/samples/Readme
+-r--r--r-- 0/10             36 May 12 14:36 1983 ./icon/samples/btrees.dat
+-r--r--r-- 0/10            912 May 12 14:36 1983 ./icon/samples/btrees.icn
+-r--r--r-- 0/10             52 May 12 14:36 1983 ./icon/samples/cross.dat
+-r--r--r-- 0/10            577 May 12 14:36 1983 ./icon/samples/cross.icn
+-r--r--r-- 0/10             19 May 12 14:36 1983 ./icon/samples/meander.dat
+-r--r--r-- 0/10            770 May 12 14:36 1983 ./icon/samples/meander.icn
+-r--r--r-- 0/10             56 May 12 14:36 1983 ./icon/samples/prefix.dat
+-r--r--r-- 0/10            775 May 12 14:36 1983 ./icon/samples/prefix.icn
+-r--r--r-- 0/10             28 May 12 14:36 1983 ./icon/samples/recogn.dat
+-r--r--r-- 0/10            579 May 12 14:36 1983 ./icon/samples/recogn.icn
+-r--r--r-- 0/10             25 May 12 14:36 1983 ./icon/samples/roman.dat
+-r--r--r-- 0/10            595 May 12 14:36 1983 ./icon/samples/roman.icn
+-r--r--r-- 0/10            511 May 12 14:36 1983 ./icon/samples/wordcount.dat
+-r--r--r-- 0/10            493 May 12 14:36 1983 ./icon/samples/wordcount.icn
+-r--r--r-- 0/10             36 May 12 14:36 1983 ./icon/samples/seqimage.dat
+-r--r--r-- 0/10            574 May 12 14:36 1983 ./icon/samples/seqimage.icn
+-r--r--r-- 0/10            211 Jun 27 08:39 1983 ./icon/samples/Makefile
+-r--r--r-- 0/10              0 May 12 14:36 1983 ./icon/samples/hello.dat
+-r-xr-xr-x 0/10            220 May 12 14:36 1983 ./icon/samples/DoSamps
+-r--r--r-- 0/10           3836 May 12 14:36 1983 ./icon/samples/Results.it
+-r--r--r-- 0/10            111 May 12 14:36 1983 ./icon/samples/hello.icn
+drwxrwxr-x 0/10              0 Aug  6 04:43 1983 ./icon/book/
+drwxrwxr-x 0/10              0 Aug  6 04:42 1983 ./icon/book/01/
+-r--r--r-- 0/10            128 May 12 14:36 1983 ./icon/book/01/countm1.icn
+-r--r--r-- 0/10            156 May 12 14:36 1983 ./icon/book/01/countm2.icn
+-r--r--r-- 0/10             45 May 12 14:36 1983 ./icon/book/01/hello1.icn
+-r--r--r-- 0/10             79 May 12 14:36 1983 ./icon/book/01/hello2.icn
+-r--r--r-- 0/10             84 May 12 14:36 1983 ./icon/book/01/hello3.icn
+-r--r--r-- 0/10            107 May 12 14:36 1983 ./icon/book/01/hello4.icn
+-r--r--r-- 0/10             61 May 12 14:36 1983 ./icon/book/01/hello5.icn
+-r--r--r-- 0/10             90 May 12 14:36 1983 ./icon/book/01/locate1.icn
+-r--r--r-- 0/10            154 May 12 14:36 1983 ./icon/book/01/locate2.icn
+drwxrwxr-x 0/10              0 Aug  6 04:42 1983 ./icon/book/02/
+-r--r--r-- 0/10            110 May 12 14:37 1983 ./icon/book/02/break1.icn
+-r--r--r-- 0/10            267 May 12 14:37 1983 ./icon/book/02/break2.icn
+-r--r--r-- 0/10            294 May 12 14:37 1983 ./icon/book/02/break3.icn
+-r--r--r-- 0/10            112 May 12 14:37 1983 ./icon/book/02/next.icn
+drwxrwxr-x 0/10              0 Aug  6 04:42 1983 ./icon/book/05/
+-r--r--r-- 0/10            100 May 12 14:37 1983 ./icon/book/05/array.icn
+-r--r--r-- 0/10            115 May 12 14:37 1983 ./icon/book/05/get.icn
+-r--r--r-- 0/10            446 May 12 14:37 1983 ./icon/book/05/tabwords1.icn
+-r--r--r-- 0/10            433 May 12 14:37 1983 ./icon/book/05/wordlen.icn
+-r--r--r-- 0/10            279 May 12 14:37 1983 ./icon/book/05/wordlist2.icn
+drwxrwxr-x 0/10              0 Aug  6 04:42 1983 ./icon/book/07/
+-r--r--r-- 0/10            237 May 12 14:37 1983 ./icon/book/07/exor1.icn
+-r--r--r-- 0/10            376 May 12 14:37 1983 ./icon/book/07/expr1.icn
+-r--r--r-- 0/10            138 May 12 14:37 1983 ./icon/book/07/expr2.icn
+-r--r--r-- 0/10            107 May 12 14:37 1983 ./icon/book/07/fib1.icn
+-r--r--r-- 0/10            216 May 12 14:37 1983 ./icon/book/07/fib2.icn
+-r--r--r-- 0/10            239 May 12 14:37 1983 ./icon/book/07/fword1.icn
+-r--r--r-- 0/10            210 May 12 14:37 1983 ./icon/book/07/fword2.icn
+-r--r--r-- 0/10            335 May 12 14:37 1983 ./icon/book/07/nword.icn
+drwxrwxr-x 0/10              0 Aug  6 04:42 1983 ./icon/book/08/
+-r--r--r-- 0/10            164 May 12 14:37 1983 ./icon/book/08/maxel.icn
+-r--r--r-- 0/10            346 May 12 14:37 1983 ./icon/book/08/words2.icn
+drwxrwxr-x 0/10              0 Aug  6 04:42 1983 ./icon/book/09/
+-r--r--r-- 0/10            128 May 12 14:37 1983 ./icon/book/09/copy1.icn
+-r--r--r-- 0/10            270 May 12 14:37 1983 ./icon/book/09/copy2.icn
+-r--r--r-- 0/10            363 May 12 14:37 1983 ./icon/book/09/copy3.icn
+drwxrwxr-x 0/10              0 Aug  6 04:42 1983 ./icon/book/10/
+-r--r--r-- 0/10            330 May 12 14:37 1983 ./icon/book/10/display.icn
+-r--r--r-- 0/10            123 May 12 14:37 1983 ./icon/book/10/shuffle1.icn
+drwxrwxr-x 0/10              0 Aug  6 04:42 1983 ./icon/book/11/
+-r--r--r-- 0/10            142 May 12 14:37 1983 ./icon/book/11/fibseq1.icn
+-r--r--r-- 0/10            283 May 12 14:37 1983 ./icon/book/11/genword.icn
+-r--r--r-- 0/10            265 May 12 14:37 1983 ./icon/book/11/mark.icn
+-r--r--r-- 0/10            219 May 12 14:37 1983 ./icon/book/11/marker.icn
+-r--r--r-- 0/10             49 May 12 14:37 1983 ./icon/book/11/rtl.icn
+-r--r--r-- 0/10             81 May 12 14:37 1983 ./icon/book/11/to.icn
+drwxrwxr-x 0/10              0 Aug  6 04:42 1983 ./icon/book/12/
+-r--r--r-- 0/10            250 May 12 14:37 1983 ./icon/book/12/tabwords2.icn
+-r--r--r-- 0/10            222 May 12 14:37 1983 ./icon/book/12/words3.icn
+drwxrwxr-x 0/10              0 Aug  6 04:42 1983 ./icon/book/13/
+-r--r--r-- 0/10             98 May 12 14:37 1983 ./icon/book/13/alt.icn
+-r--r--r-- 0/10            160 May 12 14:37 1983 ./icon/book/13/equalseq.icn
+-r--r--r-- 0/10             48 May 12 14:37 1983 ./icon/book/13/every.icn
+-r--r--r-- 0/10            360 May 12 14:37 1983 ./icon/book/13/filter1.icn
+-r--r--r-- 0/10             50 May 12 14:37 1983 ./icon/book/13/inter.icn
+drwxrwxr-x 0/10              0 Aug  6 04:42 1983 ./icon/book/14/
+-r--r--r-- 0/10            414 May 12 14:37 1983 ./icon/book/14/8q.icn
+-r--r--r-- 0/10             94 May 12 14:37 1983 ./icon/book/14/break4.icn
+-r--r--r-- 0/10            266 May 12 14:37 1983 ./icon/book/14/cross1.icn
+-r--r--r-- 0/10            288 May 12 14:37 1983 ./icon/book/14/cross2.icn
+-r--r--r-- 0/10             51 May 12 14:37 1983 ./icon/book/14/limit1.icn
+-r--r--r-- 0/10             81 May 12 14:37 1983 ./icon/book/14/limit2.icn
+-r--r--r-- 0/10            104 May 12 14:37 1983 ./icon/book/14/limit3.icn
+-r--r--r-- 0/10             66 May 12 14:37 1983 ./icon/book/14/posint.icn
+-r--r--r-- 0/10             66 May 12 14:37 1983 ./icon/book/14/stars.icn
+drwxrwxr-x 0/10              0 Aug  6 04:43 1983 ./icon/book/15/
+-r--r--r-- 0/10            215 May 12 14:37 1983 ./icon/book/15/abc.icn
+-r--r--r-- 0/10             77 May 12 14:37 1983 ./icon/book/15/arb.icn
+-r--r--r-- 0/10             57 May 12 14:37 1983 ./icon/book/15/arbno.icn
+-r--r--r-- 0/10             47 May 12 14:37 1983 ./icon/book/15/lmatch.icn
+-r--r--r-- 0/10            340 May 12 14:37 1983 ./icon/book/15/parsexp.icn
+-r--r--r-- 0/10             95 May 12 14:37 1983 ./icon/book/15/rarb.icn
+-r--r--r-- 0/10            328 May 12 14:37 1983 ./icon/book/15/recexp.icn
+-r--r--r-- 0/10             76 May 12 14:37 1983 ./icon/book/15/shades.icn
+-r--r--r-- 0/10             58 May 12 14:37 1983 ./icon/book/15/tab.icn
+drwxrwxr-x 0/10              0 Aug  6 04:43 1983 ./icon/book/16/
+-r--r--r-- 0/10            275 May 12 14:37 1983 ./icon/book/16/eq.icn
+-r--r--r-- 0/10            378 May 12 14:37 1983 ./icon/book/16/ldag.icn
+-r--r--r-- 0/10            577 May 12 14:37 1983 ./icon/book/16/lgraph.icn
+-r--r--r-- 0/10            266 May 12 14:37 1983 ./icon/book/16/ltree.icn
+-r--r--r-- 0/10            235 May 12 14:37 1983 ./icon/book/16/stree.icn
+-r--r--r-- 0/10            220 May 12 14:37 1983 ./icon/book/16/teq.icn
+-r--r--r-- 0/10             72 May 12 14:37 1983 ./icon/book/16/visit.icn
+drwxrwxr-x 0/10              0 Aug  6 04:43 1983 ./icon/book/17/
+-r--r--r-- 0/10            457 May 12 14:37 1983 ./icon/book/17/close.icn
+-r--r--r-- 0/10            323 May 12 14:37 1983 ./icon/book/17/disp.icn
+-r--r--r-- 0/10            339 May 12 14:37 1983 ./icon/book/17/reverse.icn
+-r--r--r-- 0/10             68 May 12 14:37 1983 ./icon/book/17/shuffle2.icn
+-r--r--r-- 0/10            370 May 12 14:37 1983 ./icon/book/17/swap.icn
+drwxrwxr-x 0/10              0 Aug  6 04:43 1983 ./icon/book/18/
+-r--r--r-- 0/10            381 May 12 14:37 1983 ./icon/book/18/add1.icn
+-r--r--r-- 0/10            704 May 12 14:37 1983 ./icon/book/18/add2.icn
+-r--r--r-- 0/10            723 May 12 14:37 1983 ./icon/book/18/add3.icn
+-r--r--r-- 0/10            266 May 12 14:37 1983 ./icon/book/18/mpy.icn
+drwxrwxr-x 0/10              0 Aug  6 04:43 1983 ./icon/book/19/
+-r--r--r-- 0/10            627 May 12 14:37 1983 ./icon/book/19/drv.icn
+-r--r--r-- 0/10            479 May 12 14:37 1983 ./icon/book/19/fix.icn
+-r--r--r-- 0/10             68 May 12 14:37 1983 ./icon/book/19/form1.icn
+-r--r--r-- 0/10            246 May 12 14:37 1983 ./icon/book/19/form2.icn
+-r--r--r-- 0/10            237 May 12 14:37 1983 ./icon/book/19/symadd.icn
+-r--r--r-- 0/10             84 May 12 14:37 1983 ./icon/book/19/symop.icn
+drwxrwxr-x 0/10              0 Aug  6 04:43 1983 ./icon/book/20/
+-r--r--r-- 0/10           1056 May 12 14:37 1983 ./icon/book/20/rsg1.icn
+drwxrwxr-x 0/10              0 Aug  6 04:43 1983 ./icon/book/04/
+-r--r--r-- 0/10            126 May 12 14:37 1983 ./icon/book/04/balop.icn
+-r--r--r-- 0/10            100 May 12 14:37 1983 ./icon/book/04/icwrite.icn
+-r--r--r-- 0/10            109 May 12 14:37 1983 ./icon/book/04/inset1.icn
+-r--r--r-- 0/10             80 May 12 14:37 1983 ./icon/book/04/inset2.icn
+-r--r--r-- 0/10            132 May 12 14:37 1983 ./icon/book/04/lmark.icn
+-r--r--r-- 0/10            264 May 12 14:37 1983 ./icon/book/04/minmax1.icn
+-r--r--r-- 0/10            241 May 12 14:37 1983 ./icon/book/04/minmax2.icn
+-r--r--r-- 0/10            153 May 12 14:37 1983 ./icon/book/04/powers.icn
+-r--r--r-- 0/10            112 May 12 14:38 1983 ./icon/book/04/section.icn
+-r--r--r-- 0/10            178 May 12 14:38 1983 ./icon/book/04/vbars.icn
+-r--r--r-- 0/10            210 May 12 14:38 1983 ./icon/book/04/word1.icn
+-r--r--r-- 0/10            162 May 12 14:38 1983 ./icon/book/04/word2.icn
+-r--r--r-- 0/10            220 May 12 14:38 1983 ./icon/book/04/words1.icn
+-r--r--r-- 0/10            138 May 12 14:38 1983 ./icon/book/04/wordlist1.icn
+drwxrwxr-x 0/10              0 Aug  6 04:43 1983 ./icon/book/f/
+-r--r--r-- 0/10            630 May 12 14:38 1983 ./icon/book/f/8qp.icn
+-r--r--r-- 0/10            278 May 12 14:38 1983 ./icon/book/f/abcd.icn
+-r--r--r-- 0/10            132 May 12 14:38 1983 ./icon/book/f/acker1.icn
+-r--r--r-- 0/10            319 May 12 14:38 1983 ./icon/book/f/acker2.icn
+-r--r--r-- 0/10            289 May 12 14:38 1983 ./icon/book/f/ackertrace.icn
+-r--r--r-- 0/10            107 May 12 14:38 1983 ./icon/book/f/allbal1.icn
+-r--r--r-- 0/10            105 May 12 14:38 1983 ./icon/book/f/allbal2.icn
+-r--r--r-- 0/10             70 May 12 14:38 1983 ./icon/book/f/allbal3.icn
+-r--r--r-- 0/10            116 May 12 14:38 1983 ./icon/book/f/aver.icn
+-r--r--r-- 0/10             51 May 12 14:38 1983 ./icon/book/f/bincop.icn
+-r--r--r-- 0/10            423 May 12 14:38 1983 ./icon/book/f/boldface.icn
+-r--r--r-- 0/10            160 May 12 14:38 1983 ./icon/book/f/both.icn
+-r--r--r-- 0/10            454 May 12 14:38 1983 ./icon/book/f/btree.icn
+-r--r--r-- 0/10            200 May 12 14:38 1983 ./icon/book/f/cdigit.icn
+-r--r--r-- 0/10            234 May 12 14:38 1983 ./icon/book/f/charimage.icn
+-r--r--r-- 0/10            758 May 12 14:38 1983 ./icon/book/f/complex.icn
+-r--r--r-- 0/10            304 May 12 14:38 1983 ./icon/book/f/dashes.icn
+-r--r--r-- 0/10             66 May 12 14:38 1983 ./icon/book/f/delete1.icn
+-r--r--r-- 0/10             94 May 12 14:38 1983 ./icon/book/f/delete2.icn
+-r--r--r-- 0/10            121 May 12 14:38 1983 ./icon/book/f/depth.icn
+-r--r--r-- 0/10            469 May 12 14:38 1983 ./icon/book/f/enrepl.icn
+-r--r--r-- 0/10            230 May 12 14:38 1983 ./icon/book/f/exor2.icn
+-r--r--r-- 0/10            100 May 12 14:38 1983 ./icon/book/f/fact.icn
+-r--r--r-- 0/10             91 May 12 14:38 1983 ./icon/book/f/filerev.icn
+-r--r--r-- 0/10            421 May 12 14:38 1983 ./icon/book/f/filter2.icn
+-r--r--r-- 0/10            263 May 12 14:38 1983 ./icon/book/f/filter3.icn
+-r--r--r-- 0/10            193 May 12 14:38 1983 ./icon/book/f/first.icn
+-r--r--r-- 0/10            232 May 12 14:38 1983 ./icon/book/f/fixfunc.icn
+-r--r--r-- 0/10            283 May 12 14:38 1983 ./icon/book/f/form3.icn
+-r--r--r-- 0/10            254 May 12 14:38 1983 ./icon/book/f/gener.icn
+-r--r--r-- 0/10             97 May 12 14:38 1983 ./icon/book/f/genpos.icn
+-r--r--r-- 0/10             89 May 12 14:38 1983 ./icon/book/f/gensubstr.icn
+-r--r--r-- 0/10             54 May 12 14:38 1983 ./icon/book/f/hexcvt.icn
+-r--r--r-- 0/10            263 May 12 14:38 1983 ./icon/book/f/infix.icn
+-r--r--r-- 0/10             86 May 12 14:38 1983 ./icon/book/f/large.icn
+-r--r--r-- 0/10             60 May 12 14:38 1983 ./icon/book/f/lastline.icn
+-r--r--r-- 0/10             81 May 12 14:38 1983 ./icon/book/f/limit4.icn
+-r--r--r-- 0/10            262 May 12 14:38 1983 ./icon/book/f/locate3.icn
+-r--r--r-- 0/10             80 May 12 14:38 1983 ./icon/book/f/nchars.icn
+-r--r--r-- 0/10             78 May 12 14:38 1983 ./icon/book/f/oddline.icn
+-r--r--r-- 0/10            167 May 12 14:38 1983 ./icon/book/f/palseq.icn
+-r--r--r-- 0/10             83 May 12 14:38 1983 ./icon/book/f/pause.icn
+-r--r--r-- 0/10            182 May 12 14:38 1983 ./icon/book/f/qseq.icn
+-r--r--r-- 0/10            127 May 12 14:38 1983 ./icon/book/f/repalt.icn
+-r--r--r-- 0/10             88 May 12 14:38 1983 ./icon/book/f/rotate.icn
+-r--r--r-- 0/10            198 May 12 14:38 1983 ./icon/book/f/rsg2.icn
+-r--r--r-- 0/10            206 May 12 14:38 1983 ./icon/book/f/rsg3.icn
+-r--r--r-- 0/10            124 May 12 14:38 1983 ./icon/book/f/seqimage.icn
+-r--r--r-- 0/10             96 May 12 14:38 1983 ./icon/book/f/space.icn
+-r--r--r-- 0/10            280 May 12 14:38 1983 ./icon/book/f/symmpy.icn
+-r--r--r-- 0/10            263 May 12 14:38 1983 ./icon/book/f/symsub.icn
+-r--r--r-- 0/10            458 May 12 14:38 1983 ./icon/book/f/tabwords3.icn
+-r--r--r-- 0/10            111 May 12 14:38 1983 ./icon/book/f/tcopy.icn
+-r--r--r-- 0/10            399 May 12 14:38 1983 ./icon/book/f/uscore.icn
+-r--r--r-- 0/10            147 May 12 14:38 1983 ./icon/book/f/vcount.icn
+-r--r--r-- 0/10           5208 May 12 14:38 1983 ./icon/book/page.ls
+-r--r--r-- 0/10           5208 May 12 14:38 1983 ./icon/book/alpha.ls
+-r--r--r-- 0/10            821 May 12 14:38 1983 ./icon/book/Readme
+-r--r--r-- 0/10            787 Jul 29 03:00 1983 ./icon/Makefile
+-r--r--r-- 0/10           1374 Jul 27 18:07 1983 ./icon/README
+-r-xr-xr-x 0/10            157 Jun 24 06:55 1983 ./icon/config
+drwxrwxr-x 0/10              0 Aug  6 04:43 1983 ./icon/man/
+-r--r--r-- 0/10           5449 Jul 29 02:58 1983 ./icon/man/iconc.1
+-r--r--r-- 0/10           7131 Jul 29 02:59 1983 ./icon/man/icont.1
+-r--r--r-- 0/10            361 Jul 29 02:57 1983 ./icon/man/Makefile
+drwxrwxr-x 0/10              0 Aug 12 08:50 1983 ./icon/doc/
+-r--r--r-- 0/10          20796 Aug  5 09:12 1983 ./icon/doc/install
+-r--r--r-- 0/10          17744 May 12 14:36 1983 ./icon/doc/tmac.tr
+-r--r--r-- 0/10           3119 Aug  3 03:56 1983 ./icon/doc/extensions
+-r--r--r-- 0/10          23386 May 12 14:36 1983 ./icon/doc/overview
+-r--r--r-- 0/10            158 May 12 14:36 1983 ./icon/doc/Makefile
+-r--r--r-- 0/10            925 May 12 14:36 1983 ./icon/doc/defaults
+-r--r--r-- 0/10           1285 May 12 14:36 1983 ./icon/doc/touradd
+-r--r--r-- 0/10           3908 May 12 14:36 1983 ./icon/doc/v5gover
+-r--r--r-- 0/10           4114 May 12 14:36 1983 ./icon/doc/runerrs
+-r--r--r-- 0/10          23441 Aug 13 02:50 1983 ./icon/doc/overview.4bsd
+-r--r--r-- 0/10            450 Jul 27 16:34 1983 ./Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:44 1983 ./sccstorcs/
+-r--r--r-- 0/10            232 Jul 28 01:23 1983 ./sccstorcs/...
+drwxrwxr-x 0/10              0 Aug  6 04:44 1983 ./sccstorcs/man/
+drwxrwxr-x 0/10              0 Aug  6 04:44 1983 ./sccstorcs/man/man8/
+-r--r--r-- 0/10            353 Jul 28 01:51 1983 ./sccstorcs/man/man8/Makefile
+-r--r--r-- 0/10           1524 Jul 29 09:48 1983 ./sccstorcs/man/man8/sccstorcs.8
+drwxrwxr-x 0/10              0 Aug 11 13:06 1983 ./sccstorcs/src/
+-r--r--r-- 0/10           8673 Jul  1 04:26 1983 ./sccstorcs/src/sccstorcs.c
+-r--r--r-- 0/10            922 Jul  1 04:26 1983 ./sccstorcs/src/Makefile
+-r--r--r-- 0/10            347 Jul 28 01:23 1983 ./sccstorcs/Makefile
+-r--r--r-- 0/10            422 Jul 27 18:02 1983 ./sccstorcs/README
+drwxrwxr-x 0/10              0 Aug 14 12:03 1983 ./mh/
+drwxrwxr-x 0/10              0 Aug  6 04:44 1983 ./mh/support/
+-r--r--r-- 0/10             28 Jun 25 20:28 1983 ./mh/support/components
+-r--r--r-- 0/10             34 Jun  9 13:36 1982 ./mh/support/distcomps
+-r--r--r-- 0/10           4596 Jun  9 13:36 1982 ./mh/support/l.c
+-r--r--r-- 0/10              1 Jun  9 13:36 1982 ./mh/support/news-1char
+-r--r--r-- 0/10            215 Jun  9 13:36 1982 ./mh/support/news-mh_receiv
+drwxrwxr-x 0/10              0 Nov  4 07:45 1983 ./mh/strings/
+-r--r--r-- 0/10            178 Jun  9 13:38 1982 ./mh/strings/Mailprog.c
+-r--r--r-- 0/10            719 Jul  7 18:47 1983 ./mh/strings/Makefile
+-r--r--r-- 0/10             50 Jun  9 13:38 1982 ./mh/strings/anoyes.c
+-r--r--r-- 0/10             38 Jun  9 13:38 1982 ./mh/strings/components.c
+-r--r--r-- 0/10             31 Jun  9 13:38 1982 ./mh/strings/current.c
+-r--r--r-- 0/10             33 Jun  9 13:38 1982 ./mh/strings/defalt.c
+-r--r--r-- 0/10             37 Jun  9 13:38 1982 ./mh/strings/distcomps.c
+-r--r--r-- 0/10             33 Jun  9 13:38 1982 ./mh/strings/draft.c
+-r--r--r-- 0/10            177 Jun 24 07:37 1983 ./mh/strings/fileproc.c
+-r--r--r-- 0/10            105 Jun  9 13:38 1982 ./mh/strings/foldprot.c
+-r--r--r-- 0/10            128 Jun  9 13:38 1982 ./mh/strings/hostname.c
+-r--r--r-- 0/10            188 Jun 24 07:37 1983 ./mh/strings/installproc.c
+-r--r--r-- 0/10             34 Jun  9 13:38 1982 ./mh/strings/listname.c
+-r--r--r-- 0/10             62 Jun  9 13:38 1982 ./mh/strings/localname.c
+-r--r--r-- 0/10            749 Nov  3 10:51 1983 ./mh/strings/lockdir.c
+-r--r--r-- 0/10            259 Jun  9 13:38 1982 ./mh/strings/lsproc.c
+-r--r--r-- 0/10            254 Jun  9 13:38 1982 ./mh/strings/mailboxes.c
+-r--r--r-- 0/10            167 Jun  9 13:38 1982 ./mh/strings/mailproc.c
+-r--r--r-- 0/10            111 Jun  9 13:38 1982 ./mh/strings/mh_defs.c
+-r--r--r-- 0/10            231 Jul  7 17:39 1983 ./mh/strings/mh_deliver.c
+-r--r--r-- 0/10             40 Jun  9 13:38 1982 ./mh/strings/mh_prof.c
+-r--r--r-- 0/10            218 Jun 24 07:37 1983 ./mh/strings/mhnews.c
+-r--r--r-- 0/10            213 Jun  9 13:38 1982 ./mh/strings/msgprot.c
+-r--r--r-- 0/10             42 Jun  9 13:38 1982 ./mh/strings/pfolder.c
+-r--r--r-- 0/10            125 Jun  9 13:38 1982 ./mh/strings/prproc.c
+-r--r--r-- 0/10            148 Jun 24 07:37 1983 ./mh/strings/scanproc.c
+-r--r--r-- 0/10            238 Jun 24 07:37 1983 ./mh/strings/sendproc.c
+-r--r--r-- 0/10            387 Jun  9 13:38 1982 ./mh/strings/showproc.c
+-r--r--r-- 0/10            147 Jun 24 07:38 1983 ./mh/strings/stdcomps.c
+-r--r--r-- 0/10            129 Jun 24 07:38 1983 ./mh/strings/stddcomps.c
+-r--r--r-- 0/10            929 Jun  9 13:38 1982 ./mh/strings/strings.h
+-r--r--r-- 0/10            349 Jun  9 13:38 1982 ./mh/strings/sysed.c
+-r--r--r-- 0/10            191 Jun 24 07:38 1983 ./mh/strings/unixtomh.c
+drwxrwxr-x 0/10              0 Aug  6 04:44 1983 ./mh/doc/
+-r--r--r-- 0/10          80473 Jun  9 13:39 1982 ./mh/doc/mh.me
+-r--r--r-- 0/10            231 Jun  9 13:39 1982 ./mh/doc/titlepage
+-r--r--r-- 0/10           1774 Jun  9 13:39 1982 ./mh/doc/Alias.Design
+-r--r--r-- 0/10           4231 Jun  9 13:39 1982 ./mh/doc/MHgenerate
+-r--r--r-- 0/10           8459 Jun  9 13:39 1982 ./mh/doc/MHnotes
+-r--r--r-- 0/10           1647 May 25 11:51 1983 ./mh/doc/MH_VGRIND
+-r--r--r-- 0/10             36 Jul 29 08:51 1983 ./mh/doc/Makefile
+drwxrwxr-x 0/10              0 Nov  4 07:45 1983 ./mh/subs/
+-r--r--r-- 0/10           3391 Dec  4 16:02 1982 ./mh/subs/m_convert.c
+-r--r--r-- 0/10            993 Jul  7 17:41 1983 ./mh/subs/Makefile
+-r--r--r-- 0/10            246 Jun  9 13:37 1982 ./mh/subs/add.c
+-r--r--r-- 0/10            174 Jun  9 13:37 1982 ./mh/subs/ambigsw.c
+-r--r--r-- 0/10            214 Jun  9 13:37 1982 ./mh/subs/atooi.c
+-r--r--r-- 0/10            937 Jun  9 13:37 1982 ./mh/subs/brkstring.c
+-r--r--r-- 0/10            286 Jun  9 13:37 1982 ./mh/subs/cdate.c
+-r--r--r-- 0/10            183 Jun  9 13:37 1982 ./mh/subs/cndfree.c
+-r--r--r-- 0/10            282 Jun  9 13:37 1982 ./mh/subs/concat.c
+-r--r--r-- 0/10             90 Jun  9 13:37 1982 ./mh/subs/copy.c
+-r--r--r-- 0/10            125 Jun  9 13:37 1982 ./mh/subs/copyip.c
+-r--r--r-- 0/10            158 Jun  9 13:37 1982 ./mh/subs/cputc.c
+-r--r--r-- 0/10            861 Jun  9 13:37 1982 ./mh/subs/crpbrkstring.c
+-r--r--r-- 0/10            163 Jun  9 13:37 1982 ./mh/subs/done.c
+-r--r--r-- 0/10            446 Jun  9 13:37 1982 ./mh/subs/fdcompare.c
+-r--r--r-- 0/10            662 Jun  9 13:37 1982 ./mh/subs/gans.c
+-r--r--r-- 0/10           1030 Jun  9 13:37 1982 ./mh/subs/getans.c
+-r--r--r-- 0/10            114 Jun  9 13:37 1982 ./mh/subs/getcpy.c
+-r--r--r-- 0/10            132 Jun  9 13:37 1982 ./mh/subs/help.c
+-r--r--r-- 0/10            443 Jun  9 13:37 1982 ./mh/subs/invo_name.c
+-r--r--r-- 0/10            117 Jun  9 13:37 1982 ./mh/subs/locv.c
+-r--r--r-- 0/10            370 Jun  9 13:37 1982 ./mh/subs/m_delete.c
+-r--r--r-- 0/10           2287 Jul  7 17:40 1983 ./mh/subs/m_edit.c
+-r--r--r-- 0/10            199 Jun  9 13:37 1982 ./mh/subs/m_find.c
+-r--r--r-- 0/10           2153 Jun  9 13:37 1982 ./mh/subs/m_getdefs.c
+-r--r--r-- 0/10           1623 Jun  9 13:37 1982 ./mh/subs/m_getfld.c
+-r--r--r-- 0/10            191 Jun  9 13:37 1982 ./mh/subs/m_getfolder.c
+-r--r--r-- 0/10            200 Jun  9 13:37 1982 ./mh/subs/m_gmprot.c
+-r--r--r-- 0/10           2613 Jul  7 17:59 1983 ./mh/subs/m_gmsg.c
+-r--r--r-- 0/10            507 Jun  9 13:37 1982 ./mh/subs/m_maildir.c
+-r--r--r-- 0/10            100 Jun  9 13:37 1982 ./mh/subs/peekc.c
+-r--r--r-- 0/10            281 Jun  9 13:37 1982 ./mh/subs/m_name.c
+-r--r--r-- 0/10            498 Jun  9 13:37 1982 ./mh/subs/m_replace.c
+-r--r--r-- 0/10            336 Jun  9 13:37 1982 ./mh/subs/m_send.c
+-r--r--r-- 0/10            485 Jun  9 13:37 1982 ./mh/subs/m_setcur.c
+-r--r--r-- 0/10            492 Jun  9 13:37 1982 ./mh/subs/m_update.c
+-r--r--r-- 0/10            602 Jun  9 13:37 1982 ./mh/subs/makedir.c
+-r--r--r-- 0/10            414 Jun  9 13:37 1982 ./mh/subs/makename.c
+-r--r--r-- 0/10            122 Jun  9 13:37 1982 ./mh/subs/pr_array.c
+-r--r--r-- 0/10            617 Jun  9 13:37 1982 ./mh/subs/printsw.c
+-r--r--r-- 0/10           1270 Jul  7 18:12 1983 ./mh/subs/putdate.c
+-r--r--r-- 0/10            391 Jun  9 13:37 1982 ./mh/subs/r1bindex.c
+-r--r--r-- 0/10            881 Jun  9 13:37 1982 ./mh/subs/smatch.c
+-r--r--r-- 0/10            113 Jun  9 13:37 1982 ./mh/subs/ssequal.c
+-r--r--r-- 0/10            234 Jun  9 13:37 1982 ./mh/subs/trimcpy.c
+-r--r--r-- 0/10            107 Jun  9 13:37 1982 ./mh/subs/type.c
+-r--r--r-- 0/10            153 Jun  9 13:37 1982 ./mh/subs/uleq.c
+-r--r--r-- 0/10           5344 Jun  9 13:39 1982 ./mh/subs/mh.h
+-r--r--r-- 0/10            656 Mar  3 11:17 1983 ./mh/subs/showfile.c
+drwxrwxr-x 0/10              0 Aug  6 04:45 1983 ./mh/man/
+-r--r--r-- 0/10           2932 Aug  4 09:17 1983 ./mh/man/comp.1
+-r--r--r-- 0/10           2912 Aug  4 09:16 1983 ./mh/man/dist.1
+-r--r--r-- 0/10              0 Aug  5 08:54 1983 ./mh/man/print
+-r--r--r-- 0/10           3460 Aug  5 08:46 1983 ./mh/man/folder.1
+-r--r--r-- 0/10           2148 Aug  4 09:32 1983 ./mh/man/forw.1
+-r--r--r-- 0/10           2684 Aug  4 09:34 1983 ./mh/man/inc.1
+-r--r--r-- 0/10            834 Aug  4 09:35 1983 ./mh/man/next.1
+-r--r--r-- 0/10           6466 Aug  5 08:50 1983 ./mh/man/pick.1
+-r--r--r-- 0/10            837 Aug  4 09:37 1983 ./mh/man/prev.1
+-r--r--r-- 0/10           2347 Aug  4 09:41 1983 ./mh/man/prompter.1
+-r--r--r-- 0/10           2307 Aug  4 09:42 1983 ./mh/man/repl.1
+-r--r--r-- 0/10           2006 Aug  4 09:43 1983 ./mh/man/rmf.1
+-r--r--r-- 0/10            786 Aug  4 09:43 1983 ./mh/man/rmm.1
+-r--r--r-- 0/10           2013 Aug  4 09:44 1983 ./mh/man/scan.1
+-r--r--r-- 0/10           2613 Aug  4 09:45 1983 ./mh/man/send.1
+-r--r--r-- 0/10           1946 Aug  4 09:46 1983 ./mh/man/show.1
+-r--r--r-- 0/10            516 Aug  5 08:26 1983 ./mh/man/Makefile
+-r--r--r-- 0/10           2950 Aug  4 09:28 1983 ./mh/man/file.1
+drwxrwxr-x 0/10              0 Nov  4 07:45 1983 ./mh/cmds/
+-r--r--r-- 0/10           5903 Jul 13 03:20 1983 ./mh/cmds/news.c
+-r--r--r-- 0/10           7015 Jul 13 03:20 1983 ./mh/cmds/folder.c
+-r--r--r-- 0/10           4001 Jul 13 03:20 1983 ./mh/cmds/aliascheck.c
+-r--r--r-- 0/10           2337 Jul 13 03:20 1983 ./mh/cmds/annotate.c
+-r--r--r-- 0/10           6542 Jul 13 03:20 1983 ./mh/cmds/dist.c
+-r--r--r-- 0/10           7181 Jul 13 03:20 1983 ./mh/cmds/forw.c
+-r--r--r-- 0/10           2964 Jul 13 03:20 1983 ./mh/cmds/rmm.c
+-r--r--r-- 0/10           6618 Jul 13 03:20 1983 ./mh/cmds/Makefile
+-r--r--r-- 0/10           6715 Jul 13 03:20 1983 ./mh/cmds/send.c
+-r--r--r-- 0/10           3738 Jul 13 03:20 1983 ./mh/cmds/rmf.c
+-r--r--r-- 0/10           2165 Jul 13 03:20 1983 ./mh/cmds/next.c
+-r--r--r-- 0/10          17653 Sep 26 11:05 1983 ./mh/cmds/deliver.c
+-r--r--r-- 0/10          10739 Jul 13 03:20 1983 ./mh/cmds/unixtomh.c
+-r--r--r-- 0/10           8693 Jul 13 03:20 1983 ./mh/cmds/refile.c
+-r--r--r-- 0/10           3736 Jul 13 03:20 1983 ./mh/cmds/comp.c
+-r--r--r-- 0/10           3953 Jul 13 03:20 1983 ./mh/cmds/mail.c
+-r--r--r-- 0/10            843 Jul 13 03:20 1983 ./mh/cmds/emitl.c
+-r--r--r-- 0/10           4289 Jul 13 03:20 1983 ./mh/cmds/grep.c
+-r--r--r-- 0/10           7140 Sep 26 11:05 1983 ./mh/cmds/inc.c
+-r--r--r-- 0/10           5344 Jul 13 03:20 1983 ./mh/cmds/mh.h
+-r--r--r-- 0/10           2673 Jul 13 03:20 1983 ./mh/cmds/install-mh.c
+-r--r--r-- 0/10             22 Jul 13 03:20 1983 ./mh/cmds/nexthdr.c
+-r--r--r-- 0/10          12586 Jul 13 03:49 1983 ./mh/cmds/pick.c
+-r--r--r-- 0/10             24 Jul 13 03:21 1983 ./mh/cmds/prevhdr.c
+-r--r--r-- 0/10           7229 Jul 13 03:21 1983 ./mh/cmds/reply.c
+-r--r--r-- 0/10           5374 Jul 13 03:49 1983 ./mh/cmds/prompter.c
+-r--r--r-- 0/10           4529 Jul 13 03:21 1983 ./mh/cmds/replsubs.c
+-r--r--r-- 0/10           7445 Sep 26 11:04 1983 ./mh/cmds/rescue.c
+-r--r--r-- 0/10           3044 Jul 13 03:21 1983 ./mh/cmds/scan.c
+-r--r--r-- 0/10           8040 Jul 13 03:21 1983 ./mh/cmds/scansub.c
+-r--r--r-- 0/10           3002 Jul 13 03:21 1983 ./mh/cmds/show.c
+-r--r--r-- 0/10           1023 Jul 13 03:21 1983 ./mh/cmds/strings.h
+-r--r--r-- 0/10            263 Jul 13 03:21 1983 ./mh/cmds/vars.c
+-r--r--r-- 0/10            193 Aug  7 05:32 1983 ./mh/Makefile
+-r--r--r-- 0/10           1261 Jul 28 04:29 1983 ./mh/README
+drwxrwxr-x 0/10              0 Aug  6 04:46 1983 ./notes/
+-r--r--r-- 0/10            837 Jul 29 02:45 1983 ./notes/Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:45 1983 ./notes/man/
+-r--r--r-- 0/10           8324 Aug  4 04:39 1983 ./notes/man/notes.1
+-r--r--r-- 0/10           6196 Aug  4 04:39 1983 ./notes/man/notes.8
+-r--r--r-- 0/10             76 Jul 29 01:49 1983 ./notes/man/Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:45 1983 ./notes/help/
+-r--r--r-- 0/10            465 Apr  5 10:54 1983 ./notes/help/access.help
+-r--r--r-- 0/10            766 Apr  5 10:54 1983 ./notes/help/dir.help
+-r--r--r-- 0/10           1200 Apr  5 10:55 1983 ./notes/help/index.help
+-r--r--r-- 0/10            580 Apr  5 10:55 1983 ./notes/help/lim.help
+-r--r--r-- 0/10           1589 Apr  5 10:56 1983 ./notes/help/read.help
+-r--r--r-- 0/10           3104 Jul 29 02:38 1983 ./notes/README
+drwxrwxr-x 0/10              0 Aug 10 03:26 1983 ./notes/doc/
+-r--r--r-- 0/10           1767 Aug 10 03:26 1983 ./notes/doc/pretty
+-r--r--r-- 0/10           4155 Aug 10 03:26 1983 ./notes/doc/4
+-r--r--r-- 0/10          17943 Aug 10 03:26 1983 ./notes/doc/sum.tbl.out
+-r--r--r-- 0/10          87840 Aug 10 03:26 1983 ./notes/doc/doc
+-r--r--r-- 0/10            386 Aug 10 03:26 1983 ./notes/doc/Makefile
+-r--r--r-- 0/10           1621 Aug 10 03:26 1983 ./notes/doc/summary
+-r--r--r-- 0/10              4 Aug 10 03:26 1983 ./notes/doc/vtoc
+-r--r--r-- 0/10           2262 Aug 10 03:26 1983 ./notes/doc/a.checklist
+-r--r--r-- 0/10             56 Aug 10 03:26 1983 ./notes/doc/5
+-r--r--r-- 0/10          28064 Aug 10 03:26 1983 ./notes/doc/3
+-r--r--r-- 0/10          25733 Aug 10 03:26 1983 ./notes/doc/2
+-r--r--r-- 0/10           2523 Aug 10 03:26 1983 ./notes/doc/1
+-r--r--r-- 0/10            748 Aug 10 03:26 1983 ./notes/doc/0
+-r--r--r-- 0/10           1880 Aug 10 03:26 1983 ./notes/doc/b.future
+-r--r--r-- 0/10           3463 Aug 10 03:26 1983 ./notes/doc/c.update
+-r--r--r-- 0/10           3816 Aug 10 03:26 1983 ./notes/doc/notes.update
+drwxrwxr-x 0/10              0 Aug 11 12:52 1983 ./notes/src/
+-r--r--r-- 0/10           8854 Apr  5 10:54 1983 ./notes/src/access.c
+-r--r--r-- 0/10           1984 Apr  5 10:54 1983 ./notes/src/adnote.c
+-r--r--r-- 0/10           1397 Apr  5 10:54 1983 ./notes/src/adresp.c
+-r--r--r-- 0/10           6130 Jul  8 18:38 1983 ./notes/src/archiver.c
+-r--r--r-- 0/10           2893 Apr  5 10:54 1983 ./notes/src/asearch.c
+-r--r--r-- 0/10           6466 Apr  5 10:54 1983 ./notes/src/bnews.c
+-r--r--r-- 0/10            708 Apr  5 10:54 1983 ./notes/src/bnews.h
+-r--r--r-- 0/10          13713 Apr  5 10:54 1983 ./notes/src/bnewsinput.c
+-r--r--r-- 0/10           2352 Apr  5 10:54 1983 ./notes/src/canon.h
+-r--r--r-- 0/10           1146 Apr  5 10:54 1983 ./notes/src/check.c
+-r--r--r-- 0/10           3327 Apr  5 10:54 1983 ./notes/src/checknotes.c
+-r--r--r-- 0/10           6957 Jun 22 06:12 1983 ./notes/src/compress.c
+-r--r--r-- 0/10           2684 Apr  5 10:54 1983 ./notes/src/control.c
+-r--r--r-- 0/10           1618 Apr  5 10:54 1983 ./notes/src/doc.h
+-r--r--r-- 0/10           3463 Apr  5 10:54 1983 ./notes/src/cursor.c
+-r--r--r-- 0/10            984 Apr  5 10:54 1983 ./notes/src/datein.c
+-r--r--r-- 0/10            837 Apr  5 10:54 1983 ./notes/src/delete.c
+-r--r--r-- 0/10           1485 Apr  5 10:54 1983 ./notes/src/dmpnote.c
+-r--r--r-- 0/10           1976 Apr  5 10:54 1983 ./notes/src/dmpresp.c
+-r--r--r-- 0/10           5827 Apr  5 10:54 1983 ./notes/src/dropt.c
+-r--r--r-- 0/10           8179 Apr 19 15:21 1983 ./notes/src/dsply.c
+-r--r--r-- 0/10           3314 Apr  5 10:55 1983 ./notes/src/expand.c
+-r--r--r-- 0/10           1814 Apr  5 10:55 1983 ./notes/src/find.c
+-r--r--r-- 0/10           2508 Apr  5 10:55 1983 ./notes/src/gdate.c
+-r--r--r-- 0/10           1966 Apr  5 10:55 1983 ./notes/src/getnet.c
+-r--r--r-- 0/10            757 Apr  5 10:55 1983 ./notes/src/globs.h
+-r--r--r-- 0/10            954 Apr  5 10:55 1983 ./notes/src/gname.c
+-r--r--r-- 0/10           1417 Apr  5 10:55 1983 ./notes/src/gtext.c
+-r--r--r-- 0/10            737 Jul  8 18:38 1983 ./notes/src/gtime.c
+-r--r--r-- 0/10            548 Apr  5 10:55 1983 ./notes/src/help.c
+-r--r--r-- 0/10           6990 Jun 26 04:39 1983 ./notes/src/index.c
+-r--r--r-- 0/10           1963 Apr  5 10:55 1983 ./notes/src/ldmisc.c
+-r--r--r-- 0/10           2361 Apr  5 10:55 1983 ./notes/src/limindx.c
+-r--r--r-- 0/10           6780 Apr  5 10:55 1983 ./notes/src/loadem.c
+-r--r--r-- 0/10           3473 Apr  5 10:55 1983 ./notes/src/lprnote.c
+-r--r--r-- 0/10           1996 Apr  5 10:55 1983 ./notes/src/lrsp.c
+-r--r--r-- 0/10           2915 Apr 17 10:54 1983 ./notes/src/mailit.c
+-r--r--r-- 0/10           4032 Apr  5 10:55 1983 ./notes/src/main.c
+-r--r--r-- 0/10           9469 Apr  5 10:55 1983 ./notes/src/misc.c
+-r--r--r-- 0/10           6930 Apr 17 10:54 1983 ./notes/src/miscio.c
+-r--r--r-- 0/10           6188 Jun 22 06:08 1983 ./notes/src/mknf.c
+-r--r--r-- 0/10           1528 Apr  5 10:55 1983 ./notes/src/net.h
+-r--r--r-- 0/10           4887 Apr  5 10:55 1983 ./notes/src/newsdump.c
+-r--r--r-- 0/10           4898 Apr  5 10:55 1983 ./notes/src/newsfuncs.c
+-r--r--r-- 0/10           1645 Apr  5 10:55 1983 ./notes/src/newsgate.h
+-r--r--r-- 0/10           2007 Apr  5 10:55 1983 ./notes/src/newsgroup.c
+-r--r--r-- 0/10          14785 Apr  5 10:55 1983 ./notes/src/newsinput.c
+-r--r--r-- 0/10           3988 Apr  5 10:55 1983 ./notes/src/newsout.c
+-r--r--r-- 0/10           1357 Apr  5 10:55 1983 ./notes/src/newsoutput.c
+-r--r--r-- 0/10           2439 Apr  5 10:56 1983 ./notes/src/next.c
+-r--r--r-- 0/10           1746 Apr  5 10:56 1983 ./notes/src/nfalias.c
+-r--r--r-- 0/10           1981 Apr  5 10:56 1983 ./notes/src/nfarchive.c
+-r--r--r-- 0/10           4569 Apr  5 10:56 1983 ./notes/src/nfbatch.c
+-r--r--r-- 0/10           1356 Apr  5 10:56 1983 ./notes/src/nfcomment.c
+-r--r--r-- 0/10           2710 Apr  5 10:56 1983 ./notes/src/nfpipe.c
+-r--r--r-- 0/10           3745 Apr  5 10:56 1983 ./notes/src/nfprint.c
+-r--r--r-- 0/10           3024 Apr  5 10:56 1983 ./notes/src/nfrcv.c
+-r--r--r-- 0/10           3815 Jul  8 18:39 1983 ./notes/src/nfrec.c
+-r--r--r-- 0/10           5343 Apr  5 10:56 1983 ./notes/src/nfsend.c
+-r--r--r-- 0/10           5067 Apr  5 10:56 1983 ./notes/src/nfstats.c
+-r--r--r-- 0/10           5322 Apr  5 10:56 1983 ./notes/src/nfxmit.c
+-r--r--r-- 0/10           3183 Apr  5 10:56 1983 ./notes/src/note.c
+-r--r--r-- 0/10           2172 Apr  5 10:56 1983 ./notes/src/pagein.c
+-r--r--r-- 0/10            969 Apr  5 10:56 1983 ./notes/src/pageout.c
+-r--r--r-- 0/10           2256 Jun 24 08:56 1983 ./notes/src/parms.h
+-r--r--r-- 0/10            937 Apr  5 10:56 1983 ./notes/src/pattern.c
+-r--r--r-- 0/10           1035 Apr  5 10:56 1983 ./notes/src/permit.c
+-r--r--r-- 0/10           2061 Apr  5 10:56 1983 ./notes/src/perms.c
+-r--r--r-- 0/10           1487 Apr 17 11:27 1983 ./notes/src/pipeopen.c
+-r--r--r-- 0/10           1595 Apr  5 10:56 1983 ./notes/src/preptxt.c
+-r--r--r-- 0/10           2564 Apr  5 10:56 1983 ./notes/src/prtind.c
+-r--r--r-- 0/10           5334 Jun 22 06:11 1983 ./notes/src/resp.c
+-r--r--r-- 0/10          21506 Apr 17 10:54 1983 ./notes/src/readem.c
+-r--r--r-- 0/10           8538 Jul  8 18:39 1983 ./notes/src/recsio.c
+-r--r--r-- 0/10           2338 Apr  5 10:56 1983 ./notes/src/rmnf.c
+-r--r--r-- 0/10            960 Apr  5 10:56 1983 ./notes/src/savtxt.c
+-r--r--r-- 0/10            178 Apr  5 10:56 1983 ./notes/src/strsave.c
+-r--r--r-- 0/10          11392 Jun 22 06:23 1983 ./notes/src/structs.h
+-r--r--r-- 0/10           1003 Apr  5 10:56 1983 ./notes/src/talkto.c
+-r--r--r-- 0/10           2696 Jun 22 06:10 1983 ./notes/src/times.c
+-r--r--r-- 0/10           2138 Apr  5 10:56 1983 ./notes/src/tsearch.c
+-r--r--r-- 0/10           7792 Apr  5 10:56 1983 ./notes/src/tags
+-r--r--r-- 0/10          16510 Jul  8 19:05 1983 ./notes/src/Makefile
+-r--r--r-- 0/10            175 Apr  5 10:54 1983 ./notes/src/TODO
+-r--r--r-- 0/10          16724 Jul  8 18:59 1983 ./notes/src/Makefile.old
+-r--r--r-- 0/10            538 Jul  8 19:32 1983 ./notes/src/main.i
+drwxrwxr-x 0/10              0 Aug  6 04:49 1983 ./rcs/
+drwxrwxr-x 0/10              0 Aug  6 04:47 1983 ./rcs/src/
+drwxrwxr-x 0/10              0 Aug 11 13:05 1983 ./rcs/src/rdiff/
+-r--r--r-- 0/10           3216 Jan 25 12:18 1983 ./rcs/src/rdiff/diff.c
+-r--r--r-- 0/10           1952 Jan 25 12:18 1983 ./rcs/src/rdiff/diff.h
+-r--r--r-- 0/10           7637 Jan 25 12:18 1983 ./rcs/src/rdiff/diffdir.c
+-r--r--r-- 0/10          15753 Jan 25 12:18 1983 ./rcs/src/rdiff/diffreg.c
+-r--r--r-- 0/10           1094 Jun 30 10:34 1983 ./rcs/src/rdiff/Makefile
+drwxrwxr-x 0/10              0 Aug 11 13:05 1983 ./rcs/src/rdiff3/
+-r--r--r-- 0/10           9358 Jan 25 12:19 1983 ./rcs/src/rdiff3/diff3.c
+-r--r--r-- 0/10            909 Jun 30 10:32 1983 ./rcs/src/rdiff3/Makefile
+drwxrwxr-x 0/10              0 Aug 11 12:52 1983 ./rcs/src/rcs/
+-r--r--r-- 0/10           7379 Jul  1 03:10 1983 ./rcs/src/rcs/Makefile
+-r--r--r-- 0/10          34769 May 12 06:55 1983 ./rcs/src/rcs/ci.c
+-r--r--r-- 0/10          19629 May 12 06:44 1983 ./rcs/src/rcs/co.c
+-r--r--r-- 0/10           3435 May 12 08:02 1983 ./rcs/src/rcs/ident.c
+-r--r--r-- 0/10           6022 Mar 29 01:04 1983 ./rcs/src/rcs/maketime.c
+-r-xr-xr-x 0/10           1522 Jun 30 09:41 1983 ./rcs/src/rcs/merge
+-r--r--r-- 0/10          14758 Mar 29 01:13 1983 ./rcs/src/rcs/partime.c
+-r--r--r-- 0/10          48190 Jun 30 10:00 1983 ./rcs/src/rcs/rcs.c
+-r--r--r-- 0/10          10194 Jun 30 09:42 1983 ./rcs/src/rcs/rcsbase.h
+-r--r--r-- 0/10           6953 May 12 08:09 1983 ./rcs/src/rcs/rcsdiff.c
+-r--r--r-- 0/10          18254 Sep 26 11:04 1983 ./rcs/src/rcs/rcsedit.c
+-r--r--r-- 0/10           4744 May 12 07:03 1983 ./rcs/src/rcs/rcsfcmp.c
+-r--r--r-- 0/10          23655 May 12 08:01 1983 ./rcs/src/rcs/rcsfnms.c
+-r--r--r-- 0/10          10571 May 12 06:48 1983 ./rcs/src/rcs/rcsgen.c
+-r--r--r-- 0/10           7206 May 12 07:02 1983 ./rcs/src/rcs/rcskeep.c
+-r--r--r-- 0/10          21659 May 12 03:03 1983 ./rcs/src/rcs/rcslex.c
+-r--r--r-- 0/10           5384 May 12 08:10 1983 ./rcs/src/rcs/rcsmerge.c
+-r--r--r-- 0/10          23036 May 12 03:06 1983 ./rcs/src/rcs/rcsrev.c
+-r--r--r-- 0/10          15706 May 12 03:05 1983 ./rcs/src/rcs/rcssyn.c
+-r--r--r-- 0/10           8183 May 12 03:07 1983 ./rcs/src/rcs/rcsutil.c
+-r--r--r-- 0/10          37058 May 12 08:13 1983 ./rcs/src/rcs/rlog.c
+-r--r--r-- 0/10           2908 May 13 00:38 1983 ./rcs/src/rcs/snoop.c
+-r--r--r-- 0/10           1434 Mar 29 01:10 1983 ./rcs/src/rcs/time.h
+drwxrwxr-x 0/10              0 Aug  6 04:48 1983 ./rcs/man/
+drwxrwxr-x 0/10              0 Aug  6 04:48 1983 ./rcs/man/man1/
+-r--r--r-- 0/10          10541 Jun 30 03:35 1983 ./rcs/man/man1/co.1
+-r--r--r-- 0/10           1441 Jun 30 03:35 1983 ./rcs/man/man1/ident.1
+-r--r--r-- 0/10           1303 Jun 30 03:35 1983 ./rcs/man/man1/merge.1
+-r--r--r-- 0/10           6339 Jun 30 03:35 1983 ./rcs/man/man1/rcs.1
+-r--r--r-- 0/10           8953 Jun 30 03:35 1983 ./rcs/man/man1/rcsintro.1
+-r--r--r-- 0/10           2533 Jun 30 03:35 1983 ./rcs/man/man1/rcsmerge.1
+-r--r--r-- 0/10           4824 Jun 30 03:35 1983 ./rcs/man/man1/rlog.1
+-r--r--r-- 0/10            444 Jul 28 01:49 1983 ./rcs/man/man1/Makefile
+-r--r--r-- 0/10           8104 Jun 30 03:35 1983 ./rcs/man/man1/ci.1
+-r--r--r-- 0/10           2071 Jun 30 03:35 1983 ./rcs/man/man1/rcsdiff.1
+drwxrwxr-x 0/10              0 Aug  6 04:48 1983 ./rcs/man/man5/
+-r--r--r-- 0/10           5376 Jun 30 10:13 1983 ./rcs/man/man5/rcsfile.5
+drwxrwxr-x 0/10              0 Aug  6 04:49 1983 ./rcs/doc/
+-r--r--r-- 0/10           5119 Jun 30 03:55 1983 ./rcs/doc/release3.ms
+-r--r--r-- 0/10           6113 Jan 25 12:18 1983 ./rcs/doc/tutorial.ms
+-r--r--r-- 0/10           1332 Jan 25 12:18 1983 ./rcs/doc/revision_no.ms
+-r--r--r-- 0/10           1174 Jan 25 12:18 1983 ./rcs/doc/rdiff3.ms
+-r--r--r-- 0/10           1631 Jan 25 12:18 1983 ./rcs/doc/pretty_keys.ms
+-r--r--r-- 0/10            681 Jan 25 12:18 1983 ./rcs/doc/rdiff.ms
+-r--r--r-- 0/10           3683 Apr 14 07:39 1983 ./rcs/doc/rcs_functs.ms
+-r--r--r-- 0/10            563 Jul 28 01:50 1983 ./rcs/...
+-r--r--r-- 0/10            372 Jul 28 01:51 1983 ./rcs/Makefile
+-r--r--r-- 0/10            488 Jul 28 04:28 1983 ./rcs/README
+drwxrwxr-x 0/10              0 Aug  6 04:51 1983 ./news/
+drwxrwxr-x 0/10              0 Aug  6 04:49 1983 ./news/cvt/
+-r--r--r-- 0/10            125 May  4 03:53 1983 ./news/cvt/cvt.active.sh
+-r--r--r-- 0/10            217 Mar 28 13:49 1983 ./news/cvt/cvt.clean.sh
+-r--r--r-- 0/10           1394 Mar 28 13:49 1983 ./news/cvt/cvt.hist.c
+-r--r--r-- 0/10            275 May  5 03:55 1983 ./news/cvt/cvt.links.sh
+-r--r--r-- 0/10            290 Mar 28 13:49 1983 ./news/cvt/cvt.mkdirs.sh
+-r--r--r-- 0/10            985 Mar 28 13:49 1983 ./news/cvt/cvtactive.c
+-r-xr-xr-x 0/10            203 Jun 25 14:26 1983 ./news/cvt/newactive.sh
+drwxrwxr-x 0/10              0 Aug 11 12:52 1983 ./news/src/
+-r--r--r-- 0/10           5998 Jun 25 14:31 1983 ./news/src/Makefile.usg
+-r--r--r-- 0/10           5175 Jun 25 14:31 1983 ./news/src/Makefile.v7
+-r--r--r-- 0/10           5326 May  5 03:57 1983 ./news/src/sendnews.c
+-r--r--r-- 0/10           1282 Apr 25 13:58 1983 ./news/src/header.h
+-r--r--r-- 0/10          10067 May  4 05:33 1983 ./news/src/checknews.c
+-r--r--r-- 0/10           2334 Mar 31 06:39 1983 ./news/src/caesar.c
+-r--r--r-- 0/10            838 Mar 31 06:39 1983 ./news/src/cextern.c
+-r--r--r-- 0/10           9547 Jun 25 06:27 1983 ./news/src/expire.c
+-r--r--r-- 0/10          15393 Apr  1 02:51 1983 ./news/src/ifuncs.c
+-r--r--r-- 0/10           2977 May  4 04:48 1983 ./news/src/fullname.c
+-r--r--r-- 0/10          10174 Apr 26 03:41 1983 ./news/src/rfuncs2.c
+-r--r--r-- 0/10          21448 Jun 25 06:27 1983 ./news/src/inews.c
+-r--r--r-- 0/10            348 Mar 31 06:39 1983 ./news/src/ftime.c
+-r--r--r-- 0/10          16868 Jun 25 06:27 1983 ./news/src/control.c
+-r--r--r-- 0/10          11607 Jul  8 18:27 1983 ./news/src/getdate.y
+-r--r--r-- 0/10           2280 Apr  4 11:04 1983 ./news/src/batch.c
+-r--r--r-- 0/10           1915 Apr 25 13:58 1983 ./news/src/rparams.h
+-r--r--r-- 0/10            975 May  4 04:01 1983 ./news/src/help
+-r--r--r-- 0/10           2678 Mar 31 06:40 1983 ./news/src/iextern.c
+-r--r--r-- 0/10          15719 Jun 25 06:27 1983 ./news/src/funcs.c
+-r--r--r-- 0/10           2959 Apr 27 13:29 1983 ./news/src/berknews.c
+-r--r--r-- 0/10            900 Apr 25 13:58 1983 ./news/src/postnews.usg
+-r--r--r-- 0/10           1265 Mar 31 06:40 1983 ./news/src/install.usg
+-r--r--r-- 0/10           6871 Jun 25 06:33 1983 ./news/src/readnews.c
+-r--r--r-- 0/10            452 Mar 31 06:40 1983 ./news/src/iparams.h
+-r--r--r-- 0/10          12293 Jun 25 05:32 1983 ./news/src/header.c
+-r--r--r-- 0/10           1841 Mar 31 06:40 1983 ./news/src/logdir.c
+-r--r--r-- 0/10            508 Mar 31 06:40 1983 ./news/src/makeactive.sh
+-r--r--r-- 0/10           1183 Mar 31 06:40 1983 ./news/src/ndir.h
+-r--r--r-- 0/10             23 Mar 31 06:40 1983 ./news/src/news
+-r--r--r-- 0/10           1883 Jul  8 18:17 1983 ./news/src/params.h
+-r--r--r-- 0/10           4023 Mar 31 06:40 1983 ./news/src/pathinit.c
+-r--r--r-- 0/10           1327 Apr 25 13:58 1983 ./news/src/unbatch.c
+-r--r--r-- 0/10            916 Apr 25 13:58 1983 ./news/src/postnews.v7
+-r--r--r-- 0/10           2592 Apr 25 13:59 1983 ./news/src/process.c
+-r--r--r-- 0/10           1068 Mar 31 06:40 1983 ./news/src/readdir.c
+-r--r--r-- 0/10           7977 Apr 25 13:58 1983 ./news/src/digest.c
+-r--r--r-- 0/10            210 Jun 25 06:33 1983 ./news/src/rmgrp
+-r--r--r-- 0/10           2262 Apr  1 02:51 1983 ./news/src/recmail.c
+-r--r--r-- 0/10           8409 Mar 31 06:40 1983 ./news/src/recnews.c
+-r--r--r-- 0/10           2845 Mar 31 06:40 1983 ./news/src/rextern.c
+-r--r--r-- 0/10          11067 Mar 31 06:40 1983 ./news/src/rfuncs.c
+-r--r--r-- 0/10           1095 May  4 04:49 1983 ./news/src/uname.c
+-r--r--r-- 0/10           3925 Jun 25 06:35 1983 ./news/src/defs.dist
+-r--r--r-- 0/10           7594 Mar 31 06:40 1983 ./news/src/tags
+-r--r--r-- 0/10           3043 Mar 31 06:40 1983 ./news/src/uurec.c
+-r-xr-xr-x 0/10            386 Mar 31 06:42 1983 ./news/src/localize.sampl
+-r--r--r-- 0/10          22488 Jun 25 06:33 1983 ./news/src/readr.c
+-r--r--r-- 0/10           1293 Jun 25 06:33 1983 ./news/src/install.v7
+-r-xr-xr-x 0/10            384 Jun 29 08:52 1983 ./news/src/localize.sh
+-r--r--r-- 0/10            916 Jun 29 08:53 1983 ./news/src/postnews
+-r--r--r-- 0/10           3922 Jul  2 02:47 1983 ./news/src/defs.h
+-r--r--r-- 0/10           5183 Jul  2 02:44 1983 ./news/src/Makefile
+-r--r--r-- 0/10           2927 Jul  2 02:50 1983 ./news/src/active
+drwxrwxr-x 0/10              0 Aug  6 04:50 1983 ./news/doc/
+-r--r--r-- 0/10          45236 Apr  9 08:37 1983 ./news/doc/howto
+-r--r--r-- 0/10          59414 May  4 04:29 1983 ./news/doc/install
+-r--r--r-- 0/10          52986 Apr 24 07:34 1983 ./news/doc/standard
+-r--r--r-- 0/10            495 May  4 04:12 1983 ./news/doc/README
+-r--r--r-- 0/10          14502 Mar 10 02:27 1983 ./news/doc/etiquette
+-r--r--r-- 0/10           8163 Apr  2 02:02 1983 ./news/doc/nglist
+-r--r--r-- 0/10            871 Mar 10 00:55 1983 ./news/doc/tencmdts
+-r--r--r-- 0/10          13076 Jun  2 14:13 1983 ./news/doc/login
+drwxrwxr-x 0/10              0 Aug  6 04:50 1983 ./news/uucp/
+-r--r--r-- 0/10           4154 Apr  3 12:43 1983 ./news/uucp/=batch
+-r--r--r-- 0/10           7529 Apr 14 05:30 1983 ./news/uucp/cpu.speedup
+-r--r--r-- 0/10           3152 Apr  3 12:22 1983 ./news/uucp/uux.minus.c
+-r--r--r-- 0/10           2055 Apr  3 12:30 1983 ./news/uucp/minus.z.5
+-r--r--r-- 0/10           3113 Apr  3 12:58 1983 ./news/uucp/README
+-r--r--r-- 0/10           4655 Apr 30 01:05 1983 ./news/uucp/gename.s5
+-r--r--r-- 0/10           1286 Apr 26 07:10 1983 ./news/uucp/bugfix
+-r--r--r-- 0/10           4211 Mar  6 15:16 1983 ./news/uucp/minus.z.v7
+drwxrwxr-x 0/10              0 Aug  6 04:50 1983 ./news/config/
+-r--r--r-- 0/10           5546 Mar 29 01:14 1983 ./news/config/Makefile.usg
+-r--r--r-- 0/10           4528 Mar 29 01:16 1983 ./news/config/Makefile.v7
+-r--r--r-- 0/10            946 Mar 29 01:23 1983 ./news/config/README
+-r--r--r-- 0/10           1265 Mar 12 04:50 1983 ./news/config/install.usg
+-r--r--r-- 0/10           1265 Mar 12 04:50 1983 ./news/config/install.v7
+-r--r--r-- 0/10            938 Mar 12 04:52 1983 ./news/config/postnews.ihcc
+-r--r--r-- 0/10            660 Mar 12 04:52 1983 ./news/config/postnews.usg
+-r--r--r-- 0/10            683 Mar 12 04:52 1983 ./news/config/postnews.v7
+-r--r--r-- 0/10           3624 Mar 12 07:01 1983 ./news/config/defs.templ
+-r--r--r-- 0/10            771 Mar 12 08:33 1983 ./news/config/defs.dflt
+-r-xr-xr-x 0/10            146 Mar 29 01:26 1983 ./news/config/config
+-r--r--r-- 0/10            264 Apr  7 01:04 1983 ./news/config/MHB5B
+-r--r--r-- 0/10           1973 Mar 29 01:05 1983 ./news/config/options.awk
+-r--r--r-- 0/10           3890 Mar 29 01:10 1983 ./news/config/defs.h
+-r--r--r-- 0/10            348 Mar 29 01:24 1983 ./news/config/Makefile.dflt
+-r--r--r-- 0/10             12 Mar 12 08:53 1983 ./news/config/user.dflt
+drwxrwxr-x 0/10              0 Aug  6 04:50 1983 ./news/man/
+-r--r--r-- 0/10           1077 Jul 29 10:01 1983 ./news/man/checknews.1
+-r--r--r-- 0/10           1521 Jul 29 09:02 1983 ./news/man/expire.8
+-r--r--r-- 0/10           4087 Jul 29 09:03 1983 ./news/man/getdate.3
+-r--r--r-- 0/10           4074 Jul 29 10:00 1983 ./news/man/inews.1
+-r--r--r-- 0/10           3579 Feb 23 07:02 1983 ./news/man/news.5
+-r--r--r-- 0/10           1224 Jul 29 10:02 1983 ./news/man/newsrc.5
+-r--r--r-- 0/10           2161 Jul 29 09:30 1983 ./news/man/postnews.1
+-r--r--r-- 0/10           9118 Jul 29 10:02 1983 ./news/man/readnews.1
+-r--r--r-- 0/10            642 Jul 29 09:31 1983 ./news/man/recnews.8
+-r--r--r-- 0/10            884 Jul 29 09:31 1983 ./news/man/sendnews.8
+-r--r--r-- 0/10            335 Jul 29 09:31 1983 ./news/man/uurec.8
+-r--r--r-- 0/10            343 Jul 29 09:33 1983 ./news/man/Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:50 1983 ./news/misc/
+-r--r--r-- 0/10          11814 Feb 23 05:44 1983 ./news/misc/adm
+-r--r--r-- 0/10            818 Mar  6 15:18 1983 ./news/misc/dirform
+-r--r--r-- 0/10            767 Feb 23 05:44 1983 ./news/misc/euuname.sh
+-r--r--r-- 0/10            136 Feb 23 05:44 1983 ./news/misc/fa.recording
+-r--r--r-- 0/10          14153 Feb 23 05:44 1983 ./news/misc/mhhooks
+-r--r--r-- 0/10            195 Feb 23 05:44 1983 ./news/misc/net.recording
+-r--r--r-- 0/10          12602 Feb 23 05:44 1983 ./news/misc/newsinfo
+-r--r--r-- 0/10           3109 Feb 23 05:44 1983 ./news/misc/sendnewsmail
+-r--r--r-- 0/10           2003 Feb 23 05:44 1983 ./news/misc/spool
+-r--r--r-- 0/10             68 Feb 23 05:44 1983 ./news/misc/trimlib
+-r-xr-xr-x 0/10            305 Feb 16 15:25 1983 ./news/misc/rnews.sh
+-r--r--r-- 0/10           1284 Mar  6 15:18 1983 ./news/misc/copyright
+-r-xr-xr-x 0/10            209 Mar 31 06:34 1983 ./news/misc/sendbatchednew
+-r--r--r-- 0/10          23300 Apr 26 06:14 1983 ./news/misc/rnews.ml
+-r--r--r-- 0/10          14043 Aug 12 02:20 1983 ./news/README
+-r--r--r-- 0/10           2228 Apr 26 07:07 1983 ./news/wishlist
+-r--r--r-- 0/10            371 Jul 28 03:49 1983 ./news/Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:51 1983 ./bib/
+-r--r--r-- 0/10            261 Jul 29 02:51 1983 ./bib/Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:51 1983 ./bib/man/
+-r--r--r-- 0/10            360 Jul 29 02:47 1983 ./bib/man/Makefile
+-r--r--r-- 0/10           4105 Sep 26 11:04 1983 ./bib/man/bib.1
+-r--r--r-- 0/10           3964 Sep 26 11:04 1983 ./bib/man/invert.1
+-r--r--r-- 0/10            700 Jul 28 03:39 1983 ./bib/README
+drwxrwxr-x 0/10              0 Sep 26 11:04 1983 ./bib/doc/
+-r--r--r-- 0/10          37130 Sep 26 11:04 1983 ./bib/doc/bibdoc.ms
+-rw-r--r-- 0/10            281 Sep 26 11:04 1983 ./bib/doc/styletop
+-rw-r--r-- 0/10           2892 Sep 26 11:04 1983 ./bib/doc/testrefs
+-rw-r--r-- 0/10            476 Sep 26 11:04 1983 ./bib/doc/teststyle
+-rw-r--r-- 0/10            200 Sep 26 11:04 1983 ./bib/doc/tstyles
+drwxrwxr-x 0/10              0 Sep 26 11:04 1983 ./bib/src/
+-r--r--r-- 0/10           1991 Sep 26 11:04 1983 ./bib/src/alpha.seek.c
+-r--r--r-- 0/10          13197 Sep 26 11:04 1983 ./bib/src/bib.c
+-r--r--r-- 0/10           1326 Sep 26 11:04 1983 ./bib/src/bib.h
+-rwxr-xr-x 0/10          19456 Sep 26 11:04 1983 ./bib/src/invert
+-r--r--r-- 0/10          29044 Sep 26 11:04 1983 ./bib/src/bibargs.c
+-r--r--r-- 0/10           5765 Sep 26 11:04 1983 ./bib/src/invert.c
+-rwxr-xr-x 0/10          25600 Sep 26 11:04 1983 ./bib/src/listrefs
+-r--r--r-- 0/10           2928 Sep 26 11:04 1983 ./bib/src/listrefs.c
+-r--r--r-- 0/10           6863 Sep 26 11:04 1983 ./bib/src/locate.c
+-r--r--r-- 0/10           1992 Sep 26 11:04 1983 ./bib/src/lookup.c
+-r--r--r-- 0/10           2184 Sep 26 11:04 1983 ./bib/src/makekey.c
+-r--r--r-- 0/10           3373 Sep 26 11:04 1983 ./bib/src/streams.c
+-r--r--r-- 0/10            162 Sep 26 11:04 1983 ./bib/src/streams.h
+-rwxr-xr-x 0/10          36864 Sep 26 11:04 1983 ./bib/src/bib
+-r--r--r-- 0/10           2813 Sep 26 11:04 1983 ./bib/src/Makefile
+-rwxr-xr-x 0/10          19456 Sep 26 11:04 1983 ./bib/src/lookup
+drwxrwxr-x 0/10              0 Sep 26 11:04 1983 ./bib/macs/
+-r--r--r-- 0/10            178 Sep 26 11:04 1983 ./bib/macs/bib.hnf
+-r--r--r-- 0/10            237 Sep 26 11:04 1983 ./bib/macs/bib.list
+-r--r--r-- 0/10            179 Sep 26 11:04 1983 ./bib/macs/bib.opena
+-r--r--r-- 0/10            175 Sep 26 11:04 1983 ./bib/macs/bib.openn
+-r--r--r-- 0/10           3878 Sep 26 11:04 1983 ./bib/macs/bib.spe
+-r--r--r-- 0/10            182 Sep 26 11:04 1983 ./bib/macs/bib.stda
+-r--r--r-- 0/10            167 Sep 26 11:04 1983 ./bib/macs/bib.stdn
+-r--r--r-- 0/10             95 Sep 26 11:04 1983 ./bib/macs/bib.stdsn
+-r--r--r-- 0/10            648 Sep 26 11:04 1983 ./bib/macs/bib.supn
+-r--r--r-- 0/10           2301 Sep 26 11:04 1983 ./bib/macs/bibinc.fullnames
+-r--r--r-- 0/10            622 Sep 26 11:04 1983 ./bib/macs/bibinc.publishers
+-r--r--r-- 0/10           1761 Sep 26 11:04 1983 ./bib/macs/bibinc.shortnames
+-r--r--r-- 0/10           3045 Sep 26 11:04 1983 ./bib/macs/bmac.open
+-r--r--r-- 0/10           5140 Sep 26 11:04 1983 ./bib/macs/bmac.std
+-r--r--r-- 0/10            124 Sep 26 11:04 1983 ./bib/macs/common
+-rw-r--r-- 0/10            523 Sep 26 11:04 1983 ./bib/macs/Makefile
+-rw-r--r-- 0/10            200 Sep 26 11:04 1983 ./bib/macs/doit
+-r--r--r-- 0/10             70 Sep 26 11:04 1983 ./bib/macs/bibmac.me
+-rw-r--r-- 0/10            189 Sep 26 11:04 1983 ./bib/macs/afterpunct
+-rw-r--r-- 0/10            189 Sep 26 11:04 1983 ./bib/macs/beforepunct
+-r--r--r-- 0/10            239 Sep 26 11:04 1983 ./bib/macs/bib.astro
+-r--r--r-- 0/10            317 Sep 26 11:04 1983 ./bib/macs/bib.foot
+-r--r--r-- 0/10           3453 Sep 26 11:04 1983 ./bib/macs/bib.spe2
+-rw-r--r-- 0/10            199 Sep 26 11:04 1983 ./bib/macs/srcs
+drwxrwxr-x 0/10              0 Aug  6 04:51 1983 ./tools/
+-r--r--r-- 0/10            219 Jul 28 04:46 1983 ./tools/Makefile
+-r--r--r-- 0/10            336 Jul 28 04:44 1983 ./tools/README
+drwxrwxr-x 0/10              0 Aug 11 12:53 1983 ./tools/src/
+-r--r--r-- 0/10           6428 Jul  8 19:24 1983 ./tools/src/jot.c
+-r--r--r-- 0/10           3312 Jul  8 19:24 1983 ./tools/src/lam.c
+-r--r--r-- 0/10          10299 Jul  8 19:24 1983 ./tools/src/rs.c
+-r--r--r-- 0/10           1142 Jul  8 19:24 1983 ./tools/src/Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:51 1983 ./tools/man/
+-r--r--r-- 0/10           3546 Jul 29 09:49 1983 ./tools/man/jot.1
+-r--r--r-- 0/10           1624 Jul 29 09:49 1983 ./tools/man/lam.1
+-r--r--r-- 0/10           3984 Jul 29 09:49 1983 ./tools/man/rs.1
+-r--r--r-- 0/10            366 Jul 28 04:45 1983 ./tools/man/Makefile
+drwxrwxr-x 0/10              0 Aug  6 04:51 1983 ./dsh/
+drwxrwxr-x 0/10              0 Aug  6 04:51 1983 ./dsh/man/
+-r--r--r-- 0/10           4048 Jul 29 08:23 1983 ./dsh/man/dsh.1
+-r--r--r-- 0/10             65 Jul 28 01:44 1983 ./dsh/man/Makefile
+drwxrwxr-x 0/10              0 Aug 11 12:50 1983 ./dsh/src/
+-r--r--r-- 0/10           2384 Jul 22 07:40 1983 ./dsh/src/dbid.c
+-r--r--r-- 0/10            306 Jul 22 07:40 1983 ./dsh/src/dbid.h
+-r--r--r-- 0/10           8881 Jul 22 07:40 1983 ./dsh/src/dsh.c
+-r--r--r-- 0/10            593 Jul 22 07:40 1983 ./dsh/src/dsh.h
+-r--r--r-- 0/10             20 Jul 22 07:40 1983 ./dsh/src/dshrc
+-r--r--r-- 0/10            171 Jul 22 07:40 1983 ./dsh/src/error.c
+-r--r--r-- 0/10           3172 Jul 22 07:40 1983 ./dsh/src/getbids.c
+-r--r--r-- 0/10           1251 Jul 22 07:40 1983 ./dsh/src/getloadave.c
+-r--r--r-- 0/10           1219 Jul 22 07:40 1983 ./dsh/src/getpath.c
+-r--r--r-- 0/10           1394 Jul 22 07:40 1983 ./dsh/src/getrc.c
+-r--r--r-- 0/10           1186 Jul 22 07:40 1983 ./dsh/src/getwd.c
+-r--r--r-- 0/10           3245 Jul 22 07:40 1983 ./dsh/src/ipc.c
+-r--r--r-- 0/10            539 Jul 27 16:55 1983 ./dsh/src/Makefile
+-r--r--r-- 0/10            219 Jul 28 01:45 1983 ./dsh/Makefile
+-r--r--r-- 0/10           1201 Jul 27 16:31 1983 ./dsh/README
+drwxrwxr-x 0/10              0 Aug  6 04:51 1983 ./learn/
+-r--r--r-- 0/10            740 May 18 14:42 1983 ./learn/Init
+-r--r--r-- 0/10             14 May 18 14:42 1983 ./learn/L0
+-r--r--r-- 0/10            968 May 18 14:42 1983 ./learn/L1.1a
+-r--r--r-- 0/10           2829 May 18 14:42 1983 ./learn/L1.1b
+-r--r--r-- 0/10           2084 May 18 14:42 1983 ./learn/L1.2
+-r--r--r-- 0/10           1745 May 18 14:42 1983 ./learn/L2.1
+-r--r--r-- 0/10           2127 May 18 14:42 1983 ./learn/L2.2
+-r--r--r-- 0/10           1719 May 18 14:42 1983 ./learn/L2.3
+-r--r--r-- 0/10           1443 May 18 14:42 1983 ./learn/L2.4
+-r--r--r-- 0/10           2908 May 18 14:42 1983 ./learn/L3.1
+-r--r--r-- 0/10           3243 May 18 14:42 1983 ./learn/L3.2
+-r--r--r-- 0/10           1870 May 18 14:42 1983 ./learn/L3.3
+-r--r--r-- 0/10           8704 May 18 14:42 1983 ./learn/L3.4
+-r--r--r-- 0/10            633 May 18 14:42 1983 ./learn/L4.0
+-r--r--r-- 0/10           1627 May 18 14:42 1983 ./learn/L4.1
+-r--r--r-- 0/10           1754 May 18 14:42 1983 ./learn/L4.2
+-r--r--r-- 0/10           1803 May 18 14:42 1983 ./learn/L4.3
+-r--r--r-- 0/10           2600 May 18 14:42 1983 ./learn/L5.1
+-r--r--r-- 0/10           1604 May 18 14:42 1983 ./learn/L5.2
+-r--r--r-- 0/10           1264 May 18 14:42 1983 ./learn/L5.3
+-r--r--r-- 0/10           4605 May 18 14:42 1983 ./learn/L5.4
+-r--r--r-- 0/10           2039 May 20 07:41 1983 ./learn/L6.1
+-r--r--r-- 0/10           4681 May 18 14:42 1983 ./learn/L6.2
+-r--r--r-- 0/10           1884 May 18 14:42 1983 ./learn/L6.3
+-r--r--r-- 0/10            762 May 18 14:42 1983 ./learn/L6.4
+-r--r--r-- 0/10           6373 Jul 26 12:21 1983 ./learn/longtext
+-r--r--r-- 0/10            441 Jul  8 17:21 1983 ./learn/Makefile
+-r--r--r-- 0/10            893 Jul 28 03:27 1983 ./learn/README

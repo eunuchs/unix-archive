@@ -1,0 +1,38 @@
+Autah-cs.167
+net.bugs.v7
+utcsrgv!utzoo!decvax!ucbvax!mhtsa!harpo!utah-cs!lepreau
+Wed Jan 20 00:03:10 1982
+Minor uucp fix
+While i'm sending out uucp fixes, here's a not very important one. This
+applies to 4.1 and v7, and i presume 2.8.  The fix given is for 4.1, but
+the line numbers will be off because we've made some local changes. It
+goes in after the 'case 3: \n case4:'.
+
+Fix bug in that it did not prefix the current directory to non-absolute
+pathnames for type 3 & 4 transfers (remote execution, remote globbing).
+This was contrary to man entry, as well as inconsistent.
+Change listing:
+-----------------------
+*** .Ouucp.c	Sat Nov 14 17:08:44 1981
+--- uucp.c	Sat Nov 14 17:23:27 1981
+***************
+*** 287,288
+  		DEBUG(4, "send uucp command - %d\n", type);
+  		if (strcmp(s2,  Myname) == SAME) {
+
+--- 287,290 -----
+  		DEBUG(4, "send uucp command - %d\n", type);
++ 		if (file1[0] != '~')
++ 			expfile(file1);
+  		if (strcmp(s2,  Myname) == SAME) {
+***************
+*** 294,295
+  		}
+  		if (Ename[0] != '\0') {
+
+--- 296,299 -----
+  		}
++ 		else if (file2[0] != '~')
++ 			expfile(file2);
+  		if (Ename[0] != '\0') {
+---------------------

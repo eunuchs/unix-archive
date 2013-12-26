@@ -1,0 +1,7 @@
+Asdcarl.84
+NET.v7bugs
+utzoo!duke!chico!harpo!mhtsa!eagle!ucbvax!sdcsvax!sdcarl!rusty
+Tue Jun 23 19:37:03 1981
+error in tty(4) manual page
+says that "In raw mode, ... There are no delays and no echoing" but
+there does seem to be echoing when in raw mode.

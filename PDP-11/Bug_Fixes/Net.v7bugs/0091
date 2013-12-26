@@ -1,0 +1,23 @@
+Amicrosof.190
+net.bugs.v7
+utcsrgv!utzoo!decvax!microsof!gordon
+Sat Mar 13 14:46:51 1982
+(unsigned)char explained
+The offical C language 'white book' discusses casts and coercions
+at length, but is not worded very precicely.  In fact, there are
+two ways it might be interpreted; this ambiguity is mitigated by
+the fact that both ways produce the same result via different
+paths.
+	Hans Spiller of Microsoft gave a paper at the last usenix
+discussing:
+	1) what the official standard is, with special DMR endorsement
+	2) how current (v7) compilers, both the 'pcc' and 'cc' products
+	   differ from this standard,
+	3) how 3.0 compilers follow the standard (almost exactly)
+	4) how to write code to attain portability across these various
+	   compilers.
+Copies are available upon request; perhaps I can get him to put a
+short summary on the net, if theres interest.
+
+	gordon letwin
+	decvax!microso!gordon

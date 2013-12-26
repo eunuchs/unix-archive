@@ -1,0 +1,4 @@
+suspend=2
+resume=4
+chkfreq=30
+acctfile=/usr/adm/acct

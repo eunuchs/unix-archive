@@ -1,0 +1,124 @@
+From: "Szigeti Szabolcs" <szigi@ik.bme.hu>
+Subject: [TUHS] Re: Porting Unix v6 to i386
+Date: Tue, 4 Jun 2002 13:53:50 +0200
+
+I've just joined your mailing list, and while looking at the archives, i saw
+this discussion on porting V6 to Intel.
+Well, back in '92, in a university scinence students' competition, I ported
+v6 to intel286 in protected mode. (I got second place, the winner was a 3D
+animation prog, which is more spectacular, than a # prompt :-)
+
+I used Borland C to compile, with some extra mungling the assembly code ( i
+can't remember why).
+
+The hard part was to understand the protected mode, and to write the low
+level stuff. Other things, like filesystem, etc. compiled with hardly any
+modification. (Had to change =+ to =+, introduce long insted of int[2],
+etc.). It has floppy, ide, kbd, parallel, serial and vga drivers.
+
+It got to full multiuser operation, but there are bugs and stupid codings
+certainly. The C compiler, nroff, and some other parts were not ported.
+(Yes, I used Borland C to compile the programs, and a tool to convert it to
+a.out :-)
+
+If anyone wants to experiment with it (some parts are pretty ugly, because i
+intedned to rewrite it, but never did, and the parts of the comments are in
+Hungarian), drop me an email (though i'm now doing my MBA thesis, so might
+not answer immediatey). If there is interest, I can summarize my
+experiences.
+
+I've not looked it since several years, so i might not remember every
+detail, but there are some interesting point, and it was great fun to do.
+
+Some notes:
+
+The CONF, DMR, KEN and H directory contains the kernel sources, while
+INCLUDE and SRC the rest of the system.
+Tools in UTIL is used to compile these. c2a processes the kernel assembly,
+to change the segment names produced by the c compiler because of the
+protected mode (I used the command line version of Borland C++ 3.0, the
+makefiles are for this comiler).
+exe2v6 converts MSDOS exe to a.out (not all exe, it has to be compiled
+specially, see the makefile in SRC/UTIL). exetr is a horrible kludge to
+transfer files to v6, via a floppy disk, and mkfs is mkfs under Dos.
+
+The kernel compiles in a funny way, you get a unix.exe, which can be run
+from dos, and if all is well, it can retorn to dos, with a magic key
+sequence (shift-esc ???). It speeds up development, cause you don't have to
+reboot.
+
+The code is really ugly at some places, because i started experimenting with
+protected mode first, and never cleanly rewrote what worked. Once I startded
+to tidy up the code (move to ANSI C, etc), but never finished. Morover, in
+the process, I broke something in the fs code, so right now it won't mount
+root. Plus, much of the comments are still in Hungarian :-)
+
+The kernel makes heavy use of the special 286 protected mode features
+(Tasks, etc.)
+
+More notes:
+
+First of all, the code is currently broken. Something is wrong, and it will
+not be able to mount the root fs or something, but shouldn't be hard to fix,
+because it used to work, and i did something wrong when playing with the
+code some years ago, with no backup to revert to.
+
+Originally, I used the commnad line tools of Borland C++ 3.0 to compile. You
+need Turbo Assembler, so the Borland C++ 1.0, which is freely available from
+Borland as "antique software" is not enough, you'll need the professional
+version at least, because it has the command line assembler.
+
+There is a top level makefile, which will create UN.EXE, this is the unix
+kernel. You run it under plain MSDOS, it will switch to protected mode, and
+with shift-esc it will return to DOS (do a sync before !). Probably it
+wouldn't be hard to make it work without DOS as a boot loader :-), but i
+never did it.
+
+If compiled with -DSTANDSH, the kernel will be built with a built-in shell
+(see KEN/UPROC.C for the command), that can be used to do some basic setup.
+It will for example create the /dev/tty entries on a blank root disk. (You
+still need the mkfs utility under dos to make a blank disk). I suggest to
+use a floppy as a root disk for initial trials.
+If you omit STANDSH, it will look for /etc/init to run.
+
+On the directory layout:
+CONF contains c.c, the device switch table
+DMR contains most of the device drivers
+H contains the kernel header files
+INCLUDE - the user header files
+KEN - rest of the kernel
+
+The low level kernel code is very ugly, as it evolved from experimenting
+with protected mode. There are lots of things, that i'm not proud of :-)
+
+SRC/CLIB0 - the C library
+SRC/SYSC - the syscall user side interface
+SRC/UTIL - the utilities and such, most should work
+UTIL - MSDOS utils to compile
+
+In the UTIL directory, there are the following utlities:
+
+c2a - used to compile the kernel, it search-and-replaces some stuff in the
+assemlby code, i don_t exactly remember why, but it has to do something with
+the segmenent names.
+
+exe2v6 - utility to convert MSDOS exe program to a.out. See
+SRC/UTIL/Makefile for how to make such an exe. The programs have a built in,
+fixed size stack, because Borland C had problems separating code and stack
+segment. It could brobably be fixed, but i didn't do it, instead opted for
+fixed size stack, adjustable at compile time.
+
+exetr - it can transfer a file to unix via a floppy drive, i don_t remember
+how it works, i think you put one file to a floppy, and use the kernel-shell
+to write it to a file-system. It is a really ugly idea :-)
+
+dumpfs - it is broken, it was intended to back-up a filesystem
+
+mkfs - MSDOS mode mkfs, answer the questions, you'll get the filesystem.
+There is no sanity check whatsoever, so be careful, it can screw your
+harddrive, if given wrong sector numbers.
+
+So that's it, if someone wants to experiment with it, i can probably answer
+questions, but, i have to do some reverse engineering too!
+
+	Szabolcs Szigeti

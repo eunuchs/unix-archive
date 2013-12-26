@@ -1,0 +1,10 @@
+Aucbonyx.224
+net.bugs.v7
+utcsrgv!utzoo!decvax!ucbvax!ARPAVAX:Onyx:jmrubin
+Thu Jan 14 19:43:00 1982
+stdio buffering
+(Referring to utzoo.1271)
+In the Berkeley stdio package, stdout to a terminal is buffered, with
+flushes after new-lines and before input.  (default)
+
+					Joel Rubin

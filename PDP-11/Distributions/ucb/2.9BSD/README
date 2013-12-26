@@ -1,0 +1,37 @@
+This directory contains the following files:
+
+-r--r--r--  1 sms  staff     12696 Sep  7  1993 file1.gz
+-r--r--r--  1 sms  staff     12744 Jan 24 19:40 file1.ts.gz
+-r--r--r--  1 sms  staff      5630 Sep  7  1993 file2.gz
+-r--r--r--  1 sms  staff       270 Sep  7  1993 file3.gz
+-r--r--r--  1 sms  staff     13188 Sep  7  1993 file4.gz
+-r--r--r--  1 sms  staff     12976 Sep  7  1993 file5.gz
+-r--r--r--  1 sms  staff     12342 Sep  7  1993 file6.gz
+-r--r--r--  1 sms  staff    875950 Apr 20 22:37 file7.gz
+-r--r--r--  1 sms  wheel  10801907 Apr 20 21:45 usr.tar.gz
+
+	file1 is the bootblock+bootprogram for the TU10/TU16 tape
+	file1.ts is the bootblock+bootprogram for the TS11 tape
+	file2 is the standalone 'cat' program
+	file3 is the Table Of Contents (used by the 'cat' program)
+	file4 is the standalone 'mkfs' program
+	file5 is the standalone 'restor' program
+	file6 is the standalone 'icheck' program
+	file7 is the dump of the root filesystem
+	usr.tar is a tar image of /usr with relative pathnames (i.e.  no
+		leading /usr.  you load this by cd /usr; tar -xpf ...)
+
+	To create a tape you will need to place these files in order
+	using the following blocking factors:
+
+		dd if=file1 of=/dev/nrmt0 bs=512
+		dd if=file2 of=/dev/nrmt0 bs=1024
+		dd if=file3 of=/dev/nrmt0 bs=1024
+		dd if=file4 of=/dev/nrmt0 bs=1024
+		dd if=file5 of=/dev/nrmt0 bs=1024
+		dd if=file6 of=/dev/nrmt0 bs=1024
+		dd if=file7 of=/dev/nrmt0 bs=10240
+		dd if=usr.tar of=/dev/nrmt0 bs=10240
+
+	Good Luck.
+		Steven

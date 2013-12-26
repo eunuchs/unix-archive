@@ -1,0 +1,30 @@
+Box Title			"Master 10 & /usr + k"
+
+File				Hand-written Title
+----				------------------
+usr+k00.rx50			"/usr dump 0 - with `net' kernel"
+usr+k01.rx50			"/usr + k   1-"
+usr+k02.rx50			"/usr + k   2-"
+usr+k03.rx50			"/usr + k   3-"
+usr+k04.rx50			"/usr + k   4-"
+usr+k05.rx50			"/usr + k   5-"
+usr+k06.rx50			"/usr + k   6-"
+usr+k07.rx50			"/usr + k   7-"
+usr+k08.rx50			"/usr + k   8-"
+usr+k09.rx50			"/usr + k   9-"
+usr+k10.rx50			"/usr + k   10-"
+
+*** Critial Note:
+
+I encountered block errors on the diskette represented by
+"usr+k06.rx50" of the form:
+
+	Error on the Floppy (unbuffered), unit 0
+	CRC error while reading block number 300. status 0200
+
+The "dd" command on Venix 1.1 would stop dead at this point.
+
+So I wrote a small program that extracted the diskette, and when
+the dust settled, that particular floppy had two bad blocks:
+block number 300 and block number 318.  I expect they will appear
+in the image "usr+k06.rx50" as zero filled blocks.

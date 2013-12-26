@@ -1,0 +1,12 @@
+Amhtsa.156
+net.bugs.v7
+utzoo!decvax!harpo!ihnss!mhtsa!rick
+Wed May  5 02:12:29 1982
+Re: overflow in C revisited
+"The action taken on overflow or underflow depends on the machine at
+hand." (Kernighan+Ritchie, "The C Programming Language", Prentice-Hall,
+1978, p.38) "The handling of overflow and divide check in expression
+evaluation is machine-dependent." (ibid. p.185)
+Although you may claim that invoking machine dependence is inexact in
+a language specification, you cannot claim that the C specification
+"ignores" overflow.

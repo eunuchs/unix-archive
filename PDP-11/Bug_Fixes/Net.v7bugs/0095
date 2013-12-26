@@ -1,0 +1,11 @@
+Autzoo.1521
+net.bugs.v7
+utcsrgv!utzoo!henry
+Thu Apr  1 19:38:45 1982
+getgrent(3) manual page lies
+The manual page getgrent(3) claims that getgrent, getgrgid, and getgrnam
+all work from the current location in the file.  This is wrong.  They work
+just like the corresponding getpwent(3) routines:  getgrgid and getgrnam start
+at the beginning of the file regardless.  The last two paragraphs of the
+DESCRIPTION section of getgrent(3) should read like the same two in the
+getpwent(3) page.

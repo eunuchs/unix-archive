@@ -1,0 +1,12 @@
+Autzoo.887
+net.v7bugs
+utzoo!henry
+Fri Aug 14 12:54:35 1981
+large mail messages
+The V7 mail program screws up badly if a mail message (including postmark)
+is larger than 32768 characters:  it loses the mail and appends a couple
+of bytes of garbage to the mailbox.  Such large mail messages seldom occur
+in intrasystem traffic but are not unheard-of when mailing files across
+the network.  The problem is that the byte counter in copylet() is an int.
+The fix is trivial:  in about line 329, change the declaration of k from
+int to long.

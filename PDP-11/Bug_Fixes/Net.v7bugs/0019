@@ -1,0 +1,16 @@
+Aunc.839
+NET.v7-bugs
+utzoo!duke!unc!smb
+Tue May 26 10:39:56 1981
+casts and constants
+The Ritchie C compiler does not treat the construct
+
+	(char) 100
+
+as a constant.  This means that statements like
+
+	switch(c) {
+		case (char) 0x80:	foobar();
+
+are illegal.  The Portable C compiler on the 11, and the VAX C compiler
+do not suffer from this problem.

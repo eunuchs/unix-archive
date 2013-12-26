@@ -1,0 +1,31 @@
+Short help to run 211BSD in Bob Supnik's PDP simulator v2.2
+-----------------------------------------------------------
+
+Please take notice of the copyrights for 211BSD and the simulator.
+
+Howto run 211BSD
+----------------
+- Get all files from this directory.
+- gunzip the 211*.gz files
+- Create a subdirectory emu, and unpack the file pdpsim.tz in this directory.
+- Run patch to apply the file 'patches' to the simulator sources
+- Run 'make pdp11'
+- copy the executable 'pdp11' into your search-path
+- Run 'pdp11 script'. The scriptfile will initialize the simulated disks
+  and boot from rl0. Just press return to boot the unix-kernel.
+
+Remarks
+-------
+- Some executables still don't run. Unfortunately 'vi' is one of them.
+  use ed instead. (for the time being).
+- The package is installed on 4 RL02 and 6 RK05 drives. I used a lot
+  of symlinks to get it working. The directory /usr/ingres and the 
+  web files in /usr/dict are compressed to make it fit.
+- Don't run fsck on the raw (/dev/rrk?h) devices. For some reason 
+  the kernel panics on this.
+- The machine's hostname is 'elfje'. It is a little dutch pun:
+  the dutch word 'elf' means 'eleven'. ('elfje' means 'little elf')
+- The package includes all binaries, include files and kernel sources.
+  The generated kernel is generated from /sys/SYSTEM.
+
+Happy hacking. Franc

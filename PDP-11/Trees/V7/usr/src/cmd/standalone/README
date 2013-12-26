@@ -1,0 +1,72 @@
+This directory contains a modified set of standalone programs from 7th Edition
+Unix, ostensibly to allow the support of the Virtual Tape Drive, Vtserver.
+However, it provides a base on which to provide install bootstrapping for
+other versions of Unix.
+
+	Warren Toomey	wkt@cs.adfa.oz.au	March 1998
+
+Caveat
+------
+
+Obviously, to build these programs, you are going to need the V7 compiler,
+the V7 libc.a, and probably some of the original V7 development environment.
+I use my Apout emulator to run the V7 binaries on my FreeBSD box.
+
+Available Standalone Programs
+-----------------------------
+
+boot.c			2nd stage bootstrap, loads remaining other prgrams
+cat.c			Cat program, allows you to read tape records on screen
+compress.c		Zcat: uncompresses tape records & write it direct to
+			disk. Useful for downloading compressed disk images.
+dd.c			Simple dd: reads blocks in from one device, and writes
+			them out to another device.
+icheck.c		Check the V7 filesystem on a disk device.
+mkfs.c			Make a V7 filesystem on a disk device.
+restor.c		Restore a V7 dump onto a disk device.
+
+	The standalone library which these programs use is held in
+
+SYS.c
+prf.c
+conf.c
+M.s
+srt0.s
+
+	The devices available which can be read from & written to are:
+
+hp.c			RP04/RP06 disk driver
+ht.c			TJU16 tape driver
+rk.c			RK05 disk driver
+rl.c			RL01/02 disk driver
+rp.c			RP03 disk driver
+tm.c			TM11 tape driver
+vt.c			Client for Virtual Tape Server
+conf.c			Holds the table describing all devices
+
+	All devices run in poll mode, so it should be relatively easy
+	to write drivers for other devices: please send them in if you do!
+
+Other Programs and Files
+------------------------
+
+Here is a list of the other programs and files in this directory
+
+maketape.c		V7 make tape program, see rktapedir
+mymktape.c		My version which writes tape images for Bob Supnik's
+			PDP-11 emulator, and the Ersatz-11 emulator.
+vtcat.c			A user-mode program for V7 which can talk to the
+			Virtual Tape Server.
+
+
+cc+ld-stand		Shell script to compile standalone programs
+contents		Description of original V7 distribution tape 
+cpgroup			Original V7 script, use unknown
+makefile		Makefile to compile all the bits & pieces
+makefile.old		Original V7 makefile
+mtboot.s		1st stage bootstrap for TM11
+rkcontents		Description of original V7 distribution tape
+rktapedir		Input file for maketape, mymaketape. This describes
+			what files become what records, and the blocking size
+tapedir			Original V7 file, also input for maketape
+vtboot.s		1st stage bootstrap for Virtual Tape Client

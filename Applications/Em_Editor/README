@@ -1,0 +1,4 @@
+The Em editor was written for 6th Edition UNIX, and influenced the
+development of vi. See Peter Salus' book `A Quarter Century of UNIX'
+for details. I'll eventually scan the relevant pages in. Thanks to
+George Colouris & Eric for recovering this!

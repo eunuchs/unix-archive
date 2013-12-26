@@ -1,0 +1,11 @@
+dumpdir [f tape]
+	Print an inumber-name list for the gievn restore tape.
+
+restor keys [arguments]
+	Keys are
+		f tape	-- specify alternate tape device
+		t	-- print dates in dump header
+		x names... -- extract named files
+
+The script ./rename is useful for renaming inumbered files
+to their real names.

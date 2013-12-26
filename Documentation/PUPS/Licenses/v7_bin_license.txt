@@ -1,0 +1,93 @@
+DO NOT USE THIS SOFTWARE UNTIL YOU HAVE READ THIS LICENSE AGREEMENT.
+BY USING THE SOFTWARE (OR AUTHORIZING ANY OTHER PERSON TO DO SO), YOU
+AGREE TO ACCEPT AND ABIDE BY ALL THE TERMS OF THIS LICENSE AGREEMENT.
+THE LICENSE AGREEMENT REFERS TO YOU AS "CUSTOMER".
+
+1 DEFINITIONS
+
+LICENSED SOFTWARE shall mean solely the object code of the following
+versions of SCO's UNIX operating system software: Versions V5, V6, and
+V7 adapted for PDP-11 computer systems.
+
+SCO INTELLECTUAL PROPERTY RIGHTS shall mean patent, copyright and trade
+secret rights of The Santa Cruz Operation, Inc. ("SCO") in the LICENSED
+SOFTWARE.
+
+2 LICENSE GRANT
+
+SCO grants to CUSTOMER a worldwide, non-exclusive, royalty-free license
+under SCO INTELLECTUAL PROPERTY RIGHTS to reproduce, modify, and use the
+LICENSED SOFTWARE solely for non-commercial uses, and to distribute the
+LICENSED SOFTWARE to a third party who is also bound by the terms and
+conditions of this License Agreement.  For this purpose, any distribution
+of a copy of LICENSED SOFTWARE shall be accompanied by a verbatim copy of
+this License Agreement.  CUSTOMER shall not reverse compile, reverse
+assemble, or otherwise reverse engineer the LICENSED SOFTWARE or any
+portion thereof, or remove or alter any copyright or other proprietary
+notices appearing in the LICENSED SOFTWARE.
+
+3 "AS IS" DELIVERY
+
+CUSTOMER acknowledges that it accepts the LICENSED SOFTWARE "AS IS",
+and that SCO is under no obligation to supply any support, training,
+consulting, or other services for the LICENSED SOFTWARE.
+
+4 WARRANTY DISCLAIMER/LIMITATION OF LIABILITY
+
+SCO DISCLAIMS ALL WARRANTIES WITH REGARD TO ANY PORTION OF THE LICENSED
+SOFTWARE, INCLUDING BUT NOT LIMITED TO ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS, AND ANY WARRANTY THAT THE LICENSED SOFTWARE
+DOES NOT VIOLATE ANY PROPRIETARY RIGHT OF A THIRD PARTY.  IN NO EVENT
+SHALL SCO BE LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES
+OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE, OR ANY OTHER THEORY ARISING
+OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF ANY PORTION OF THE
+LICENSED SOFTWARE.
+
+5 INDEMNITY FROM CUSTOMER
+
+CUSTOMER will hold SCO harmless against all liabilities, demands, damages, 
+expenses, or losses arising out of use by CUSTOMER of LICENSED SOFTWARE.
+
+6 TERMINATION
+
+6.1 This Agreement shall be effective unless and until terminated.
+
+6.2 Either party may terminate this Agreement at any time upon 30 days
+written notice.  In addition, if CUSTOMER shall fail to perform or
+observe any of the terms and conditions to be performed or observed
+by it under this License Agreement, SCO may in its sole discretion
+thereafter elect, by written notice, to immediately terminate this
+License Agreement, together with all rights granted herein to CUSTOMER.
+
+6.3 Termination of this Agreement shall not release CUSTOMER from any
+liability which shall have accrued in favor of SCO at the time such
+termination becomes effective, nor from CUSTOMER's obligation not to
+reverse engineer any portion of the LICENSED SOFTWARE.
+
+6.4 In the event of any termination of this Agreement for any reason,
+CUSTOMER shall immediately destroy all whole or partial copies of the
+LICENSED SOFTWARE in CUSTOMER's possession, custody, or control.  In
+addition, CUSTOMER shall cease to use the LICENSED SOFTWARE as of the
+date of termination.
+
+7 GENERAL TERMS
+
+7.1 This License Agreement shall be governed by the substantive laws of
+the State of California.
+
+7.2 CUSTOMER shall not assign any rights or delegate any of its obligations
+under this License Agreement without the written consent of SCO.
+
+7.3 CUSTOMER assures SCO that, with respect to any LICENSED SOFTWARE
+obtained under this Agreement, CUSTOMER will comply with all applicable
+governmental export laws and regulations.
+
+7.4 Waiver of any breach hereunder by CUSTOMER may be effected only by 
+a writing signed by SCO and shall not constitute a waiver of any other
+breach.
+
+7.5 CUSTOMER understands and agrees that this License Agreement is the
+complete and exclusive statement of the understanding between the parties
+with respect to its subject matter, and supersedes all communications
+and understanding between the parties relating to such subject matter.

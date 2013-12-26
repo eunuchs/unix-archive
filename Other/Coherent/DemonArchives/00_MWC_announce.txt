@@ -1,0 +1,66 @@
+-------------------------------------------------------------------------------
+Posted to the USENET news group 'comp.os.coherent'
+-------------------------------------------------------------------------------
+From: rs@MWC.COM (Robert Swartz)
+Newsgroups: comp.os.coherent
+Subject: sad news
+Date: 1 Feb 1995 09:26:49 -0800
+Organization: BIOSCI International Newsgroups for Molecular Biology
+Lines: 30
+Sender: daemon@net.bio.net
+Message-ID: <9502011050.AA27345.V1.5@mwc.com>
+Reply-To: Coherent operating system <COHERENT@VMA.CC.ND.EDU>
+
+It is my sad duty to announce that Mark Williams Company has gone out
+of business.  There are many reasons for this decision.  Some are due
+to mistakes that we have made, some to changing business conditions;
+but the bottom line is that we must shut our doors.
+
+In our 15 years of business, Mark Williams Company made history in the
+computer industry through a series of breakthrough products, of which
+any company would be proud:  Coherent, the first commercially viable
+clone of UNIX - and the first reasonably priced UNIX for home PCs; csd,
+the world's first C source debugger; Let's C, the first low-cost
+professional C compiler for the IBM PC; Mark Williams C for the Atari ST,
+the first industrial-strength compiler for that machine, and in some ways
+still the best; C compilers for Intel, DEC, and Wang; and others too
+numerous to list here.  That we've survived so long and done so much is a
+testament to the many very capable people who have worked here over the
+years; but mainly it is due to our loyal customers, who made it all
+possible.  Thank you, one and all.
+
+Site mwc.com will be going off the air.  Those of you who need technical
+support can still poll comp.os.coherent; some of our now-former MWC employees
+have volunteered to help out.
+
+Again, thank you, and good-bye.
+
+Bob Swartz
+rs@mwc.com
+Mark Williams Co.
+60 Revere Drive
+Northbrook, IL 60062
+708-291-6700
+-------------------------------------------------------------------------------
+From: rs@MWC.COM (Robert Swartz)
+Newsgroups: comp.os.coherent
+Subject: Coherent copyright
+Date: 1 Feb 1995 10:57:27 -0800
+Organization: BIOSCI International Newsgroups for Molecular Biology
+Lines: 11
+Sender: daemon@net.bio.net
+Message-ID: <9502011228.AA27734.V1.5@mwc.com>
+Reply-To: Coherent operating system <COHERENT@VMA.CC.ND.EDU>
+
+This is to amplify my earlier posting.  Please note that Coherent,
+its sources, and its documentation and manual pages remain under
+copyright.  They may not be copied or distributed without the written
+permission of Mark Williams Company.
+
+Bob Swartz
+rs@mwc.com
+Mark Williams Co.
+60 Revere Drive
+Northbrook, IL 60062
+708-291-6700
+-------------------------------------------------------------------------------

@@ -1,0 +1,384 @@
+############################################################
+#		SENDMAIL CONFIGURATION FILE
+# Non-uucp version.
+# Any mail other than local hosts is sent to a relay system.
+############################################################
+
+# internet hostname and alias(es)
+Dj$w
+
+CwLOCAL
+
+######################
+#   General Macros   #
+######################
+
+# local domain names
+DDYOUR.DOMAIN
+
+# our arpanet gateway
+DAGW.YOUR.DOMAIN
+
+# the UUCP relay
+DU
+
+# local hosts (used to avoid uucp hops if we can contact them directly)
+CS
+
+###############
+#   Classes   #
+###############
+
+# local domains
+CTLOCAL UUCP
+
+# Internal domains that we use in rewriting (not known by NIC)
+CILOCAL UUCP
+
+######################
+#   Version Number   #
+######################
+
+DZ1.25
+
+######################
+#   Special macros   #
+######################
+
+# my name
+DnMAILER-DAEMON
+# UNIX header format
+DlFrom $g  $d
+# delimiter (operator) characters
+Do.:%@!^=/[]
+# format of a total name
+Dq$g$?x ($x)$.
+# SMTP login message
+De$j Sendmail $v/$Z ready at $b
+
+# forwarding host -- redefine this if you can't talk to the relay directly #
+DF$R
+
+###############
+#   Options   #
+###############
+
+# location of alias file
+OA/etc/aliases
+# wait up to ten minutes for alias file rebuild
+Oa10
+# substitution for space (blank) characters
+OB.
+# (don't) connect to "expensive" mailers
+#Oc
+# default delivery mode (deliver in background)
+Odbackground
+# temporary file mode
+OF0600
+# default GID
+Og1
+# location of help file
+OH/usr/share/misc/sendmail.hf
+# log level
+OL9
+# default network name
+ONARPA
+# default messages to old style
+Oo
+# queue directory
+OQ/usr/spool/mqueue
+# read timeout -- violates protocols
+Or2h
+# status file
+OS/var/log/sendmail.st
+# queue up everything before starting transmission
+Os
+# default timeout interval
+OT2d
+# time zone names (V6 only)
+OtPST,PDT
+# default UID
+Ou1
+# wizard's password
+OW*
+# load average at which we just queue messages
+Ox4
+# load average at which we refuse connections
+OX6
+
+###########################
+#   Message precedences   #
+###########################
+
+Pspecial-delivery=100
+Pfirst-class=0
+Pbulk=-60
+Pjunk=-100
+
+#####################
+#   Trusted users   #
+#####################
+
+Troot
+Tdaemon
+Tuucp
+Tpostmaster
+
+#########################
+#   Format of headers   #
+#########################
+
+H?P?Return-Path: <$g>
+HReceived: $?sfrom $s $.by $j ($v/$Z)
+	id $i; $b
+H?D?Resent-Date: $a
+H?D?Date: $a
+H?F?Resent-From: $q
+H?F?From: $q
+H?x?Full-Name: $x
+HSubject:
+# HPosted-Date: $a
+# H?l?Received-Date: $b
+H?M?Resent-Message-Id: <$t.$i@$j>
+H?M?Message-Id: <$t.$i@$j>
+
+###########################
+###   Rewriting Rules   ###
+###########################
+
+################################
+#  Sender Field Pre-rewriting  #
+################################
+S1
+#R$*<$*>$*		$1$2$3				defocus
+
+###################################
+#  Recipient Field Pre-rewriting  #
+###################################
+S2
+#R$*<$*>$*		$1$2$3				defocus
+
+#################################
+#  Final Output Post-rewriting  #
+#################################
+S4
+
+R@			$@				handle <> error addr
+
+# resolve numeric addresses to name if possible
+R$*<@[$+]>$*		$:$1<@$[[$2]$]>$3		lookup numeric internet addr
+
+# externalize local domain info
+R$*<@LOCAL>		$@$1@$w
+R$*<$*LOCAL>$*		$1<$2$D>$3			change local info
+R$*<$*LOCAL.ARPA>$*	$1<$2$D>$3			change local info
+R$*<$+>$*		$1$2$3				defocus
+R@$+:@$+:$+		@$1,@$2:$3			<route-addr> canonical
+
+# UUCP must always be presented in old form (with domains, leave the ".uucp")
+R$+@$-.UUCP		$2!$1				u@h.UUCP => h!u
+R$+@$-.$-.UUCP		$2.$3.uucp!$1			u@h.UUCP => h!u
+R$+@$-.$-.$-.UUCP	$2.$3.$4.uucp!$1		u@h.UUCP => h!u
+R$+@$-.$-.$-.$-.UUCP	$2.$3.$4.$5.uucp!$1		u@h.UUCP => h!u
+R$+@$-.$-.$-.$-.$-.UUCP	$2.$3.$4.$5.$6.uucp!$1		u@h.UUCP => h!u
+
+# delete duplicate local names -- mostly for arpaproto.mc
+R$+%$=w@$=w		$1@$w				u%UCB@UCB => u@UCB
+R$+%$=w@$=w.ARPA	$1@$w				u%UCB@UCB => u@UCB
+
+###########################
+#  Name Canonicalization  #
+###########################
+S3
+
+# handle "from:<>" special case
+R<>			$@@				turn into magic token
+
+# basic textual canonicalization -- note RFC733 heuristic here
+R$*<$*<$*<$+>$*>$*>$*	$4				3-level <> nesting
+R$*<$*<$+>$*>$*		$3				2-level <> nesting
+R$*<$+>$*		$2				basic RFC821/822 parsing
+R$+ at $+		$1@$2				"at" -> "@" for RFC 822
+
+# make sure <@a,@b,@c:user@d> syntax is easy to parse -- undone later
+R@$+,$+			@$1:$2				change all "," to ":"
+
+# localize and dispose of route-based addresses
+R@$+:$+			$@$>6<@$1>:$2			handle <route-addr>
+
+# more miscellaneous cleanup
+R$+			$:$>8$1				host dependent cleanup
+R$+:$*;@$+		$@$1:$2;@$3			list syntax
+R$+:$*;			$@$1:$2;			list syntax
+R$+@$+			$:$1<@$2>			focus on domain
+R$+<$+@$+>		$1$2<@$3>			move gaze right
+R$+<@$+>		$@$>6$1<@$2>			already canonical
+
+# convert old-style addresses to a domain-based address
+R$+^$+			$1!$2				convert ^ to !
+R$-!$+			$@$>6$2<@$1.UUCP>		resolve uucp names
+R$+.$-!$+		$@$>6$3<@$1.$2>			domain uucps
+R$+!$+			$@$>6$2<@$1.UUCP>		uucp subdomains
+R$-:$+			$@$>6$2<@$1>			host:user
+R$-=$+			$@$>6$2<@$1.BITNET>		resolve bitnet names
+R$+%$+			$:$>9$1%$2			user%host
+R$+<@$+>		$@$>6$1<@$2>			already canonical
+R$-.$+			$@$>6$2<@$1>			host.user
+
+#################################
+#   special local conversions   #
+#################################
+
+S6
+R$*<@$=w>$*		$:$1<@LOCAL>$3			check for variations on
+R$*<@$=w.$D>$*		$:$1<@LOCAL>$3			local hostname
+R$+<@LOCAL>		$@$1<@LOCAL>
+R$+<@$=S.UUCP>$*	$1<@$2>$3
+R$*<@$+.$=T.$=T>$*	$1<@$2.$3>$5			make UUCP top level
+
+################################
+#   Change rightmost % to @.   #
+################################
+
+S9
+R$*%$*			$1@$2				First make them all @'s.
+R$*@$*@$*		$1%$2@$3			Undo all but the last.
+R$*@$*			$@$1<@$2>			Put back the brackets.
+
+###################
+###   Mailers   ###
+###################
+
+############################################################
+#####		Local and Program Mailer specification
+############################################################
+
+Mlocal,	P=/bin/mail, F=rlsDFMmn, S=10, R=20, A=mail -d $u
+Mprog,	P=/bin/sh,   F=lsDFMe,   S=10, R=20, A=sh -c $u
+
+S10
+R@			$n			errors to mailer-daemon
+
+############################################################
+#####		Local Domain TCP Mailer specification
+#####
+#####	Messages processed by this specification are assumed to remain
+#####	the local domain -- hence, they must be canonical according to
+#####	RFC822 etc.
+############################################################
+
+Mtcpld,	P=[IPC], F=mDFMueXLC, S=17, R=27, A=IPC $h, E=\r\n
+
+S17
+
+# cleanup forwarding a bit
+R$*<$*>$*		$1$2$3				defocus
+R$*			$:$>3$1				canonicalize
+R$*%$*<@$w>		$:$>9$1%$2			user%localhost@localdomain
+
+# pass <route-addr>'s through
+R<@$+>$*		$@<@$[$1$]>$2			resolve <route-addr>
+
+# map colons to dots everywhere
+R$*:$*			$1.$2				map colons to dots
+
+# output local host as user@host
+R$-			$1<@$w>				user w/o host
+R$+<@$=w>		$1<@$w>				or an alias
+R$+<@$->		$:$1<@$[$2$]>			ask nameserver
+R$+<@$*.$D>		$@$1<@$2.$D>			locals have domain now
+R$+<@$->		$@$1<@$2.$D>			if nameserver fails
+
+# if not local, and not a "fake" domain, ask the nameserver
+R$+<@$+.$~I>		$@$1<@$[$2.$3$]>		user@host.domain
+R$+<@[$+]>		$@$1<@[$2]>			already ok
+
+R$+<@$+.UUCP>		$@$2!$1<@$w>			user@host.UUCP
+
+S27
+
+# cleanup
+R$*<$*>$*		$1$2$3				defocus
+R$*			$:$>3$1				now canonical form
+R$*%$*<@$w>		$:$>9$1%$2			user%localhost@localdomain
+
+# pass <route-addr>'s through
+R<@$+>$*		$@<@$[$1$]>$2			resolve <route-addr>
+
+# map colons to dots everywhere
+R$*:$*			$1.$2				map colons to dots
+
+# output local host as user@host
+R$-			$1<@$w>				user w/o host
+R$+<@$=w>		$1<@$w>				or an alias
+R$+<@$->		$:$1<@$[$2$]>			ask nameserver
+R$+<@$*.$D>		$@$1<@$2.$D>			locals have domain now
+R$+<@$->		$@$1<@$2.$D>			if nameserver fails
+
+# if not local, and not a "fake" domain, ask the nameserver
+
+R$+<@$+.$~I>		$@$1<@$[$2.$3$]>		user@host.domain
+R$+<@[$+]>		$@$1<@[$2]>			already ok
+
+R$+<@$+.UUCP>		$@$2!$1				user@host.UUCP
+
+#####################
+###   Rule Zero   ###
+#####################
+
+############################################################
+#####		RULESET ZERO PREAMBLE
+#####
+#####	The beginning of ruleset zero is constant through all
+#####	configurations.
+############################################################
+
+S0
+
+# first make canonical
+R$*<$*.>$*		$1<$2>$3			drop trailing dot
+R$*<$*>$*		$1$2$3				defocus
+R$+			$:$>3$1				make canonical
+
+# handle special cases.....
+R$*<@[$+]>$*		$:$1<@$[[$2]$]>$3		lookup numeric internet addr
+R$*<@[$+]>$*		$#tcpld$@$A$:$1@[$2]$3		numeric internet spec - give to relay
+R$+			$:$>6$1
+R$+%$+<@$=S>$*		$>9$1%$2$4			% hack, strip local name
+R$-<@LOCAL>		$#local$:$1
+R@			$#local$:$n			handle <> form
+
+# canonicalize using the nameserver if not internal domain
+R$*<@$*.$~I>$*		$:$1<@$[$2.$3$]>$4
+R$*<@$->$*		$:$1<@$[$2$]>$3
+
+# arrange for local names to be fully qualified
+R$*<$+.ARPA.LOCAL>$*	$1<$2.ARPA>$3			because ARPA is a host
+
+# now delete the local info
+R$*<$*$=w.$=T>$*	$1<$2>$5			thishost.LOCAL
+R$*<$*$=w>$*		$1<$2>$4			thishost
+R$*<$*.>$*		$1<$2>$3			drop trailing dot
+R<@>:$*			$@$>0$1				retry after route strip
+R$*<@>			$@$>0$1				strip null trash & retry
+
+# forward around hosts with communication problems
+R$*<@$=F.LOCAL>$*	$#tcp$@$F$:$1<@$2.LOCAL>$3	reroute message
+
+##################################
+#  End of ruleset zero preamble  #
+##################################
+
+###############################################
+###   Machine dependent part of Rule Zero   ###
+###############################################
+
+R$*<@$*.UUCP>$*		$#tcpld$@$U$:$2!$1		give to uucp relay
+
+# local domain sites
+
+# other non-local names 
+R$*<@$+>$*		$#tcpld$@$A$:$1<@$2>$3		send to big daddy
+
+# remaining names must be local
+R$+			$#local$:$1			everything else

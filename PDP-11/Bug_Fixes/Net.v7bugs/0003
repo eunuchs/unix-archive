@@ -1,0 +1,18 @@
+Aucbvax.110
+NET.v7bugs
+utzoo!duke!vax135!ucbvax!mark
+Sun May 18 22:56:30 1980
+exece
+>From bill Mon Dec 31 14:37:09 1979
+To: v7bugs
+Subject: bug in exece()
+Cc:  tbl jfr mhtsa!ted
+
+there is a nasty bug in exece() (which appeared in 50 changes)
+after the
+	bp = bread(swapdev, (daddr_t)(dbtofsb(swplo+bno)+(nc>>BSHIFT)));
+put
+	bp->b_flags &= ~B_DELWRI;
+else the buffer may stay in the cache with DELWRI set and clobber a
+random block in the swap area at some later time.
+

@@ -1,0 +1,10 @@
+Awatmath.1776
+net.bugs.v7,net.bugs.4bsd
+utcsrgv!utzoo!decvax!watmath!dmmartindale
+Wed Feb 17 15:48:16 1982
+uuxqt bug fix
+Bug fix for v7/4.1BSD uucp:
+In uuxqt.c, make the following insertion.
+
+/unlink.xfile/i
+		fclose(xfp);

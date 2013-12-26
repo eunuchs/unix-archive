@@ -1,0 +1,62 @@
+Here is the source to a version of Festoon, as supplied by Dennis Ritchie.
+He writes:
+  I have the version of festoon, as enhanced by
+  Nils-Peter Nelson, and as Norman Wilson said, mainly
+  and originally done by Ron Hardin.  When the
+  Usenet interchange referred to happened, I asked
+  Ron whether he wanted to release it, and the
+  response was
+
+   > fine with me
+
+   > npn's version is at /home/rhh/coma/festoon/fest.c
+   > with pics and tbls
+
+   > i've lost the original
+
+  Incidentally, Hardin worked for Bell Labs, though
+  at the Columbus location also occupied by
+  Western Electric, and until fairly recently was
+  a consultant for our own and nearby groups.
+  The first Google pages for "hardin sloane"
+  yields a bunch of references to his joint
+  work with the well-known mathematician
+  N. J. A. Sloane.
+  
+  Binary, but not source, was with research
+  8th edition, and may have escaped otherwise.
+  
+  I'll make the source available to scholars if there's interest.
+  It even compiles on Plan 9 (with ape).
+
+This was in response to a question on the TUHS list about the source
+for festoon. Tim Shoopa had replied to the original request with
+this comment:
+
+  It's come up at least twice on alt.folklore.computers in the last decade,
+  but I've never seen a pointer to the actual source yet.  e.g.
+
+  http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&oe=UTF-8&threadm=391cb661%40
+news.adfa.oz.au&rnum=2&prev=/groups%3Fq%3Dfestoon%2Balt.folklore.computers%26ie%3
+DUTF-8%26oe%3DUTF-8%26hl%3Den%26btnG%3DGoogle%2BSearch
+
+Norman Wilson then sent in a comment from Festoon's author, Ron Hardin:
+
+  Festoon was mine, chiefly written one Saturday with a tragically flawed
+  copy of Lester's _Introductory Transformational Grammar of English_
+  bought that morning on a $1 table at Woolworth on my knee.
+
+  The tragic flaw was that there are severe lexical constraints on language,
+  which is why there are so many made-up words in festoon, to avoid them.
+
+  The introduction of awful phrases came in reaction to writer's workbench
+  from Lorinda Cherry, which had a real mine of them; and phrases from my
+  boss, S D Hester, who was a wretched writer.  People contributed on noticing
+  that.
+
+  It was greatly helped by troff (``The _pay_ people to write this crap?'' is
+  a typical reaction.  Apparently it was not out of the question for Western
+  Electric.)
+
+Aaron Robbins found that the fest.c code needs a small change to compile
+on Linux. Find his patch in the fest.diff file.

@@ -1,0 +1,11 @@
+Aucbvax.300
+NET.v7bugs
+utzoo!duke!vax135!ucbvax!mark
+Tue Aug 12 01:52:23 1980
+col
+There is a bug in col as distributed which causes garbage sometimes
+at the end of outputs, such as /usr/doc/uucp/implement.  The procedure
+"main" ends in "return 0" rather than "exit(0);".  Changing it to exit
+makes the problem go away.  The bug was exhibited on a Vax running
+Berkeley Unix and might not show up on some other systems, depending on
+their runtime startup routine.

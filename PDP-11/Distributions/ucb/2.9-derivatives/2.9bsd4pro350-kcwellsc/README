@@ -1,0 +1,84 @@
+		2.9BSD for the Pro/350
+
+[ This directory was sent in by Ken Wellsch in Feb 1999. Also see the
+  directory ../2.9-pro350 -- Warren ]
+
+The contents of this subtree represent the contents of the media sent
+to me in April 1998 by Rick Macklem.  Below is the specific e-mail
+correspondence from Rick that mentions this material:
+
+| From rick@snowhite.cis.uoguelph.ca Mon Apr  6 12:37:35 1998
+| 
+| Well, the short answer is "I'm not sure what the answers are". At one
+| point someone mentioned they were putting the Pro stuff into 2BSD, but
+| I'm not sure if they actually did it. (The guys that used it the most
+| had it running on a lab of Pro380s at Columbia U. (I think. It's the
+| one right in NY city.)) His name was Charlie Kim (again, I think?) and
+| did some stuff to it so that it worked reasonably well on a Pro380, but
+| I have no idea how you might find him now. (It was a real dog on a Pro350
+| because it didn't have separate I and D space.)
+| 
+| The stuff I did went out on a Usenix distribution tape in about 1983/84
+| and had to be merged into a 2.9BSD distribution. I did generate floppy
+| sets for a few people, because that was the only easy way to get it
+| installed. (The first install here was actually done by downloading the
+| kernel over the serial port talking to the PDP 11 prom (ODS?).)
+| 
+| I'll take a look around here and see if I can find any of it lying about.
+| (If I do, I'll let you know and I can mail it to you.) If it did get
+| merged into the 2BSD dist., that would be the better place to find it,
+| since it would include Charlie's Pro380 fixes. (I vaguely recall his
+| variant wouldn't boot on a 350 and since that was all I had, I didn't
+| merge his changes into mine.)
+| 
+| Good luck with it, rick
+
+The material he mailed me also included a 1985 Usenix distribution
+tape.  I have not attempted to read the tape; I would presume it is
+what he refers to above.
+
+The other contents I have attempted to reproduce here in this subtree.
+The documentation directory contains scanned copies of the 8 pages
+of photo-copied-hand-written notes included.
+
+The other three directories contain the contents of three 5.25" floppy
+disk boxes.  Each set contained recycled RX50 floppies (recycled as in
+the majority were P/OS distribution diskettes or the like) with hand-
+written labels (save one I've called "unknown.")
+
+Working with a DEC Pro/380 running Venix 1.1, I read each RX50 floppy
+and saved the images, one per diskette.  I selected names that will
+hopefully give a sufficient clue as to the original title.
+
+I made the mistake of using the command "dd if=/dev/rf0 of=out.rx50 bs=20b"
+for reasons that are not completely clear to me.  With Venix 1.1 this
+had the effect of transferring 780 blocks, missing the last 10, which
+I didn't know about until later.  The "dd" operation yielded "I/O Error"
+and "39+0" when complete.  I think I expected to see a partial and did
+not, as in "39+10."
+
+I later wrote a small program to read the final 10 blocks off each floppy
+and the result is what is provided here.
+
+I believe the RX50 is actually 80 tracks with 10 sectors per track, thus
+yielding 800 blocks per disk.  I think the first track is reserved and
+thus Venix would not let me at it.  Hopefully I have not also lost
+additional information here too.
+
+There is also the issue of block interleaving.  I have a nagging recollection
+of having some difficulties with physical block/sector numbers being
+remapped as a "performance enhancement" by Venix.  That is, reading
+sequential blocks from a floppy using Venix 1.1 may not produce what
+is expected.  At this moment I don't have any way to check the extracted
+contents to confirm/deny this theory.
+
+Venix 1.1 also has a second floppy device called "/dev/rf0.m11" and I
+think that reminded me of the interleaving issue.  I chose to use the
+device "/dev/rf0" as that seemed to be the "normal" one.  I was unable
+to find any documentation that explained the "m11" variant so I thought
+I'd not try it.  The Venix system had room for only 3 images at a time
+and it took me ~30 minutes per block of 3 images using kermit to get
+the data off the Pro/380 system.
+
+  Ken Wellsch
+  February 1999

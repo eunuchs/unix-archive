@@ -1,0 +1,528 @@
+
+
+
+
+
+
+
+
+
+        UUnniixx//vv77mm RReelleeaassee 22..11 -- SSooffttwwaarree DDeessccrriippttiioonn
+
+                        _F_r_e_d _C_a_n_t_e_r
+
+
+
+
+
+     UNIX(R)  version  seven  modified, `Unix/v7m' is a full
+source distribution of Unix version seven plus the  enhance-
+ments  developed  by  the  Unix Systems Engineering group at
+Digital.  The latest Western Electric  addenda  tape,  dated
+12/2/80  is also included on the Unix/v7m distribution tape,
+see  `/sys/addenda/README'  for  more  details   about   the
+addenda.   The  documents  `Setting  up Unix', `Regenerating
+System Software', and the accompanying manual  pages  super-
+sede the equivalent standard Unix version documents.
+
+
+
+
+
+
+
+
+
+
+
+
+
+     Digital  Equipment  Corporation  assumes  no  responsi-
+bilites for this software and makes no warranties  or  guar-
+anties as to its suitability or completeness.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             -2-
+
+
+DDiissttrriibbuuttiioonn FFoorrmmaatt
+
+     The  distribution  tape  is available at two densities,
+800 BPI for use with the TU10/TE10 and TU16/TE16 tape drives
+and  1600  BPI  for  use  with  the  TS11 and TU16/TE16 tape
+drives.  The 1600 BPI tape can be  used  for  the  TU16/TE16
+only  if  the TM03 tape controller (WITH AUTO DENSITY SELECT
+ENABLED) is used, the 1600 BPI tape cannot be used with  the
+TM02 tape controller.
+
+     The  distribution  tape  consists  of  some preliminary
+bootstrapping programs followed by a root file system  image
+in dump/restor format, the system sources in tar format, and
+a tar formatted user file system with the remainder  of  the
+sources.
+
+     The system as distributed contains binary images of the
+system and all the user level programs,  along  with  source
+and  manual  sections for them--about 2100 files altogether.
+The binary images, along with other things needed  to  flesh
+out  the  file system enough so UNIX will run, are to be put
+on one file system called the `root file system'.  The  file
+system size required is 9600 blocks.  The second file system
+contains the system sources,  needed  to  rebuild  Unix  and
+requires  about 5000 512-byte blocks.  The third file system
+has the remainder of the sources and all of  the  documenta-
+tion, it requires 20,000 blocks of storage.
+
+UUnniixx//vv77mm VVeerrssiioonnss
+
+     The  Unix/v7m  tape includes three versions of the Unix
+operating system; `unix_id', the separated  Instruction  and
+Data  space  version  for  use  with the PDP11/44, PDP11/45,
+PDP11/55, and PDP11/70 processors;  `unix_ov',  the  overlay
+text kernel used with the non-separated Instruction and Data
+space processors, PDP11/23,  PDP11/24,  PDP11/34,  PDP11/40,
+and PDP11/60; `unix_i', the preconfigured unix monitors used
+only for the initial loading of Unix from  the  distribution
+tape.
+
+     The  separated  I and D space version takes full advan-
+tage of the features in Unix version seven and  can  support
+up  to  32 users, depending on the processor type and system
+configuration.  The overlay text kernel is designed to  sup-
+port about 10 users, more or less depending on the processor
+and system configuration.  The overlay  version  limits  the
+size  of  user  processes to 64 kb, due to the lack of sepa-
+rated I and D space in the processor.
+
+     The overlay unix kernel used in this  distribution  was
+supplied  by Mr. Bill Shannon, thanks to Bill for a job well
+done !
+
+
+
+
+
+
+
+
+
+
+
+                             -3-
+
+
+HHaarrddwwaarree RReeqquuiirreemmeennttss
+
+     Unix/v7m, with the exceptions listed below, can be used
+on any system that is configured with a processor, one disk,
+and a tape from the following equipment list:
+
+
+     CPU       DISK      TAPE
+     ---       ----      ----
+
+     PDP11/23  RL01/2         TU10
+     PDP11/24  RK06/7         TE10
+     PDP11/34  RM02/3         TS11
+     PDP11/40  RP03      TU16
+     PDP11/44  RP04/5/6  TE16
+     PDP11/45
+     PDP11/55
+     PDP11/60
+     PDP11/70
+
+
+              OPTIONAL EQUIPMENT
+
+     DISKS     TAPES     PRINTERS  COMMUNICATIONS
+     -----     -----     --------  --------------
+
+     ML11 TS03 LP11      DH11
+     RS03/4    TU56           DM11 (DH modem control)
+     RX02                DZ11
+     RK05                DN11
+     RF11                DU11
+                         DL11
+                         DC11
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             -4-
+
+
+1.   The processor must be equiped with a KW11-L line  clock
+     or a KW11-P programmable clock.
+
+2.   The `practical' minimum memory size for Unix/v7m on all
+     processors is 256 K bytes.  A  memory  size  of  192  K
+     bytes  is  acceptable, however the number of users will
+     be limited.  Unix/v7m is NOT guaranteed  to  work  with
+     less  than  192  K  bytes of main memory. In fact, on a
+     PDP11/23 with 128 k bytes of memory it did not function
+     properly.  For the most part it worked, but some impor-
+     tant things, such as the floating point  simulator  (cc
+     -f)  and  commands  that  used  floation point, such as
+     iostat(1), did not work.  Also, the secondary bootstrap
+     program  `boot'  will not function with less than 192 K
+     bytes.
+
+3.   All of the FP11 type floating point processors are sup-
+     ported by Unix/v7m.  The PDP11/40 Float Instruction Set
+     is not supported by Unix.  A floating  point  simulator
+     is available for processors which are not equipted with
+     floating point hardware. However this code is very slow
+     and  if  any  serious floating point work is to be done
+     the floating point hardware is required.
+
+4.   Four RL01 disk packs are required to contain this  dis-
+     tribution,  however, Unix/v7m can be operated on as few
+     as two RL01 drives, three are recommended.
+
+5.   With the RL02 and RK06 disks two drives are required.
+
+6.   The RK05 disk is not large  enough  to  be  the  system
+     (root) device, it is supported as a user device only.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             -5-
+
+
+7.   The  RM03  disk can only be used with the PDP11/70, all
+     other processors must use the RM02.
+
+8.   The RX02 can be  used  in  single  and  double  density
+     modes, the RX01 is not supported.
+
+9.   The  ML11 solid state disk may be connected to the same
+     massbus with the system disk or on a separate  RH11  or
+     RH70 massbus disk controller.
+
+10.  The RS03/4 and the ML11 are mutually exclusive.
+
+11.  The  TS03  tape  is  supported  as  a user device only,
+     because it cannot accept reels of tape that are greater
+     than 600 feet in length.
+
+12.  For  the TS11 a single drive only is supported.  A TS11
+     and a TM11 (TU10/TE10) may be configured  on  the  same
+     system, with certain restrictions.  The TM11 controller
+     must be at CSR address 172520 and vector  224  and  the
+     TS11  must  be  at  address 172550 and vector 260.  The
+     TS11 can be booted as `MS6', assuming that  the  system
+     is equiped with a M9312 ROM bootstrap using the console
+     emulator.  Unix/v7m will automatically  adapt  to  this
+     configuration,  the  TM11 will be accessed by `mt0' and
+     the TS11 by `mt1'.  The `Setting up Unix' document  has
+     instructions  , flaged by `tstm', which pertain to this
+     configuration.  If the TS11 is the  only  tape  on  the
+     system it must be at CSR address 172520 and vector 224.
+
+13.  An additional RH massbus disk controller, with a combi-
+     nation  of  RM02/3,  and/or RP04/5/6 disks attached, is
+     also supported.  This configuration is referred  to  in
+     `Setting  up Unix' as the `hm' disk.  There is no hard-
+     ware boot ROM available to bootstrap from a disk on the
+     second  RH  controller,  however,  it  can be booted by
+     calling into memory a copy of `boot' from another  disk
+     or the distribution tape.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             -6-
+
+
+PPDDPP1111//2233 AAnnoommaalliieess
+
+     There  are  certain  unexplained error conditions which
+cause the PDP11/23 to enter  a  state  where  it  cannot  be
+rebooted  without  powering  the system off and then back on
+again.  When the PDP11/23 is  booted  it  halts  instead  of
+starting  the  primary bootstrap program, type `0g' to start
+the primary bootstrap.
+
+AA WWoorrdd AAbboouutt DDiisskk MMeeddiiaa
+
+     Unix expects the disk media on which  it  lives  to  be
+perfect,  i.e.,  no  bad blocks. The Unix file system places
+things (super block, i list, free list) in  fixed  positions
+on  the  disk,  there  is no strategy for mapping around bad
+blocks. The Unix device drivers for disks with error correc-
+ton capability (hp & hk) implement ECC in both block and raw
+I/O modes.  All other disk  drivers  depend  on  retries  as
+their only means of error recovery.  A bad disk block is one
+that contains an error which cannot be  corrected  via  ECC,
+for  disks  with ECC, or any error which cannot be recovered
+via retry, for disks without ECC. Retry and ECC  recoverable
+errors  are  "soft"  errors.  Certain disk packs (RM02/3 and
+RK06/7) have the bad blocks flagged in  the  sector  header.
+The  disk  hardware  will not attempt to write or read these
+blocks, but instead will report a bad sector error (BSE).
+
+To qualify a disk pack for use with Unix,  First,  obtain  a
+list  of  the locations of all bad blocks and soft errors on
+the disk pack. The DEC format and verify  diagnostic  should
+provide  this  information  when the disk pack is formatted.
+Compare the error location list to the  file  system  layout
+for  the  type of disk to be used, the following guide lines
+should be used:
+
+1.   The root file system must be free  of  bad  blocks  and
+     although  soft  errors  can be corrected they should be
+     avoided if possible.  Soft errors can not be  tolerated
+     in any disk block that is allocated to the file "/unix"
+     or any other  bootable  file,  because  the  standalone
+     bootstrap does not implement ECC.
+
+2.   The  swap area must be free of bad blocks.  Soft errors
+     should  be  avoided  if  possible,  because  the   time
+     required  to  correct  them will degrade system perfor-
+     mance.
+
+3.   The user file systems must be free of bad blocks,  soft
+     errors  are  generally not a problem in the user areas.
+     It is sometimes possible to use a disk  pack  with  bad
+     blocks in the user file systems by rearranging the disk
+     partitions to avoid the bad blocks.
+
+
+
+
+
+
+
+
+
+
+
+                             -7-
+
+
+RReelleeaassee nnootteess
+
+     The following notes give a very  brief  description  of
+the  differences  between  this  distribution  and  Unix/v7m
+release one.  The release notes are attention getters  only,
+refer  to  the  documentation  for more detailed information
+about the changes and new features.
+
+1.   The `#' prompt has been added to the  block  zero  disk
+     bootstraps, see boot(8).
+
+2.   The  overlay  Unix  kernel  must be booted with the two
+     stage bootstrap, see boot(8).
+
+3.   The RK06 and RK07 block zero disk  boot  programs  have
+     been combined into `hkuboot'.
+
+4.   The  block  zero  disk  bootstraps would halt if only a
+     return was typed, they  will  now  return  to  the  `#'
+     prompt.
+
+5.   The old (unix_i) I space only Unix systems may still be
+     booted directly, without using the two stage bootstrap.
+
+6.   The  `-p'  option  has been added to the ls(1) command,
+     see ls(1).
+
+7.   Logins may now be disabled/enabled at the console  ter-
+     minal, see logins(1m).
+
+8.   There  is now system shutdown command, see shutdown(8).
+
+9.   The iostat(1m) command has been  completely  rewritten,
+     see iostat(1m).
+
+10.  The fsck(1m) command was added, see fsck(1m).
+
+11.  The  ps(1) and pstat(1m) commands no longer rely on the
+     param.h file for  system  parameter  information,  they
+     read  it  from  the  unix  kernel  directly,  using the
+     namelist and /dev/mem facilities.
+
+12.  Several other commands have been changed, see the docu-
+     mentation for the details.
+
+13.  The file `/sys/addenda/README' is must reading !
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                             -8-
+
+
+14.  New  processors  and  disks are supported, see hardware
+     requirements above.
+
+15.  Local terminals are now supported , see ttys(5).
+
+16.  The init(8) program has been  modified  to  reread  the
+     ttys file, see init(8).
+
+17.  Many  floating  point  changes  have been made, see the
+     documentation for more detail.
+
+18.  A TS11 and A TM11 magtape on the  same  system  is  now
+     supported.
+
+19.  Several bugs in the core dump code were fixed.  The new
+     core dump starting address is now 1000 instead of 44.
+
+20.  The RK06/7 disk driver has  been  completely  rewritten
+     and the Rl01/2 driver has been improved.
+
+21.  The RM02/3, ML11, and RP04/5/6 disks on the second RH11
+     or RH70 are now supported, see hm(4).
+
+22.  The HP and HK disk drivers now have full ECC  in  block
+     and raw I/O modes.
+
+23.  Memory parity error handling has been improved.
+
+24.  Stray vector handling has been improved.
+
+25.  Disk  free  list  spacing  has  been optimized for disk
+     rotation.
+
+26.  The `mkconf' program has been extensively modified, see
+     mkconf(1m).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

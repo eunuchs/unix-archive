@@ -1,0 +1,93 @@
+[ this README file is from Dennis, with significant comment by Warren ]
+
+		    Early 11/45 C System Source
+
+So far as I can determine, this is the earliest version of Unix that
+currently exists in machine-readable form.  There are earlier paper
+listings of the assembly-language version for the PDP-11, and somewhat
+more fragmentary listings of the PDP-7 version; as of writing, they
+are on paper only.
+
+This is a tar archive derived from a DECtape labelled "nsys"; a couple
+of years ago Keith Bostic and Paul Vixie attached a DECtape drive to a
+VAX and transcribed some tapes that we were storing.
+
+The dates on the transcription are hard to interpret correctly; if my
+program that interprets the image are correct, the files were last
+touched on 22 Jan, 1973.  The difficulty of interpretation owes both
+to possible bugs in understanding the date bytes on the tape, but also
+to epoch uncertainty.  Earliest Unix used a 32-bit representation of
+time measured in 60ths of one second, which implies a period of just
+over 2 years if the number is taken as unsigned.  In consequence,
+during 1969-73, the epoch was changed several times, usually by
+back-dating existing files on disk and tape and changing the origin.
+The OS here implements the present standard of a New Year 1970 epoch
+and a resolution of 1 second, but the DECtape on which it is stored
+uses the older interval and some older epoch.
+
+[	As it turns out, the file nsys-bits is an image of the original
+	tape. This is in tap(1) format, as used in 1st-3rd Edition UNIX.
+	However, from 3rd -> 4th Edition, timestamps changed from ticks
+	(60ths of one second) to whole seconds. The timestamps recorded
+	in the nsys-bits tap(1) archive are whole-second units. Therefore,
+	Dennis was incorrect in his last sentence above.
+
+	The nsys files are timestamped August 31, 1973. This is consistent
+	with other known dates. The files use structs, but in December 1972
+	the C compiler didn't support structs. In September 1973, the C
+	version of the kernel finally supplanted the assembly version, and
+	the kernel here certainly works fine.	-- Warren
+]
+
+
+1973, however, is a year consistent with other information.  The Third
+Edition manual from early 1973 clearly refers to a system still
+written in assembly language; the Fourth Edition (nominally November,
+1973, and incidentally the first rendered via troff on our first
+Graphic Systems typesetter) announces
+
+	In the months since the last appearance of this manual,
+	many changes have occurred both in the system itself and
+	in the way it is used.  The most important changes result
+	from a complete rewrite of the UNIX system in the C language....
+
+	The number of UNIX installations is now above 20....
+
+What is here is just the source of the OS itself, written in the pre-K&R
+dialect of C.  The file  u  is evidently a binary image of the kernel.
+It is intended only for PDP-11/45, and has setup and memory-handling
+code that will not work on other models (it's missing things special
+to the later, smaller models, and the larger physical address space
+of the still later 11/70.)  It appears that it is intended to be loaded
+into memory at physical 0, and transferred to at location 0.
+
+I'm not sure how much work it would take to get this system to boot.
+Even compiling it might be a bit of a challenge, though I imagine
+that circa V5-V6 compilers would handle the language (maybe even V7).
+It is full of =+ and use of char * as unsigned integers, and integers
+used as pointers in locations like p->x.
+
+So far as I can determine, the disk format it expects is compatible with
+the layout of other earlyish research systems (V5, V6) for example.
+But perhaps not, and it's not certain that the source is complete.
+Even the compilation mechanism is a bit unclear, though it certainly
+used the shell script ken/rc, which appears to depend on having the
+*.o files from ken/* and dmr/* and also slib.a, which doesn't exist
+on the tape.  My guess is that this was an archive of already compiled
+.o files, so that (for example) to test-build a system one would edit a file,
+compile it, and run ken/rc to load it.  The 'ustr' routine referred to
+in ken/rc evidently stripped off the a.out header and the symbols from the
+a.out file.
+
+Best wishes with this.  I'd be interested to hear whether anyone gets
+the  u  image to run.  If you're in luck, all you need is an 11/45 processor
+or emulator and a V5/6/7 disk image.
+
+	Dennis Ritchie
+	January 1999
+
+[ The file modified_nsys.tar.gz holds a modified nsys source which can be
+  compiled and run on a 5th Edition RK05 root filesystem. It also includes
+  documentation which describes what I had to change in order to get it
+  to work. -- Warren
+]

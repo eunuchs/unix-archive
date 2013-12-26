@@ -1,0 +1,16 @@
+Autzoo.856
+net.v7bugs,NET.v7bugs
+utzoo!henry
+Wed Aug  5 21:27:30 1981
+ioctl speed-code checking
+Nowhere in the V7 kernel does anything ever check that the speed codes
+handed to a tty ioctl are valid (i.e. in the range 0..15).  Quite by
+accident, all this will do to a DH or a DZ is screw up the line in
+question.  But there is obviously room for all sorts of trouble here.
+The simplest fix is to change the lines in dev/tty.c/ttioccomm(), about
+line 236, that read:
+		tp->t_ispeed = iocb.ioc_ispeed;
+		tp->t_ospeed = iocb.ioc_ospeed;
+to read:
+		tp->t_ispeed = iocb.ioc_ispeed&017;
+		tp->t_ospeed = iocb.ioc_ospeed&017;

@@ -1,0 +1,471 @@
+From oznet.demon.co.uk!news.demon.co.uk!dispatch.news.demon.net!demon!tank.news.pipex.net!pipex!news.mathworks.com!news.kei.com!simtel!harbinger.cc.monash.edu.au!bunyip.cc.uq.oz.au!nanguo!earth Sun Sep  3 12:01:45 1995
+Newsgroups: comp.os.coherent
+Path: oznet.demon.co.uk!news.demon.co.uk!dispatch.news.demon.net!demon!tank.news.pipex.net!pipex!news.mathworks.com!news.kei.com!simtel!harbinger.cc.monash.edu.au!bunyip.cc.uq.oz.au!nanguo!earth
+From: earth@nanguo.chalmers.com.au (Robert Chalmers)
+Subject: Coherent FAQ.XFIX 
+Version:        1
+Last-Modified:  January 15. 1994
+Reply-To: robert%chalmers.com.au@bunyip.cc.uq.oz.au
+Archive-Name:   Coherent-X11 Install fixes
+Organization: China House.
+Date: Sat, 2 Sep 1995 12:33:57 GMT
+Approved: none
+Message-ID: <DEA2wL.AEM@nanguo.chalmers.com.au>
+Lines: 455
+
+     Comp.os.coherent (Usenet) / Coherent list on ListServ@VMA.CC.ND.EDU
+
+
+     A N  O V E R V I E W  O F  X 1 1  F I X E S  A N D  F A C T S.
+
+       General Information FAQ from reader and user contributions.
+
+
+    Subject: Re: X server for COH 4.2?
+    Subject: Re: text screen messed up upon return from X
+    Subject: ATI Graphics Ultra Timings
+    Subject: Video doen't work.. even vga2!
+    Subject: NEC 3Ds & ATI Vantage
+    Subject: Re: X-Windows and ATI ultra plus
+    Subject: Re: Interlaced Monitors
+    Subject: Re: NEC 3Ds & ATI Vantage
+    Subject: Re: X-Windows and ATI ultra plus
+    Subject: Re: Interlaced Monitors
+
+
+============================================================
+
+Subject: Re: X server for COH 4.2?
+D Parsons (dfp10@csc.albany.edu) wrote:
+:  I have access to several X window machines on a network but have no
+: X window server. I was thinking about using Micro-X under MSDOS
+: windows but I would prefer to connect via a unix X window program on
+: my PC. Is there a server compatible with COH 4.2 X windows? At present
+: my only connection to the network is via PCNFS and MOSAIC running under
+: MSDOS Windows. Don
+
+At present, Coherent supports X only as a client/server on the host machine.
+ie. you cannot serve clients over a network, since there is no networking
+support.
+
+Harry
+--
+hpulley@uoguelph.ca
+
+=============================================================================
+
+Subject: Re: text screen messed up upon return from X
+
+>Well, when I exit from Xwindows (nicely, of course), most of the time, something
+>in the VGA card is not restored to normal, so there are vertical bars and some
+>very strange flashing and character repetition.
+
+This was a problem with Xfree , it happened in Linux also, i think it was not
+saving the text video screen properly, or something like that.
+
+sorry, i had to reboot to get out of this problem.  Good LUck!
+==============================================================================
+
+Sender: news@spectrum.xerox.com
+
+
+
+
+
+Reply-To: bbigb.roch817@xerox.com, 73514.727@compuserve.com
+Subject: ATI Graphics Ultra Timings
+
+I sent a message to mwcbbs!support about the timings for an ATI Graphics
+Ultra Plus/Pro.  The timings that I sent work with my NEC SVGA monitor.  They
+might work with other NEC monitors as well.  I cannot validate this.  I
+notified fred@lepanto.mwc.com of my posting so that the message doesn't sit
+at the bottom of a heap of other mail messages.  Unfortunately, I don't
+currently have them, so I am unable to post the timings.  I derived the
+timings by following the instructions that MWC posted.  The instructions
+are also in /usr/X11/doc for those with 4.2/X.  I'm happy to say that the
+timings that I derived work. If MWC hasn't posted what I sent to them by
+tomorrow, I will post them myself.  Keep in mind that the timings may not
+work if you have a different monitor.  However, I have a SVGA monitor, so
+if your monitor is SVGA-compatible then they should work.  Good luck!
+
+Bruce
+bbigb.roch817@xerox.com/73514.727@compuserve.com
+==========================================================================
+
+Subject: Video doen't work.. even vga2!
+Keywords: ati, oak, vga2, Xwindows
+Summary: vga card doesn't cooperate in X
+
+I'd hate to post so many newbie questions, but I feel cornered...
+
+Tried to hook up X under Coh 4.2 again last night.  No good.
+I called MWC support, and the guy on the other end went through the
+standard questions..  RAM?  Resolution?  Number of disks installed from
+the X package?  I finally forwarded my Xconfig and the nohup.out
+
+Well the final verdict was that the oak card was no good.  I asked if
+there was any card that was recommended as compatible now, and useful for
+future releases.  ATI "mach 32" cards wre the answer.
+
+After fussing around with files for a while longer I ran out to the store
+and _bought_ this (300.00) card.  Just had to see if I could get X to run
+(it crashes).  Well I reached a point where it _might_ not crash totally,
+just halt stuff for a while.  The message back would be about trying to
+get X up, after 70 of so trys, and failing.  It varies a bit though,
+sometimes the system doesn't come back, so I reboot.
+
+Also, the autodetect did not like the ati Graphics Ultra+, this caused the
+system to lock as well (so I reinstalled).
+
+Question(s):
+
+If the Oak is so bad (is it?) what's a safe bet card (under $300.00)?  I'd
+replace it (if I had to) with a clone for +- $130.00, but I want to return
+the ati.
+
+Could anyone spell out a methodical approach here to get the problem
+narrowed down.  I'd settle for CGA resolution (that's a joke for all you
+multisync snobs) if I could only see that X could find the mouse, and the
+board.
+
+Believe me,  I went through that Xconfig file, and rem'ed out a bit of stuff.
+I'd email whatever files I can redirect during startx, or X -probeonly, or
+whatever else I can use.
+
+Thanks,
+
+
+
+
+
+
+Allan
+
+===============================================================================
+
+Subject: NEC 3Ds & ATI Vantage
+
+I'm STILL trying to get X windows to work in color. I have a ATI Vantage
+graphics card and an NEC3Ds monitor. After reading all the available info I'm
+beginning to understand my situation but I wanted to confirm.  My card only
+has 512 M of VGA memory but 1024 if the accelerator chip is used. I believe
+in VGA mode, the accelerator card is not used, so does this mean I can only
+use my card at 512M? It seems to me that this is false since I've been able to
+configure my card in Windows to use SVGA. The ATI people said that the only
+way the accelerator chips are used is in 8514/a mode. Does this make sense?
+
+Now for my X question. I've tried quite a few different setting of the clocks
+but none have yet to work in color mode. I ran X386 -probe (or whatever that
+was) and the outsput shows the clocks as 1 2 3 4 ... 16. I expected some more
+interesting numbers. Am I doing something wrong? I was also curious if anyone
+has tried the manual clock setting using my configuration. I've ran through
+the process myself, but a lot of the information I need doesn't seem to be
+in my manual. Specifically the DCF of my video card. Does anyone have at least
+this information for this type of card? I'll be faxing a request to ATI soon,
+but I thought this might be faster. I am using:
+chipset "ati"
+videoRAM 1024
+and the system does seem to realize that I'm using the 28800 chipset, but it
+seems to think that my card is a ATI Wonder Plus.
+
+Thanks,
+Scott
+===========================================================================
+
+Subject: Re: X-Windows and ATI ultra plus
+
+In article <2ggd9j$jf4@fido.asd.sgi.com>, bill@iris12.houst.sgi.com writes:
+>
+> In article <1994Jan5.142853.11710@spectrum.xerox.com>, bbigb.roch817@xerox.com writes:
+> > In article LHv@undergrad.math.uwaterloo.ca, pkilam@undergrad.math.uwaterloo.ca () writes:
+> > >
+> > >I have an ATI graphics ultra plus (ISA) with
+> > >2 MB of RAM. I am able to run X-windows for
+> > >coherent under 800x600 mode, but unable to run
+> > >under 1024x768 or 1024x768i modes. Did anyone know
+> > >what is the clock settings for the ultra card?
+> > >Or did I do something wrong?
+> > >
+> > >pkilam
+> > >
+> > >thanks
+> > >
+> >
+>        Here is part of my Xconfig file.  Im runnig Xfree 2.0 but this should
+> work fine i have not yet had a chance to try it on CohX.  It is "800x600" and
+> 8415/a ie., 1024x768 interlaced.
+>
+> Make sure your clock chip is the ati 18801-1 ,i think.  If you have any trouble
+> let me know.
+>
+>   Virtual       1024 768
+
+
+
+
+
+>   Viewport      0 0
+>   Modes         "1024x768" "800x600" # "640x480"
+>
+> Clocks 100 126 92 36 51 57 0 44 135 32 110 80 39 45 75 65 50 63 46 18 25 28 0 22
+>  67 16 55 40 19 23 37 33
+>
+> ModeDB
+> # name        clock   horizontal timing     vertical timing      flags
+>
+>   "1024x768"    44.9  1024 1048 1208 1264   768  776  784  817   Interlace
+>   "800x600"     32     776  776  896  965   585  634  637  643
+>
+> Bill
+
+Here is the real clocks for the Ultra Card running under CohX i used these so
+i know they work for me!
+Good luck!
+Clocks  18 22 35 28 36 44 50 56
+        30 32 37 39 40  0 75 65
+
+
+These clocks are for the ati wonder compatibility mode, ie the same clocks used
+for the wonder card.  These should work if not email me.!
+
+Bill    bill@houst.sgi.com
+        brichard@neosoft.com
+============================================================================
+
+Subject: Re: Interlaced Monitors
+
+In article <1994Jan10.192913.19284@iplmail.orl.mmc.com>, u77576@fmms.orl.mmc.com writes:
+> In playing with X and reading the myriad of XFree86 configuration files out here in Cyberspace
+> I was wondering if Im stuck with the continual flickering with an Interlaced Monitor and 1024x768
+> resolution.  I've used a handful of configurations, but unfortunately I no longer obtain the
+> manual for the monitor. Has anyone had any luck with an Interlaced monitor and an acceptable
+> display at 1024x768... I would like any assistance you can offer. If it helps, I have a
+> WESTERN SYSTEMS SVGA monitor and a TSENG Labs 1meg video card ET4000. Thanks in advance.
+
+If it helps this is the mode for 8415/a compatibility it is not to bad on my
+moniter.
+
+"1024x768"    44.9  1024 1048 1208 1264   768  776  784  817   Interlace
+
+44.9 is the dot-clock, i dont know what would be the equivilant in the ET4000
+
+>
+> --
+> |------------------------------------
+> |John K. Milstead                   |
+> |Unix System Admin                  |
+> |Martin Marietta Information Systems|
+> |Orlando, Fla.                      |
+> -------------------------------------
+=============================================================================
+
+Subject: Re: NEC 3Ds & ATI Vantage
+
+In article <2dPY02lS5aew01@JUTS.ccc.amdahl.com> sjp00@JUTS.ccc.amdahl.com (Scott J Pelletier) writes:
+>I'm STILL trying to get X windows to work in color. I have a ATI Vantage
+>graphics card and an NEC3Ds monitor. After reading all the available info I'm
+>beginning to understand my situation but I wanted to confirm.  My card only
+
+
+
+
+
+>has 512 M of VGA memory but 1024 if the accelerator chip is used. I believe
+>in VGA mode, the accelerator card is not used, so does this mean I can only
+>use my card at 512M? It seems to me that this is false since I've been able to
+>configure my card in Windows to use SVGA. The ATI people said that the only
+>way the accelerator chips are used is in 8514/a mode. Does this make sense?
+
+All true I'm afraid.  Take a look at your card.  You only have 512k for VGA.
+I have an older Graphics Ultra (Mach 8), and I'm in the same boat.  Your
+options are: 1) live with it; 2) buy a new video card; 3) port XFree 2.0,
+which does support the Mach 8 (and presumably the 1024k it has available to
+it).
+
+>Now for my X question. I've tried quite a few different setting of the clocks
+>but none have yet to work in color mode. I ran X386 -probe (or whatever that
+>was) and the outsput shows the clocks as 1 2 3 4 ... 16. I expected some more
+>interesting numbers. Am I doing something wrong? I was also curious if anyone
+
+Try the following entries (sent to me by Bill Richardson -- thanks Bill!)
+
+Clocks  18 22 35 28 36 44 50 56
+        30 32 37 39 40  0 75 65
+
+ModeDB
+#            clock  horizontal timing        virtical timing
+"800x600"       32   776  776  896  968     585  634  637  646
+
+
+You may have to play with the ModeDB to get satisfactory results with
+your monitor.
+
+Darren
+=======================================================================
+
+Subject: Re: X-Windows and ATI ultra plus
+
+In article mu6@fido.asd.sgi.com, bill@iris12.houst.sgi.com (Bill Richardson) writes:
+>
+>In article <2ggd9j$jf4@fido.asd.sgi.com>, bill@iris12.houst.sgi.com writes:
+>>
+>> In article <1994Jan5.142853.11710@spectrum.xerox.com>, bbigb.roch817@xerox.com writes:
+>> > In article LHv@undergrad.math.uwaterloo.ca, pkilam@undergrad.math.uwaterloo.ca () writes:
+>> > >
+>> > >I have an ATI graphics ultra plus (ISA) with
+>> > >2 MB of RAM. I am able to run X-windows for
+>> > >coherent under 800x600 mode, but unable to run
+>> > >under 1024x768 or 1024x768i modes. Did anyone know
+>> > >what is the clock settings for the ultra card?
+>> > >Or did I do something wrong?
+>> > >
+>> > >pkilam
+>> > >
+>> > >thanks
+>> > >
+>> >
+>>       Here is part of my Xconfig file.  Im runnig Xfree 2.0 but this should
+>> work fine i have not yet had a chance to try it on CohX.  It is "800x600" and
+>> 8415/a ie., 1024x768 interlaced.
+>>
+>> Make sure your clock chip is the ati 18801-1 ,i think.  If you have any trouble
+>> let me know.
+>>
+
+
+
+
+
+>>   Virtual       1024 768
+>>   Viewport      0 0
+>>   Modes         "1024x768" "800x600" # "640x480"
+>>
+>> Clocks 100 126 92 36 51 57 0 44 135 32 110 80 39 45 75 65 50 63 46 18 25 28 0 22
+>>  67 16 55 40 19 23 37 33
+>>
+>> ModeDB
+>> # name        clock   horizontal timing     vertical timing      flags
+>>
+>>   "1024x768"    44.9  1024 1048 1208 1264   768  776  784  817   Interlace
+>>   "800x600"     32     776  776  896  965   585  634  637  643
+>>
+>> Bill
+>
+>Here is the real clocks for the Ultra Card running under CohX i used these so
+>i know they work for me!
+>Good luck!
+>
+>Clocks  18 22 35 28 36 44 50 56
+>        30 32 37 39 40  0 75 65
+>
+>
+>These clocks are for the ati wonder compatibility mode, ie the same clocks used
+>for the wonder card.  These should work if not email me.!
+>
+>Bill    bill@houst.sgi.com
+>       brichard@neosoft.com
+>
+
+For the ATI Graphics Ultra Plus/Pro, the default Coherent/X timings for
+"800x600" and "640x480" already work.  However, the timings for "1024x768"
+do not.  Here is the information that you need in your Xconfig for Coherent/X
+to work with your ATI Graphics Ultra in "1024x768" mode as well.
+
+
+        chipset "ati"
+        videoRAM 1024k
+        Modes "1024x768" "800x600" "640x480"
+        Clocks 18 22 25 28 36 44 50 56 30 32 37 39 40 0 75 65
+        Virtual 1024 768
+
+        # ATI Graphics Ultra Plus/Pro/60 Hz/Non-Interlaced
+
+        #Mode           horizontal timings      vertical timings
+        "1024x768"      65 1024 1120 1264 1360  768 771 778 825
+
+I prefer non-interlaced at 60 Hz over Interlaced at 87 Hz.  I have an NEC monitor
+and it looks good at 60 Hz.
+
+Also, you must set the "VGA Memory Size" of your Graphics Ultra Plus/Pro to
+"1.0MB".  To do this, run the ATI "Install" utility and select the
+"Set Power-Up Configuration" option; then select the "VGA Memory Size" option
+and choose "1.0MB".  Escape from the menus and save the configuration; then
+reboot into Coherent.  Good luck!
+
+Bruce Bigby
+bbigb.roch817@xerox.com
+73514.727@compuserve.com
+=============================================================================
+Subject: Re: Interlaced Monitors
+
+
+
+
+
+
+In article 19284@iplmail.orl.mmc.com, u77576@fmms.orl.mmc.com (John K. Milstead) writes:
+>In playing with X and reading the myriad of XFree86 configuration files out here in Cyberspace
+>I was wondering if Im stuck with the continual flickering with an Interlaced Monitor and 1024x768
+>resolution.  I've used a handful of configurations, but unfortunately I no longer obtain the
+>manual for the monitor. Has anyone had any luck with an Interlaced monitor and an acceptable
+>display at 1024x768... I would like any assistance you can offer. If it helps, I have a
+>WESTERN SYSTEMS SVGA monitor and a TSENG Labs 1meg video card ET4000. Thanks in advance.
+>
+>--
+>|------------------------------------
+>|John K. Milstead                   |
+>|Unix System Admin                  |
+>|Martin Marietta Information Systems|
+>|Orlando, Fla.                      |
+>-------------------------------------
+
+I have an NEC SVGA monitor which supports 1024x768 NI at 60 Hz and 1024x768
+Interlaced at 87 Hz.  If your monitor supports non-interlaced mode at 60 Hz,
+I suggest that you use it.  Interlaced mode, as you now know, is bothersome.
+
+Bruce
+Work Email: bbigb.roch817@xerox.com
+Home Email: 73514.727@compuserve.com
+============================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

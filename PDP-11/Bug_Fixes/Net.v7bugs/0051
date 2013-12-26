@@ -1,0 +1,59 @@
+Apur-ee.177
+net.bugs.v7,net.bugs.2bsd,net.bugs.4bsd
+utzoo!decvax!pur-ee!bruner
+Fri Dec 11 21:19:01 1981
+"holes" in directories
+We discovered a particularly nasty problem with the way that UNIX
+handles directories when cleaning up a bad system crash.  A "hole"
+(region where no blocks are allocated) was created in /usr/tmp.
+"fsck" reported no unusual errors, but when we attempted to touch
+the inside of this directory (e.g. with "ls") we had all sorts of
+errors from our disc driver.
+
+The problem is that UNIX assumes there will never be holes in
+directories (since normal operation does not create them).  The
+routine "namei" which searches directories contains the line:
+
+	bp = bread(dp->i_dev,
+		bmap(dp, (daddr_t)(u.u_offset>>BSHIFT), B_READ));
+
+If "bmap" is called with B_READ it will not allocate blocks to fill
+in "holes"; rather, it returns -1 if a hole exists.  This is then
+passed directly to "bread".  If your disc driver doesn't check for
+negative block numbers (ours didn't), you'll get invalid
+cylinder/surface/sector errors from your disc.  Even if the disc
+driver does catch the error, you still have problems.  In 2.8bsd
+and 4.1bsd the blocks following the "hole" are never reached, so
+you could lose a lot of files if the hole occurred near the
+beginning of the directory.  If there is no check for an error
+from "bread" then all sorts of inconsistent things can happen.
+
+This problem exists in V7, 2.8bsd, and 4.1bsd.  It is difficult for
+"fsck" to fill in the hole, but certainly it should complain about
+the problem.  I implemented a kernel fix -- just have "namei" check
+the result of "bmap"; if negative (and the filesystem is read-write)
+it then fills in the hole, otherwise, the "hole" is skipped so that
+it can't cause any harm.  The fix varies slightly from system to
+system, but is approximately:
+
+#include "../h/filsys.h"
+	....
+	daddr_t bn;
+	struct filsys *getfs();
+	....
+		if ((bn=bmap(dp, (daddr_t)(u.u_offset>>BSHIFT), B_READ) < 0) {
+			printf("hole in dir: %d/%d i=%d\n",
+			    major(dp->i_dev), minor(dp->i_dev),
+			    dp->i_number);
+			if (getfs(dp->i_dev)->s_ronly ||
+			    (bn=bmap(dp, (daddr_t)(u.u_offset>>BSHIFT),
+			    B_WRITE)) < 0) {
+				u.u_offset += BSIZE;	/* skip block */
+				goto eloop;
+			}
+		bp = bread(dp->i_dev, bn);
+
+V6 does not have this problem, since it always fills in "holes" when
+the file is read (no 3rd argument to "bmap").
+
+--John Bruner

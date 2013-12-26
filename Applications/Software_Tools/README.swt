@@ -1,0 +1,51 @@
+[ The file swt.tar.gz contains the Software Tools in Pascal and Ratfor from
+  Arnold Robbins. Here are his comments for each section -- Warren ]
+
+Sun Jun 18 15:33:24 IDT 2000 - Pascal Section
+=============================================
+
+These are the programs from the ``Software Tools in Pascal'' tape.
+The file TAPE is the original tape.  All the others, except this one,
+are the extracted files.  I have mapped all the directory names to
+lower case, though.
+
+Enjoy,
+
+Arnold Robbins
+arnold@skeeve.com
+
+
+Sun Jun 18 15:43:48 IDT 2000 - Ratfor Section
+=============================================
+
+These are the original files from the Ratfor version of ``Software Tools''.
+
+TAPE		the original tape image as a Unix file
+
+This in turn consists of 20 files, as follows:
+
+char.table	a list of ASCII values
+rat.in.for	ratfor in FORTRAN, for bootstrapping
+ratdefs		default definitions
+commonblocks	the COMMON blocks
+rat.in.rat	ratfor in ratfor
+support		support routines
+chapter.1	programs from chapter 1
+small.chap.2	the small programs from chapter 2
+translit	the `tr' equivalent
+small.chap.3	the small programs from chapter 3
+archive		the `ar' equivalent
+chapter.4	programs from chapter 4
+other.chap.4	other programs from chapter 4
+find		the `grep' equivalent
+change		a simple sed-like program
+edit		the `ed' equivalent
+file.prims.ed	file primitives for `edit'
+formatter	poor man's nroff
+macros		simple macro processor
+rat.in.book	the version of ratfor in the book
+
+Enjoy,
+
+Arnold Robbins
+arnold@skeeve.com

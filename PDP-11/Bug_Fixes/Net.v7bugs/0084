@@ -1,0 +1,50 @@
+Autzoo.1430
+net.bugs.v7
+utcsrgv!utzoo!henry
+Wed Feb 24 21:37:58 1982
+wc verbosity
+The wc program is not half as useful as it should be, because it runs
+off at the mouth.  It insists on printing a filename even if it was
+given only one argument;  moreover, it inserts blanks to make its
+output look nice, and insists on inserting them even if only a
+partial output is requested.  The result is that a shell program which
+simply wants to count the lines in a file cannot use wc directly;  it
+must process the output through a sed filter or the equivalent to strip
+out the babble and get a single clean number.
+
+It is easy to fix wc so that (a) it prints filenames only if there is
+more than one file, and (b) it uses tabs rather than fixed fields for
+output formatting, and suppresses them when they are not needed.  The
+resulting program doesn't yield quite as elegant an output format, but
+is much more useful as a TOOL.  (And if I want elegant output, I'll
+run it through tbl anyway...).  Here are the changes (line numbers may
+be off a bit from the V7 distribution version):
+
+53,54c55,56
+< 		if(argc>1) {
+< 			printf(" %s\n", argv[i]);
+---
+> 		if(argc>2) {
+> 			printf("\t%s\n", argv[i]);
+64c66
+< 		printf(" total\n");
+---
+> 		printf("\ttotal\n");
+75c77,79
+< 		printf("%7ld", linect);
+---
+> 		printf("%ld", linect);
+> 		if (*wd != '\0')
+> 			putchar('\t');
+79c83,85
+< 		printf("%7ld ", wordct);
+---
+> 		printf("%ld", wordct);
+> 		if (*wd != '\0')
+> 			putchar('\t');
+83c89,91
+< 		printf("%7ld", charct);
+---
+> 		printf("%ld", charct);
+> 		if (*wd != '\0')
+> 			putchar('\t');

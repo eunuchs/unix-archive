@@ -1,0 +1,197 @@
+<!--Converted with LaTeX2HTML 98.1p1 release (March 2nd, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>PUPS Archive Sites</TITLE>
+<META NAME="description" CONTENT="PUPS Archive Sites">
+<META NAME="keywords" CONTENT="archive_sites">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="archive_sites.css">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<P>
+
+<H1><A NAME="SECTION00010000000000000000">
+PUPS Archive Sites</A>
+</H1>
+
+<P>
+The PUPS Archive is available via various protocols from several sites.
+We would love to have more mirrors of this archive. If you could provide
+a mirror of this site, please let <A NAME="tex2html1"
+ HREF="mailto:wkt@cs.adfa.edu.au">Warren Toomey</A>
+know.
+
+<P>
+All archive sites require that only legitimate holders of a UNIX source
+license can access the archive. You will need to request access to the
+archive and prove you hold a UNIX source license. Once confirmed, you will
+receive a username and password to access the archive.
+
+<P>
+
+<H1><A NAME="SECTION00020000000000000000">
+FTP Access</A>
+</H1>
+
+<P>
+Password-protected FTP access to the PUPS Archive is available from:
+
+<P>
+<UL>
+<LI>minnie.cs.adfa.edu.au in Australia.
+</UL>
+<P>
+
+<H1><A NAME="SECTION00030000000000000000">
+Web Access</A>
+</H1>
+
+<P>
+Password-protected HTTP access to the PUPS Archive is available from:
+
+<P>
+<UL>
+<LI><A NAME="tex2html2"
+ HREF="http://minnie.cs.adfa.edu.au/PUPS/Archive">minnie.cs.adfa.edu.au</A>
+in Australia.
+</UL>
+<P>
+
+<H1><A NAME="SECTION00040000000000000000">
+Rsync Access</A>
+</H1>
+
+<P>
+The PUPS Archive can also be accessed via an rsync server on
+minnie.cs.adfa.edu.au. See the <A NAME="tex2html3"
+ HREF="http://rsync.samba.org/">rsync web page</A>
+for details on how to obtain a client.
+
+<P>
+The rsync access is divided into a number of categories in order to
+ease the load on the PUPS Archive server. The categories are:
+
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="CENTER" COLSPAN=1><B> Name</B></TD>
+<TD ALIGN="CENTER" COLSPAN=1><B> Holds</B></TD>
+<TD ALIGN="CENTER" COLSPAN=1><B> Size (Megs)</B></TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_Root</TD>
+<TD ALIGN="LEFT">Top-level files</TD>
+<TD ALIGN="LEFT">1M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_Applications</TD>
+<TD ALIGN="LEFT">Applications directory</TD>
+<TD ALIGN="LEFT">65M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_Boot_Images</TD>
+<TD ALIGN="LEFT">Boot_Images directory</TD>
+<TD ALIGN="LEFT">60M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_Bug_Fixes</TD>
+<TD ALIGN="LEFT">Bug_Fixes directory</TD>
+<TD ALIGN="LEFT">1M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_Documentation</TD>
+<TD ALIGN="LEFT">Documentation directory</TD>
+<TD ALIGN="LEFT">6M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_Emulators</TD>
+<TD ALIGN="LEFT">Emulators directory</TD>
+<TD ALIGN="LEFT">16M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_Lists</TD>
+<TD ALIGN="LEFT">Lists directory</TD>
+<TD ALIGN="LEFT">6M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_Misc</TD>
+<TD ALIGN="LEFT">Misc directory</TD>
+<TD ALIGN="LEFT">1M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_Tools</TD>
+<TD ALIGN="LEFT">Tools directory</TD>
+<TD ALIGN="LEFT">4M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_4bsd</TD>
+<TD ALIGN="LEFT">Distributions/4bsd directory</TD>
+<TD ALIGN="LEFT">300M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_dec</TD>
+<TD ALIGN="LEFT">Distributions/dec directory</TD>
+<TD ALIGN="LEFT">23M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_other</TD>
+<TD ALIGN="LEFT">Distributions/other directory</TD>
+<TD ALIGN="LEFT">30M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_research</TD>
+<TD ALIGN="LEFT">Distributions/research directory</TD>
+<TD ALIGN="LEFT">17M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_ucb</TD>
+<TD ALIGN="LEFT">Distributions/ucb directory</TD>
+<TD ALIGN="LEFT">140M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_unsw</TD>
+<TD ALIGN="LEFT">Distributions/unsw directory</TD>
+<TD ALIGN="LEFT">65M</TD>
+</TR>
+<TR><TD ALIGN="LEFT">PUPS_usdl</TD>
+<TD ALIGN="LEFT">Distributions/usdl directory</TD>
+<TD ALIGN="LEFT">45M</TD>
+</TR>
+</TABLE></DIV>
+<P>
+You can use rsync to mirror each section. To mirror the complete archive,
+you would issue the following commands:
+
+<P>
+<PRE>
+mkdir Applications Boot_Images Bug_Fixes Documentation
+mkdir Distributions Emulators Lists Misc Tools
+cd Distributions
+mkdir 4bsd dec other research ucb unsw usdl
+cd ..
+
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_Root .
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_Applications Applications
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_Boot_Images Boot_Images
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_Bug_Fixes Bug_Fixes
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_Documentation Documentation
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_Emulators Emulators
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_Lists Lists
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_Misc Misc
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_Tools Tools
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_4bsd Distributions/4bsd
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_dec Distributions/dec
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_other Distributions/other
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_research Distributions/research
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_ucb Distributions/ucb
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_unsw Distributions/unsw
+rsync -avz username@minnie.cs.adfa.edu.au::PUPS_usdl Distributions/usdl
+</PRE>
+<P>
+where username is the username you were given once your PUPS Archive
+access was granted.
+
+<P>
+<HR>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Warren Toomey <BR>
+2000-05-19</I>
+</ADDRESS>
+</BODY>
+</HTML>

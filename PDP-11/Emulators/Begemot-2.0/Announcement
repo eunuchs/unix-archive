@@ -1,0 +1,40 @@
+Version 2.0 of p11 - the Begemot PDP-11 emulator - is available on
+ftp.fokus.gmd.de:/pub/nthp/11. This release supports the following
+platforms:
+
+	BSD/386 1.1	x86
+	SunOS 4.1.3	SPARC
+	Solaris 2.x	SPARC
+	DEC/OSF1 T3.2	ALPHA
+
+The distribution consists of both source and binary kits. In addition,
+for those of you not being fortunate to have bootable RL02 disk images,
+a demo version of the emulator is run on the ftp server. Try one of the
+following
+
+	telnet ftp.fokus.gmd.de 10000
+	telnet ftp.fokus.gmd.de 10001
+	telnet ftp.fokus.gmd.de 10002
+	telnet ftp.fokus.gmd.de 10003
+
+to get connected to one of the four available terminals. If telnet
+connects, but this terminal is currently in use, you'll get a short
+message. You should then try connecting to another port. Once you are
+online, log into RSX-11M with
+
+	hel guest/
+
+(no password necessary). Don't forget to say "bye", before disconnecting
+with telnet.
+
+The current implementation emulates a KDJ11A with 1MByte of RAM, one or
+more RLV12 disk controllers, a boot ROM, one or more KL11A controllers
+and a standard line printer interface. While emulation speed has not
+been fully evaluated yet, the integer performance on high-end workstations
+seems comparable to the real KDJ11A. DMA performace peeks at nearly twice
+the speed of the real machine.
+
+Enjoy,
+	Begemot Willi
+	Harti Brandt
+	Joerg Micheel

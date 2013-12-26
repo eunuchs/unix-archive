@@ -1,0 +1,31 @@
+Autzoo.1394
+net.bugs.v7
+utcsrgv!utzoo!henry
+Wed Feb 17 00:01:55 1982
+ld big-file bug
+To see an interesting explosion, try the following.  Compile all the
+pieces of f77pass1.  Either work in a copy of the makefile or set up
+a shell variable (say $all) containing the list of files in $(OBJECTS)
+in the makefile.  Do this:
+
+	ld -r -X $all -o junk.o
+
+This has created one a.out with all the object modules in it.  The -r
+is to tell it we're not through yet, the -X is to strip trivia out of
+the symbol table so later steps won't blow up on too many symbols.  Run
+"size" on junk.o, noticing that text+data (forgetting bss) is over 16 bits.
+Now:
+
+	ld -X /lib/crt0.o -i junk.o -lc
+
+This ought to yield f77pass1, right?  Wrong, it lists _main as undefined
+and then explodes, giving an "internal error" message.  The fixed-up
+loader supplied with VU Pascal explodes the same way.  The fixes don't go
+far enough.
+
+The problem is almost certainly a 16-bit overflow in a file offset, but
+I've tried some obvious fixes and they don't help (at least, not enough),
+and I lack the time to explore ld.c in detail just now.  Note that it shows
+up only for monstrous INPUT files:  ld has no trouble building f77pass1
+if the input is broken up into the usual pieces.  This makes the problem
+a bit less important than it would be otherwise.

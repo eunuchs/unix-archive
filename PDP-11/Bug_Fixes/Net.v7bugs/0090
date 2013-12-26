@@ -1,0 +1,11 @@
+Autzoo.1483
+net.bugs.v7
+utcsrgv!utzoo!henry
+Fri Mar 12 17:05:49 1982
+uucp (unsigned)char
+This message is a followon to the message I sent the other day about
+(unsigned)c giving zero-extension when it shouldn't.  Note that the
+uucp packet driver relies on this bug in a few places.  The fix is
+to change "(unsigned)foo" to, ugh, "foo & 0377" in the appropriate
+places.  I haven't done this yet and hence haven't identified exactly
+which of the casts to unsigned in pk[01].c are affected.

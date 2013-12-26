@@ -1,0 +1,18 @@
+
+b   line breaks on			r   read file
+b-  line breaks off			s   substitute /old/new/
+d   delete line(s)			t   copy line(s)
+e   edit a new file			v   globally if not
+f   set file name			w   write on file
+g   globally if				x   substitute interactively
+h   display this summary			('.' to confirm)
+k   mark line				/   delimit search string
+m   move line(s)			?   delimit backward
+l   list line(s)				search string
+o   open line(s) for mods		!   unix command
+	(^H for help in 'o')		=   line number
+o\  replace line(s)			>   prompts off
+o-  insert new lines			%   display context
+o+  append new lines			&   .-16,.p
+p   print line(s)			"   .+1,.+17p
+q   quit editor				+,- .+1p,.-1p

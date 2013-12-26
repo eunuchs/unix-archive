@@ -1,0 +1,330 @@
+	.mcall	.modul
+.modul	hd,versio=1,commen=<Russian Hypothetical Disk Handler>,audit=yes
+;++
+;
+; Ersatz-11 Hypothetical Disk device handler for RT-11 V5.X.
+;
+; The HD: device in Ersatz-11 is included for compatibility with boot images
+; intended for the Russian PDP-11/03 emulator (I would credit the author but
+; the read-me file seems to be in Russian, and is mostly non-ASCII).  I have
+; extended the device to include interrupts and 18-bit addressing (for all I
+; know the HD_SYS.EXE driver does this too, but if so they aren't used by the
+; HD.SYS driver supplied with the emulator which is what I looked at).
+;
+; For the record, this driver is nothing to do with the code in the Russian
+; HD.SYS handler (it actually looks more like the RK.SYS code since that's
+; beautifully documented as an example handler in the V4 Software Support
+; Manual).  Also, it uses the interrupts, and 18-bit addressing (when
+; assembled with MMG$T set), and is thus incompatible with the Russian
+; PDP-11/03 emulator.  However a new driver was necessary to support floppies
+; (w/o stalling the system), and to work with XM.  This driver is intended to
+; be used as a stopgap until MSCP emulation is added to Ersatz-11, to handle
+; devices of arbitrary sizes.
+;
+; This driver is for RT-11 V5.X, but was written using the V4.X SSM, so there
+; are a few things that RK.MAC has that I don't know what they're for.  I may
+; get around to adding V4.X conditionals, although things would be a little
+; ugly under V4.X since it didn't have the VARSZ$ bit, so presumably you have
+; to patch DUP to make INIT bother to ask the driver for the size (with
+; special function #373).
+;
+; By John Wilson.
+;
+; 16-Mar-1995	JMBW	Created.
+; 31-Oct-1998	JMBW	Reduced unit number mask to 3 bits for TSX.
+;
+;--
+	.mcall	.drdef,.assume
+;
+.readw=	emt!375
+.writw=	emt!375
+;
+.if eq mmg$t
+	.drdef	hd,377,filst$!spfun$!varsz$,128.,177110,234,dma=no
+.iff
+	.drdef	hd,377,filst$!spfun$!varsz$,128.,177110,234,dma=yes
+.endc
+;
+; These are new since V4, no idea what they are:
+	.drptr
+	.drest	class=dvc.dk
+;
+; Device registers:
+;
+hdcs=	hd$csr			;777110 control/status register
+hdbc=	hdcs+2			;777112 byte count register
+hdblk=	hdcs+4			;777114 starting block register
+hdba=	hdcs+6			;777116 bus address register
+hdatn=	hdcs+10			;777120 drive attn register (disk change)
+hdst=	hdcs+12			;777122 ctrlr error/drive status register
+hdblke=	hdcs+14			;777124 starting block register extension
+hdbae=	hdcs+16			;777126 bus address extension
+;
+hdcnt=	8.			;number of error retries
+hdnreg=	8.			;number of regs to read for error log
+;
+; Bits in HDCS:
+;
+cserr=	100000			;error
+csunit=	17000			;unit
+csrdy=	200			;ready
+csie=	100			;interrupt enable (not on original HD_SYS.EXE)
+csbae=	60			;bus address extension (" " " ")
+csfun=	16			;function code
+csgo=	1			;go bit
+;
+; Function codes in CSFUN:
+;
+fnack=	0*2			;medium acknowledge
+fnread=	1*2			;read block(s)
+fnwrit=	2*2			;write block(s)
+fngtsz=	3*2			;get volume size
+;
+	.SBTTL	installation code
+;
+; This is new since V4...
+;
+	.drins	hd		;used to just be .=200
+	nop			;same for system and non-system handler
+	nop			;RK.SYS had this NOP too
+	clc			;what, me worry?
+	rts	pc
+;
+	.sbttl	SET options
+;
+	.drset	csr,160000,o.csr,oct
+	.drset	vector,500,o.vec,oct
+	.drset	retry,127.,o.rtry,num
+.iif ne erl$g, .drset succes,-1,o.succ,no
+;
+btcsr=	<hdend-hdstrt>+<botcsr-hdboot>+1000 ;loc in HD.SYS of BOTCSR
+o.csr:	; SET HD: CSR=oooooo
+	cmp	r0,r3		;in I/O page?
+	blo	o.bad		;no, invalid
+	mov	r0,inscsr	;save
+	mov	r0,discsr
+	mov	pc,r1		;point at BAREA+4 with r1
+	add	#barea-.+4,r1
+	mov	pc,r2		;and .+2+1000 with r2
+	add	#1000-.,r2
+	mov	r2,(r1)		;fill in BUF field
+	mov	#btcsr/1000,-(r1) ;block containing BOTCSR
+	tst	-(r1)		;skip function,,channel
+	mov	r0,r3		;save their value
+	mov	r1,r0		;point with R0
+	.readw			;read the block
+	bcs	o.bad		;failed
+	mov	r3,<btcsr&777>(r2) ;fill in CSR addr in boot driver
+	mov	r1,r0		;point at EMT area again
+	incb	1(r0)		;change function to .WRITW
+	.writw			;write it back
+	bcs	o.bad		;it's not our day
+	mov	r1,r0		;point yet again
+	decb	1(r0)		;back to .READW again
+	mov	#1,2(r0)	;change to block 1
+	.readw			;restore
+	bcs	o.bad
+	mov	r3,hdcsr	;finally save it
+o.good:	tst	(pc)+		;skip the SEC, C=0
+o.bad:	sec			;unhappy
+	rts	pc
+o.vec:	; SET HD: VECTOR=ooo
+	cmp	r0,r3		;<=500 right?
+	bhis	o.bad		;no, idiot
+	bit	#3,r0		;mult of 4 right?
+	bne	o.bad		;doofus
+	mov	r0,hdstrt	;groovy, save it
+	br	o.good
+o.rtry:	; SET HD: RETRY=ddd
+	cmp	r0,r3		;in range?
+	bhi	o.bad		;no
+	mov	r0,dretry	;save it
+	bne	o.good		;it's non-zero right?
+	br	o.bad		;whoops
+.if ne erl$g
+o.succ:	; SET HD: [NO]SUCCES
+	mov	#0,r3		;set or clear
+	mov	r3,scsflg	;save flag
+	br	o.good		;can't screw this up
+.endc
+;
+barea:	.byte	17,10		;.READW, channel 17
+	.blkw			;block #
+	.blkw			;buf addr
+	.word	256.		;the whole block
+	.word	0		;no crtn
+.assume . le 1000,<;SET area overflow>
+;
+	.sbttl	driver entry
+;
+	.drbeg	hd
+	mov	(pc)+,(pc)+	;init retry counter
+dretry:	 .word	hdcnt
+.assume . le hdstrt+1000,<;SET object not in block 1>
+retry:	 .word			;retry count
+; we won't bother to pre-compute the disk location for retries because there's
+; no calculation to do.
+again:	mov	hdcqe,r5	;get curr queue entry
+	mov	q$unit-1(r5),r3	;unit # in MSB
+	bic	#^C<7*400>,r3	;isolate 3-bit unit number in MSB
+	asl	r3		;should start at bit 9
+	bis	#csie!fnread!csgo,r3 ;assume it's a read
+	mov	(pc)+,r4	;pick up CSR addr
+hdcsr:	 .word	hdcs
+.assume . le hdstrt+1000,<;SET object not in block 1>
+	mov	(r5),hdblk-hdcs(r4) ;set block number
+	clr	hdblke-hdcs(r4)	;clear out block extension (32MB limit)
+	cmp	(r5)+,(r5)+	;skip to Q.BUFF for $MPPHY
+.if ne mmg$t
+	; XM, translate Q.BUFF virtual address into physical 18-bit address
+	call	@$mpptr		;call $MPPHY
+	mov	(sp)+,hdba-hdcs(r4) ;get low 16 bits of real addr
+	bis	(sp)+,r3	;OR high 2 bits into CSR value (bits 5:4)
+.iff	; SJ or FB, addresses are all real and bits 17:16=00
+	mov	(r5)+,hdba-hdcs(r4) ;copy address
+.endc
+	movb	q$func-q$wcnt(r5),r2 ;get function code
+	bmi	20$		;.SPFUN, skip
+	mov	(r5)+,r0	;get word count
+	beq	30$		;0, seek (no op with us)
+	bpl	10$		;read, skip
+	neg	r0		;take absolute value
+	add	#fnwrit-fnread,r3 ;change function code to write
+10$:	asl	r0		;WC*2=byte count
+	mov	r0,hdbc-hdcs(r4) ;write it out
+	mov	r3,(r4)		;start transfer
+	rts	pc		;back on interrupt
+20$:	; .SPFUN call
+	cmpb	r2,#373		;cmd = get volume size?
+	bne	30$		;skip if not
+	mov	#1,r0		;word count=1 word
+	add	#fngtsz-fnread,r3 ;change function code to "get size"
+	br	10$		;go do it
+30$:	; seek, no op
+	br	hdexit		;there won't be any interrupt
+;
+.if ne erl$g
+scsflg:	.word	0		;success flag
+.assume . le hdstrt+1000,<;SET object not in block 1>
+.endc
+;
+	.sbttl	interrupt entry point
+;
+	.drast	hd,5		;say hi to the scheduler, switch to prio 5
+	mov	hdcsr,r5	;get CSR addr
+	tst	retry		;are we in the middle of a retry?
+	bpl	normal		;no
+	tst	(r5)		;yes, did reset work?
+	bmi	normal		;no, error
+	.fork	hdfblk		;yes, drop to fork level for the retry
+hdretr:	clrb	retry+1		;clear the "reset in progress" flag
+	br	again		;retry the request
+;
+normal:	tst	(r5)		;any error?
+	bpl	done		;no
+	.fork	hdfblk		;drop to fork level to handle the error
+.if ne erl$g
+	mov	pc,r5		;point at HDRBUF with r5
+	add	#hdrbuf-.,r5
+	mov	r5,r2		;save a copy
+	mov	hdcsr,r3	;get CSR
+	mov	#hdnreg,r4	;# regs to read
+hdrreg:	mov	(r3)+,(r5)+	;get a word
+	dec	r4		;might as well be good and not use SOB
+	bne	rkrreg		;in case emulating 11/04 etc.
+	mov	dretry,r3	;get max # retry counts
+	swab	r3		;in left half
+	add	#hdnreg,r3	;# regs in right half
+	mov	hdcqe,r5	;get curr queue element
+	movb	retry,r4	;get actual # retries to go -1
+	dec	r4
+	call	@$elptr		;log it
+	mov	hdcsr,r5	;restore CSR ptr
+.endc
+hderr:	decb	retry		;give up yet?
+	beq	herror		;yep
+	bis	#100000,retry	;set reset-in-progress bit
+	movb	#csie!fnack!csgo,(r5) ;reset drive (may not do anything)
+	rts	pc
+;
+herror:	mov	hdcqe,r5	;get qel
+	bis	#hderr$,@-(r5)	;set hard error flag in CSW
+	; log error if enabled
+.if ne erl$g
+	br	hdexit
+done:	.fork	hdfblk		;continue at fork level
+	tst	scsflg
+	bne	hdexit
+	mov	(pc)+,r4	;pick up our device code
+	 .byte	377,hd$cod	;(defined in .DRDEF at top)
+	mov	hdcqe,r5	;get qel
+	call	@$elptr		;log it
+.iff ; eq erl$g
+done:
+.endc
+hdexit:	clr	retry		;not in error recovery
+	.drfin	hd		;dive into RMON
+hdfblk:	.word	0,0,0,0		;.FORK block used by error log code
+.if ne erl$g
+hdrbuf:	.blkw	hdnreg
+.endc
+;
+	.sbttl	bootstrap driver
+;+
+;
+; This stuff is scattered around the boot block.  For various reasons the boot
+; code is entered by a NOP, two BRs and a JMP.  Once we get there we just load
+; in the BSTRAP secondary loader using a simple polled I/O read routine, which
+; BSTRAP then calls to look at the directory and load the monitor and the
+; minimum device handlers (TT: and the system device).  Then it hooks up the
+; real system device handler and we're on our way.
+;
+;-
+	.drbot	hd,boot1,read
+.=	hdboot+40
+boot1:	jmp	@#boot-hdboot	;hop, skip, now jump, this is so dumb
+.=	hdboot+210
+;+
+;
+; Bootstrap read routine.
+;
+; r0	starting block #
+; r1	word count
+; r2	bus address of buf
+;
+;-
+read:	mov	botcsr,r3	;get CSR addr
+	mov	r0,hdblk-hdcs(r3) ;set block address
+	clr	hdblke-hdcs(r3)	;(clear high word)
+	asl	r1		;*2
+	mov	r1,hdbc-hdcs(r3) ;set byte count
+	mov	r2,hdba-hdcs(r3) ;set bus addr
+	movb	#fnread!csgo,(r3) ;read data, leave unit bits alone
+10$:	tstb	(r3)		;done?
+	bpl	10$		;spin until so
+	tst	(r3)		;error?  (C=0)
+	bmi	20$
+	rts	pc
+20$:	jmp	bioerr		;our READ routine is too short!  can't reach
+;
+.=	hdboot+574
+boot:	; load secondary bootstrap from blocks 2-5 of the volume, at 001000
+	mov	#10000,sp	;set up stack
+	mov	@(pc)+,-(sp)	;get boot unit # from CSR
+botcsr:	 .word	hdcs		;preassembled CSR addr
+	asr	(sp)		;right a bit
+	swab	(sp)		;right 8 more bits
+	bic	#^C<csunit/1000>,(sp) ;isolate unit #
+	mov	#2,r0		;BSTRAP starts at block 2
+	mov	#<4*400>,r1	;4 blocks
+	mov	#1000,r2	;load at 001000
+	call	read		;go do it (N.B. relative addressing)
+	; set up BSTRAP entry conditions
+	mov	#read-hdboot,@#b$read ;set pointer to standalone read routine
+	mov	#b$dnam,@#b$devn ;set system device name
+	mov	(sp)+,@#b$devu	;set boot unit number
+	jmp	@#b$boot	;go for it
+;
+	.drend	hd		;that's it, give us BIOERR
+;
+	.end

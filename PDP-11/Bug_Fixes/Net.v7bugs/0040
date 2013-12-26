@@ -1,0 +1,30 @@
+Autzoo.1150
+net.v7bugs
+utzoo!henry
+Tue Nov 24 12:49:20 1981
+uucp seqno wraparound
+The code in uux (and elsewhere?) that picks filenames for spool files
+makes no attempt to cope with wraparound of the 4-digit sequence number.
+A busy site like decvax can wrap the sequence number in less than a week.
+This is bad news if you are a site that polls a busy site infrequently.
+The odds are excellent that you will lose X-files (containing uux commands
+to be executed at your site) since their spool files have names which are
+protected against collisions only by the sequence number.  The C-files
+(which actually control transmission) and D-files (which contain the
+data the X-files operate on) are less vulnerable because their spool names
+contain the name of your site as well, but it is still possible for them
+to get stomped (the chances increase as the quantity of traffic spooled
+for you increases).
+
+The symptoms of X-file loss are files with names like D.mysiteB2345
+piling up in /usr/spool/uucp.  (If you use uuclean or the equivalent
+to clean out the directory, you may have to look sharp to notice them
+before they vanish!)  The symptoms of C-file or D-file stomping are
+missing traffic and mismatches between data and commands (e.g. something
+that looks like mail being fed to news instead).
+
+Clearly uux (et al?) should iterate until it finds an unused filename.
+Due to race conditions etc., this may not be as easy as it sounds.
+I have not investigated in detail;  at the moment the problem can be
+controlled by frequent polling.  This obviously won't work forever if
+the network traffic keeps increasing.

@@ -1,0 +1,56 @@
+/*
+ * grab.c
+ *
+ * Name:        grab
+ * Purpose:     extract files from remote filesystems
+ * Usage:       grab [-2468pxvilLtb#] <filesystem> <files...>
+ * Environment: V6 or V7 (2.9BSD, 4.1BSD) Unix or Venix/86
+ * Compile:     cc -O -s -D<type> grab.c find.c readi.c bread.c tmode.c -o grab
+ * Date:        4/29/82
+ * Author:      Donn Seeley RRCF UCSD
+ * Remarks:
+ *      This is meant to be used with dual-ported disks or controllers
+ *      when it is either impossible or undesirable to mount another
+ *      file system on that medium.  It should allow any Version 6 or
+ *      Version 7 (2.9BSD, 4.1BSD) system to read filesystems from any
+ *      Version 6 or Version 7 (2.9BSD, 4.1BSD) system even if the systems
+ *      are not of the same type.  Version 6 systems will need at least
+ *      a Phototypesetter level C compiler to make "grab".  "Grab" will
+ *      copy any conceivable (?) object on a filesystem including directories
+ *      (recursively), links, file holes, setuid/setgid/sticky files and
+ *      device nodes.  "Grab" tries to prevent unauthorized readers from
+ *      gazing at remote files but the only reliable way of maintaining
+ *      security is to make "grab" setgid and then make fs's readable by
+ *      group and not by other.  ("Df" should work this way too.)
+ *
+ *      To compile a V6 grab, define PDPV6.  To compile a 2.9 grab define
+ *      PDP, and to compile a 4.1 grab define VAX.  If your machine has
+ *      multiplexed files, define MPXFILES, and if it has symbolic links
+ *      you should define SYMLINKS.  Define VENIX for VENIX/86.
+ *
+ *      Options:
+ *              -2468   2.9, 4.1, V6, or VENIX/86 system on the remote end.
+ *              -p      Preserve all permissions and ownerships, instead of
+ *                      just some of them (should be su).
+ *              -x      Act like "cat(1)" from the remote fs (but still
+ *                      recursively on directories).
+ *              -v      Verbose mode: print filenames as they are copied.
+ *              -i      The arguments are inode numbers; treat them as
+ *                      files with those inode numbers and named by the numbers.
+ *              -l      Act like a rudimentary "ls(1)" on a remote fs.
+ *              -L      Long version of -l: gives a gruesome inode dump.
+ *              -t      Act like "tar(1)" on a remote fs.  Output goes to
+ *                      the standard output.  Digits following the "t" are
+ *                      interpreted as a blocksize.
+ *              -b      Set blocksize independently: this manipulates the
+ *                      internal write buffer size.  Digits following, etc.
+ *
+ *---------------------------------------------------------------------------
+ *
+ * $Header:   RCS/grab.c.v  Revision 1.2  83/07/01  19:29:13  donn  Exp$
+ * $Log:        RCS/grab.c.v $
+ * Revision 1.2  83/07/01  19:29:13  donn
+ * Added -i and -L flags for inode grabbing and inode dumping.
+ *                                                      Donn
+ * 
+ */

@@ -1,0 +1,19 @@
+Files:
+
+pdp.tar.Z - The current version of my PDP-11 simulator.
+
+Other Notes:
+
+	It runs 2.9BSD Unix and supports RL0[12]s, TM11s, LP11s, and multiple
+KL ports.  It is slightly unstable, but works well enough to compile kernels
+and run multiple users. It compiles and runs under SunOS and other vaguely
+BSD-like systems.
+
+	I've created a mailing list to share information regarding
+the PDP-11 simulator that I've written.  If you're interested please
+send mail to "pdp-request@potter.csh.rit.edu" with a subject line
+of "subscribe". 
+
+
+				Eric Edwards
+				mag@potter.csh.rit.edu

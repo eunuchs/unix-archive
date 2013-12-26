@@ -1,0 +1,11 @@
+Autzoo.1449
+net.bugs.v7
+utcsrgv!utzoo!henry
+Mon Mar  1 16:41:55 1982
+dd feature, again
+This is a retransmission of a message that was garbled for at least
+some sites by a stupidity in B news.
+
+>An undocumented feature in dd:  a cbs of 0 in association with ascii
+or ebcdic conversion gives code conversion without padding, trimming,
+or special handling of end-of-line.

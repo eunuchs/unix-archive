@@ -1,0 +1,69 @@
+[from EUUGN Vol.3 No.2]
+
+			Compatibility Quiz
+			  Mike O'Carroll
+	Microsystems Unit, Dept. of Electrical Engineering
+	      The University, Leeds LS2 9JT, England
+
+Herewith a super new quiz for all you 'DEC compatible' fans! Answers,
+on a postcard please, to the appropriate manufacturer. (N.B. to help
+those of you who have never gone to another supplier, our answers are
+included below.)
+
+QUESTIONS
+---------
+
+Q1. What do you understand by the term 'DEC compatible'?
+
+Q2. What do you understand by the phrase '100%'?
+
+Q3 '[The controller gives] an emulation of all functional features of
+   the DEC RJM02 subsystem'. Explain.
+
+Q5. 'Fully supported in this country!' [my exclamation rmark]. What is
+    being supported here?
+
+Q6. Are DEC 100% compatible? Think about it.
+
+ANSWERS
+-------
+
+A1. Certain features, such as the code number of the product, general
+    register layout, etc. are not totally dissimilar from those encountered
+    in the DEC version.
+
+A2. Pick a number in the range from 0% - 90%. We award 90% to our
+    current Emulex controllers which can do most things in a reasonably
+    compatible manner (apart from minor things like multi-sector
+    transfers). Dilog get a slightly lower mark for managing multi-sector
+    transfers, but locking up completely if anything else tries an NPR at
+    the sane time. DSD do slightly better now, having fixed the problem
+    whereby the extended address counter went 00, 10, 01, 11, in
+    'ascending' order.  Xylogics got 5% for an LSI-11 controller which
+    managed to execute the bootstrap, but fell over as soon as it tried to
+    write anything. A Spectralogics controller got 1% as it managed to read
+    in the bootstrap, but failed to execute it. [If you find the last two
+    hard to believe, ask the engineers who came to 'get it working in 10
+    minutes, squire'.]
+
+A3. '... the maintenance mode features of the DEC RM02 controller is
+    [sic] only partially emulated' - from the same manual as question.
+    Presumably, 'maintenance mode' features are not 'functional' features.
+    See also earlier correspondence in this august publication.
+
+A4. 'The diagnostics marked with an asterisk require certain patches'.
+    See question.
+
+A5. The manufacture of telephone answering machines.
+
+A6. I've given enough away already. Work this one out for yourself.
+
+In order to stave off possible legal action, the author would like to
+point out that these comments (naturally) relate to our personal
+experiences with products made by the companies named. However, the
+points raised above have never been answered by those concerned (see
+question on support), so here's your chance folks! Incidentally,
+talking of legal action, here is a supplementary question:
+
+Q7. What, if anything, does the Trades Description Act have to say
+    about terms like 'compatible'?

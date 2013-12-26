@@ -1,0 +1,271 @@
+To:	Users
+From:	The Author (dsmaint@pa.dec.com)
+Subj:	Simulator Usage
+
+The PDP-8 and PDP-11 simulators use a common command interface.  This
+memorandum provides an (extremely) brief description of the commands
+and features of that interface.
+
+1. Compiling And Running A Simulator
+
+To compile the simulators, use the following command strings:
+
+	% cc pdp8*.c scp*.c -lm -o pdp8
+	% cc pdp11*.c scp*.c -o pdp11
+
+	[ed. - Or simply 'make pdp8' for the pdp8 simulator, 'make pdp11'
+	 for the pdp11 simulator or 'make' for both.]
+
+To start the simulator, simply type its name:
+
+	% pdp8(cr)	or
+	% pdp11(cr)	or
+
+The simulator starts by typing out its name and version and then prompts
+for input with
+
+	sim>
+
+Arguments on the command line are ignored.
+
+
+2. Simulator Configuration
+
+A simulator consists of a series of devices, the first of which is always
+the CPU.  A device consists of named registers and one or more numbered
+units.  Registers correspond to device state, units to device address
+spaces.  Thus, the CPU device might have registers like PC, ION, etc,
+and a unit corresponding to main memory;  a disk device might have
+registers like BUSY, DONE, etc, and units corresponding to individual
+disk drives.  Except for main memory, device address spaces are simulated
+as disk files in the host file system.
+
+The individual simulators are configured as follows:
+
+sim	device	simulates
+name	name(s)
+
+PDP8/	CPU	PDP-8/E CPU with 32KW of memory
+	-	KE8-E extended arithmetic element (EAE)
+	-	KM8-E memory management and timeshare control
+	PTR,PTP	PC8-E paper tape reader/punch
+	TTI,TTO	KL8-E console terminal
+	LPT	LE8-E line printer
+	CLK	DK8-E line frequency clock (also PDP-8/A compatible)
+	RK	RK8-E/RK05 cartridge disk controller with four drives
+	RF	RF08 fixed head disk controller with four platters
+	RX	RX8-E/RX01 floppy disk controller with two drives
+
+PDP11/	CPU	J-11 CPU with 256KB of memory
+	-	FP-11 floating point unit (FPA)
+	PTR,PTP	PC-11 paper tape reader/punch
+	TTI,TTO	DL-11 console terminal
+	LPT	LP-11 line printer
+	CLK	line frequency clock
+	RK	RK11/RK05 cartridge disk controller with eight drives
+	RL	RLV12/RL01(2) cartridge disk controller with four drives
+	RX	RX-11/RX01 floppy disk controller with two drives
+
+The SHOW CONFIGURATION command displays the current configuration and
+unit status.
+
+
+3. Commands
+
+3.1 Loading Programs
+
+The LOAD command (abbreviation LO) loads a file in binary paper-tape
+loader format:
+
+	sim> load <filename>(cr)
+
+3.2 Saving and Restoring State
+
+The SAVE command (abbreviation SA) save the complete state of the
+simulator to a file.  This includes the contents of main memory and
+all registers, and the I/O connections of devices:
+
+	sim> save <filename>(cr)
+
+The RESTORE command (abbreviation REST, alternately GET) restores a
+previously saved simulator state:
+
+	sim> restore <filename>(cr)
+
+Note: SAVE file format compresses zeroes to minimize file size.
+
+3.3 Resetting Devices
+
+The RESET command (abbreviation RE) resets a device or the entire
+simulator to a predefined condition:
+
+	sim> RESET(cr)			-- reset all devices
+	sim> RESET ALL(cr)		-- reset all devices
+	sim> RESET <device>(cr)		-- reset specified device
+
+Typically, RESET stops any in-progress I/O operation, clears any
+interrupt request, and returns the device to a quiescent state.  It
+does not clear main memory or affect I/O connections.
+
+3.4 Connecting and Disconnecting Devices
+
+Except for main memory, simulated unit address spaces are simulated as
+disk files in the host file file system.  Before using a simulated unit
+the user must specify the file to be used by a particular unit.  The
+ATTACH (abbreviation AT) command associates a unit and a disk file:
+
+	sim> ATTACH <device><unit number> <filename>(cr)
+
+If the file does not exist, it is created, and an appropriate message
+is printed.
+
+The DETACH (abbreviation DET) command breaks the association between a
+unit and a file and closes the file:
+
+	sim> DETACH ALL(cr)			-- detach all units
+	sim> DETACH <device><unit number>(cr)	-- detach specified unit
+
+The EXIT command performs an automatic DETACH ALL.
+
+3.5 Examining and Changing State
+
+There are four commands to examine and change state:
+
+	EXAMINE (abbreviated E) examines state
+	DEPOSIT (abbreviated D) changes state
+	IEXAMINE (interactive examine, abbreviated IE) examines state
+		and allows the user to interactively change it
+	IDEPOSIT (interactive deposit, abbreviated ID) allows the user
+		to interactively change state
+
+All four commands take the form
+
+	command {-switches} {<device>{<unit number>}} <state list>
+
+Deposit must also include a deposit value at the end of the command.
+
+The examine and deposit commands can work on the address space of any
+unit.  If no device is specified, the CPU (main memory) is selected; if
+a device but no unit is specified, unit 0 of the specified device is
+selected.  The "state list" consists of one or more of the following,
+separated by commas:
+
+	register		the specified register
+	register1-register2	all the registers starting at register1
+				up to and including register2
+	address			the specified location
+	address1-address2	all locations starting at address1 up to
+				and including address2
+	STATE			all registers in the device
+	ALL			all locations in the unit
+
+Examples:
+
+	sim> ex 1000-1100			-- examine 1100:1100
+	sim> de PC 1040				-- set PC to 1040
+	sim> ie 40-50				-- interactively examine 40:50
+	sim> ex rx0 50060			-- examine 50060, RX unit 0
+	sim> de all 0				-- set main memory to 0
+
+Note: to terminate an interactive command, simply type a bad value (eg,
+XXX) when input is requested.
+
+The PDP-11 simulator recognizes the following switches:
+
+	v			interpret address as virtual
+	d			if mem mgt enabled, force data space
+	k			if mem mgt enabled, force kernel mode
+	s			if mem mgt enabled, force supervisor mode
+	u			if mem mgt enabled, force user mode
+	p			if mem mgt enabled, force previous mode
+
+3.6 Running Programs
+
+The RUN command (abbreviated RU) resets all devices, deposits its argument
+(if given) in the PC, and starts execution.  If no argument is given,
+execution starts at the current PC.
+
+The GO command does NOT reset devices, deposits its argument (if given) in
+the PC, and starts execution.  If no argument is given, execution starts at
+the current PC.
+
+The CONT command (abbreviated CO) does NOT reset devices and resumes
+execution at the current PC.
+
+The STEP command (abbreviated S) resumes execution at the current PC for
+the number of instructions given by its argument.  If no argument is
+supplied, one instruction is executed.
+
+The BOOT command (abbreviated BO) bootstraps the random access device
+and unit given by its argument.  If no unit is supplied, unit 0 is
+bootstrapped.  The specified unit must be attached to a disk file.
+
+3.7 Stopping Programs
+
+Programs run until the simulator detects an error or stop condition, or
+until the user forces a stop condition.
+
+3.7.1 Simulator Detected Stop Conditions
+
+The following simulator detected conditions stop simulation:
+
+o HALT instruction.  If a HALT instruction is decoded, simulation stops.
+
+o Breakpoint.  The IBKPT register provides a single virtual address
+  breakpoint.  If the PC matches the contents of the IBKPT register,
+  simulation stops.  The breakpoint is automatically disabled for
+  the next instruction execution.
+
+o I/O error.  If an I/O error occurs during simulation of an I/O operation,
+  simulation usually stops.
+
+o Processor condition.  Certain processor conditions can stop simulation:
+
+  PDP8/		undefined instruction, and register STOP_INST is set
+		I/O error, and the device's register STOP_IOE is set
+
+  PDP-11/	abort during execption vector fetch, and register
+			STOP_VEC is set
+		abort during exception stack push, and register
+			STOP_SPA is set
+		trap condition 'n' occurs, and register STOP_TRAP<n>
+			is set
+		I/O error, and the device's register STOP_IOE is set
+		wait state entered, and no I/O operations outstanding
+			(ie, no interrupt can ever occur)
+
+3.7.2 User Specified Stop Conditions
+
+Typing the interrupt character stops simulation.  The interrupt character
+is defined by the WRU (where are you) register and is initially set to
+005 (^E).
+
+3.8 Setting Device Parameters
+
+The SET command (abbreviated SE) changes the status of a device parameter:
+
+	sim> SET <unit> <parameter>
+
+The parameters are simulator and device specific.  Disk drives, for
+example, can usually be set ONLINE or OFFLINE, write ENABLED or write
+LOCKED; if a device supports multiple drive types, the SET command
+can be used to specify the drive type.
+
+3.8 Displaying Parameters and Status
+
+The SHOW CONFIGURATION command shows the simulator configuration and the
+status of all simulated I/O devices.
+
+The SHOW <device> command shows the status of the named simulated I/O
+device.
+
+The SHOW QUEUE command shows the state of the simulator event queue.  Times
+are in "simulation units", typically one unit per instruction execution,
+relative to the current simulation time.
+
+The SHOW TIME command shows the number of time units elapsed since
+the last RUN command.
+
+3.9 Exiting The Simulator
+
+EXIT (synonym QUIT) returns control to the operating system.

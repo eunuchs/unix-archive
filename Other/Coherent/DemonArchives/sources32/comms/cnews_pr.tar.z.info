@@ -1,0 +1,18 @@
+Mailing Address / Full Name of person uploaded: 
+djm@duncan.alt.ns.ca (David John Murdoch)
+Mailing Address / Full Name of person ported: 
+shendi@saruman.sgtg.sub.org (Alexander Shendi)
+Mailing Address / Full Name of authors: 
+	c-news@zoo.toronto.edu        written mostly by
+aka	c-news@zoo.utoronto.ca        Geoffrey Collyer and 
+aka	utzoo!c-news                  Henry Spencer
+1/2 Page Description of Program:
+
+This is a complete package for receiving, processing,
+batching, spooling and sending news. It contains a simple
+newsreader, but the authors recommend using rn. Installation
+is not trivial, however, the documentation is fairly extensive
+and can be supplemented by reference to "Managing UUCP and Usenet"
+by Tim O'Reilly and Grace Todino, O'Reilly and Associates
+1989 ISBN 0-937175-48-X.
+

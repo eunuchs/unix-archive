@@ -1,0 +1,41 @@
+Welcome to PUPS/TUHS 4BSD collection!
+
+If you have a VAX you want to install one of these systems on, you will need to
+first choose which system do you want and then install it.
+
+Being the new maintainer of 4.3BSD-*, I authoritatively recommend always using
+my latest release (currently 4.3BSD-Quasijarus0a). Being practical, if you have
+a MicroVAX, plain 4.3 is not an option for you, since real MicroVAX support
+didn't exist until Tahoe. Steven M. Schultz has a recipe for installing plain
+4.3 on a MicroVAX (you can find it in tips/SMS_plain43_recipe), but all he does
+is add in some post-Tahoe pieces. If you have some post-Tahoe pieces in your
+system, you may just as well get a system that has ALL post-Tahoe improvements
+included. My Quasijarus releases are exactly such systems, and that's one
+reason why I recommend using them.
+
+You other option is Reno, if you are willing to live with its ugly POSIXization
+and factor of 2 binary and source bloat. Note, though, that I do not support
+Reno, and as Quasijarus releases support more and more VAX hardware, Reno will
+stay frozen where it is. Quasijarus0 already supports everything Reno supports
+plus a little more.
+
+For more information about 4.3BSD-Quasijarus releases, including hardware
+support, please see:
+
+http://minnie.cs.adfa.edu.au/Quasijarus/
+
+All 4BSD releases to date officially support only a specific set of disks.
+4.3BSD-Tahoe introduced disk labels to allow the use of arbitrary disks, but
+unfortunately their current implementation still makes it impossible to install
+the system directly from the distribution tape onto a fresh disk that is
+unknown to UNIX and has never had UNIX on it. However, if you have a second
+disk and a copy of DEC Ultrix, you can install 4.3BSD-Quasijarus or a VAX build
+of CSRG's Tahoe or Reno release indirectly following my instructions in
+tips/QTR_disklabel_note. Future 4.3BSD-Quasijarus releases will allow direct
+installation on fresh and unknown disks.
+
+Have fun!
+
+Michael Sokolov
+New 4.3BSD-* Maintainer
+PUPS/TUHS 4BSD Coordinator

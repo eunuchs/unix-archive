@@ -1,0 +1,23 @@
+Autzoo.1637
+net.bugs.v7
+utzoo!henry
+Wed May  5 19:30:46 1982
+overflow in C re-revisited
+Mhtsa!rick has missed my point.  His quote from Kernighan+Ritchie,
+page 185, "The handling of overflow... is machine-dependent." is
+correct, but he should have read the next sentence:  "All existing
+implementations of C ignore integer overflows...".  The way 99% of
+all programmers interpret that second sentence is "nothing special
+happens when an overflow occurs".  Wrong, as you can easily discover
+if you play with it.
+
+What the sentence really should say is "All existing implementations
+of C ignore THE POSSIBILITY OF integer overflows...".  This makes it
+clear that anything can happen because the compiler simply doesn't
+care.  DMR and I have corresponded about this in the past and newer
+manuals will presumably have revised wording.
+
+As an aside, it would be nice if the compiler could spot overflows
+in compile-time arithmetic and complain about them.  The arguments
+against run-time checking don't apply there.  I realize this is
+probably hard to retrofit into existing compilers, though.

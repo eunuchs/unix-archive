@@ -1,0 +1,8 @@
+Acbosgd.177
+net.v7bugs
+utzoo!decvax!ucbvax!ihnss!cbosg!cbosgd!mark
+Sat Dec  5 20:06:12 1981
+Re: uucp lossage
+Multi site uucp's were never claimed to work.  The best you can do is
+to use the Berkeley uusend program, but this requires all the site
+along the way to run and permit uusend.

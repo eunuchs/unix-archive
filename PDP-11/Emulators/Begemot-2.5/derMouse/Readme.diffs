@@ -1,0 +1,4 @@
+The diffs file contains mostly things to tidy up the code - prototypes etc.
+One major thing is the patch to the RK02 code to get the device to work.
+
+	Warren Toomey	wkt@cs.adfa.edu.au

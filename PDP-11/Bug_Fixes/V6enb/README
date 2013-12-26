@@ -1,0 +1,45 @@
+UNIX V6 on the Supnik simulator:
+--------------------------------
+This directory contains tape files for the Supnik simulator and
+accompaning README files, which I produced when preparing an OS
+course at the Berufsakademie. Further it contains C-sources of two
+commands (enblock.c/deblock.c). These commands prepare a tapefile for the
+simulator (enblock) and produce a plain file from a simulator
+tapefile (deblock).
+
+The Supnik simulator can be obtained from:
+	ftp://minnie.cs.adfa.edu.au/pub/PDP-11/Sims/Supnik_2.3/sources/
+I used the sim_2.3d.tar.gz tar ball.
+
+This directory contains a *.README and *.enb files with the following
+basenames:
+
+ctable: A bug in the input table for the C-compiler code generator is fixed.
+ctime:	Some y2k related changes to V6.
+dcheck: Bug fix and enhancement of dcheck. 
+dist:	The V6 distribution tape: dist.README explains how to install
+	and setup UNIX-V6 with the simulator. The file dist.enb is missing
+	for copyright and space reasons, you have to prepare it yourself.
+	(see enb.README). 
+dotdot: Kernel enhancement: If in a root directoy of a mounted filesystem,
+	let ".." mean the parent of the mount point, not the root directory.
+enb:	Conventions and usage of .enb files. Explains how to
+	prepare tape files for the Supnik simulator and tells you
+	how to prepare the V6 distribution tape.
+ludiv:	Derivation of a double word unsigned division algorithm, which is used
+	in ctime. (no corresponding .enb)
+man:	The man command, which was missing from the distribution, and some
+	changes to make V6-nroff output readable on an xterm.
+
+So enb.README and dist.README are the next files you should read.
+
+If you have questions or find bugs or whatever, mail to
+	helbig@informatik.ba-stuttgart.de
+
+Last but not least I thankfully acknowledge the work of the people
+who talked SCO into offering the ancient-UNIX source license, who collected
+the old distribution tapes and run the PUPS Archive. And of course I thank
+Bob Supnik for this great simulator!
+
+Have fun,
+Wolfgang 

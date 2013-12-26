@@ -1,0 +1,12 @@
+The tar files in this directory contain the contents of the 2.9BSD dumps
+from Ken Wellsch's RX50 disk images. Here is what each tar file matches:
+
+	root.tar.gz	matches		box#0/root*.rx50
+	2root.tar.gz	matches		box#2/root*.rx50
+	usr+k.tar.gz	matches		box#[12]/usr+k*.rx50
+	usrN.tar.gz	matches		box#2/usr?.rx50
+
+Also in this directory is the quick C hack, rx50ileave.c, which I wrote
+to undo the interleaving on the RX50 disk images.
+
+	Warren Toomey, March 1999

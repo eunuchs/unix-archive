@@ -1,0 +1,15 @@
+From: Leo Broukhis
+To: Warren Toomey
+
+Hi Warren!
+
+This is what I have. I did not have the files handy, so I took
+http://www.mailcom.com/lsx/lsximgs.tar.bz2
+and applied the u6-fstool from http://sourceforge.net/projects/bkunix/
+
+It seems that one of the files is corrupted (srcam/run.bad) due to a
+read error of the original floppy.
+
+Best regards,
+Leo
+

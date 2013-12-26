@@ -1,0 +1,134 @@
+This is the "Software Tools for Unix 4.1BSD" distribution
+tape, as provided by Barbara Chase in Septemeber 1998.
+
+Below is the README file from the distribution tape:
+
+
+
+LAWRENCE BERKELEY LABORATORY                         January 1982
+
+
+
+Here  is  a version of the Software Tools Users Group basic tape,
+implemented under  UNIX  -  Berkeley  4.1  distribution.   A  few
+enhancements  have  been  included   and  some debugging has been
+done (especiallly in sedit and diff). 
+
+Executable images have not been included on the  tape,  to  avoid
+licensing  problems.   (None  of  the  source  code  is  licensed
+material.) A makefile to generate the executables  is  available.
+To  bring  up  the  tools, simply read the tape into your machine
+and type:
+                             % make
+
+Tools with names which conflict with  standard  Unix  tools  have
+been  renamed,  often to begin with a "t" (tcat, techo, etc.) See
+/usr/tools/man/summary for a list of tools and  their  associated
+names. 
+
+The  primitives have been implemented as calls to the appropriate
+C library and system call routines.  Everything specified by  the
+users  group has been implemented except the  shell, which seemed
+superfluous.  The  local  UNIX  shell  is  used  to  perform  I/O
+redirections. 
+
+Random   writing   on  4.1  BSD  does  not  work  correctly  when
+interspersed with random  reading  because  of  system  buffering
+problems.   This  is a known bug and there is evidently a fix for
+it 'somewhere' ...  Because of this, the  editor  as  distributed
+by  the  Users  Group  would  not  work.   We  have  provided  an
+alternative version, developed by Joe Sventek of  LBL  and  David
+Martin  of  Hughes  Aircraft.  This editor uses an in-core buffer
+to maintain the lines  (quite  acceptible  on  a  virtual  memory
+machine)  and  is  somewhat  more enhanced than the regular tools
+editor. 
+
+Also included with the Unix tools, though  not  yet  included  in
+the  standard  Software Tools Package, is the Text Control System
+(TCS)  developed  by  Neil  Groundwater  at  ADI.   TCS  provides
+capabilities  similar  to  SCCS, allowing a user to keep track of
+the evolution of source code.  The TCS package  consists  of  the
+tools   "admin",  "delta",  and  "get".   They  should  still  be
+considered experimental. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LAWRENCE BERKELEY LABORATORY                         January 1982
+
+
+The directory hierarchy set up is:
+
+                        /usr/tools
+                            |
+                            |
+            -----------------------------------------
+            |               |                       |
+       executables         /src                    /man
+                            |                       |
+                            |                       |
+                            |                   (tool documents
+                            |                    and manual)
+            --------------------------------------
+            |         |          |               |
+           *.w    /C_lib    /ratfor_lib       /Original
+ (tool sources)   (C prims)  (ratfor prims)   (original tape)
+
+If you wish to change the directory names, or the structure,  you
+will  have to alter the 'tman' and 'trc' scripts, the make files,
+and the file name definitions in rat4 ("ratdef"),  spell  ("dict"
+and "dictdx"), and the editor ("ed.hlp"). 
+
+Scratch  files  are  currently created on /usr/tmp.  If you would
+like them to be located elsewhere, alter the  "mkuniq"  primitive
+(in /usr/tools/src/C_lib/mkuniq.c). 
+
+These  tools  have  NOT  been  extensively  tested.  There are no
+warrantees, expressed or implied, etc.  Use at your own risk. 
+
+
+
+                                        Deborah K. Scherrer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

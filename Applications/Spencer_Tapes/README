@@ -1,0 +1,38 @@
+This directory contains a number of `anthology' tapes from old Unix
+conferences, donated to the archive by Henry Spencer. Here's his
+description of each tape.
+
+With the exception of del.tar, which is an image of the original, most
+of these tapes have been through format conversion to tar format. Because
+pre-tar tape utilities seldom bothered preserving file dates during
+extraction, the file dates are generally those of the format conversions. 
+
+del.tar is the Delaware (June 1980) Usenix conference tape, containing
+the conference distributions from the Delaware Boulder (Jan 1980), and
+Toronto (June 1979) Usenix conferences. There's lots of different stuff
+on them; they're anthologies with no unifying theme except Unix. 
+
+[ Note, this tarball has a corrupt section in it. The pax(1) in FreeBSD 2.2.5
+  is able to skip the bad section, but GNU tar isn't. Henry believes that
+  this was a physical defect on an old tape, and he can't recover the
+  missing bits. An alternative to skip over the bad section is:
+
+	zcat del.tar.gz | dd bs=1024 skip=9100 | dd bs=515 skip=1 | tar vtf -
+]
+
+purdue.tar is an early distribution of Purdue's V6-based Unix
+improvements (notably some early non-TCP/IP Unix networking). One file
+includes a reference to a 1982 issue of Byte, but that appears to be just
+a typo, because the tape seems to have been cut in late spring 1979 for
+duplication at the June 1979 Usenix. sys/READ_ME has more info. 
+
+tor79.tar is the conference distribution from the Toronto (June 1979)
+Usenix conference, which *ought* to be identical with the Toronto part of
+del.tar but I haven't checked that.
+
+uk1.tar is another anthology tape, dated Jan 1978, from the UK. The
+date means everything will be V5- or V6-based.
+
+unsw3.tar is yet another anthology, this one Australian. I can't find a
+README file, but some quick experimental grepping doesn't find any dates
+later than 1977, so this one may be really early. 

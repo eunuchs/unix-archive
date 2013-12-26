@@ -1,0 +1,16 @@
+Areed.210
+net.bugs.v7
+utcsrgv!utzoo!decvax!ucbvax!ihnss!cbosg!harpo!chico!duke!reed!valer
+Sat Feb 27 12:08:20 1982
+misconception in uucico
+The program uucico terminates each string
+it sends in the expect-send sequence with
+a '\n'.  This is conceptually incorrect,
+since the line it is transmitting over is
+supposed to look like a terminal; hence the
+the '\n' should be a '\r' (see conn.c/sendthem).
+The reason uucico works now is because getty accepts
+both '\n' and '\r'; however, if a port contender
+is used with automatic baud-rate detect (keyed
+off of '\r')....
+	Jim Valerio

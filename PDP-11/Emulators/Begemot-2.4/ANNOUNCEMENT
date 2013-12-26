@@ -1,0 +1,59 @@
+From: Hartmut Brandt <brandt@fokus.gmd.de>
+Newsgroups: alt.sys.pdp11
+Subject: Version 2.4 of the p11 PDP-11 emulator
+Date: 19 Nov 1999 15:04:33 GMT
+Organization: GMD-FIRST
+Message-ID: <813ou1$lp7$1@freebsd.first.gmd.de>
+Lines: 49
+
+Version 2.4 of p11 - the Begemot PDP-11 emulator - is available on
+ftp.fokus.gmd.de:/pub/cats/usr/harti/p11. This release supports the following
+platforms:
+
+	FreeBSD 4.0
+	Sparc-Solaris 2.[5678]
+	Redhat-Linux
+
+It will possibly work on FreeBSD [23].* and other Linux variants.
+To build it you need libbegemot (avalaible in the same location), gcc and
+gmake. Previous versions also built on BSD/OS and SunOS.
+
+A version of the emulator is run on one of our machines. Try one of the
+following (it may not always be available):
+
+	telnet scotty.fokus.gmd.de 10000
+	telnet scotty.fokus.gmd.de 10001
+	telnet scotty.fokus.gmd.de 10002
+	telnet scotty.fokus.gmd.de 10003
+
+to get connected to one of the four available terminals. If telnet
+connects, but this terminal is currently in use, you'll get a short
+message. You should then try connecting to another port. Once you are
+online, log into 2.11BSD with username and password guest/guest1.
+
+Don't forget to logout, before disconnecting with telnet.
+
+Note, that there is an IP connection to the host machine, but not to the
+outside world (this is due to IP routing restrictions in out network).
+
+The current implementation emulates a KDJ11A, one or more RLV12, RHV??, RK11
+disk controllers, a boot ROM, one or more KL11A controllers, on FreeBSD and
+Linux a DEQNA ethernet adapter, a read-only TM11 tape and a standard line
+printer interface. A boot ROM (with source code) to boot from RL/RK and RP
+discs is included.
+
+On a 450MHz Pentium-III a full 'make world install' of 2.11BSD takes around 6
+hours, which is several times faster than a real PDP. Floating point
+performance is even higher.
+
+The emulator hast tested with 2.11BSD, RSX and RSX-PLUS, RT V4, V[4567]-Unix
+and XXDP.
+
+Enjoy,
+	Harti B. Brandt
+
+-- 
+harti brandt, http://www.fokus.gmd.de/research/cc/cats/employees/hartmut.brandt/private
+              brandt@fokus.gmd.de, harti@begemot.org
+
+

@@ -1,0 +1,40 @@
+.TH FESTOON 6
+.CT 1 games
+.SH NAME
+festoon \- memo writer
+.SH SYNOPSIS
+.B festoon
+[-p] [-e] [-t] [-sseed] [-z] [length] [percent]
+.SH DESCRIPTION
+.I Festoon
+prepares a memorandum on any undesired topic, containing
+.I length
+sentences (default is 20) and a specified
+.I percent
+of manufactured nouns (default is 5), suitable for input to
+.IR troff (1).
+Options
+.B "\-p \-e \-t"
+(which may be concatenated as
+.B \-pet )
+create pointless pictures, nonsensical equations and
+useless tables, respectively.
+.P
+.B \-s
+can be used to force the random number generator seed,
+which is printed out as the organization number in the header
+and which is normally assigned randomly.
+Re-use of the same seed results in the same memo.
+.P
+.B \-z
+is a debugging aid; it inserts the grammar type of
+each sentence fragment in the output stream.
+.P
+.I Festoon
+is a useful way to test the commands in the "SEE ALSO" section.
+A total effect might radically monoarchate this qualitativeness.
+.SH SEE ALSO
+.IR troff (1),
+.IR eqn (1),
+.IR pic (1),
+.IR tbl (1).

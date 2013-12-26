@@ -1,0 +1,21 @@
+These programs are used to get files back from old Unix disk images and
+tape backup images. Many were written ages ago, and my need to be ported to
+32-bit and/or big-endian machines.
+
+Here's a chart of what is supposed to do what, and my success with using it
+on a 32-bit little-endian machine (an i486 running FreeBSD).
+
+	     v5        v6        v7      2.9BSD	     32V
+	   filesys   filesys   filesys   filesys   filesys
+cpfs			?
+getunix			?	  ?	    ?	      ?
+grab          Y         Y         ?         ?
+traverse		?
+
+	     tp      itp      dtp      v6
+	   backup   backup   backup   dump
+512restor			       ?
+tp-progs     Y        Y        Y
+
+  ? = it's supposed to, but I haven't tried it yet
+  Y = it worked on my FreeBSD box

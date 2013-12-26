@@ -1,0 +1,27 @@
+
+ftp://ftp.digital.com/pub/DEC/sim/README
+
+This directory contains computer simulators deveoped by Bob Supnik
+(bob.supnik@ljo.dec.com).
+
+In ./sources
+
+    sim_2.3.tar.Z  - the simulator sources and documentation
+
+In ./software
+
+    lispswre.tar.Z - PDP-1 LISP sources, binary, and assembler
+
+    sim8swre.tar.Z - PDP-7 SIM8 sources, binary, and assembler
+
+    esixswre.tar.Z - PDP-8 ESI-X sources, binary, and assembler
+
+    os8swre.tar.Z  - PDP-8 OS/8 binaries and a user license from DIGITAL
+
+    rdosswre.tar.Z - Nova RDOS binaries and a user license from Data General
+
+    uv5swre.tar.Z  - PDP-11 UNIX V5 binaries and a user license from SCO
+
+    uv6swre.tar.Z  - PDP-11 UNIX V6 binaries and a user license from SCO
+
+    uv7swre.tar.Z  - PDP-11 UNIX V7 binaries and a user license from SCO

@@ -1,0 +1,5 @@
+This directory contains a number of 2.9BSD derivaties, mainly for the
+Pro/350 and Pro/380 series machines, and to add MSCP support to 2.9BSD.
+They are/were maintained by different people. Good luck!
+
+	Warren Toomey, wkt@tuhs.org

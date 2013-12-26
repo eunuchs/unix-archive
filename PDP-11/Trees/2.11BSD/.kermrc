@@ -1,0 +1,9 @@
+set line /dev/ttyS0
+set modem hayes
+set speed 19200
+set flow none
+set file names literal
+set send pack 512
+set receive pack 512
+set block 2
+set window 3

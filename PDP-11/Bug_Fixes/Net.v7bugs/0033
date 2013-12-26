@@ -1,0 +1,26 @@
+Autzoo.997
+net.v7bugs
+utzoo!henry
+Thu Oct  1 19:16:21 1981
+shell misfeature
+The following does not always do what you expect:
+
+	PATH=/bin:/usr/bin
+	... something ...
+
+Why?  Because except in some situations where all programs involved are
+shell files, the offspring will see the original PATH, not "/bin:/usr/bin".
+Why so?  Because the change to PATH was not exported!  Of the people
+here who have run into this "feature", 100% think that it is both
+(a) counterintuitive and (b) wrong.
+
+The rule that "no change is exported unless the variable is exported"
+is elegant but is bad human engineering, because the "exported" status
+of the variable is not passed down to children when the value is passed
+down.  Even the shell doesn't consistently follow this rule, witness the
+"except" in the first sentence above.  Proposal:  variables inherited
+from the environment should be implicitly and automatically marked
+"exported".  Does anybody see anything wrong/bad about this?
+
+For an example of the trouble, the "PATH=/bin:/usr/bin;" that uuxqt
+prepends to every command it runs is not inherited by the command.

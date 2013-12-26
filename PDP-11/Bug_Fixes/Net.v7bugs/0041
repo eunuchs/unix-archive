@@ -1,0 +1,7 @@
+Awatmath.1144
+net.v7bugs
+utzoo!decvax!watmath!egisin
+Mon Nov 30 22:17:01 1981
+ldiv bug
+The pdp11 ldiv runtime function computes `i*0100000L/i' to `0100000L-i',
+at least for small i's. Does anyone have a fix?

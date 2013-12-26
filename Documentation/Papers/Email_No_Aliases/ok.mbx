@@ -1,0 +1,63 @@
+>From lesk@rci.rutgers.edu  Wed Feb 13 20:10:38 2013
+Return-Path: <lesk@rci.rutgers.edu>
+Received: from skeeve.com (skeeve.com [127.0.0.1])
+	by skeeve.com (8.14.4/8.14.4/Debian-2ubuntu2) with ESMTP id r1DIALLS002156
+	for <arnold@localhost>; Wed, 13 Feb 2013 20:10:37 +0200
+X-Spam-Checker-Version: SpamAssassin 3.3.1 (2010-03-16) on
+	frenzy.freefriends.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.2 required=5.0 tests=BAYES_00,RCVD_IN_DNSWL_MED,
+	RP_MATCHES_RCVD autolearn=ham version=3.3.1
+X-Envelope-From: lesk@rci.rutgers.edu
+X-Envelope-To: <arnold@skeeve.com>
+Received: from frenzy.freefriends.org [66.54.153.139]
+	by skeeve.com with IMAP (fetchmail-6.3.21)
+	for <arnold@localhost> (single-drop); Wed, 13 Feb 2013 20:10:37 +0200 (IST)
+Received: from annwn42.rutgers.edu (whitelist-out.rutgers.edu [128.6.68.238])
+	by freefriends.org (8.14.6/8.14.6) with ESMTP id r1CL8UgB022184
+	for <arnold@skeeve.com>; Tue, 12 Feb 2013 14:08:34 -0700
+Received: from localhost (localhost [127.0.0.1])
+	by annwn42.rutgers.edu (Postfix) with ESMTP id 9561A396361
+	for <arnold@skeeve.com>; Tue, 12 Feb 2013 16:08:30 -0500 (EST)
+X-Virus-Scanned: Virus Scanned by NBCS 
+Received: from annwn42.rutgers.edu ([127.0.0.1])
+	by localhost (annwn42.rutgers.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RisMtQ9AsfVm for <arnold@skeeve.com>;
+	Tue, 12 Feb 2013 16:08:30 -0500 (EST)
+Received: from cc1778.scilsnet.rutgers.edu (scilsfa-41.rutgers.edu [172.18.166.41])
+	by annwn42.rutgers.edu (Postfix) with ESMTPSA id 76120396360
+	for <arnold@skeeve.com>; Tue, 12 Feb 2013 16:08:30 -0500 (EST)
+Date: Tue, 12 Feb 2013 16:11:11 -0500 (EST)
+From: Michael Lesk <lesk@rci.rutgers.edu>
+X-X-Sender: lesk@localhost
+To: arnold@skeeve.com
+Subject: Re: looking for "Electronic Mail Without Aliases"
+In-Reply-To: <201302122105.r1CL5Yhd022015@freefriends.org>
+Message-ID: <alpine.LFD.2.03.1302121610280.4457@rci.rutgers.edu>
+References: <201302121736.r1CHajQJ003671@skeeve.com> <alpine.LFD.2.03.1302121255030.2669@rci.rutgers.edu> <201302122105.r1CL5Yhd022015@freefriends.org>
+User-Agent: Alpine 2.03 (LFD 1266 2009-07-14)
+MIME-Version: 1.0
+Content-Type: TEXT/PLAIN; charset=US-ASCII; format=flowed
+Status: R
+X-Status: A
+
+No objection.  There can't be anything proprietary after this many years.
+Michael
+
+
+On Tue, 12 Feb 2013, arnold@skeeve.com wrote:
+
+> Michael Lesk <lesk@rci.rutgers.edu> wrote:
+>
+>> Found an electronic copy.  Attached as source.  Let me know
+>> if you would like me to try to run it through groff and give
+>> you pdf.
+>
+> Thanks!  I can try that myself.
+>
+> Do you have objections to my passing this on to the Unix Historical
+> Society?
+>
+> Arnold
+>
+

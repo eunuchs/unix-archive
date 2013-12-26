@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN">
+<!--Converted with LaTeX2HTML 96.1-beta (Jan 15, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>What Unixes run on What PDPs?</TITLE>
+<META NAME="description" CONTENT="What Unixes run on What PDPs?">
+<META NAME="keywords" CONTENT="pups">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="pups.css">
+</HEAD>
+<BODY LANG="EN">
+ <H1><A NAME="SECTION00060000000000000000">What Unixes run on What PDPs?</A></H1>
+<A NAME="hwsupportindex">&#160;</A>
+I am currently building up a list of PDP Unix versions, and what hardware
+they support. Here is the list so far.
+<P>
+<H2><A NAME="SECTION00061000000000000000">Fifth Edition Unix and Mini-Unix</A></H2>
+<P>
+The versions of Fifth Edition Unix and Mini-Unix in the PUPS archive
+are in the form of bootable RK05 disk images. I have booted both of these
+on an 11/40, and they should also boot on an 11/45. Both are very similar
+to Sixth Edition, and so you should read the next section for hardware that
+is likely to be supported by these versions.
+<P>
+<h2>Comments from Henry Spencer</h2>
+
+In an email, Henry Spencer writes:
+
+<blockquote>
+V6 ought to boot just fine on a 34 with the full (calculator-style) front
+console.  In general, a 34 looks so much like a 40 to the software that it
+was almost impossible to tell the difference, with the single exception
+that some variants of the 34 lacked a full front console and consequently
+would bus-error if the front-console-switches register was accessed. 
+(Later 11s with limited consoles, like the 44, played it smart by still
+having the register!)  Alas, V6 <tt>init</tt> used the <tt>getcsw()</tt>
+system call to decide whether to come up single-user, so a limited-console 34
+probably won't boot V6 without modifications. The same comments apply to the 23.
+<p>
+V7 as shipped definitely will <b>not</b> boot on a 40 or 34.  There are
+provisions for building a 40 version, but the boot image definitely
+assumes a 45 or 70.  (Also, a 40 version has to be severely cut down,
+and won't support very much activity before running out of table space.)
+<p>
+Incidentally, a side effect of this is that V7 won't quite boot on a 44 -
+to the software, a 44 is almost indistinguishable from a 70 with Unibus
+disks, but V7 assumes 70s are Massbus systems and their disks don't need
+the Unibus map... so it won't boot on a 22-bit-address system with Unibus
+disks.  The quick fix is to patch the software so it thinks it's running
+on a 45 and doesn't turn on 22-bit addressing; the better fix is to alter
+the startup code to initialize the Unibus map. 
+</blockquote>
+<p>
+<H2><A NAME="SECTION00062000000000000000">Hardware Supported by Sixth Edition Unix</A></H2>
+<P>
+The `Setting Up Unix - Sixth Edition' guide says that the distribution
+tape is configure to be able to boot on a PDP 11/40 with either an RK05,
+RP03 or RP04 disk, TU10 magtape or TU56 DECtape.
+<P>
+I have no idea as to whether Sixth Edition can be booted on smaller PDPs
+(11/34 etc). It can be reconfigured to run on an 11/45 and an 11/70.
+<P>
+The `Setting Up Unix' guide lists the following devices which can be
+configured:
+<P>
+<UL><LI> PC11, LP11, RS11<LI> RS03/RS04<LI> RK03/RK05<LI> TU10,TU56, TU16<LI> RP03, RP04<LI> KL11/DL11-ABC, DL11-E<LI> DC11, DP11, DN11<LI> DH11, DM11-BB
+</UL><H2><A NAME="SECTION00063000000000000000">Hardware Supported by Seventh Edition Unix</A></H2>
+<P>
+<I>This section is taken from the `Setting Up Unix - Seventh Edition'
+guide which comes with Seventh Edition.</I>
+<P>
+<BLOCKQUOTE> The distribution tape can be used only on a DEC PDP11/45 or PDP11/70 with RP03,
+RP04, RP05, RP06 disks and with a TU10, TU16, or TE16 tape drive.
+</BLOCKQUOTE>
+<P>
+I have no idea as to whether Seventh Edition can be booted on smaller PDPs
+(11/34 etc). It should be able to boot on an 11/70.
+<P>
+The manual for <TT>mkconf(1M)</TT> lists the following devices which can be
+configured:
+<P>
+<UL><LI> PC11, LP11, RS11<LI> RS03/RS04<LI> RK03/RK05<LI> TU10,TU56, TU16<LI> RP03, RP04/05/06<LI> KL11/DL11-ABC, DL11-E<LI> DC11, DP11, DN11, DU11<LI> DH11, DM11-BB
+</UL>
+<P>
+The PUPS archive contains bootable Seventh Edition disk images for RK05s
+and RL02s, tailored for a PDP 11/40.
+<P>
+<H2><A NAME="SECTION00064000000000000000">Hardware Supported by 2.9BSD</A></H2>
+<P>
+<I>This section is taken from the `Installing and Operating 2.9BSD'
+guide which comes with 2.9BSD.</I>
+<P>
+<BLOCKQUOTE> This distribution can be booted on a PDP-11/23, 24, 34, 34A, 40, 44, 45,
+55, 60, or 70 CPU with at least 192 Kbytes of memory and any of the following
+disks:
+<P>
+<DL ><DT><STRONG>DEC MASSBUS:</STRONG>
+<DD>    RM03, RM05, RP04, RP05, RP06
+<DT><STRONG>DEC UNIBUS:</STRONG>
+<DD>     RK05, RK06, RK07, RL01, RL02,
+        		RM02, RP03, RP04, RP05, RP06
+<DT><STRONG>AED 8000 UNIBUS:</STRONG>
+<DD>	AMPEX DM980 (emulating RP03)
+<DT><STRONG>AED STORM-II:</STRONG>
+<DD>    AMPEX DM980 (emulating RM02)
+<DT><STRONG>DIVA COMP V MASSBUS:</STRONG>
+<DD>    AMPEX 9300
+<DT><STRONG>EMULEX SC-21 UNIBUS:</STRONG>
+<DD>    AMPEX 9300, CDC 9766 (emulating RM05)
+<DT><STRONG>EMULEX SC-11 or SC-21 UNIBUS:</STRONG>
+<DD>   CDC 9762, AMPEX DM980
+<P>
+ </DL>
+<P>
+The tape drives supported by this distribution are:
+<P>
+<DL ><DT><STRONG>DEC MASSBUS:</STRONG>
+<DD>    TE16, TU45, TU77
+<DT><STRONG>DEC UNIBUS:</STRONG>
+<DD>     TE10, TE16, TS11, TU45, TU77
+<DT><STRONG>DATUM 15X20 UNIBUS:</STRONG>
+<DD>     KENNEDY 9100 (emulating TE10)
+<DT><STRONG>EMULEX TC-11 UNIBUS:</STRONG>
+<DD>    KENNEDY 9100, 9300 (emulating TE10)
+<P>
+ </DL>
+<P>
+Other tape/disk controllers and drives may be easily usable with the system,
+but might require minor modifications to the system
+to allow bootstrapping.
+The controllers and the drives shown here are known
+to work as bootstrap devices.
+</BLOCKQUOTE><H2><A NAME="SECTION00065000000000000000">Hardware Supported by 2.11BSD</A></H2>
+<P>
+<I>This section is taken from the `Installing and Operating 2.11BSD
+on the PDP-11' guide which comes with 2.11BSD.</I>
+<P>
+<BLOCKQUOTE> This distribution can be booted on a PDP-11
+with 1Mb of memory or more,
+separate I&amp;D, and with any of the following disks:
+<P>
+<UL><LI> RK06, RK07<LI> Any MSCP disk, including but not limited to: RD53, RD54, RA81, RZ2x<LI> RM03, RM05<LI> RP04, RP05, RP06<LI> Many other SMD disks, for example: CDC 9766, Fuji 160, Fuji Eagle
+</UL>
+<P>
+Other disks are supported (RX23, RX33, RX50, RD51) but are not large
+enough to hold a root filesystem plus a swap partition.  The old restriction
+of using RL02 drives in pairs has been lifted.  It is now possible to define
+a root ('a') partition and a swap partition ('b') and load at least the
+root filesystem to a single RL02.
+Discs which are too small to hold even a root filesystem (floppies for 
+example)
+may be used as data disks or as standalone boot media, but are not useable
+for loading the distribution. Others, while listed above, are not very
+well suited to loading the distribution.  The RK06/07 drives are hard pressed
+to even hold the system binaries, much less the sources.
+<P>
+The tape drives supported by this distribution are:
+<P>
+<UL><LI> TS11, TU80, TK25<LI> TM11, AVIV 6250/1600<LI> TE16, TU45, TU77<LI> TK50, TU81, TU81+, TZ30
+</UL></BLOCKQUOTE><BR> <HR>
+<P><ADDRESS>
+<I>Warren Toomey <BR>
+Wed Feb 21 12:10:14 EST 1996</I>
+</ADDRESS>
+</BODY>
+</HTML>

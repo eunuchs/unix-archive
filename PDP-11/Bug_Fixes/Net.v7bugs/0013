@@ -1,0 +1,16 @@
+Aucbvax.425
+NET.v7bugs
+utzoo!duke!vax135!ucbvax!mark
+Mon Oct 13 18:59:49 1980
+cu
+Cu seems to keep track of what the user types in a line buffer.
+There is no check for overflowing this buffer.  Since one can easily
+go for a long time in a screen editor without getting a return, it is easy
+to core dump the receive process.  The following patch seems to fix it:
+at the beginning of the routine rd, before *p++=c; add
+	if (p >= &b[sizeof b]) p = b;
+This fix was arrived at quickly, and it is possible that the author will
+prefer a different fix, such as
+	if (p >= &b[sizeof b]) p--;
+after *p++=c;.  Actually, it seems like cu has little business keeping
+a line buffer unless the first character was a tilde.

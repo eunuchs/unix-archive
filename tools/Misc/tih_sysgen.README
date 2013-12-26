@@ -1,0 +1,20 @@
+To: wkt@csadfa.cs.adfa.oz.au (Warren Toomey)
+Subject: CSR/vector calculator for the archives
+From: Tom I Helbekkmo <tih@nhh.no>
+Date: 03 Jun 1997 09:45:43 +0200
+
+Hi, Warren!
+
+I've written a CSR and vector calculator, based on VMS documentation
+and comparison tested against VMS SYSGEN.  For want of a better name,
+I'm simply calling the program 'sysgen' -- this shows its heritage, at
+least...  :-)
+
+This should be useful to PDP (and VAX) users who don't have a VMS
+system handy, and would like to configure their systems according to
+DEC standard.  Would you add it to the PUPS archives and send out an
+announcement to the mailing list, please?
+
+Thanks!
+
+-tih

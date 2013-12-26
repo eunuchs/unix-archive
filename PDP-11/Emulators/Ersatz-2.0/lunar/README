@@ -1,0 +1,76 @@
+This directory contains the well-known Lunar Lander program for the VT11
+vector graphics processor, written in 1973 by Jack Burness.  This version
+came from Eric Smith's VT11 web page, and can be run on a real VT11, or
+under E11 using an emulated VT11 running on an SVGA display.
+
+Files:
+
+gtlem.ini	E11 init file to load and start Lunar Lander
+gtlem.mac	source file
+gtlem.pdp	binary file
+
+The program can be run under E11 (DOS version) V2.2 or later (Demo, Lite,
+or full version).  Start E11 with the following command line:
+
+E11/INIT:GTLEM
+
+Case is not significant.  You'll immediately jump into the game's title screen,
+which incorrectly calls itself "RT-11 LUNAR LANDER".  Don't worry about that,
+it's a stand-alone program and does not require RT-11, except for building,
+and this version is pre-built.  After ten seconds the game starts, and you'll
+see a mountain range, with the LEM just flying into view in the upper left
+corner of the screen.  Your goal is to control the LEM's attitude and thrust
+and make it land softly.  The view seen on the screen is fixed until you are
+very close to the moon's surface, at which point the view abruptly switches to
+a close-up which shows boulders, craters from previous crashes, and of course,
+the McDonald's where you can buy some burgers if you land close enough to it.
+
+The controls are simple, and that's what makes the game hard!  The real VT11
+uses a light pen as its pointing device.  E11 simulates the light pen using the
+mouse (so make sure you have a DOS mouse driver loaded).  Crosshairs show the
+mouse's position, which is initially in the lower left corner of the screen.
+In order to register a light pen hit, move the crosshairs to where you would
+place the light pen, and then hold down the left mouse button to tell E11
+to pretend the light pen is now touching the screen.  GTLEM does a bit of
+"debouncing" so a quick click is not enough, you have to hold the button down.
+
+A light pen contains a photodetector which "sees" the CRT's electron beam as
+it goes by and causes an interrupt.  Since the VT11 is a refreshing vector
+display, it sweeps the electron beam *only* over objects which are actually
+illuminated, unlike a raster display which scans every pixel of the screen
+(although many of the pixels may be displayed at very low intensity).
+Consequently a light pen only works when it's held over an illuminated
+object on the screen, so unlike a mouse it's totally useless in the wide
+open spaces.  Also unlike a mouse, a light pen can trigger on a near miss,
+since the aperture in the business end of the pen has non-zero diameter.
+
+So, E11 simulates this by only registering a light pen hit when the L.H.
+mouse button is held down, while the crosshairs are within a small distance
+of a vector, dot, or alphanumeric character.
+
+OK back to the game.  The thrust is controlled by a vertical throttle bar in
+the upper right corner of the screen.  The bottom end of the bar is 0% thrust,
+and the top end is 100% thrust, so you can adjust the throttle by selecting
+a position on the bar which corresponds to the percentage that you want.
+
+Below the throttle bar are two pairs of horizontal arrows, a big pair and
+a small pair.  The big pair is coarse attitude adjustment, and the small
+pair is fine attitude adjustment.  Just hold the mouse button down with the
+crosshairs somewhere on the arrow, and the LEM will rotate in that direction
+at a rate which is based on how far along the arrow you are.
+
+Finally, the game has four numeric status displays across the top of the
+screen.  Normally these display the LEM's height, distance from McDonald's,
+vertical velocity, and horizontal velocity.  But you can any of the four
+to display any of the parameters listed in the lower right corner of the
+screen.  You do this by holding the button down with the crosshairs over
+the parameter you want, until it starts blinking.  Then move the crosshairs
+up to the displayed parameter that you want to replace, and press the mouse
+button again.  That parameter will replace the displayed one.
+
+While you're getting the hang of the game, it would probably be a good idea to
+use this feature to make "FUEL LEFT" be one of the four displayed parameters,
+you don't get enough fuel to play around much so it's helpful to be able to
+keep an eye on it.
+
+John Wilson <wilson@dbit.com>

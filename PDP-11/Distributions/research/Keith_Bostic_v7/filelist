@@ -1,0 +1,15 @@
+file 0: block size 512: 16 records
+file 0: eof after 16 records: 8192 bytes
+file 1: block size 512: 14 records
+file 1: eof after 14 records: 7168 bytes
+file 2: block size 512: 1 records
+file 2: eof after 1 records: 512 bytes
+file 3: block size 512: 22 records
+file 3: eof after 22 records: 11264 bytes
+file 4: block size 512: 22 records
+file 4: eof after 22 records: 11264 bytes
+file 5: block size 10240: 202 records
+file 5: eof after 202 records: 2068480 bytes
+file 6: block size 10240: 937 records
+file 6: eof after 937 records: 9594880 bytes
+file 7: block size 63: 

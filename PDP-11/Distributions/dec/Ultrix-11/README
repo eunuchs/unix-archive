@@ -1,0 +1,143 @@
+In 1987, DEC gave UCB the right to distribute any or all of Ultrix-11
+in the BSD distributions. The e-mail exchange is provided below.
+
+
+From jean Thu Dec 17 11:49:45 1987
+Received: by okeeffe.Berkeley.EDU (5.58/1.26)
+	id AA00906; Thu, 17 Dec 87 11:49:44 PST
+Date: Thu, 17 Dec 87 11:49:44 PST
+From: jean (Jean Wood)
+Message-Id: <8712171949.AA00906@okeeffe.Berkeley.EDU>
+To: bostic
+Subject: FYI, from ULTRIX-11 Product Manager
+Status: R
+
+	From buller%smurf.DEC@decwrl.dec.com Thu Dec 17 11:11:03 1987
+	Date: Thu, 17 Dec 87 10:22:22 PST
+	To: jean@okeeffe.berkeley.edu
+	Subject: RE: Something else from ULTRIX-11?
+
+	If Berkeley purchases the AT&T and ULTIRX-11 source licenses,
+	we'll write a letter that gives them the right to include anything
+	they want from ULTRIX-11 in their own distribution. I'll
+	forward you the procedure for purchasing sources.
+
+	Laurie
+
+
+From jean Thu Dec 17 12:45:20 1987
+Received: by okeeffe.Berkeley.EDU (5.58/1.26)
+	id AA01415; Thu, 17 Dec 87 12:45:19 PST
+Date: Thu, 17 Dec 87 12:45:19 PST
+From: jean (Jean Wood)
+Message-Id: <8712172045.AA01415@okeeffe.Berkeley.EDU>
+To: simon_mi@sanfan.dec.com
+Subject: one small thing
+Cc: bostic
+Status: R
+
+Hi Michael,
+
+UEG is going to give CSRG permission to include any/all sources from 
+ULTRIX-11
+in their 2.10 BSD release (for pdp-11's).
+
+As soon as the letter confirming this arrives, Keith Bostic (my 
+officemate)
+would like to order ULTRIX-11 sources.   You might give him a 
+call/send
+mail (bostic@okeeffe.berkeley.edu) in about a month.
+
+Here's the note from the Product Manager, Laurie Buller, about how to
+order the source kit:
+
+	From buller%smurf.DEC@decwrl.dec.com Thu Dec 17 12:11:44 1987
+	Date: Thu, 17 Dec 87 12:11:31 PST
+	To: jean@okeeffe.berkeley.edu
+	Subject: RE: Something else from ULTRIX-11?
+
+	Ordering U-11 sources is simple. Tell the DEC account
+	rep the CPU type and serial number, and the number of
+	the AT&T license (E-SOFT-xxxxxxxxx).  The account rep
+	will give that information to CAS (our order admin system)
+	and the rest is magic. The order number for U-11 sources
+	is QJ828-MM and the price is a mere $750.
+
+Everyone here is pretty surprised with UEG's willingness to do this.
+But happy.   The next question I was asked wsa if I could now get them
+to give the sources for the BI code ...
+
+		all the best in 1988,
+		jean
+
+copy to Keith
+
+
+From jean Mon Mar 14 16:46:14 1988
+Received: by okeeffe.Berkeley.EDU (5.59/1.26)
+	id AA15582; Mon, 14 Mar 88 16:46:01 PST
+Date: Mon, 14 Mar 88 16:46:01 PST
+From: jean (Jean Wood)
+Message-Id: <8803150046.AA15582@okeeffe.Berkeley.EDU>
+To: bostic
+Subject: information for the Purchase order for Mike Simon
+Cc: simon_mi@sanfan.dec.com
+Status: RO
+
+Everything in this message from Laurie Buller is still valid except 
+the
+price, it's gone up to $788.00
+
+jean
+
+	From buller%smurf.DEC@decwrl.dec.com Thu Dec 17 12:11:44 1987
+	Date: Thu, 17 Dec 87 12:11:31 PST
+	From: buller%smurf.DEC@decwrl.dec.com
+	To: jean@okeeffe.berkeley.edu
+	Subject: RE: Something else from ULTRIX-11?
+
+	Ordering U-11 sources is simple. Tell the DEC account rep
+	the CPU type and serial number, and the number of the AT&T
+	license (E-SOFT-xxxxxxxxx).  The account rep will give that
+	information to CAS (our order admin system) and the rest is
+	magic. The order number for U-11 sources is QJ828-MM and
+	the price is a mere $750.
+
+
+From simon_mi%sanfan.DEC@decwrl.dec.com Mon Mar 14 18:36:41 1988
+Received: from monet.Berkeley.EDU by okeeffe.Berkeley.EDU (5.59/1.26)
+	id AA16777; Mon, 14 Mar 88 18:36:39 PST
+Received: from ucbvax.Berkeley.EDU by monet.berkeley.edu (5.58/1.23)
+	id AA04212; Mon, 14 Mar 88 18:36:15 PST
+Received: from decwrl.dec.com by ucbvax.Berkeley.EDU (5.58/1.26)
+	id AA07727; Mon, 14 Mar 88 17:26:08 PST
+Received: by decwrl.dec.com (5.54.4/4.7.34)
+	id AA16330; Mon, 14 Mar 88 16:59:06 PST
+Message-Id: <8803150059.AA16330@decwrl.dec.com>
+From: simon_mi%sanfan.DEC@decwrl.dec.com (Michael Simon - OAO 
+(415)769-3246)
+Date: 14 Mar 88 16:48
+To: bostic%sanfan.DEC@decwrl.dec.com, 
+simon_mi%sanfan.DEC@decwrl.dec.com
+Subject: Ultrix-11 sources
+Status: RO
+
+Keith,
+
+This is just to confirm Jean's message to you in regard to Ultrix-11 
+sources.
+The ordering info is as follows:
+
+Part Number    Description               Berkeley Price
+-----------    -----------               --------------
+QJ828-MM       Ultrix-11 Sources         $788.
+
+The other information (cpu serial number, AT&T license etc.) can be 
+put
+on your purchase requisition so that purchasing types it on the p.o.
+
+Drop me mail if you have any questions.
+
+michael
+
+

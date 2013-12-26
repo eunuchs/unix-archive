@@ -1,0 +1,61 @@
+
+    		The Unix Archive -- Snapshot January 2002
+
+
+Welcome to the Unix Archive, run by the Unix Heritage Society. Here you
+will find a large collection of Unix releases, applications, documentation,
+bug fixes, bootable disk images, and tools to deal with all these things.
+
+Most of the material in the Archive is tainted with source code that was
+originally owned by AT&T, Novell, SCO and is now owned by Caldera. Please
+read the Caldera-license.pdf, and also the individual copyright notices
+for each piece of software in this archive.
+
+If you are reading this file from CD-ROM or other media, then you have a
+snapshot of the on-line archive. We have had to split the archive over 2 CDs,
+and you will find the top-level stuff duplicated on each CD.
+
+The Unix Heritage Society web pages are at http://www.tuhs.org/.
+A mirror of these pages is in Documentation/TUHS_Html.
+
+
+Archive Layout
+--------------
+
+The archive is broken into a number of main categories. At present, we
+have subdirectories for PDP-11 Unixes, VAX Unixes, the 4BSD collection, and
+Other systems. Each category is maintained by a separate interest group. In
+general, each category will have the following sub-areas:
+
+Boot_Images		- Bootable disk images. Some of these may be links
+			  to files in the Distributions tree
+Bug_Fixes		- Bugs and bug fixes from various sources
+
+Distributions		- Full or partial distributions of Unix
+	
+Documentation		- Useful manuals and setup instructions, in several
+			  formats (nroff, ASCII, PostScript, HTML)
+Emulators		- Various hardware emulators
+
+Misc			- Anything which doesn't fit in the other directories
+
+Tools			- Useful tools to work with the old distributions
+			  
+Trees			- Exploded trees for particular distributions
+
+
+
+At the top-level of the Archive, you will find these extra things:
+
+
+Applications		- Applications written for Unix but not part of
+			  original distributions, e.g Usenix s/ware tapes
+Documentation		- Documentation relevant to the whole archive
+
+checksums		- MD5 checksums over all files in the archive
+			  RFC 1321 describes the MD5 algorithm
+lists			- ASCII files giving filenames, sizes & checskums of
+			  all files within tarballs in the archive
+tools			- Useful tools that are not specific to one category
+
+updates			- List of major updates to the Unix Archive

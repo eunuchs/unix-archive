@@ -1,0 +1,20 @@
+The disk image here contains a 7th Edition UNIX system which has had some
+Y2K bug fixes applied by Alexey Chupahin <achupahi@uic.rnd.runnet.ru>. I
+don't have exact details on what he fixed, but here are some comments:
+
+You just get file containing Unix7  Y2k system. 2 new utilities come with it:
+"date2" Y2k command  and "sl" string command editor with stack of previously
+entered command.
+
+format of command:
+
+date2  year month day [hour minutes [sec]]
+
+#date2 2000 4 8 11 45
+
+for example.
+
+Unfortunatly, I find a bug in sl command too late, sorry (it is not fatal,
+but unefficient). I've fixed it in BSD Y2k version image that I patched yet.
+You may copy binary sl file from BSD to Unix7 and it will work or recompile
+source using Unix7 cc compiler.

@@ -1,0 +1,75 @@
+  From: Aharon Robbins <arnold@skeeve.com>
+  To: tuhs@minnie.tuhs.org
+  Subject: [TUHS] compiling festoon
+
+Hi All.
+
+The following diff is necessary to use GCC on a linux system.
+(Anyone know what gcc's builtin `conj' function is? Beats me.)
+
+Warren, you might want to fix that last line in the archive version
+of the file.
+
+Arnold
+----------------
+*** fest.c.dist	Wed Feb 26 23:51:49 2003
+--- fest.c	Thu Feb 27 14:02:55 2003
+***************
+*** 1223,1229 ****
+  static char    *conjlist[] = {"and", "but", "yet", "and", "and"};
+  
+  X 
+! conj(env)
+  	E               env;
+  {
+  	X               v = getxx();
+--- 1223,1229 ----
+  static char    *conjlist[] = {"and", "but", "yet", "and", "and"};
+  
+  X 
+! conjugate(env)
+  	E               env;
+  {
+  	X               v = getxx();
+***************
+*** 1306,1312 ****
+  	} else if (prob(2 * T)) {
+  		v->list.x[i++] = turgid(env);
+  		v->list.x[i++] = comma(env);
+! 		v->list.x[i++] = conj(env);
+  		v->list.x[i++] = sent(env);
+  	} else if (prob(1.5 * T)) {
+  		v->list.x[i++] = lconjsub(env);
+--- 1306,1312 ----
+  	} else if (prob(2 * T)) {
+  		v->list.x[i++] = turgid(env);
+  		v->list.x[i++] = comma(env);
+! 		v->list.x[i++] = conjugate(env);
+  		v->list.x[i++] = sent(env);
+  	} else if (prob(1.5 * T)) {
+  		v->list.x[i++] = lconjsub(env);
+***************
+*** 1327,1333 ****
+  		if (eqn && prob(.5)) {
+  			v->list.x[i++] = equation(env);
+  			v->list.x[i++] = comma(env);
+! 			v->list.x[i++] = conj(env);
+  		}
+  		v->list.x[i++] = sent(env);
+  	} else
+--- 1327,1333 ----
+  		if (eqn && prob(.5)) {
+  			v->list.x[i++] = equation(env);
+  			v->list.x[i++] = comma(env);
+! 			v->list.x[i++] = conjugate(env);
+  		}
+  		v->list.x[i++] = sent(env);
+  	} else
+***************
+*** 1644,1647 ****
+  	label[j++] = '"'; label[j] = '\0';
+  	return(label);
+  }
+- /GO.SYSIN DD fest.c
+\ No newline at end of file
+--- 1644,1646 ----

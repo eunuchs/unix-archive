@@ -1,0 +1,4224 @@
+
+
+
+
+
+
+
+
+
+              IInnssttaalllliinngg aanndd OOppeerraattiinngg 22..99BBSSDD
+                       1177 MMaarrcchh 11999988
+
+                     _M_i_c_h_a_e_l _J_. _K_a_r_e_l_s
+                       _C_a_r_l _F_. _S_m_i_t_h
+                  University of California
+                 Berkeley, California 94720
+
+
+                          _A_B_S_T_R_A_C_T
+
+
+
+          This  document  contains   instructions   for
+     installation  and operation of the Second Berkeley
+     Software  Distribution's  2.9BSD  release  of  the
+     PDP-11|-  UNIX|=  system.   It  is  adapted from the
+     paper _I_n_s_t_a_l_l_i_n_g _a_n_d _O_p_e_r_a_t_i_n_g _4_._1_b_s_d by Bill Joy.
+
+          This  document  explains  the  procedures for
+     installation of Berkeley UNIX on a  PDP-11  or  to
+     upgrade an existing Berkeley PDP-11 UNIX system to
+     the new release.  It then explains how to  config-
+     ure  the kernel for the available devices and user
+     load, lay out file systems on the available disks,
+     set  up  terminal  lines and user accounts, and do
+     system specific tailoring.  It also explains  sys-
+     tem  operations  procedures: shutdown and startup,
+     hardware error reporting and diagnosis, file  sys-
+     tem  backup  procedures, resource control, perfor-
+     mance monitoring, and procedures  for  recompiling
+     and   reinstalling   system  software.   Technical
+     details on the kernel changes are presented in the
+     accompanying  paper,  ``Changes  in  the Kernel in
+     2.9BSD.''
+
+          The 2.9BSD release, unlike previous  versions
+     of the Second Berkeley Software Distribution, is a
+     complete Version 7 UNIX system  with  all  of  the
+     standard UNIX tools and utilities, with or without
+     Berkeley modifications.  Therefore,  it  does  not
+     need to be layered onto an existing Version 7 sys-
+     tem; because of the  many  changes  and  additions
+     throughout the system, it would require a substan-
+     tial effort to merge into most earlier systems.
+
+
+-----------
+|-DEC,  MASSBUS,  PDP, and UNIBUS are trademarks of
+Digital Equipment Corporation.
+|=UNIX is a trademark of Bell Laboratories.
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD  -2-                Introduction
+
+
+                      11.. IINNTTRROODDUUCCTTIIOONN
+
+
+
+     This  document  explains  how  to  install  the  2.9BSD
+release  of  the  Berkeley version of UNIX for the PDP-11 on
+your system.  If you are running the July  1981  release  of
+the  system,  which  was called 2.8BSD, you can avoid a full
+bootstrap from the new tape by extracting only the  software
+that  has  changed.   Be  warned,  however, that there are a
+large number of changes.  Unless you have many local modifi-
+cations  it  will  probably  be easier to bring up an intact
+2.9BSD system and merge your local changes into it.  If  you
+are  running  any  other version of UNIX on your PDP-11, you
+will have to do a full bootstrap.  This  means  dumping  all
+file  systems which are to be retained onto tape in a format
+that can be read in again later (_t_a_r format is best,  or  V7
+_d_u_m_p  if the file system configuration will be the same).  A
+new root file system can be made and  read  in  using  stan-
+dalone  utilites  on  the  tape.  The system sources and the
+rest  of  the  /usr  file  system  can  then  be  extracted.
+Finally, old file systems can be reloaded from tape.
+
+     To  get  an overview of the process and an idea of some
+of the alternative strategies that are available, it is wise
+to  look through all of these instructions before beginning.
+
+00..11..  HHaarrddwwaarree ssuuppppoorrtteedd
+
+     This distribution can be booted on a PDP-11/23, 24, 34,
+34A,  40, 44, 45, 55, 60, or 70 CPU with at least 192 Kbytes
+of memory and any of the following disks|-:
+
+
+     DEC MASSBUS:                    RM03, RM05, RP04, RP05, RP06
+     DEC UNIBUS:                     RK05, RK06, RK07, RL01, RL02,
+                                     RM02, RP03, RP04, RP05, RP06
+     AED 8000 UNIBUS:                AMPEX DM980 (emulating RP03)
+     AED STORM-II                    AMPEX DM980 (emulating RM02)
+     DIVA COMP V MASSBUS:            AMPEX 9300
+     EMULEX SC-21 UNIBUS:            AMPEX 9300, CDC 9766 (emulating RM05)
+     EMULEX SC-11 or SC-21 UNIBUS:   CDC 9762, AMPEX DM980
+
+
+The tape drives|- supported by this distribution are:
+
+
+     DEC MASSBUS:           TE16, TU45, TU77
+     DEC UNIBUS:            TE10, TE16, TS11, TU45, TU77
+     DATUM 15X20 UNIBUS:    KENNEDY 9100 (emulating TE10)
+     EMULEX TC-11 UNIBUS:   KENNEDY 9100, 9300 (emulating TE10)
+
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD  -3-                Introduction
+
+
+00..22..  DDiissttrriibbuuttiioonn ffoorrmmaatt
+
+     The distribution format is  two  9-track  800bpi  2400'
+magnetic  tapes.   The  tapes are also available at 1600bpi.
+The format for 1600bpi tapes is the same.  If you  are  able
+to do so, it is a good idea to immediately copy the tapes in
+the distribution kit to guard against disaster.   The  first
+tape contains some 512-byte records, some 1024-byte records,
+followed by many 10240-byte records.  There are interspersed
+tape marks; end-of-tape is signaled by a double end-of-file.
+The second tape contains only  10240-byte  records  with  no
+interspersed tape marks.
+
+     The  boot tape contains several standalone utility pro-
+grams, a _d_u_m_p image of a root file system, and a  _t_a_r  image
+of  part  of  the  /usr file system.  The files on this tape
+are:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------
+|- Other  controllers  and  drives  may  be  easily
+usable  with  the  system, but might require minor
+modifications to the system  to  allow  bootstrap-
+ping.   The  controllers and the drives shown here
+are known to work as bootstrap devices.
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD  -4-                Introduction
+
+
+     File   Contents                             Record Size
+
+      0     boot block                                512
+            (EOR)
+            boot block                                512
+            (EOR)
+            Standalone BBoooott                           512
+            (EOF)
+      1     Standalone ccaatt                           1024
+            (EOF)
+      2     This index                               1024
+            (use ccaatt to read)
+            (EOF)
+      3     Standalone mmkkffss                          1024
+            (see _m_k_f_s(8)|-)
+            (EOF)
+      4     Standalone rreessttoorr                        1024
+            (see _r_e_s_t_o_r(8))
+            (EOF)
+      5     Standalone iicchheecckk                        1024
+            (see _i_c_h_e_c_k(8))
+            (EOF)
+      6     Dump of small ``root'' file system      10240
+            (213 10K-byte blocks; see _d_u_m_p(8))
+            (EOF)
+      7     Tar archive of /usr files               10240
+            (most of the tape; see _t_a_r(1))
+            (EOF)
+            (EOF)
+
+
+The last file on the tape is a _t_a_r image of most of the /usr
+file  system  except  for  sources  (relative  to  /usr; see
+_t_a_r(1)).  It contains most of the binaries and  other  mate-
+rial  which  is  normally  kept  on-line, with the following
+directories: 7700 aaddmm bbiinn ccoonnttrriibb ddiicctt ddoocc ggaammeess  iinncclluuddee  lliibb
+llooccaall  mmaann  mmssggss pprreesseerrvvee ppuubblliicc ssppooooll ssyyss ttmmpp uuccbb.  It con-
+tains 1594 10K byte blocks.  The second  tape  contains  one
+file  in  _t_a_r  format, again relative to /usr, consisting of
+1958 10K byte blocks and containing the source tree with all
+command  and  kernel  sources.   It contains the directories
+nneett, ssrrcc, and iinnggrreess and  includes  the  Berkeley  additions
+(which are in /usr/src/ucb and /usr/ingres).  The nneett direc-
+tory contains sources for the TCP/IP system.
+
+00..33..  UUNNIIXX ddeevviiccee nnaammiinngg
+
+     UNIX has a set of names for devices that are  different
+from the DEC names for the devices.  The disk and tape names
+used by the bootstrap and the system are:
+-----------
+|-References of the form _X(_Y) mean  the  subsection
+named  _X  in section _Y of the Berkeley PDP-11 UNIX
+Programmer's manual.
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD  -5-                Introduction
+
+
+     RK05 disks                       rrkk
+     RK06, RK07 disks                 hhkk
+     RL01, RL02 disks                 rrll
+     RP02, RP03 disks                 rrpp
+     TE16, TU45, TU77/TM02, 3 tapes   hhtt
+     TE10/TM11 tapes                  ttmm
+     TS11 tapes                       ttss
+
+
+
+     There is also a generic disk driver, xxpp, that will han-
+dle most types of SMD disks on one or more controllers (even
+different types on the same controller).  The xxpp driver han-
+dles  RM02,  RM03,  RM05, RP04, RP05 and  RP06 disks on DEC,
+Emulex, and Diva UNIBUS or MASSBUS controllers.
+
+     The standalone system used to bootstrap the  full  UNIX
+system uses device names of the form:
+
+     _x_x(_y,_z)
+
+where  _x_x  is one of hhkk, hhtt, rrkk, rrll, rrpp, ttmm, ttss, or xxpp.  The
+value _y specifies the device or drive unit to  use.   The  _z
+value  is  interpreted  differently for tapes and disks: for
+disks it is a block offset for a file system and  for  tapes
+it is a file number on the tape.
+
+     Large UNIX physical disks (hhkk, rrpp, xxpp) are divided into
+8 logical disk partitions, each of which may occupy any con-
+secutive  cylinder range on the physical device.  The cylin-
+ders occupied by the 8 partitions for each  drive  type  are
+specified  in section 4 of the Berkeley PDP-11 UNIX Program-
+mer's manual.|- Each partition may be used for either  a  raw
+data  area  such  as a swapping area or to store a UNIX file
+system.  It is conventional for the  first  partition  on  a
+disk to be used to store a root file system, from which UNIX
+may be bootstrapped.  The second partition is  traditionally
+used as a swapping area, and the rest of the disk is divided
+into spaces for additional ``mounted file systems''  by  use
+of one or more additional partitions.
+
+     The disk partitions have names in the standalone system
+of the form ``_x_x(_y,_z)'' as described above.  Thus  partition
+1  of  an RK07 at drive 0 would be ``hk(0,5940)''.  When not
+running standalone, this partition would normally be  avail-
+able as ``/dev/hk0b''.  Here the prefix ``/dev'' is the name
+of the directory where all ``special files'' normally  live,
+the  ``hk''  serves an obvious purpose, the ``0'' identifies
+this as a partition of hk drive number ``0'' and  the  ``b''
+identifies  this as partition 1 (where we number from 0, the
+-----------
+|-It is possible to change the partitions by chang-
+ing  the  values  in  the  disk's  sizes  array in
+ioconf.c.
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD  -6-                Introduction
+
+
+0th partition being ``hk0a'').   Finally,  ``5940''  is  the
+sector  offset to partition 1, as determined from the manual
+page _h_k(4).
+
+     Returning to the discussion of the  standalone  system,
+we  recall  that tapes also took two integer parameters.  In
+the case of a TE16/TU tape formatter on drive 0,  the  files
+on  the tape have names ``ht(0,0)'', ``ht(0,1)'', etc.  Here
+``file'' means a tape file containing a single  data  stream
+separated  by  a  single  tape mark.  The distribution tapes
+have data structures in the tape files and though the  first
+tape  contains  only 8 tape files, it contains several thou-
+sand UNIX files.
+
+00..44..  UUNNIIXX ddeevviicceess:: bblloocckk aanndd rraaww
+
+     UNIX makes a distinction between ``block'' and  ``char-
+acter''  (raw) devices.  Each disk has a block device inter-
+face where the system makes the device byte addressable  and
+you  can write a single byte in the middle of the disk.  The
+system will read out the data from the disk  sector,  insert
+the  byte  you  gave it and put the modified data back.  The
+disks with the names ``/dev/_x_x0a'', etc. are  block  devices
+and thus use the system's normal buffering mechanism.  There
+are also raw devices available, which do physical I/O opera-
+tions  directly  from  the  program's data area.  These have
+names like  ``/dev/r_x_x0a'',  the  ``r''  here  standing  for
+``raw.''   In the bootstrap procedures we will often suggest
+using the raw devices, because these tend  to  work  faster.
+In  general,  however, the block devices are used.  They are
+where file systems are ``mounted.''  The UNIX name space  is
+increased  by  logically  associating (_m_o_u_n_ting) a UNIX file
+system residing on a given block device with a directory  in
+the  current  name  space.  See _m_o_u_n_t(2) and _m_o_u_n_t(8).  This
+association is severed by _u_m_o_u_n_t.
+
+     You should be aware that it is sometimes  important  to
+use the character device (for efficiency) or not (because it
+wouldn't work, e.g. to write a single byte in the middle  of
+a sector).  Don't change the instructions by using the wrong
+type of device indiscriminately.
+
+00..55..  RReeppoorrttiinngg pprroobblleemmss oorr qquueessttiioonnss
+
+     Problems with the software  of  this  distribution,  or
+errors or omissions in the documentation, should be reported
+to the 2BSD group.  Whenever possible, submit  such  reports
+by electronic mail; the address is:
+
+     2bsd@berkeley       (by ARPAnet)
+       or
+     ucbvax!2bsd         (by UUCP)
+
+There is a mail drop for bug reports and fixes:
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD  -7-                Introduction
+
+
+     2bsd-bugs@berkeley  (by ARPAnet)
+       or
+     ucbvax!2bsd-bugs    (by UUCP)
+
+These reports or fixes are expected to be in the format gen-
+erated by the _s_e_n_d_b_u_g(1) program.  A redistribution list  of
+users who have indicated that they would like to receive bug
+reports is also maintained:
+
+     2bsd-people@berkeley(by ARPAnet)
+       or
+     ucbvax!2bsd-people  (by UUCP)
+
+This list may also be used  as  a  general  forum  for  help
+requests,  sharing  common experiences, etc.  Requests to be
+added to (or deleted from) this list should be made  to  the
+2bsd address above.  If it is not possible to use electronic
+mail, then call or write the 2BSD office.  Although there is
+seldom  someone there to take your call, there is an answer-
+ing machine, and your  request  will  be  forwarded  to  the
+appropriate  person.   The  phone number and mailing address
+are:
+
+     Berkeley PDP-11 Software Distribution - 2BSD
+     Computer Science Division, Department of EECS
+     573 Evans Hall
+     University of California, Berkeley
+     Berkeley, California 94720
+     (415) 642-6258
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD  -8-               Bootstrapping
+
+
+                  22.. BBOOOOTTSSTTRRAAPP PPRROOCCEEDDUURREESS
+
+
+
+     This section explains the bootstrap procedures that can
+be  used  to  get one of the kernels supplied with this tape
+running on your machine.  If you are not yet running UNIX or
+are  running  a  version of UNIX other than 2.8BSD, you will
+have to do a full bootstrap.
+
+     If you are running 2.8BSD you can use the update proce-
+dure  described  in section 4.2 instead of a full bootstrap.
+This will affect modifications to the local system less than
+a full bootstrap.  Note, however, that a full bootstrap will
+probably require less effort  unless  you  have  made  major
+local  modifications  which  you  must carry over to the new
+system.
+
+     If you are already running UNIX and need to do  a  full
+bootstrap  you should first save your existing files on mag-
+netic tape.  The 2.9BSD file system uses 1K-byte  blocks  by
+clustering disk blocks (as did the 2.8BSD system); file sys-
+tems in other formats cannot be  mounted.   TThhoossee  uuppggrraaddiinngg
+ffrroomm  22..88  sshhoouulldd  nnoottee tthhaatt 22..99BBSSDD uusseess ggeenneerraallllyy ddiiffffeerreenntt
+ffiillee ssyysstteemm ppaarrttiittiioonn ssiizzeess tthhaann 22..88BBSSDD,, aanndd tthhaatt aa  ffeeww  ooff
+tthhee  mmaajjoorr  ddeevviiccee nnuummbbeerrss hhaavvee cchhaannggeedd ((iinn ppaarrttiiccuullaarr,, tthhaatt
+ffoorr tthhee hhkk))..  The easiest way to save the current  files  on
+tape  is  by doing a full dump and then restoring in the new
+system.  This works also in converting  V7,  System-III,  or
+System-V 512-byte file systems.  Although the dump format is
+different on V7, System-III, and System-V, _5_1_2_r_e_s_t_o_r(8)  can
+restore  old format V7 _d_u_m_p image tapes into the file system
+format used by 2.9BSD.  _T_a_r(1) can also be used to  exchange
+files  from different file system formats, and has the addi-
+tional advantage that directory trees can be placed on  dif-
+ferent  file  systems  than  on the old configuration.  Note
+that 2.9BSD does not support _c_p_i_o tape format.
+
+     The tape  bootstrap  procedure  involves  three  steps:
+loading  the tape bootstrap monitor, creating and initializ-
+ing a UNIX ``root'' file system  system  on  the  disk,  and
+booting the system.
+
+22..11..  BBoooottiinngg ffrroomm ttaappee
+
+     To  load  the  tape  bootstrap monitor, first mount the
+magnetic tape on drive 0 at load point, making sure that the
+write  ring  is not inserted.  Then use the normal bootstrap
+ROM, console monitor or other bootstrap  to  boot  from  the
+tape.   If  no other means are available, the following code
+can be keyed in and executed at (say) 0100000 to boot from a
+TM tape drive (the magic number 172526 is the address of the
+TM-11 current memory address register; an adjustment may  be
+necessary if your controller is at a nonstandard address):
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD  -9-               Bootstrapping
+
+
+     012700   (mov $172526, r0)
+     172526
+     010040   (mov r0, -(r0))
+     012740   (mov $60003, -(r0))
+     060003
+     000777   (br .)
+
+
+When  this  is executed, the first block of the tape will be
+read into memory.  Halt the CPU and restart at location 0.
+
+     The console should type
+
+     _n_nBBoooott
+     ::
+
+where _n_n is the CPU class on which it believes  it  is  run-
+ning.   The value will be one of 24, 40, 45 or 70, depending
+on whether separate  instruction  and  data  (separate  I/D)
+and/or  a  UNIBUS  map are detected.  The CPUs in each class
+are:
+
+
+     Class   PDP11s                Separate I/D   UNIBUS map
+      24     24                         -             +
+      40     23, 34, 34A, 40, 60        -             -
+      45     45, 55                     +             -
+      70     44, 70                     +             +
+
+
+The bootstrap can be forced to set up the machine as  for  a
+different  class of PDP11 by placing an appropriate value in
+the console switch register (if there is one) while  booting
+it.   The value to use is the PDP11 class, interpreted as an
+_o_c_t_a_l number (use, for example, 070 for an 11/70).  WWaarrnniinngg::
+some  old DEC bootstraps use the switch register to indicate
+where to boot from.  On such machines, if the value  in  the
+switch register indicates an incorrect CPU, be sure to reset
+the switches immediately after  initiating  the  tape  boot-
+strap.
+
+     You  are now talking to the tape bootstrap monitor.  At
+any point in the following procedure you can return to  this
+section, reload the tape bootstrap, and restart.
+
+     To first check that everything is working properly, you
+can use the _c_a_t program on the tape to  print  the  list  of
+utilities  on  the  tape.  Through the rest of this section,
+substitute the correct disk type for _d_k and  the  tape  type
+for _t_p.  In response to the prompt of the bootstrap which is
+now running, type
+
+     _t_p(0,1)   (load file 1 from tape 0)
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -10-               Bootstrapping
+
+
+_C_a_t will respond
+
+     CCaatt
+     FFiillee??
+
+The table of contents is in file 2 on  the  tape,  therefore
+answer
+
+     _t_p(0,2)
+
+The tape will move, then a short list of files will print on
+the console, followed by:
+
+     eexxiitt ccaalllleedd
+     _n_nBBoooott
+     ::
+
+After _c_a_t is finished, it returns to the bootstrap  for  the
+next operation.
+
+22..22..  CCrreeaattiinngg aann eemmppttyy UUNNIIXX ffiillee ssyysstteemm
+
+     Now  create  the  root  file system using the following
+procedures.  First determine the size of your root file sys-
+tem from the following table:
+
+
+     Disk    Root File System Size
+               (1K-byte blocks)
+
+     hk      2970
+     rk|-     2000
+     rl01|-   4000
+     rl02|-   8500
+     rp      5200
+     xp      4807 (RP04/RP05/RP06)
+             2400 (RM02/RM03)
+             4560 (RM05)
+             4702 (DIVA)
+
+
+
+     If the disk on which you are creating a root file  sys-
+tem  is an xxpp disk, you should check the drive type register
+at this time to make sure it holds a value that will be rec-
+ognized  correctly  by the driver.  There are numbering con-
+flicts; the following numbers are used internally:
+
+
+
+
+-----------
+|-These  sizes  are  for full disks less some space
+used for swapping.
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -11-               Bootstrapping
+
+
+             Drive Type Register            Drive Assumed
+     Low Byte (standard address: 0776726)
+
+                     022                    RP04/05/06
+                     025                    RM02/RM03
+                     027                    RM05
+                     076                    Emulex SC-21/300 Mb RM05 emulation (815 cylinders)
+                     077                    Diva Comp-V/300 Mb SMD
+
+
+Check the drive type number in your  controller  manual,  or
+halt  the  CPU and examine this register.  If the value does
+not correspond to the actual drive type, you must place  the
+correct  value  in  the switch register after the tape boot-
+strap is running and before any attempt is  made  to  access
+the  drive.   This  will  override  the drive type register.
+This value must be present at the time each program (includ-
+ing  the  bootstrap  itself) first tries to access the disk.
+On machines without a switch register, the  _x_p_t_y_p_e  variable
+can  be  patched in memory.  After starting each utility but
+before accessing the disk, halt the CPU, place the new drive
+type  number  at the proper memory location with the console
+switches or monitor, and then  continue.   The  location  of
+_x_p_t_y_p_e  in  each  utility is mkfs:  032700, restor:  031570,
+icheck:  030150 and boot:  0427754 (the location for boot is
+higher  because  it  relocates itself).  Once UNIX itself is
+booted (see below) you must patch it also.
+
+     Finally, determine the proper  interleaving  factors  _m
+and  _n  for your disk and CPU combination from the following
+table.  These numbers determine the layout of the free  list
+that  will be constructed; the proper interleaving will help
+increase the speed of the file system.  If you have  a  non-
+DEC  disk  that emulates one of the disks listed, you may be
+able to use these numbers as well, but check that the actual
+disk  geometry is the same as the emulated disk (rather than
+the controller mapping  onto  a  different  physical  disk).
+Also,  the rotational speed must be the same as the DEC disk
+for these numbers to apply.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -12-               Bootstrapping
+
+
+            DDiisskk IInntteerrlleeaavviinngg FFaaccttoorrss ffoorr DDiisskk//CCPPUU CCoommbbiinnaattiioonnss ((_m//_n))
+     CPU     RK05   RK06/7   RL01/2   RM02    RM03   RM05    RP03    RP04/5/6
+
+     11/23   X/12   X/33     X/10     X/80    -      -       X/100   X/209
+     11/24   X/12   7/33     X/10     10/80   -      -       X/100   10/209
+     11/34   X/12   6/33     X/10     8/80    -      -       3/100   8/209
+     11/40   2/12   6/33     X/10     8/80    -      -       3/100   8/209
+     11/44   X/12   4/33     X/10     6/80    -      -       2/100   6/209
+     11/45   2/12   5/33     X/10     7/80    -      -       3/100   7/209
+     11/55   X/12   5/33     X/10     7/80    -      -       3/100   7/209
+     11/60   X/12   5/33     X/10     7/80    -      -       3/100   7/209
+     11/70   X/12   3/33     X/10     5/80    7/80   7/304   X/100   5/209
+
+
+For example, for an RP06 on an 11/70, _m is 5 and _n  is  209.
+See  _m_k_f_s(8)  for more explanation of the values of _m and _n.
+An X entry means that we do not know the correct number  for
+this  combination of CPU and disk.  If you do, please let us
+know.  If _m is unspecified or you have a disk which emulates
+a  DEC  disk,  use  the number for the most similar disk/CPU
+pair.  IIff _n iiss uunnssppeecciiffiieedd,, uussee tthhee ccyylliinnddeerr ssiizzee ddiivviiddeedd bbyy
+22..
+
+     Then  run a standalone version of the _m_k_f_s (8) program.
+In the following procedure, substitute the correct types for
+_t_p and _d_k and the size determined above for _s_i_z_e:
+
+
+     ::_t_p(0,3)
+     MMkkffss
+     ffiillee ssyysstteemm:: _d_k(0,0)                      (root is the first file system on drive 0)
+     ffiillee ssyysstteemm ssiizzee:: _s_i_z_e                    (count of 1024 byte blocks in root)
+     iinntteerrlleeaavviinngg ffaaccttoorr ((mm,, 55 ddeeffaauulltt)):: _m     (interleaving, see above)
+     iinntteerrlleeaavviinngg mmoodduulluuss ((nn,, 1100 ddeeffaauulltt)):: _n   (interleaving, see above)
+     iissiizzee == XXXX                                (count of inodes in root file system)
+     mm//nn == _m _n                                 (interleave parameters)
+     EExxiitt ccaalllleedd
+     _n_nBBoooott
+     ::                                         (back at tape boot level)
+
+
+You now have an empty UNIX root file system.
+
+22..33..  RReessttoorriinngg tthhee rroooott ffiillee ssyysstteemm
+
+     To restore a small root file system onto it, type
+
+
+
+
+
+
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -13-               Bootstrapping
+
+
+     ::_t_p(0,4)
+     RReessttoorr
+     TTaappee?? _t_p(0,6)                                  (unit 0, seventh tape file)
+     DDiisskk?? _d_k(0,0)                                  (into root file system)
+     LLaasstt cchhaannccee bbeeffoorree ssccrriibbbblliinngg oonn ddiisskk..         (just hit return)
+          (30 second pause then tape should move)
+          (tape moves for a few minutes)
+     eenndd ooff ttaappee
+     EExxiitt ccaalllleedd
+     _n_nBBoooott
+     ::                                              (back at tape boot level)
+
+
+If  you  wish,  you  may use the _i_c_h_e_c_k program on the tape,
+_t_p(0,5), to check the consistency of  the  file  system  you
+have just installed.
+
+22..44..  BBoooottiinngg UUNNIIXX
+
+     You  are  now  ready  to boot from disk.  It is best to
+read the rest of this section first, since some systems must
+be patched while booting.  Then type:
+
+
+     ::_d_k(0,0)_d_kunix    (bring in _d_kunix off root system)
+
+
+The standalone boot program should then read _d_kunix from the
+root file system you just created,  and  the  system  should
+boot:
+
+     BBeerrkkeelleeyy UUNNIIXX ((RReevv.. 22..99..55)) MMoonn AAuugg 22 1188::4444::3300 PPDDTT 11998833
+     mmeemm == xxxxxx
+
+     CCOONNFFIIGGUURREE SSYYSSTTEEMM::
+     (Information about various devices will print;
+     most of them will probably not be found until
+     the addresses are set below.)
+     eerraassee==^^??,, kkiillll==^^UU,, iinnttrr==^^CC
+     ##
+
+If  you are booting from an _x_p with a drive type that is not
+recognized, it will be necessary to patch the system  before
+it  first accesses the root file system.  Halt the processor
+after it has begun printing the version string but before it
+has  finished  printing the ``mem = xxx'' string.  Place the
+drive type number corresponding to your  drive  at  location
+061472;  the  addresses  for  drives  1, 2 and 3 are 061506,
+061522 and 061536 respectively.  If  you  plan  to  use  any
+drives  other  than  0  before you recompile the system, you
+should patch these locations.  Make the patches and continue
+the  CPU.  The value before patching must be zero.  If it is
+not, you have halted too late and should try again.
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -14-               Bootstrapping
+
+
+     UNIX begins by printing out a  banner  identifying  the
+version  of  the  system  that is in use and the date it was
+compiled.  Note that this version is different from the sys-
+tem release number, and applies only to the operating system
+kernel.
+
+     Next the _m_e_m message gives the  amount  of  memory  (in
+bytes)  available  to  user  programs.   On an 11/23 with no
+clock control register,  a  message  ``No  clock???''   will
+print  next;  this is a reminder to turn on the clock switch
+if it is not already on, since UNIX cannot enable the  clock
+itself.   The  information  about  different  devices  being
+attached or not being found is produced by the _a_u_t_o_c_o_n_f_i_g(8)
+program.   Most of this is not important for the moment, but
+later the device table can be edited to correspond  to  your
+hardware.   However,  the  tape  drive  of  the correct type
+should have been detected and attached.
+
+     The ``erase=...'' message is part of /.profile that was
+executed by the root shell when it started.  The file /.pro-
+file contained commands to set the UNIX erase, line kill and
+interrupt  characters  to be what is standard on DEC systems
+so that it is consistent  with  the  DEC  console  interface
+characters.   This is not normal for UNIX, but is convenient
+when working on a hardcopy console; change it if you like.
+
+     UNIX is now running, and the Berkeley PDP-11 UNIX  Pro-
+grammer's  manual  applies.   The `#' is the prompt from the
+Shell, and lets you know that you are the super-user,  whose
+login name is ``root.''
+
+     There  are  a number of copies of _u_n_i_x on the root file
+system, one for each  possible  type  of  root  file  system
+device.   All  but  one  of them (_x_p_u_n_i_x) has had its symbol
+table  removed  (i.e.  they  have  been  ``stripped'';   see
+_s_t_r_i_p(1)).   The  unstripped  copy  is linked (see _l_n(1)) to
+_/_u_n_i_x to provide a system namelist for programs  like  _p_s(1)
+and  _a_u_t_o_c_o_n_f_i_g(8).   All  of  the systems were created from
+_/_u_n_i_x by the C shell script _/_g_e_n_a_l_l_s_y_s_._s_h.  If  you  had  to
+patch  the  _x_p  type  as you booted, you may want to use _a_d_b
+(see _a_d_b(1)) to make the same patch in a copy of _x_p_u_n_i_x.  If
+you  are  short  of  space,  you  can  patch a copy of _/_u_n_i_x
+instead (setting the rootdev, etc.)  and install it as _/_u_n_i_x
+after  verifying that it works.  See _/_g_e_n_a_l_l_s_y_s_._s_h for exam-
+ples of using _a_d_b to patch  the  system.   The  system  load
+images  for  other disk types can be removed.  DDoo nnoott rreemmoovvee
+oorr rreeppllaaccee tthhee ccooppyy ooff _/_u_n_i_x,, hhoowweevveerr,, uunnlleessss yyoouu hhaavvee  mmaaddee
+aa  wwoorrkkiinngg  ccooppyy  ooff iitt tthhaatt iiss ppaattcchheedd ffoorr yyoouurr ffiillee ssyysstteemm
+ccoonnffiigguurraattiioonn aanndd ssttiillll hhaass aa ssyymmbbooll ttaabbllee..   Many  programs
+use  the  symbol  table  of  /_u_n_i_x in order to determine the
+locations of things in memory, therefore /_u_n_i_x should always
+be  an  unstripped file corresponding to the current system.
+If at all possible, you should save the original UNIX  bina-
+ries  for  your disk configuration (_d_kunix and unix) for use
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -15-               Bootstrapping
+
+
+in an emergency.
+
+     There are a few minor details that should  be  attended
+to now.  The system date is initially set from the root file
+system, and should be reset.  The root password should  also
+be set:
+
+
+     ## date _y_y_m_m_d_d_h_h_m_m      (set date, see _d_a_t_e(1))
+     ## passwd root          (set password for super-user)
+     NNeeww ppaasssswwoorrdd::          (password will not echo)
+     RReettyyppee nneeww ppaasssswwoorrdd::
+
+
+
+22..55..  IInnssttaalllliinngg tthhee ddiisskk bboooottssttrraapp
+
+     The  disk  with the new root file system on it will not
+be bootable directly until the block 0 bootstrap program for
+the  disk has been installed.  There are copies of the boot-
+straps in /mdec.  This is not the  usual  location  for  the
+bootstraps (that is /usr/src/sys/mdec), but it is convenient
+to be able to install the boot block now.  Use _d_d(1) to copy
+the  right  boot  block onto the disk; the first form of the
+command is for small disks (rrkk, rrll) and the second form  for
+disks with multiple partitions (hhkk, rrpp, xxpp), substituting as
+usual for _d_k:
+
+     ## dd if=_d_kuboot of=/dev/r_d_k0 count=1
+
+     or
+
+     ## dd if=_d_kuboot of=/dev/r_d_k0a count=1
+
+will install the bootstrap in block 0.  Once this  is  done,
+booting  from  this  disk  will load and execute the block 0
+bootstrap, which will in turn load /boot (actually, the boot
+program  on the first file system, which is root).  The con-
+sole will print
+
+
+     >>bboooott             (printed by the block 0 boot)
+
+     _n_nBBoooott            (printed by /boot)
+     ::
+
+
+The '>' is the prompt from the first bootstrap.  It automat-
+ically  boots  /_b_o_o_t for you; if /_b_o_o_t is not found, it will
+prompt again and allow another name to be tried.   It  is  a
+very  small  and  simple program, however, and can only boot
+the second-stage boot from  the  first  file  system.   Once
+/boot  is running and prints its ``: '' prompt, boot unix as
+above, using _d_kunix or unix as appropriate.
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -16-               Bootstrapping
+
+
+22..66..  CChheecckkiinngg tthhee rroooott ffiillee ssyysstteemm
+
+     Before continuing, check the integrity of the root file
+system by giving the command
+
+     ## fsck /dev/r_d_k0a
+
+(omit the aa for an RK05 or RL).  The output from _f_s_c_k should
+look something like:
+
+     //ddeevv//rr_x_x00aa
+     FFiillee SSyysstteemm::  //
+
+     **** CChheecckkiinngg //ddeevv//rr_x_x00aa
+     **** PPhhaassee 11 -- CChheecckk BBlloocckkss aanndd SSiizzeess
+     **** PPhhaassee 22 -- CChheecckk PPaatthhnnaammeess
+     **** PPhhaassee 33 -- CChheecckk CCoonnnneeccttiivviittyy
+     **** PPhhaassee 44 -- CChheecckk RReeffeerreennccee CCoouunnttss
+     **** PPhhaassee 55 -- CChheecckk FFrreeee LLiisstt
+     223366 ffiilleess 11888811 bblloocckkss xxxxxxxxxx ffrreeee
+
+
+     If there are inconsistencies in the  file  system,  you
+may be prompted to apply corrective action; see the document
+describing _f_s_c_k for information.  The number of free  blocks
+will  vary depending on the disk you are using for your root
+file system.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BDSeDvi-c1e7-and file system configuration
+
+
+          33.. DDEEVVIICCEE AANNDD FFIILLEE SSYYSSTTEEMM CCOONNFFIIGGUURRAATTIIOONN
+
+
+
+     This section will describe ways in which the file  sys-
+tems  can  be  set up for the disks available.  It will then
+describe the files and directories that will be set  up  for
+the local configuration.  These are the _/_d_e_v directory, with
+special files for each peripheral device, and the tables  in
+_/_e_t_c  that  contain  configuration-dependent  data.  Some of
+these files should be edited after reading this section, and
+others can wait until later if you choose.  The disk config-
+uration should be chosen before the rest of the distribution
+tape  is read onto disk to minimize the work of reconfigura-
+tion.
+
+33..11..  DDiisskk ccoonnffiigguurraattiioonn
+
+     This section describes how to lay out file  systems  to
+make use of the available space and to balance disk load for
+better system performance.  The steps described in this sec-
+tion (3.1) are optional.
+
+33..11..11..  DDiisskk nnaammiinngg aanndd ddiivviissiioonnss
+
+     Each  large  physical disk drive can be divided into up
+to 8 partitions; UNIX typically uses only 3 to 5 partitions.
+For  instance, on an RM03 the first partition, rm0a, is used
+for a root file system, a backup thereof, or  a  small  file
+system  like  /tmp;  the second partition, rm0b, is used for
+swapping or a small file system; and  the  third  partition,
+rm0c,  holds  a user file system.  Many disks can be divided
+in different ways; for example, the third section (cc) of the
+RM03  could  instead be divided into two file systems, using
+the rm0d and rm0e partitions instead, perhaps  holding  /usr
+and  the user's files.  The disk partition tables are speci-
+fied in the _i_o_c_o_n_f_._c  file  for  each  system,  and  may  be
+changed   if  necessary.   The  last  partition  (hh)  always
+describes the entire disk, and can be used for  disk-to-disk
+copies.
+
+     WWaarrnniinngg::   for disks on which DEC standard 144 bad sec-
+tor forwarding is supported, the last track and  up  to  126
+preceeding  sectors contain replacement sectors and bad sec-
+tor lists.  Disk-to-disk copies should be careful  to  avoid
+overwriting  this  information.   See _b_a_d_1_4_4(8).  Bad sector
+forwarding is optional in the hhkk, hhpp, rrmm,  and  xxpp  drivers.
+It has been only lightly tested in the latter three cases.
+
+33..11..22..  SSppaaccee aavvaaiillaabbllee
+
+     The  space  available on a disk varies per device.  The
+amount of space available on the common disk partitions  for
+/usr  is  listed  in  the following table.  Not shown in the
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BDSeDvi-c1e8-and file system configuration
+
+
+table are the partitions of each drive devoted to  the  root
+file system and the swapping area.
+
+
+               Type               Name     Size
+               -----------------------------------
+               RK06               hk?d     9.2 Mb
+               RK07               hk?c    22.4 Mb
+               RM02, RM03         rm?c    60.2 Mb
+               RM02, RM03         rm?d    30.9 Mb
+               RP03               rp?c    33.3 Mb
+               RP04, RP05, RP06   hp?c    74.9 Mb
+               RP06               hp?d   158.9 Mb
+               RM05               xp?c   115.4 Mb
+               RM05               xp?e    80.9 Mb
+
+
+
+     Each disk also has a swapping area and a root file sys-
+tem.  The distributed system  binaries  and  sources  occupy
+about 38 megabytes.
+
+     The sizes and offsets of all of the disk partitions are
+in the manual pages for the disks;  see  section  4  of  the
+Berkeley PDP-11 UNIX Programmer's manual.  Be aware that the
+disks have their sizes measured in ``sectors'' of 512  bytes
+each, while the UNIX file system blocks are 1024 bytes each.
+Thus if a disk partition has 10000 sectors (disk blocks), it
+will  have  only  5000 UNIX file system blocks, and you mmuusstt
+divide by 2 to use 5000 when specifying the size to the _m_k_f_s
+command.  The sizes and offsets in the kernel (ioconf.c) and
+the manual pages are in 512-byte blocks.  If bad sector for-
+warding  is supported for your disk, be sure to leave suffi-
+cient room to contain the bad sector information when making
+new file systems.
+
+33..11..33..  LLaayyoouutt ccoonnssiiddeerraattiioonnss
+
+     There  are  several  considerations  in deciding how to
+adjust the arrangement of things on  your  disks:  the  most
+important is making sure there is adequate space for what is
+required;  secondarily,  throughput  should  be   maximized.
+Swapping space is an important parameter.  Since running out
+of swap space often causes the system to panic, it  must  be
+large enough that this does not happen.
+
+     Many  common  system programs (the C compiler, the edi-
+tor, the assembler etc.)  create intermediate files  in  the
+/tmp directory, so the file system where this is stored also
+should be made large enough to accommodate  most  high-water
+marks;  if  you  have several disks, it makes sense to mount
+this in a ``root'' or ``swap'' (i.e. first or second  parti-
+tion)  file  system  on another disk.  On RK06 and RK07 sys-
+tems, where there is little space in the hk?c or  hk?d  file
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BDSeDvi-c1e9-and file system configuration
+
+
+systems  to  store  the system source, it is normal to mount
+/tmp on /dev/hk1a.
+
+     The efficiency with which UNIX is able to use  the  CPU
+is  often  strongly  affected by the configuration of disks.
+For general time-sharing applications, the best strategy  is
+to  try  to split the most actively-used sections among sev-
+eral disk arms.  There are at least five components  of  the
+disk load that you can divide between the available disks:
+
+     1. The root file system.
+     2. The swap area.
+     3. The /tmp file system.
+     4. The /usr file system.
+     5. The user files.
+
+Here  are  several  possibilities  for  utilizing 2, 3 and 4
+disks:
+
+                 +---------+---------------+
+                 |         |     disks     |
+                 |         +---+-----+-----+
+                 |what     | 2 |  3  |  4  |
+                 +---------+---+-----+-----+
+                 |root     | 1 |  1  |  1  |
+                 |tmp      | 1 |  3  |  4  |
+                 |usr      | 1 |  2  |  2  |
+                 |swapping | 2 |  3  |  4  |
+                 |users    | 2 | 1+3 | 1+3 |
+                 |archive  | x |  x  |  4  |
+                 +---------+---+-----+-----+
+
+     The most important consideration is  to  even  out  the
+disk  load as much as possible, and to do this by decoupling
+file systems (on separate arms) between which heavy  copying
+occurs.   Note that a long term average balanced load is not
+important; it is much more important to have instantaneously
+balanced load when the system is busy.  When placing several
+busy file systems on the same disk, it is helpful  to  group
+them  together  to  minimize  arm movement, with less active
+file systems off to the side.
+
+     Intelligent experimentation  with  a  few  file  system
+arrangements  can  pay off in much improved performance.  It
+is particularly easy to move the root, the /tmp file  system
+and  the  swapping areas.  Note, though, that the disks con-
+taining the root and swapping  area  can  never  be  removed
+while  UNIX  is  running.  Place the user files and the /usr
+directory as space needs dictate  and  experiment  with  the
+other, more easily moved file systems.
+
+     As  an  example,  consider a system with RM03s.  On the
+first RM03, rrmm00, we will put the root file system  in  rrmm00aa,
+and  the //uussrr file system in rrmm00cc, which has enough space to
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BDSeDvi-c2e0-and file system configuration
+
+
+hold it and then some.  If we had only one  RM03,  we  would
+put  user files in the rrmm00cc partition with the system source
+and binaries, or split them between rrmm00dd and rrmm00ee.  The /tmp
+directory  will  be part of the root file system, as no file
+system will be mounted on /tmp.
+
+     If we had a second RM03, we would create a file  system
+in  rrmm11cc  and  put user files there, calling the file system
+/mnt.  We would keep a backup copy of the root  file  system
+in  the rrmm11aa disk partition, a file system for /tmp on rrmm00bb,
+and swap on rrmm11bb.
+
+33..11..44..  IImmpplleemmeennttiinngg aa llaayyoouutt
+
+     Once a disk layout has  been  chosen,  the  appropriate
+special  files  for the disk partitions must be created (see
+Setting up the /dev directory, below).  Empty  file  systems
+will  then  be  created  in  the appropriate partitions with
+_m_k_f_s(8), and the files belonging in the file system can then
+be  restored  from tape.  The section on setting up the /usr
+file system contains detailed information on  this  process.
+The  swap device is specified when the kernel is configured,
+which is also discussed later.  At that time, you  may  also
+want  to  consider whether to use the root device or another
+file system (e.g. /tmp) for the pipe device (the pipe device
+is  a  file  system  where  the kernel keeps temporary files
+related to pipe I/O; it should be  _m_o_u_n_ted  before  any  I/O
+through pipes is attempted).
+
+33..22..  SSeettttiinngg uupp tthhee //ddeevv ddiirreeccttoorryy
+
+     Devices  are accessed through special files in the file
+system, made by the _m_k_n_o_d(8) program and  normally  kept  in
+the  /dev  directory.   Devices  to be supported by UNIX are
+implemented in the kernel by drivers; the proper  driver  is
+selected  by  the  major device number and type specified to
+_m_k_n_o_d.  All devices supported  by  the  distribution  system
+already  have  nodes  in  /dev.   They  were  created by the
+/dev/MAKE shell script.   It  is  easiest  to  rebuild  this
+directory  from  the  beginning with the correct devices for
+your configuration.  First, determine the UNIX names of  the
+devices  on your system (e.g. _d_h, _l_p, _x_p).  Some will be the
+same as the names of devices on the generic system.   Others
+need not be.  See section 4 of the UNIX Programmer's Manual.
+Next create a new directory /newdev, copy /dev/MAKE into it,
+edit MAKE to provide an entry for local needs, replacing the
+case LOCAL, and run it to generate the  desired  devices  in
+the  /newdev directory.  The LOCAL entry can be used for any
+unusual devices, and to rename standard devices as  desired.
+It  should  also  move the node for the disk partition being
+used as the swap area to _s_w_a_p (or, if swap is after  a  file
+system as on RK05 or RL disks, link the other node to _s_w_a_p).
+Different devices are specified to  MAKE  in  various  ways.
+Terminal  multiplexors  (DZ and DH) are specified by boards,
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BDSeDvi-c2e1-and file system configuration
+
+
+and 8 or 16 nodes will be made, as appropriate.   Disks  are
+made  by  partition,  for example xp0c, so that you may make
+the nodes corresponding to the file systems that you  intend
+to  use.  Note that _h_p, _r_m and _x_p are actually synonyms, but
+you should use the name corresponding to the driver you plan
+to  use.   The  kernel configuration section (section 5.4.1)
+has more information.  For tape drives, there are  different
+invocations for different types of controllers, although the
+nodes produced will have  the  same  names.   The  different
+types  are  _h_t,  _t_m  and _t_s, as above, and also _u_t, which is
+used for the Emulex TC-11 and other  TM-11  emulations  that
+are also capable of selecting 1600 or 800 bpi under software
+control.  Making _h_t_0 or _u_t_0 will result in nodes _m_t_0 and _m_t_1
+(800  and  1600  bpi,  respectively)  and parallel nodes for
+other options; _h_t_1 uses the names _m_t_2 and  _m_t_3.   See  _h_t(4)
+and  _t_m(4).  In contrast, the MAKE script makes only one set
+of nodes for _t_m or _t_s,  without  changing  the  unit  number
+specified.  Different sites use different naming conventions
+for tapes; you could use the LOCAL entry in MAKE to move the
+tape files to your favorite names.
+
+     As  an example, if your machine had a single DZ-11, two
+DH-11s, an RP03 disk, two RP06 disks, and a TM03  tape  for-
+matter you would do:
+
+     ## cd /
+     ## mkdir newdev
+     ## cp /dev/MAKE /newdev/MAKE
+     ## cd newdev
+     ## ./MAKE dz0 dh1 ht0 std LOCAL
+     ## ./MAKE rp0a rp0b rp0c hp0a hp0b hp0c hp1a hp1b hp1d hp1e
+
+Note  the ``std'' argument here that causes standard devices
+such as _c_o_n_s_o_l_e, the console terminal, to be created.
+
+     You can then do
+
+     ## cd /
+     ## mv dev genericdev ; mv newdev dev
+     ## sync
+
+to install the new device directory.  Once you are confident
+that  the  new  directory is set up properly, you can remove
+/genericdev.
+
+33..33..  EEddiittiinngg ssyysstteemm--ddeeppeennddeenntt ccoonnffiigguurraattiioonn ffiilleess
+
+     There are a number of small files in /_e_t_c that are used
+by various programs to determine things about the local con-
+figuration.  At this  point,  several  of  these  should  be
+edited  to  describe  the local configuration.  You may have
+old versions of some of them which you may want to  use,  or
+you  may edit the files that are provided as examples.  Some
+of this may be  done  later  at  your  convenience,  but  is
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BDSeDvi-c2e2-and file system configuration
+
+
+presented   here   for  organization.   Both  //eettcc//ddttaabb  and
+//eettcc//ffssttaabb should be edited now.
+
+33..33..11..  //eettcc//ddttaabb
+
+     This file contains the list of devices  which  will  be
+checked at boot time by _a_u_t_o_c_o_n_f_i_g(8).  The devices that are
+listed are tested to see whether they  exist  and  have  the
+correct  register  addresses and interrupt vectors.  If they
+do, and the kernel has a corresponding driver routine, _a_u_t_o_-
+_c_o_n_f_i_g  notifies  the  driver that the device exists at that
+address.  In this way, the addresses  and  vectors  of  most
+devices  do  not need to be compiled into the operating sys-
+tem.  The exception is that disks must be  preconfigured  if
+they are to be used as root file systems.
+
+     This  file  should  be  edited  to  include  all of the
+devices on the system with the exception of  the  clock  and
+console device.  Other device entries can be deleted or com-
+mented out with a '#' at the beginning  of  the  line.   The
+format  of the entries is defined in _d_t_a_b(5).  _A_u_t_o_c_o_n_f_i_g(8)
+describes the autoconfiguration process.  One word  of  cau-
+tion:   if  a  device fails to interrupt as expected, and if
+its unit number is specified (not a '?' wildcard),  _a_u_t_o_c_o_n_-
+_f_i_g  will  notify the driver that the device is nnoott present,
+and preconfigured devices (like root disks) could be discon-
+nected.   Thus, it is probably best to use a '?'  instead of
+a unit number for your root disks until  you  are  confident
+that  the  probe  always finds that disk, especially if your
+disk controller is an emulation of another disk type.  Disks
+that  are  not used as boot devices for UNIX can be properly
+listed with unit numbers.
+
+33..33..22..  //eettcc//ffssttaabb
+
+     This file contains the list of  file  systems  normally
+mounted  on  the system.  Its format is defined in _f_s_t_a_b(5).
+Programs like _d_f(1) and _f_s_c_k(8) use  this  list  to  control
+their actions.  Each disk partition that has been assigned a
+function should be listed here.  See the  manual  pages  for
+specifics on how to configure this file.
+
+33..33..33..  //eettcc//iiddeenntt
+
+     The banner printed by _g_e_t_t_y(8) is read from /etc/ident.
+Edit this file to the banner you wish to use.  It  may  con-
+tain special characters to clear terminal screens, etc., but
+note that the same file is used for all terminals.
+
+33..33..44..  //eettcc//mmoottdd
+
+     The contents of /etc/motd, the ``message of the  day,''
+is  displayed  at  the  terminal when a user is logged in by
+_l_o_g_i_n(1).
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BDSeDvi-c2e3-and file system configuration
+
+
+33..33..55..  //eettcc//ppaasssswwdd,, //eettcc//ggrroouupp
+
+     These files obviously need  local  modifications.   See
+the  section  on adding new users.  Entries for pseudo-users
+(user IDs that are not used for logins) have password fields
+containing ``***'', since encrypted passwords never not con-
+tain asterisks.
+
+33..33..66..  //eettcc//rrcc
+
+     As the system begins multiuser operations, it  executes
+the commands in /etc/rc (see _i_n_i_t(8)).  Most of the commands
+in this file are standard and should not be changed, includ-
+ing  the  section  for checking file systems after a reboot.
+These commands will be ignored if autoreboot is not enabled.
+You  should  edit  /etc/rc to set your machine's name.  Look
+for the line
+
+          /etc/hostname hostnameunknown
+
+and change _h_o_s_t_n_a_m_e_u_n_k_n_o_w_n to  the  name  of  your  machine.
+This name will be used by _M_a_i_l(1) and _u_u_c_p(1) (among others)
+and should correspond to the name by which your  machine  is
+known  to  external networks (if any).  At this time you may
+wish to add additional commands to this file if you need  to
+start  additional daemons, remove old lock files, or perform
+any other cleanup as the system comes up.
+
+33..33..77..  CCoonnffiigguurriinngg tteerrmmiinnaallss
+
+     If UNIX is to support  simultaneous  access  from  more
+than just the console terminal, the file /etc/ttys (_t_t_y_s(5))
+has to be edited.
+
+     Terminals connected via DZ interfaces  are  convention-
+ally  named  ttttyy_d_d where _d_d is a decimal number, the ``minor
+device'' number.  The lines on  dz0  are  named  /dev/tty00,
+/dev/tty01, ... /dev/tty07.  Lines on DH interfaces are con-
+ventionally named ttttyyhh_x, where _x is a hexadecimal digit.  If
+more  than  one  DH interface is present in a configuration,
+successive terminals would be named ttttyyii_x, ttttyyjj_x, etc.
+
+     To add a new terminal be sure the device is  configured
+into  the  system,  that the special file for the device has
+been made by /dev/MAKE, and the special  file  exists.  Then
+set the first character of the appropriate line of /etc/ttys
+to 1 (or add a new line).  The first character may also be 3
+if  the  line  is  also  to be used in maintenance mode (see
+_i_n_i_t(8)).
+
+     The second character of each line in the /etc/ttys file
+lists  the speed and initial parameter settings for the ter-
+minal.  The most common choices, from _g_e_t_t_y(8), are:
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BDSeDvi-c2e4-and file system configuration
+
+
+     0    300-1200-150-110
+     3    1200-300
+     4    300 (e.g. console)
+     5    300-1200
+     6    1200
+     7    2400
+     8    4800
+     9    9600
+     B    autobaud
+
+Here the first speed is the speed a terminal starts at,  and
+``break''  switches  speeds.   Thus  a  newly added terminal
+/dev/tty00 could be added as
+
+     19tty00
+
+if it was wired to run at 9600 baud.   The  ``B''  indicates
+that  _g_e_t_t_y  should attempt to guess a line's speed when the
+user types a carriage return or control-C.  Note  that  this
+requires kernel support.  See section 5.3.6 below.
+
+     Dialup terminals should be wired so that the carrier is
+asserted only when the phone line is dialed  up.   For  non-
+dialup  terminals from which modem control is not available,
+you must either wire back the signals so  that  the  carrier
+always  appears  to  be present, or (for lines on a DH-11 or
+DZ-11) add 0200 to the minor device number to indicate  that
+carrier  is to be ignored.  See _d_h(4) and _d_z(4) for details.
+
+     You should also edit the file /etc/ttytype placing  the
+type of each terminal there (see _t_t_y_t_y_p_e(5)).
+
+     When  the  system starts running multi-user, all termi-
+nals that are listed in /etc/ttys having a 1  or  3  as  the
+first  character of their line are enabled.  If, during nor-
+mal operations, it is desired to disable  a  terminal  line,
+the super-user can edit the file /etc/ttys, change the first
+character of the corresponding line to 0  and  then  send  a
+hangup signal to the _i_n_i_t process, by typing (see _k_i_l_l(1))
+
+     ## kill -1 1
+        or
+     ## kill -HUP 1
+
+Terminals  can  similarly  be  enabled by changing the first
+character of a line from a 0 to a 1 and sending a hangup  to
+_i_n_i_t.
+
+     Note  that  if a special file is inaccessible when _i_n_i_t
+tries to create a process for it, init will print a  message
+on  the console and try to reopen the terminal every minute,
+reprinting the warning message every 10 minutes.
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BDSeDvi-c2e5-and file system configuration
+
+
+     Finally note that you should change the  names  of  any
+dialup terminals to ttyd?  where ? is in [0-9a-f] since some
+programs use this property of the names to decide whether  a
+terminal  is  a dialup.  Shell commands to do this should be
+put in the /dev/MAKE script under case LOCAL.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -26-                  /usr setup
+
+
+             44.. SSEETTTTIINNGG UUPP TTHHEE //uussrr FFIILLEE SSYYSSTTEEMM
+
+
+
+     The next step in bringing up the 2.9BSD distribution is
+to read in the binaries and sources on the /usr file system.
+This will also demonstrate how to add new  file  systems  in
+general, and the overall procedure can be repeated to set up
+additional file systems.  There are two portions of the /usr
+file  system, one on each tape.  The first tape contains the
+binary directories, manual pages and documentation, as  well
+as skeletal directories such as spool and msgs.  If you have
+room, it is easiest to extract everything.  The size of  the
+entire  /usr  file system image on the distribution tapes is
+38 megabytes.  It will not fit on a single RK05,  RK06/7  or
+RL01/2.   In  these cases, the /usr file system will have to
+be extracted in sections or  split  across  multiple  disks.
+The _b_i_n, _i_n_c_l_u_d_e, _l_i_b, and _u_c_b subdirectories are essential.
+The system sources will also be needed  to  reconfigure  the
+kernel; they are in /usr/src/sys.  The _a_d_m, _d_i_c_t, _m_s_g_s, _p_r_e_-
+_s_e_r_v_e, _s_p_o_o_l, _s_y_s and _t_m_p directories may also be  extracted
+to  provide  a skeletal system.  The first part of this sec-
+tion describes how to extract /usr as part of a  full  boot-
+strap;  the second part explains how to install 2.9BSD as an
+upgrade to a 2.8BSD system if you decide not  to  perform  a
+full bootstrap.
+
+44..11..  FFuullll bboooottssttrraapp pprroocceedduurree
+
+     This  procedure  will  create  a  new  file  system and
+extract the /usr directory into  it.   First  determine  the
+name  of  the  disk  on which you plan to place the new file
+system,  for  example  rm0c,  and  substitute  it  for  _d_i_s_k
+throughout  this  section.   You  may want to create a small
+``prototype'' file to describe the file system (see _m_k_f_s(8))
+in  order to change the size of the inode list.  This is the
+same as the maximum number of files that can be  created  on
+the file system.  The default is to allow 16 inodes (occupy-
+ing one block) per 24 file system blocks, allowing the  file
+system  to  be  completely  filled  with  small  files  (1-2
+blocks).  This is more than required for /usr and other file
+systems  which have larger average file size.  If you decide
+to set up a prototype file for _m_k_f_s, use its name for  _p_r_o_t_o
+below.  The prototype file needs to contain only the name of
+the bootstrap, the sizes, and the line for the  root  direc-
+tory  (don't forget the '$' to terminate).  Look up the cor-
+rect size for this file system in the manual section for the
+disk.   Note  that  the size given to _m_k_f_s is in file system
+blocks of 1024 bytes, and thus the sizes in the manual  page
+will  have  to  be  divided  by 2.  If not using a prototype
+file, substitute the size for  _p_r_o_t_o  in  the  mkfs  command
+below.   Finally, recall the interleaving parameters _m and _n
+that you used in making the root file system.  They  are  in
+the  table  in  section  2.2.  Comments are enclosed in ( );
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -27-                  /usr setup
+
+
+don't type these.  Then execute the following commands (sub-
+stituting  _r_m_t_1 and _n_r_m_t_1 for _r_m_t_0 and _n_r_m_t_0 respectively if
+you have a 1600 bpi tape on an ht or tm controller):
+
+
+     ## /etc/mkfs /dev/r_d_i_s_k _p_r_o_t_o _m _n   (create empty user file system)
+     iissiizzee == _n_n_n_n_n                      (the count of available inodes)
+     mm//nn == _m _n                          (free list interleave parameters)
+                                        (this takes a few minutes)
+     ## /etc/mount /dev/_d_i_s_k /usr        (mount the usr file system)
+     ## cd /usr                          (make /usr the current directory)
+                                        (make sure that the first tape is mounted)
+     ## mt -t /dev/nrmt0 fsf 7           (skip first seven tape files)
+     ## tar xpf /dev/rmt0                (extract the /usr file system binaries)
+                                        (this takes about 20 minutes)
+                                        (now mount the second tape)
+     ## tar xpf /dev/rmt0                (extract the /usr file system sources)
+                                        (this takes another 20 minutes)
+
+
+     You can now check the consistency of the /usr file sys-
+tem by doing
+
+
+     ## cd /                      (back to root)
+     ## /etc/umount /dev/_d_i_s_k     (unmount /usr)
+     ## fsck /dev/r_d_i_s_k
+
+
+To  use  the  /usr file system, you should now remount it by
+saying
+
+     ## /etc/mount /dev/_d_i_s_k /usr
+
+
+     If you are installing the distribution on  a  PDP11/44,
+11/45, or 11/70 (machines with separate instruction and data
+space) you should test and install the separate I/D versions
+of  csh,  ex,  etc.  in  /usr/70.  Note, however, that these
+binaries assume the existence  of  hardware  floating  point
+support.
+
+44..22..  BBoooottssttrraapp ppaatthh 22:: uuppggrraaddiinngg 22..88BBSSDD
+
+     Begin  by  reading  the other parts of this document to
+see what has changed since the last  time  you  bootstrapped
+the  system.   Also look at the new manual sections provided
+to you.  If you have local system modifications to the  ker-
+nel to install, look at the document ``Changes in the Kernel
+in 2.9BSD'' to get an idea of how the  system  changes  will
+affect your local mods.  Disclaimer:  there are a very large
+number of changes from 2.8BSD to 2.9.  This section may  not
+be  complete, and if a new program fails to work after being
+recompiled, you may find that additional libraries or  other
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -28-                  /usr setup
+
+
+components may also need to be updated.
+
+     There  are  6 major areas of changes that you will need
+to incorporate to convert to the new system:
+
+1.   The new kernel and the associated programs that  imple-
+     ment  job  control  or  read kernel memory: autoconfig,
+     csh, the jobs library, login, ps, pstat, w, etc.
+
+2.   The programs related to system reboots and shutdowns.
+
+3.   The programs directly related to  user  text  overlays:
+     adb and ld.
+
+4    The C compiler driver, C preprocessor, and assembler.
+
+5    The new version of the standard I/O library.
+
+6.   Other  programs with significant bug fixes, significant
+     improvements,  or  which  were  previously  unavailable
+     because they had not been overlaid.
+
+     Here is a step-by-step guide to converting.  Before you
+begin you should do a full backup of your root and /usr file
+systems as a precaution against irreversible mistakes.
+
+1.   Set the shell variable ``nbsd'' to the name of a direc-
+     tory where an empty file system can be  mounted  and  a
+     quantity  of  material  from the tape (you should allow
+     for about 38 megabytes) can  be  extracted.   Choose  a
+     disk  of sufficient size to hold this quantity of mate-
+     rial, make a file system, and mount $nbsd on this disk.
+     Next, restore (see _r_e_s_t_o_r(8)) the root file system dump
+     image to  this  disk.   Finally,  change  directory  to
+     ``$nbsd/usr'',  and  extract  the  eighth file from the
+     first distribution tape and  all  of  the  second  tape
+     using _t_a_r (see _t_a_r(1)).
+
+2.   Install    the    new    include   files   by   copying
+     $nbsd/usr/include/*.h     to      /usr/include      and
+     $nbsd/usr/include/sys/*.h to /usr/include/sys.  Install
+     the C compiler driver from the new  system  by  copying
+     $nbsd/bin/cc  to  /bin/cc.   Install the assembler from
+     the new system by copying $nbsd/bin/as to  /bin/as  and
+     $nbsd/lib/as2  to  /lib/as2.  Install the new C prepro-
+     cessor by copying $nbsd/lib/cpp to  /lib/cpp.   Install
+     the new versions of adb and ld by copying $nbsd/bin/adb
+     and $nbsd/bin/ld to /bin.
+
+3.   Reconfigure the system in $nbsd/usr/src/sys  to  corre-
+     spond  to  your configuration according to the instruc-
+     tions in section 5.
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -29-                  /usr setup
+
+
+4.   Put in the new versions of the following programs:
+
+          /bin: csh, kill, login, iostat, ps, pstat, vmstat
+
+          /etc:  autoconfig,  fsck,  init,  mount,   reboot,
+          savecore, shutdown, umount
+
+          /usr/ucb: ex, w
+
+     Merge  any  local changes to /etc/rc into $nbsd/etc/rc.
+     Put the resulting file in /etc/rc.  Create  the  direc-
+     tory  /usr/sys and perhaps some files in this directory
+     (read _s_a_v_e_c_o_r_e(8)).  Make a device description file for
+     _a_u_t_o_c_o_n_f_i_g.  See _d_t_a_b(5) and _a_u_t_o_c_o_n_f_i_g(8).
+
+5.   Try  bootstrapping  the new system; it should now work.
+     Make sure to write new instructions to your  operators.
+
+6.   Incorporate  some other important bug fixes or enhance-
+     ments:
+
+     a)   Replace  the  file  tmac.an   in   the   directory
+          /usr/lib/tmac     with     the     version    from
+          $nbsd/usr/lib/tmac.      Replace     the      file
+          /usr/lib/me/local.me   with   the   version   from
+          $nbsd/usr/lib/me; copy $nbsd/usr/lib/me/refs.me to
+          /usr/lib/me.
+
+     b)   Install  the new C library source, /usr/src/lib/c,
+          rebuild    and    reinstall    /lib/libc.a     and
+          /usr/lib/libovc.a.
+
+     c)   Install  the  jobs  library, /usr/src/lib/jobs and
+          build   and   install    /usr/lib/libjobs.a    and
+          /usr/lib/libovjobs.a.
+
+     d)   Replace  the  directory  /usr/src/cmd/refer.  Then
+          rebuild and reinstall the programs.
+
+     e)   Install the new Mail source, /usr/src/ucb/Mail and
+          reinstall /usr/ucb/Mail.
+
+     f)   If  the  target  machine is a nonseparate I/D CPU,
+          install the new _l_e_x and _y_a_c_c directories,  compile
+          and install the programs.
+
+     g)   Install    the    new    version   of   _t_a_r   from
+          $nbsd/usr/src/cmd/tar.c and also  the  program  _m_t
+          from $nbsd/usr/src/ucb/mt.c.
+
+     h)   Merge your changes to /usr/src/ucb/termcap/reorder
+          and   reinstall   the    terminal    data    base,
+          /etc/termcap.   Install  the new terminal library,
+          /usr/src/ucb/termlib,   remake    and    reinstall
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -30-                  /usr setup
+
+
+          /usr/lib/libtermcap.a and /usr/lib/libovtermcap.a.
+          Then make and install the new version of _e_x_.
+
+     i)   If you want the new version of the  Pascal  system
+          incorporating overlays (for nonseparate I/D CPUs),
+          remake   the   directories   _p_i    and    _p_x    in
+          $nbsd/usr/src/cmd and install the programs.
+
+     j)   Install  the  new  F77 compiler, /usr/src/cmd/f77,
+          and the new libraries, /usr/src/lib/lib*77.   Then
+          remake and reinstall them.
+
+     k)   Install      the      new     library     sources,
+          /usr/src/lib/{ape,curses,m,mp,plot} and remake and
+          reinstall the new libraries.
+
+     l)   Install  new  versions of as many of the following
+          programs as  you  choose:  512dumpdir,  512restor,
+          atrun,   cat,  catman,  ccat,  compact,  checkobj,
+          ctags, df, diff, du, egrep, error, expand,  fgrep,
+          find,  from,  grep, hostname, jove, l11, lint, ln,
+          lock, login, lpr, ls, m11, make, man, mkfs,  more,
+          msgs,  mv, ncheck, printenv, pq, ranm, rewind, rm,
+          rmdir,  sed,  setquota,  size,  sort,  split,  sq,
+          strings,  strip,  stty,  sysline, tail, tbl, tset,
+          ul, uncompact, unexpand, vsh, wc.
+
+     m)   Install the modified or  new  administrative  pro-
+          grams: ac, getty, last.
+
+     n)   Install some security fixes in the mail systems by
+          installing     new     sources     for     berknet
+          (/usr/src/ucb/berknet),                delivermail
+          (/usr/src/ucb/delivermail),                   mail
+          (/usr/src/cmd/mail.c),     and     secret     mail
+          (/usr/src/cmd/xsend),  and  remaking   and   rein-
+          stalling the new binaries.
+
+     o)   Install     the     new     version     of    uucp
+          (/usr/src/cmd/uucp).
+
+     p)   Install  the  news  (/usr/contrib/news)  or  notes
+          (/usr/contrib/notes)  bulletin board system if you
+          wish.
+
+     q)   Install   the   new    _e_q_n(1)    symbol    macros,
+          /usr/public/eqnSyms.
+
+     r)   Install  manual pages corresponding to the new and
+          changed programs.
+
+     s)   Remove  the  old  programs  /bin/ovas,  /bin/ovld,
+          /lib/ovas2, and /bin/ovadb.  Remove the libucbpath
+          library.  Remove the old version of reset and link
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -31-                  /usr setup
+
+
+          the new version of tset to reset.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -32-        Kernel configuration
+
+
+             55.. CCOONNFFIIGGUURRIINNGG AANNDD CCOOMMPPIILLIINNGG TTHHEE KKEERRNNEELL
+
+
+
+     This  section  describes  procedures  used  to set up a
+PDP-11 UNIX kernel (operating system).  It explains the lay-
+out  of the kernel code, compile time options, how files for
+devices are made and drivers for the devices are  configured
+into the system and how the kernel is rebuilt to include the
+needed drivers.  Procedures described here are used  when  a
+system  is  first installed or when the system configuration
+changes.   Procedures  for  normal  system   operation   are
+described  in  the  next  section.   We also suggest ways to
+organize local changes to the kernel.
+
+55..11..  KKeerrnneell oorrggaanniizzaattiioonn
+
+     The kernel source is  kept  in  the  subdirectories  of
+/usr/src/sys.   The  directory /usr/src/sys/sys contains the
+mainline kernel code, implementing system  calls,  the  file
+system,    memory    management,    etc.     The   directory
+/usr/src/sys/dev contains device drivers and other low-level
+routines.   The header files and scripts used to compile the
+kernel are kept in /usr/src/sys/conf, and  are  copied  from
+there  into a separate directory for each machine configura-
+tion.  It is in this directory,  /usr/src/sys/_m_a_c_h_i_n_e,  that
+the kernel is compiled.
+
+55..22..  CCoonnffiigguurriinngg aa SSyysstteemm
+
+     The  kernel configuration of each PDP-11 UNIX system is
+described by a set of header  files  (one  for  each  device
+driver) and one file of magic numbers (ioconf.c) stored in a
+subdirectory of /usr/src/sys for each configuration.  Pick a
+name  for  your  machine  (call  it  PICKLE).   Then  in the
+/usr/src/sys/conf directory,  create  a  configuration  file
+PICKLE  describing  the  system you wish to build, using the
+format in _c_o_n_f_i_g(8).  This is most easily done by  making  a
+copy  of  the  GENERIC  file  used  for the distributed UNIX
+binary.  Many of the fields in the configuration file corre-
+spond to parameters listed in the remainder of this section,
+which should be scanned before proceeding.   See  especially
+section  5.4.3 on how to set up automatic reboots and dumps.
+Then use _c_o_n_f_i_g to create a system directory ../PICKLE  with
+``config  PICKLE.''   Note the difference between _c_o_n_f_i_g and
+_a_u_t_o_c_o_n_f_i_g.  _C_o_n_f_i_g sets up a directory in which the  kernel
+will be compiled, with all of the system-specific files used
+in compilation, and specifies what devices will  potentially
+be  supported.   _A_u_t_o_c_o_n_f_i_g adapts the running kernel to the
+hardware actually present, by testing and setting the regis-
+ter addresses and interrupt vectors.
+
+     _C_o_n_f_i_g  does  most  of  the  work of configuration, but
+local needs will dictate some changes  in  the  options  and
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -33-        Kernel configuration
+
+
+parameters  in  the  header  files.   All of the options are
+listed in the next section.  Examine whoami.h,  localopts.h,
+param.h, and param.c and make any changes required; it might
+also be wise to  look  through  the  header  files  for  the
+devices  that you have configured, to check any options spe-
+cific to the device drivers that are  listed  there.   After
+you  have  finished  configuring a kernel and tested it, you
+should  install   whoami.h   in   /usr/include,   and   copy
+localopts.h  and  param.h  into /usr/include/sys.  This will
+allow user-level programs to stay in sync with  the  running
+kernel.
+
+     If  you  wish  to  change  any disk partition tables or
+device control status register addresses (other  than  those
+configured at boot time by _a_u_t_o_c_o_n_f_i_g(8)), edit ioconf.c and
+change the appropriate line(s).  The file l.s  contains  the
+interrupt  vectors and interface code and may also be edited
+if necessary, but usually will require no change.  Both  c.c
+and  l.s include support for all normal devices according to
+the header files per device, and with autoconfiguration, the
+actual  vectors  need not be specified in advance.  Finally,
+examine the Makefile, especially the options  near  the  top
+and the load rules.  If you have placed the include files in
+the standard directories, you shouldn't  have  to  make  any
+changes to the options there.
+
+     The  following  sections give short descriptions of the
+various compile-time options for the kernel, and more exten-
+sive  information  on  the  autoreboot  and  disk monitoring
+setup.  After verifying that those features  are  configured
+correctly  for your system, you can proceed to kernel compi-
+lation.
+
+55..33..  CCoommppiillee TTiimmee OOppttiioonnss
+
+     The 2.9BSD kernel  is  highly  tunable.   This  section
+gives  a  brief description of the many compile-time options
+available, and references to sections of the Berkeley PDP-11
+UNIX  Programmer's  manual  where  more  information  can be
+found.  Options fall into four categories; the letters  fol-
+lowing  each will be used to mark the options throughout the
+rest of this section.
+
+Standard (S)                   These include  options  which
+                               we   consider  necessary  for
+                               reasonable system performance
+                               or resiliency.
+
+Desirable (D)                  These include many other fea-
+                               tures that are convenient but
+                               which  may  be  turned off if
+                               system size is critical.  The
+                               user  programs  and libraries
+                               distributed    with    2.9BSD
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -34-        Kernel configuration
+
+
+                               generally  assume  that these
+                               are  turned  on,  so  turning
+                               them   off   may  necessitate
+                               recompiling libraries or pro-
+                               grams.   These options, along
+                               with those designated ``stan-
+                               dard'',   have  received  the
+                               most thorough testing.
+
+Configuration Dependent (C)    Options that depend  on  such
+                               things  as  the physical con-
+                               figuration  or  speed  issues
+                               fall into this category.
+
+Experimental (X)               New  features  that  have not
+                               been  well  tested,   options
+                               that  have known problems, or
+                               ones that we do not  normally
+                               use  are listed as experimen-
+                               tal.  You should not use such
+                               options  unless  the problems
+                               listed are not considerations
+                               for  your  system, or you are
+                               willing   to   watch   things
+                               closely  and possibly do some
+                               debugging.
+
+     The following sections list the parameters and  options
+used  in  the  kernel.   The parameters (section 5.3.2) have
+numeric values, usually table sizes, and most of them are in
+param.h or param.c.  Those that are in param.h are typically
+not changed, with the possible exception of MMAAXXMMEEMM, as their
+values  are  set by convention.  The option flags are either
+defined or undefined to enable or disable the  corresponding
+feature, with the exception of UUCCBB__NNKKBB, which is unlikely to
+change.  Each option is marked with  a  letter  to  indicate
+into which of the four categories above it falls.
+
+55..33..11..  HHaarrddwwaarree
+
+
+EENNAABBLLEE3344        XX   Automatically  detect  and  support Able
+                    Computer's ENABLE/34|- memory  management
+                    board.   This option implies UUNNIIBBUUSS__MMAAPP.
+
+NNOONNFFPP           CC   Do not compile in code to  automatically
+                    detect  and  support  an  FP11  floating
+                    point processor.  Also, include  a  fast
+                    illegal-instruction   trap  handler  and
+                    modify the signal routines  to  make  it
+                    possible   to  run  programs  using  the
+                    floating-point interpreter under  trace.
+-----------
+|-ENABLE/34 is a trademark of Able Computer, Inc.
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -35-        Kernel configuration
+
+
+NNOONNSSEEPPAARRAATTEE     CC   Do  not  attempt to support separate I/D
+                    user programs.
+
+PPAARRIITTYY          CC   Recognize and deal with cache and memory
+                    parity traps.
+
+PPDDPP1111           CC   This  should  be  set to the CPU type of
+                    the target machine (23, 24, 34, 40,  44,
+                    45, 60, 70, or GENERIC).  You should use
+                    34 for an 11/34A and 45  for  an  11/55.
+                    GENERIC should be used to build a system
+                    which runs on a variety of CPUs.  It was
+                    used  to  make  the distributed kernels.
+                    MMEENNLLOO__KKOOVV and NNOONNSSEEPPAARRAATTEE are defined if
+                    PPDDPP1111   is   23,  24,  34,  40,  or  60.
+                    MMEENNLLOO__KKOOVV is also defined  if  PPDDPP1111  is
+                    GENERIC.  UUNNIIBBUUSS__MMAAPP is defined if PPDDPP1111
+                    is 44, 70, or GENERIC.
+
+SSMMAALLLL           CC   Use smaller (by about  a  factor  of  8)
+                    queues and hash tables.
+
+UUNNIIBBUUSS__MMAAPP      CC   Compile  in  code to detect (and support
+                    if present) a UNIBUS map.
+
+55..33..22..  PPaarraammeetteerrss
+
+55..33..22..11..  GGlloobbaall ccoonnffiigguurraattiioonn
+
+MMAAXXUUSSEERRSS            This is the maximum number of users  the
+                    system  should  normally  expect to sup-
+                    port.  _C_o_n_f_i_g sets this from the  corre-
+                    sponding  field in the description file;
+                    the definition is copied into the system
+                    Makefile  rather than a header file.  It
+                    is not intended to be a hard limit.   It
+                    is   used  in  sizing  other  parameters
+                    (CCMMAAPPSSIIZZ, NNFFIILLEE, NNIINNOODDEE,  NNPPRROOCC,  NNTTEEXXTT,
+                    and SSMMAAPPSSIIZZ).  The formulae are found in
+                    _p_a_r_a_m_._c.  Reasonable values for MMAAXXUUSSEERRSS
+                    might  be  3  or  4  on  a  small system
+                    (11/34, 11/40), 15 for an 11/44  with  a
+                    reasonable  amount  of memory, and 15-30
+                    for an 11/70 system.
+
+TTIIMMEEZZOONNEE            The  number  of  minutes  westward  from
+                    Greenwich.   _C_o_n_f_i_g  sets  this from the
+                    corresponding field in  the  description
+                    file.   Examples:   for Pacific Standard
+                    time, 8 (* 60); for EST, 5.
+
+DDSSTTFFLLAAGG             Should be 1  if  daylight  savings  time
+                    applies  in  your  locality and 0 other-
+                    wise.  _C_o_n_f_i_g sets this from  the  field
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -36-        Kernel configuration
+
+
+                    in the description file.
+
+HHZZ                  This  is  the line clock frequency (e.g.
+                    50 for a 50 Hz. clock).
+
+55..33..22..22..  TTuunnaabbllee ppaarraammeetteerrss
+
+CCMMAAPPSSIIZZ             This is the  number  of  fragments  into
+                    which  memory  can  be  broken.  If this
+                    number is too low, the  kernel's  memory
+                    allocator  may be forced to throw away a
+                    section of memory  being  freed  because
+                    there  is no room in the map to hold it.
+                    In this case, a  diagnostic  message  is
+                    printed on the console.  Normally scaled
+                    automatically according to MMAAXXUUSSEERRSS.
+
+MMAAXXMMEEMM              This sets an administrative limit on the
+                    amount of memory a process may have.  It
+                    is specified as (_n_n*16), where the first
+                    number is the desired value in kilobytes
+                    (the product is in clicks).  This number
+                    is  usually  considerably lower than the
+                    theoretical maximum (304 Kb for  a  non-
+                    separate  I/D CPU, 464 Kb for a separate
+                    I/D   CPU,   assuming   MMEENNLLOO__OOVVLLYY    is
+                    defined).   Normal  values are 128 Kb if
+                    there is no UNIBUS map (maximum physical
+                    memory 248 Kb), otherwise 200 Kb.
+
+NNBBUUFF                This  sets the size of the system buffer
+                    cache.  It can be no greater  than  248.
+                    If  UUCCBB__NNKKBB  is  defined, these are 1024
+                    byte buffers.  Otherwise, they  are  512
+                    byte  buffers.   The  buffers are not in
+                    kernel data space, but are allocated  at
+                    boot  time.   Normally  scaled automati-
+                    cally according to MMAAXXUUSSEERRSS, but  should
+                    be  examined  in  the  light of the disk
+                    load and amount of memory.  For a  small
+                    to  medium  system,  around  20  buffers
+                    should be  sufficient;  a  large  system
+                    with  many  disks  might use 40 to 60 or
+                    more.
+
+NNCCAALLLL               This is the maximum number of simultane-
+                    ous   callouts  (kernel  event  timers).
+                    Callouts are used to time events such as
+                    tab or carriage return delays.  Normally
+                    scaled   automatically   according    to
+                    MMAAXXUUSSEERRSS.
+
+NNCCLLIISSTT              This is the maximum number of clist seg-
+                    ments.  Clists are small  buffer  areas,
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -37-        Kernel configuration
+
+
+                    used  to  hold tty characters while they
+                    are being processed.   If  UUCCBB__CCLLIISSTT  is
+                    defined,  they  are  not  in kernel data
+                    space, and this number must be less than
+                    512 if you are using 14 character clists
+                    (the default), or 256 for  30  character
+                    clists.   (The clist size, CCBBSSIIZZEE, is in
+                    param.h.)
+
+NNDDIISSKK               This is the maximum number of disks  and
+                    controllers for which I/O statistics can
+                    be gathered.  See _i_o_s_t_a_t(8).  Care  must
+                    be  taken  that this is large enough for
+                    the parameters for each disk (_X_X_DKN and
+                    number of disks; see the section on disk
+                    monitoring).
+
+NNFFIILLEE               This sets the  maximum  number  of  open
+                    files.   An  entry is made in this table
+                    each time  a  file  is  ``opened''  (see
+                    _c_r_e_a_t(2)),  _o_p_e_n(2)).   Processes  share
+                    these table entries  across  forks  (see
+                    _f_o_r_k(2),   _v_f_o_r_k(2)).   Normally  scaled
+                    automatically according to MMAAXXUUSSEERRSS.
+
+NNIINNOODDEE              This sets the size of the  inode  table.
+                    There  is  one  entry in the inode table
+                    for each open file  or  device,  current
+                    working  or  root  directory, saved text
+                    segment,   active   quota    node    (if
+                    UUCCBB__QQUUOOTTAASS is defined), and mounted file
+                    system.  Normally  scaled  automatically
+                    according to MMAAXXUUSSEERRSS.
+
+NNMMOOUUNNTT              This  indicates  the  maximum  number of
+                    mountable file systems.   It  should  be
+                    large  enough  that you don't run out at
+                    inconvenient times.
+
+NNPPRROOCC               This sets the maximum number  of  active
+                    processes.   Normally  scaled  automati-
+                    cally according to MMAAXXUUSSEERRSS.
+
+NNTTEEXXTT               This sets the maximum number  of  active
+                    shared  text  images (including inactive
+                    saved text segments).   Normally  scaled
+                    automatically according to MMAAXXUUSSEERRSS.
+
+SSMMAAPPSSIIZZ             This  is the analogy of CCMMAAPPSSIIZZ for sec-
+                    ondary memory  (swap  space).   Normally
+                    scaled    automatically   according   to
+                    MMAAXXUUSSEERRSS.
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -38-        Kernel configuration
+
+
+55..33..22..33..  PPaarraammeetteerrss tthhaatt aarree sseett bbyy ccoonnvveennttiioonn
+
+CCAANNBBSSIIZZ             This sets the maximum size of a terminal
+                    line input buffer.  If using the old tty
+                    line discipline,  exceeding  this  bound
+                    causes _a_l_l characters to be lost. In the
+                    new tty line discipline, no more charac-
+                    ters  are  accepted until there is room.
+                    Normally 256.
+
+MMAAXXSSLLPP              This is the maximum time a  process  can
+                    sleep  before it is no longer considered
+                    a ``short term sleeper.''   It  is  used
+                    only  if UUCCBB__MMEETTEERR is defined.  Normally
+                    20.
+
+MMAAXXUUPPRRCC             This sets the  maximum  number  of  pro-
+                    cesses  each  user is allowed.  Normally
+                    20, but can be lower on  heavily  loaded
+                    systems.
+
+MMSSGGBBUUFFSS             This  is  the number of characters saved
+                    from system error messages.  It is actu-
+                    ally  the  size  of circular buffer into
+                    which messages  are  temporarily  saved.
+                    It is expected that _d_m_e_s_g(8) will be run
+                    by _c_r_o_n(8)  frequently  enough  that  no
+                    message  is overwritten before it can be
+                    saved in the system error log.  Normally
+                    128.
+
+NNCCAARRGGSS              This  is  the maximum size of an _e_x_e_c(2)
+                    argument  list  (in  bytes).    Normally
+                    5120.
+
+NNOOFFIILLEE              This  sets  the  maximum  number of open
+                    files each process is allowed.  Normally
+                    20.
+
+SSIINNCCRR               The  increment  (in  clicks)  by which a
+                    process's stack is expanded when a stack
+                    overflow   segmentation   fault  occurs.
+                    Normally 20.
+
+SSSSIIZZEE               The initial size (in clicks) of  a  pro-
+                    cess's   stack.   This  should  be  made
+                    larger if commonly  run  processes  have
+                    large  data areas on their stacks.  Nor-
+                    mally 20.
+
+55..33..33..  GGeenneerraall OOppttiioonnss
+
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -39-        Kernel configuration
+
+
+AACCCCTT            DD   Enable code which (optionally) writes an
+                    accounting  record  for  each process at
+                    exit.  See _l_a_s_t_c_o_m_m(1), _s_a(1),  _a_c_c_t(2),
+                    _a_c_c_t_o_n(8).
+
+CCGGLL__RRTTPP         CC   Support a system call which marks a pro-
+                    cess as a ``real time'' process,  giving
+                    it higher priority than all others.  See
+                    _r_t_p(2).
+
+DDIIAAGGNNOOSSTTIICC      CC   Turn on more stringent  error  checking.
+                    This  enables various kernel consistency
+                    checks which  are  considered  extremely
+                    unlikely to fail.  It is useful when the
+                    system is inexplicably crashing.
+
+IINNSSEECCUURREE        CC   Do not turn off the set-user-id or  set-
+                    group-id  permissions  on a file when it
+                    is written.
+
+MMEENNLLOO__JJCCLL       DD   Support  reliable  signal  handling  and
+                    enhanced  process control features.  See
+                    _s_i_g_s_y_s(2j), _j_o_b_s(3j), _s_i_g_s_e_t(3j).   This
+                    option requires UUCCBB__NNTTTTYY.
+
+MMEENNLLOO__KKOOVV       CC   Support  automatic kernel text overlays.
+                    This is  required  for  nonseparate  I/D
+                    systems  and is defined automatically if
+                    PPDDPP1111 is defined to be 23, 24,  34,  40,
+                    60, or GENERIC.
+
+MMEENNLLOO__OOVVLLYY      DD   Support  automatic  user  text overlays.
+                    This is required in order to run certain
+                    programs  (e.g.  _e_x  version  3.7 or, on
+                    nonseparate  I/D  systems,  the  process
+                    control C shell).
+
+OOLLDDTTTTYY          CC   Support  the standard V7 tty line disci-
+                    pline  (see  _t_t_y(4)).   This   must   be
+                    defined if UUCCBB__NNTTTTYY is not defined.
+
+UUCCBB__AAUUTTOOBBOOOOTT    DD   Allows   the   kernel  to  automatically
+                    reboot itself,  either  on  demand  (see
+                    _r_e_b_o_o_t(2)   and   _r_e_b_o_o_t(8))   or  after
+                    _p_a_n_i_cs.  This option requires  a  little
+                    planning;   see   section  5.4.3.   TThhiiss
+                    ooppttiioonn rreeqquuiirreess UUCCBB__FFSSFFIIXX..
+
+UUCCBB__CCLLIISSTT       CC   Map clists out of  kernel  virtual  data
+                    space.   If there is sufficient space in
+                    kernel data for an  adequate  number  of
+                    clists,  this  option  should  not used.
+                    Mostly used on large systems, or on sys-
+                    tems where kernel data space is tight.
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -40-        Kernel configuration
+
+
+UUCCBB__GGRRPPMMAASSTT     CC   Allow   one  user  to  be  designated  a
+                    ``group super-user,''  able  to  perform
+                    various  functions previously restricted
+                    to root or the file's owner  alone.   In
+                    the  kernel,  users whose group and user
+                    ids are the same are  granted  the  same
+                    permissions with respect to files in the
+                    same group as is the owner.  User  level
+                    software  implements  other permissions,
+                    allowing the group super-user to  change
+                    the  password  of  a  user  in  the same
+                    group.  The most common use for this  is
+                    in allowing teaching assistants to over-
+                    see students.
+
+UUCCBB__NNEETT         XX   Enable code implementing a  PDP-11  port
+                    of  Berkeley's  version  of TCP/IP.  The
+                    code is experimental and the implementa-
+                    tion is incomplete.
+
+UUCCBB__NNTTTTYY        SS   Support the Berkeley tty line discipline
+                    (see _t_t_y(4) and _n_e_w_t_t_y(4)).   This  must
+                    be defined if OOLLDDTTTTYY is not defined.
+
+UUCCBB__PPGGRRPP        CC   Fix  a bug in the way standard V7 counts
+                    a  user's  processes.   This  should  be
+                    enabled  only if MMEENNLLOO__JJCCLL is undefined,
+                    since the notion of  process  groups  is
+                    completely  different  in the two cases.
+                    If  UUCCBB__PPGGRRPP  and  MMEENNLLOO__JJCCLL  are   both
+                    defined, the limit on the number of pro-
+                    cesses allowed  per  user  (MMAAXXUUPPRRCC)  is
+                    effectively eliminated.
+
+UUCCBB__SSCCRRIIPPTT      XX   Allow   scripts  to  specify  their  own
+                    interpreters.  For example, executing  a
+                    script  beginning  with  ``#!  /bin/sh''
+                    causes /bin/sh to be executed to  inter-
+                    pret  the script.  This is not (yet) the
+                    same as the facility on  4.1BSD  VMUNIX,
+                    and  probably  needs a little work.  The
+                    Bourne shell, /bin/sh, would need  modi-
+                    fication also.
+
+UUCCBB__UUPPRRIINNTTFF     DD   Write   error  messages  directly  on  a
+                    user's terminal when the user  causes  a
+                    file system to run out of inodes or free
+                    blocks, or on certain mag tape errors.
+
+UUCCBB__VVHHAANNGGUUPP     DD   Support  a  system  call  which   allows
+                    _i_n_i_t(8)  to  revoke  access  to a user's
+                    terminal when the user has  logged  out.
+                    This is used to give new users ``clean''
+                    terminals on login.
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -41-        Kernel configuration
+
+
+VVIIRRUUSS__VVFFOORRKK     DD   Implement a much more efficient  version
+                    of  fork in which parent and child share
+                    resources until the  child  _e_x_e_cs.   See
+                    _v_f_o_r_k(2).   Note  that  this changes the
+                    way  processes  appear  in  memory.   It
+                    makes  swap  operations slower, and thus
+                    might not be desirable on systems  which
+                    swap heavily.
+
+55..33..44..  FFiillee ssyysstteemm
+
+
+IINNTTRRLLVVEE         XX   Allows   interleaving  of  file  systems
+                    across devices.  See _i_n_t_r_l_v_e(4).
+
+MMPPXX__FFIILLSS        XX   Include code  for  the  V7  multiplexer.
+                    The code is buggy and unsupported.
+
+UUCCBB__FFSSFFIIXX       SS   Ensure that file system updates are done
+                    in the correct order, thus  making  dam-
+                    aged  file  systems less likely and more
+                    easily  repairable.   TThhiiss   ooppttiioonn   iiss
+                    rreeqquuiirreedd  bbyy  UUCCBB__AAUUTTOOBBOOOOTT ((aaccttuuaallllyy,, bbyy
+                    tthhee --pp ooppttiioonn ooff  _f_s_c_k((88)),,  wwhhiicchh  mmaakkeess
+                    cceerrttaaiinn  aassssuummppttiioonnss  aabboouutt tthhee ssttaattee ooff
+                    tthhee ffiillee ssyysstteemmss))..
+
+UUCCBB__SSYYMMLLIINNKKSS    CC   Add a new inode type to the file system:
+                    the symbolic link.  Symbolic links cause
+                    string substitution during the  pathname
+                    interpretation   process.    See  _l_n(1),
+                    _r_e_a_d_l_i_n_k(2), and _s_y_m_l_i_n_k(2).
+
+UUCCBB__NNKKBB         SS   Use file system blocks of _N KB, normally
+                    1.   Changes the fundamental file system
+                    unit from 512 byte blocks to  1024  byte
+                    blocks  (with  a corresponding reduction
+                    in the size of  in-core  inodes).   This
+                    increases file system bandwidth by 100%.
+                    Note that UUCCBB__NNKKBB is not boolean, but is
+                    defined as 1 for 1KB blocks.  Other val-
+                    ues are possible, but require additional
+                    macro  definitions.   All  file  systems
+                    would have to be remade  with  new  ver-
+                    sions  of _m_k_f_s and _r_e_s_t_o_r.  AAllll ssuupppplliieedd
+                    ssooffttwwaarree  eexxppeeccttss  tthhiiss  ooppttiioonn  ttoo   bbee
+                    eennaabblleedd..
+
+UUCCBB__QQUUOOTTAASS      CC   Support   a   simplistic   (and   easily
+                    defeated)  dynamic  disk  quota  scheme.
+                    See    _l_s(1),   _p_q(1),   _q_u_o_t_a(2),   and
+                    _s_e_t_q_u_o_t_a(8).
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -42-        Kernel configuration
+
+
+55..33..55..  PPeerrffoorrmmaannccee MMoonniittoorriinngg
+
+
+DDIISSKKMMOONN         CC   Keep statistics  on  the  buffer  cache.
+                    They  are  printed  by  the -_b option of
+                    _i_o_s_t_a_t(8).
+
+UUCCBB__LLOOAADD        DD   Enable code that computes a Tenex  style
+                    load   average.   See  _l_a(1),  _g_l_d_a_v(2),
+                    _l_o_a_d_a_v(3).
+
+UUCCBB__MMEETTEERR       DD   Keep statistics on memory, queue  sizes,
+                    process  states,  interrupts, traps, and
+                    many  other  (possibly  useful)  things.
+                    See  _v_m_s_t_a_t(1)  and  section 7.5 of this
+                    paper.
+
+55..33..66..  DDeevviiccee DDrriivveerrss
+
+     In this section, an XXXX__ prefix refers to the UNIX  name
+of  the  device  for  which  the  option  is  intended to be
+enabled.  For example, TTMM__IIOOCCTTLL refers to mag tape _i_o_c_t_ls in
+tm.c.   Most of these definitions go in the header file _x_x_._h
+for  the  device.   The  exceptions  are  BBAADDSSEECCTT,   MMAAXXBBAADD,
+UUCCBB__DDEEVVEERRRR, and UUCCBB__EECCCC.
+
+BBAADDSSEECCTT         CC   Enable  bad-sector  forwarding.  Sectors
+                    marked bad by  the  disk  formatter  are
+                    transparently   replaced  when  read  or
+                    written.    Currently,   only   the   hk
+                    driver's   code   has   been  thoroughly
+                    tested.
+
+DDDDMMTT            CC   Currently used only by  the  tm  driver.
+                    Should  be  defined  if you have a TM-11
+                    emulator  which  supports  800/1600  bpi
+                    dual density drives with software selec-
+                    tion.
+
+DDZZ__PPDDMMAA         CC   Configure the dz driver  to  do  pseudo-
+                    dma.
+
+MMAAXXBBAADD          CC   This sets the maximum number of replace-
+                    ment sectors available on  a  disk  sup-
+                    porting DEC standard bad sector forward-
+                    ing.  It can be no larger than  126  but
+                    may  be  smaller  to  reduce the size of
+                    kernel data space.  See the include file
+                    /_u_s_r/_i_n_c_l_u_d_e/_s_y_s/_d_k_b_a_d_._h.
+
+TTEEXXAASS__AAUUTTOOBBAAUUDD  CC   Support an _i_o_c_t_l which defeats detection
+                    of framing or parity  errors.   This  is
+                    used  by  _g_e_t_t_y(8) to accurately guess a
+                    line's speed when a carriage  return  is
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -43-        Kernel configuration
+
+
+                    typed.
+
+UUCCBB__DDEEVVEERRRR      DD   Print  device  error messages in a human
+                    readable (mnemonic) format.
+
+UUCCBB__EECCCC         CC   Recognize  and  correct  soft  ecc  disk
+                    transfer errors.
+
+VVPP__TTWWOOSSCCOOMMPPLL    CC   Used  in  the  Versatec (vp) driver.  If
+                    defined, the byte count register will be
+                    loaded  with  the twos-complement of the
+                    byte count, rather than the  byte  count
+                    itself.  Check your controller manual to
+                    see  whether  your  controller  requires
+                    this.
+
+XXXX__IIOOCCTTLL        DD   Turn  on  optional _i_o_c_t_ls for the corre-
+                    sponding device.  See section 4  of  the
+                    Berkeley PDP-11 UNIX Programmer's manual
+                    for details.
+
+XXXX__SSIILLOO         DD   Used in  the  dh  and  dz  drivers.   If
+                    defined,   the  drivers  will  use  silo
+                    interrupts to avoid taking an  interrupt
+                    for each character received.
+
+XXXX__SSOOFFTTCCAARR      CC   Currently  used  only  by  the dh and dz
+                    drivers.  Should be defined if  not  all
+                    of  the  lines  on  a DH-11 or DZ-11 use
+                    modem control.  It allows one to  select
+                    lines  on  which  modem  control will be
+                    disabled.  See _d_h(4) and _d_z(4).  It  can
+                    also  be  used  with escape-code autodi-
+                    alers  to  allow  modem  control  to  be
+                    ignored while talking to the dialer.
+
+XXXX__TTIIMMEEOOUUTT      DD   Enable  a  watchdog timer.  This is used
+                    to kick devices prone to  losing  inter-
+                    rupts.   It  is currently available only
+                    for the tm driver.
+
+55..33..77..  MMiisscceellllaanneeoouuss SSyysstteemm CCaallllss
+
+
+UUCCBB__LLOOGGIINN       CC   Support a system call which can  mark  a
+                    process  as  a ``login process'' and set
+                    its recharge number (for accounting pur-
+                    poses).    This   is   usually  done  by
+                    _l_o_g_i_n(1).  See _l_o_g_i_n(2).
+
+UUCCBB__RREENNIICCEE      DD   Support a system  call  which  allows  a
+                    user  to  dynamically change a process's
+                    ``nice'' value  over  the  entire  range
+                    (-127  to 127) of values.  See _r_e_n_i_c_e(1)
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -44-        Kernel configuration
+
+
+                    and _r_e_n_i_c_e(2).
+
+UUCCBB__SSUUBBMM        CC   Support a system call to mark a  process
+                    as having been ``submitted,'' permitting
+                    it to run after the user has logged  out
+                    and  enabling special accounting for its
+                    CPU use.  See _s_u_b_m_i_t(1)  and  _s_u_b_m_i_t(2).
+                    If this option is enabled, _i_n_i_t(8) sends
+                    a SIGKILL signal to a user's unsubmitted
+                    processes  when  that user logs out.  It
+                    is ineffective if MMEENNLLOO__JJCCLL is  defined.
+
+55..33..88..  PPeerrffoorrmmaannccee TTuunniinngg
+
+
+NNOOKKAA55           CC   Simplify  the  code for kernel remapping
+                    by assuming that KDSA5 will not be  used
+                    for  normal  kernel  data.   Kernel data
+                    space must end before  0120000  if  this
+                    option  is  enabled.   It is unfortunate
+                    but unavoidable that one must first make
+                    a   kernel  and  size  it  to  determine
+                    whether  this  option  may   be   safely
+                    defined.   It is usually possible on all
+                    but the largest  separate  I/D  kernels,
+                    and  on the small-to-medium nonseparate,
+                    overlaid kernels.  The _c_h_e_c_k_s_y_s  utility
+                    will print a warning message if the data
+                    limit is exceeded when a new  kernel  is
+                    loaded.
+
+PPRROOFFIILL          CC   Turn on system profiling.  This requires
+                    a  separate  I/D  cpu  equipped  with  a
+                    KW11-P  clock.   It  cannot  be  used on
+                    machines  with  ENABLE/34  boards  since
+                    they  have  no spare page address regis-
+                    ters.   If  profiling  is  enabled,  you
+                    should  change  the definition of SPLFIX
+                    in the corresponding machine Makefile to
+                    _:_s_p_l_f_i_x_._p_r_o_f_i_l.       The      directory
+                    /_u_s_r/_c_o_n_t_r_i_b/_g_e_t_s_y_s_p_r contains a program
+                    for extracting the profiling information
+                    from the kernel.
+
+UUCCBB__BBHHAASSHH       DD   Compile in code to hash  buffer  headers
+                    (and cut the time required by the _g_e_t_b_l_k
+                    routine by 50% or  more  on  large  sys-
+                    tems).
+
+UUCCBB__FFRRCCSSWWAAPP     CC   Force  swaps  on  all  forks and expands
+                    (but  not  vforks).   This  is  used  to
+                    transfer  some  of  the load from a com-
+                    pute-bound CPU  to  an  idle  disk  con-
+                    troller.   This  is  probably not a good
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -45-        Kernel configuration
+
+
+                    idea with VVIIRRUUSS__VVFFOORRKK defined, but  then
+                    the  load  is  better  reduced  by using
+                    vfork instead of fork.
+
+UUCCBB__IIHHAASSHH       DD   Compile in code to hash  in-core  inodes
+                    (and  cut  the time required by the _i_g_e_t
+                    routine by 50% or  more  on  large  sys-
+                    tems).
+
+UUNNFFAASSTT          CC   Do   not  use  inline  macro  expansions
+                    designed  to  speed   up   file   system
+                    accesses  at  the  cost of a larger text
+                    segment.
+
+55..44..  AAddddiittiioonnaall ccoonnffiigguurraattiioonn ddeettaaiillss
+
+     A few of the parameters and options  require  a  little
+care to set up; those considerations are discussed here.
+
+55..44..11..  AAlltteerrnnaattee ddiisskk ddrriivveerrss
+
+     There  are several disk drivers provided for SMD disks.
+The hhpp driver supports RP04/05/06 disks; rrmm supports RM02/03
+disks,  and  ddvvhhpp  supports  300  Mbyte  drives on Diva con-
+trollers.  In addition, there is an xxpp driver which  handles
+any of the above, plus RM05 disks, multiple controllers, and
+disks which are similar to those listed but  with  different
+geometry  (e.g.  Fujitsu  160 Mbyte drives).  It can be used
+with UNIBUS or MASSBUS controllers or both.  In general,  if
+you  have  only one type of disk and one controller, the hhpp,
+rrmm or ddvvhhpp drivers are the  best  choices,  since  they  are
+smaller  and  simpler.   If you use the xxpp driver, it can be
+set up in one of two ways.  If XXPP__PPRROOBBEE is defined in  xp.h,
+the  driver  will attempt to determine the type of each disk
+and controller by probing and using the drive type register.
+To  save  the  space occupied by this routine, or to specify
+different drive parameters, the drive and controller  struc-
+tures  can  be  initialized  in  ioconf.c if XXPP__PPRROOBBEE is not
+defined.  The controller addresses will have to be  initial-
+ized  in  either  case  (at least the first, if it is a boot
+device).  The  file  /usr/include/sys/hpreg.h  provides  the
+definitions  for the flags and sizes.  Ioconf.c has an exam-
+ple of initialized structures.  _X_p(4) gives more information
+about drive numbering, etc.
+
+55..44..22..  DDiisskk mmoonniittoorriinngg ppaarraammeetteerrss
+
+     The  kernel  is capable of maintaining statistics about
+disk activity for specified disks; this information  can  be
+printed  by  _i_o_s_t_a_t(8).   This involves some setup, however,
+and if parameters are set incorrectly can cause  the  kernel
+monitoring  routines  to overrun their array bounds.  To set
+this up correctly, choose the disks to be monitored.  _I_o_s_t_a_t
+is  configured  for  a maximum of 4 disks, but that could be
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -46-        Kernel configuration
+
+
+changed by editing the headers.  The drivers that  do  over-
+lapped  seeks  (hk,  hp,  rm  and xp) use one field for each
+drive (N_X_X) plus one for the controller; the others use only
+one  field,  for  the controller.  When both drives and con-
+trollers are monitored, the drives come first,  starting  at
+_D_K_DKN,  followed  by the controller (or controllers, in the
+case of xp).  Then set NNDDIISSKK in param.c to the desired  num-
+ber.  The number of the first slot to use for each driver is
+defined as _D_K_DKN in the device's header file, or  is  unde-
+fined  if  that driver is not using monitoring.  _I_o_s_t_a_t cur-
+rently expects that if overlapped seeks are  being  metered,
+those  disks  are  first  in  the  array (i.e., DKN for that
+driver is 0).  As an example, for 3 RP06 disks using the  hp
+driver  plus 1 RL02, HP_DKN should be 0, RL_DKN should be 4,
+and NNDDIISSKK should be 5 (3 hp disks + 1 hp controller + 1 rl).
+The complete correspondence for _i_o_s_t_a_t would then be:
+
+
+     0 (HP_DKN + 0)     hp0 seeks
+     1 (HP_DKN + 1)     hp1 seeks
+     2 (HP_DKN + 2)     hp2 seeks
+     3 (HP_DKN + NHP)   hp controller transfers
+     4 (RL_DKN + 0)     rl transfers
+
+
+IItt  iiss  vveerryy iimmppoorrttaanntt tthhaatt NNDDIISSKK bbee llaarrggee eennoouugghh,, ssiinnccee tthhee
+ddrriivveerrss ddoo nnoott cchheecckk ffoorr oovveerrffllooww..
+
+     After the kernel disk  monitoring  is  set  up,  _i_o_s_t_a_t
+itself  needs  to be edited to reflect the numbers and types
+of the disks.  The source is in /usr/src/cmd.
+
+55..44..33..  AAuuttoommaattiicc rreebboooott
+
+     The automatic reboot facility (UUCCBB__AAUUTTOOBBOOOOTT) includes a
+number  of components, several of which must know details of
+the boot configuration.  The kernel  has  an  integral  boot
+routine,  found in boot.s in the configuration directory for
+the machine, which reads in a block  0  bootstrap  from  the
+normal  boot  device and executes it.  The block 0 bootstrap
+normally loads bboooott from the first file system on drive 0 of
+the  disk;  this  can  be changed if necessary.  The second-
+stage bootstrap, /boot, needs to know where to find unix.
+
+     The first step is to determine  which  kernel  boot  to
+use.   Currently,  there  are  boot modules supplied for the
+following disk types: hk, rl, rm, rp, dvhp,  sc11  and  sc21
+(the  last  two  are  for  Emulex SC11 and SC21 controllers,
+using the boot command).  If one of  these  will  work  with
+your boot disk, place that entry in the bboooottddeevv field in the
+device configuration file before running _c_o_n_f_i_g,  or  simply
+copy ../conf/_d_kboot.s to boot.s in the machine configuration
+directory.  If no boot module supplied will work, it is  not
+too  difficult  to create one for your machine.  The easiest
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -47-        Kernel configuration
+
+
+way to do this is to copy one of the other boot modules, and
+modify the last section which actually reads the boot block.
+If you have a bootstrap ROM, you can simply jump to the cor-
+rect  entry with any necessary addresses placed in registers
+first.  Or, you can write a small routine  to  read  in  the
+first  disk block.  If you don't have a boot module, bboooottddeevv
+in the configuration file should be specified as  nnoonnee,  and
+noboot.s will be installed.  This is a dummy file that keeps
+the load  rules  from  changing.   The  UUCCBB__AAUUTTOOBBOOOOTT  option
+should not be defined until a boot module is obtained.
+
+     The  other change that is normally required is to spec-
+ify where /unix will be found.  This is done by changing the
+definition  of RRBB__DDEEFFNNAAMMEE in /usr/include/sys/reboot.h.  The
+definition is a string in the  same  format  as  the  manual
+input to boot, for example "xp(0,0)unix".  After making this
+change,   boot   will   need   to    be    recompiled    (in
+/usr/src/sys/stand/bootstrap)  and  installed.   It  can  be
+installed initially as /newboot, and the original  boot  can
+be used to load it for testing:
+
+     >>bboooott
+
+     _n_nBBoooott
+     :: _d_k(0,0)newboot
+
+     _n_nBBoooott
+     :: _d_k(0,0)unix
+
+
+     If you want to have core dumps made after crashes, this
+must be specified in the configuration file as well.   Dumps
+are  normally  taken  on  the  end of the swap device before
+rebooting, and after the system is back up and the file sys-
+tems  are  checked, the dump will be copied into /usr/sys by
+_s_a_v_e_c_o_r_e(8).  Dump routines are available for the hk, hp, rm
+and xp drivers.  To install, change the dduummppddeevv entry to the
+same value as the swap device.  Then set dduummpplloo to  a  value
+that  will  allow as much as possible of memory to be saved.
+The dump routine will start the dump at dumplo and  continue
+to  the  end  of memory or the end of the swap device parti-
+tion, whichever comes first.  Dumplo should be  larger  than
+swplo  so  that any early swaps will not overwrite the dump,
+but if possible, should be low enough that there is room for
+all  of  memory.  The dduummpprroouuttiinnee entry in the configuration
+file is then set to _d_kdump,  where  _d_k  is  the  disk  type.
+Finally,  after running _c_o_n_f_i_g, edit the header file _d_k.h in
+the new configuration directory to define _D_K_DUMP,  so  that
+that  dump  routine will be included when the driver is com-
+piled.
+
+
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -48-        Kernel configuration
+
+
+55..44..44..  CCoonnssiiddeerraattiioonnss oonn aa PPDDPP--1111//2233
+
+     If setting up a kernel on a PDP-11/23, it is  necessary
+to  consider  the  interrupt  structure of the hardware.  If
+there are any single-priority boards on the bus,  they  must
+be  behind  all  multiple-priority devices.  Otherwise, they
+may accept interrupts  meant  for  another,  higher-priority
+device farther from the processor, at a time when the system
+has set the processor priority  to  block  the  single-level
+device.   The  alternative  is to use spl6 uniformly for any
+high processor priority (spl4, spl5,  spl6).   This  may  be
+accomplished  by  changing  the  _spl routines in mch.s, the
+definitions of br4 and br5  in  l.s,  and  by  changing  the
+script :splfix.mtps (in the _c_o_n_f directory).
+
+     Berkeley  UNIX does not support more than 256K bytes of
+memory on the 11/23.  If you have extra memory and a way  to
+use it (e.g. a disk driver capable of 22-bit addressing) you
+will want to change this.
+
+55..55..  CCoommppiilliinngg tthhee kkeerrnneell
+
+     Once you have made any local changes, you are ready  to
+compile the kernel.  If you have made any changes which will
+affect the dependency rules  in  the  Makefile,  run  ``make
+depend''  (the output of this command is best appreciated on
+a crt).  Then, ``make unix.''  Note: although several short-
+cuts  have been built into the makefile, the nonseparate I/D
+_m_a_k_e occasionally runs out of space  while  recompiling  the
+kernel.  If this happens, just restart it and it will gener-
+ally make it through the second time.  The split I/D version
+of _m_a_k_e in /usr/70 should have no problem.  Also note, it is
+imperative that overlaid kernels be compiled with the 2.9BSD
+versions of _c_c, _a_s (and _a_s_2) and _l_d.  Use of older C prepro-
+cessors or assemblers will result in compile-time errors  or
+(worse)  systems  that  will  almost  run, but crash after a
+short time.
+
+     After the unix binary is loaded, the  makefile  runs  a
+small  program  called  _c_h_e_c_k_s_y_s which checks for size over-
+flows.  If you are building an overlaid  system,  check  the
+size  of  the  object file (see _s_i_z_e(1)) and overlay layout.
+The overlay structure may be changed by  editing  the  make-
+file.   For a non-separate I/D system, the base segment size
+must be between 8194 and 16382 bytes and each  overlay  must
+be  at  most  8192  bytes.   The  final object file ``unix''
+should be copied to the root, and then booted to try it out.
+It  is  best  to  name  it /newunix so as not to destroy the
+working system until you're sure it does work:
+
+     ## cp unix /newunix
+     ## sync
+
+It is also a good idea to keep the old system  around  under
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -49-        Kernel configuration
+
+
+some  other name.  In particular, we recommend that you save
+the generic distribution version of the  system  permanently
+as /genericunix for use in emergencies.
+
+     To boot the new version of the system you should follow
+the bootstrap procedures outlined in section 2.4  above.   A
+systematic  scheme  for numbering and saving old versions of
+the system is best.
+
+     You can repeat these steps whenever it is necessary  to
+change the system configuration.
+
+55..66..  MMaakkiinngg cchhaannggeess ttoo tthhee kkeerrnneell
+
+     If you wish to make local mods to the kernel you should
+bracket them with
+
+     #ifdef PICKLE
+     ...
+     #endif
+
+perhaps saving old code between
+
+     #ifndef PICKLE
+     ...
+     #endif
+
+This will allow you to find changed code easily.
+
+     To add a device not supported by the distribution  sys-
+tem  you will have to place the driver for the device in the
+directory /usr/src/sys/dev,  edit  a  line  into  the  block
+and/or  character  device  table in /usr/src/sys/PICKLE/c.c,
+add the name of the device to the OPTIONAL line of the  file
+Depend,  and to the makefile load rules.  Place the device's
+address and interrupt vector in the files ioconf.c  and  l.s
+respectively  if  it  is  not  going  to  be  configured  by
+_a_u_t_o_c_o_n_f_i_g(8); otherwise, l.s  will  only  need  the  normal
+interface  to  the C interrupt routine.  If you use autocon-
+figuration, you will need an attach routine in  the  driver,
+and a probe routine in the driver or in _a_u_t_o_c_o_n_f_i_g.  Use the
+entries for a similar device as an example.  If  the  device
+driver uses the UNIBUS map or system buffers, it will proba-
+bly need modifications.  Check ``Changes in  the  Kernel  in
+2.9BSD''  for  more  technical  information regarding driver
+interfacing.  You can then rebuild the system  (be  sure  to
+make  _d_e_p_e_n_d  first).   After rebooting the resulting kernel
+and making appropriate entries in the  /dev  directory,  you
+can  test  out  the  new  device  and  driver.   Section 7.1
+explains shutdown and reboot procedures.
+
+
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -50- Recompiling system software
+
+
+               66.. RREECCOOMMPPIILLIINNGG SSYYSSTTEEMM SSOOFFTTWWAARREE
+
+
+
+     We now describe how to recompile  system  programs  and
+install  them.  Some programs must be modified for the local
+system at this time, and other local changes may  be  desir-
+able  now  or  later.   Before  any  of these procedures are
+begun,  be  certain  that  the  include  files   <whoami.h>,
+<sys/localopts.h> and <sys/param.h> are correct for the ker-
+nel that has been installed.  This is important for commands
+that wish to know the name of the local machine or that size
+their data areas appropriately for the  type  of  CPU.   The
+general   procedures  are  given  first,  followed  by  more
+detailed information about some of the  major  systems  that
+require some setup.
+
+66..11..  RReeccoommppiilliinngg aanndd rreeiinnssttaalllliinngg ssyysstteemm ssooffttwwaarree
+
+     It  is  easy to regenerate the system, and it is a good
+idea to try rebuilding pieces of the system to build  confi-
+dence in the procedures.  The system consists of three major
+parts: the kernel itself, along with the bootstrap and stan-
+dalone   utilities   (/usr/src/sys),   the   user   programs
+(/usr/src/cmd, /usr/src/ucb, and  subdirectories),  and  the
+libraries   (/usr/src/lib).   The  major  part  of  this  is
+/usr/src/cmd.
+
+     We have  already  seen  how  to  recompile  the  system
+itself.   The  commands  and  libraries can be recompiled in
+their respective source directories using the  Makefile  (or
+Ovmakefile  if there are both overlaid and non-overlaid ver-
+sions).  However, it is generally easier to use one  of  the
+MAKE  scripts  set  up  for  /usr/src/lib, /usr/src/cmd, and
+/usr/src/ucb.  These are used in a similar fashion, such as
+
+     ## ./MAKE -40 [ -cp ] [ -f ] file ...
+
+The first, required flag sets the CPU  class  for  which  to
+compile.  Three classes are used to used to set requirements
+for separate instruction and data and  for  floating  point.
+``MAKE  -40''  makes  nonseparate I/D versions that load the
+floating point interpreter as  required.   ``MAKE  -34''  is
+similar  but assumes a hardware floating point unit.  ``MAKE
+-70'' is used for separate I/D  machines  and  also  assumes
+floating  point hardware.  ``MAKE -70 -f'' is used for sepa-
+rate I/D machines without floating point hardware.  The  use
+of  these  MAKE  scripts  automates  the  selection  of CPU-
+dependent options and makes  the  optimal  configuration  of
+each program for the target computer.  The optional argument
+-cp causes each program to be installed as it is made.  They
+are installed in the normal directories, unless the environ-
+ment variable DESTDIR is set, in which case the normal  path
+is  prepended  by  DESTDIR.  This can be used to compile and
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -51- Recompiling system software
+
+
+create a new set  of  binary  directories,  e.g.  /nbsd/bin,
+/nbsd/lib,  etc.   Running the command ``MAKE -70 -cp *'' in
+/usr/src/lib, /usr/src/cmd and /usr/src/ucb would thus  cre-
+ate  a  whole  new  tree  of system binaries.  The six major
+libraries are the C  library  in  /usr/src/lib/c,  the  jobs
+library,    /usr/src/lib/jobs,    the    FORTRAN   libraries
+/usr/src/lib/libF77,        /usr/src/lib/libI77,         and
+/usr/src/lib/libU77,  and  the  math library /usr/src/lib/m.
+Most libraries are made in two versions, one  each  for  use
+with and without process overlays.  In each case the library
+is remade by changing into /usr/src/lib and doing
+
+     ## ./MAKE -_c_p_u _l_i_b_n_a_m_e
+
+or made and installed by
+
+     ## ./MAKE -_c_p_u -cp _l_i_b_n_a_m_e
+
+Similar to the system,
+
+     ## make clean
+
+cleans up in each subdirectory.
+
+     To   recompile   individual   commands,    change    to
+/usr/src/cmd  or  /usr/src/ucb,  as appropriate, and use the
+MAKE script in the same way.  Thus to compile adb, do
+
+     ## ./MAKE -_c_p_u adb
+
+where cpu is 34, 40, or 70.  To recompile everything, use
+
+     ## ./MAKE -_c_p_u *
+
+After installing new binaries, you can  use  the  script  in
+/usr/src  to link files together as necessary and to set all
+the right set-user-id bits.
+
+     ## cd /usr/src
+     ## ./MAKE aliases
+     ## ./MAKE modes
+
+
+66..22..  MMaakkiinngg llooccaall mmooddiiffiiccaattiioonnss
+
+     To keep track of changes to system  source  we  migrate
+changed  versions of commands in /usr/src/cmd in through the
+directory  /usr/src/new  and  out   of   /usr/src/cmd   into
+/usr/src/old for a time before removing them.  Locally writ-
+ten  commands  that   aren't   distributed   are   kept   in
+/usr/src/local  and  their  binaries are kept in /usr/local.
+This allows /usr/bin, /usr/ucb, and /bin  to  correspond  to
+the  distribution  tape  (and to the manuals that people can
+buy).  People wishing to use /usr/local  commands  are  made
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -52- Recompiling system software
+
+
+aware  that  they  aren't  in  the  base  manual.  As manual
+updates  incorporate  these  commands  they  are  moved   to
+/usr/ucb.
+
+     A directory /usr/junk to throw garbage into, as well as
+binary directories /usr/old and /usr/new  are  useful.   The
+_m_a_n(1)   command   supports   manual   directories  such  as
+/usr/man/mann for new and /usr/man/manl for  local  to  make
+this or something similar practical.
+
+66..33..  SSeettttiinngg uupp tthhee mmaaiill ssyysstteemm
+
+     The  mail  system  can  be set up in at least two ways.
+One strategy uses the _d_e_l_i_v_e_r_m_a_i_l(8)  program  to  sort  out
+network  addresses  according to the local network topology.
+It is not perfect,  especially  in  the  light  of  changing
+ARPAnet  conventions.  However, if you use the Berkeley net-
+work or are connected directly or indirectly to the ARPAnet,
+it  is probably the method of choice for the time being.  On
+the other hand, if you use only local mail  and  UUCP  mail,
+/bin/mail  (_m_a_i_l(1))  will  suffice as a mail deliverer.  In
+that case, you will  only  need  to  recompile  _m_a_i_l(1)  and
+_M_a_i_l(1).
+
+     The  entire  mail system consists of the following com-
+mands:
+
+
+     /bin/mail               old standard mail program (from V7 or System III)
+     /usr/ucb/Mail           UCB mail program, described in Mail(1)
+     /usr/lib/Mail.rc        aliases and defaults for Mail(1)
+     /etc/delivermail        mail routing program
+     /usr/net/bin/v6mail     local mailman for berknet
+     /usr/spool/mail         mail spooling directory
+     /usr/spool/secretmail   secure mail directory
+     /usr/bin/xsend          secure mail sender
+     /usr/bin/xget           secure mail receiver
+     /usr/lib/aliases        mail forwarding information for delivermail
+     /usr/ucb/newaliases     command to rebuild binary forwarding database
+
+
+Mail is normally sent and received using  the  _M_a_i_l(1)  com-
+mand,  which  provides a front-end to edit the messages sent
+and received, and passes the messages to  _d_e_l_i_v_e_r_m_a_i_l(8)  or
+_m_a_i_l(1) for routing and/or delivery.
+
+     Mail   is   normally   accessible   in   the  directory
+/usr/spool/mail  and is readable by all users.|- To send mail
+-----------
+|- You can make your mail unreadable by  others  by
+changing      the     mode     of     the     file
+/usr/spool/mail/_y_o_u_r_n_a_m_e to 600  and  putting  the
+line  ``set  keep''  in  your  .mailrc  file.  The
+directory /usr/spool/mail  must  not  be  writable
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -53- Recompiling system software
+
+
+which is secure against any possible perusal  (except  by  a
+code-breaker) you should use the secret mail facility, which
+encrypts the mail so that no one can read it.
+
+66..33..11..  SSeettttiinngg uupp mmaaiill aanndd MMaaiill
+
+     Both /bin/mail and /usr/ucb/Mail should  be  recompiled
+to  make  local  versions.  Remake mail in /usr/src/cmd with
+the command
+
+     ## ./MAKE -_c_p_u mail
+
+Install the new binary in /bin after  testing;  it  must  be
+setuserid  root.   Section 6.1 gives more details on the use
+of the MAKE scripts.  To configure _M_a_i_l, change  directories
+to  /usr/src/ucb/Mail.  Edit the file v7.local.h to assign a
+letter to your machine with the definition of LOCAL; if  you
+do not have a local area network, the choice is arbitrary as
+long as you pick an unused  letter.   If  you  wish  to  use
+_d_e_l_i_v_e_r_m_a_i_l,  the  definition  of  SENDMAIL should be uncom-
+mented.  Then add your machine to  the  table  in  config.c;
+configdefs.h  gives  some  information on this.  The network
+field should specify which networks (if any)  you  are  con-
+nected  to  (note:  the Schmidt net, SN, is Berknet).  After
+the changes are made, move to /usr/src/ucb and
+
+     ## ./MAKE -40 Mail   (on a nonseparate I/D machine)
+       or
+     ## ./MAKE -70 Mail   (on a separate I/D machine)
+
+Install _M_a_i_l in /usr/ucb; it should nnoott be  setuserid.   The
+Mail.rc  file in /usr/lib can be used to set up limited dis-
+tribution lists or aliases if you are not using _d_e_l_i_v_e_r_m_a_i_l.
+
+66..33..22..  SSeettttiinngg uupp ddeelliivveerrmmaaiill
+
+     To  set up the _d_e_l_i_v_e_r_m_a_i_l facility you should read the
+instructions  in  the  file   READ_ME   in   the   directory
+/usr/src/ucb/delivermail  and  then adjust and recompile the
+_d_e_l_i_v_e_r_m_a_i_l program, installing it as /etc/delivermail.  The
+routing  algorithm  uses  knowledge  of  network name syntax
+built into its tables and aliasing and  forwarding  informa-
+tion  built  into  the file /usr/lib/aliases to process each
+piece of mail.  Local mail is delivered by giving it to  the
+program  /usr/net/bin/v6mail  which adds it to the mailboxes
+in the directory /usr/spool/mail/_u_s_e_r_n_a_m_e, using  a  locking
+protocol  to  avoid problems with simultaneous updates.  You
+should also  set  up  the  file  /usr/lib/aliases  for  your
+installation, creating mail groups as appropriate.
+
+
+
+-----------
+(mode 755) for this to work.
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -54- Recompiling system software
+
+
+66..44..  SSeettttiinngg uupp aa uuuuccpp ccoonnnneeccttiioonn
+
+     To  connect  two UNIX machines with a _u_u_c_p network link
+using modems, one site must have a automatic call  unit  and
+the  other  must  have  a dialup port.  It is better if both
+sites have both.
+
+     You should first read the paper in  volume  2B  of  the
+UNIX  Programmers  Manual:  ``Uucp  Implementation  Descrip-
+tion.''  It describes in detail the file formats and conven-
+tions, and will give you a little context.  For any configu-
+ration, you must recompile all system dependent programs.
+
+     Change  directory  to  /usr/src/cmd/uucp  and   examine
+uucp.h,  making  any necessary changes.  Recompile uucp with
+``make'' and su to ``make install.''
+
+     You should ensure that the directories  /usr/spool/uucp
+and /usr/spool/uucppublic exist.  The former should be owned
+by uucp, mode 755 (or 777 is OK) and the  latter  should  be
+mode 777 (and the home directory for login uucp).
+
+     Periodically  you  should clean out /usr/spool/uucp and
+/usr/spool/uucppublic, as they can  accumulate  junk,  espe-
+cially  if  you  don't  have a dialer.  Run ``uulog'' once a
+day, and ``/usr/lib/uucp/uuclean'' periodically with  appro-
+priate options to get rid of old stuff.|- You can  also  just
+remove  some  of the files in /usr/spool/uucp, but if you do
+this blindly you will cause some error messages to be gener-
+ated when uucp tries to access a file another file claims is
+there.  (For instance, each mail transaction  creates  three
+files.)   The /usr/spool/uucppublic directory is a place for
+people at other sites to send to when sending files to users
+on  your  machine.   You should clean it out by hand when it
+gets excessive.
+
+     If both sites have both a dialer  and  dialup:   follow
+the directions in the volume 2B paper - this is the intended
+mode of operation and the directions fit well.  You have  to
+configure the following files in /usr/lib/uucp:
+
+
+     L.sys       setup all fields - this lists the other sites
+     L-devices   your dialer
+     USERFILE    permissions - this can be left alone
+
+
+You must also establish a login ``uucp'' in /etc/passwd with
+shell /usr/lib/uucp/uucico.  Each site must know  the  other
+site's phone number, login, and password.
+
+-----------
+|- The _c_r_o_n(8) program can arrange to execute these
+commands periodically.
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -55- Recompiling system software
+
+
+     If  you  have  only a dialup: you can be a second-class
+citizen on the uucp net.  You must find  another  site  that
+has a dialer, and have them poll you regularly.  (Once a day
+is about the minimum that is  reasonable.)   When  you  send
+mail  to  another  site, you must wait for them to call you.
+You    must    set     up     /usr/lib/uucp/USERFILE     and
+/usr/lib/uucp/L.sys.   Only  the first 4 fields of L.sys are
+necessary, and in practice only the first field (site  name)
+is looked at.  A typical L.sys for a passive node might be:
+
+
+     ucbvax     Any _A_C_U 300
+     research   Any _A_C_U 300
+
+
+where  the first field on each line is a site that will poll
+you and _A_C_U is either ``ACU'' or ``DIR.''  You need to put a
+password  on the uucp login and let the other site know your
+phone number, uucp login name (which is usually  uucp),  and
+password.  It doesn't matter whether they call you at 300 or
+1200 baud.
+
+     If you have a dialer and want  to  poll  another  site:
+normally, uucp will call the other site when it has anything
+to send it, and while it's at it will check to see  if  any-
+thing should come back.  The command
+
+     /usr/lib/uucp/uucico -r1 -sucbvax
+
+will  force  _u_u_c_p  to  poll ucbvax, even if there is nothing
+waiting.   This  command  can   be   conveniently   put   in
+/usr/lib/crontab to run early each morning.  If you are hav-
+ing trouble with the connection, invoke uucico by hand:
+
+     /usr/lib/uucp/uucico -r1 -sucbvax -x7
+
+where the --xx option turns on debugging output.   The  higher
+the  number,  the more debugging output you get; 1, 4, and 7
+are reasonable choices.
+
+66..55..  MMiisscceellllaanneeoouuss ssooffttwwaarree
+
+     The directory /usr/contrib contains programs and  pack-
+ages  that  you  may  wish to install on your system.  Also,
+some programs or libraries in the _u_c_b directory  are  suffi-
+ciently unique to be noteworthy.  Here is a brief summary.
+
+66..55..11..  AAppee
+
+     _A_p_e (_Arbitrary _Precision _Extended) is a replacement for
+the multiple precision arithmetic routines (_m_p(3)).   It  is
+much faster and contains numerous bug fixes.
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -56- Recompiling system software
+
+
+66..55..22..  LL1111,, MM1111
+
+     _M_1_1  is  a  Macro-11 assembler.  It recognizes and emu-
+lates almost all of the directives of standard DEC  Macro-11
+assemblers.  _L_1_1 is its loader.
+
+66..55..33..  JJoovvee
+
+     _J_o_v_e  (_Jonathan's  _Own  _Version  of  _EMACS) is an EMACS
+style editor developed  at  Lincoln  Sudbury  Regional  High
+School.
+
+66..55..44..  NNeewwss
+
+     The  network  bulletin  board  system developed at Duke
+University and the University of North  Carolina  and  since
+heavily modified at Berkeley.
+
+66..55..55..  NNootteess
+
+     The network bulletin board system developed at the Uni-
+versity of Illinois.  This version  contains  many  enhance-
+ments and clean _n_e_w_s interfaces.
+
+66..55..66..  RRaannmm
+
+     _R_a_n_m  is  a  fast uniform pseudorandom number generator
+package developed at Berkeley.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -57-            System Operation
+
+
+                    77.. SSYYSSTTEEMM OOPPEERRAATTIIOONN
+
+
+
+     This section describes procedures  used  to  operate  a
+PDP-11  UNIX  system.   Procedures  described  here are used
+periodically, to reboot the system, analyze  error  messages
+from  devices,  do disk backups, monitor system performance,
+recompile system software and control local changes.
+
+77..11..  BBoooottssttrraapp aanndd sshhuuttddoowwnn pprroocceedduurreess
+
+     The system boot procedure varies with the hardware con-
+figuration, but generally uses the console emulator or a ROM
+routine to boot one  of  the  disks.   /boot  comes  up  and
+prompts  (with  ``:  '') for the name of the system to load.
+Simply hitting a carriage return will load the default  sys-
+tem.   The  system  will come up with a single-user shell on
+the console.  To bring the system up to a multi-user config-
+uration  from  the single-user status, all you have to do is
+hit ^D on the console (you should check and,  if  necessary,
+set the date before going multiuser; see _d_a_t_e(1)).  The sys-
+tem will then execute /etc/rc, a multi-user restart  script,
+and  come  up  on the terminals listed as active in the file
+/etc/ttys.  See _i_n_i_t(8) and _t_t_y_s(5).   Note,  however,  that
+this  does  not  cause  a file system check to be performed.
+Unless the system was taken down  cleanly,  you  should  run
+``fsck  -p''  or  force  a reboot with _r_e_b_o_o_t(8) to have the
+disks checked.
+
+     In an automatic reboot, the system checks the disks and
+comes up multi-user without intervention at the console.  If
+the file system check fails, or  is  interrupted  (after  it
+prints  the  date)  from the console when a delete/rubout is
+hit, it will  leave  the  system  in  special-session  mode,
+allowing root to log in on one of a limited number of termi-
+nals (generally including a dialup) to repair file  systems,
+etc.   The system is then brought to normal multiuser opera-
+tions by signaling init with a SIGINT  signal  (with  ``kill
+-INT 1'').
+
+     To  take the system down to a single user state you can
+use
+
+     ## kill 1
+
+or use the _s_h_u_t_d_o_w_n(8) command (which is much more polite if
+there are other users logged in) when you are up multi-user.
+Either command will kill all processes and give you a  shell
+on the console, almost as if you had just booted.  File sys-
+tems remain mounted after the system is  taken  single-user.
+If  you wish to come up multi-user again, you should do this
+by:
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -58-            System Operation
+
+
+     ## cd /
+     ## /etc/umount -a
+     ## ^D
+
+The system can also be halted or rebooted with _r_e_b_o_o_t(8)  if
+automatic  reboots  are  enabled.   Otherwise, the system is
+halted by switching to single-user mode  to  kill  all  pro-
+cesses, updating the disks with a ``sync'' command, and then
+halting.
+
+     Each system shutdown, crash, processor halt and  reboot
+is recorded in the file /usr/adm/shutdownlog with the cause.
+
+77..22..  DDeevviiccee eerrrroorrss aanndd ddiiaaggnnoossttiiccss
+
+     When errors occur on peripherals or in the system,  the
+system  prints  a  warning diagnostic on the console.  These
+messages are collected regularly and written into  a  system
+error log file /usr/adm/messages by _d_m_e_s_g(8).
+
+     Error messages printed by the devices in the system are
+described with the drivers for the devices in section  4  of
+the  Berkeley  PDP-11  UNIX  Programmer's manual.  If errors
+occur indicating hardware problems, you should contact  your
+hardware  support group or field service.  It is a good idea
+to examine the error log file regularly (e.g. with ``tail -r
+/usr/adm/messages'').
+
+     If  you have DEC field service, they should know how to
+interpret these messages.  If they do not, tell them to con-
+tact the DEC UNIX Engineering Group.
+
+77..33..  FFiillee ssyysstteemm cchheecckkss,, bbaacckkuuppss aanndd ddiissaasstteerr rreeccoovveerryy
+
+     Periodically  (say  every  week or so in the absence of
+any problems) and always  (usually  automatically)  after  a
+crash,  all  the  file systems should be checked for consis-
+tency by _f_s_c_k(8).  The procedures of  _b_o_o_t(8)  or  _r_e_b_o_o_t(8)
+should  be  used  to  get the system to a state where a file
+system check can be performed manually or automatically.
+
+     Dumping of the file systems should be  done  regularly,
+since  once the system is going it is easy to become compla-
+cent.  Complete and incremental dumps are easily  done  with
+_d_u_m_p(8).   You  should  arrange to do a towers-of-Hanoi dump
+sequence; we tune ours so that almost all files  are  dumped
+on  two  tapes  and kept for at least a week in almost every
+case.  We take full dumps every month (and keep these indef-
+initely).
+
+     Dumping of files by name is best done by _t_a_r(1) but the
+amount of data that can be moved in this way is limited to a
+single  tape.   Finally,  if there are enough drives, entire
+disks can be copied with _d_d(1) using the raw  special  files
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -59-            System Operation
+
+
+and an appropriate block size.
+
+     It is desirable that full dumps of the root file system
+are made regularly.  This is especially true when  only  one
+disk is available.  Then, if the root file system is damaged
+by a hardware or software failure, you can rebuild  a  work-
+able  disk  using  a standalone restore in the same way that
+_r_e_s_t_o_r was used to build the initial root file system.
+
+     Exhaustion of user-file space is certain to  occur  now
+and  then;  the  only  mechanisms  for controlling this phe-
+nomenon are occasional use of _d_f(1), _d_u(1), _q_u_o_t(8), threat-
+ening  messages  of the day, personal letters, and (probably
+as a last resort) quotas (see _s_e_t_q_u_o_t_a(8)).
+
+77..44..  MMoovviinngg ffiillee ssyysstteemm ddaattaa
+
+     If you have the equipment, the best way to move a  file
+system  is  to  dump  it  to  magtape  using _d_u_m_p(8), to use
+_m_k_f_s(8) to create the new file system,  and  restore,  using
+_r_e_s_t_o_r(8),  the  tape.  If for some reason you don't want to
+use magtape, dump accepts an argument telling where  to  put
+the dump; you might use another disk.  Sometimes a file sys-
+tem has to be increased in  logical  size  without  copying.
+The  super-block of the device has a word giving the highest
+address that can be allocated.  For  small  increases,  this
+word  can  be patched using the debugger _a_d_b(1) and the free
+list reconstructed using _f_s_c_k(8).  The size  should  not  be
+increased  greatly  by this technique, since the file system
+will then be short of inode slots.  Read and understand  the
+description given in _f_i_l_s_y_s(5) before playing around in this
+way.
+
+     If you have to merge a file system into another, exist-
+ing  one, the best bet is to use _t_a_r(1).  If you must shrink
+a file system, the best bet is  to  dump  the  original  and
+restor  it onto the new file system.  However, this will not
+work if the i-list on the smaller  file  system  is  smaller
+than  the maximum allocated inode on the larger.  If this is
+the case,  reconstruct  the  file  system  from  scratch  on
+another file system (perhaps using _t_a_r(1)) and then dump it.
+If you are playing with the root file system and  only  have
+one drive the procedure is more complicated.  What you do is
+the following:
+
+1.   GET A SECOND PACK!!!!
+
+2.   Dump the root file system to tape using _d_u_m_p(8).
+
+3.   Bring the system down and mount the new pack.
+
+4.   Load the standalone versions of _m_k_f_s(8)  and  _r_e_s_t_o_r(8)
+     as in sections 2.1-2.3 above.
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -60-            System Operation
+
+
+5.   Boot normally using the newly created disk file system.
+
+     Note that if you add new disk drivers they should  also
+be added to the standalone system in /usr/src/sys/stand.
+
+77..55..  MMoonniittoorriinngg SSyysstteemm PPeerrffoorrmmaannccee
+
+     The  _i_o_s_t_a_t(8) and _v_m_s_t_a_t(8) programs provided with the
+system are designed to aid in monitoring  systemwide  activ-
+ity.   By  running  them  when  the system is active you can
+judge the system activity in several dimensions: job distri-
+bution, virtual memory load, swapping activity, disk and CPU
+utilization.  Ideally, there  should  be  few  blocked  (DW)
+jobs, there should be little swapping activity, there should
+be available bandwidth on the disk devices (most single arms
+peak  out  at  30-35 tps in practice), and the user CPU uti-
+lization (US) should be high (above 60%).
+
+     If the system is busy, then the count  of  active  jobs
+may be large, and several of these jobs may often be blocked
+(DW).
+
+     If you run _v_m_s_t_a_t when the system is busy  (a  ``vmstat
+5''  gives  all the numbers computed by the system), you can
+find imbalances by noting abnormal  job  distributions.   If
+many  processes are blocked (DW), then the disk subsystem is
+overloaded or  imbalanced.   If  you  have  several  non-DMA
+devices or open teletype lines that are ``ringing'', or user
+programs   that   are    doing    high-speed    non-buffered
+input/output,  then  the  system time may go high (60-70% or
+higher).  It is often possible to pin down the cause of high
+system  time by looking to see if there is excessive context
+switching (CS),  interrupt  activity  (IN)  or  system  call
+activity (SY).
+
+     If  the system is heavily loaded, or if you have little
+memory for your load (248K is little in  almost  any  case),
+then  the  system will be forced to swap.  This is likely to
+be accompanied by a noticeable reduction in  system  perfor-
+mance and pregnant pauses when interactive jobs such as edi-
+tors swap out.  If you expect to be in a  memory-poor  envi-
+ronment  for  an extended period you might consider adminis-
+tratively limiting system load.
+
+77..66..  AAddddiinngg uusseerrss
+
+     New users can be added to the system by adding  a  line
+to  the  password file /etc/passwd.  You should add accounts
+for the initial user community, giving each a directory  and
+a  password,  and putting users who will wish to share soft-
+ware in the same group.  User id's should be assigned start-
+ing  with  16 or higher, as lower id's are treated specially
+by the system.  Default startup files should  probably  pro-
+vided  for  new  users  and  can be copied from /usr/public.
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -61-            System Operation
+
+
+Initial passwords should be set also.
+
+     A number of guest accounts have been  provided  on  the
+distribution system; these accounts are for people at Berke-
+ley and at Bell Laboratories who have  done  major  work  on
+UNIX  in  the past.  You can delete these accounts, or leave
+them on the system if you expect  that  these  people  would
+have occasion to login as guests on your system.
+
+77..77..  AAccccoouunnttiinngg
+
+     UNIX currently optionally records two kinds of account-
+ing  information:  connect  time  accounting   and   process
+resource  accounting.   The connect time accounting informa-
+tion is normally stored in the file /usr/adm/wtmp, which  is
+summarized  by the program _a_c(8).  The process time account-
+ing information is stored in  the  file  /usr/adm/acct,  and
+analyzed and summarized by the program _s_a(8).
+
+     If  you  need to implement recharge for computing time,
+you can implement procedures based on the  information  pro-
+vided  by these commands.  A convenient way to do this is to
+give commands to the clock daemon /etc/cron to  be  executed
+every day at a specified time.  This is done by adding lines
+to /usr/adm/crontab; see _c_r_o_n(8) for details.
+
+77..88..  RReessoouurrccee ccoonnttrrooll
+
+     Resource control in the  current  version  of  UNIX  is
+rather  primitive.   Disk  space  usage  can be monitored by
+_d_u(1) or _q_u_o_t(8) as was previously mentioned.   Disk  quotas
+can  be  set  and changed with _s_e_t_q_u_o_t_a(8) if the kernel has
+been configured for quotas.  Our quota mechanism is simplis-
+tic  and  easily  defeated but does make users more aware of
+the amount of space they use.
+
+77..99..  FFiilleess wwhhiicchh nneeeedd ppeerriiooddiicc aatttteennttiioonn
+
+     We conclude the  discussion  of  system  operations  by
+listing  the files and directories that continue to grow and
+thus require periodic truncation, along with  references  to
+relevant  manual  pages.  _C_r_o_n(8) can be used to run scripts
+to truncate these periodically, possibly  summarizing  first
+or  saving recent entries.  Some of these can be disabled if
+you don't need to collect the information.
+
+//uussrr//aaddmm//aacccctt             sa(8)          raw process account data
+//uussrr//aaddmm//mmeessssaaggeess         dmesg(8)       system error log
+//uussrr//aaddmm//sshhuuttddoowwnnlloogg      shutdown(8)    log of system reboots
+//uussrr//aaddmm//wwttmmpp             ac(8)          login session accounting
+//uussrr//ssppooooll//uuuuccpp//LLOOGGFFIILLEE   uulog(1)       uucp log file
+//uussrr//ssppooooll//uuuuccpp//SSYYSSLLOOGG    uulog(1)       more uucp logging
+//uussrr//ddiicctt//ssppeellllhhiisstt       spell(1)       spell log
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -62-            System Operation
+
+
+//uussrr//lliibb//lleeaarrnn//lloogg        learn(1)       learn lesson logging
+//uussrr//ssyyss                  savecore(8)    system core images
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -63-               Magic numbers
+
+
+                  88.. KKEERRNNEELL MMAAGGIICC NNUUMMBBEERRSS
+
+
+
+     This sections contains a collection  of  magic  numbers
+for use in patching core or an executable unix binary.  Some
+of them have also been  mentioned  earlier  in  this  paper.
+With  the  exception of the _x_p___t_y_p_e_[_i_] variables (which hold
+bytes) and _s_w_p_l_o (which is a long) all locations given  con-
+tain short integers.  N.B.:  in the case of paired interrupt
+vectors (for DHs and DZs) the address of the  second  vector
+of  the pair is four more than the address of the first vec-
+tor.
+
+
+
+
+
+
+
+
+                      Interrupt Vectors
+Vector   Handler   Contents   Block device   Character device
+0160     rlio       01202          8                18
+0210     hkio       01142          4                19
+0220     rkio       01172          0                 9
+0224     tmio       01222          3                12
+0224     htio       01152          7                15
+0224     tsio       01232          9                20
+0254     xpio       01242          6                14
+0260     rpio       01212          1                11
+|-        dzin       01132          -                21
+|-        dzdma      02202          -                21
+|-        dhin       01112          -                 4
+|-        dhou       01122          -                 4
+|-        lpio       01162          -                 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------
+|- Set by _a_u_t_o_c_o_n_f_i_g(8).
+
+
+
+                        17 March 1998
+
+
+
+
+
+Installing/Operating 2.9BSD -64-               Magic numbers
+
+
+        Other Variables
+   Name      Address   Contents
+xp_addr       061464   0176700
+xp_type[0]    061472      |=
+xp_type[1]    061506      |=
+xp_type[2]    061522      |=
+xp_type[3]    061536      |=
+HKADDR        061006   0177440
+HTADDR       0114236      |-
+RKADDR        061152   0177400
+RLADDR        061154   0174400
+RPADDR        061236   0176710
+TMADDR       0113330      |-
+TSADDR       0113622      |-
+dz_addr      0113324      |-
+dh_addr      0114146      |-
+lp_addr      0113462      |-
+rootdev       060772      *
+pipedev       060776      *
+swapdev       060774      *
+swplo         061000      *
+nswap         061004      *
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------
+|- Set by _a_u_t_o_c_o_n_f_i_g(8).
+|= Set by reading the corresponding drive type reg-
+ister.
+* System dependent.
+
+
+
+                        17 March 1998
+
+

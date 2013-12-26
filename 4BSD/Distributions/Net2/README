@@ -1,0 +1,18 @@
+This tape was provided to me (Rick Copeland) for transcription by Mr. Kirk 
+McKusick.  The tape is of the 1/2", 9 track magnetic media type. The following
+labels and nomenclature appeared on the physical tape reel:
+
+	Back off reel:
+	6250 bpi	Tar
+	8 July 91
+	Master
+	Network, Rel 2
+
+There was no listing on the physical reel of this tape. The following list of 
+files did NOT appear of the tape or physical reel and is a record of what I 
+observed as I copied it to disk.
+
+1) Net2	8968 blocks	block size=10240	91,832,320 bytes total
+
+There were no errors reading this tape.  The "Net2" file is a tar archive.
+

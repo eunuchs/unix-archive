@@ -1,0 +1,58 @@
+PDP-11 simulator V3.2-3
+RX: buffering file in memory
+RX: buffering file in memory
+
+rx boot:lsx
+# LS -L /
+TOTAL 55
+DRWXR-XR-X 2 0         416 OCT 12 09:19 BIN
+DRWXR-XR-X 2 0          96 OCT 29 03:10 DEV
+DRWXR-XR-X 2 0         176 JUL 25 14:30 ETC
+DRWXR-XR-X 2 0         144 JUL  1  1977 LIB
+-RWXRWXRWX 1 75      11272 OCT 29 03:10 LSX
+DRWXRWXRWX 2 0         272 OCT 29 03:10 TMP
+DRWXR-XR-X 2 0        1216 OCT 29 03:10 USR
+# STTY -LCASE
+# ls -l /bin
+total 152
+-rwxr-xr-x 1 0        5728 Jul  1  1977 as
+-rwxr-xr-x 1 0        7198 Sep  8 12:07 cc
+-rwxrwxrwx 1 0        7496 Jul  1  1977 check
+-rwxr-xr-x 1 0         840 Jul  1  1977 cp
+-rwxr-xr-x 1 0        2130 Jul  1  1977 date
+-rwxr-xr-x 1 0        4730 Jul  1  1977 db
+-rwxr-xr-x 1 0        6584 Jul  1  1977 ed
+-rwxr-xr-x 1 0        6556 Jul  1  1977 ld
+-rwxr-xr-x 1 0        1966 Jul  1  1977 load
+-rwxr-xr-x 1 0        5340 Jul  1  1977 ls
+-rwxr-xr-x 1 0         240 Jul  1  1977 mkdir
+-rwxr-xr-x 1 0        2460 Jul  1  1977 mv
+-rwxrwxrwx 1 0        4588 Jul 24 10:40 od
+-rwxr-xr-x 1 0        1474 Jul  1  1977 reloc
+-rwxr-xr-x 1 0        1882 Jul  1  1977 rm
+-rwxr-xr-x 1 0         292 Jul  1  1977 rmdir
+-rwxr-xr-x 1 0        5868 Jul  1  1977 sh
+-rwxr-xr-x 1 0        1186 Jul  1  1977 size
+-rwxr-xr-x 1 0         520 Jul  1  1977 strip
+-rwxr-xr-x 1 0        1252 Jul  1  1977 stty
+# cp /dev/tty8 addr.c
+main() {
+  int a;
+  printf("main address: %u (0%o)\n", main, main);
+  printf("stack address: %u (0%o)\n", &a, &a);
+  printf("heap address: %u (0%o)\n", sbrk(0), sbrk(0));
+}       
+^D
+# cc addr.c
+# a.out
+main address: 16410 (040032)
+stack address: 40934 (0117746)
+heap address: 17920 (043000)
+# ls -l a.out
+-rwxrwxrwx 1 0        1632 Oct 29 03:10 a.out
+# size a.out
+866+138+532=1536 (3000)
+# strip a.out
+# ls -l a.out
+-rwxrwxrwx 1 0        1020 Oct 29 03:10 a.out
+# 

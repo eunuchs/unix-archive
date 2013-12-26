@@ -1,0 +1,19 @@
+Aucbcory.194
+NET.v7bugs
+utzoo!duke!vax135!ucbvax!cory:mark
+Sun Aug 24 08:27:03 1980
+printf
+Under certain circumstances, v7 printf prints extra leading zeros,
+as in the example below.  Does anyone have a fix for this?
+
+Script started on Fri Aug 22 20:57:20 1980
+% cat foo.c
+#include <stdio.h>
+main()
+{
+	printf("%1.1d:%02.2d\n", 3, 14);
+}
+% foo
+03:014
+% 
+script done on Fri Aug 22 20:57:33 1980

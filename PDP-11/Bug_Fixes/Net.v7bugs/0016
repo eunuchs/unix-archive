@@ -1,0 +1,10 @@
+Aduke.751
+NET.v7bugs
+utzoo!duke!swd
+Sat Apr 25 11:00:36 1981
+mail speedup
+Version seven mail takes forever to send a letter
+to a remote site.  This is because it waits for
+the uux process it spawns to finish.
+If the pclose call in mail.c is changed to
+an fclose, then mail will not wait.

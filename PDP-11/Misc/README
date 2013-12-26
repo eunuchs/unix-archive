@@ -1,0 +1,16 @@
+md5 contains the MD5 hash program used to generate the contents of the
+top-level file `checksums'.
+
+fpsim.tar contains a floating-point simulator for 7th Edition, donated by
+Henry Spencer. Here are the details from the man page:
+
+	This system provides for software emulation of floating-point
+	instructions if floating-point hardware is not present. The
+	kernel code in question simulates an FP11 floating-point
+	processor by intercepting illegal-instruction traps and
+	decoding and interpreting the floating-point opcodes.
+
+	This simulator is derived from Bell's, which used signal(2)
+	and was compiled into the user program. Mike Tilson of HCR
+	thought of and did the original kernel-mode simulator;
+	this improved variant by Henry Spencer.

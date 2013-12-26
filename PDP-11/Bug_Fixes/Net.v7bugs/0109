@@ -1,0 +1,18 @@
+Autzoo.1656
+net.bugs.v7
+utzoo!henry
+Tue May 11 18:46:38 1982
+uucico time check wraparound
+The time check ("is it OK to call X now?") in uucico does not allow for
+the possibility that the time range might wrap around (e.g. "2300-0800";
+we have some odd long-distance discount schedules here).  It takes such
+ranges to be "never".  To fix this, make the following change near the
+end of conn.c/ifdate():
+
+	< 	if (tn >= tl && tn <= th)
+	<		return(1);
+	---
+	> 	if (tl <= th && (tl <= tn && tn <= th))
+	> 		return(1);
+	> 	if (tl >= th && (tl <= tn || tn <= th))
+	>		return(1);

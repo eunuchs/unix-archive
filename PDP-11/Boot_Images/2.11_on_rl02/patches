@@ -1,0 +1,54 @@
+diff -c emu/pdp11_cpu.c emu.new/pdp11_cpu.c
+*** emu/pdp11_cpu.c	Mon Jan 29 17:37:25 1996
+--- emu.new/pdp11_cpu.c	Wed Feb 28 16:55:55 1996
+***************
+*** 486,492 ****
+  register int IR, srcspec, srcreg, dstspec, dstreg;
+  register int src, src2, dst;
+  register int i, t, sign, oldrs, trapnum;
+! int reason, trapea, abortval;
+  extern int sim_process_event (void);
+  extern int sim_activate (UNIT *uptr, int interval);
+  extern int reset_all (int start_device);
+--- 486,493 ----
+  register int IR, srcspec, srcreg, dstspec, dstreg;
+  register int src, src2, dst;
+  register int i, t, sign, oldrs, trapnum;
+! int reason, abortval;
+! volatile int trapea;
+  extern int sim_process_event (void);
+  extern int sim_activate (UNIT *uptr, int interval);
+  extern int reset_all (int start_device);
+diff -c emu/pdp11_defs.h emu.new/pdp11_defs.h
+*** emu/pdp11_defs.h	Mon Jan 29 17:37:25 1996
+--- emu.new/pdp11_defs.h	Wed Feb 28 17:11:26 1996
+***************
+*** 15,21 ****
+  
+  #define VASIZE		0200000				/* 2**16 */
+  #define VAMASK		(VASIZE - 1)			/* 2**16 - 1 */
+! #define MEMSIZE 	000760000			/* 2**18 - 2**13 */
+  #define IOPAGEBASE	017760000			/* 2**22 - 2**13 */
+  #define STKLIM		0400
+  
+--- 15,21 ----
+  
+  #define VASIZE		0200000				/* 2**16 */
+  #define VAMASK		(VASIZE - 1)			/* 2**16 - 1 */
+! #define MEMSIZE 	007760000
+  #define IOPAGEBASE	017760000			/* 2**22 - 2**13 */
+  #define STKLIM		0400
+  
+diff -c emu/pdp11_sys.c emu.new/pdp11_sys.c
+*** emu/pdp11_sys.c	Mon Jan 29 17:37:27 1996
+--- emu.new/pdp11_sys.c	Wed Feb 28 19:05:14 1996
+***************
+*** 126,131 ****
+--- 126,132 ----
+  		M[origin >> 1] = (origin & 1)?
+  			(M[origin >> 1] & 0377) | (i << 8):
+  			(M[origin >> 1] & 0177400) | i;
++ 		origin++;
+  		count = count - 1;
+  		state = state + (count == 0);
+  		break;

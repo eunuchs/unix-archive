@@ -1,0 +1,34 @@
+This directory contains my absolute first attempt at making Fuzzball self
+boot.  It is not pretty.  The Fuzzball is not built correctly, and of course
+there are still no PD versions of the RT-11 utilities so once it does boot
+there's really nothing you can do with it, except do a TIME command and then
+run CROCK (an analog clock program for VT52s or VT100s), and even that won't
+be much fun because the TTY buffering is "bursty" and doesn't flush between
+screen updates.  I also threw on a little program called "CAT" which prints
+a dir listing for DK:, it doesn't accept a filespec though so you can only
+use DK: and you get all files whether you want them or not.
+
+But anyway, FUZZBOOT.DSK is a bootable RL01 disk, built for an 11/34a
+(or 11/23) with an RL11, RX211, KW11L, console, and two other DL11s.
+Anything significantly less will not work AFAIK (although omitting the
+RX211 seems not to hurt anything).  This has only been tested with E11,
+not with real 11s, an E11.INI is included to things up.  The secondary boot
+loader (in block 2) will load anything named BOS.SAV so feel free to
+replace the supplied BOS.SAV with one that is built correctly for your config.
+The secondary loader scans the directory correctly so there's no need to
+duplicate the size/location of the existing BOS.SAV.
+
+I'm working on writing a whole library of public domain boot blocks, so
+far I have RK:, DL:, DM:, DX:/DY:/PD:, DU:, and HD:, all seem to work under
+simulation but haven't been tested on real hardware (except DU:).  They,
+and the secondary loader, are available from pub/pdp11/boot on this host.
+I need to write a utility to write a boot block on block 0 and the secondary
+loader on blocks 2-5 (well, it's only block 2 for now) and take care of
+patching the .RAD50 filename into locs 000002-000007 of block 2, piecing
+it together by hand is no fun.
+
+So now, someone needs to write PD versions of PIP.SAV, DIR.SAV, DUP.SAV,
+KED.SAV, MACRO.SAV, LINK.SAV, you get the idea...  I'll dig up one of the
+DECUS versions of TECO one of these days and put it here.
+
+John Wilson  <wilson@dbit.dbit.com>

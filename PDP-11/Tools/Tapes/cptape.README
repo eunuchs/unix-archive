@@ -1,0 +1,19 @@
+While exchanging tapes and tape images with a number of people on this list, I
+have mentioned the existence of this program to a number of people, but so far
+I haven't given it to anyone. Now I'm posting it to the list for everyone's
+benefit. This program can read a tape on a UNIX box without the user having to
+know anything about its format. This program automatically determines how many
+files are on the tape, what is the record size for each, and whether there are
+any oddities such as partial records. It saves each tape file into a separate
+disk file and produces a log of everything found on the tape.
+
+It's a simple C program and should compile and run on virtually any UNIX or
+UNIX-like system. The original version was written by one guy I met on another
+list once and then it was significantly enhanced by me. I include it below as
+a uuencoded gzipped tarball.
+
+Sincerely,
+Michael Sokolov
+Cellular phone: 216-217-2579
+ARPA Internet SMTP mail: msokolov@harrier.Uznet.NET
+Thu Dec 17 1998

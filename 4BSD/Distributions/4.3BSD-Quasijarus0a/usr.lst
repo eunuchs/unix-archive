@@ -1,0 +1,3011 @@
+rwxr-xr-x  0/0   1444 Dec 25 17:00 1998 MAKEHOSTS
+rwxr-xr-x  0/10      0 Sep 27 13:52 1999 adm/
+rw-r--r--  0/10      0 Jul  3 23:43 1983 adm/lpd-errs
+rw-r--r--  0/10      0 Jul  3 23:43 1983 adm/wtmp
+rw-r--r--  0/10      0 Jul  3 23:43 1983 adm/acct
+rw-r--r--  0/10      0 Jul  3 23:43 1983 adm/lastlog
+rw-r--r--  0/10      0 Jul  3 23:43 1983 adm/msgbuf
+rw-r--r--  0/10      0 Jul  3 23:43 1983 adm/messages
+rw-r--r-- 66/1      0 Jul  3 23:43 1983 adm/aculog
+rwxr-xr-x  0/10   3497 Dec  8 17:59 1987 adm/daily
+rwxr-xr-x  0/10    530 Nov  3 00:34 1986 adm/monthly
+rwxr-xr-x  0/10    787 Jun 30 21:25 1987 adm/weekly
+rwxr-xr-x  0/10      0 Oct  2 21:17 1999 bin/
+rwxr-xr-x  3/10  66560 Oct  2 21:15 1999 bin/nroff
+rwxr-xr-x  3/10  32768 Oct  2 21:15 1999 bin/find
+rwxr-xr-x  3/10  70656 Oct  2 21:15 1999 bin/troff
+rwxr-xr-x  3/10  37888 Oct  2 21:15 1999 bin/learn
+rwxr-xr-x  3/10    705 Oct  2 21:15 1999 bin/plot
+rwxr-xr-x  3/10   1021 Oct  2 21:14 1999 bin/calendar
+r-xr-xr-x  3/10    400 Oct  2 21:16 1999 bin/lorder
+r-xr-xr-x  3/10    139 Oct  2 21:16 1999 bin/nohup
+rwxr-xr-x  3/10    735 Oct  2 21:15 1999 bin/lint
+rwxr-xr-x  3/10    989 Oct  2 21:15 1999 bin/style
+rwxr-xr-x  3/10    524 Oct  2 21:15 1999 bin/diction
+rwxr-xr-x  3/10    198 Oct  2 21:15 1999 bin/explain
+rwxr-xr-x  3/10    592 Oct  2 21:15 1999 bin/roffbib
+rwxr-xr-x  3/10    331 Oct  2 21:15 1999 bin/indxbib
+rwxr-xr-x  3/10    974 Oct  2 21:15 1999 bin/spell
+rwxr-xr-x  3/10    362 Oct  2 21:16 1999 bin/struct
+rwxr-xr-x  3/10    309 Oct  2 21:15 1999 bin/diff3
+rwxr-sr-x  3/2  15360 Oct  2 21:16 1999 bin/iostat
+rwxr-xr-x  3/10  28672 Oct  2 21:16 1999 bin/enroll
+rwxr-xr-x  3/10  35840 Oct  2 21:16 1999 bin/xsend
+rwxr-xr-x  3/10  34816 Oct  2 21:16 1999 bin/xget
+rwxr-xr-x  3/10  21504 Oct  2 21:15 1999 bin/graph
+rwxr-xr-x  3/10  11264 Oct  2 21:15 1999 bin/spellin
+rwxr-xr-x  3/10  11264 Oct  2 21:15 1999 bin/spellout
+rwsr-xr-x  0/10  27648 Oct  2 21:14 1999 bin/atq
+rwsr-xr-x  0/10  25600 Oct  2 21:14 1999 bin/atrm
+rwsr-xr-x  0/10  29696 Oct  2 21:14 1999 bin/at
+rwxr-xr-x  3/10  30720 Oct  2 21:14 1999 bin/dc
+rwxr-xr-x  3/10  40960 Oct  2 21:15 1999 bin/lex
+--s--s--x 66/1  40960 Oct  2 21:16 1999 bin/uucp
+--s--s--x 66/1  43008 Oct  2 21:16 1999 bin/uux
+--s--s--x 66/1  23552 Oct  2 21:16 1999 bin/uulog
+--s--s--x 66/1  20480 Oct  2 21:16 1999 bin/uuname
+--s--s--x 66/1  32768 Oct  2 21:16 1999 bin/uupoll
+--s--s--x 66/1  16384 Oct  2 21:16 1999 bin/uusnap
+rwxr-xr-x  3/10  13312 Oct  2 21:16 1999 bin/uuencode
+rwxr-xr-x  3/10  21504 Oct  2 21:16 1999 bin/uudecode
+rwxr-xr-x  3/10  35840 Oct  2 21:16 1999 bin/yacc
+--s--s--x 66/1  29696 Oct  2 21:16 1999 bin/uuq
+rwxr-xr-x  3/10  35840 Oct  2 21:15 1999 bin/neqn
+r-xr-xr-x  3/10   2422 Oct  2 21:16 1999 bin/mkdep
+rwxr-xr-x  3/10  21504 Oct  2 21:16 1999 bin/ar11
+rwxr-xr-x  3/10   5120 Oct  2 21:16 1999 bin/basename
+rwxr-xr-x  3/10  14336 Oct  2 21:16 1999 bin/cal
+rwxr-xr-x  3/10  13312 Oct  2 21:16 1999 bin/cb
+rwxr-xr-x  3/10  13312 Oct  2 21:16 1999 bin/checkeq
+rwxr-xr-x  3/10  13312 Oct  2 21:16 1999 bin/col
+rwxr-xr-x  3/10  13312 Oct  2 21:16 1999 bin/comm
+rwxr-xr-x  3/10  12288 Oct  2 21:16 1999 bin/crypt
+rwxr-xr-x  3/10  35840 Oct  2 21:16 1999 bin/deroff
+rwxr-xr-x  3/10  19456 Oct  2 21:16 1999 bin/file
+rwxr-xr-x  3/10  13312 Oct  2 21:16 1999 bin/join
+rwxr-xr-x  3/10  16384 Oct  2 21:16 1999 bin/look
+rwxr-xr-x  3/10   9216 Oct  2 21:16 1999 bin/mesg
+rwxr-xr-x  3/10  15360 Oct  2 21:16 1999 bin/ptx
+rwxr-xr-x  3/10  15360 Oct  2 21:16 1999 bin/ranlib
+rwxr-xr-x  3/10  11264 Oct  2 21:16 1999 bin/rev
+rwxr-xr-x  3/10   5120 Oct  2 21:16 1999 bin/sleep
+rwxr-xr-x  3/10  19456 Oct  2 21:16 1999 bin/sort
+rwxr-xr-x  3/10  13312 Oct  2 21:16 1999 bin/spline
+rwxr-xr-x  3/10  13312 Oct  2 21:16 1999 bin/split
+rwxr-xr-x  3/10  10240 Oct  2 21:16 1999 bin/sum
+rwxr-xr-x  3/10   7168 Oct  2 21:16 1999 bin/tabs
+rwxr-xr-x  3/10  18432 Oct  2 21:16 1999 bin/tc
+rwxr-xr-x  3/10  14336 Oct  2 21:16 1999 bin/tk
+rwxr-xr-x  3/10  13312 Oct  2 21:16 1999 bin/touch
+rwxr-xr-x  3/10   6144 Oct  2 21:16 1999 bin/tr
+rwxr-xr-x  3/10  13312 Oct  2 21:16 1999 bin/tsort
+rwxr-xr-x  3/10   7168 Oct  2 21:16 1999 bin/tty
+rwxr-xr-x  3/10  11264 Oct  2 21:16 1999 bin/uniq
+rwxr-xr-x  3/10  13312 Oct  2 21:16 1999 bin/units
+rwxr-xr-x  3/10  22528 Oct  2 21:16 1999 bin/bc
+rwxr-xr-x  3/10  20480 Oct  2 21:15 1999 bin/f77
+rwxr-xr-x  3/10  15360 Oct  2 21:15 1999 bin/tek
+rwxr-xr-x  3/10  13312 Oct  2 21:15 1999 bin/t4013
+rwxr-xr-x  3/10  15360 Oct  2 21:15 1999 bin/t300
+rwxr-xr-x  3/10  15360 Oct  2 21:15 1999 bin/t300s
+rwxr-xr-x  3/10  15360 Oct  2 21:15 1999 bin/t450
+rwxr-xr-x  3/10  16384 Oct  2 21:15 1999 bin/aedplot
+rwxr-xr-x  3/10  15360 Oct  2 21:15 1999 bin/bgplot
+rwxr-xr-x  3/10  25600 Oct  2 21:15 1999 bin/crtplot
+rwxr-xr-x  3/10  17408 Oct  2 21:15 1999 bin/dumbplot
+rwxr-xr-x  3/10  16384 Oct  2 21:15 1999 bin/gigiplot
+rwxr-xr-x  3/10  23552 Oct  2 21:15 1999 bin/hpplot
+rwxr-xr-x  3/10  17408 Oct  2 21:15 1999 bin/hp7221plot
+rwxr-xr-x  3/10  15360 Oct  2 21:15 1999 bin/implot
+rwxr-xr-x  3/10  17408 Oct  2 21:15 1999 bin/atoplot
+rwxr-xr-x  3/10  12288 Oct  2 21:15 1999 bin/plottoa
+rwxr-xr-x  3/10  21504 Oct  2 21:15 1999 bin/ratfor
+rwxr-xr-x  3/10  39936 Oct  2 21:16 1999 bin/tbl
+rwxr-xr-x  3/10  39936 Oct  2 21:15 1999 bin/refer
+rwxr-xr-x  3/10  19456 Oct  2 21:15 1999 bin/addbib
+rwxr-xr-x  3/10  14336 Oct  2 21:15 1999 bin/lookbib
+rwxr-xr-x  3/10  20480 Oct  2 21:15 1999 bin/sortbib
+rwxr-xr-x  3/10 101376 Oct  2 21:15 1999 bin/efl
+rwxr-xr-x  3/10  21504 Oct  2 21:15 1999 bin/m4
+rwxr-xr-x  3/10  37888 Oct  2 21:15 1999 bin/eqn
+rws--x--x 66/1  52224 Oct  2 21:16 1999 bin/tip
+rwxr-xr-x  3/10  20480 Oct  2 21:15 1999 bin/prof
+rwxr-xr-x  3/10  22528 Oct  2 21:16 1999 bin/install
+rwxr-xr-x  3/10  15360 Oct  2 21:15 1999 bin/grnplot
+rwxr-xr-x  3/10  22528 Oct  2 21:16 1999 bin/uusend
+rwxr-xr-t  3/10 120832 Oct  2 21:17 1999 bin/ex
+rwxr-xr-x  0/10  35840 Oct  2 21:16 1999 bin/admin
+rwxr-xr-x  0/10  16384 Oct  2 21:16 1999 bin/bdiff
+rwxr-xr-x  0/10  37888 Oct  2 21:16 1999 bin/chghist
+rwxr-xr-x  0/10  35840 Oct  2 21:16 1999 bin/comb
+rwxr-xr-x  0/10  45056 Oct  2 21:16 1999 bin/delta
+rwxr-xr-x  0/10  12288 Oct  2 21:16 1999 bin/help
+rwxr-xr-x  0/10  20480 Oct  2 21:16 1999 bin/prt
+rwxr-xr-x  0/10  38912 Oct  2 21:16 1999 bin/prs
+rwxr-xr-x  0/10    775 Oct  2 21:16 1999 bin/sccsdiff
+rwxr-xr-x  0/10  11264 Oct  2 21:16 1999 bin/what
+rwxr-xr-x  0/10  14336 Oct  2 21:16 1999 bin/val
+rwxr-xr-x  0/10  35840 Oct  2 21:16 1999 bin/snull
+rwxr-xr-x  0/10  25600 Oct  2 21:16 1999 bin/stree
+rwxr-xr-x  0/10  43008 Oct  2 21:16 1999 bin/get
+rwxr-xr-x  0/10  35840 Oct  2 21:16 1999 bin/cmt
+rwxr-xr-x  3/10  22528 Oct  2 21:16 1999 bin/ruusend linked to bin/uusend
+rws--x--x 66/1  52224 Oct  2 21:16 1999 bin/cu linked to bin/tip
+rwxr-xr-x  0/10  37888 Oct  2 21:16 1999 bin/rmchg linked to bin/chghist
+rwxr-xr-x  0/10  37888 Oct  2 21:16 1999 bin/rmdel linked to bin/chghist
+rwxr-xr-x  0/10      0 Oct  2 21:16 1999 dict/
+rwxr-xr-x  0/10      0 Oct  2 21:15 1999 dict/papers/
+r--r--r--  0/10   3834 Jun 25 10:49 1982 dict/papers/Rbstjissue
+r--r--r--  0/10   7981 Jun 25 10:49 1982 dict/papers/Rv7man
+r-xr-xr-x  0/10    127 Dec 25 19:36 1998 dict/papers/runinv
+rw-r--r--  0/10   1105 Oct  2 21:15 1999 dict/papers/Ind.ic
+rw-r--r--  0/10   7984 Oct  2 21:15 1999 dict/papers/Ind.ia
+rw-r--r--  0/10   4316 Oct  2 21:15 1999 dict/papers/Ind.ib
+rwxr-xr-x  0/10      0 Oct  2 21:16 1999 dict/special/
+r--r--r--  3/10   6855 Oct  2 21:16 1999 dict/special/4bsd
+r--r--r--  3/10   2205 Oct  2 21:16 1999 dict/special/math
+rw-r--r--  0/102486813 Aug  9 23:37 1985 dict/web2
+rw-r--r--  0/101012730 Aug  9 23:37 1985 dict/web2a
+r--r--r--  3/10  50000 Oct  2 21:15 1999 dict/hlista
+r--r--r--  3/10  50000 Oct  2 21:15 1999 dict/hlistb
+r--r--r--  3/10  50000 Oct  2 21:15 1999 dict/hstop
+r--r--r--  3/10 209785 Oct  2 21:15 1999 dict/words
+rwxr-xr-x  0/0      0 Oct  2 15:11 1999 dict/spellhist symbolic link to /dev/null
+rw-r--r--  0/10    706 Mar  8 20:47 1983 dict/connectives
+r--r--r--  3/10  50000 Oct  2 21:15 1999 dict/hlist
+r--r--r--  3/10   3317 Oct  2 21:16 1999 dict/american
+r--r--r--  3/10   3512 Oct  2 21:16 1999 dict/british
+r--r--r--  3/10   8216 Oct  2 21:16 1999 dict/stop
+r--r--r--  3/10   5203 Oct  2 21:16 1999 dict/README
+rwxr-xr-x  0/10      0 Oct  2 21:52 1999 games/
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/lib/
+rwx------  7/10      0 Oct  2 21:18 1999 games/lib/atc/
+rw-------  7/10    159 Oct  2 21:18 1999 games/lib/atc/ATC_scores
+rw-------  7/10     37 Oct  2 21:18 1999 games/lib/atc/Game_List
+rw-------  7/10    429 Oct  2 21:18 1999 games/lib/atc/Killer
+rw-------  7/10    320 Oct  2 21:18 1999 games/lib/atc/crossover
+rw-------  7/10    470 Oct  2 21:18 1999 games/lib/atc/default
+rw-------  7/10    268 Oct  2 21:18 1999 games/lib/atc/easy
+rw-------  7/10    509 Oct  2 21:18 1999 games/lib/atc/game_2
+rwx------  7/10      0 Oct  2 21:19 1999 games/lib/hackdir/
+rw-rw-rw-  7/10      0 Oct  2 21:19 1999 games/lib/hackdir/perm
+rw-rw-rw-  7/10      0 Oct  2 21:19 1999 games/lib/hackdir/record
+rw-rw-rw-  7/10   1966 Oct  2 21:19 1999 games/lib/hackdir/hh
+rwx------  7/10      0 Oct  2 21:52 1999 games/lib/phantasia/
+rwxr-xr-x  7/10      0 Oct  2 21:52 1999 games/lib/phantasia/phant.help symbolic link to /usr/man/cat6/phantasia.0
+rw-rw----  7/10  13200 Oct  2 21:52 1999 games/lib/phantasia/monsters
+rw-rw----  7/10      0 Dec 25 01:13 1998 games/lib/phantasia/characs
+rw-rw----  7/10      0 Oct  2 21:52 1999 games/lib/phantasia/mess
+rw-rw----  7/10      0 Oct  2 21:52 1999 games/lib/phantasia/lastdead
+rw-rw----  7/10      0 Oct  2 21:52 1999 games/lib/phantasia/motd
+rw-rw----  7/10      0 Oct  2 21:52 1999 games/lib/phantasia/gold
+rw-rw----  7/10     20 Oct  2 21:52 1999 games/lib/phantasia/void
+rw-rw----  7/10      0 Oct  2 21:52 1999 games/lib/phantasia/scoreboard
+rw-rw----  7/10      0 Oct  2 21:52 1999 games/lib/phantasia/enemy
+rwx------  7/10      0 Oct  2 21:19 1999 games/lib/quiz.k/
+r--------  7/10    917 Oct  2 21:19 1999 games/lib/quiz.k/africa
+r--------  7/10    548 Oct  2 21:19 1999 games/lib/quiz.k/america
+r--------  7/10   3898 Oct  2 21:19 1999 games/lib/quiz.k/areas
+r--------  7/10    789 Oct  2 21:19 1999 games/lib/quiz.k/arith
+r--------  7/10    733 Oct  2 21:19 1999 games/lib/quiz.k/asia
+r--------  7/10    401 Oct  2 21:19 1999 games/lib/quiz.k/babies
+r--------  7/10   6853 Oct  2 21:19 1999 games/lib/quiz.k/bard
+r--------  7/10    138 Oct  2 21:19 1999 games/lib/quiz.k/chinese
+r--------  7/10   1403 Oct  2 21:19 1999 games/lib/quiz.k/collectives
+r--------  7/10   3630 Oct  2 21:19 1999 games/lib/quiz.k/ed
+r--------  7/10   2130 Oct  2 21:19 1999 games/lib/quiz.k/elements
+r--------  7/10    752 Oct  2 21:19 1999 games/lib/quiz.k/europe
+r--------  7/10    249 Oct  2 21:19 1999 games/lib/quiz.k/greek
+r--------  7/10    301 Oct  2 21:19 1999 games/lib/quiz.k/inca
+r--------  7/10   1550 Oct  2 21:19 1999 games/lib/quiz.k/index
+r--------  7/10   2956 Oct  2 21:19 1999 games/lib/quiz.k/latin
+r--------  7/10    163 Oct  2 21:19 1999 games/lib/quiz.k/locomotive
+r--------  7/10    274 Oct  2 21:19 1999 games/lib/quiz.k/midearth
+r--------  7/10    160 Oct  2 21:19 1999 games/lib/quiz.k/morse
+r--------  7/10    930 Oct  2 21:19 1999 games/lib/quiz.k/murders
+r--------  7/10   5967 Oct  2 21:19 1999 games/lib/quiz.k/poetry
+r--------  7/10    814 Oct  2 21:19 1999 games/lib/quiz.k/posneg
+r--------  7/10   2351 Oct  2 21:19 1999 games/lib/quiz.k/pres
+r--------  7/10    314 Oct  2 21:19 1999 games/lib/quiz.k/province
+r--------  7/10    722 Oct  2 21:19 1999 games/lib/quiz.k/seq-easy
+r--------  7/10    872 Oct  2 21:19 1999 games/lib/quiz.k/seq-hard
+r--------  7/10    405 Oct  2 21:19 1999 games/lib/quiz.k/sexes
+r--------  7/10   1652 Oct  2 21:19 1999 games/lib/quiz.k/sov
+r--------  7/10     74 Oct  2 21:19 1999 games/lib/quiz.k/spell
+r--------  7/10   2098 Oct  2 21:19 1999 games/lib/quiz.k/state
+r--------  7/10   1060 Oct  2 21:19 1999 games/lib/quiz.k/trek
+r--------  7/10   6701 Oct  2 21:19 1999 games/lib/quiz.k/ucc
+rwxr-xr-x  0/10      0 Oct  2 21:19 1999 games/lib/ching.d/
+rwxr-xr-x  3/10   4036 Oct  2 21:19 1999 games/lib/ching.d/cno
+rwxr-xr-x  3/10   5168 Oct  2 21:19 1999 games/lib/ching.d/phx
+r--r--r--  3/10   1357 Oct  2 21:19 1999 games/lib/ching.d/macros
+r--r--r--  3/10  58975 Oct  2 21:19 1999 games/lib/ching.d/hexagrams
+rwxr-xr-x  0/10      0 Dec 25 01:13 1998 games/lib/zorklib/
+rw-------  7/10      0 Oct  2 21:18 1999 games/lib/battlestar.log
+r--------  7/10  83187 Oct  2 21:18 1999 games/lib/bogdict
+r--r--r--  7/10   1176 Oct  2 21:18 1999 games/lib/backrules
+rw-------  7/10      0 Dec 25 01:12 1998 games/lib/cfscores
+r--------  7/10  11742 Oct  2 21:18 1999 games/lib/crib.instr
+rw-------  7/10 399923 Oct  2 21:18 1999 games/lib/fortunes.dat
+rwx------  7/10  32768 Oct  2 21:19 1999 games/lib/hunt.driver
+r--------  7/10   2115 Oct  2 21:19 1999 games/lib/cards.pck
+rw-------  7/10      0 Oct  2 21:19 1999 games/lib/robots_roll
+rw-------  7/10      0 Oct  2 21:19 1999 games/lib/saillog
+rw-------  7/10      0 Oct  2 21:19 1999 games/lib/snakerawscores
+rwxr-xr-x  7/10 222180 Oct  2 21:19 1999 games/lib/aard
+rwxr-xr-x  3/10  84992 Oct  2 21:19 1999 games/lib/compat
+rwxr-xr-x  3/10  29696 Oct  2 21:19 1999 games/lib/ddlrun
+rwxr-xr-x  3/10 228864 Oct  2 21:19 1999 games/lib/dtext.dat
+rwxr-xr-x  3/10      0 Oct  2 21:19 1999 games/lib/dindex.dat
+rwxr-xr-x  3/10 109056 Oct  2 21:19 1999 games/lib/doverlay
+rwxr-xr-x  3/10  54652 Oct  2 21:19 1999 games/lib/dungeon
+r--r--r--  3/10  19036 Oct  2 21:19 1999 games/lib/chess
+rwx------  7/10      0 Oct  2 21:52 1999 games/hide/
+rwx------  7/10 168718 Oct  2 21:18 1999 games/hide/adventure
+rws------  7/10  63488 Oct  2 21:18 1999 games/hide/atc
+rwx------  7/10  47104 Oct  2 21:18 1999 games/hide/backgammon
+rwx------  7/10  56320 Oct  2 21:18 1999 games/hide/teachgammon
+rws------  7/10 200704 Oct  2 21:18 1999 games/hide/battlestar
+rws------  7/10  26624 Oct  2 21:18 1999 games/hide/boggle
+rws------  7/10  22528 Oct  2 21:18 1999 games/hide/btlgammon
+rwx------  7/10  40960 Oct  2 21:18 1999 games/hide/canfield
+rwx------  7/10  18432 Oct  2 21:18 1999 games/hide/cfscores
+rws------  7/10  41984 Oct  2 21:18 1999 games/hide/cribbage
+rws------  7/10 202752 Oct  2 21:19 1999 games/hide/hack
+rwx------  7/10  30720 Oct  2 21:19 1999 games/hide/hangman
+rwx------  7/10  40960 Oct  2 21:19 1999 games/hide/hunt
+rwx------  7/10  48128 Oct  2 21:19 1999 games/hide/mille
+rwx------  7/10  45056 Oct  2 21:19 1999 games/hide/monop
+rws------  7/10 111616 Oct  2 21:52 1999 games/hide/phantasia
+rwx------  7/10  14336 Oct  2 21:19 1999 games/hide/quiz
+rws------  7/10  38912 Oct  2 21:19 1999 games/hide/robots
+rws------  7/10 116736 Oct  2 21:19 1999 games/hide/rogue
+rws------  7/10  86016 Oct  2 21:19 1999 games/hide/sail
+rws------  7/10  39936 Oct  2 21:19 1999 games/hide/snake
+rwx------  7/10  18432 Oct  2 21:19 1999 games/hide/snscore
+rwx------  7/10  61440 Oct  2 21:19 1999 games/hide/trek
+rwxr-xr-x  7/10     42 Oct  2 21:19 1999 games/hide/aardvark
+rwx------  7/10  15360 Oct  2 21:19 1999 games/hide/fish
+rwx------  7/10  14336 Oct  2 21:19 1999 games/hide/wump
+rwx------  7/10  25600 Oct  2 21:19 1999 games/hide/worm
+rwxr-xr-x  7/10      0 Oct  2 21:18 1999 games/adventure symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:18 1999 games/atc symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:18 1999 games/backgammon symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:18 1999 games/teachgammon symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:18 1999 games/battlestar symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:18 1999 games/boggle symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:18 1999 games/btlgammon symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:18 1999 games/canfield symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:18 1999 games/cfscores symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:18 1999 games/cribbage symbolic link to dm
+rwsr-sr-x  7/2  24576 Oct  2 21:18 1999 games/dm
+rwsr-xr-x  7/10  17408 Oct  2 21:18 1999 games/fortune
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/hack symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/hangman symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/hunt symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/mille symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/monop symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:52 1999 games/phantasia symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/quiz symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/robots symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/rogue symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/sail symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/snake symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/snscore symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/trek symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/aardvark symbolic link to /usr/games/dm
+rwxr-xr-x  7/10   7168 Oct  2 21:19 1999 games/bcd
+rwxr-xr-x  3/10    283 Oct  2 21:19 1999 games/ching
+rwxr-xr-x  3/10  12288 Oct  2 21:19 1999 games/zork
+rwxr-xr-x  3/10  10240 Oct  2 21:19 1999 games/chess
+rwxr-xr-x  7/10    909 Oct  2 21:19 1999 games/wargames
+rwxr-xr-x  7/10  12288 Oct  2 21:19 1999 games/arithmetic
+rwxr-xr-x  7/10  22528 Oct  2 21:19 1999 games/banner
+rwxr-xr-x  7/10  12288 Oct  2 21:19 1999 games/factor
+rwxr-xr-x  7/10  13312 Oct  2 21:19 1999 games/number
+rwxr-xr-x  7/10   6144 Oct  2 21:19 1999 games/ppt
+rwxr-xr-x  7/10  14336 Oct  2 21:19 1999 games/primes
+rwxr-xr-x  7/10  18432 Oct  2 21:19 1999 games/rain
+rwxr-xr-x  7/10  21504 Oct  2 21:19 1999 games/worms
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/fish symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/wump symbolic link to dm
+rwxr-xr-x  7/10      0 Oct  2 21:19 1999 games/worm symbolic link to dm
+rwxr-xr-x  0/10      0 Dec 24 17:38 1998 hosts/
+rwxr-xr-x  0/10      0 Oct  9 22:54 1999 include/
+rwxr-xr-x  0/10      0 Dec 24 18:25 1998 include/arpa/
+r--r--r--  0/10   2240 Dec 24 18:25 1998 include/arpa/ftp.h
+r--r--r--  0/10   1030 Dec 24 18:25 1998 include/arpa/inet.h
+r--r--r--  0/10   6869 Dec 24 18:25 1998 include/arpa/nameser.h
+r--r--r--  0/10   3887 Dec 24 18:25 1998 include/arpa/telnet.h
+r--r--r--  0/10   1903 Dec 24 18:25 1998 include/arpa/tftp.h
+rwxr-xr-x  0/10      0 Dec 24 18:25 1998 include/pascal/
+r--r--r--  0/10    335 Dec 24 18:25 1998 include/pascal/unixio.h
+r--r--r--  0/10   1038 Dec 24 18:25 1998 include/pascal/unixio.i
+rwxr-xr-x  0/10      0 Oct  2 16:45 1999 include/protocols/
+r--r--r--  0/10   2476 Dec 24 18:25 1998 include/protocols/dumprestore.h
+r--r--r--  0/10   1831 Oct  2 16:45 1999 include/protocols/routed.h
+r--r--r--  0/10    960 Dec 24 18:25 1998 include/protocols/rwhod.h
+r--r--r--  0/10   3798 Dec 24 18:25 1998 include/protocols/talkd.h
+r--r--r--  0/10   2931 Dec 24 18:25 1998 include/protocols/timed.h
+rwxr-xr-x  3/10      0 Oct  9 22:53 1999 include/net/
+r--r--r--  3/10   1417 Jan 12 15:01 1999 include/net/af.h
+r--r--r--  3/10   7898 Jan 12 15:01 1999 include/net/if.h
+r--r--r--  3/10   2487 Jan 12 15:01 1999 include/net/if_arp.h
+r--r--r--  3/10   1834 Jan 12 15:01 1999 include/net/netisr.h
+r--r--r--  3/10   2193 Jan 12 15:01 1999 include/net/raw_cb.h
+r--r--r--  3/10   3012 Jan 12 15:01 1999 include/net/route.h
+rwxr-xr-x  3/10      0 Oct  9 22:53 1999 include/netimp/
+r--r--r--  3/10   8283 Jan 12 15:02 1999 include/netimp/if_imp.h
+r--r--r--  3/10   3830 Jan 12 15:02 1999 include/netimp/if_imphost.h
+rwxr-xr-x  3/10      0 Oct  9 22:53 1999 include/netinet/
+r--r--r--  3/10   1609 Jan 12 15:02 1999 include/netinet/icmp_var.h
+r--r--r--  3/10   2915 Jan 12 15:02 1999 include/netinet/if_ether.h
+r--r--r--  3/10   3468 Jan 12 15:02 1999 include/netinet/in.h
+r--r--r--  3/10   1891 Jan 12 15:02 1999 include/netinet/in_pcb.h
+r--r--r--  3/10   1461 Jan 12 15:02 1999 include/netinet/in_systm.h
+r--r--r--  3/10   2085 Jan 12 15:02 1999 include/netinet/in_var.h
+r--r--r--  3/10   4146 Jan 12 15:02 1999 include/netinet/ip.h
+r--r--r--  3/10   4307 Jan 12 15:02 1999 include/netinet/ip_icmp.h
+r--r--r--  3/10   3669 Jan 12 15:02 1999 include/netinet/ip_var.h
+r--r--r--  3/10   2065 Jan 12 15:02 1999 include/netinet/tcp.h
+r--r--r--  3/10   1295 Jan 12 15:02 1999 include/netinet/tcp_debug.h
+r--r--r--  3/10   2585 Jan 12 15:02 1999 include/netinet/tcp_fsm.h
+r--r--r--  3/10   1642 Jan 12 15:02 1999 include/netinet/tcp_seq.h
+r--r--r--  3/10   4785 Jan 12 15:02 1999 include/netinet/tcp_timer.h
+r--r--r--  3/10   8837 Jan 12 15:02 1999 include/netinet/tcp_var.h
+r--r--r--  3/10   1514 Jan 12 15:02 1999 include/netinet/tcpip.h
+r--r--r--  3/10   1103 Jan 12 15:02 1999 include/netinet/udp.h
+r--r--r--  3/10   1547 Jan 12 15:02 1999 include/netinet/udp_var.h
+rwxr-xr-x  3/10      0 Oct  9 22:53 1999 include/netns/
+r--r--r--  3/10   1278 Jan 12 15:03 1999 include/netns/idp.h
+r--r--r--  3/10   1229 Jan 12 15:03 1999 include/netns/idp_var.h
+r--r--r--  3/10   3418 Jan 12 15:03 1999 include/netns/ns.h
+r--r--r--  3/10   2887 Jan 12 15:03 1999 include/netns/ns_error.h
+r--r--r--  3/10   2139 Jan 12 15:03 1999 include/netns/ns_if.h
+r--r--r--  3/10   2182 Jan 12 15:03 1999 include/netns/ns_pcb.h
+r--r--r--  3/10   1462 Jan 12 15:03 1999 include/netns/sp.h
+r--r--r--  3/10   1540 Jan 12 15:03 1999 include/netns/spidp.h
+r--r--r--  3/10   1303 Jan 12 15:03 1999 include/netns/spp_debug.h
+r--r--r--  3/10   4270 Jan 12 15:03 1999 include/netns/spp_timer.h
+r--r--r--  3/10   7831 Jan 12 15:03 1999 include/netns/spp_var.h
+rwxr-xr-x  3/10      0 Oct  9 22:53 1999 include/vax/
+r--r--r--  3/10   5335 Apr 30 02:06 1985 include/vax/asnumber.h
+r--r--r--  3/10   1731 Jan 12 15:06 1999 include/vax/clock.h
+r--r--r--  3/10   1461 Jan 12 15:06 1999 include/vax/cons.h
+r--r--r--  3/10   4834 Jan 12 15:06 1999 include/vax/cpu.h
+r--r--r--  3/10   2939 Jan 12 15:06 1999 include/vax/crl.h
+r--r--r--  3/10    605 Jan 12 15:06 1999 include/vax/dkio.h
+r--r--r--  3/10   1512 Jan 12 15:06 1999 include/vax/endian.h
+r--r--r--  3/10   1735 Jan 12 15:06 1999 include/vax/flp.h
+r--r--r--  3/10    622 Jan 12 15:06 1999 include/vax/frame.h
+r--r--r--  3/10   2564 Jan 12 15:06 1999 include/vax/ioa.h
+r--r--r--  3/10   1920 Jan 12 15:06 1999 include/vax/ka630.h
+r--r--r--  3/10   8282 Jan 12 15:06 1999 include/vax/ka650.h
+r--r--r--  3/10   4289 Jan 12 15:06 1999 include/vax/ka820.h
+r--r--r--  3/10   1907 Jan 12 15:06 1999 include/vax/kdbparam.h
+r--r--r--  3/10   2590 Jan 12 15:06 1999 include/vax/machparam.h
+r--r--r--  3/10    646 Jan 12 15:06 1999 include/vax/mem.h
+r--r--r--  3/10  15450 Jan 12 15:06 1999 include/vax/mscp.h
+r--r--r--  3/10   6714 Jan 12 15:06 1999 include/vax/mscpvar.h
+r--r--r--  3/10   4937 Jan 12 15:06 1999 include/vax/mtpr.h
+r--r--r--  3/10   3559 Jan 12 15:06 1999 include/vax/nexus.h
+r--r--r--  3/10   1456 Jan 12 15:06 1999 include/vax/pcb.h
+r--r--r--  3/10   1329 Jan 12 15:07 1999 include/vax/psl.h
+r--r--r--  3/10   2459 Jan 12 15:07 1999 include/vax/pte.h
+r--r--r--  3/10    772 Jan 12 15:07 1999 include/vax/reg.h
+r--r--r--  3/10    731 Jan 12 15:06 1999 include/vax/rpb.h
+r--r--r--  3/10   2488 Jan 12 15:06 1999 include/vax/rsp.h
+r--r--r--  3/10   2320 Jan 12 15:06 1999 include/vax/rx50reg.h
+r--r--r--  3/10   2767 Jan 12 15:06 1999 include/vax/scb.h
+r--r--r--  3/10  11298 Jan 12 15:06 1999 include/vax/tmscp.h
+r--r--r--  3/10   1916 Jan 12 15:07 1999 include/vax/trap.h
+r--r--r--  3/10   5235 Jan 12 15:07 1999 include/vax/vmparam.h
+rwxr-xr-x  3/10      0 Oct  9 22:53 1999 include/vaxmba/
+r--r--r--  3/10   6270 Jan 12 15:10 1999 include/vaxmba/hpreg.h
+r--r--r--  3/10   4474 Jan 12 15:10 1999 include/vaxmba/htreg.h
+r--r--r--  3/10   4176 Jan 12 15:10 1999 include/vaxmba/mbareg.h
+r--r--r--  3/10   4696 Jan 12 15:10 1999 include/vaxmba/mbavar.h
+r--r--r--  3/10   5209 Jan 12 15:10 1999 include/vaxmba/mtreg.h
+rwxr-xr-x  3/10      0 Oct  9 22:53 1999 include/vaxuba/
+r--r--r--  3/10    724 Jan 12 15:12 1999 include/vaxuba/adreg.h
+r--r--r--  3/10   1688 Jan 12 15:12 1999 include/vaxuba/dhreg.h
+r--r--r--  3/10   4831 Jan 12 15:12 1999 include/vaxuba/dhureg.h
+r--r--r--  3/10   2030 Jan 12 15:12 1999 include/vaxuba/dmfreg.h
+r--r--r--  3/10   1429 Jan 12 15:12 1999 include/vaxuba/dmreg.h
+r--r--r--  3/10    868 Jan 12 15:12 1999 include/vaxuba/dmx.h
+r--r--r--  3/10   3749 Jan 12 15:12 1999 include/vaxuba/dmxreg.h
+r--r--r--  3/10    623 Jan 12 15:12 1999 include/vaxuba/dmzreg.h
+r--r--r--  3/10   2492 Jan 12 15:12 1999 include/vaxuba/dzreg.h
+r--r--r--  3/10   4077 Jan 12 15:12 1999 include/vaxuba/idcreg.h
+r--r--r--  3/10   2416 Jan 12 15:12 1999 include/vaxuba/ikreg.h
+r--r--r--  3/10  18404 Jan 12 15:12 1999 include/vaxuba/npreg.h
+r--r--r--  3/10    339 Jan 12 15:12 1999 include/vaxuba/pdma.h
+r--r--r--  3/10   4186 Jan 12 15:12 1999 include/vaxuba/psreg.h
+r--r--r--  3/10   3915 Jan 12 15:12 1999 include/vaxuba/qdioctl.h
+r--r--r--  3/10  10593 Jan 12 15:12 1999 include/vaxuba/qdreg.h
+r--r--r--  3/10  17213 Jan 12 15:12 1999 include/vaxuba/qduser.h
+r--r--r--  3/10   3020 Jan 12 15:12 1999 include/vaxuba/qevent.h
+r--r--r--  3/10   2239 Jan 12 15:12 1999 include/vaxuba/qvioctl.h
+r--r--r--  3/10   2636 Jan 12 15:12 1999 include/vaxuba/qvreg.h
+r--r--r--  3/10   5043 Jan 12 15:12 1999 include/vaxuba/rkreg.h
+r--r--r--  3/10   4129 Jan 12 15:12 1999 include/vaxuba/rlreg.h
+r--r--r--  3/10   3406 Jan 12 15:12 1999 include/vaxuba/rxreg.h
+r--r--r--  3/10   3393 Jan 12 15:12 1999 include/vaxuba/tmreg.h
+r--r--r--  3/10   3109 Jan 12 15:12 1999 include/vaxuba/tmscpreg.h
+r--r--r--  3/10   5999 Jan 12 15:12 1999 include/vaxuba/tsreg.h
+r--r--r--  3/10   9270 Jan 12 15:12 1999 include/vaxuba/ubareg.h
+r--r--r--  3/10   9384 Jan 12 15:12 1999 include/vaxuba/ubavar.h
+r--r--r--  3/10   2355 Jan 12 15:12 1999 include/vaxuba/udareg.h
+r--r--r--  3/10   6254 Jan 12 15:12 1999 include/vaxuba/upreg.h
+r--r--r--  3/10   6492 Jan 12 15:12 1999 include/vaxuba/utreg.h
+r--r--r--  3/10   1084 Jan 12 15:12 1999 include/vaxuba/uureg.h
+r--r--r--  3/10    689 Jan 12 15:12 1999 include/vaxuba/vpreg.h
+r--r--r--  3/10   6176 Jan 12 15:12 1999 include/vaxuba/vsreg.h
+rwxr-xr-x  3/10      0 Oct  9 22:53 1999 include/vaxif/
+r--r--r--  3/10   2337 Jan 12 15:09 1999 include/vaxif/if_accreg.h
+r--r--r--  3/10   2793 Jan 12 15:09 1999 include/vaxif/if_cssreg.h
+r--r--r--  3/10   4363 Jan 12 15:09 1999 include/vaxif/if_ddnreg.h
+r--r--r--  3/10   4164 Jan 12 15:09 1999 include/vaxif/if_ddnvar.h
+r--r--r--  3/10   7447 Jan 12 15:09 1999 include/vaxif/if_dereg.h
+r--r--r--  3/10   3425 Sep  7 11:33 1999 include/vaxif/if_dmc.h
+r--r--r--  3/10   5114 Sep  7 11:40 1999 include/vaxif/if_dmv.h
+r--r--r--  3/10   2774 Jan 12 15:09 1999 include/vaxif/if_ecreg.h
+r--r--r--  3/10   1416 Jan 12 15:09 1999 include/vaxif/if_en.h
+r--r--r--  3/10   1892 Jan 12 15:09 1999 include/vaxif/if_enreg.h
+r--r--r--  3/10  10872 Jan 12 15:09 1999 include/vaxif/if_exreg.h
+r--r--r--  3/10   4757 Jan 12 15:10 1999 include/vaxif/if_hdhreg.h
+r--r--r--  3/10  10059 Jan 12 15:10 1999 include/vaxif/if_hy.h
+r--r--r--  3/10   7438 Jan 12 15:10 1999 include/vaxif/if_hyreg.h
+r--r--r--  3/10   2312 Jan 12 15:10 1999 include/vaxif/if_il.h
+r--r--r--  3/10   4862 Jan 12 15:10 1999 include/vaxif/if_ilreg.h
+r--r--r--  3/10   3144 Jan 12 15:10 1999 include/vaxif/if_ix.h
+r--r--r--  3/10   3148 Jan 12 15:10 1999 include/vaxif/if_pclreg.h
+r--r--r--  3/10   6132 Jan 12 15:10 1999 include/vaxif/if_qereg.h
+r--r--r--  3/10   4142 Jan 12 15:10 1999 include/vaxif/if_uba.h
+r--r--r--  3/10   4462 Jan 12 15:10 1999 include/vaxif/if_vv.h
+rwxr-xr-x  0/10      0 Oct  9 22:53 1999 include/sys/
+r--r--r--  3/10   1390 Jan 12 14:54 1999 include/sys/acct.h
+r--r--r--  3/10    677 Jan 12 14:54 1999 include/sys/bkmac.h
+r--r--r--  3/10   6519 Jan 12 14:54 1999 include/sys/buf.h
+r--r--r--  3/10    716 Jan 12 14:54 1999 include/sys/callout.h
+r--r--r--  3/10    460 Jan 12 14:54 1999 include/sys/clist.h
+r--r--r--  3/10   2567 Jan 12 14:54 1999 include/sys/cmap.h
+r--r--r--  3/10   1379 Jan 12 14:54 1999 include/sys/conf.h
+r--r--r--  3/10   3266 Jan 12 14:54 1999 include/sys/dir.h
+r--r--r--  3/10   8964 Jan 12 14:54 1999 include/sys/disklabel.h
+r--r--r--  3/10   1553 Jan 12 14:54 1999 include/sys/dkbad.h
+r--r--r--  3/10    613 Jan 12 14:54 1999 include/sys/dkstat.h
+r--r--r--  3/10    865 Jan 12 14:54 1999 include/sys/dmap.h
+r--r--r--  3/10   1288 Jan 12 14:54 1999 include/sys/domain.h
+r--r--r--  3/10   3859 Jan 12 14:54 1999 include/sys/errno.h
+r--r--r--  3/10    829 Jan 12 14:54 1999 include/sys/exec.h
+r--r--r--  3/10   3180 Jan 12 14:54 1999 include/sys/file.h
+r--r--r--  3/10  17232 Jan 12 14:54 1999 include/sys/fs.h
+r--r--r--  3/10   2228 Jan 12 14:54 1999 include/sys/gprof.h
+r--r--r--  3/10   6079 Jan 12 14:54 1999 include/sys/inode.h
+r--r--r--  3/10  11488 Jan 12 14:54 1999 include/sys/ioctl.h
+r--r--r--  3/10    721 Jan 12 14:54 1999 include/sys/kernel.h
+r--r--r--  3/10   5557 Jan 12 14:54 1999 include/sys/malloc.h
+r--r--r--  3/10   1865 Jan 12 14:54 1999 include/sys/map.h
+r--r--r--  3/10   5384 Jan 12 14:54 1999 include/sys/mbuf.h
+r--r--r--  3/10    909 Jan 12 14:54 1999 include/sys/mman.h
+r--r--r--  3/10    600 Jan 12 14:54 1999 include/sys/mount.h
+r--r--r--  3/10    451 Jan 12 14:54 1999 include/sys/msgbuf.h
+r--r--r--  3/10   2348 Jan 12 14:54 1999 include/sys/mtio.h
+r--r--r--  3/10   2779 Jan 12 14:54 1999 include/sys/namei.h
+r--r--r--  3/10   5485 Jan 12 14:54 1999 include/sys/param.h
+r--r--r--  3/10   5124 Jan 12 14:54 1999 include/sys/proc.h
+r--r--r--  3/10   7869 Jan 12 14:54 1999 include/sys/protosw.h
+r--r--r--  3/10    837 Jan 12 14:54 1999 include/sys/ptrace.h
+r--r--r--  3/10   5732 Jan 12 14:54 1999 include/sys/quota.h
+r--r--r--  3/10   2942 Jan 12 14:54 1999 include/sys/reboot.h
+r--r--r--  3/10   1780 Jan 12 14:54 1999 include/sys/resource.h
+r--r--r--  3/10    335 Jan 12 14:54 1999 include/sys/seg.h
+r--r--r--  3/10   3458 Jan 12 14:54 1999 include/sys/signal.h
+r--r--r--  3/10   4909 Jan 12 14:54 1999 include/sys/socket.h
+r--r--r--  3/10   5652 Jan 12 14:54 1999 include/sys/socketvar.h
+r--r--r--  3/10   1198 Jan 12 14:54 1999 include/sys/stat.h
+r--r--r--  3/10   3813 Jan 12 14:54 1999 include/sys/syscall.h
+r--r--r--  3/10   3420 Jan 12 14:54 1999 include/sys/syslog.h
+r--r--r--  3/10   2091 Jan 12 14:54 1999 include/sys/systm.h
+r--r--r--  3/10   2213 Jan 12 14:54 1999 include/sys/tablet.h
+r--r--r--  3/10   2031 Jan 12 14:54 1999 include/sys/text.h
+r--r--r--  3/10   1484 Jan 12 14:54 1999 include/sys/time.h
+r--r--r--  3/10    380 Jan 12 14:54 1999 include/sys/timeb.h
+r--r--r--  3/10    466 Jan 12 14:54 1999 include/sys/times.h
+r--r--r--  3/10   2674 Jan 12 14:54 1999 include/sys/trace.h
+r--r--r--  3/10   4412 Jan 12 14:54 1999 include/sys/tty.h
+r--r--r--  3/10   1355 Jan 12 14:54 1999 include/sys/ttychars.h
+r--r--r--  3/10    736 Jan 12 14:54 1999 include/sys/ttydev.h
+r--r--r--  3/10   2068 Jan 12 14:54 1999 include/sys/types.h
+r--r--r--  3/10    672 Jan 12 14:54 1999 include/sys/uio.h
+r--r--r--  3/10   1052 Jan 12 14:54 1999 include/sys/un.h
+r--r--r--  3/10   2495 Jan 12 14:54 1999 include/sys/unpcb.h
+r--r--r--  3/10   4474 Jan 12 14:54 1999 include/sys/user.h
+r--r--r--  3/10    661 Mar 12 06:34 1987 include/sys/vadvise.h
+r--r--r--  3/10    472 Jan 12 14:54 1999 include/sys/vcmd.h
+r--r--r--  3/10    707 Jan 12 14:54 1999 include/sys/vlimit.h
+r--r--r--  3/10    601 May 13 23:23 1988 include/sys/vm.h
+r--r--r--  3/10   5527 Nov 12 01:51 1987 include/sys/vmmac.h
+r--r--r--  3/10   3438 Jan 12 14:54 1999 include/sys/vmmeter.h
+r--r--r--  3/10    503 May 13 23:23 1988 include/sys/vmparam.h
+r--r--r--  3/10   1664 Jun  4 11:32 1986 include/sys/vmsystm.h
+r--r--r--  3/10   3880 Jan 12 14:54 1999 include/sys/vsio.h
+r--r--r--  3/10    995 Jun  4 11:33 1986 include/sys/vtimes.h
+r--r--r--  3/10   3004 Jan 12 14:54 1999 include/sys/wait.h
+r--r--r--  0/10   2334 Dec 24 18:25 1998 include/a.out.h
+r--r--r--  0/10    444 Dec 24 18:25 1998 include/ar.h
+r--r--r--  0/10    256 Dec 24 18:25 1998 include/assert.h
+r--r--r--  0/10    782 Dec 24 18:25 1998 include/ctype.h
+r--r--r--  0/10   5999 Dec 24 18:25 1998 include/curses.h
+r--r--r--  0/10   1662 Dec 24 18:25 1998 include/ndbm.h
+r--r--r--  0/10    919 Dec 24 18:25 1998 include/disktab.h
+r--r--r--  0/10   1512 Dec 24 18:25 1998 include/fcntl.h
+r--r--r--  0/10   1289 Dec 24 18:25 1998 include/fstab.h
+r--r--r--  0/10    182 Dec 24 18:25 1998 include/grp.h
+r--r--r--  0/10    334 Dec 24 18:25 1998 include/lastlog.h
+r--r--r--  0/10    646 Dec 24 18:25 1998 include/math.h
+r--r--r--  0/10    422 Dec 24 18:25 1998 include/memory.h
+r--r--r--  0/10    753 Dec 24 18:25 1998 include/mp.h
+r--r--r--  0/10    428 Dec 24 18:25 1998 include/mtab.h
+r--r--r--  0/10   2664 Dec 24 18:25 1998 include/netdb.h
+r--r--r--  0/10   1322 Dec 24 18:25 1998 include/nlist.h
+r--r--r--  0/10   6340 Dec 24 18:25 1998 include/pcc.h
+r--r--r--  0/10    264 Dec 24 18:25 1998 include/pwd.h
+r--r--r--  0/10    639 Dec 24 18:25 1998 include/ranlib.h
+r--r--r--  0/10    616 Dec 24 18:25 1998 include/regexp.h
+r--r--r--  0/10   1773 Dec 24 18:25 1998 include/resolv.h
+r--r--r--  0/10     54 Dec 24 18:25 1998 include/setjmp.h
+r--r--r--  0/10     74 Dec 24 18:25 1998 include/sgtty.h
+r--r--r--  0/10   1853 Dec 24 18:25 1998 include/stab.h
+r--r--r--  0/10   1606 Dec 24 18:25 1998 include/stdio.h
+r--r--r--  0/10    608 Dec 24 18:25 1998 include/string.h
+r--r--r--  0/10    614 Dec 24 18:25 1998 include/strings.h
+r--r--r--  0/10    296 Dec 24 18:25 1998 include/struct.h
+r--r--r--  0/10   4568 Dec 24 18:25 1998 include/sysexits.h
+r--r--r--  0/10    563 Dec 24 18:25 1998 include/time.h
+r--r--r--  0/10    789 Dec 24 18:25 1998 include/ttyent.h
+r--r--r--  0/10   3495 Dec 24 18:25 1998 include/tzfile.h
+r--r--r--  0/10    478 Dec 24 18:25 1998 include/utmp.h
+r--r--r--  0/10    219 Dec 24 18:25 1998 include/varargs.h
+r--r--r--  0/10    546 Dec 24 18:25 1998 include/vfont.h
+r--r--r--  0/10   2564 Oct  9 22:54 1999 include/Makefile
+rwxr-xr-x  0/10      0 Oct  9 22:54 1999 include/errno.h symbolic link to sys/errno.h
+rwxr-xr-x  0/10      0 Oct  9 22:54 1999 include/signal.h symbolic link to sys/signal.h
+rwxr-xr-x  0/10      0 Oct  9 22:54 1999 include/syslog.h symbolic link to sys/syslog.h
+rwxr-xr-x  0/10      0 Oct  9 22:54 1999 include/machine symbolic link to vax
+rwxr-xr-x  0/10      0 Oct  9 22:54 1999 include/frame.h symbolic link to machine/frame.h
+r--r--r--  3/10    616 Oct  2 18:12 1999 include/dbm.h
+r--r--r--  0/10   1604 Jan 17 23:23 1999 include/zconf.h
+r--r--r--  0/10  34213 Jan 19 19:10 1999 include/zlib.h
+rwxr-xr-x  0/10      0 Oct  2 21:37 1999 lib/
+rwxr-xr-x  0/10      0 Oct  2 21:42 1999 lib/learn/
+rwxr-xr-x  0/10      0 Jan 17 11:02 1999 lib/learn/editor/
+rwxr-xr-x  3/10     14 Apr 25 13:31 1983 lib/learn/editor/L0
+rwxr-xr-x  3/10    569 Apr 25 13:31 1983 lib/learn/editor/L1.1a
+rwxr-xr-x  3/10    591 Apr 25 13:31 1983 lib/learn/editor/L10.1a
+rwxr-xr-x  3/10    768 Apr 25 13:31 1983 lib/learn/editor/L10.1b
+rwxr-xr-x  3/10    638 Apr 25 13:31 1983 lib/learn/editor/L10.2a
+rwxr-xr-x  3/10    491 Apr 25 13:31 1983 lib/learn/editor/L10.2b
+rwxr-xr-x  3/10    366 Apr 25 13:31 1983 lib/learn/editor/L10.2c
+rwxr-xr-x  3/10    640 Apr 25 13:31 1983 lib/learn/editor/L10.3a
+rwxr-xr-x  3/10    555 Apr 25 13:31 1983 lib/learn/editor/L10.3b
+rwxr-xr-x  3/10    461 Apr 25 13:31 1983 lib/learn/editor/L10.3c
+rwxr-xr-x  3/10    262 Apr 25 13:31 1983 lib/learn/editor/L10.3d
+rwxr-xr-x  3/10    301 Apr 25 13:31 1983 lib/learn/editor/L10.3e
+rwxr-xr-x  3/10    555 Apr 25 13:31 1983 lib/learn/editor/L10.3f
+rwxr-xr-x  3/10    956 Apr 25 13:31 1983 lib/learn/editor/L11.1a
+rwxr-xr-x  3/10    781 Apr 25 13:31 1983 lib/learn/editor/L11.2a
+rwxr-xr-x  3/10    437 Apr 25 13:31 1983 lib/learn/editor/L11.2b
+rwxr-xr-x  3/10    667 Apr 25 13:31 1983 lib/learn/editor/L11.2c
+rwxr-xr-x  3/10    862 Apr 25 13:31 1983 lib/learn/editor/L12.1a
+rwxr-xr-x  3/10    746 Apr 25 13:31 1983 lib/learn/editor/L12.1b
+rwxr-xr-x  3/10   1065 Apr 25 13:31 1983 lib/learn/editor/L12.2a
+rwxr-xr-x  3/10    313 Apr 25 13:31 1983 lib/learn/editor/L12.2b
+rwxr-xr-x  3/10    428 Apr 25 13:31 1983 lib/learn/editor/L12.2c
+rwxr-xr-x  3/10    523 Apr 25 13:31 1983 lib/learn/editor/L12.3a
+rwxr-xr-x  3/10    947 Apr 25 13:31 1983 lib/learn/editor/L13.1a
+rwxr-xr-x  3/10    650 Apr 25 13:31 1983 lib/learn/editor/L13.2a
+rwxr-xr-x  3/10    289 Apr 25 13:31 1983 lib/learn/editor/L13.2b
+rwxr-xr-x  3/10    568 Apr 25 13:31 1983 lib/learn/editor/L13.3a
+rwxr-xr-x  3/10    716 Apr 25 13:31 1983 lib/learn/editor/L14.1a
+rwxr-xr-x  3/10    741 Apr 25 13:31 1983 lib/learn/editor/L14.2a
+rwxr-xr-x  3/10    479 Apr 25 13:31 1983 lib/learn/editor/L14.2b
+rwxr-xr-x  3/10    894 May 15 04:47 1986 lib/learn/editor/L15.1a
+rwxr-xr-x  3/10    314 Apr 25 13:31 1983 lib/learn/editor/L15.1b
+rwxr-xr-x  3/10    639 Apr 25 13:31 1983 lib/learn/editor/L15.2a
+rwxr-xr-x  3/10    189 Apr 25 13:31 1983 lib/learn/editor/L15.2b
+rwxr-xr-x  3/10    599 Apr 25 13:31 1983 lib/learn/editor/L15.2c
+rwxr-xr-x  3/10    308 Apr 25 13:31 1983 lib/learn/editor/L15.2d
+rwxr-xr-x  3/10    484 Apr 25 13:31 1983 lib/learn/editor/L15.3b
+rwxr-xr-x  3/10    209 Apr 25 13:31 1983 lib/learn/editor/L15.3d
+rwxr-xr-x  3/10    350 Apr 25 13:31 1983 lib/learn/editor/L15.3e
+rwxr-xr-x  3/10    261 Apr 25 13:31 1983 lib/learn/editor/L15.3f
+rwxr-xr-x  3/10    696 Apr 25 13:31 1983 lib/learn/editor/L16.1a
+rwxr-xr-x  3/10    466 Apr 25 13:31 1983 lib/learn/editor/L16.1b
+rwxr-xr-x  3/10    537 Apr 25 13:31 1983 lib/learn/editor/L16.1c
+rwxr-xr-x  3/10    711 Apr 25 13:31 1983 lib/learn/editor/L16.2a
+rwxr-xr-x  3/10    281 Apr 25 13:31 1983 lib/learn/editor/L16.2c
+rwxr-xr-x  3/10    355 Apr 25 13:31 1983 lib/learn/editor/L17.2a
+rwxr-xr-x  3/10    207 Apr 25 13:31 1983 lib/learn/editor/L17.2b
+rwxr-xr-x  3/10    169 Apr 25 13:31 1983 lib/learn/editor/L17.2c
+rwxr-xr-x  3/10    200 Apr 25 13:31 1983 lib/learn/editor/L17.2d
+rwxr-xr-x  3/10    630 Apr 25 13:31 1983 lib/learn/editor/L18.1a
+rwxr-xr-x  3/10    613 Apr 25 13:31 1983 lib/learn/editor/L18.2a
+rwxr-xr-x  3/10    223 Apr 25 13:31 1983 lib/learn/editor/L18.2c
+rwxr-xr-x  3/10    200 Apr 25 13:31 1983 lib/learn/editor/L18.2d
+rwxr-xr-x  3/10    361 Apr 25 13:31 1983 lib/learn/editor/L18.2e
+rwxr-xr-x  3/10    266 Apr 25 13:31 1983 lib/learn/editor/L18.3a
+rwxr-xr-x  3/10    340 Apr 25 13:31 1983 lib/learn/editor/L18.3b
+rwxr-xr-x  3/10    752 Apr 25 13:31 1983 lib/learn/editor/L19.1a
+rwxr-xr-x  3/10    713 Apr 25 13:31 1983 lib/learn/editor/L19.1b
+rwxr-xr-x  3/10    658 Apr 25 13:31 1983 lib/learn/editor/L19.2a
+rwxr-xr-x  3/10    621 Apr 25 13:31 1983 lib/learn/editor/L19.2c
+rwxr-xr-x  3/10    700 Apr 25 13:31 1983 lib/learn/editor/L19.2d
+rwxr-xr-x  3/10    557 Apr 25 13:31 1983 lib/learn/editor/L19.2e
+rwxr-xr-x  3/10    306 Apr 25 13:31 1983 lib/learn/editor/L19.2f
+rwxr-xr-x  3/10    448 Apr 25 13:31 1983 lib/learn/editor/L19.3b
+rwxr-xr-x  3/10    300 Nov 12 03:32 1985 lib/learn/editor/L2.1a
+rwxr-xr-x  3/10    237 Nov 12 03:21 1985 lib/learn/editor/L2.2a
+rwxr-xr-x  3/10    748 Apr 25 13:31 1983 lib/learn/editor/L20.01a
+rwxr-xr-x  3/10    963 May 15 04:47 1986 lib/learn/editor/L20.01b
+rwxr-xr-x  3/10  10509 Apr 25 13:31 1983 lib/learn/editor/L20.01c
+rwxr-xr-x  3/10    969 Apr 25 13:31 1983 lib/learn/editor/L20.1a
+rwxr-xr-x  3/10    506 Apr 25 13:31 1983 lib/learn/editor/L20.2a
+rwxr-xr-x  3/10    730 Apr 25 13:31 1983 lib/learn/editor/L20.2b
+rwxr-xr-x  3/10   1332 Apr 25 13:31 1983 lib/learn/editor/L20.2c
+rwxr-xr-x  3/10    300 Apr 25 13:31 1983 lib/learn/editor/L21.1a
+rwxr-xr-x  3/10    596 Apr 25 13:31 1983 lib/learn/editor/L21.1b
+rwxr-xr-x  3/10    707 Apr 25 13:31 1983 lib/learn/editor/L21.1c
+rwxr-xr-x  3/10   3468 Apr 25 13:31 1983 lib/learn/editor/L21.1d
+rwxr-xr-x  3/10   1206 Apr 25 13:31 1983 lib/learn/editor/L21.1e
+rwxr-xr-x  3/10    714 Apr 25 13:31 1983 lib/learn/editor/L3.1a
+rwxr-xr-x  3/10    926 Apr 25 13:31 1983 lib/learn/editor/L3.1b
+rwxr-xr-x  3/10    696 Apr 25 13:31 1983 lib/learn/editor/L3.1c
+rwxr-xr-x  3/10    816 Apr 25 13:31 1983 lib/learn/editor/L30.1a
+rwxr-xr-x  3/10    486 Apr 25 13:31 1983 lib/learn/editor/L30.1b
+rwxr-xr-x  3/10    649 Apr 25 13:31 1983 lib/learn/editor/L30.2a
+rwxr-xr-x  3/10    426 Apr 25 13:31 1983 lib/learn/editor/L30.2b
+rwxr-xr-x  3/10    520 Apr 25 13:31 1983 lib/learn/editor/L30.2c
+rwxr-xr-x  3/10    307 Apr 25 13:31 1983 lib/learn/editor/L30.2d
+rwxr-xr-x  3/10    335 Apr 25 13:31 1983 lib/learn/editor/L30.2e
+rwxr-xr-x  3/10    327 Apr 25 13:31 1983 lib/learn/editor/L30.2f
+rwxr-xr-x  3/10    344 Apr 25 13:31 1983 lib/learn/editor/L30.2g
+rwxr-xr-x  3/10    394 Apr 25 13:31 1983 lib/learn/editor/L30.2h
+rwxr-xr-x  3/10    527 Apr 25 13:31 1983 lib/learn/editor/L31.1a
+rwxr-xr-x  3/10    348 Apr 25 13:31 1983 lib/learn/editor/L31.2b
+rwxr-xr-x  3/10   1419 Apr 25 13:31 1983 lib/learn/editor/L31.2c
+rwxr-xr-x  3/10    771 Apr 25 13:31 1983 lib/learn/editor/L32.1a
+rwxr-xr-x  3/10    380 Apr 25 13:31 1983 lib/learn/editor/L32.1b
+rwxr-xr-x  3/10    282 Apr 25 13:31 1983 lib/learn/editor/L32.1c
+rwxr-xr-x  3/10    730 Apr 25 13:31 1983 lib/learn/editor/L32.2a
+rwxr-xr-x  3/10    311 Apr 25 13:31 1983 lib/learn/editor/L32.2b
+rwxr-xr-x  3/10    205 Apr 25 13:31 1983 lib/learn/editor/L32.2c
+rwxr-xr-x  3/10    135 Apr 25 13:31 1983 lib/learn/editor/L32.2d
+rwxr-xr-x  3/10    143 Apr 25 13:31 1983 lib/learn/editor/L32.2e
+rwxr-xr-x  3/10    135 Apr 25 13:31 1983 lib/learn/editor/L32.2f
+rwxr-xr-x  3/10    548 Apr 25 13:31 1983 lib/learn/editor/L32.2g
+rwxr-xr-x  3/10    521 Apr 25 13:31 1983 lib/learn/editor/L33.1a
+rwxr-xr-x  3/10    639 Apr 25 13:31 1983 lib/learn/editor/L33.1b
+rwxr-xr-x  3/10    443 May 15 04:47 1986 lib/learn/editor/L33.2a
+rwxr-xr-x  3/10    677 Apr 25 13:31 1983 lib/learn/editor/L33.2b
+rwxr-xr-x  3/10    271 Apr 25 13:31 1983 lib/learn/editor/L33.2c
+rwxr-xr-x  3/10    272 Apr 25 13:32 1983 lib/learn/editor/L34.1a
+rwxr-xr-x  3/10    307 Apr 25 13:32 1983 lib/learn/editor/L34.1b
+rwxr-xr-x  3/10    308 Apr 25 13:32 1983 lib/learn/editor/L34.2a
+rwxr-xr-x  3/10    120 Apr 25 13:32 1983 lib/learn/editor/L34.2b
+rwxr-xr-x  3/10    105 Apr 25 13:32 1983 lib/learn/editor/L34.2c
+rwxr-xr-x  3/10    118 Apr 25 13:32 1983 lib/learn/editor/L34.2d
+rwxr-xr-x  3/10    286 Apr 25 13:32 1983 lib/learn/editor/L34.2e
+rwxr-xr-x  3/10    176 Apr 25 13:32 1983 lib/learn/editor/L34.2f
+rwxr-xr-x  3/10    894 Apr 25 13:32 1983 lib/learn/editor/L35.1a
+rwxr-xr-x  3/10    626 Apr 25 13:32 1983 lib/learn/editor/L35.2a
+rwxr-xr-x  3/10    323 Apr 25 13:32 1983 lib/learn/editor/L35.2b
+rwxr-xr-x  3/10    570 Apr 25 13:32 1983 lib/learn/editor/L35.2c
+rwxr-xr-x  3/10    603 May 15 04:47 1986 lib/learn/editor/L35.2d
+rwxr-xr-x  3/10    724 Apr 25 13:32 1983 lib/learn/editor/L35.2e
+rwxr-xr-x  3/10    831 Apr 25 13:32 1983 lib/learn/editor/L36.1a
+rwxr-xr-x  3/10    552 Apr 25 13:32 1983 lib/learn/editor/L36.2a
+rwxr-xr-x  3/10    239 Apr 25 13:32 1983 lib/learn/editor/L36.2b
+rwxr-xr-x  3/10    910 Apr 25 13:32 1983 lib/learn/editor/L36.2c
+rwxr-xr-x  3/10    454 Apr 25 13:32 1983 lib/learn/editor/L36.2d
+rwxr-xr-x  3/10    516 Apr 25 13:32 1983 lib/learn/editor/L37.1a
+rwxr-xr-x  3/10    688 Apr 25 13:32 1983 lib/learn/editor/L37.2a
+rwxr-xr-x  3/10    300 Apr 25 13:32 1983 lib/learn/editor/L37.2b
+rwxr-xr-x  3/10    585 Apr 25 13:32 1983 lib/learn/editor/L37.2c
+rwxr-xr-x  3/10    379 Apr 25 13:32 1983 lib/learn/editor/L37.2d
+rwxr-xr-x  3/10   1245 Apr 25 13:32 1983 lib/learn/editor/L37.2e
+rwxr-xr-x  3/10    607 Apr 25 13:32 1983 lib/learn/editor/L37.2f
+rwxr-xr-x  3/10    764 Apr 25 13:32 1983 lib/learn/editor/L38.1a
+rwxr-xr-x  3/10    403 Apr 25 13:32 1983 lib/learn/editor/L38.2a
+rwxr-xr-x  3/10    425 Apr 25 13:32 1983 lib/learn/editor/L38.2b
+rwxr-xr-x  3/10    427 Apr 25 13:32 1983 lib/learn/editor/L39.1a
+rwxr-xr-x  3/10    618 Apr 25 13:32 1983 lib/learn/editor/L4.1a
+rwxr-xr-x  3/10    160 Apr 25 13:32 1983 lib/learn/editor/L4.1b
+rwxr-xr-x  3/10    361 Apr 25 13:32 1983 lib/learn/editor/L4.2a
+rwxr-xr-x  3/10    135 Apr 25 13:32 1983 lib/learn/editor/L4.2b
+rwxr-xr-x  3/10    651 Apr 25 13:32 1983 lib/learn/editor/L40.1a
+rwxr-xr-x  3/10    972 Apr 25 13:32 1983 lib/learn/editor/L40.1b
+rwxr-xr-x  3/10    622 Apr 25 13:32 1983 lib/learn/editor/L40.2b
+rwxr-xr-x  3/10    525 Apr 25 13:32 1983 lib/learn/editor/L40.2c
+rwxr-xr-x  3/10    717 Apr 25 13:32 1983 lib/learn/editor/L40.2d
+rwxr-xr-x  3/10   1371 Apr 25 13:32 1983 lib/learn/editor/L41.1a
+rwxr-xr-x  3/10    482 Apr 25 13:32 1983 lib/learn/editor/L41.1b
+rwxr-xr-x  3/10    749 Apr 25 13:32 1983 lib/learn/editor/L42.1a
+rwxr-xr-x  3/10    537 Apr 25 13:32 1983 lib/learn/editor/L42.2a
+rwxr-xr-x  3/10    410 Apr 25 13:32 1983 lib/learn/editor/L42.2b
+rwxr-xr-x  3/10    899 May 15 04:47 1986 lib/learn/editor/L42.2c
+rwxr-xr-x  3/10    605 Apr 25 13:32 1983 lib/learn/editor/L43.1a
+rwxr-xr-x  3/10    580 Apr 25 13:32 1983 lib/learn/editor/L43.2a
+rwxr-xr-x  3/10    203 Apr 25 13:32 1983 lib/learn/editor/L43.2b
+rwxr-xr-x  3/10    393 Apr 25 13:32 1983 lib/learn/editor/L43.2c
+rwxr-xr-x  3/10    285 Apr 25 13:32 1983 lib/learn/editor/L43.2d
+rwxr-xr-x  3/10   1242 Apr 25 13:32 1983 lib/learn/editor/L44.1a
+rwxr-xr-x  3/10   1563 Apr 25 13:32 1983 lib/learn/editor/L44.1b
+rwxr-xr-x  3/10    901 Apr 25 13:32 1983 lib/learn/editor/L44.1c
+rwxr-xr-x  3/10    703 Apr 25 13:32 1983 lib/learn/editor/L44.1d
+rwxr-xr-x  3/10    751 Apr 25 13:32 1983 lib/learn/editor/L44.1e
+rwxr-xr-x  3/10    754 Apr 25 13:32 1983 lib/learn/editor/L44.1f
+rwxr-xr-x  3/10   2441 Apr 25 13:32 1983 lib/learn/editor/L44.1g
+rwxr-xr-x  3/10    483 Apr 25 13:32 1983 lib/learn/editor/L44.1h
+rwxr-xr-x  3/10    383 Apr 25 13:32 1983 lib/learn/editor/L44.1i
+rwxr-xr-x  3/10    847 Apr 25 13:32 1983 lib/learn/editor/L45.1a
+rwxr-xr-x  3/10    970 May 17 08:54 1983 lib/learn/editor/L45.1b
+rwxr-xr-x  3/10    496 Apr 25 13:32 1983 lib/learn/editor/L5.1a
+rwxr-xr-x  3/10    888 Apr 25 13:32 1983 lib/learn/editor/L50.1a
+rwxr-xr-x  3/10    634 Apr 25 13:32 1983 lib/learn/editor/L50.1b
+rwxr-xr-x  3/10    875 Apr 25 13:32 1983 lib/learn/editor/L50.1c
+rwxr-xr-x  3/10    384 Apr 25 13:32 1983 lib/learn/editor/L50.2c
+rwxr-xr-x  3/10   1368 Apr 25 13:32 1983 lib/learn/editor/L50.2d
+rwxr-xr-x  3/10    747 Apr 25 13:32 1983 lib/learn/editor/L50.2e
+rwxr-xr-x  3/10   2071 Apr 25 13:32 1983 lib/learn/editor/L50.2f
+rwxr-xr-x  3/10   2144 Apr 25 13:32 1983 lib/learn/editor/L50.2g
+rwxr-xr-x  3/10    567 May 15 04:47 1986 lib/learn/editor/L51.1a
+rwxr-xr-x  3/10   3783 Apr 25 13:32 1983 lib/learn/editor/L51.2a
+rwxr-xr-x  3/10    353 Apr 25 13:32 1983 lib/learn/editor/L51.2b
+rwxr-xr-x  3/10   4264 Apr 25 13:32 1983 lib/learn/editor/L51.2c
+rwxr-xr-x  3/10   1768 Apr 25 13:32 1983 lib/learn/editor/L52.1a
+rwxr-xr-x  3/10   1447 Apr 25 13:32 1983 lib/learn/editor/L52.1b
+rwxr-xr-x  3/10    702 Apr 25 13:32 1983 lib/learn/editor/L52.2a
+rwxr-xr-x  3/10   1588 Apr 25 13:32 1983 lib/learn/editor/L52.2b
+rwxr-xr-x  3/10   1350 Apr 25 13:32 1983 lib/learn/editor/L52.2c
+rwxr-xr-x  3/10    528 Apr 25 13:32 1983 lib/learn/editor/L53.1a
+rwxr-xr-x  3/10  18913 Apr 25 13:32 1983 lib/learn/editor/L53.2b
+rwxr-xr-x  3/10   1012 Apr 25 13:32 1983 lib/learn/editor/L54.1a
+rwxr-xr-x  3/10   2145 Apr 25 13:32 1983 lib/learn/editor/L54.1b
+rwxr-xr-x  3/10    744 Apr 25 13:32 1983 lib/learn/editor/L55.1a
+rwxr-xr-x  3/10    692 Apr 25 13:32 1983 lib/learn/editor/L56.1a
+rwxr-xr-x  3/10    827 Apr 25 13:32 1983 lib/learn/editor/L57.1a
+rwxr-xr-x  3/10    871 Apr 25 13:32 1983 lib/learn/editor/L6.1a
+rwxr-xr-x  3/10    760 Apr 25 13:32 1983 lib/learn/editor/L6.2a
+rwxr-xr-x  3/10    376 Apr 25 13:32 1983 lib/learn/editor/L6.2b
+rwxr-xr-x  3/10   1217 Apr 25 13:32 1983 lib/learn/editor/L60.1a
+rwxr-xr-x  3/10   1864 Apr 25 13:32 1983 lib/learn/editor/L60.1b
+rwxr-xr-x  3/10   2843 Apr 25 13:32 1983 lib/learn/editor/L60.2a
+rwxr-xr-x  3/10   5425 Apr 25 13:32 1983 lib/learn/editor/L60.2b
+rwxr-xr-x  3/10   2933 Apr 25 13:32 1983 lib/learn/editor/L60.2c
+rwxr-xr-x  3/10   2734 Apr 25 13:32 1983 lib/learn/editor/L60.2d
+rwxr-xr-x  3/10    618 Apr 25 13:32 1983 lib/learn/editor/L61.1a
+rwxr-xr-x  3/10    849 Apr 25 13:32 1983 lib/learn/editor/L62.1a
+rwxr-xr-x  3/10    673 Apr 25 13:32 1983 lib/learn/editor/L62.2a
+rwxr-xr-x  3/10   1638 Apr 25 13:32 1983 lib/learn/editor/L62.2b
+rwxr-xr-x  3/10    486 Apr 25 13:32 1983 lib/learn/editor/L62.2c
+rwxr-xr-x  3/10    881 Apr 25 13:32 1983 lib/learn/editor/L63.1a
+rwxr-xr-x  3/10    213 Apr 25 13:32 1983 lib/learn/editor/L63.1b
+rwxr-xr-x  3/10    207 Apr 25 13:32 1983 lib/learn/editor/L63.1c
+rwxr-xr-x  3/10    135 Apr 25 13:32 1983 lib/learn/editor/L63.1d
+rwxr-xr-x  3/10    159 Apr 25 13:32 1983 lib/learn/editor/L63.1e
+rwxr-xr-x  3/10    757 Apr 25 13:32 1983 lib/learn/editor/L64.1a
+rwxr-xr-x  3/10    271 Apr 25 13:32 1983 lib/learn/editor/L64.1b
+rwxr-xr-x  3/10   1313 May 15 04:47 1986 lib/learn/editor/L65.1a
+rwxr-xr-x  3/10   4279 Apr 25 13:32 1983 lib/learn/editor/L66.1a
+rwxr-xr-x  3/10    743 Apr 25 13:32 1983 lib/learn/editor/L7.1a
+rwxr-xr-x  3/10    541 Apr 25 13:32 1983 lib/learn/editor/L7.1b
+rwxr-xr-x  3/10    430 Apr 25 13:32 1983 lib/learn/editor/L7.2c
+rwxr-xr-x  3/10   1043 Apr 25 13:32 1983 lib/learn/editor/L70.1a
+rwxr-xr-x  3/10   1225 Apr 25 13:32 1983 lib/learn/editor/L70.2a
+rwxr-xr-x  3/10   1703 Apr 25 13:32 1983 lib/learn/editor/L70.2b
+rwxr-xr-x  3/10   1577 Apr 25 13:32 1983 lib/learn/editor/L70.2c
+rwxr-xr-x  3/10   1961 Apr 25 13:32 1983 lib/learn/editor/L70.2d
+rwxr-xr-x  3/10   2066 Apr 25 13:32 1983 lib/learn/editor/L70.2e
+rwxr-xr-x  3/10   1579 Apr 25 13:32 1983 lib/learn/editor/L70.2f
+rwxr-xr-x  3/10    788 Apr 25 13:32 1983 lib/learn/editor/L70.2g
+rwxr-xr-x  3/10   4658 Apr 25 13:32 1983 lib/learn/editor/L71.1a
+rwxr-xr-x  3/10   1068 Apr 25 13:32 1983 lib/learn/editor/L72.1a
+rwxr-xr-x  3/10   1220 Apr 25 13:32 1983 lib/learn/editor/L72.2a
+rwxr-xr-x  3/10    963 Apr 25 13:32 1983 lib/learn/editor/L72.2b
+rwxr-xr-x  3/10    758 Apr 25 13:32 1983 lib/learn/editor/L72.2c
+rwxr-xr-x  3/10    739 Apr 25 13:32 1983 lib/learn/editor/L72.2d
+rwxr-xr-x  3/10    806 Apr 25 13:32 1983 lib/learn/editor/L73.1a
+rwxr-xr-x  3/10   2447 Apr 25 13:32 1983 lib/learn/editor/L74.1a
+rwxr-xr-x  3/10    755 Apr 25 13:32 1983 lib/learn/editor/L8.1a
+rwxr-xr-x  3/10    398 Apr 25 13:32 1983 lib/learn/editor/L8.1b
+rwxr-xr-x  3/10    783 Apr 25 13:32 1983 lib/learn/editor/L8.2a
+rwxr-xr-x  3/10    416 Apr 25 13:32 1983 lib/learn/editor/L8.2b
+rwxr-xr-x  3/10    580 Apr 25 13:32 1983 lib/learn/editor/L8.2c
+rwxr-xr-x  3/10    598 Apr 25 13:32 1983 lib/learn/editor/L9.1a
+rwxr-xr-x  3/10    574 Apr 25 13:32 1983 lib/learn/editor/L9.2a
+rwxr-xr-x  3/10    494 Apr 25 13:32 1983 lib/learn/editor/L9.2b
+rwxr-xr-x  3/10    794 Apr 25 13:32 1983 lib/learn/editor/L9.2d
+rwxr-xr-x  3/10    428 Apr 25 13:32 1983 lib/learn/editor/L9.2e
+rwxr-xr-x  3/10    638 Apr 25 13:32 1983 lib/learn/editor/L9.3c
+rwxr-xr-x  0/10      0 Dec 23 17:02 1998 lib/learn/log/
+r--r--r--  0/10     45 May 25 02:00 1983 lib/learn/log/morefiles
+rwxr-xr-x  0/10      0 Jan 17 11:02 1999 lib/learn/C/
+r--r--r--  3/10     14 Apr 25 13:33 1983 lib/learn/C/L0
+r--r--r--  3/10    418 Apr 25 13:33 1983 lib/learn/C/L0.1a
+r--r--r--  3/10    412 Apr 25 13:33 1983 lib/learn/C/L1.1a
+r--r--r--  3/10    555 Apr 25 13:33 1983 lib/learn/C/L1.1b
+r--r--r--  3/10    227 Apr 25 13:33 1983 lib/learn/C/L1.1c
+r--r--r--  3/10    510 Apr 25 13:33 1983 lib/learn/C/L1.1d
+r--r--r--  3/10    215 Apr 25 13:33 1983 lib/learn/C/L1.1e
+r--r--r--  3/10    254 Apr 25 13:33 1983 lib/learn/C/L1.1f
+r--r--r--  3/10    375 Apr 25 13:33 1983 lib/learn/C/L10
+r--r--r--  3/10    770 Apr 25 13:33 1983 lib/learn/C/L11.1a
+r--r--r--  3/10    681 Apr 25 13:33 1983 lib/learn/C/L11.2a
+r--r--r--  3/10    579 Apr 25 13:33 1983 lib/learn/C/L12.1a
+r--r--r--  3/10   1063 Apr 25 13:33 1983 lib/learn/C/L12.1b
+r--r--r--  3/10    959 Apr 25 13:33 1983 lib/learn/C/L13.1a
+r--r--r--  3/10    644 Apr 25 13:33 1983 lib/learn/C/L14.1a
+r--r--r--  3/10    520 Apr 25 13:33 1983 lib/learn/C/L14.2a
+r--r--r--  3/10    992 Apr 25 13:33 1983 lib/learn/C/L14.2b
+r--r--r--  3/10    698 Apr 25 13:33 1983 lib/learn/C/L15.1a
+r--r--r--  3/10    605 Apr 25 13:33 1983 lib/learn/C/L15.1b
+r--r--r--  3/10   1680 Apr 25 13:33 1983 lib/learn/C/L16.2a
+r--r--r--  3/10    999 Apr 25 13:33 1983 lib/learn/C/L16.2b
+r--r--r--  3/10   1947 Apr 25 13:33 1983 lib/learn/C/L16.2c
+r--r--r--  3/10   2951 Apr 25 13:33 1983 lib/learn/C/L17.1a
+r--r--r--  3/10    707 Apr 25 13:34 1983 lib/learn/C/L17.1c
+r--r--r--  3/10    933 Apr 25 13:34 1983 lib/learn/C/L18.1a
+r--r--r--  3/10    498 Apr 25 13:34 1983 lib/learn/C/L19.1a
+r--r--r--  3/10    957 Apr 25 13:34 1983 lib/learn/C/L2.1a
+r--r--r--  3/10    445 Apr 25 13:34 1983 lib/learn/C/L2.1b
+r--r--r--  3/10    231 Apr 25 13:34 1983 lib/learn/C/L2.1c
+r--r--r--  3/10    215 Apr 25 13:34 1983 lib/learn/C/L2.1d
+r--r--r--  3/10    211 Apr 25 13:34 1983 lib/learn/C/L2.1e
+r--r--r--  3/10   1840 Apr 25 13:34 1983 lib/learn/C/L20.1a
+r--r--r--  3/10   1123 Apr 25 13:34 1983 lib/learn/C/L3.1a
+r--r--r--  3/10    211 Apr 25 13:34 1983 lib/learn/C/L3.1b
+r--r--r--  3/10    946 Apr 25 13:34 1983 lib/learn/C/L30.1a
+r--r--r--  3/10    642 Apr 25 13:34 1983 lib/learn/C/L31.1a
+r--r--r--  3/10    736 Apr 25 13:34 1983 lib/learn/C/L32.1a
+r--r--r--  3/10    442 Apr 25 13:34 1983 lib/learn/C/L33.1a
+r--r--r--  3/10    775 Apr 25 13:34 1983 lib/learn/C/L35.1a
+r--r--r--  3/10   1064 Apr 25 13:34 1983 lib/learn/C/L37.1a
+r--r--r--  3/10    151 Apr 25 13:34 1983 lib/learn/C/L4.1a
+r--r--r--  3/10    862 Apr 25 13:34 1983 lib/learn/C/L40.1a
+r--r--r--  3/10   1266 Apr 25 13:34 1983 lib/learn/C/L41.1a
+r--r--r--  3/10   1018 Apr 25 13:34 1983 lib/learn/C/L42.1a
+r--r--r--  3/10   1061 Apr 25 13:34 1983 lib/learn/C/L43.1a
+r--r--r--  3/10   1212 Apr 25 13:34 1983 lib/learn/C/L43.1b
+r--r--r--  3/10    377 Apr 25 13:34 1983 lib/learn/C/L5.1a
+r--r--r--  3/10    474 Apr 25 13:34 1983 lib/learn/C/L5.1b
+r--r--r--  3/10    608 Apr 25 13:34 1983 lib/learn/C/L5.1c
+r--r--r--  3/10    852 Apr 25 13:34 1983 lib/learn/C/L5.1d
+r--r--r--  3/10    639 Apr 25 13:34 1983 lib/learn/C/L5.1e
+r--r--r--  3/10    428 Apr 25 13:34 1983 lib/learn/C/L5.1f
+r--r--r--  3/10    622 Apr 25 13:34 1983 lib/learn/C/L5.1g
+r--r--r--  3/10    543 Apr 25 13:34 1983 lib/learn/C/L5.2a
+r--r--r--  3/10    581 Apr 25 13:34 1983 lib/learn/C/L5.2b
+r--r--r--  3/10   1579 Apr 25 13:34 1983 lib/learn/C/L5.2e
+r--r--r--  3/10    663 Apr 25 13:34 1983 lib/learn/C/L5.3e
+r--r--r--  3/10   4556 Apr 25 13:34 1983 lib/learn/C/L50.1a
+r--r--r--  3/10    587 Apr 25 13:34 1983 lib/learn/C/L9.1a
+rw-r--r--  3/10    334 Oct  2 21:15 1999 lib/learn/C/getline.c
+rw-r--r--  3/10    249 Oct  2 21:15 1999 lib/learn/C/getnum.c
+rw-r--r--  3/10    328 Oct  2 21:15 1999 lib/learn/C/getline.o
+rw-r--r--  3/10    307 Oct  2 21:15 1999 lib/learn/C/getnum.o
+rwxr-xr-x  0/10      0 Jan 17 11:02 1999 lib/learn/files/
+rwxr-xr-x  0/10     39 Apr 26 03:30 1983 lib/learn/files/Init
+r--r--r--  3/10     15 Apr 25 13:30 1983 lib/learn/files/L0
+r--r--r--  3/10    947 Apr 25 13:30 1983 lib/learn/files/L0.01a
+r--r--r--  3/10   1111 Jun  5 02:28 1985 lib/learn/files/L0.1a
+r--r--r--  3/10    837 Apr 25 13:30 1983 lib/learn/files/L0.1b
+r--r--r--  3/10    603 Apr 25 13:30 1983 lib/learn/files/L0.1c
+r--r--r--  3/10    635 Apr 25 13:30 1983 lib/learn/files/L0.1d
+r--r--r--  3/10    214 Apr 25 13:30 1983 lib/learn/files/L1.1a
+r--r--r--  3/10    296 Apr 25 13:30 1983 lib/learn/files/L1.2a
+r--r--r--  3/10    543 Apr 25 13:30 1983 lib/learn/files/L1.2b
+r--r--r--  3/10    554 Apr 25 13:30 1983 lib/learn/files/L10.1a
+r--r--r--  3/10    299 Apr 25 13:30 1983 lib/learn/files/L10.2a
+r--r--r--  3/10    474 Apr 25 13:30 1983 lib/learn/files/L10.2b
+r--r--r--  3/10    397 Apr 25 13:30 1983 lib/learn/files/L10.3a
+r--r--r--  3/10    267 Apr 25 13:30 1983 lib/learn/files/L10.3b
+r--r--r--  3/10    333 Apr 25 13:30 1983 lib/learn/files/L10.3c
+r--r--r--  3/10    404 Apr 25 13:30 1983 lib/learn/files/L10.3d
+r--r--r--  3/10    942 Apr 25 13:30 1983 lib/learn/files/L11.1a
+r--r--r--  3/10    317 Apr 25 13:30 1983 lib/learn/files/L11.2a
+r--r--r--  3/10    469 Apr 25 13:30 1983 lib/learn/files/L11.2b
+r--r--r--  3/10    412 Apr 25 13:30 1983 lib/learn/files/L11.3a
+r--r--r--  3/10    194 Apr 25 13:30 1983 lib/learn/files/L11.3b
+r--r--r--  3/10    396 Apr 25 13:30 1983 lib/learn/files/L11.3c
+r--r--r--  3/10   1179 Apr 25 13:30 1983 lib/learn/files/L12.1a
+r--r--r--  3/10    554 Apr 25 13:30 1983 lib/learn/files/L12.2a
+r--r--r--  3/10    435 Apr 25 13:30 1983 lib/learn/files/L12.2b
+r--r--r--  3/10    590 Apr 25 13:30 1983 lib/learn/files/L12.2c
+r--r--r--  3/10    446 Apr 25 13:30 1983 lib/learn/files/L12.3a
+r--r--r--  3/10    364 Apr 25 13:30 1983 lib/learn/files/L12.3b
+r--r--r--  3/10    491 Apr 25 13:30 1983 lib/learn/files/L12.3c
+r--r--r--  3/10   1258 Jul 25 09:08 1983 lib/learn/files/L13.01a
+r--r--r--  3/10    264 Apr 25 13:30 1983 lib/learn/files/L13.1a
+r--r--r--  3/10    285 Apr 25 13:30 1983 lib/learn/files/L13.1b
+r--r--r--  3/10    559 Apr 25 13:30 1983 lib/learn/files/L13.1c
+r--r--r--  3/10    250 Apr 25 13:30 1983 lib/learn/files/L13.1d
+r--r--r--  3/10    256 Apr 25 13:30 1983 lib/learn/files/L13.1e
+r--r--r--  3/10    527 Apr 25 13:30 1983 lib/learn/files/L13.1f
+r--r--r--  3/10    639 Apr 25 13:30 1983 lib/learn/files/L13.1g
+r--r--r--  3/10    504 Apr 25 13:30 1983 lib/learn/files/L2.1a
+r--r--r--  3/10    420 Apr 25 13:30 1983 lib/learn/files/L2.2a
+r--r--r--  3/10    640 Apr 25 13:30 1983 lib/learn/files/L2.2b
+r--r--r--  3/10    706 Apr 25 13:30 1983 lib/learn/files/L3.1a
+r--r--r--  3/10    616 Apr 25 13:30 1983 lib/learn/files/L3.2a
+r--r--r--  3/10    749 Apr 25 13:30 1983 lib/learn/files/L3.2b
+r--r--r--  3/10    360 Apr 25 13:30 1983 lib/learn/files/L3.3a
+r--r--r--  3/10    547 Apr 25 13:30 1983 lib/learn/files/L3.3b
+r--r--r--  3/10    345 Apr 25 13:30 1983 lib/learn/files/L4.1a
+r--r--r--  3/10    429 Apr 25 13:30 1983 lib/learn/files/L4.2a
+r--r--r--  3/10    493 Apr 25 13:30 1983 lib/learn/files/L4.2b
+r--r--r--  3/10    584 Apr 25 13:30 1983 lib/learn/files/L4.3a
+r--r--r--  3/10    359 Apr 25 13:30 1983 lib/learn/files/L4.3b
+r--r--r--  3/10    385 Apr 25 13:30 1983 lib/learn/files/L4.3c
+r--r--r--  3/10    918 Apr 25 13:30 1983 lib/learn/files/L5.1a
+r--r--r--  3/10    363 Apr 25 13:30 1983 lib/learn/files/L5.1b
+r--r--r--  3/10    523 Apr 25 13:30 1983 lib/learn/files/L5.1c
+r--r--r--  3/10    159 Apr 25 13:30 1983 lib/learn/files/L5.1d
+r--r--r--  3/10    664 Apr 25 13:30 1983 lib/learn/files/L5.1e
+r--r--r--  3/10    875 Apr 25 13:30 1983 lib/learn/files/L6.1a
+r--r--r--  3/10    222 Apr 25 13:30 1983 lib/learn/files/L6.1b
+r--r--r--  3/10    246 Apr 25 13:30 1983 lib/learn/files/L6.1c
+r--r--r--  3/10    291 Apr 25 13:30 1983 lib/learn/files/L6.1d
+r--r--r--  3/10    262 Apr 25 13:30 1983 lib/learn/files/L6.1e
+r--r--r--  3/10    709 Apr 25 13:30 1983 lib/learn/files/L6.2a
+r--r--r--  3/10    511 Apr 25 13:30 1983 lib/learn/files/L6.2b
+r--r--r--  3/10    876 Apr 25 13:30 1983 lib/learn/files/L7.1a
+r--r--r--  3/10    677 Apr 25 13:30 1983 lib/learn/files/L7.2a
+r--r--r--  3/10    727 Apr 25 13:30 1983 lib/learn/files/L7.2b
+r--r--r--  3/10    737 Apr 25 13:30 1983 lib/learn/files/L7.3a
+r--r--r--  3/10    314 Apr 25 13:30 1983 lib/learn/files/L7.3b
+r--r--r--  3/10    459 Apr 25 13:30 1983 lib/learn/files/L7.3c
+r--r--r--  3/10    429 Apr 25 13:30 1983 lib/learn/files/L8.1a
+r--r--r--  3/10    186 Apr 25 13:30 1983 lib/learn/files/L8.2a
+r--r--r--  3/10    346 Apr 25 13:30 1983 lib/learn/files/L8.2b
+r--r--r--  3/10    421 Apr 25 13:30 1983 lib/learn/files/L8.2c
+r--r--r--  3/10    851 Apr 25 13:30 1983 lib/learn/files/L9.1a
+r--r--r--  3/10    595 Apr 25 13:30 1983 lib/learn/files/L9.2a
+r--r--r--  3/10    500 Apr 25 13:30 1983 lib/learn/files/L9.2b
+r--r--r--  3/10    356 Apr 25 13:30 1983 lib/learn/files/L9.2c
+rwxr-xr-x  0/10      0 Jan 17 11:02 1999 lib/learn/macros/
+r--r--r--  3/10     13 Apr 25 13:33 1983 lib/learn/macros/L0
+r--r--r--  3/10    767 Apr 25 13:33 1983 lib/learn/macros/L1.1a
+r--r--r--  3/10   1836 Apr 25 13:33 1983 lib/learn/macros/L10.1a
+r--r--r--  3/10   3405 Apr 25 13:33 1983 lib/learn/macros/L11.1a
+r--r--r--  3/10   3981 Apr 25 13:33 1983 lib/learn/macros/L12.1a
+r--r--r--  3/10   3745 Apr 25 13:33 1983 lib/learn/macros/L13.1a
+r--r--r--  3/10   3428 Apr 25 13:33 1983 lib/learn/macros/L14.1a
+r--r--r--  3/10  13222 May 15 04:48 1986 lib/learn/macros/L15.1a
+r--r--r--  3/10    781 Apr 25 13:33 1983 lib/learn/macros/L2.1a
+r--r--r--  3/10   3073 Apr 25 13:33 1983 lib/learn/macros/L3.1a
+r--r--r--  3/10   2617 Apr 25 13:33 1983 lib/learn/macros/L4.1a
+r--r--r--  3/10   2611 Apr 25 13:33 1983 lib/learn/macros/L5.1a
+r--r--r--  3/10   2766 Apr 25 13:33 1983 lib/learn/macros/L6.1a
+r--r--r--  3/10   2985 Apr 25 13:33 1983 lib/learn/macros/L7.1a
+r--r--r--  3/10   3084 Apr 25 13:33 1983 lib/learn/macros/L8.1a
+r--r--r--  3/10   2971 Apr 25 13:33 1983 lib/learn/macros/L9.1a
+rwxr-xr-x  0/10      0 Jan 17 11:02 1999 lib/learn/morefiles/
+r--r--r--  3/10     14 Apr 25 13:32 1983 lib/learn/morefiles/L0
+r--r--r--  3/10    699 Apr 25 13:32 1983 lib/learn/morefiles/L0.1a
+r--r--r--  3/10   1419 Apr 25 13:32 1983 lib/learn/morefiles/L0.1b
+r--r--r--  3/10    291 Apr 25 13:32 1983 lib/learn/morefiles/L0.1c
+r--r--r--  3/10    201 Apr 25 13:32 1983 lib/learn/morefiles/L0.1d
+r--r--r--  3/10    438 Apr 25 13:32 1983 lib/learn/morefiles/L0.1e
+r--r--r--  3/10    230 Apr 25 13:32 1983 lib/learn/morefiles/L0.1f
+r--r--r--  3/10    126 Apr 25 13:32 1983 lib/learn/morefiles/L0.1g
+r--r--r--  3/10  12648 Apr 25 13:32 1983 lib/learn/morefiles/L1.1a
+r--r--r--  3/10  12697 Apr 25 13:32 1983 lib/learn/morefiles/L1.1b
+r--r--r--  3/10    450 Apr 25 13:32 1983 lib/learn/morefiles/L1.1c
+r--r--r--  3/10   3594 Apr 25 13:32 1983 lib/learn/morefiles/L1.1d
+r--r--r--  3/10    899 Apr 25 13:32 1983 lib/learn/morefiles/L2.1a
+r--r--r--  3/10    267 Apr 25 13:32 1983 lib/learn/morefiles/L2.1b
+r--r--r--  3/10    342 Apr 25 13:32 1983 lib/learn/morefiles/L2.1c
+r--r--r--  3/10    177 Apr 25 13:32 1983 lib/learn/morefiles/L2.1d
+r--r--r--  3/10    529 Apr 25 13:32 1983 lib/learn/morefiles/L2.1e
+r--r--r--  3/10    299 Apr 25 13:32 1983 lib/learn/morefiles/L2.1f
+r--r--r--  3/10    805 Apr 25 13:32 1983 lib/learn/morefiles/L3.1a
+r--r--r--  3/10    377 Apr 25 13:32 1983 lib/learn/morefiles/L3.1b
+r--r--r--  3/10   1710 Apr 25 13:32 1983 lib/learn/morefiles/L3.1c
+r--r--r--  3/10   1719 Apr 25 13:32 1983 lib/learn/morefiles/L3.1d
+r--r--r--  3/10   1403 Apr 25 13:32 1983 lib/learn/morefiles/L3.1e
+r--r--r--  3/10    297 Apr 25 13:32 1983 lib/learn/morefiles/L3.1f
+r--r--r--  3/10   2060 Apr 25 13:32 1983 lib/learn/morefiles/L3.1g
+r--r--r--  3/10    621 Apr 25 13:32 1983 lib/learn/morefiles/L4.1a
+r--r--r--  3/10   1375 Apr 25 13:32 1983 lib/learn/morefiles/L4.1b
+r--r--r--  3/10   1637 Apr 25 13:33 1983 lib/learn/morefiles/L4.1c
+r--r--r--  3/10   6323 Apr 25 13:33 1983 lib/learn/morefiles/L4.1d
+r--r--r--  3/10   1381 Apr 25 13:33 1983 lib/learn/morefiles/L4.1e
+r--r--r--  3/10   2284 Apr 25 13:33 1983 lib/learn/morefiles/L4.1f
+r--r--r--  3/10   2399 Apr 25 13:33 1983 lib/learn/morefiles/L4.1g
+r--r--r--  3/10    130 Apr 25 13:33 1983 lib/learn/morefiles/L4.2a
+r--r--r--  3/10    591 Apr 25 13:33 1983 lib/learn/morefiles/L5.1a
+r--r--r--  3/10    654 Apr 25 13:33 1983 lib/learn/morefiles/L5.1b
+r--r--r--  3/10    714 Apr 25 13:33 1983 lib/learn/morefiles/L5.1c
+r--r--r--  3/10    350 Apr 25 13:33 1983 lib/learn/morefiles/L5.1d
+r--r--r--  3/10    331 Apr 25 13:33 1983 lib/learn/morefiles/L5.1e
+r--r--r--  3/10   1612 Apr 25 13:33 1983 lib/learn/morefiles/L6.1a
+r--r--r--  3/10   1883 Apr 25 13:33 1983 lib/learn/morefiles/L6.1b
+r--r--r--  3/10    559 Apr 25 13:33 1983 lib/learn/morefiles/L6.1c
+r--r--r--  3/10   2581 Apr 25 13:33 1983 lib/learn/morefiles/L6.1d
+r--r--r--  3/10   1606 Apr 25 13:33 1983 lib/learn/morefiles/L6.1e
+r--r--r--  3/10   1199 Apr 25 13:33 1983 lib/learn/morefiles/L6.2e
+r--r--r--  3/10    127 Apr 25 13:33 1983 lib/learn/morefiles/L7.1a
+rwxr-xr-x  0/10      0 Dec 23 17:03 1998 lib/learn/vi/
+rwxr-xr-x  0/10    740 May 17 23:42 1983 lib/learn/vi/Init
+rwxr-xr-x  0/10     14 May 17 23:42 1983 lib/learn/vi/L0
+rwxr-xr-x  0/10    968 May 17 23:42 1983 lib/learn/vi/L1.1a
+rwxr-xr-x  0/10   2829 May 17 23:42 1983 lib/learn/vi/L1.1b
+rwxr-xr-x  0/10   2084 May 17 23:42 1983 lib/learn/vi/L1.2
+rwxr-xr-x  0/10   1745 May 17 23:42 1983 lib/learn/vi/L2.1
+rwxr-xr-x  0/10   2127 May 17 23:42 1983 lib/learn/vi/L2.2
+rwxr-xr-x  0/10   1719 May 17 23:42 1983 lib/learn/vi/L2.3
+rwxr-xr-x  0/10   1443 May 17 23:42 1983 lib/learn/vi/L2.4
+rwxr-xr-x  0/10   2908 May 17 23:42 1983 lib/learn/vi/L3.1
+rwxr-xr-x  0/10   3243 May 17 23:42 1983 lib/learn/vi/L3.2
+rwxr-xr-x  0/10   1870 May 17 23:42 1983 lib/learn/vi/L3.3
+rwxr-xr-x  0/10   8704 May 17 23:42 1983 lib/learn/vi/L3.4
+rwxr-xr-x  0/10    633 May 17 23:42 1983 lib/learn/vi/L4.0
+rwxr-xr-x  0/10   1627 May 17 23:42 1983 lib/learn/vi/L4.1
+rwxr-xr-x  0/10   1754 May 17 23:42 1983 lib/learn/vi/L4.2
+rwxr-xr-x  0/10   1803 May 17 23:42 1983 lib/learn/vi/L4.3
+rwxr-xr-x  0/10   2600 May 17 23:42 1983 lib/learn/vi/L5.1
+rwxr-xr-x  0/10   1604 May 17 23:42 1983 lib/learn/vi/L5.2
+rwxr-xr-x  0/10   1264 May 17 23:42 1983 lib/learn/vi/L5.3
+rwxr-xr-x  0/10   4606 Jul 12 04:05 1984 lib/learn/vi/L5.4
+rwxr-xr-x  0/10   2039 May 19 16:41 1983 lib/learn/vi/L6.1
+rwxr-xr-x  0/10   4681 May 17 23:42 1983 lib/learn/vi/L6.2
+rwxr-xr-x  0/10   1884 May 17 23:42 1983 lib/learn/vi/L6.3
+rwxr-xr-x  0/10    762 May 17 23:42 1983 lib/learn/vi/L6.4
+rwxr-xr-x  0/10   6373 Jul 25 21:21 1983 lib/learn/vi/longtext
+rwxr-xr-x  0/10      0 Jan 17 11:02 1999 lib/learn/eqn/
+rwxr-xr-x  3/10    644 Apr 25 13:33 1983 lib/learn/eqn/Init
+r--r--r--  3/10     11 Apr 25 13:33 1983 lib/learn/eqn/L0
+r--r--r--  3/10   1208 Apr 25 13:33 1983 lib/learn/eqn/L0.1a
+r--r--r--  3/10    830 Apr 25 13:33 1983 lib/learn/eqn/L1.1a
+r--r--r--  3/10   1110 Apr 25 13:33 1983 lib/learn/eqn/L1.1b
+r--r--r--  3/10   1101 Apr 25 13:33 1983 lib/learn/eqn/L1.1c
+r--r--r--  3/10    805 Apr 25 13:33 1983 lib/learn/eqn/L1.1d
+r--r--r--  3/10    811 Apr 25 13:33 1983 lib/learn/eqn/L1.1e
+r--r--r--  3/10   2050 Apr 25 13:33 1983 lib/learn/eqn/L1.1f
+r--r--r--  3/10   1470 Apr 25 13:33 1983 lib/learn/eqn/L10.1a
+r--r--r--  3/10    577 Apr 25 13:33 1983 lib/learn/eqn/L10.1b
+r--r--r--  3/10    484 Apr 25 13:33 1983 lib/learn/eqn/L10.1c
+r--r--r--  3/10    201 Apr 25 13:33 1983 lib/learn/eqn/L10.2c
+r--r--r--  3/10    838 Apr 25 13:33 1983 lib/learn/eqn/L11.1a
+r--r--r--  3/10    575 Apr 25 13:33 1983 lib/learn/eqn/L11.1b
+r--r--r--  3/10    471 Apr 25 13:33 1983 lib/learn/eqn/L11.1c
+r--r--r--  3/10    387 Apr 25 13:33 1983 lib/learn/eqn/L11.1d
+r--r--r--  3/10    459 Apr 25 13:33 1983 lib/learn/eqn/L11.1e
+r--r--r--  3/10    966 Apr 25 13:33 1983 lib/learn/eqn/L11.1f
+r--r--r--  3/10    410 Apr 25 13:33 1983 lib/learn/eqn/L11.1g
+r--r--r--  3/10   1052 Apr 25 13:33 1983 lib/learn/eqn/L12.1a
+r--r--r--  3/10    738 Apr 25 13:33 1983 lib/learn/eqn/L12.1b
+r--r--r--  3/10    699 Apr 25 13:33 1983 lib/learn/eqn/L12.1c
+r--r--r--  3/10    522 Apr 25 13:33 1983 lib/learn/eqn/L12.1d
+r--r--r--  3/10    865 Apr 25 13:33 1983 lib/learn/eqn/L12.1e
+r--r--r--  3/10    687 Apr 25 13:33 1983 lib/learn/eqn/L2.1a
+r--r--r--  3/10    920 Apr 25 13:33 1983 lib/learn/eqn/L2.1b
+r--r--r--  3/10   1031 Apr 25 13:33 1983 lib/learn/eqn/L2.1c
+r--r--r--  3/10    776 Apr 25 13:33 1983 lib/learn/eqn/L2.1d
+r--r--r--  3/10    608 Apr 25 13:33 1983 lib/learn/eqn/L2.1e
+r--r--r--  3/10    758 Apr 25 13:33 1983 lib/learn/eqn/L2.1f
+r--r--r--  3/10    338 Apr 25 13:33 1983 lib/learn/eqn/L2.2a
+r--r--r--  3/10    595 Apr 25 13:33 1983 lib/learn/eqn/L2.2b
+r--r--r--  3/10    598 Apr 25 13:33 1983 lib/learn/eqn/L2.2e
+r--r--r--  3/10    980 Apr 25 13:33 1983 lib/learn/eqn/L3.1a
+r--r--r--  3/10    655 Apr 25 13:33 1983 lib/learn/eqn/L3.1b
+r--r--r--  3/10    629 Apr 25 13:33 1983 lib/learn/eqn/L3.1c
+r--r--r--  3/10    901 Apr 25 13:33 1983 lib/learn/eqn/L3.1d
+r--r--r--  3/10    702 Apr 25 13:33 1983 lib/learn/eqn/L3.1e
+r--r--r--  3/10    149 Apr 25 13:33 1983 lib/learn/eqn/L3.2a
+r--r--r--  3/10    341 Apr 25 13:33 1983 lib/learn/eqn/L3.2c
+r--r--r--  3/10    161 Apr 25 13:33 1983 lib/learn/eqn/L3.2d
+r--r--r--  3/10    582 Apr 25 13:33 1983 lib/learn/eqn/L4.1a
+r--r--r--  3/10    571 Apr 25 13:33 1983 lib/learn/eqn/L4.1b
+r--r--r--  3/10    193 Apr 25 13:33 1983 lib/learn/eqn/L4.1c
+r--r--r--  3/10    742 Apr 25 13:33 1983 lib/learn/eqn/L4.1d
+r--r--r--  3/10    426 Apr 25 13:33 1983 lib/learn/eqn/L4.2a
+r--r--r--  3/10    189 Apr 25 13:33 1983 lib/learn/eqn/L4.2c
+r--r--r--  3/10    776 Apr 25 13:33 1983 lib/learn/eqn/L5.1a
+r--r--r--  3/10    959 Apr 25 13:33 1983 lib/learn/eqn/L5.1b
+r--r--r--  3/10    798 Apr 25 13:33 1983 lib/learn/eqn/L5.1c
+r--r--r--  3/10   1182 Apr 25 13:33 1983 lib/learn/eqn/L5.1d
+r--r--r--  3/10   1032 Apr 25 13:33 1983 lib/learn/eqn/L5.1e
+r--r--r--  3/10    129 Apr 25 13:33 1983 lib/learn/eqn/L5.1f
+r--r--r--  3/10    275 Apr 25 13:33 1983 lib/learn/eqn/L5.1g
+r--r--r--  3/10    978 Apr 25 13:33 1983 lib/learn/eqn/L5.1h
+r--r--r--  3/10    484 Apr 25 13:33 1983 lib/learn/eqn/L5.2b
+r--r--r--  3/10    413 Apr 25 13:33 1983 lib/learn/eqn/L5.2d
+r--r--r--  3/10    147 Apr 25 13:33 1983 lib/learn/eqn/L5.2g
+r--r--r--  3/10   1588 Apr 25 13:33 1983 lib/learn/eqn/L6.1a
+r--r--r--  3/10    841 Apr 25 13:33 1983 lib/learn/eqn/L6.1b
+r--r--r--  3/10    536 Apr 25 13:33 1983 lib/learn/eqn/L6.1c
+r--r--r--  3/10    214 Apr 25 13:33 1983 lib/learn/eqn/L6.1d
+r--r--r--  3/10    912 Apr 25 13:33 1983 lib/learn/eqn/L7.1a
+r--r--r--  3/10    889 Apr 25 13:33 1983 lib/learn/eqn/L7.1b
+r--r--r--  3/10    562 Apr 25 13:33 1983 lib/learn/eqn/L7.1c
+r--r--r--  3/10    697 Apr 25 13:33 1983 lib/learn/eqn/L7.1d
+r--r--r--  3/10    188 Apr 25 13:33 1983 lib/learn/eqn/L7.2b
+r--r--r--  3/10    371 Apr 25 13:33 1983 lib/learn/eqn/L7.2c
+r--r--r--  3/10    866 Apr 25 13:33 1983 lib/learn/eqn/L8.1a
+r--r--r--  3/10    535 Apr 25 13:33 1983 lib/learn/eqn/L8.1b
+r--r--r--  3/10    188 Apr 25 13:33 1983 lib/learn/eqn/L8.2b
+r--r--r--  3/10   1553 Apr 25 13:33 1983 lib/learn/eqn/L9.1a
+r--r--r--  3/10    711 Apr 25 13:33 1983 lib/learn/eqn/L9.1b
+r--r--r--  3/10    394 Apr 25 13:33 1983 lib/learn/eqn/L9.2a
+r--r--r--  3/10    255 Apr 25 13:33 1983 lib/learn/eqn/L9.2b
+r--r--r--  3/10    130 Apr 25 13:33 1983 lib/learn/eqn/L9.3b
+r--r--r--  3/10    205 Apr 25 13:33 1983 lib/learn/eqn/tinyms
+rwxr-xr-x  0/10      0 Oct  2 21:15 1999 lib/learn/bin/
+rwxr-xr-x  3/10  37888 Oct  2 21:15 1999 lib/learn/bin/learn
+rwxr-xr-x  3/10   3072 Oct  2 21:15 1999 lib/learn/bin/lrntee
+rwxr-xr-x  3/10  10240 Oct  2 21:15 1999 lib/learn/bin/lcount
+rw-r--r--  3/10    328 Oct  2 21:15 1999 lib/learn/bin/getline.o linked to lib/learn/C/getline.o
+rw-r--r--  3/10    307 Oct  2 21:15 1999 lib/learn/bin/getnum.o linked to lib/learn/C/getnum.o
+rw-r--r--  3/10     53 Oct  2 21:42 1999 lib/learn/Linfo
+rw-r--r--  3/10   1037 Oct  2 21:42 1999 lib/learn/Xinfo
+rwxr-xr-x  0/10      0 Oct  2 21:16 1999 lib/struct/
+rwxr-xr-x  3/10  57344 Oct  2 21:16 1999 lib/struct/structure
+rwxr-xr-x  3/10  30720 Oct  2 21:16 1999 lib/struct/beautify
+rwxr-xr-x  0/10      0 Oct  2 21:15 1999 lib/lex/
+rwxr-xr-x  3/10   3944 Oct  2 21:15 1999 lib/lex/ncform
+rwxr-xr-x  3/10   3097 Oct  2 21:15 1999 lib/lex/nrform
+rwxr-xr-x  3/10      0 Oct  2 21:37 1999 lib/tabset/
+r--r--r--  3/10     93 Oct  2 21:37 1999 lib/tabset/3101
+r--r--r--  3/10    105 Oct  2 21:37 1999 lib/tabset/aa
+r--r--r--  3/10    587 Oct  2 21:37 1999 lib/tabset/aed512
+r--r--r--  3/10    164 Oct  2 21:37 1999 lib/tabset/beehive
+r--r--r--  3/10     88 Oct  2 21:37 1999 lib/tabset/diablo
+r--r--r--  3/10    164 Oct  2 21:37 1999 lib/tabset/dtc382
+r--r--r--  3/10     93 Oct  2 21:37 1999 lib/tabset/ibm3101
+r--r--r--  3/10    135 Oct  2 21:37 1999 lib/tabset/std
+r--r--r--  3/10     95 Oct  2 21:37 1999 lib/tabset/stdcrt
+r--r--r--  3/10     96 Oct  2 21:37 1999 lib/tabset/tandem653
+r--r--r--  3/10     57 Oct  2 21:37 1999 lib/tabset/teleray
+r--r--r--  3/10    159 Oct  2 21:37 1999 lib/tabset/vt100
+r--r--r--  3/10    259 Oct  2 21:37 1999 lib/tabset/wyse-adds
+r--r--r--  3/10    163 Oct  2 21:37 1999 lib/tabset/xerox1720
+r--r--r--  3/10    222 Oct  2 21:37 1999 lib/tabset/xerox1730
+r--r--r--  3/10    224 Oct  2 21:37 1999 lib/tabset/xerox1730-lm
+r--r--r--  3/10     98 Oct  2 21:37 1999 lib/tabset/zenith29
+rwxr-xr-x  0/10      0 Oct  2 21:15 1999 lib/term/
+rwxr-xr-x  3/10   1800 Oct  2 21:15 1999 lib/term/tab37
+rw-r--r--  3/10   1288 Oct  2 21:15 1999 lib/term/README
+rwxr-xr-x  3/10   2052 Oct  2 21:15 1999 lib/term/tab300
+rwxr-xr-x  3/10   2048 Oct  2 21:15 1999 lib/term/tab300-12
+rwxr-xr-x  3/10   2048 Oct  2 21:15 1999 lib/term/tab382
+rwxr-xr-x  3/10   2048 Oct  2 21:15 1999 lib/term/tab382-12
+rwxr-xr-x  3/10   2048 Oct  2 21:15 1999 lib/term/tab302-12
+rwxr-xr-x  3/10   2048 Oct  2 21:15 1999 lib/term/tab302
+rwxr-xr-x  3/10   2204 Oct  2 21:15 1999 lib/term/tab833
+rwxr-xr-x  3/10   2204 Oct  2 21:15 1999 lib/term/tab833-12
+rwxr-xr-x  3/10   1812 Oct  2 21:15 1999 lib/term/tabepson
+rwxr-xr-x  3/10   2520 Oct  2 21:15 1999 lib/term/tabitoh
+rwxr-xr-x  3/10   2520 Oct  2 21:15 1999 lib/term/tabitoh12
+rwxr-xr-x  3/10   2112 Oct  2 21:15 1999 lib/term/tabnec
+rwxr-xr-x  3/10   2112 Oct  2 21:15 1999 lib/term/tabnec12
+rwxr-xr-x  3/10   2064 Oct  2 21:15 1999 lib/term/tabnec-t
+rwxr-xr-x  3/10   1756 Oct  2 21:15 1999 lib/term/tabqume
+rwxr-xr-x  3/10   1756 Oct  2 21:15 1999 lib/term/tabqume12
+rwxr-xr-x  3/10   2048 Oct  2 21:15 1999 lib/term/tabxerox
+rwxr-xr-x  3/10   2048 Oct  2 21:15 1999 lib/term/tabxerox12
+rwxr-xr-x  3/10   1932 Oct  2 21:15 1999 lib/term/tabx-ecs
+rwxr-xr-x  3/10   1932 Oct  2 21:15 1999 lib/term/tabx-ecs12
+rwxr-xr-x  3/10   2052 Oct  2 21:15 1999 lib/term/tab450-12
+rwxr-xr-x  3/10   2020 Oct  2 21:15 1999 lib/term/tabnec25-t
+rwxr-xr-x  3/10   2048 Oct  2 21:15 1999 lib/term/tab450
+rwxr-xr-x  3/10   1804 Oct  2 21:15 1999 lib/term/tablpr
+rwxr-xr-x  3/10   2048 Oct  2 21:15 1999 lib/term/tabdtc12 linked to lib/term/tab302-12
+rwxr-xr-x  3/10   2048 Oct  2 21:15 1999 lib/term/tab300s-12 linked to lib/term/tab302-12
+rwxr-xr-x  3/10   2048 Oct  2 21:15 1999 lib/term/tab300s linked to lib/term/tab302
+rwxr-xr-x  3/10   2048 Oct  2 21:15 1999 lib/term/tabdtc linked to lib/term/tab302
+rwxr-xr-x  3/10   2052 Oct  2 21:15 1999 lib/term/tabipsi12 linked to lib/term/tab450-12
+rwxr-xr-x  3/10   2048 Oct  2 21:15 1999 lib/term/tabipsi linked to lib/term/tab450
+rwxr-xr-x  3/10   1804 Oct  2 21:15 1999 lib/term/tabtn300 linked to lib/term/tablpr
+rwxr-xr-x  3/10   1804 Oct  2 21:15 1999 lib/term/tabcrt linked to lib/term/tablpr
+rwxr-xr-x  3/10      0 Oct  2 21:14 1999 lib/adb/
+r--r--r--  3/10    185 Oct  2 21:14 1999 lib/adb/buf
+r--r--r--  3/10     53 Oct  2 21:14 1999 lib/adb/callout
+r--r--r--  3/10     35 Oct  2 21:14 1999 lib/adb/callout.next
+r--r--r--  3/10    130 Oct  2 21:14 1999 lib/adb/clist
+r--r--r--  3/10    109 Oct  2 21:14 1999 lib/adb/clist.nxt
+r--r--r--  3/10    139 Oct  2 21:14 1999 lib/adb/dino
+r--r--r--  3/10     39 Oct  2 21:14 1999 lib/adb/dir
+r--r--r--  3/10     24 Oct  2 21:14 1999 lib/adb/dir.nxt
+r--r--r--  3/10     34 Oct  2 21:14 1999 lib/adb/dmap
+r--r--r--  3/10     94 Oct  2 21:14 1999 lib/adb/file
+r--r--r--  3/10    186 Oct  2 21:14 1999 lib/adb/filsys
+r--r--r--  3/10    101 Oct  2 21:14 1999 lib/adb/findinode
+r--r--r--  3/10     91 Oct  2 21:14 1999 lib/adb/findinode.nxt
+r--r--r--  3/10     97 Oct  2 21:14 1999 lib/adb/findproc
+r--r--r--  3/10     35 Oct  2 21:14 1999 lib/adb/host.nxt
+r--r--r--  3/10     82 Oct  2 21:14 1999 lib/adb/hosts
+r--r--r--  3/10     26 Oct  2 21:14 1999 lib/adb/hosts.nxt
+r--r--r--  3/10     83 Oct  2 21:14 1999 lib/adb/hosttable
+r--r--r--  3/10     96 Oct  2 21:14 1999 lib/adb/idp
+r--r--r--  3/10     45 Oct  2 21:14 1999 lib/adb/ifaddr
+r--r--r--  3/10    313 Oct  2 21:14 1999 lib/adb/ifnet
+r--r--r--  3/10     63 Oct  2 21:14 1999 lib/adb/ifrw
+r--r--r--  3/10    215 Oct  2 21:14 1999 lib/adb/imp
+r--r--r--  3/10    138 Oct  2 21:14 1999 lib/adb/in_ifaddr
+r--r--r--  3/10    184 Oct  2 21:14 1999 lib/adb/inode
+r--r--r--  3/10    142 Oct  2 21:14 1999 lib/adb/inpcb
+r--r--r--  3/10     19 Oct  2 21:14 1999 lib/adb/iovec
+r--r--r--  3/10     87 Oct  2 21:14 1999 lib/adb/ipreass
+r--r--r--  3/10     48 Oct  2 21:14 1999 lib/adb/spp
+r--r--r--  3/10     40 Oct  2 21:14 1999 lib/adb/ipreass.nxt
+r--r--r--  3/10     92 Oct  2 21:14 1999 lib/adb/mact
+r--r--r--  3/10     51 Oct  2 21:14 1999 lib/adb/mact.nxt
+r--r--r--  3/10     58 Oct  2 21:14 1999 lib/adb/mbstat
+r--r--r--  3/10     76 Oct  2 21:14 1999 lib/adb/mbuf
+r--r--r--  3/10     35 Oct  2 21:14 1999 lib/adb/mbuf.nxt
+r--r--r--  3/10    109 Oct  2 21:14 1999 lib/adb/mbufchain
+r--r--r--  3/10     76 Oct  2 21:14 1999 lib/adb/mbufs
+r--r--r--  3/10     30 Oct  2 21:14 1999 lib/adb/mbufs.nxt
+r--r--r--  3/10     38 Oct  2 21:14 1999 lib/adb/mount
+r--r--r--  3/10    217 Oct  2 21:14 1999 lib/adb/nameidata
+r--r--r--  3/10    238 Oct  2 21:14 1999 lib/adb/nspcb
+r--r--r--  3/10     69 Oct  2 21:14 1999 lib/adb/nsrtentry
+r--r--r--  3/10    109 Oct  2 21:14 1999 lib/adb/packetchain
+r--r--r--  3/10    160 Oct  2 21:14 1999 lib/adb/protosw
+r--r--r--  3/10    109 Oct  2 21:14 1999 lib/adb/quota
+r--r--r--  3/10    187 Oct  2 21:14 1999 lib/adb/rawcb
+r--r--r--  3/10     30 Oct  2 21:14 1999 lib/adb/route
+r--r--r--  3/10     79 Oct  2 21:14 1999 lib/adb/rtentry
+r--r--r--  3/10    194 Oct  2 21:14 1999 lib/adb/rusage
+r--r--r--  3/10     35 Oct  2 21:14 1999 lib/adb/setproc
+r--r--r--  3/10     13 Oct  2 21:14 1999 lib/adb/setproc.done
+r--r--r--  3/10    329 Oct  2 21:14 1999 lib/adb/socket
+r--r--r--  3/10    215 Oct  2 21:14 1999 lib/adb/sppcb
+r--r--r--  3/10    165 Oct  2 21:14 1999 lib/adb/stat
+r--r--r--  3/10    434 Oct  2 21:14 1999 lib/adb/tcpcb
+r--r--r--  3/10    150 Oct  2 21:14 1999 lib/adb/tcpip
+r--r--r--  3/10     56 Oct  2 21:14 1999 lib/adb/tcpreass
+r--r--r--  3/10    146 Oct  2 21:14 1999 lib/adb/text
+r--r--r--  3/10     41 Oct  2 21:14 1999 lib/adb/tcpreass.nxt
+r--r--r--  3/10     23 Oct  2 21:14 1999 lib/adb/traceall
+r--r--r--  3/10     62 Oct  2 21:14 1999 lib/adb/traceall.nxt
+r--r--r--  3/10    929 Oct  2 21:14 1999 lib/adb/u
+r--r--r--  3/10    612 Oct  2 21:14 1999 lib/adb/u.all
+r--r--r--  3/10    163 Oct  2 21:14 1999 lib/adb/ubadev
+r--r--r--  3/10     85 Oct  2 21:14 1999 lib/adb/uio
+r--r--r--  3/10     94 Oct  2 21:14 1999 lib/adb/un
+r--r--r--  3/10     94 Oct  2 21:14 1999 lib/adb/unpcb
+r--r--r--  3/10    111 Oct  2 21:14 1999 lib/adb/urppcb
+r--r--r--  3/10    110 Oct  2 21:14 1999 lib/adb/vtimes
+r--r--r--  3/10     39 Oct  2 21:14 1999 lib/adb/dirblk
+r--r--r--  3/10    269 Oct  2 21:14 1999 lib/adb/dmcstats
+r--r--r--  3/10     96 Oct  2 21:14 1999 lib/adb/findproc.nxt
+r--r--r--  3/10    108 Oct  2 21:14 1999 lib/adb/frame
+r--r--r--  3/10     31 Oct  2 21:14 1999 lib/adb/ifuba
+r--r--r--  3/10     44 Oct  2 21:14 1999 lib/adb/ifubinfo
+r--r--r--  3/10    123 Oct  2 21:14 1999 lib/adb/ifxmt
+r--r--r--  3/10     97 Oct  2 21:14 1999 lib/adb/mba_device
+r--r--r--  3/10     80 Oct  2 21:14 1999 lib/adb/mba_hd
+r--r--r--  3/10    206 Oct  2 21:14 1999 lib/adb/pcb
+r--r--r--  3/10    516 Oct  2 21:14 1999 lib/adb/proc
+r--r--r--  3/10    108 Oct  2 21:14 1999 lib/adb/setproc.nxt
+r--r--r--  3/10     37 Oct  2 21:14 1999 lib/adb/stacktrace
+r--r--r--  3/10    220 Oct  2 21:14 1999 lib/adb/trapframe
+r--r--r--  3/10    536 Oct  2 21:14 1999 lib/adb/tty
+r--r--r--  3/10    195 Oct  2 21:14 1999 lib/adb/ubahd
+rwxr-xr-x  3/10      0 Oct  2 21:18 1999 lib/tmac/
+r--r--r--  3/10   5258 Dec 25 19:26 1998 lib/tmac/tmac.an.new
+r--r--r--  3/10  15080 Dec 25 19:26 1998 lib/tmac/tmac.s
+rwxr-xr-x  3/10    804 Oct  2 21:18 1999 lib/tmac/tmac.vgrind
+rwxr-xr-x  0/10    800 May 28 18:26 1985 lib/tmac/tmac.an6n
+rwxr-xr-x  0/10   1046 May 28 18:26 1985 lib/tmac/tmac.an6t
+rwxr-xr-x  3/10   3186 Oct  2 21:15 1999 lib/tmac/tmac.bib
+r--r--r--  3/10  12877 Oct  2 18:13 1999 lib/tmac/tmac.e
+rw-r--r--  0/10   1260 Aug  5 16:41 1982 lib/tmac/tmac.r
+rw-r--r--  0/10   4299 Aug  5 16:41 1982 lib/tmac/tmac.scover
+rw-r--r--  0/10    809 Aug  5 16:41 1982 lib/tmac/tmac.sdisp
+rw-r--r--  0/10   1190 Aug  5 16:41 1982 lib/tmac/tmac.skeep
+rw-r--r--  0/10   2104 Aug  5 16:41 1982 lib/tmac/tmac.srefs
+r--r--r--  0/10     38 Aug  5 16:41 1982 lib/tmac/tmac.vcat
+rw-r--r--  0/10   7637 Aug  5 16:41 1982 lib/tmac/tmac.a
+rw-r--r--  0/10   2135 Aug  5 16:41 1982 lib/tmac/tmac.cp
+rwxr-xr-x  0/10    435 May 28 18:26 1985 lib/tmac/tmac.an
+r--r--r--  0/10  23235 May  3 22:18 1980 lib/tmac/tmac.os
+rw-r--r--  0/10      9 Jun 15 12:31 1983 lib/tmac/tmac.imagen
+rw-r--r--  0/10   1832 Dec 30 02:08 1984 lib/tmac/tmac.ayday
+rwxr-xr-x  0/10      0 Oct  2 21:15 1999 lib/refer/
+rwxr-xr-x  3/10  14336 Oct  2 21:15 1999 lib/refer/mkey
+rwxr-xr-x  3/10  20480 Oct  2 21:15 1999 lib/refer/inv
+rwxr-xr-x  3/10  26624 Oct  2 21:15 1999 lib/refer/hunt
+rwxr-xr-x  3/10      0 Oct  2 18:13 1999 lib/me/
+r--r--r--  3/10   1194 Oct  2 18:13 1999 lib/me/acm.me
+r--r--r--  3/10   2000 Oct  2 18:13 1999 lib/me/chars.me
+r--r--r--  3/10    796 Oct  2 18:13 1999 lib/me/deltext.me
+r--r--r--  3/10   1432 Oct  2 18:13 1999 lib/me/eqn.me
+r--r--r--  3/10   1574 Oct  2 18:13 1999 lib/me/footnote.me
+r--r--r--  3/10   1275 Oct  2 18:13 1999 lib/me/float.me
+r--r--r--  3/10   1343 Oct  2 18:13 1999 lib/me/index.me
+r--r--r--  3/10    661 Oct  2 18:13 1999 lib/me/local.me
+r--r--r--  3/10    640 Oct  2 18:13 1999 lib/me/null.me
+r--r--r--  3/10   6607 Oct  2 18:13 1999 lib/me/revisions
+r--r--r--  3/10   2031 Oct  2 18:13 1999 lib/me/sh.me
+r--r--r--  3/10   1436 Oct  2 18:13 1999 lib/me/tbl.me
+r--r--r--  3/10    788 Oct  2 18:13 1999 lib/me/thesis.me
+r--r--r--  3/10   2070 Oct  2 18:13 1999 lib/me/refer.me
+r--r--r--  3/10   2050 Oct  2 18:13 1999 lib/me/letterhead.me
+rwxr-xr-x 66/1      0 Oct  2 21:16 1999 lib/uucp/
+--s--s--x 66/1 117760 Oct  2 21:16 1999 lib/uucp/uucico
+--s--s--- 66/1  50176 Oct  2 21:16 1999 lib/uucp/uuxqt
+--s--s--x 66/1  31744 Oct  2 21:16 1999 lib/uucp/uuclean
+--s--s---  0/1  10240 Oct  2 21:16 1999 lib/uucp/acucntrl
+r-------- 66/1     28 Jun 23 12:51 1983 lib/uucp/L-devices
+rw------- 66/1      4 Jun 23 12:55 1983 lib/uucp/USERFILE
+r-------- 66/1     94 Jul 23 02:18 1983 lib/uucp/L-dialcodes
+r-------- 66/1    475 Jul 23 02:18 1983 lib/uucp/L.sys
+rwxr-xr-x  0/1   1171 Jun  6 14:11 1986 lib/uucp/clean.daily
+rw------- 66/1    135 May 17 12:13 1986 lib/uucp/L.cmds
+rw-r----- 66/1      4 Jul  1 10:39 1983 lib/uucp/SEQF
+rwxrwxr-x  0/1    303 Jun  6 17:06 1986 lib/uucp/clean.weekly
+rwxr-xr-x  0/10      0 Oct  2 21:15 1999 lib/lint/
+rwxr-xr-x  3/10  74752 Oct  2 21:15 1999 lib/lint/lint1
+rwxr-xr-x  3/10  16384 Oct  2 21:15 1999 lib/lint/lint2
+rw-r--r--  3/10  17489 Oct  2 21:15 1999 lib/lint/llib-lc
+rw-r--r--  3/10  22310 Oct  2 21:15 1999 lib/lint/llib-lc.ln
+rw-r--r--  3/10   3645 Oct  2 21:15 1999 lib/lint/llib-lcurses
+rw-r--r--  3/10   6422 Oct  2 21:15 1999 lib/lint/llib-lcurses.ln
+rw-r--r--  3/10   1761 Oct  2 21:15 1999 lib/lint/llib-lm
+rw-r--r--  3/10   2590 Oct  2 21:15 1999 lib/lint/llib-lm.ln
+rw-r--r--  3/10   1371 Oct  2 21:15 1999 lib/lint/llib-lmp
+rw-r--r--  3/10   1797 Oct  2 21:15 1999 lib/lint/llib-lmp.ln
+rw-r--r--  3/10   1801 Oct  2 21:15 1999 lib/lint/llib-port
+rw-r--r--  3/10   2327 Oct  2 21:15 1999 lib/lint/llib-port.ln
+rw-r--r--  3/10    360 Oct  2 21:15 1999 lib/lint/llib-ldbm
+rw-r--r--  3/10    406 Oct  2 21:15 1999 lib/lint/llib-ldbm.ln
+rw-r--r--  3/10    334 Oct  2 21:15 1999 lib/lint/llib-lplot
+rw-r--r--  3/10    544 Oct  2 21:15 1999 lib/lint/llib-lplot.ln
+rw-r--r--  3/10    425 Oct  2 21:15 1999 lib/lint/llib-ltermcap
+rw-r--r--  3/10    530 Oct  2 21:15 1999 lib/lint/llib-ltermcap.ln
+rwxr-xr-x  0/10      0 Oct  2 21:15 1999 lib/lint/llib-ltermlib symbolic link to llib-ltermcap
+rwxr-xr-x  0/10      0 Oct  2 21:15 1999 lib/lint/llib-ltermlib.ln symbolic link to llib-ltermcap.ln
+rwxr-xr-x  0/10      0 Dec 23 17:04 1998 lib/fontinfo/
+r--r--r--  0/10     27 Aug  6 19:00 1982 lib/fontinfo/gacham.r
+r--r--r--  0/10     27 Aug  6 19:00 1982 lib/fontinfo/gacham.i
+r--r--r--  0/10     27 Aug  6 19:00 1982 lib/fontinfo/gacham.b
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/bodoni.r
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/bodoni.i
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/bodoni.b
+r--r--r--  0/10     24 Aug  6 19:00 1982 lib/fontinfo/meteor.r
+r--r--r--  0/10     24 Aug  6 19:00 1982 lib/fontinfo/meteor.i
+r--r--r--  0/10     24 Aug  6 19:00 1982 lib/fontinfo/meteor.b
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/basker.r
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/basker.b
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/basker.i
+r--r--r--  0/10     24 Aug  6 19:00 1982 lib/fontinfo/nonie.r
+r--r--r--  0/10     24 Aug  6 19:00 1982 lib/fontinfo/nonie.b
+r--r--r--  0/10     24 Aug  6 19:00 1982 lib/fontinfo/nonie.i
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/bocklin
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/cyrillic
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/apl
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/script
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/sign
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/chess
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/shadow
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/mona
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/pip
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/hebrew
+r--r--r--  0/10     27 Aug  6 19:00 1982 lib/fontinfo/fix
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/delegate.r
+r--r--r--  0/10     27 Aug  6 19:00 1982 lib/fontinfo/h19
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/delegate.i
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/wumpus
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/oldenglish
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/seal
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/playbill
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/delegate.b
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/clarendon
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/countdown
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/greek
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/graphics
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/otimes.b
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/times.r
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/times.i
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/times.b
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/times.s
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/cm.r
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/cm.i
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/cm.b
+r--r--r--  0/10      0 Aug  6 19:00 1982 lib/fontinfo/stare.b
+r--r--r--  0/10      0 Aug  6 19:00 1982 lib/fontinfo/stare.r
+r--r--r--  0/10      0 Aug  6 19:00 1982 lib/fontinfo/stare.i
+r--r--r--  0/10     16 Aug  6 19:00 1982 lib/fontinfo/ugramma
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/otimes.r
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/otimes.i
+r--r--r--  0/10     17 Aug  6 19:00 1982 lib/fontinfo/otimes.s
+rwxr-xr-x  0/10      0 Dec 23 17:04 1998 lib/font/
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftTI
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftBC
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftC
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftCE
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftCI
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftCK
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftCW
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftFD
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftG
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftGI
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftGM
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftGR
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftH
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftHI
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftHM
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/ftB
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftL
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftLI
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftPA
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftPB
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftPI
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftTS
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftTB
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftSB
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftSI
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftSM
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftUD
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftch.old
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/ftI
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/ftR
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftS
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/ftch
+r--r--r--  0/10    256 Aug  6 18:59 1982 lib/font/ftTR
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftwp
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/ftdb
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/ftcl
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftgb
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftgr
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftgi
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftoi
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftor
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftob
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftmb
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftmi
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftmr
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftbb
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftbi
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftbr
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/ftco
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftnb
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftni
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftnr
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/ftgk
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftm
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/ftgf
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftbk
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/ftct
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftap
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/fttI
+r--r--r--  0/10    277 Aug  6 18:59 1982 lib/font/ftcy
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/fttS
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/fttR
+r--r--r--  0/10    277 Aug  6 18:59 1982 lib/font/fttb
+r--r--r--  0/10    762 Aug  6 18:59 1982 lib/font/fontlist
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftsg
+r--r--r--  0/10    288 Aug  6 18:59 1982 lib/font/ftsc
+r--r--r--  0/10    272 Aug  6 18:59 1982 lib/font/ftci
+r--r--r--  0/10    288 Aug  6 19:00 1982 lib/font/ftsh
+r--r--r--  0/10    272 Aug  6 19:00 1982 lib/font/ftcr
+r--r--r--  0/10    277 Aug  6 19:00 1982 lib/font/ftmn
+r--r--r--  0/10    272 Aug  6 19:00 1982 lib/font/ftcb
+r--r--r--  0/10    288 Aug  6 19:00 1982 lib/font/ftpp
+r--r--r--  0/10    272 Aug  6 19:00 1982 lib/font/ftxx
+r--r--r--  0/10    272 Aug  6 19:00 1982 lib/font/fthb
+r--r--r--  0/10    288 Aug  6 19:00 1982 lib/font/ftdi
+r--r--r--  0/10    288 Aug  6 19:00 1982 lib/font/ftdr
+r--r--r--  0/10    288 Aug  6 19:00 1982 lib/font/ftfx
+r--r--r--  0/10    288 Aug  6 19:00 1982 lib/font/ftoe
+r--r--r--  0/10    288 Aug  6 19:00 1982 lib/font/ftpb
+r--r--r--  0/10    277 Aug  6 19:00 1982 lib/font/fthn
+r--r--r--  0/10    256 Aug  6 19:00 1982 lib/font/ftsr
+r--r--r--  0/10    256 Aug  6 19:00 1982 lib/font/ftsb
+r--r--r--  0/10    256 Aug  6 19:00 1982 lib/font/ftsi
+r--r--r--  0/10    277 Aug  6 19:00 1982 lib/font/ftsl
+r--r--r--  0/10    272 Aug  6 19:00 1982 lib/font/fttB
+r--r--r--  0/10    277 Aug  6 19:00 1982 lib/font/ftti
+r--r--r--  0/10    277 Aug  6 19:00 1982 lib/font/fttr
+r--r--r--  0/10    277 Aug  6 19:00 1982 lib/font/ftts
+rwxr-xr-x32767/10      0 Oct  2 21:15 1999 lib/find/
+rwxr-xr-x  3/10   7168 Oct  2 21:15 1999 lib/find/bigram
+rwxr-xr-x  3/10  13312 Oct  2 21:15 1999 lib/find/code
+rwxr-xr-x  3/10   1266 Oct  2 21:15 1999 lib/find/updatedb
+rw-r--r--32767/10  62695 Oct  9 23:22 1999 lib/find/find.codes
+rwxr-xr-x  0/10      0 Dec 25 19:28 1998 lib/ms/
+r--r--r--  3/10   2311 Dec 25 19:28 1998 lib/ms/acc.ms
+r--r--r--  3/10   2935 Dec 25 19:28 1998 lib/ms/cov.ms
+r--r--r--  3/10   1533 Dec 25 19:28 1998 lib/ms/eqn.ms
+r--r--r--  3/10   2416 Dec 25 19:28 1998 lib/ms/ref.ms
+r--r--r--  3/10   1143 Dec 25 19:28 1998 lib/ms/tbl.ms
+r--r--r--  3/10    288 Dec 25 19:28 1998 lib/ms/ths.ms
+r--r--r--  3/10   1468 Dec 25 19:28 1998 lib/ms/toc.ms
+rwxr-xr-x  3/10  13312 Oct  2 21:14 1999 lib/calendar
+rwxrwxr-x  0/10 123904 Oct  2 21:17 1999 lib/pc0
+rw-r--r--  3/10 206986 Oct  2 17:26 1999 lib/libc_p.a
+rwxr-xr-x  3/10  15360 Oct  2 21:15 1999 lib/spell
+rw-r--r--  0/10   2048 Oct  2 21:18 1999 lib/px_header
+rwxr-xr-x  0/10  15360 Oct  2 21:18 1999 lib/pc3
+rwxr-xr-x  3/10  29696 Oct  2 21:14 1999 lib/atrun
+rwxr-xr-x  0/10  23552 Oct  2 21:18 1999 lib/pc2
+rwxr-xr-x  3/10  14336 Oct  2 18:13 1999 lib/getNAME
+rwxr-xr-x  3/10   5120 Oct  2 18:13 1999 lib/makekey
+rwsr-xr-x  0/10  19456 Oct  2 21:17 1999 lib/ex3.7recover
+rwsr-xr-x  0/10  23552 Oct  2 21:17 1999 lib/ex3.7preserve
+rw-r--r--  3/10  10854 Oct  2 18:12 1999 lib/libmp.a
+rws--s--x  0/1  65536 Oct  2 18:13 1999 lib/lpd
+rw-r--r--  3/10  38142 Oct  2 18:12 1999 lib/libcurses_p.a
+rw-r--r--  3/10  35460 Oct  2 18:12 1999 lib/libcurses.a
+rwxr-xr-x  3/10  11264 Oct  2 18:13 1999 lib/lpf
+rwxr-xr-x  3/10  10240 Oct  2 18:13 1999 lib/necf
+rw-r--r--  3/10   1284 Oct  2 18:12 1999 lib/libdbm.a
+rw-r--r--  3/10   1608 Oct  2 18:12 1999 lib/libdbm_p.a
+rwsr-xr-x  0/10  32768 Oct  2 21:18 1999 lib/bugfiler
+r--r--r--  3/10   2811 Oct  2 17:26 1999 lib/gcrt0.o
+rw-r--r--  3/10  24444 Oct  2 18:12 1999 lib/libm.a
+rw-r--r--  3/10  46256 Oct  2 18:12 1999 lib/libpc_p.a
+rw-r--r--  3/10  36030 Oct  2 18:12 1999 lib/libpc.a
+rw-r--r--  0/0    722 Jun 14 09:39 1988 lib/aliases
+rw-r--r--  0/0    456 Jul 16 04:33 1988 lib/crontab
+rwxr-xr-x  3/10  14336 Oct  2 21:15 1999 lib/diff3
+rwxr-xr-x  3/10  12288 Oct  2 21:14 1999 lib/diffh
+rwxr-xr-x  3/10 158720 Oct  2 21:15 1999 lib/f77pass1
+rw-r--r--  0/10  47726 Oct  2 18:12 1999 lib/libF77.a
+rw-r--r--  0/10  54904 Oct  2 18:12 1999 lib/libF77_p.a
+rwxr-xr-x  3/10  22528 Oct  2 21:18 1999 lib/vfontedpr
+rw-r--r--  3/10  44896 Oct  2 18:12 1999 lib/lib2648.a
+rw-r--r--  3/10  81356 Oct  2 18:12 1999 lib/libI77.a
+rw-r--r--  3/10  87376 Oct  2 18:12 1999 lib/libI77_p.a
+rw-r--r--  3/10   3784 Oct  2 18:12 1999 lib/libf77plot.a
+rw-r--r--  3/10   8534 Oct  2 18:13 1999 lib/libplot.a
+rw-r--r--  3/10   9082 Oct  2 18:13 1999 lib/lib300.a
+rw-r--r--  3/10   8818 Oct  2 18:13 1999 lib/lib300s.a
+rw-r--r--  3/10   6658 Oct  2 18:13 1999 lib/lib4013.a
+rw-r--r--  3/10   7226 Oct  2 18:13 1999 lib/lib4014.a
+rw-r--r--  3/10   9078 Oct  2 18:13 1999 lib/lib450.a
+rw-r--r--  3/10   5962 Oct  2 18:13 1999 lib/libvt0.a
+rw-r--r--  3/10  10410 Oct  2 18:13 1999 lib/libplotaed.a
+rw-r--r--  3/10   7856 Oct  2 18:13 1999 lib/libplotbg.a
+rw-r--r--  3/10   7330 Oct  2 18:13 1999 lib/libplotdumb.a
+rw-r--r--  3/10   8462 Oct  2 18:13 1999 lib/libplotgigi.a
+rw-r--r--  3/10  22524 Oct  2 18:13 1999 lib/libplot2648.a
+rw-r--r--  3/10   9988 Oct  2 18:13 1999 lib/libplot7221.a
+rw-r--r--  3/10   9080 Oct  2 18:13 1999 lib/libplotimagen.a
+rw-r--r--  3/10    620 Oct  2 18:13 1999 lib/liby.a
+rwxr-xr-x  3/10   5645 Oct  2 21:18 1999 lib/vgrindefs
+rw-r--r--  0/10  12148 Oct  2 21:18 1999 lib/pcexterns.o
+rwxr-xr-x  3/10   2336 Oct  2 18:13 1999 lib/lib.b
+rwxr-xr-x  3/10   3456 Oct  2 21:16 1999 lib/yaccpar
+r--r--r--  3/10   1858 Oct  2 18:13 1999 lib/sendmail.hf
+rw-rw-rw-  3/10      0 Oct  2 18:13 1999 lib/sendmail.st
+rwxr-xr-x  3/10   8344 Oct  2 21:15 1999 lib/dict.d
+rw-r--r--  3/10    209 Oct  2 18:12 1999 lib/libg.a
+rwxr-xr-x  3/10  14220 Oct  2 21:15 1999 lib/explain.d
+rwxr-xr-x  3/10   8729 Oct  2 21:16 1999 lib/units
+rw-r--r--  0/10    532 Oct  2 21:18 1999 lib/how_pc
+rw-r--r--  3/10     65 Oct  2 18:12 1999 lib/libI66.a
+r--r--r--  3/10   1064 Oct  2 21:17 1999 lib/gprof.flat
+r--r--r--  3/10   3267 Oct  2 21:17 1999 lib/gprof.callg
+rw-r--r--  3/10   1130 Oct  2 21:17 1999 lib/more.help
+r--r--r--  3/10     98 Oct  2 21:17 1999 lib/Mail.rc
+r--r--r--  3/10    694 Oct  2 21:17 1999 lib/Mail.tildehelp
+rw-rw-r--  0/10  13169 Oct  2 21:17 1999 lib/pi3.1strings
+rw-rw-r--  0/10  13169 Oct  2 21:17 1999 lib/pc3.1strings
+rw-r--r--  0/10    596 Oct  2 21:18 1999 lib/how_pi
+rw-r--r--  0/10    895 Oct  2 21:18 1999 lib/how_pix
+rw-r--r--  0/10    363 Oct  2 21:18 1999 lib/how_pxp
+r--r--r--  3/10    947 Oct  2 21:17 1999 lib/Mail.help
+rwxr-xr-x  3/10  10240 Oct  2 18:13 1999 lib/railmag
+rwsr-sr-x  0/2 102400 Oct  2 18:13 1999 lib/sendmail
+rwxr-xr-x  3/10  17408 Oct  2 18:13 1999 lib/rvcat
+rwxr-xr-x  3/10  15360 Oct  2 21:15 1999 lib/dprog
+rwxr-xr-x  3/10  76800 Oct  2 21:14 1999 lib/style1
+rwxr-xr-x  3/10  51200 Oct  2 21:15 1999 lib/style2
+rwxr-xr-x  3/10  30720 Oct  2 21:15 1999 lib/style3
+rw-r--r--  3/10  25654 Oct  2 18:12 1999 lib/libU77.a
+rw-r--r--  3/10  25928 Oct  2 18:12 1999 lib/libU77_p.a
+rw-r--r--  0/10    706 Jul 25 05:01 1985 lib/eign
+rw-r--r--  3/10   1120 Oct  2 21:18 1999 lib/bugformat
+r--r--r--  3/10  35333 Oct  2 17:26 1999 lib/tags
+rw-r--r--  3/10  31414 Oct  2 18:12 1999 lib/libm_p.a
+rw-r--r--  3/10   7472 Oct  2 18:13 1999 lib/libplotgrn.a
+rw-r--r--  3/10   4604 Oct  2 18:13 1999 lib/libtermcap.a
+rw-r--r--  3/10   4692 Oct  2 18:13 1999 lib/libtermcap_p.a
+rwxr-xr-x  3/10  18432 Oct  2 18:13 1999 lib/rvsort
+rwxr-xr-x  3/10  14336 Oct  2 18:13 1999 lib/sidebyside
+rwxr-xr-x  3/10  16384 Oct  2 18:13 1999 lib/vcat
+rwxr-xr-x  3/10  11264 Oct  2 18:13 1999 lib/vdmp
+rwxr-xr-x  3/10  13312 Oct  2 18:13 1999 lib/vpf
+rwxr-xr-x  3/10  19456 Oct  2 18:13 1999 lib/vplotf
+rwxr-xr-x  3/10  11264 Oct  2 18:13 1999 lib/vpltdmp
+rwxr-xr-x  3/10  13312 Oct  2 18:13 1999 lib/vpsf
+rwxr-xr-x  3/10  17408 Oct  2 18:13 1999 lib/vsort
+rwxr-xr-x  3/10  24576 Oct  2 18:13 1999 lib/mconnect
+rwxr-xr-x  3/10  16384 Oct  2 21:17 1999 lib/old.bin.grep
+rwxr-xr-x  3/10  14336 Oct  2 21:17 1999 lib/old.ucb.grep
+rwxr-xr-x  3/10  13312 Oct  2 21:17 1999 lib/old.fgrep
+rwxr-xr-x  3/10  17408 Oct  2 21:17 1999 lib/old.egrep
+rw-r--r--  3/10   2866 Oct  2 18:12 1999 lib/libln.a
+rwxr-xr-x  3/10  16384 Oct  2 18:13 1999 lib/mailstats
+rwxr-xr-x  3/10  15360 Oct  2 18:13 1999 lib/praliases
+rw-r--r--  0/10  33213 Oct  2 21:16 1999 lib/sccs.hf
+rw-r--r--  3/10  47510 Oct  2 18:13 1999 lib/libz.a
+rw-r--r--  3/10  50888 Oct  2 18:13 1999 lib/libz_p.a
+rw-r--r--  3/10   4604 Oct  2 18:13 1999 lib/libtermlib.a linked to lib/libtermcap.a
+rw-r--r--  3/10   4692 Oct  2 18:13 1999 lib/libtermlib_p.a linked to lib/libtermcap_p.a
+rwxr-xr-x  3/10  13312 Oct  2 18:13 1999 lib/vpfW linked to lib/vpf
+rw-r--r--  3/10   2866 Oct  2 18:12 1999 lib/libl.a linked to lib/libln.a
+rw-r--r--  3/10      0 Oct  2 18:13 1999 lib/sendmail.fc
+r--r--r--  3/10   1214 Oct  2 21:16 1999 lib/nslookup.help
+rwxr-xr-x  0/10      0 Oct  2 15:17 1999 local/
+rwxr-xr-x  0/10      0 Jan  7 20:21 1999 local/lib/
+rwxr-xr-x  3/10      0 Dec 24 17:56 1998 local/man/
+rwxr-xr-x  3/10      0 May 31 13:48 1999 local/man/cat1/
+rwxr-xr-x  3/10      0 Dec 24 17:56 1998 local/man/cat2/
+rwxr-xr-x  3/10      0 Dec 24 17:56 1998 local/man/cat3/
+rwxr-xr-x  3/10      0 Dec 24 17:56 1998 local/man/cat4/
+rwxr-xr-x  3/10      0 Jan  7 20:22 1999 local/man/cat5/
+rwxr-xr-x  3/10      0 Dec 24 17:56 1998 local/man/cat6/
+rwxr-xr-x  3/10      0 Dec 24 17:56 1998 local/man/cat7/
+rwxr-xr-x  3/10      0 Dec 24 17:56 1998 local/man/cat8/
+rwxr-xr-x  3/10      0 Oct  3 12:48 1999 man/
+rwxr-xr-x  3/10      0 Oct  2 21:09 1999 man/cat1/
+r--r--r--  3/10  19200 Oct  2 21:08 1999 man/cat1/adb.0
+r--r--r--  3/10   3361 Oct  2 21:08 1999 man/cat1/addbib.0
+r--r--r--  3/10  13935 Oct  2 21:08 1999 man/cat1/admin.0
+r--r--r--  3/10   1682 Oct  2 21:08 1999 man/cat1/apply.0
+r--r--r--  3/10   1425 Oct  2 21:08 1999 man/cat1/apropos.0
+r--r--r--  3/10   3897 Oct  2 21:08 1999 man/cat1/ar.0
+r--r--r--  3/10   2584 Oct  2 21:08 1999 man/cat1/as.0
+r--r--r--  3/10   3757 Oct  2 21:08 1999 man/cat1/at.0
+r--r--r--  3/10    930 Oct  2 21:08 1999 man/cat1/atq.0
+r--r--r--  3/10   1094 Oct  2 21:08 1999 man/cat1/atrm.0
+r--r--r--  3/10   6465 Oct  2 21:08 1999 man/cat1/awk.0
+r--r--r--  3/10    884 Oct  2 21:08 1999 man/cat1/basename.0
+r--r--r--  3/10   3949 Oct  2 21:08 1999 man/cat1/bc.0
+r--r--r--  3/10   1791 Oct  2 21:08 1999 man/cat1/bdiff.0
+r--r--r--  3/10   1078 Oct  2 21:08 1999 man/cat1/biff.0
+r--r--r--  3/10   3329 Oct  2 21:08 1999 man/cat1/binmail.0
+r--r--r--  3/10    878 Oct  2 21:08 1999 man/cat1/cal.0
+r--r--r--  3/10   1706 Oct  2 21:08 1999 man/cat1/calendar.0
+r--r--r--  3/10   1932 Oct  2 21:08 1999 man/cat1/cat.0
+r--r--r--  3/10    457 Oct  2 21:08 1999 man/cat1/cb.0
+r--r--r--  3/10   7238 Oct  2 21:08 1999 man/cat1/cc.0
+r--r--r--  3/10    980 Oct  2 21:08 1999 man/cat1/cd.0
+r--r--r--  3/10   2918 Oct  2 21:08 1999 man/cat1/checknr.0
+r--r--r--  3/10   2627 Oct  2 21:08 1999 man/cat1/chghist.0
+r--r--r--  3/10   1021 Oct  2 21:08 1999 man/cat1/chgrp.0
+r--r--r--  3/10   3026 Oct  2 21:08 1999 man/cat1/chmod.0
+r--r--r--  3/10    569 Oct  2 21:08 1999 man/cat1/clear.0
+r--r--r--  3/10   1283 Oct  2 21:08 1999 man/cat1/cmp.0
+r--r--r--  3/10   2977 Oct  2 21:09 1999 man/cat1/w.0
+r--r--r--  3/10   2362 Oct  2 21:08 1999 man/cat1/col.0
+r--r--r--  3/10   1924 Oct  2 21:08 1999 man/cat1/colcrt.0
+r--r--r--  3/10    746 Oct  2 21:08 1999 man/cat1/colrm.0
+r--r--r--  3/10   3474 Oct  2 21:08 1999 man/cat1/comb.0
+r--r--r--  3/10    986 Oct  2 21:08 1999 man/cat1/comm.0
+r--r--r--  3/10   6076 Oct  2 21:08 1999 man/cat1/compress.0
+r--r--r--  3/10   1444 Oct  2 21:08 1999 man/cat1/cp.0
+r--r--r--  3/10   4291 Oct  2 21:08 1999 man/cat1/cpio.0
+r--r--r--  3/10   2984 Oct  2 21:08 1999 man/cat1/crypt.0
+r--r--r--  3/10  76289 Oct  2 21:08 1999 man/cat1/csh.0
+r--r--r--  3/10   5615 Oct  2 21:08 1999 man/cat1/ctags.0
+r--r--r--  3/10   3197 Oct  2 21:08 1999 man/cat1/date.0
+r--r--r--  3/10  21206 Oct  2 21:08 1999 man/cat1/dbx.0
+r--r--r--  3/10   4994 Oct  2 21:08 1999 man/cat1/dc.0
+r--r--r--  3/10   4174 Oct  2 21:08 1999 man/cat1/dd.0
+r--r--r--  3/10   7105 Oct  2 21:08 1999 man/cat1/delta.0
+r--r--r--  3/10   1500 Oct  2 21:08 1999 man/cat1/deroff.0
+r--r--r--  3/10    928 Oct  2 21:08 1999 man/cat1/df.0
+r--r--r--  3/10   1467 Oct  2 21:08 1999 man/cat1/diction.0
+r--r--r--  3/10   7605 Oct  2 21:08 1999 man/cat1/diff.0
+r--r--r--  3/10   2856 Oct  2 21:08 1999 man/cat1/diff3.0
+r--r--r--  3/10   1033 Oct  2 21:08 1999 man/cat1/du.0
+r--r--r--  3/10    691 Oct  2 21:08 1999 man/cat1/echo.0
+r--r--r--  3/10  19526 Oct  2 21:08 1999 man/cat1/ed.0
+r--r--r--  3/10   1953 Oct  2 21:08 1999 man/cat1/efl.0
+r--r--r--  3/10   7163 Oct  2 21:08 1999 man/cat1/eqn.0
+r--r--r--  3/10   9573 Oct  2 21:08 1999 man/cat1/error.0
+r--r--r--  3/10   3844 Oct  2 21:08 1999 man/cat1/ex.0
+r--r--r--  3/10   1432 Oct  2 21:08 1999 man/cat1/expand.0
+r--r--r--  3/10   2620 Oct  2 21:08 1999 man/cat1/expr.0
+r--r--r--  3/10   8057 Oct  2 21:08 1999 man/cat1/f77.0
+r--r--r--  3/10    729 Oct  2 21:08 1999 man/cat1/false.0
+r--r--r--  3/10    679 Oct  2 21:08 1999 man/cat1/file.0
+r--r--r--  3/10   6776 Oct  2 21:08 1999 man/cat1/find.0
+r--r--r--  3/10   2821 Oct  2 21:08 1999 man/cat1/finger.0
+r--r--r--  3/10   1184 Oct  2 21:08 1999 man/cat1/fmt.0
+r--r--r--  3/10    869 Oct  2 21:08 1999 man/cat1/fold.0
+r--r--r--  3/10   2850 Oct  2 21:08 1999 man/cat1/fp.0
+r--r--r--  3/10   1483 Oct  2 21:08 1999 man/cat1/fpr.0
+r--r--r--  3/10    720 Oct  2 21:08 1999 man/cat1/from.0
+r--r--r--  3/10   1981 Oct  2 21:08 1999 man/cat1/fsplit.0
+r--r--r--  3/10  29468 Oct  2 21:08 1999 man/cat1/ftp.0
+r--r--r--  3/10    695 Oct  2 21:08 1999 man/cat1/gcore.0
+r--r--r--  3/10  21821 Oct  2 21:08 1999 man/cat1/get.0
+r--r--r--  3/10   7253 Oct  2 21:08 1999 man/cat1/gprof.0
+r--r--r--  3/10   2989 Oct  2 21:08 1999 man/cat1/graph.0
+r--r--r--  3/10   5128 Oct  2 21:08 1999 man/cat1/grep.0
+r--r--r--  3/10    962 Oct  2 21:08 1999 man/cat1/groups.0
+r--r--r--  3/10    535 Oct  2 21:08 1999 man/cat1/head.0
+r--r--r--  3/10   1877 Oct  2 21:08 1999 man/cat1/help.0
+r--r--r--  3/10    788 Oct  2 21:08 1999 man/cat1/hostid.0
+r--r--r--  3/10    748 Oct  2 21:08 1999 man/cat1/hostname.0
+r--r--r--  3/10  13011 Oct  2 21:08 1999 man/cat1/indent.0
+r--r--r--  3/10   1458 Oct  2 21:08 1999 man/cat1/install.0
+r--r--r--  3/10   1582 Oct  2 21:08 1999 man/cat1/intro.0
+r--r--r--  3/10   2117 Oct  2 21:08 1999 man/cat1/iostat.0
+r--r--r--  3/10   2348 Oct  2 21:08 1999 man/cat1/join.0
+r--r--r--  3/10   1876 Oct  2 21:09 1999 man/cat1/kill.0
+r--r--r--  3/10   1999 Oct  2 21:09 1999 man/cat1/last.0
+r--r--r--  3/10   7735 Oct  2 21:09 1999 man/cat1/ld.0
+r--r--r--  3/10   1933 Oct  2 21:09 1999 man/cat1/lastcomm.0
+r--r--r--  3/10   3790 Oct  2 21:09 1999 man/cat1/learn.0
+r--r--r--  3/10   1375 Oct  2 21:09 1999 man/cat1/leave.0
+r--r--r--  3/10   2059 Oct  2 21:09 1999 man/cat1/lex.0
+r--r--r--  3/10   4808 Oct  2 21:09 1999 man/cat1/lint.0
+r--r--r--  3/10   2271 Oct  2 21:09 1999 man/cat1/ln.0
+r--r--r--  3/10   1059 Oct  2 21:09 1999 man/cat1/lock.0
+r--r--r--  3/10   1286 Oct  2 21:09 1999 man/cat1/logger.0
+r--r--r--  3/10   3866 Oct  2 21:09 1999 man/cat1/login.0
+r--r--r--  3/10    910 Oct  2 21:09 1999 man/cat1/look.0
+r--r--r--  3/10   3369 Oct  2 21:09 1999 man/cat1/lookbib.0
+r--r--r--  3/10   1253 Oct  2 21:09 1999 man/cat1/lorder.0
+r--r--r--  3/10   2911 Oct  2 21:09 1999 man/cat1/lpq.0
+r--r--r--  3/10   5755 Oct  2 21:09 1999 man/cat1/lpr.0
+r--r--r--  3/10   2832 Oct  2 21:09 1999 man/cat1/lprm.0
+r--r--r--  3/10   1168 Oct  2 21:09 1999 man/cat1/lptest.0
+r--r--r--  3/10   5604 Oct  2 21:09 1999 man/cat1/ls.0
+r--r--r--  3/10   6256 Oct  2 21:09 1999 man/cat1/m4.0
+r--r--r--  3/10  24751 Oct  2 21:09 1999 man/cat1/mail.0
+r--r--r--  3/10   8192 Oct  2 21:09 1999 man/cat1/make.0
+r--r--r--  3/10   3056 Oct  2 21:09 1999 man/cat1/man.0
+r--r--r--  3/10    779 Oct  2 21:09 1999 man/cat1/mesg.0
+r--r--r--  3/10   1381 Oct  2 21:09 1999 man/cat1/mkdep.0
+r--r--r--  3/10    591 Oct  2 21:09 1999 man/cat1/mkdir.0
+r--r--r--  3/10   2618 Oct  2 21:09 1999 man/cat1/mkstr.0
+r--r--r--  3/10   9725 Oct  2 21:09 1999 man/cat1/more.0
+r--r--r--  3/10   2225 Oct  2 21:09 1999 man/cat1/mset.0
+r--r--r--  3/10   4906 Oct  2 21:09 1999 man/cat1/msgs.0
+r--r--r--  3/10   1811 Oct  2 21:09 1999 man/cat1/mt.0
+r--r--r--  3/10   1844 Oct  2 21:09 1999 man/cat1/mv.0
+r--r--r--  3/10   7052 Oct  2 21:09 1999 man/cat1/netstat.0
+r--r--r--  3/10    663 Oct  2 21:09 1999 man/cat1/newaliases.0
+r--r--r--  3/10   2040 Oct  2 21:09 1999 man/cat1/nice.0
+r--r--r--  3/10   1518 Oct  2 21:09 1999 man/cat1/nm.0
+r--r--r--  3/10   3823 Oct  2 21:09 1999 man/cat1/nroff.0
+r--r--r--  3/10   9244 Oct  2 21:09 1999 man/cat1/nslookup.0
+r--r--r--  3/10   3873 Oct  2 21:09 1999 man/cat1/od.0
+r--r--r--  3/10    568 Oct  2 21:09 1999 man/cat1/pagesize.0
+r--r--r--  3/10   3303 Oct  2 21:09 1999 man/cat1/passwd.0
+r--r--r--  3/10   6253 Oct  2 21:09 1999 man/cat1/pc.0
+r--r--r--  3/10  11449 Oct  2 21:09 1999 man/cat1/pdx.0
+r--r--r--  3/10   4170 Oct  2 21:09 1999 man/cat1/pi.0
+r--r--r--  3/10   1153 Oct  2 21:09 1999 man/cat1/pix.0
+r--r--r--  3/10   2548 Oct  2 21:09 1999 man/cat1/plot.0
+r--r--r--  3/10   1124 Oct  2 21:09 1999 man/cat1/pmerge.0
+r--r--r--  3/10   1810 Oct  2 21:09 1999 man/cat1/pr.0
+r--r--r--  3/10    706 Oct  2 21:09 1999 man/cat1/printenv.0
+r--r--r--  3/10   2661 Oct  2 21:09 1999 man/cat1/prof.0
+r--r--r--  3/10   8208 Oct  2 21:09 1999 man/cat1/prt.0
+r--r--r--  3/10   9826 Oct  2 21:09 1999 man/cat1/ps.0
+r--r--r--  3/10   3008 Oct  2 21:09 1999 man/cat1/ptx.0
+r--r--r--  3/10    657 Oct  2 21:09 1999 man/cat1/pwd.0
+r--r--r--  3/10   2340 Oct  2 21:09 1999 man/cat1/px.0
+r--r--r--  3/10   3568 Oct  2 21:09 1999 man/cat1/pxp.0
+r--r--r--  3/10    924 Oct  2 21:09 1999 man/cat1/pxref.0
+r--r--r--  3/10    966 Oct  2 21:09 1999 man/cat1/quota.0
+r--r--r--  3/10   1474 Oct  2 21:09 1999 man/cat1/ranlib.0
+r--r--r--  3/10   1708 Oct  2 21:09 1999 man/cat1/ratfor.0
+r--r--r--  3/10   2487 Oct  2 21:09 1999 man/cat1/rcp.0
+r--r--r--  3/10  12490 Oct  2 21:09 1999 man/cat1/rdist.0
+r--r--r--  3/10   6449 Oct  2 21:09 1999 man/cat1/refer.0
+r--r--r--  3/10    484 Oct  2 21:09 1999 man/cat1/rev.0
+r--r--r--  3/10   3139 Oct  2 21:09 1999 man/cat1/rlogin.0
+r--r--r--  3/10   1730 Oct  2 21:09 1999 man/cat1/rm.0
+r--r--r--  3/10    831 Oct  2 21:09 1999 man/cat1/rmail.0
+r--r--r--  3/10   1840 Oct  2 21:09 1999 man/cat1/rmdel.0
+r--r--r--  3/10   1732 Oct  2 21:09 1999 man/cat1/rmdir.0
+r--r--r--  3/10   2467 Oct  2 21:09 1999 man/cat1/roffbib.0
+r--r--r--  3/10   3061 Oct  2 21:09 1999 man/cat1/rsh.0
+r--r--r--  3/10   1088 Oct  2 21:09 1999 man/cat1/ruptime.0
+r--r--r--  3/10   1115 Oct  2 21:09 1999 man/cat1/rwho.0
+r--r--r--  3/10   7483 Oct  2 21:09 1999 man/cat1/sccs.0
+r--r--r--  3/10   1422 Oct  2 21:09 1999 man/cat1/sccsdiff.0
+r--r--r--  3/10   1100 Oct  2 21:09 1999 man/cat1/script.0
+r--r--r--  3/10   7485 Oct  2 21:09 1999 man/cat1/sed.0
+r--r--r--  3/10   1200 Oct  2 21:09 1999 man/cat1/sendbug.0
+r--r--r--  3/10  22820 Oct  2 21:09 1999 man/cat1/sh.0
+r--r--r--  3/10    585 Oct  2 21:09 1999 man/cat1/size.0
+r--r--r--  3/10    720 Oct  2 21:09 1999 man/cat1/sleep.0
+r--r--r--  3/10   1257 Oct  2 21:09 1999 man/cat1/soelim.0
+r--r--r--  3/10   4516 Oct  2 21:09 1999 man/cat1/sort.0
+r--r--r--  3/10   2599 Oct  2 21:09 1999 man/cat1/sortbib.0
+r--r--r--  3/10   3818 Oct  2 21:09 1999 man/cat1/spell.0
+r--r--r--  3/10   2044 Oct  2 21:09 1999 man/cat1/spline.0
+r--r--r--  3/10   1024 Oct  2 21:09 1999 man/cat1/split.0
+r--r--r--  3/10   1107 Oct  2 21:09 1999 man/cat1/strings.0
+r--r--r--  3/10    695 Oct  2 21:09 1999 man/cat1/strip.0
+r--r--r--  3/10   3008 Oct  2 21:09 1999 man/cat1/struct.0
+r--r--r--  3/10   9729 Oct  2 21:09 1999 man/cat1/stty.0
+r--r--r--  3/10   1695 Oct  2 21:09 1999 man/cat1/style.0
+r--r--r--  3/10   1231 Oct  2 21:09 1999 man/cat1/su.0
+r--r--r--  3/10    716 Oct  2 21:09 1999 man/cat1/sum.0
+r--r--r--  3/10    900 Oct  2 21:09 1999 man/cat1/symorder.0
+r--r--r--  3/10   5861 Oct  2 21:09 1999 man/cat1/sysline.0
+r--r--r--  3/10  15176 Oct  2 21:09 1999 man/cat1/systat.0
+r--r--r--  3/10    711 Oct  2 21:09 1999 man/cat1/tabs.0
+r--r--r--  3/10   1367 Oct  2 21:09 1999 man/cat1/tail.0
+r--r--r--  3/10   2534 Oct  2 21:09 1999 man/cat1/talk.0
+r--r--r--  3/10   6383 Oct  2 21:09 1999 man/cat1/tar.0
+r--r--r--  3/10   1785 Oct  2 21:09 1999 man/cat1/tbl.0
+r--r--r--  3/10   1749 Oct  2 21:09 1999 man/cat1/tc.0
+r--r--r--  3/10   1131 Oct  2 21:09 1999 man/cat1/tcopy.0
+r--r--r--  3/10    574 Oct  2 21:09 1999 man/cat1/tee.0
+r--r--r--  3/10  14303 Oct  2 21:09 1999 man/cat1/telnet.0
+r--r--r--  3/10   2267 Oct  2 21:09 1999 man/cat1/test.0
+r--r--r--  3/10   4033 Oct  2 21:09 1999 man/cat1/tftp.0
+r--r--r--  3/10   1291 Oct  2 21:09 1999 man/cat1/time.0
+r--r--r--  3/10  12171 Oct  2 21:09 1999 man/cat1/tip.0
+r--r--r--  3/10   1268 Oct  2 21:09 1999 man/cat1/tk.0
+r--r--r--  3/10   4189 Oct  2 21:09 1999 man/cat1/tn3270.0
+r--r--r--  3/10    796 Oct  2 21:09 1999 man/cat1/touch.0
+r--r--r--  3/10   4656 Oct  2 21:09 1999 man/cat1/tp.0
+r--r--r--  3/10   1927 Oct  2 21:09 1999 man/cat1/tr.0
+r--r--r--  3/10   3928 Oct  2 21:09 1999 man/cat1/troff.0
+r--r--r--  3/10    730 Oct  2 21:09 1999 man/cat1/true.0
+r--r--r--  3/10  13544 Oct  2 21:09 1999 man/cat1/tset.0
+r--r--r--  3/10   1015 Oct  2 21:09 1999 man/cat1/tsort.0
+r--r--r--  3/10    586 Oct  2 21:09 1999 man/cat1/tty.0
+r--r--r--  3/10   1569 Oct  2 21:09 1999 man/cat1/ul.0
+r--r--r--  3/10   3245 Oct  2 21:09 1999 man/cat1/unifdef.0
+r--r--r--  3/10   1577 Oct  2 21:09 1999 man/cat1/uniq.0
+r--r--r--  3/10   2100 Oct  2 21:09 1999 man/cat1/units.0
+r--r--r--  3/10    630 Oct  2 21:09 1999 man/cat1/uptime.0
+r--r--r--  3/10    508 Oct  2 21:09 1999 man/cat1/users.0
+r--r--r--  3/10   4838 Oct  2 21:09 1999 man/cat1/uucp.0
+r--r--r--  3/10   2322 Oct  2 21:09 1999 man/cat1/uuencode.0
+r--r--r--  3/10   1304 Oct  2 21:09 1999 man/cat1/uulog.0
+r--r--r--  3/10    608 Oct  2 21:09 1999 man/cat1/uuname.0
+r--r--r--  3/10   2678 Oct  2 21:09 1999 man/cat1/uuq.0
+r--r--r--  3/10   1597 Oct  2 21:09 1999 man/cat1/uusend.0
+r--r--r--  3/10   5523 Oct  2 21:09 1999 man/cat1/uux.0
+r--r--r--  3/10   2949 Oct  2 21:09 1999 man/cat1/vacation.0
+r--r--r--  3/10   4637 Oct  2 21:09 1999 man/cat1/vgrind.0
+r--r--r--  3/10   2289 Oct  2 21:09 1999 man/cat1/vi.0
+r--r--r--  3/10   4365 Oct  2 21:09 1999 man/cat1/vmstat.0
+r--r--r--  3/10    788 Oct  2 21:09 1999 man/cat1/wait.0
+r--r--r--  3/10    751 Oct  2 21:09 1999 man/cat1/wall.0
+r--r--r--  3/10    722 Oct  2 21:09 1999 man/cat1/wc.0
+r--r--r--  3/10   1449 Oct  2 21:09 1999 man/cat1/what.0
+r--r--r--  3/10   1059 Oct  2 21:09 1999 man/cat1/whatis.0
+r--r--r--  3/10   2027 Oct  2 21:09 1999 man/cat1/whereis.0
+r--r--r--  3/10   1003 Oct  2 21:09 1999 man/cat1/which.0
+r--r--r--  3/10   1395 Oct  2 21:09 1999 man/cat1/who.0
+r--r--r--  3/10    530 Oct  2 21:09 1999 man/cat1/whoami.0
+r--r--r--  3/10   1292 Oct  2 21:09 1999 man/cat1/whois.0
+r--r--r--  3/10  25604 Oct  2 21:09 1999 man/cat1/window.0
+r--r--r--  3/10   1816 Oct  2 21:09 1999 man/cat1/write.0
+r--r--r--  3/10   1336 Oct  2 21:09 1999 man/cat1/xsend.0
+r--r--r--  3/10   3112 Oct  2 21:09 1999 man/cat1/xstr.0
+r--r--r--  3/10   2361 Oct  2 21:09 1999 man/cat1/yacc.0
+r--r--r--  3/10    391 Oct  2 21:09 1999 man/cat1/yes.0
+r--r--r--  3/10  24751 Oct  2 21:09 1999 man/cat1/Mail.0 linked to man/cat1/mail.0
+r--r--r--  3/10  22820 Oct  2 21:09 1999 man/cat1/case.0 linked to man/cat1/sh.0
+r--r--r--  3/10   3844 Oct  2 21:08 1999 man/cat1/edit.0 linked to man/cat1/ex.0
+r--r--r--  3/10  22820 Oct  2 21:09 1999 man/cat1/for.0 linked to man/cat1/sh.0
+r--r--r--  3/10  22820 Oct  2 21:09 1999 man/cat1/if.0 linked to man/cat1/sh.0
+r--r--r--  3/10  22820 Oct  2 21:09 1999 man/cat1/while.0 linked to man/cat1/sh.0
+r--r--r--  3/10   7163 Oct  2 21:08 1999 man/cat1/checkeq.0 linked to man/cat1/eqn.0
+r--r--r--  3/10   7163 Oct  2 21:08 1999 man/cat1/neqn.0 linked to man/cat1/eqn.0
+r--r--r--  3/10  12171 Oct  2 21:09 1999 man/cat1/cu.0 linked to man/cat1/tip.0
+r--r--r--  3/10   7605 Oct  2 21:08 1999 man/cat1/diffh.0 linked to man/cat1/diff.0
+r--r--r--  3/10   5128 Oct  2 21:08 1999 man/cat1/egrep.0 linked to man/cat1/grep.0
+r--r--r--  3/10   5128 Oct  2 21:08 1999 man/cat1/fgrep.0 linked to man/cat1/grep.0
+r--r--r--  3/10   2040 Oct  2 21:09 1999 man/cat1/nohup.0 linked to man/cat1/nice.0
+r--r--r--  3/10   9725 Oct  2 21:09 1999 man/cat1/page.0 linked to man/cat1/more.0
+r--r--r--  3/10  13544 Oct  2 21:09 1999 man/cat1/reset.0 linked to man/cat1/tset.0
+r--r--r--  3/10   1336 Oct  2 21:09 1999 man/cat1/enroll.0 linked to man/cat1/xsend.0
+r--r--r--  3/10   3818 Oct  2 21:09 1999 man/cat1/spellin.0 linked to man/cat1/spell.0
+r--r--r--  3/10   3818 Oct  2 21:09 1999 man/cat1/spellout.0 linked to man/cat1/spell.0
+r--r--r--  3/10   1336 Oct  2 21:09 1999 man/cat1/xget.0 linked to man/cat1/xsend.0
+r--r--r--  3/10   3303 Oct  2 21:09 1999 man/cat1/chfn.0 linked to man/cat1/passwd.0
+r--r--r--  3/10   3303 Oct  2 21:09 1999 man/cat1/chsh.0 linked to man/cat1/passwd.0
+r--r--r--  3/10   1432 Oct  2 21:08 1999 man/cat1/unexpand.0 linked to man/cat1/expand.0
+r--r--r--  3/10   1467 Oct  2 21:08 1999 man/cat1/explain.0 linked to man/cat1/diction.0
+r--r--r--  3/10   3369 Oct  2 21:09 1999 man/cat1/indxbib.0 linked to man/cat1/lookbib.0
+r--r--r--  3/10   6076 Oct  2 21:08 1999 man/cat1/uncompress.0 linked to man/cat1/compress.0
+r--r--r--  3/10   6076 Oct  2 21:08 1999 man/cat1/zcat.0 linked to man/cat1/compress.0
+r--r--r--  3/10   2322 Oct  2 21:09 1999 man/cat1/uudecode.0 linked to man/cat1/uuencode.0
+r--r--r--  3/10  76289 Oct  2 21:08 1999 man/cat1/limit.0 linked to man/cat1/csh.0
+r--r--r--  3/10   1840 Oct  2 21:09 1999 man/cat1/rmchg.0 linked to man/cat1/rmdel.0
+rwxr-xr-x  3/10      0 Oct  2 21:09 1999 man/cat2/
+r--r--r--  3/10   3093 Oct  2 21:09 1999 man/cat2/accept.0
+r--r--r--  3/10   3777 Oct  2 21:09 1999 man/cat2/access.0
+r--r--r--  3/10   2510 Oct  2 21:09 1999 man/cat2/acct.0
+r--r--r--  3/10   2757 Oct  2 21:09 1999 man/cat2/adjtime.0
+r--r--r--  3/10   2952 Oct  2 21:09 1999 man/cat2/bind.0
+r--r--r--  3/10   2866 Oct  2 21:09 1999 man/cat2/brk.0
+r--r--r--  3/10   1745 Oct  2 21:09 1999 man/cat2/chdir.0
+r--r--r--  3/10   3790 Oct  2 21:09 1999 man/cat2/chmod.0
+r--r--r--  3/10   3290 Oct  2 21:09 1999 man/cat2/chown.0
+r--r--r--  3/10   1996 Oct  2 21:09 1999 man/cat2/chroot.0
+r--r--r--  3/10   2365 Oct  2 21:09 1999 man/cat2/close.0
+r--r--r--  3/10   3770 Oct  2 21:09 1999 man/cat2/connect.0
+r--r--r--  3/10   4020 Oct  2 21:09 1999 man/cat2/creat.0
+r--r--r--  3/10   2268 Oct  2 21:09 1999 man/cat2/dup.0
+r--r--r--  3/10   7460 Oct  2 21:09 1999 man/cat2/execve.0
+r--r--r--  3/10   1504 Oct  2 21:09 1999 man/cat2/exit.0
+r--r--r--  3/10   4066 Oct  2 21:09 1999 man/cat2/fcntl.0
+r--r--r--  3/10   3576 Oct  2 21:09 1999 man/cat2/flock.0
+r--r--r--  3/10   2384 Oct  2 21:09 1999 man/cat2/fork.0
+r--r--r--  3/10   1156 Oct  2 21:09 1999 man/cat2/fsync.0
+r--r--r--  3/10    750 Oct  2 21:09 1999 man/cat2/getdtablesize.0
+r--r--r--  3/10    952 Oct  2 21:09 1999 man/cat2/getgid.0
+r--r--r--  3/10   1740 Oct  2 21:09 1999 man/cat2/getgroups.0
+r--r--r--  3/10   1037 Oct  2 21:09 1999 man/cat2/gethostid.0
+r--r--r--  3/10   1823 Oct  2 21:09 1999 man/cat2/gethostname.0
+r--r--r--  3/10   4258 Oct  2 21:09 1999 man/cat2/getitimer.0
+r--r--r--  3/10  21885 Oct  2 21:09 1999 man/cat2/intro.0
+r--r--r--  3/10    722 Oct  2 21:09 1999 man/cat2/getpagesize.0
+r--r--r--  3/10   1460 Oct  2 21:09 1999 man/cat2/getpeername.0
+r--r--r--  3/10   1132 Oct  2 21:09 1999 man/cat2/getpgrp.0
+r--r--r--  3/10    696 Oct  2 21:09 1999 man/cat2/getpid.0
+r--r--r--  3/10   3021 Oct  2 21:09 1999 man/cat2/getpriority.0
+r--r--r--  3/10   5080 Oct  2 21:09 1999 man/cat2/getrlimit.0
+r--r--r--  3/10   5103 Oct  2 21:09 1999 man/cat2/getrusage.0
+r--r--r--  3/10   1455 Oct  2 21:09 1999 man/cat2/getsockname.0
+r--r--r--  3/10   7708 Oct  2 21:09 1999 man/cat2/getsockopt.0
+r--r--r--  3/10   2694 Oct  2 21:09 1999 man/cat2/gettimeofday.0
+r--r--r--  3/10    955 Oct  2 21:09 1999 man/cat2/getuid.0
+r--r--r--  3/10   1790 Oct  2 21:09 1999 man/cat2/ioctl.0
+r--r--r--  3/10   2889 Oct  2 21:09 1999 man/cat2/kill.0
+r--r--r--  3/10   1608 Oct  2 21:09 1999 man/cat2/killpg.0
+r--r--r--  3/10   3119 Oct  2 21:09 1999 man/cat2/link.0
+r--r--r--  3/10   1630 Oct  2 21:09 1999 man/cat2/listen.0
+r--r--r--  3/10   2597 Oct  2 21:09 1999 man/cat2/lseek.0
+r--r--r--  3/10   3468 Oct  2 21:09 1999 man/cat2/mkdir.0
+r--r--r--  3/10   3262 Oct  2 21:09 1999 man/cat2/mknod.0
+r--r--r--  3/10   5389 Oct  2 21:09 1999 man/cat2/mount.0
+r--r--r--  3/10   6198 Oct  2 21:09 1999 man/cat2/open.0
+r--r--r--  3/10   2186 Oct  2 21:09 1999 man/cat2/pipe.0
+r--r--r--  3/10   1602 Oct  2 21:09 1999 man/cat2/profil.0
+r--r--r--  3/10   6647 Oct  2 21:09 1999 man/cat2/ptrace.0
+r--r--r--  3/10   4709 Oct  2 21:09 1999 man/cat2/quota.0
+r--r--r--  3/10   3865 Oct  2 21:09 1999 man/cat2/read.0
+r--r--r--  3/10   1806 Oct  2 21:09 1999 man/cat2/readlink.0
+r--r--r--  3/10   2493 Oct  2 21:09 1999 man/cat2/reboot.0
+r--r--r--  3/10   4957 Oct  2 21:09 1999 man/cat2/recv.0
+r--r--r--  3/10   4666 Oct  2 21:09 1999 man/cat2/rename.0
+r--r--r--  3/10   2265 Oct  2 21:09 1999 man/cat2/rmdir.0
+r--r--r--  3/10   5209 Oct  2 21:09 1999 man/cat2/select.0
+r--r--r--  3/10   3926 Oct  2 21:09 1999 man/cat2/send.0
+r--r--r--  3/10   1420 Oct  2 21:09 1999 man/cat2/setgroups.0
+r--r--r--  3/10   1346 Oct  2 21:09 1999 man/cat2/setpgrp.0
+r--r--r--  3/10   2977 Oct  2 21:09 1999 man/cat2/setquota.0
+r--r--r--  3/10   1211 Oct  2 21:09 1999 man/cat2/setregid.0
+r--r--r--  3/10   1150 Oct  2 21:09 1999 man/cat2/setreuid.0
+r--r--r--  3/10   1066 Oct  2 21:09 1999 man/cat2/shutdown.0
+r--r--r--  3/10   1066 Oct  2 21:09 1999 man/cat2/sigblock.0
+r--r--r--  3/10   1211 Oct  2 21:09 1999 man/cat2/sigpause.0
+r--r--r--  3/10   2091 Oct  2 21:09 1999 man/cat2/sigreturn.0
+r--r--r--  3/10   1024 Oct  2 21:09 1999 man/cat2/sigsetmask.0
+r--r--r--  3/10   2098 Oct  2 21:09 1999 man/cat2/sigstack.0
+r--r--r--  3/10  10576 Oct  2 21:09 1999 man/cat2/sigvec.0
+r--r--r--  3/10   6875 Oct  2 21:09 1999 man/cat2/socket.0
+r--r--r--  3/10   1682 Oct  2 21:09 1999 man/cat2/socketpair.0
+r--r--r--  3/10   6370 Oct  2 21:09 1999 man/cat2/stat.0
+r--r--r--  3/10   2590 Oct  2 21:09 1999 man/cat2/swapon.0
+r--r--r--  3/10   3378 Oct  2 21:09 1999 man/cat2/symlink.0
+r--r--r--  3/10    816 Oct  2 21:09 1999 man/cat2/sync.0
+r--r--r--  3/10   1083 Oct  2 21:09 1999 man/cat2/syscall.0
+r--r--r--  3/10   2641 Oct  2 21:09 1999 man/cat2/truncate.0
+r--r--r--  3/10   1039 Oct  2 21:09 1999 man/cat2/umask.0
+r--r--r--  3/10   2495 Oct  2 21:09 1999 man/cat2/unlink.0
+r--r--r--  3/10   2140 Oct  2 21:09 1999 man/cat2/utimes.0
+r--r--r--  3/10   2036 Oct  2 21:09 1999 man/cat2/vadvise.0
+r--r--r--  3/10   2423 Oct  2 21:09 1999 man/cat2/vfork.0
+r--r--r--  3/10   1240 Oct  2 21:09 1999 man/cat2/vhangup.0
+r--r--r--  3/10   4400 Oct  2 21:09 1999 man/cat2/wait.0
+r--r--r--  3/10   4621 Oct  2 21:09 1999 man/cat2/write.0
+r--r--r--  3/10   2268 Oct  2 21:09 1999 man/cat2/dup2.0 linked to man/cat2/dup.0
+r--r--r--  3/10   2866 Oct  2 21:09 1999 man/cat2/sbrk.0 linked to man/cat2/brk.0
+r--r--r--  3/10  21885 Oct  2 21:09 1999 man/cat2/errno.0 linked to man/cat2/intro.0
+r--r--r--  3/10   6370 Oct  2 21:09 1999 man/cat2/fstat.0 linked to man/cat2/stat.0
+r--r--r--  3/10   6370 Oct  2 21:09 1999 man/cat2/lstat.0 linked to man/cat2/stat.0
+r--r--r--  3/10   3865 Oct  2 21:09 1999 man/cat2/readv.0 linked to man/cat2/read.0
+r--r--r--  3/10   4957 Oct  2 21:09 1999 man/cat2/recvfrom.0 linked to man/cat2/recv.0
+r--r--r--  3/10   4957 Oct  2 21:09 1999 man/cat2/recvmsg.0 linked to man/cat2/recv.0
+r--r--r--  3/10   3926 Oct  2 21:09 1999 man/cat2/sendmsg.0 linked to man/cat2/send.0
+r--r--r--  3/10   3926 Oct  2 21:09 1999 man/cat2/sendto.0 linked to man/cat2/send.0
+r--r--r--  3/10   4400 Oct  2 21:09 1999 man/cat2/wait3.0 linked to man/cat2/wait.0
+r--r--r--  3/10   3790 Oct  2 21:09 1999 man/cat2/fchmod.0 linked to man/cat2/chmod.0
+r--r--r--  3/10   3290 Oct  2 21:09 1999 man/cat2/fchown.0 linked to man/cat2/chown.0
+r--r--r--  3/10   5389 Oct  2 21:09 1999 man/cat2/umount.0 linked to man/cat2/mount.0
+r--r--r--  3/10   4621 Oct  2 21:09 1999 man/cat2/writev.0 linked to man/cat2/write.0
+r--r--r--  3/10    952 Oct  2 21:09 1999 man/cat2/getegid.0 linked to man/cat2/getgid.0
+r--r--r--  3/10    955 Oct  2 21:09 1999 man/cat2/geteuid.0 linked to man/cat2/getuid.0
+r--r--r--  3/10    696 Oct  2 21:09 1999 man/cat2/getppid.0 linked to man/cat2/getpid.0
+r--r--r--  3/10   2597 Oct  2 21:09 1999 man/cat2/seek.0 linked to man/cat2/lseek.0
+r--r--r--  3/10   2641 Oct  2 21:09 1999 man/cat2/ftruncate.0 linked to man/cat2/truncate.0
+r--r--r--  3/10   1037 Oct  2 21:09 1999 man/cat2/sethostid.0 linked to man/cat2/gethostid.0
+r--r--r--  3/10   4258 Oct  2 21:09 1999 man/cat2/setitimer.0 linked to man/cat2/getitimer.0
+r--r--r--  3/10   5080 Oct  2 21:09 1999 man/cat2/setrlimit.0 linked to man/cat2/getrlimit.0
+r--r--r--  3/10   7708 Oct  2 21:09 1999 man/cat2/setsockopt.0 linked to man/cat2/getsockopt.0
+r--r--r--  3/10   1823 Oct  2 21:09 1999 man/cat2/sethostname.0 linked to man/cat2/gethostname.0
+r--r--r--  3/10   3021 Oct  2 21:09 1999 man/cat2/setpriority.0 linked to man/cat2/getpriority.0
+r--r--r--  3/10   2694 Oct  2 21:09 1999 man/cat2/settimeofday.0 linked to man/cat2/gettimeofday.0
+rwxr-xr-x  3/10      0 Oct  2 21:10 1999 man/cat3/
+r--r--r--  3/10    685 Oct  2 21:09 1999 man/cat3/abort.0
+r--r--r--  3/10    628 Oct  2 21:09 1999 man/cat3/abs.0
+r--r--r--  3/10   1255 Oct  2 21:09 1999 man/cat3/alarm.0
+r--r--r--  3/10   1317 Oct  2 21:09 1999 man/cat3/asinh.0
+r--r--r--  3/10    948 Oct  2 21:09 1999 man/cat3/assert.0
+r--r--r--  3/10   1161 Oct  2 21:09 1999 man/cat3/atof.0
+r--r--r--  3/10   1716 Oct  2 21:09 1999 man/cat3/bstring.0
+r--r--r--  3/10   1761 Oct  2 21:09 1999 man/cat3/byteorder.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/compat-sys5.0
+r--r--r--  3/10   2265 Oct  2 21:09 1999 man/cat3/crypt.0
+r--r--r--  3/10   6016 Oct  2 21:09 1999 man/cat3/ctime.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/ctype.0
+r--r--r--  3/10   5173 Oct  2 21:09 1999 man/cat3/curses.0
+r--r--r--  3/10   4325 Oct  2 21:09 1999 man/cat3/dbm.0
+r--r--r--  3/10   3732 Oct  2 21:09 1999 man/cat3/directory.0
+r--r--r--  3/10   2028 Oct  2 21:09 1999 man/cat3/ecvt.0
+r--r--r--  3/10   1057 Oct  2 21:09 1999 man/cat3/end.0
+r--r--r--  3/10    846 Oct  2 21:09 1999 man/cat3/erf.0
+r--r--r--  3/10   5366 Oct  2 21:09 1999 man/cat3/execl.0
+r--r--r--  3/10    594 Oct  2 21:09 1999 man/cat3/exit.0
+r--r--r--  3/10   4700 Oct  2 21:09 1999 man/cat3/exp.0
+r--r--r--  3/10   1186 Oct  2 21:09 1999 man/cat3/fclose.0
+r--r--r--  3/10   1549 Oct  2 21:09 1999 man/cat3/ferror.0
+r--r--r--  3/10   1855 Oct  2 21:09 1999 man/cat3/floor.0
+r--r--r--  3/10   3461 Oct  2 21:09 1999 man/cat3/fopen.0
+r--r--r--  3/10   1525 Oct  2 21:09 1999 man/cat3/fread.0
+r--r--r--  3/10   1514 Oct  2 21:09 1999 man/cat3/frexp.0
+r--r--r--  3/10   1606 Oct  2 21:09 1999 man/cat3/fseek.0
+r--r--r--  3/10   2058 Oct  2 21:09 1999 man/cat3/getc.0
+r--r--r--  3/10    888 Oct  2 21:09 1999 man/cat3/getdiskbyname.0
+r--r--r--  3/10   1969 Oct  2 21:09 1999 man/cat3/getenv.0
+r--r--r--  3/10   2368 Oct  2 21:09 1999 man/cat3/getfsent.0
+r--r--r--  3/10   2787 Oct  2 21:09 1999 man/cat3/getgrent.0
+r--r--r--  3/10   6398 Oct  2 21:09 1999 man/cat3/gethostbyname.0
+r--r--r--  3/10   1279 Oct  2 21:09 1999 man/cat3/getlogin.0
+r--r--r--  3/10   3034 Oct  2 21:09 1999 man/cat3/getnetent.0
+r--r--r--  3/10   3949 Oct  2 21:09 1999 man/cat3/getopt.0
+r--r--r--  3/10    855 Oct  2 21:09 1999 man/cat3/getpass.0
+r--r--r--  3/10   2823 Oct  2 21:09 1999 man/cat3/getprotoent.0
+r--r--r--  3/10    816 Oct  2 21:09 1999 man/cat3/getpw.0
+r--r--r--  3/10   3094 Oct  2 21:09 1999 man/cat3/getpwent.0
+r--r--r--  3/10   1392 Oct  2 21:09 1999 man/cat3/gets.0
+r--r--r--  3/10   3119 Oct  2 21:09 1999 man/cat3/getservent.0
+r--r--r--  3/10   4093 Oct  2 21:09 1999 man/cat3/getttyent.0
+r--r--r--  3/10   1330 Oct  2 21:09 1999 man/cat3/getusershell.0
+r--r--r--  3/10    826 Oct  2 21:09 1999 man/cat3/getwd.0
+r--r--r--  3/10   2008 Oct  2 21:09 1999 man/cat3/hypot.0
+r--r--r--  3/10   3644 Oct  2 21:09 1999 man/cat3/ieee.0
+r--r--r--  3/10   4628 Oct  2 21:09 1999 man/cat3/inet.0
+r--r--r--  3/10   3753 Oct  2 21:09 1999 man/cat3/infnan.0
+r--r--r--  3/10   1232 Oct  2 21:09 1999 man/cat3/initgroups.0
+r--r--r--  3/10   1134 Oct  2 21:09 1999 man/cat3/insque.0
+r--r--r--  3/10  19507 Oct  2 21:09 1999 man/cat3/intro.0
+r--r--r--  3/10   1114 Oct  2 21:09 1999 man/cat3/j0.0
+r--r--r--  3/10   2942 Oct  2 21:09 1999 man/cat3/lgamma.0
+r--r--r--  3/10  14963 Oct  2 21:09 1999 man/cat3/lib2648.0
+r--r--r--  3/10   4056 Oct  2 21:09 1999 man/cat3/malloc.0
+r--r--r--  3/10  23451 Oct  2 21:09 1999 man/cat3/math.0
+r--r--r--  3/10   1557 Oct  2 21:09 1999 man/cat3/mktemp.0
+r--r--r--  3/10   4163 Oct  2 21:09 1999 man/cat3/monitor.0
+r--r--r--  3/10   4248 Oct  2 21:09 1999 man/cat3/mp.0
+r--r--r--  3/10   5869 Oct  2 21:09 1999 man/cat3/ndbm.0
+r--r--r--  3/10   1277 Oct  2 21:09 1999 man/cat3/nice.0
+r--r--r--  3/10   1479 Oct  2 21:09 1999 man/cat3/nlist.0
+r--r--r--  3/10   2904 Oct  2 21:09 1999 man/cat3/ns.0
+r--r--r--  3/10    797 Oct  2 21:09 1999 man/cat3/pause.0
+r--r--r--  3/10   1620 Oct  2 21:09 1999 man/cat3/perror.0
+r--r--r--  3/10   3165 Oct  2 21:09 1999 man/cat3/plot.0
+r--r--r--  3/10   2009 Oct  2 21:09 1999 man/cat3/popen.0
+r--r--r--  3/10   8786 Oct  2 21:09 1999 man/cat3/printf.0
+r--r--r--  3/10   1377 Oct  2 21:09 1999 man/cat3/psignal.0
+r--r--r--  3/10   1784 Oct  2 21:09 1999 man/cat3/putc.0
+r--r--r--  3/10   1038 Oct  2 21:09 1999 man/cat3/puts.0
+r--r--r--  3/10   1114 Oct  2 21:09 1999 man/cat3/qsort.0
+r--r--r--  3/10   1016 Oct  2 21:09 1999 man/cat3/rand.0
+r--r--r--  3/10   4430 Oct  2 21:09 1999 man/cat3/random.0
+r--r--r--  3/10   4823 Oct  2 21:09 1999 man/cat3/rcmd.0
+r--r--r--  3/10   2021 Oct  2 21:09 1999 man/cat3/regex.0
+r--r--r--  3/10   8694 Oct  2 21:09 1999 man/cat3/regexp.0
+r--r--r--  3/10   7021 Oct  2 21:09 1999 man/cat3/resolver.0
+r--r--r--  3/10   2627 Oct  2 21:09 1999 man/cat3/rexec.0
+r--r--r--  3/10   2381 Oct  2 21:09 1999 man/cat3/scandir.0
+r--r--r--  3/10   6607 Oct  2 21:09 1999 man/cat3/scanf.0
+r--r--r--  3/10   3686 Oct  2 21:09 1999 man/cat3/setbuf.0
+r--r--r--  3/10   2197 Oct  2 21:09 1999 man/cat3/setjmp.0
+r--r--r--  3/10   1421 Oct  2 21:09 1999 man/cat3/setuid.0
+r--r--r--  3/10   2320 Oct  2 21:09 1999 man/cat3/siginterrupt.0
+r--r--r--  3/10   7836 Oct  2 21:09 1999 man/cat3/signal.0
+r--r--r--  3/10   4695 Oct  2 21:09 1999 man/cat3/sin.0
+r--r--r--  3/10   1010 Oct  2 21:09 1999 man/cat3/sinh.0
+r--r--r--  3/10   1111 Oct  2 21:09 1999 man/cat3/sleep.0
+r--r--r--  3/10   1213 Oct  2 21:09 1999 man/cat3/sqrt.0
+r--r--r--  3/10   5828 Oct  2 21:09 1999 man/cat3/stdio.0
+r--r--r--  3/10   3407 Oct  2 21:09 1999 man/cat3/string.0
+r--r--r--  3/10   1356 Oct  2 21:09 1999 man/cat3/stty.0
+r--r--r--  3/10    647 Oct  2 21:09 1999 man/cat3/swab.0
+r--r--r--  3/10   5517 Oct  2 21:09 1999 man/cat3/syslog.0
+r--r--r--  3/10    762 Oct  2 21:09 1999 man/cat3/system.0
+r--r--r--  3/10   5590 Oct  2 21:09 1999 man/cat3/termcap.0
+r--r--r--  3/10   2100 Oct  2 21:09 1999 man/cat3/time.0
+r--r--r--  3/10   1594 Oct  2 21:09 1999 man/cat3/times.0
+r--r--r--  3/10   1429 Oct  2 21:09 1999 man/cat3/ttyname.0
+r--r--r--  3/10   1527 Oct  2 21:09 1999 man/cat3/ualarm.0
+r--r--r--  3/10   1041 Oct  2 21:09 1999 man/cat3/ungetc.0
+r--r--r--  3/10   1453 Oct  2 21:09 1999 man/cat3/usleep.0
+r--r--r--  3/10    948 Oct  2 21:09 1999 man/cat3/utime.0
+r--r--r--  3/10   1189 Oct  2 21:09 1999 man/cat3/valloc.0
+r--r--r--  3/10   3731 Oct  2 21:09 1999 man/cat3/varargs.0
+r--r--r--  3/10   2960 Oct  2 21:09 1999 man/cat3/vlimit.0
+r--r--r--  3/10   3424 Oct  2 21:09 1999 man/cat3/vtimes.0
+r--r--r--  3/10   1057 Oct  2 21:09 1999 man/cat3/edata.0 linked to man/cat3/end.0
+r--r--r--  3/10   1057 Oct  2 21:09 1999 man/cat3/etext.0 linked to man/cat3/end.0
+r--r--r--  3/10   1114 Oct  2 21:09 1999 man/cat3/j1.0 linked to man/cat3/j0.0
+r--r--r--  3/10   1114 Oct  2 21:09 1999 man/cat3/jn.0 linked to man/cat3/j0.0
+r--r--r--  3/10   1114 Oct  2 21:09 1999 man/cat3/y0.0 linked to man/cat3/j0.0
+r--r--r--  3/10   1114 Oct  2 21:09 1999 man/cat3/y1.0 linked to man/cat3/j0.0
+r--r--r--  3/10   1114 Oct  2 21:09 1999 man/cat3/yn.0 linked to man/cat3/j0.0
+r--r--r--  3/10   2904 Oct  2 21:09 1999 man/cat3/ns_addr.0 linked to man/cat3/ns.0
+r--r--r--  3/10   2904 Oct  2 21:09 1999 man/cat3/ns_ntoa.0 linked to man/cat3/ns.0
+r--r--r--  3/10   4695 Oct  2 21:09 1999 man/cat3/acos.0 linked to man/cat3/sin.0
+r--r--r--  3/10   4695 Oct  2 21:09 1999 man/cat3/asin.0 linked to man/cat3/sin.0
+r--r--r--  3/10   4695 Oct  2 21:09 1999 man/cat3/atan.0 linked to man/cat3/sin.0
+r--r--r--  3/10   4695 Oct  2 21:09 1999 man/cat3/atan2.0 linked to man/cat3/sin.0
+r--r--r--  3/10   1161 Oct  2 21:09 1999 man/cat3/atoi.0 linked to man/cat3/atof.0
+r--r--r--  3/10   1161 Oct  2 21:09 1999 man/cat3/atol.0 linked to man/cat3/atof.0
+r--r--r--  3/10   4695 Oct  2 21:09 1999 man/cat3/cos.0 linked to man/cat3/sin.0
+r--r--r--  3/10   5869 Oct  2 21:09 1999 man/cat3/dbm_clearerr.0 linked to man/cat3/ndbm.0
+r--r--r--  3/10   5869 Oct  2 21:09 1999 man/cat3/dbm_close.0 linked to man/cat3/ndbm.0
+r--r--r--  3/10   5869 Oct  2 21:09 1999 man/cat3/dbm_delete.0 linked to man/cat3/ndbm.0
+r--r--r--  3/10   5869 Oct  2 21:09 1999 man/cat3/dbm_error.0 linked to man/cat3/ndbm.0
+r--r--r--  3/10   5869 Oct  2 21:09 1999 man/cat3/dbm_fetch.0 linked to man/cat3/ndbm.0
+r--r--r--  3/10   5869 Oct  2 21:09 1999 man/cat3/dbm_firstkey.0 linked to man/cat3/ndbm.0
+r--r--r--  3/10   5869 Oct  2 21:09 1999 man/cat3/dbm_nextkey.0 linked to man/cat3/ndbm.0
+r--r--r--  3/10   5869 Oct  2 21:09 1999 man/cat3/dbm_open.0 linked to man/cat3/ndbm.0
+r--r--r--  3/10   5869 Oct  2 21:09 1999 man/cat3/dbm_store.0 linked to man/cat3/ndbm.0
+r--r--r--  3/10   4325 Oct  2 21:09 1999 man/cat3/dbminit.0 linked to man/cat3/dbm.0
+r--r--r--  3/10   4325 Oct  2 21:09 1999 man/cat3/delete.0 linked to man/cat3/dbm.0
+r--r--r--  3/10    846 Oct  2 21:09 1999 man/cat3/erfc.0 linked to man/cat3/erf.0
+r--r--r--  3/10   4700 Oct  2 21:09 1999 man/cat3/expm1.0 linked to man/cat3/exp.0
+r--r--r--  3/10   2028 Oct  2 21:09 1999 man/cat3/fcvt.0 linked to man/cat3/ecvt.0
+r--r--r--  3/10   4325 Oct  2 21:09 1999 man/cat3/fetch.0 linked to man/cat3/dbm.0
+r--r--r--  3/10   4325 Oct  2 21:09 1999 man/cat3/firstkey.0 linked to man/cat3/dbm.0
+r--r--r--  3/10   2028 Oct  2 21:09 1999 man/cat3/gcvt.0 linked to man/cat3/ecvt.0
+r--r--r--  3/10   4700 Oct  2 21:09 1999 man/cat3/log.0 linked to man/cat3/exp.0
+r--r--r--  3/10   4700 Oct  2 21:09 1999 man/cat3/log10.0 linked to man/cat3/exp.0
+r--r--r--  3/10   4700 Oct  2 21:09 1999 man/cat3/log1p.0 linked to man/cat3/exp.0
+r--r--r--  3/10   4325 Oct  2 21:09 1999 man/cat3/nextkey.0 linked to man/cat3/dbm.0
+r--r--r--  3/10   4700 Oct  2 21:09 1999 man/cat3/pow.0 linked to man/cat3/exp.0
+r--r--r--  3/10   4823 Oct  2 21:09 1999 man/cat3/rresvport.0 linked to man/cat3/rcmd.0
+r--r--r--  3/10   4823 Oct  2 21:09 1999 man/cat3/ruserok.0 linked to man/cat3/rcmd.0
+r--r--r--  3/10   4325 Oct  2 21:09 1999 man/cat3/store.0 linked to man/cat3/dbm.0
+r--r--r--  3/10   4695 Oct  2 21:09 1999 man/cat3/tan.0 linked to man/cat3/sin.0
+r--r--r--  3/10   5366 Oct  2 21:09 1999 man/cat3/exec.0 linked to man/cat3/execl.0
+r--r--r--  3/10   4628 Oct  2 21:09 1999 man/cat3/addr.0 linked to man/cat3/inet.0
+r--r--r--  3/10   3165 Oct  2 21:09 1999 man/cat3/arc.0 linked to man/cat3/plot.0
+r--r--r--  3/10   6016 Oct  2 21:09 1999 man/cat3/asctime.0 linked to man/cat3/ctime.0
+r--r--r--  3/10   1213 Oct  2 21:09 1999 man/cat3/cbrt.0 linked to man/cat3/sqrt.0
+r--r--r--  3/10   3165 Oct  2 21:09 1999 man/cat3/circle.0 linked to man/cat3/plot.0
+r--r--r--  3/10   3165 Oct  2 21:09 1999 man/cat3/cont.0 linked to man/cat3/plot.0
+r--r--r--  3/10   3644 Oct  2 21:09 1999 man/cat3/copysign.0 linked to man/cat3/ieee.0
+r--r--r--  3/10   1010 Oct  2 21:09 1999 man/cat3/cosh.0 linked to man/cat3/sinh.0
+r--r--r--  3/10   3644 Oct  2 21:09 1999 man/cat3/drem.0 linked to man/cat3/ieee.0
+r--r--r--  3/10   2265 Oct  2 21:09 1999 man/cat3/encrypt.0 linked to man/cat3/crypt.0
+r--r--r--  3/10   3165 Oct  2 21:09 1999 man/cat3/erase.0 linked to man/cat3/plot.0
+r--r--r--  3/10   5366 Oct  2 21:09 1999 man/cat3/execle.0 linked to man/cat3/execl.0
+r--r--r--  3/10   5366 Oct  2 21:09 1999 man/cat3/execlp.0 linked to man/cat3/execl.0
+r--r--r--  3/10   5366 Oct  2 21:09 1999 man/cat3/exect.0 linked to man/cat3/execl.0
+r--r--r--  3/10   5366 Oct  2 21:09 1999 man/cat3/execv.0 linked to man/cat3/execl.0
+r--r--r--  3/10   5366 Oct  2 21:09 1999 man/cat3/execve.0 linked to man/cat3/execl.0
+r--r--r--  3/10   5366 Oct  2 21:09 1999 man/cat3/execvp.0 linked to man/cat3/execl.0
+r--r--r--  3/10   2058 Oct  2 21:09 1999 man/cat3/fgetc.0 linked to man/cat3/getc.0
+r--r--r--  3/10   1392 Oct  2 21:09 1999 man/cat3/fgets.0 linked to man/cat3/gets.0
+r--r--r--  3/10   3644 Oct  2 21:09 1999 man/cat3/finite.0 linked to man/cat3/ieee.0
+r--r--r--  3/10   1784 Oct  2 21:09 1999 man/cat3/fputc.0 linked to man/cat3/putc.0
+r--r--r--  3/10   1038 Oct  2 21:09 1999 man/cat3/fputs.0 linked to man/cat3/puts.0
+r--r--r--  3/10   2100 Oct  2 21:09 1999 man/cat3/ftime.0 linked to man/cat3/time.0
+r--r--r--  3/10   2058 Oct  2 21:09 1999 man/cat3/getchar.0 linked to man/cat3/getc.0
+r--r--r--  3/10   2058 Oct  2 21:09 1999 man/cat3/getw.0 linked to man/cat3/getc.0
+r--r--r--  3/10   6016 Oct  2 21:09 1999 man/cat3/gmtime.0 linked to man/cat3/ctime.0
+r--r--r--  3/10   1356 Oct  2 21:09 1999 man/cat3/gtty.0 linked to man/cat3/stty.0
+r--r--r--  3/10   4628 Oct  2 21:09 1999 man/cat3/inet_addr.0 linked to man/cat3/inet.0
+r--r--r--  3/10   4628 Oct  2 21:09 1999 man/cat3/inet_lnaof.0 linked to man/cat3/inet.0
+r--r--r--  3/10   4628 Oct  2 21:09 1999 man/cat3/inet_makeaddr.0 linked to man/cat3/inet.0
+r--r--r--  3/10   4628 Oct  2 21:09 1999 man/cat3/inet_netof.0 linked to man/cat3/inet.0
+r--r--r--  3/10   4628 Oct  2 21:09 1999 man/cat3/inet_network.0 linked to man/cat3/inet.0
+r--r--r--  3/10   4628 Oct  2 21:09 1999 man/cat3/inet_ntoa.0 linked to man/cat3/inet.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/isalnum.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/isalpha.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/isascii.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/iscntrl.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/isdigit.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/islower.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/isprint.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/ispunct.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/isspace.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/isupper.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/isxdigit.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   3165 Oct  2 21:09 1999 man/cat3/label.0 linked to man/cat3/plot.0
+r--r--r--  3/10   1514 Oct  2 21:09 1999 man/cat3/ldexp.0 linked to man/cat3/frexp.0
+r--r--r--  3/10   3165 Oct  2 21:09 1999 man/cat3/line.0 linked to man/cat3/plot.0
+r--r--r--  3/10   3165 Oct  2 21:09 1999 man/cat3/linemod.0 linked to man/cat3/plot.0
+r--r--r--  3/10   6016 Oct  2 21:09 1999 man/cat3/localtime.0 linked to man/cat3/ctime.0
+r--r--r--  3/10   3644 Oct  2 21:09 1999 man/cat3/logb.0 linked to man/cat3/ieee.0
+r--r--r--  3/10   1514 Oct  2 21:09 1999 man/cat3/modf.0 linked to man/cat3/frexp.0
+r--r--r--  3/10   3165 Oct  2 21:09 1999 man/cat3/move.0 linked to man/cat3/plot.0
+r--r--r--  3/10   4628 Oct  2 21:09 1999 man/cat3/network.0 linked to man/cat3/inet.0
+r--r--r--  3/10   4628 Oct  2 21:09 1999 man/cat3/ntoa.0 linked to man/cat3/inet.0
+r--r--r--  3/10   3165 Oct  2 21:09 1999 man/cat3/openpl.0 linked to man/cat3/plot.0
+r--r--r--  3/10   2009 Oct  2 21:09 1999 man/cat3/pclose.0 linked to man/cat3/popen.0
+r--r--r--  3/10   3165 Oct  2 21:09 1999 man/cat3/point.0 linked to man/cat3/plot.0
+r--r--r--  3/10   1784 Oct  2 21:09 1999 man/cat3/putchar.0 linked to man/cat3/putc.0
+r--r--r--  3/10   1784 Oct  2 21:09 1999 man/cat3/putw.0 linked to man/cat3/putc.0
+r--r--r--  3/10   2021 Oct  2 21:09 1999 man/cat3/re_comp.0 linked to man/cat3/regex.0
+r--r--r--  3/10   2021 Oct  2 21:09 1999 man/cat3/re_exec.0 linked to man/cat3/regex.0
+r--r--r--  3/10   8694 Oct  2 21:09 1999 man/cat3/regcomp.0 linked to man/cat3/regexp.0
+r--r--r--  3/10   8694 Oct  2 21:09 1999 man/cat3/regexec.0 linked to man/cat3/regexp.0
+r--r--r--  3/10   8694 Oct  2 21:09 1999 man/cat3/regsub.0 linked to man/cat3/regexp.0
+r--r--r--  3/10   8694 Oct  2 21:09 1999 man/cat3/regerror.0 linked to man/cat3/regexp.0
+r--r--r--  3/10   3644 Oct  2 21:09 1999 man/cat3/scalb.0 linked to man/cat3/ieee.0
+r--r--r--  3/10   2265 Oct  2 21:09 1999 man/cat3/setkey.0 linked to man/cat3/crypt.0
+r--r--r--  3/10   3165 Oct  2 21:09 1999 man/cat3/space.0 linked to man/cat3/plot.0
+r--r--r--  3/10   1016 Oct  2 21:09 1999 man/cat3/srand.0 linked to man/cat3/rand.0
+r--r--r--  3/10   1010 Oct  2 21:09 1999 man/cat3/tanh.0 linked to man/cat3/sinh.0
+r--r--r--  3/10   6016 Oct  2 21:09 1999 man/cat3/timezone.0 linked to man/cat3/ctime.0
+r--r--r--  3/10   6016 Oct  2 21:09 1999 man/cat3/tzset.0 linked to man/cat3/ctime.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/toascii.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/tolower.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   2353 Oct  2 21:09 1999 man/cat3/toupper.0 linked to man/cat3/ctype.0
+r--r--r--  3/10   2197 Oct  2 21:09 1999 man/cat3/_longjmp.0 linked to man/cat3/setjmp.0
+r--r--r--  3/10   2197 Oct  2 21:09 1999 man/cat3/_setjmp.0 linked to man/cat3/setjmp.0
+r--r--r--  3/10   1317 Oct  2 21:09 1999 man/cat3/acosh.0 linked to man/cat3/asinh.0
+r--r--r--  3/10   4056 Oct  2 21:09 1999 man/cat3/alloca.0 linked to man/cat3/malloc.0
+r--r--r--  3/10   1317 Oct  2 21:09 1999 man/cat3/atanh.0 linked to man/cat3/asinh.0
+r--r--r--  3/10   2008 Oct  2 21:09 1999 man/cat3/cabs.0 linked to man/cat3/hypot.0
+r--r--r--  3/10   4056 Oct  2 21:09 1999 man/cat3/calloc.0 linked to man/cat3/malloc.0
+r--r--r--  3/10   1855 Oct  2 21:09 1999 man/cat3/ceil.0 linked to man/cat3/floor.0
+r--r--r--  3/10   5517 Oct  2 21:09 1999 man/cat3/closelog.0 linked to man/cat3/syslog.0
+r--r--r--  3/10   1620 Oct  2 21:09 1999 man/cat3/errlist.0 linked to man/cat3/perror.0
+r--r--r--  3/10   1855 Oct  2 21:09 1999 man/cat3/fabs.0 linked to man/cat3/floor.0
+r--r--r--  3/10   3461 Oct  2 21:09 1999 man/cat3/fdopen.0 linked to man/cat3/fopen.0
+r--r--r--  3/10   4056 Oct  2 21:09 1999 man/cat3/free.0 linked to man/cat3/malloc.0
+r--r--r--  3/10   3461 Oct  2 21:09 1999 man/cat3/freopen.0 linked to man/cat3/fopen.0
+r--r--r--  3/10   6607 Oct  2 21:09 1999 man/cat3/fscanf.0 linked to man/cat3/scanf.0
+r--r--r--  3/10   1606 Oct  2 21:09 1999 man/cat3/ftell.0 linked to man/cat3/fseek.0
+r--r--r--  3/10   1525 Oct  2 21:09 1999 man/cat3/fwrite.0 linked to man/cat3/fread.0
+r--r--r--  3/10   3407 Oct  2 21:09 1999 man/cat3/index.0 linked to man/cat3/string.0
+r--r--r--  3/10   4430 Oct  2 21:09 1999 man/cat3/initstate.0 linked to man/cat3/random.0
+r--r--r--  3/10   2197 Oct  2 21:09 1999 man/cat3/longjmp.0 linked to man/cat3/setjmp.0
+r--r--r--  3/10   5517 Oct  2 21:09 1999 man/cat3/openlog.0 linked to man/cat3/syslog.0
+r--r--r--  3/10   4056 Oct  2 21:09 1999 man/cat3/realloc.0 linked to man/cat3/malloc.0
+r--r--r--  3/10   1134 Oct  2 21:09 1999 man/cat3/remque.0 linked to man/cat3/insque.0
+r--r--r--  3/10   1606 Oct  2 21:09 1999 man/cat3/rewind.0 linked to man/cat3/fseek.0
+r--r--r--  3/10   3407 Oct  2 21:09 1999 man/cat3/rindex.0 linked to man/cat3/string.0
+r--r--r--  3/10   1421 Oct  2 21:09 1999 man/cat3/setegid.0 linked to man/cat3/setuid.0
+r--r--r--  3/10   1421 Oct  2 21:09 1999 man/cat3/seteuid.0 linked to man/cat3/setuid.0
+r--r--r--  3/10   1421 Oct  2 21:09 1999 man/cat3/setgid.0 linked to man/cat3/setuid.0
+r--r--r--  3/10   5517 Oct  2 21:09 1999 man/cat3/setlogmask.0 linked to man/cat3/syslog.0
+r--r--r--  3/10   1421 Oct  2 21:09 1999 man/cat3/setrgid.0 linked to man/cat3/setuid.0
+r--r--r--  3/10   1421 Oct  2 21:09 1999 man/cat3/setruid.0 linked to man/cat3/setuid.0
+r--r--r--  3/10   4430 Oct  2 21:09 1999 man/cat3/setstate.0 linked to man/cat3/random.0
+r--r--r--  3/10   4430 Oct  2 21:09 1999 man/cat3/srandom.0 linked to man/cat3/random.0
+r--r--r--  3/10   6607 Oct  2 21:09 1999 man/cat3/sscanf.0 linked to man/cat3/scanf.0
+r--r--r--  3/10   3407 Oct  2 21:09 1999 man/cat3/strcat.0 linked to man/cat3/string.0
+r--r--r--  3/10   3407 Oct  2 21:09 1999 man/cat3/strcmp.0 linked to man/cat3/string.0
+r--r--r--  3/10   3407 Oct  2 21:09 1999 man/cat3/strcpy.0 linked to man/cat3/string.0
+r--r--r--  3/10   3407 Oct  2 21:09 1999 man/cat3/strlen.0 linked to man/cat3/string.0
+r--r--r--  3/10   3407 Oct  2 21:09 1999 man/cat3/strncat.0 linked to man/cat3/string.0
+r--r--r--  3/10   3407 Oct  2 21:09 1999 man/cat3/strncmp.0 linked to man/cat3/string.0
+r--r--r--  3/10   3407 Oct  2 21:09 1999 man/cat3/strcasecmp.0 linked to man/cat3/string.0
+r--r--r--  3/10   3407 Oct  2 21:09 1999 man/cat3/strncasecmp.0 linked to man/cat3/string.0
+r--r--r--  3/10   3407 Oct  2 21:09 1999 man/cat3/strncpy.0 linked to man/cat3/string.0
+r--r--r--  3/10   1620 Oct  2 21:09 1999 man/cat3/sys.0 linked to man/cat3/perror.0
+r--r--r--  3/10   1620 Oct  2 21:09 1999 man/cat3/sys_errlist.0 linked to man/cat3/perror.0
+r--r--r--  3/10   1620 Oct  2 21:09 1999 man/cat3/sys_nerr.0 linked to man/cat3/perror.0
+r--r--r--  3/10   1557 Oct  2 21:09 1999 man/cat3/mkstemp.0 linked to man/cat3/mktemp.0
+r--r--r--  3/10   1855 Oct  2 21:09 1999 man/cat3/rint.0 linked to man/cat3/floor.0
+r--r--r--  3/10   1969 Oct  2 21:09 1999 man/cat3/setenv.0 linked to man/cat3/getenv.0
+r--r--r--  3/10   1969 Oct  2 21:09 1999 man/cat3/unsetenv.0 linked to man/cat3/getenv.0
+r--r--r--  3/10   2381 Oct  2 21:09 1999 man/cat3/alphasort.0 linked to man/cat3/scandir.0
+r--r--r--  3/10   1716 Oct  2 21:09 1999 man/cat3/bcmp.0 linked to man/cat3/bstring.0
+r--r--r--  3/10   1716 Oct  2 21:09 1999 man/cat3/bcopy.0 linked to man/cat3/bstring.0
+r--r--r--  3/10   1716 Oct  2 21:09 1999 man/cat3/bzero.0 linked to man/cat3/bstring.0
+r--r--r--  3/10   1549 Oct  2 21:09 1999 man/cat3/clearerr.0 linked to man/cat3/ferror.0
+r--r--r--  3/10   1549 Oct  2 21:09 1999 man/cat3/feof.0 linked to man/cat3/ferror.0
+r--r--r--  3/10   1186 Oct  2 21:09 1999 man/cat3/fflush.0 linked to man/cat3/fclose.0
+r--r--r--  3/10   1716 Oct  2 21:09 1999 man/cat3/ffs.0 linked to man/cat3/bstring.0
+r--r--r--  3/10   1549 Oct  2 21:09 1999 man/cat3/fileno.0 linked to man/cat3/ferror.0
+r--r--r--  3/10   8786 Oct  2 21:09 1999 man/cat3/fprintf.0 linked to man/cat3/printf.0
+r--r--r--  3/10   1429 Oct  2 21:09 1999 man/cat3/isatty.0 linked to man/cat3/ttyname.0
+r--r--r--  3/10   4163 Oct  2 21:09 1999 man/cat3/moncontrol.0 linked to man/cat3/monitor.0
+r--r--r--  3/10   4163 Oct  2 21:09 1999 man/cat3/monstartup.0 linked to man/cat3/monitor.0
+r--r--r--  3/10   3686 Oct  2 21:09 1999 man/cat3/setbuffer.0 linked to man/cat3/setbuf.0
+r--r--r--  3/10   3686 Oct  2 21:09 1999 man/cat3/setlinebuf.0 linked to man/cat3/setbuf.0
+r--r--r--  3/10   8786 Oct  2 21:09 1999 man/cat3/sprintf.0 linked to man/cat3/printf.0
+r--r--r--  3/10   1377 Oct  2 21:09 1999 man/cat3/sys_siglist.0 linked to man/cat3/psignal.0
+r--r--r--  3/10   1429 Oct  2 21:09 1999 man/cat3/ttyslot.0 linked to man/cat3/ttyname.0
+r--r--r--  3/10   2942 Oct  2 21:09 1999 man/cat3/gamma.0 linked to man/cat3/lgamma.0
+r--r--r--  3/10   2368 Oct  2 21:09 1999 man/cat3/endfsent.0 linked to man/cat3/getfsent.0
+r--r--r--  3/10   2787 Oct  2 21:09 1999 man/cat3/endgrent.0 linked to man/cat3/getgrent.0
+r--r--r--  3/10   3094 Oct  2 21:09 1999 man/cat3/endpwent.0 linked to man/cat3/getpwent.0
+r--r--r--  3/10   2368 Oct  2 21:09 1999 man/cat3/getfsfile.0 linked to man/cat3/getfsent.0
+r--r--r--  3/10   2368 Oct  2 21:09 1999 man/cat3/getfsspec.0 linked to man/cat3/getfsent.0
+r--r--r--  3/10   2368 Oct  2 21:09 1999 man/cat3/getfstype.0 linked to man/cat3/getfsent.0
+r--r--r--  3/10   2787 Oct  2 21:09 1999 man/cat3/getgrgid.0 linked to man/cat3/getgrent.0
+r--r--r--  3/10   2787 Oct  2 21:09 1999 man/cat3/getgrnam.0 linked to man/cat3/getgrent.0
+r--r--r--  3/10   3094 Oct  2 21:09 1999 man/cat3/getpwnam.0 linked to man/cat3/getpwent.0
+r--r--r--  3/10   3094 Oct  2 21:09 1999 man/cat3/getpwuid.0 linked to man/cat3/getpwent.0
+r--r--r--  3/10   2368 Oct  2 21:09 1999 man/cat3/setfsent.0 linked to man/cat3/getfsent.0
+r--r--r--  3/10   2787 Oct  2 21:09 1999 man/cat3/setgrent.0 linked to man/cat3/getgrent.0
+r--r--r--  3/10   2787 Oct  2 21:09 1999 man/cat3/setgrfile.0 linked to man/cat3/getgrent.0
+r--r--r--  3/10   3094 Oct  2 21:09 1999 man/cat3/setpwent.0 linked to man/cat3/getpwent.0
+r--r--r--  3/10   3094 Oct  2 21:09 1999 man/cat3/setpwfile.0 linked to man/cat3/getpwent.0
+r--r--r--  3/10   5590 Oct  2 21:09 1999 man/cat3/tgetent.0 linked to man/cat3/termcap.0
+r--r--r--  3/10   5590 Oct  2 21:09 1999 man/cat3/tgetflag.0 linked to man/cat3/termcap.0
+r--r--r--  3/10   5590 Oct  2 21:09 1999 man/cat3/tgetnum.0 linked to man/cat3/termcap.0
+r--r--r--  3/10   5590 Oct  2 21:09 1999 man/cat3/tgetstr.0 linked to man/cat3/termcap.0
+r--r--r--  3/10   5590 Oct  2 21:09 1999 man/cat3/tgoto.0 linked to man/cat3/termcap.0
+r--r--r--  3/10   5590 Oct  2 21:09 1999 man/cat3/tputs.0 linked to man/cat3/termcap.0
+r--r--r--  3/10   3732 Oct  2 21:09 1999 man/cat3/closedir.0 linked to man/cat3/directory.0
+r--r--r--  3/10   3732 Oct  2 21:09 1999 man/cat3/dirfd.0 linked to man/cat3/directory.0
+r--r--r--  3/10   4093 Oct  2 21:09 1999 man/cat3/endttyent.0 linked to man/cat3/getttyent.0
+r--r--r--  3/10   4093 Oct  2 21:09 1999 man/cat3/getttynam.0 linked to man/cat3/getttyent.0
+r--r--r--  3/10   3732 Oct  2 21:09 1999 man/cat3/opendir.0 linked to man/cat3/directory.0
+r--r--r--  3/10   3732 Oct  2 21:09 1999 man/cat3/readdir.0 linked to man/cat3/directory.0
+r--r--r--  3/10   3732 Oct  2 21:09 1999 man/cat3/rewinddir.0 linked to man/cat3/directory.0
+r--r--r--  3/10   3732 Oct  2 21:09 1999 man/cat3/seekdir.0 linked to man/cat3/directory.0
+r--r--r--  3/10   4093 Oct  2 21:09 1999 man/cat3/setttyent.0 linked to man/cat3/getttyent.0
+r--r--r--  3/10   3732 Oct  2 21:09 1999 man/cat3/telldir.0 linked to man/cat3/directory.0
+r--r--r--  3/10   3034 Oct  2 21:09 1999 man/cat3/endnetent.0 linked to man/cat3/getnetent.0
+r--r--r--  3/10   3034 Oct  2 21:09 1999 man/cat3/getnetbyaddr.0 linked to man/cat3/getnetent.0
+r--r--r--  3/10   3034 Oct  2 21:09 1999 man/cat3/getnetbyname.0 linked to man/cat3/getnetent.0
+r--r--r--  3/10   1761 Oct  2 21:09 1999 man/cat3/htonl.0 linked to man/cat3/byteorder.0
+r--r--r--  3/10   1761 Oct  2 21:09 1999 man/cat3/htons.0 linked to man/cat3/byteorder.0
+r--r--r--  3/10   1761 Oct  2 21:09 1999 man/cat3/ntohl.0 linked to man/cat3/byteorder.0
+r--r--r--  3/10   1761 Oct  2 21:09 1999 man/cat3/ntohs.0 linked to man/cat3/byteorder.0
+r--r--r--  3/10   3034 Oct  2 21:09 1999 man/cat3/setnetent.0 linked to man/cat3/getnetent.0
+r--r--r--  3/10   3119 Oct  2 21:09 1999 man/cat3/endservent.0 linked to man/cat3/getservent.0
+r--r--r--  3/10   3119 Oct  2 21:09 1999 man/cat3/getservbyname.0 linked to man/cat3/getservent.0
+r--r--r--  3/10   3119 Oct  2 21:09 1999 man/cat3/getservbyport.0 linked to man/cat3/getservent.0
+r--r--r--  3/10   3119 Oct  2 21:09 1999 man/cat3/setservent.0 linked to man/cat3/getservent.0
+r--r--r--  3/10   2823 Oct  2 21:09 1999 man/cat3/endprotoent.0 linked to man/cat3/getprotoent.0
+r--r--r--  3/10   1330 Oct  2 21:09 1999 man/cat3/endusershell.0 linked to man/cat3/getusershell.0
+r--r--r--  3/10   2823 Oct  2 21:09 1999 man/cat3/getprotobyname.0 linked to man/cat3/getprotoent.0
+r--r--r--  3/10   2823 Oct  2 21:09 1999 man/cat3/getprotobynumber.0 linked to man/cat3/getprotoent.0
+r--r--r--  3/10   2823 Oct  2 21:09 1999 man/cat3/setprotoent.0 linked to man/cat3/getprotoent.0
+r--r--r--  3/10   1330 Oct  2 21:09 1999 man/cat3/setusershell.0 linked to man/cat3/getusershell.0
+r--r--r--  3/10   6398 Oct  2 21:09 1999 man/cat3/endhostent.0 linked to man/cat3/gethostbyname.0
+r--r--r--  3/10   6398 Oct  2 21:09 1999 man/cat3/gethostbyaddr.0 linked to man/cat3/gethostbyname.0
+r--r--r--  3/10   6398 Oct  2 21:09 1999 man/cat3/sethostent.0 linked to man/cat3/gethostbyname.0
+r--r--r--  3/10   6398 Oct  2 21:09 1999 man/cat3/sethostfile.0 linked to man/cat3/gethostbyname.0
+r--r--r--  3/10   6398 Oct  2 21:09 1999 man/cat3/gethostent.0 linked to man/cat3/gethostbyname.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/memccpy.0 linked to man/cat3/compat-sys5.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/memchr.0 linked to man/cat3/compat-sys5.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/memcmp.0 linked to man/cat3/compat-sys5.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/memcpy.0 linked to man/cat3/compat-sys5.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/memset.0 linked to man/cat3/compat-sys5.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/strchr.0 linked to man/cat3/compat-sys5.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/strcspn.0 linked to man/cat3/compat-sys5.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/strrchr.0 linked to man/cat3/compat-sys5.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/strspn.0 linked to man/cat3/compat-sys5.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/strtok.0 linked to man/cat3/compat-sys5.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/tmpnam.0 linked to man/cat3/compat-sys5.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/tmpfile.0 linked to man/cat3/compat-sys5.0
+r--r--r--  3/10   3048 Oct  2 21:09 1999 man/cat3/tempnam.0 linked to man/cat3/compat-sys5.0
+rwxr-xr-x  3/10      0 Oct  2 21:10 1999 man/cat4/
+rwxr-xr-x  3/10      0 Oct  2 21:10 1999 man/cat4/vax/
+r--r--r--  3/10   2466 Oct  2 21:10 1999 man/cat4/vax/acc.0
+r--r--r--  3/10   1054 Oct  2 21:10 1999 man/cat4/vax/ad.0
+r--r--r--  3/10   5595 Oct  2 21:10 1999 man/cat4/vax/autoconf.0
+r--r--r--  3/10   2152 Oct  2 21:10 1999 man/cat4/vax/cons.0
+r--r--r--  3/10    974 Oct  2 21:10 1999 man/cat4/vax/crl.0
+r--r--r--  3/10   2496 Oct  2 21:10 1999 man/cat4/vax/css.0
+r--r--r--  3/10    910 Oct  2 21:10 1999 man/cat4/vax/ct.0
+r--r--r--  3/10   2465 Oct  2 21:10 1999 man/cat4/vax/ddn.0
+r--r--r--  3/10   3563 Oct  2 21:10 1999 man/cat4/vax/de.0
+r--r--r--  3/10   2252 Oct  2 21:10 1999 man/cat4/vax/dh.0
+r--r--r--  3/10   2526 Oct  2 21:10 1999 man/cat4/vax/dhu.0
+r--r--r--  3/10   3228 Oct  2 21:10 1999 man/cat4/vax/dmc.0
+r--r--r--  3/10   3676 Oct  2 21:10 1999 man/cat4/vax/dmf.0
+r--r--r--  3/10   3350 Oct  2 21:10 1999 man/cat4/vax/dmv.0
+r--r--r--  3/10   2654 Oct  2 21:10 1999 man/cat4/vax/dmz.0
+r--r--r--  3/10   2357 Oct  2 21:10 1999 man/cat4/vax/dn.0
+r--r--r--  3/10   1740 Oct  2 21:10 1999 man/cat4/vax/dz.0
+r--r--r--  3/10   3558 Oct  2 21:10 1999 man/cat4/vax/ec.0
+r--r--r--  3/10   3392 Oct  2 21:10 1999 man/cat4/vax/en.0
+r--r--r--  3/10   2406 Oct  2 21:10 1999 man/cat4/vax/ex.0
+r--r--r--  3/10    951 Oct  2 21:10 1999 man/cat4/vax/fl.0
+r--r--r--  3/10   2232 Oct  2 21:10 1999 man/cat4/vax/hdh.0
+r--r--r--  3/10   5927 Oct  2 21:10 1999 man/cat4/vax/hk.0
+r--r--r--  3/10  12195 Oct  2 21:10 1999 man/cat4/vax/hp.0
+r--r--r--  3/10   2102 Oct  2 21:10 1999 man/cat4/vax/ht.0
+r--r--r--  3/10   4032 Oct  2 21:10 1999 man/cat4/vax/hy.0
+r--r--r--  3/10   1654 Oct  2 21:10 1999 man/cat4/vax/ik.0
+r--r--r--  3/10   2954 Oct  2 21:10 1999 man/cat4/vax/il.0
+r--r--r--  3/10   6390 Oct  2 21:10 1999 man/cat4/vax/intro.0
+r--r--r--  3/10   3619 Oct  2 21:10 1999 man/cat4/vax/ix.0
+r--r--r--  3/10    865 Oct  2 21:10 1999 man/cat4/vax/kg.0
+r--r--r--  3/10   1533 Oct  2 21:10 1999 man/cat4/vax/lp.0
+r--r--r--  3/10   1434 Oct  2 21:10 1999 man/cat4/vax/mem.0
+r--r--r--  3/10   2474 Oct  2 21:10 1999 man/cat4/vax/mt.0
+r--r--r--  3/10   5815 Oct  2 21:10 1999 man/cat4/vax/mtio.0
+r--r--r--  3/10   3560 Oct  2 21:10 1999 man/cat4/vax/np.0
+r--r--r--  3/10   3355 Oct  2 21:10 1999 man/cat4/vax/pcl.0
+r--r--r--  3/10   4449 Oct  2 21:10 1999 man/cat4/vax/ps.0
+r--r--r--  3/10   1177 Oct  2 21:10 1999 man/cat4/vax/qe.0
+r--r--r--  3/10   6397 Oct  2 21:10 1999 man/cat4/vax/rx.0
+r--r--r--  3/10   2714 Oct  2 21:10 1999 man/cat4/vax/tb.0
+r--r--r--  3/10   2598 Oct  2 21:10 1999 man/cat4/vax/tm.0
+r--r--r--  3/10   3473 Oct  2 21:10 1999 man/cat4/vax/tmscp.0
+r--r--r--  3/10   1862 Oct  2 21:10 1999 man/cat4/vax/ts.0
+r--r--r--  3/10   3789 Oct  2 21:10 1999 man/cat4/vax/tu.0
+r--r--r--  3/10  23182 Oct  2 21:10 1999 man/cat4/vax/uda.0
+r--r--r--  3/10   8544 Oct  2 21:10 1999 man/cat4/vax/up.0
+r--r--r--  3/10   2759 Oct  2 21:10 1999 man/cat4/vax/ut.0
+r--r--r--  3/10   3548 Oct  2 21:10 1999 man/cat4/vax/uu.0
+r--r--r--  3/10   3733 Oct  2 21:10 1999 man/cat4/vax/va.0
+r--r--r--  3/10   2441 Oct  2 21:10 1999 man/cat4/vax/vp.0
+r--r--r--  3/10   3085 Oct  2 21:10 1999 man/cat4/vax/vv.0
+r--r--r--  3/10   1434 Oct  2 21:10 1999 man/cat4/vax/kmem.0 linked to man/cat4/vax/mem.0
+rwxr-xr-x  3/10      0 Oct  2 21:10 1999 man/cat4/tahoe/
+r--r--r--  3/10   2512 Oct  2 21:10 1999 man/cat4/tahoe/ace.0
+r--r--r--  3/10   3647 Oct  2 21:10 1999 man/cat4/tahoe/autoconf.0
+r--r--r--  3/10   1356 Oct  2 21:10 1999 man/cat4/tahoe/cons.0
+r--r--r--  3/10   6506 Oct  2 21:10 1999 man/cat4/tahoe/cy.0
+r--r--r--  3/10   4134 Oct  2 21:10 1999 man/cat4/tahoe/dr.0
+r--r--r--  3/10   2378 Oct  2 21:10 1999 man/cat4/tahoe/enp.0
+r--r--r--  3/10   4161 Oct  2 21:10 1999 man/cat4/tahoe/ik.0
+r--r--r--  3/10   2766 Oct  2 21:10 1999 man/cat4/tahoe/intro.0
+r--r--r--  3/10    406 Oct  2 21:10 1999 man/cat4/tahoe/lp.0
+r--r--r--  3/10   2313 Oct  2 21:10 1999 man/cat4/tahoe/mem.0
+r--r--r--  3/10   1877 Oct  2 21:10 1999 man/cat4/tahoe/mpcc.0
+r--r--r--  3/10  10771 Oct  2 21:10 1999 man/cat4/tahoe/mpcctab.0
+r--r--r--  3/10   4471 Oct  2 21:10 1999 man/cat4/tahoe/mtio.0
+r--r--r--  3/10   9489 Oct  2 21:10 1999 man/cat4/tahoe/vd.0
+r--r--r--  3/10   3900 Oct  2 21:10 1999 man/cat4/tahoe/vx.0
+r--r--r--  3/10   2313 Oct  2 21:10 1999 man/cat4/tahoe/kmem.0 linked to man/cat4/tahoe/mem.0
+r--r--r--  3/10   5330 Oct  2 21:10 1999 man/cat4/arp.0
+r--r--r--  3/10   3558 Oct  2 21:10 1999 man/cat4/bk.0
+r--r--r--  3/10    774 Oct  2 21:10 1999 man/cat4/drum.0
+r--r--r--  3/10   2193 Oct  2 21:10 1999 man/cat4/icmp.0
+r--r--r--  3/10   4383 Oct  2 21:10 1999 man/cat4/idp.0
+r--r--r--  3/10   2647 Oct  2 21:10 1999 man/cat4/imp.0
+r--r--r--  3/10   4167 Oct  2 21:10 1999 man/cat4/inet.0
+r--r--r--  3/10   3740 Oct  2 21:10 1999 man/cat4/ip.0
+r--r--r--  3/10   2397 Oct  2 21:10 1999 man/cat4/kdb.0
+r--r--r--  3/10   1527 Oct  2 21:10 1999 man/cat4/lo.0
+r--r--r--  3/10  12296 Oct  2 21:10 1999 man/cat4/netintro.0
+r--r--r--  3/10   3295 Oct  2 21:10 1999 man/cat4/ns.0
+r--r--r--  3/10   2290 Oct  2 21:10 1999 man/cat4/nsip.0
+r--r--r--  3/10    371 Oct  2 21:10 1999 man/cat4/null.0
+r--r--r--  3/10   5275 Oct  2 21:10 1999 man/cat4/pty.0
+r--r--r--  3/10   5446 Oct  2 21:10 1999 man/cat4/spp.0
+r--r--r--  3/10   4479 Oct  2 21:10 1999 man/cat4/tcp.0
+r--r--r--  3/10  39219 Oct  2 21:10 1999 man/cat4/tty.0
+r--r--r--  3/10   2678 Oct  2 21:10 1999 man/cat4/udp.0
+r--r--r--  3/10  12296 Oct  2 21:10 1999 man/cat4/networking.0 linked to man/cat4/netintro.0
+rwxr-xr-x  3/10      0 Oct  2 21:11 1999 man/cat5/
+r--r--r--  3/10   5823 Oct  2 21:10 1999 man/cat5/L-devices.0
+r--r--r--  3/10   2491 Oct  2 21:10 1999 man/cat5/L-dialcodes.0
+r--r--r--  3/10   1456 Oct  2 21:10 1999 man/cat5/L.aliases.0
+r--r--r--  3/10   1867 Oct  2 21:10 1999 man/cat5/L.cmds.0
+r--r--r--  3/10  15004 Oct  2 21:10 1999 man/cat5/L.sys.0
+r--r--r--  3/10   6437 Oct  2 21:10 1999 man/cat5/USERFILE.0
+r--r--r--  3/10   9007 Oct  2 21:10 1999 man/cat5/a.out.0
+r--r--r--  3/10   2765 Oct  2 21:10 1999 man/cat5/acct.0
+r--r--r--  3/10   1901 Oct  2 21:10 1999 man/cat5/aliases.0
+r--r--r--  3/10   2289 Oct  2 21:10 1999 man/cat5/ar.0
+r--r--r--  3/10   1822 Oct  2 21:11 1999 man/cat5/core.0
+r--r--r--  3/10   1619 Oct  2 21:11 1999 man/cat5/cpio.0
+r--r--r--  3/10   8499 Oct  2 21:11 1999 man/cat5/dbx.0
+r--r--r--  3/10   3428 Oct  2 21:11 1999 man/cat5/dir.0
+r--r--r--  3/10  13033 Oct  2 21:11 1999 man/cat5/disklabel.0
+r--r--r--  3/10   4224 Oct  2 21:11 1999 man/cat5/disktab.0
+r--r--r--  3/10   2362 Oct  2 21:11 1999 man/cat5/dm.config.0
+r--r--r--  3/10   5025 Oct  2 21:11 1999 man/cat5/dump.0
+r--r--r--  3/10  12438 Oct  2 21:11 1999 man/cat5/fs.0
+r--r--r--  3/10   3780 Oct  2 21:11 1999 man/cat5/fstab.0
+r--r--r--  3/10   8842 Oct  2 21:11 1999 man/cat5/gettytab.0
+r--r--r--  3/10   1000 Oct  2 21:11 1999 man/cat5/group.0
+r--r--r--  3/10   1889 Oct  2 21:11 1999 man/cat5/hosts.0
+r--r--r--  3/10  11203 Oct  2 21:11 1999 man/cat5/map3270.0
+r--r--r--  3/10   1339 Oct  2 21:11 1999 man/cat5/mtab.0
+r--r--r--  3/10   1479 Oct  2 21:11 1999 man/cat5/networks.0
+r--r--r--  3/10   1605 Oct  2 21:11 1999 man/cat5/passwd.0
+r--r--r--  3/10   1290 Oct  2 21:11 1999 man/cat5/phones.0
+r--r--r--  3/10   3366 Oct  2 21:11 1999 man/cat5/plot.0
+r--r--r--  3/10   7157 Oct  2 21:11 1999 man/cat5/printcap.0
+r--r--r--  3/10   1024 Oct  2 21:11 1999 man/cat5/protocols.0
+r--r--r--  3/10   4419 Oct  2 21:11 1999 man/cat5/remote.0
+r--r--r--  3/10   2229 Oct  2 21:11 1999 man/cat5/resolver.0
+r--r--r--  3/10   5967 Oct  2 21:11 1999 man/cat5/sccsfile.0
+r--r--r--  3/10   1196 Oct  2 21:11 1999 man/cat5/services.0
+r--r--r--  3/10    709 Oct  2 21:11 1999 man/cat5/shells.0
+r--r--r--  3/10   5735 Oct  2 21:11 1999 man/cat5/stab.0
+r--r--r--  3/10   3879 Oct  2 21:11 1999 man/cat5/tar.0
+r--r--r--  3/10  55391 Oct  2 21:11 1999 man/cat5/termcap.0
+r--r--r--  3/10   1841 Oct  2 21:11 1999 man/cat5/tp.0
+r--r--r--  3/10   3333 Oct  2 21:11 1999 man/cat5/ttys.0
+r--r--r--  3/10   3521 Oct  2 21:11 1999 man/cat5/types.0
+r--r--r--  3/10   3063 Oct  2 21:11 1999 man/cat5/tzfile.0
+r--r--r--  3/10   2165 Oct  2 21:11 1999 man/cat5/utmp.0
+r--r--r--  3/10   1984 Oct  2 21:11 1999 man/cat5/uuencode.0
+r--r--r--  3/10   2316 Oct  2 21:11 1999 man/cat5/vfont.0
+r--r--r--  3/10   4499 Oct  2 21:11 1999 man/cat5/vgrindefs.0
+r--r--r--  3/10  12438 Oct  2 21:11 1999 man/cat5/inode.0 linked to man/cat5/fs.0
+r--r--r--  3/10   5025 Oct  2 21:11 1999 man/cat5/dumpdates.0 linked to man/cat5/dump.0
+r--r--r--  3/10   2165 Oct  2 21:11 1999 man/cat5/wtmp.0 linked to man/cat5/utmp.0
+rwxr-xr-x  3/10      0 Oct  2 21:11 1999 man/cat6/
+r--r--r--  3/10    733 Oct  2 21:11 1999 man/cat6/aardvark.0
+r--r--r--  3/10    807 Oct  2 21:11 1999 man/cat6/adventure.0
+r--r--r--  3/10   2034 Oct  2 21:11 1999 man/cat6/arithmetic.0
+r--r--r--  3/10  17777 Oct  2 21:11 1999 man/cat6/atc.0
+r--r--r--  3/10   3722 Oct  2 21:11 1999 man/cat6/backgammon.0
+r--r--r--  3/10   1355 Oct  2 21:11 1999 man/cat6/banner.0
+r--r--r--  3/10   4109 Oct  2 21:11 1999 man/cat6/battlestar.0
+r--r--r--  3/10    491 Oct  2 21:11 1999 man/cat6/bcd.0
+r--r--r--  3/10   2159 Oct  2 21:11 1999 man/cat6/boggle.0
+r--r--r--  3/10   3566 Oct  2 21:11 1999 man/cat6/canfield.0
+r--r--r--  3/10   1035 Oct  2 21:11 1999 man/cat6/chess.0
+r--r--r--  3/10   3264 Oct  2 21:11 1999 man/cat6/ching.0
+r--r--r--  3/10   4473 Oct  2 21:11 1999 man/cat6/cribbage.0
+r--r--r--  3/10   1514 Oct  2 21:11 1999 man/cat6/fish.0
+r--r--r--  3/10   1033 Oct  2 21:11 1999 man/cat6/fortune.0
+r--r--r--  3/10   4664 Oct  2 21:11 1999 man/cat6/hack.0
+r--r--r--  3/10    678 Oct  2 21:11 1999 man/cat6/hangman.0
+r--r--r--  3/10   7877 Oct  2 21:11 1999 man/cat6/hunt.0
+r--r--r--  3/10  12483 Oct  2 21:11 1999 man/cat6/mille.0
+r--r--r--  3/10   5872 Oct  2 21:11 1999 man/cat6/monop.0
+r--r--r--  3/10    623 Oct  2 21:11 1999 man/cat6/number.0
+r--r--r--  3/10  37138 Oct  2 21:11 1999 man/cat6/phantasia.0
+r--r--r--  3/10   1980 Oct  2 21:11 1999 man/cat6/quiz.0
+r--r--r--  3/10    692 Oct  2 21:11 1999 man/cat6/rain.0
+r--r--r--  3/10   3414 Oct  2 21:11 1999 man/cat6/robots.0
+r--r--r--  3/10   2470 Oct  2 21:11 1999 man/cat6/rogue.0
+r--r--r--  3/10  39623 Oct  2 21:11 1999 man/cat6/sail.0
+r--r--r--  3/10   2940 Oct  2 21:11 1999 man/cat6/snake.0
+r--r--r--  3/10   1921 Oct  2 21:11 1999 man/cat6/trek.0
+r--r--r--  3/10   1404 Oct  2 21:11 1999 man/cat6/worm.0
+r--r--r--  3/10   1107 Oct  2 21:11 1999 man/cat6/worms.0
+r--r--r--  3/10   1001 Oct  2 21:11 1999 man/cat6/wump.0
+r--r--r--  3/10   1113 Oct  2 21:11 1999 man/cat6/zork.0
+r--r--r--  3/10   2940 Oct  2 21:11 1999 man/cat6/snscore.0 linked to man/cat6/snake.0
+r--r--r--  3/10   3566 Oct  2 21:11 1999 man/cat6/cfscores.0 linked to man/cat6/canfield.0
+r--r--r--  3/10    491 Oct  2 21:11 1999 man/cat6/ppt.0 linked to man/cat6/bcd.0
+rwxr-xr-x  3/10      0 Oct  2 21:11 1999 man/cat7/
+r--r--r--  3/10   2696 Oct  2 21:11 1999 man/cat7/ascii.0
+r--r--r--  3/10   2874 Oct  2 21:11 1999 man/cat7/environ.0
+r--r--r--  3/10   4204 Oct  2 21:11 1999 man/cat7/eqnchar.0
+r--r--r--  3/10  11192 Oct  2 21:11 1999 man/cat7/hier.0
+r--r--r--  3/10   2254 Oct  2 21:11 1999 man/cat7/hostname.0
+r--r--r--  3/10    768 Oct  2 21:11 1999 man/cat7/intro.0
+r--r--r--  3/10   5474 Oct  2 21:11 1999 man/cat7/mailaddr.0
+r--r--r--  3/10   3600 Oct  2 21:11 1999 man/cat7/man.0
+r--r--r--  3/10   6390 Oct  2 21:11 1999 man/cat7/me.0
+r--r--r--  3/10   8553 Oct  2 21:11 1999 man/cat7/ms.0
+r--r--r--  3/10   1877 Oct  2 21:11 1999 man/cat7/term.0
+r--r--r--  3/10    768 Oct  2 21:11 1999 man/cat7/miscellaneous.0 linked to man/cat7/intro.0
+rwxr-xr-x  3/10      0 Oct  2 21:11 1999 man/cat8/
+rwxr-xr-x  3/10      0 Oct  2 21:11 1999 man/cat8/vax/
+r--r--r--  3/10   3866 Oct  2 21:11 1999 man/cat8/vax/arff.0
+r--r--r--  3/10   5065 Oct  2 21:11 1999 man/cat8/vax/bad144.0
+r--r--r--  3/10   8550 Oct  2 21:11 1999 man/cat8/vax/crash.0
+r--r--r--  3/10   2619 Oct  2 21:11 1999 man/cat8/vax/drtest.0
+r--r--r--  3/10   9528 Oct  2 21:11 1999 man/cat8/vax/format.0
+r--r--r--  3/10   1690 Oct  2 21:11 1999 man/cat8/vax/rxformat.0
+r--r--r--  3/10   9461 Oct  2 21:11 1999 man/cat8/vax/reboot.0
+r--r--r--  3/10   3866 Oct  2 21:11 1999 man/cat8/vax/flcopy.0 linked to man/cat8/vax/arff.0
+rwxr-xr-x  3/10      0 Oct  2 21:11 1999 man/cat8/tahoe/
+r--r--r--  3/10   8546 Oct  2 21:11 1999 man/cat8/tahoe/crash.0
+r--r--r--  3/10   1510 Oct  2 21:11 1999 man/cat8/tahoe/dlmpcc.0
+r--r--r--  3/10   1159 Oct  2 21:11 1999 man/cat8/tahoe/enpload.0
+r--r--r--  3/10   4881 Oct  2 21:11 1999 man/cat8/tahoe/reboot.0
+r--r--r--  3/10  19764 Oct  2 21:11 1999 man/cat8/tahoe/vdformat.0
+r--r--r--  3/10   5003 Oct  2 21:11 1999 man/cat8/XNSrouted.0
+r--r--r--  3/10   1454 Oct  2 21:11 1999 man/cat8/ac.0
+r--r--r--  3/10   5444 Oct  2 21:11 1999 man/cat8/acucntrl.0
+r--r--r--  3/10   4188 Oct  2 21:11 1999 man/cat8/adduser.0
+r--r--r--  3/10   2282 Oct  2 21:11 1999 man/cat8/arp.0
+r--r--r--  3/10   3452 Oct  2 21:11 1999 man/cat8/badsect.0
+r--r--r--  3/10   6244 Oct  2 21:11 1999 man/cat8/bugfiler.0
+r--r--r--  3/10   1099 Oct  2 21:11 1999 man/cat8/chown.0
+r--r--r--  3/10   1511 Oct  2 21:11 1999 man/cat8/clri.0
+r--r--r--  3/10   1688 Oct  2 21:11 1999 man/cat8/comsat.0
+r--r--r--  3/10   3365 Oct  2 21:11 1999 man/cat8/config.0
+r--r--r--  3/10   1845 Oct  2 21:11 1999 man/cat8/cron.0
+r--r--r--  3/10   2095 Oct  2 21:11 1999 man/cat8/dcheck.0
+r--r--r--  3/10   6677 Oct  2 21:11 1999 man/cat8/disklabel.0
+r--r--r--  3/10   3296 Oct  2 21:11 1999 man/cat8/diskpart.0
+r--r--r--  3/10   2206 Oct  2 21:11 1999 man/cat8/dm.0
+r--r--r--  3/10    948 Oct  2 21:11 1999 man/cat8/dmesg.0
+r--r--r--  3/10   6469 Oct  2 21:11 1999 man/cat8/dump.0
+r--r--r--  3/10    772 Oct  2 21:11 1999 man/cat8/dumpfs.0
+r--r--r--  3/10   1603 Oct  2 21:11 1999 man/cat8/edquota.0
+r--r--r--  3/10    957 Oct  2 21:11 1999 man/cat8/fastboot.0
+r--r--r--  3/10   1974 Oct  2 21:11 1999 man/cat8/fingerd.0
+r--r--r--  3/10   6928 Oct  2 21:11 1999 man/cat8/fsck.0
+r--r--r--  3/10  18632 Oct  2 21:11 1999 man/cat8/fsdb.0
+r--r--r--  3/10   3448 Oct  2 21:11 1999 man/cat8/fstat.0
+r--r--r--  3/10   5600 Oct  2 21:11 1999 man/cat8/ftpd.0
+r--r--r--  3/10   1532 Oct  2 21:11 1999 man/cat8/gettable.0
+r--r--r--  3/10   3477 Oct  2 21:11 1999 man/cat8/getty.0
+r--r--r--  3/10   1161 Oct  2 21:11 1999 man/cat8/halt.0
+r--r--r--  3/10   3194 Oct  2 21:11 1999 man/cat8/htable.0
+r--r--r--  3/10   2292 Oct  2 21:11 1999 man/cat8/icheck.0
+r--r--r--  3/10   6923 Oct  2 21:11 1999 man/cat8/ifconfig.0
+r--r--r--  3/10   2224 Oct  2 21:11 1999 man/cat8/implog.0
+r--r--r--  3/10   1282 Oct  2 21:11 1999 man/cat8/implogd.0
+r--r--r--  3/10   4824 Oct  2 21:11 1999 man/cat8/inetd.0
+r--r--r--  3/10   4933 Oct  2 21:11 1999 man/cat8/init.0
+r--r--r--  3/10    914 Oct  2 21:11 1999 man/cat8/intro.0
+r--r--r--  3/10   2005 Oct  2 21:11 1999 man/cat8/kgmon.0
+r--r--r--  3/10   4402 Oct  2 21:11 1999 man/cat8/lpc.0
+r--r--r--  3/10   6600 Oct  2 21:11 1999 man/cat8/lpd.0
+r--r--r--  3/10   1769 Oct  2 21:11 1999 man/cat8/makedev.0
+r--r--r--  3/10   1875 Oct  2 21:11 1999 man/cat8/makekey.0
+r--r--r--  3/10   1523 Oct  2 21:11 1999 man/cat8/mkhosts.0
+r--r--r--  3/10    896 Oct  2 21:11 1999 man/cat8/mknod.0
+r--r--r--  3/10   1199 Oct  2 21:11 1999 man/cat8/mkpasswd.0
+r--r--r--  3/10   2860 Oct  2 21:11 1999 man/cat8/mkproto.0
+r--r--r--  3/10   2121 Oct  2 21:11 1999 man/cat8/mount.0
+r--r--r--  3/10  12019 Oct  2 21:11 1999 man/cat8/named.0
+r--r--r--  3/10   1368 Oct  2 21:11 1999 man/cat8/ncheck.0
+r--r--r--  3/10   7170 Oct  2 21:11 1999 man/cat8/newfs.0
+r--r--r--  3/10   2138 Oct  2 21:11 1999 man/cat8/pac.0
+r--r--r--  3/10   2817 Oct  2 21:11 1999 man/cat8/ping.0
+r--r--r--  3/10   8611 Oct  2 21:11 1999 man/cat8/pstat.0
+r--r--r--  3/10   1136 Oct  2 21:11 1999 man/cat8/quot.0
+r--r--r--  3/10   2268 Oct  2 21:11 1999 man/cat8/quotacheck.0
+r--r--r--  3/10   1903 Oct  2 21:11 1999 man/cat8/quotaon.0
+r--r--r--  3/10   1875 Oct  2 21:11 1999 man/cat8/rc.0
+r--r--r--  3/10    967 Oct  2 21:11 1999 man/cat8/rdump.0
+r--r--r--  3/10   2286 Oct  2 21:11 1999 man/cat8/renice.0
+r--r--r--  3/10    994 Oct  2 21:11 1999 man/cat8/repquota.0
+r--r--r--  3/10  11332 Oct  2 21:11 1999 man/cat8/restore.0
+r--r--r--  3/10   3987 Oct  2 21:11 1999 man/cat8/rexecd.0
+r--r--r--  3/10   3508 Oct  2 21:11 1999 man/cat8/rlogind.0
+r--r--r--  3/10   4055 Oct  2 21:11 1999 man/cat8/rmt.0
+r--r--r--  3/10   4787 Oct  2 21:11 1999 man/cat8/route.0
+r--r--r--  3/10  10628 Oct  2 21:11 1999 man/cat8/routed.0
+r--r--r--  3/10    952 Oct  2 21:11 1999 man/cat8/rrestore.0
+r--r--r--  3/10   5646 Oct  2 21:11 1999 man/cat8/rshd.0
+r--r--r--  3/10   3694 Oct  2 21:11 1999 man/cat8/rwhod.0
+r--r--r--  3/10   4403 Oct  2 21:11 1999 man/cat8/sa.0
+r--r--r--  3/10   1882 Oct  2 21:11 1999 man/cat8/savecore.0
+r--r--r--  3/10  11070 Oct  2 21:11 1999 man/cat8/sendmail.0
+r--r--r--  3/10   3034 Oct  2 21:11 1999 man/cat8/shutdown.0
+r--r--r--  3/10   1452 Oct  2 21:11 1999 man/cat8/slattach.0
+r--r--r--  3/10   2101 Oct  2 21:11 1999 man/cat8/sticky.0
+r--r--r--  3/10   1518 Oct  2 21:11 1999 man/cat8/swapon.0
+r--r--r--  3/10    953 Oct  2 21:11 1999 man/cat8/sync.0
+r--r--r--  3/10   5100 Oct  2 21:11 1999 man/cat8/syslogd.0
+r--r--r--  3/10   1381 Oct  2 21:11 1999 man/cat8/talkd.0
+r--r--r--  3/10   3347 Oct  2 21:11 1999 man/cat8/telnetd.0
+r--r--r--  3/10   1278 Oct  2 21:11 1999 man/cat8/tftpd.0
+r--r--r--  3/10   3655 Oct  2 21:11 1999 man/cat8/timed.0
+r--r--r--  3/10   2544 Oct  2 21:11 1999 man/cat8/timedc.0
+r--r--r--  3/10   3001 Oct  2 21:11 1999 man/cat8/trpt.0
+r--r--r--  3/10   2766 Oct  2 21:11 1999 man/cat8/trsp.0
+r--r--r--  3/10   3872 Oct  2 21:11 1999 man/cat8/tunefs.0
+r--r--r--  3/10   1144 Oct  2 21:11 1999 man/cat8/update.0
+r--r--r--  3/10   7183 Oct  2 21:11 1999 man/cat8/uucico.0
+r--r--r--  3/10   1271 Oct  2 21:11 1999 man/cat8/uuclean.0
+r--r--r--  3/10   1767 Oct  2 21:11 1999 man/cat8/uupoll.0
+r--r--r--  3/10   1074 Oct  2 21:11 1999 man/cat8/uusnap.0
+r--r--r--  3/10   1519 Oct  2 21:11 1999 man/cat8/uuxqt.0
+r--r--r--  3/10    930 Oct  2 21:11 1999 man/cat8/vipw.0
+r--r--r--  3/10    956 Oct  2 21:11 1999 man/cat8/zdump.8
+r--r--r--  3/10   7057 Oct  2 21:11 1999 man/cat8/zic.8
+r--r--r--  3/10   4403 Oct  2 21:11 1999 man/cat8/accton.0 linked to man/cat8/sa.0
+r--r--r--  3/10   2121 Oct  2 21:11 1999 man/cat8/umount.0 linked to man/cat8/mount.0
+r--r--r--  3/10   7170 Oct  2 21:11 1999 man/cat8/mkfs.0 linked to man/cat8/newfs.0
+r--r--r--  3/10   1903 Oct  2 21:11 1999 man/cat8/quotaoff.0 linked to man/cat8/quotaon.0
+r--r--r--  3/10   7183 Oct  2 21:11 1999 man/cat8/uucpd.0 linked to man/cat8/uucico.0
+r--r--r--  3/10    957 Oct  2 21:11 1999 man/cat8/fasthalt.0 linked to man/cat8/fastboot.0
+rwxr-xr-x  3/10      0 Oct  2 21:10 1999 man/cat3f/
+r--r--r--  3/10   1396 Oct  2 21:10 1999 man/cat3f/abort.0
+r--r--r--  3/10   1210 Oct  2 21:10 1999 man/cat3f/access.0
+r--r--r--  3/10   1088 Oct  2 21:10 1999 man/cat3f/alarm.0
+r--r--r--  3/10   2015 Oct  2 21:10 1999 man/cat3f/bessel.0
+r--r--r--  3/10   2501 Oct  2 21:10 1999 man/cat3f/bit.0
+r--r--r--  3/10    865 Oct  2 21:10 1999 man/cat3f/chdir.0
+r--r--r--  3/10    955 Oct  2 21:10 1999 man/cat3f/chmod.0
+r--r--r--  3/10   1040 Oct  2 21:10 1999 man/cat3f/etime.0
+r--r--r--  3/10    906 Oct  2 21:10 1999 man/cat3f/exit.0
+r--r--r--  3/10   1042 Oct  2 21:10 1999 man/cat3f/fdate.0
+r--r--r--  3/10   1568 Oct  2 21:10 1999 man/cat3f/flmin.0
+r--r--r--  3/10    660 Oct  2 21:10 1999 man/cat3f/flush.0
+r--r--r--  3/10   1358 Oct  2 21:10 1999 man/cat3f/fork.0
+r--r--r--  3/10   1375 Oct  2 21:10 1999 man/cat3f/fseek.0
+r--r--r--  3/10    788 Oct  2 21:10 1999 man/cat3f/getarg.0
+r--r--r--  3/10   1137 Oct  2 21:10 1999 man/cat3f/getc.0
+r--r--r--  3/10    859 Oct  2 21:10 1999 man/cat3f/getcwd.0
+r--r--r--  3/10    830 Oct  2 21:10 1999 man/cat3f/getenv.0
+r--r--r--  3/10    696 Oct  2 21:10 1999 man/cat3f/getlog.0
+r--r--r--  3/10    489 Oct  2 21:10 1999 man/cat3f/getpid.0
+r--r--r--  3/10    601 Oct  2 21:10 1999 man/cat3f/getuid.0
+r--r--r--  3/10    662 Oct  2 21:10 1999 man/cat3f/hostnm.0
+r--r--r--  3/10    899 Oct  2 21:10 1999 man/cat3f/idate.0
+r--r--r--  3/10   1583 Oct  2 21:10 1999 man/cat3f/index.0
+r--r--r--  3/10   7856 Oct  2 21:10 1999 man/cat3f/intro.0
+r--r--r--  3/10   4274 Oct  2 21:10 1999 man/cat3f/ioinit.0
+r--r--r--  3/10    737 Oct  2 21:10 1999 man/cat3f/kill.0
+r--r--r--  3/10   1165 Oct  2 21:10 1999 man/cat3f/link.0
+r--r--r--  3/10    424 Oct  2 21:10 1999 man/cat3f/loc.0
+r--r--r--  3/10    906 Oct  2 21:10 1999 man/cat3f/long.0
+r--r--r--  3/10   3617 Oct  2 21:10 1999 man/cat3f/malloc.0
+r--r--r--  3/10   3051 Oct  2 21:10 1999 man/cat3f/perror.0
+r--r--r--  3/10   2819 Oct  2 21:10 1999 man/cat3f/plot.0
+r--r--r--  3/10   1004 Oct  2 21:10 1999 man/cat3f/putc.0
+r--r--r--  3/10   1424 Oct  2 21:10 1999 man/cat3f/qsort.0
+r--r--r--  3/10   1579 Oct  2 21:10 1999 man/cat3f/rand.0
+r--r--r--  3/10   1234 Oct  2 21:10 1999 man/cat3f/random.0
+r--r--r--  3/10   1001 Oct  2 21:10 1999 man/cat3f/rename.0
+r--r--r--  3/10   2238 Oct  2 21:10 1999 man/cat3f/signal.0
+r--r--r--  3/10    625 Oct  2 21:10 1999 man/cat3f/sleep.0
+r--r--r--  3/10   1611 Oct  2 21:10 1999 man/cat3f/stat.0
+r--r--r--  3/10   1115 Oct  2 21:10 1999 man/cat3f/system.0
+r--r--r--  3/10   1503 Oct  2 21:10 1999 man/cat3f/time.0
+r--r--r--  3/10   4861 Oct  2 21:10 1999 man/cat3f/topen.0
+r--r--r--  3/10   1462 Oct  2 21:10 1999 man/cat3f/traper.0
+r--r--r--  3/10   2218 Oct  2 21:10 1999 man/cat3f/trapov.0
+r--r--r--  3/10   2141 Oct  2 21:10 1999 man/cat3f/trpfpe.0
+r--r--r--  3/10    988 Oct  2 21:10 1999 man/cat3f/ttynam.0
+r--r--r--  3/10    901 Oct  2 21:10 1999 man/cat3f/unlink.0
+r--r--r--  3/10   1026 Oct  2 21:10 1999 man/cat3f/wait.0
+r--r--r--  3/10   2501 Oct  2 21:10 1999 man/cat3f/and.0 linked to man/cat3f/bit.0
+r--r--r--  3/10   2501 Oct  2 21:10 1999 man/cat3f/lshift.0 linked to man/cat3f/bit.0
+r--r--r--  3/10   2501 Oct  2 21:10 1999 man/cat3f/not.0 linked to man/cat3f/bit.0
+r--r--r--  3/10   2501 Oct  2 21:10 1999 man/cat3f/or.0 linked to man/cat3f/bit.0
+r--r--r--  3/10   2501 Oct  2 21:10 1999 man/cat3f/rshift.0 linked to man/cat3f/bit.0
+r--r--r--  3/10   2501 Oct  2 21:10 1999 man/cat3f/xor.0 linked to man/cat3f/bit.0
+r--r--r--  3/10   2819 Oct  2 21:10 1999 man/cat3f/box.0 linked to man/cat3f/plot.0
+r--r--r--  3/10   1503 Oct  2 21:10 1999 man/cat3f/ctime.0 linked to man/cat3f/time.0
+r--r--r--  3/10   1579 Oct  2 21:10 1999 man/cat3f/drand.0 linked to man/cat3f/rand.0
+r--r--r--  3/10   1137 Oct  2 21:10 1999 man/cat3f/fgetc.0 linked to man/cat3f/getc.0
+r--r--r--  3/10   1004 Oct  2 21:10 1999 man/cat3f/fputc.0 linked to man/cat3f/putc.0
+r--r--r--  3/10   1611 Oct  2 21:10 1999 man/cat3f/fstat.0 linked to man/cat3f/stat.0
+r--r--r--  3/10   1503 Oct  2 21:10 1999 man/cat3f/gmtime.0 linked to man/cat3f/time.0
+r--r--r--  3/10   1579 Oct  2 21:10 1999 man/cat3f/irand.0 linked to man/cat3f/rand.0
+r--r--r--  3/10   1611 Oct  2 21:10 1999 man/cat3f/lstat.0 linked to man/cat3f/stat.0
+r--r--r--  3/10   1503 Oct  2 21:10 1999 man/cat3f/ltime.0 linked to man/cat3f/time.0
+r--r--r--  3/10    906 Oct  2 21:10 1999 man/cat3f/short.0 linked to man/cat3f/long.0
+r--r--r--  3/10   1165 Oct  2 21:10 1999 man/cat3f/symlnk.0 linked to man/cat3f/link.0
+r--r--r--  3/10   1568 Oct  2 21:10 1999 man/cat3f/dffrac.0 linked to man/cat3f/flmin.0
+r--r--r--  3/10   1568 Oct  2 21:10 1999 man/cat3f/dflmax.0 linked to man/cat3f/flmin.0
+r--r--r--  3/10   1568 Oct  2 21:10 1999 man/cat3f/dflmin.0 linked to man/cat3f/flmin.0
+r--r--r--  3/10   1040 Oct  2 21:10 1999 man/cat3f/dtime.0 linked to man/cat3f/etime.0
+r--r--r--  3/10   1568 Oct  2 21:10 1999 man/cat3f/ffrac.0 linked to man/cat3f/flmin.0
+r--r--r--  3/10   1568 Oct  2 21:10 1999 man/cat3f/flmax.0 linked to man/cat3f/flmin.0
+r--r--r--  3/10   7856 Oct  2 21:10 1999 man/cat3f/fortran.0 linked to man/cat3f/intro.0
+r--r--r--  3/10   1375 Oct  2 21:10 1999 man/cat3f/ftell.0 linked to man/cat3f/fseek.0
+r--r--r--  3/10   1568 Oct  2 21:10 1999 man/cat3f/inmax.0 linked to man/cat3f/flmin.0
+r--r--r--  3/10    899 Oct  2 21:10 1999 man/cat3f/itime.0 linked to man/cat3f/idate.0
+r--r--r--  3/10   1583 Oct  2 21:10 1999 man/cat3f/len.0 linked to man/cat3f/index.0
+r--r--r--  3/10   1583 Oct  2 21:10 1999 man/cat3f/lnblnk.0 linked to man/cat3f/index.0
+r--r--r--  3/10   1583 Oct  2 21:10 1999 man/cat3f/rindex.0 linked to man/cat3f/index.0
+r--r--r--  3/10   4861 Oct  2 21:10 1999 man/cat3f/tclose.0 linked to man/cat3f/topen.0
+r--r--r--  3/10   4861 Oct  2 21:10 1999 man/cat3f/tread.0 linked to man/cat3f/topen.0
+r--r--r--  3/10   4861 Oct  2 21:10 1999 man/cat3f/trewin.0 linked to man/cat3f/topen.0
+r--r--r--  3/10   4861 Oct  2 21:10 1999 man/cat3f/tskipf.0 linked to man/cat3f/topen.0
+r--r--r--  3/10   4861 Oct  2 21:10 1999 man/cat3f/tstate.0 linked to man/cat3f/topen.0
+r--r--r--  3/10   4861 Oct  2 21:10 1999 man/cat3f/twrite.0 linked to man/cat3f/topen.0
+r--r--r--  3/10   1234 Oct  2 21:10 1999 man/cat3f/drandm.0 linked to man/cat3f/random.0
+r--r--r--  3/10   3617 Oct  2 21:10 1999 man/cat3f/falloc.0 linked to man/cat3f/malloc.0
+r--r--r--  3/10   2141 Oct  2 21:10 1999 man/cat3f/fpecnt.0 linked to man/cat3f/trpfpe.0
+r--r--r--  3/10   3051 Oct  2 21:10 1999 man/cat3f/gerror.0 linked to man/cat3f/perror.0
+r--r--r--  3/10    601 Oct  2 21:10 1999 man/cat3f/getgid.0 linked to man/cat3f/getuid.0
+r--r--r--  3/10    788 Oct  2 21:10 1999 man/cat3f/iargc.0 linked to man/cat3f/getarg.0
+r--r--r--  3/10   3051 Oct  2 21:10 1999 man/cat3f/ierrno.0 linked to man/cat3f/perror.0
+r--r--r--  3/10   1234 Oct  2 21:10 1999 man/cat3f/irandm.0 linked to man/cat3f/random.0
+r--r--r--  3/10    988 Oct  2 21:10 1999 man/cat3f/isatty.0 linked to man/cat3f/ttynam.0
+r--r--r--  3/10   2015 Oct  2 21:10 1999 man/cat3f/besj0.0 linked to man/cat3f/bessel.0
+r--r--r--  3/10   2015 Oct  2 21:10 1999 man/cat3f/besj1.0 linked to man/cat3f/bessel.0
+r--r--r--  3/10   2015 Oct  2 21:10 1999 man/cat3f/besjn.0 linked to man/cat3f/bessel.0
+r--r--r--  3/10   2015 Oct  2 21:10 1999 man/cat3f/besy0.0 linked to man/cat3f/bessel.0
+r--r--r--  3/10   2015 Oct  2 21:10 1999 man/cat3f/besy1.0 linked to man/cat3f/bessel.0
+r--r--r--  3/10   2015 Oct  2 21:10 1999 man/cat3f/besyn.0 linked to man/cat3f/bessel.0
+r--r--r--  3/10   2015 Oct  2 21:10 1999 man/cat3f/dbesj0.0 linked to man/cat3f/bessel.0
+r--r--r--  3/10   2015 Oct  2 21:10 1999 man/cat3f/dbesj1.0 linked to man/cat3f/bessel.0
+r--r--r--  3/10   2015 Oct  2 21:10 1999 man/cat3f/dbesjn.0 linked to man/cat3f/bessel.0
+r--r--r--  3/10   2015 Oct  2 21:10 1999 man/cat3f/dbesy0.0 linked to man/cat3f/bessel.0
+r--r--r--  3/10   2015 Oct  2 21:10 1999 man/cat3f/dbesy1.0 linked to man/cat3f/bessel.0
+r--r--r--  3/10   2015 Oct  2 21:10 1999 man/cat3f/dbesyn.0 linked to man/cat3f/bessel.0
+r--r--r--  3/10   1241 Oct  2 18:14 1999 man/makewhatis.sed
+rwxr-xr-x  3/10    873 Oct  2 18:14 1999 man/manroff
+r--r--r--  3/10    257 Oct  2 21:14 1999 man/whatis
+r--r--r--  3/10    109 Oct  2 21:14 1999 man/man.template
+rwxr-xr-x  3/10      0 Oct  3 12:49 1999 man/cat.old/
+rwxr-xr-x  3/10   3123 Oct  3 12:49 1999 man/cat.old/compact.0
+rwxr-xr-x  3/10   3123 Oct  3 12:49 1999 man/cat.old/ccat.0 linked to man/cat.old/compact.0
+rwxr-xr-x  3/10   3123 Oct  3 12:49 1999 man/cat.old/uncompact.0 linked to man/cat.old/compact.0
+rwxr-xr-x  0/10      0 Oct  2 22:28 1999 mdec/
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/hkboot
+r--r--r--  3/10   7608 Oct  2 22:28 1999 mdec/boothp
+r--r--r--  3/10   6560 Oct  2 22:28 1999 mdec/boothk
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/mtboot
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/raboot
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/rdboot
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/rlboot
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/upboot
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/utboot
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/tmboot
+r--r--r--  3/10   1024 Oct  2 22:28 1999 mdec/tmscpboot
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/tsboot
+r--r--r--  3/10   1024 Oct  2 22:28 1999 mdec/tuboot
+r--r--r--  3/10   6596 Oct  2 22:28 1999 mdec/bootkra
+r--r--r--  3/10   7588 Oct  2 22:28 1999 mdec/bootup
+r--r--r--  3/10   6768 Oct  2 22:28 1999 mdec/bootrl
+r--r--r--  3/10   7460 Oct  2 22:28 1999 mdec/bootra
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/hpboot
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/htboot
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/kraboot
+r--r--r--  3/10   7460 Oct  2 22:28 1999 mdec/bootrd linked to mdec/bootra
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/mboot linked to mdec/htboot
+r--r--r--  3/10    512 Oct  2 22:28 1999 mdec/uboot linked to mdec/hpboot
+rwxr-xr-x  0/10      0 Dec 23 17:07 1998 msgs/
+rwxr-xr-x  0/10      0 Dec 24 18:05 1998 new/
+rwxr-xr-x  0/10      0 Dec 24 18:05 1998 new/lib/
+rwxr-xr-x  3/10      0 Dec 24 18:05 1998 new/man/
+rwxr-xr-x  3/10      0 Dec 24 18:05 1998 new/man/cat1/
+rwxr-xr-x  3/10      0 Dec 24 18:05 1998 new/man/cat2/
+rwxr-xr-x  3/10      0 Dec 24 18:05 1998 new/man/cat3/
+rwxr-xr-x  3/10      0 Dec 24 18:05 1998 new/man/cat4/
+rwxr-xr-x  3/10      0 Dec 24 18:05 1998 new/man/cat5/
+rwxr-xr-x  3/10      0 Dec 24 18:05 1998 new/man/cat6/
+rwxr-xr-x  3/10      0 Dec 24 18:05 1998 new/man/cat7/
+rwxr-xr-x  3/10      0 Dec 24 18:05 1998 new/man/cat8/
+rwxr-xr-x  0/10      0 Oct  3 12:49 1999 old/
+rwxr-xr-x  3/10  15360 Oct  3 12:49 1999 old/uncompact
+rwxr-xr-x  3/10     88 Oct  3 12:49 1999 old/ccat
+rwxrwxrwt  0/10      0 Dec 23 17:07 1998 preserve/
+rwxr-xr-x  0/10      0 Dec 23 17:07 1998 pub/
+r--r--r--  0/10   2114 Nov  6 12:59 1978 pub/ascii
+r--r--r--  0/10   2969 Dec  1 09:50 1978 pub/eqnchar
+r--r--r--  0/10    475 Dec  1 09:51 1978 pub/greek
+rwxr-xr-x  0/10      0 Dec 23 17:07 1998 spool/
+rwxr-xr-x  0/1      0 Dec 23 17:07 1998 spool/at/
+rwxr-xr-x  0/1      0 Dec 23 17:07 1998 spool/at/past/
+rw-rw-r--  0/1     10 Oct  2 15:00 1999 spool/at/lasttimedone
+rwxrwxrwt  0/0      0 Dec 24 18:11 1998 spool/mail/
+rwxr-xr-x  0/0      0 Dec 23 17:07 1998 spool/rwho/
+rwxrwxr-x  1/1      0 Dec 23 17:07 1998 spool/lpd/
+rwxrwxrwx  0/0      0 Dec 23 17:07 1998 spool/locks/
+rwxrwxrwx 66/1      0 Dec 23 17:07 1998 spool/uucppublic/
+rw-r--r--  0/1      0 Sep 25 17:04 1983 spool/uucppublic/.hushlogin
+rwxrwxr-x 66/1      0 Dec 28 21:44 1998 spool/uucp/
+rwxrwxr-x  0/0      0 Dec 23 17:07 1998 spool/mqueue/
+rw-r--r--  1/10      0 Sep 27 14:25 1983 spool/mqueue/syslog
+rw-r--r--  1/10      0 Sep 27 14:26 1983 spool/mqueue/syslog.0
+rw-r--r--  1/10      0 Sep 27 14:26 1983 spool/mqueue/syslog.1
+rw-r--r--  1/10      0 Sep 27 14:26 1983 spool/mqueue/syslog.2
+rw-r--r--  1/10      0 Sep 27 14:26 1983 spool/mqueue/syslog.3
+rw-r--r--  1/10      0 Sep 27 14:26 1983 spool/mqueue/syslog.4
+rw-r--r--  1/10      0 Sep 27 14:26 1983 spool/mqueue/syslog.5
+rw-r--r--  1/10      0 Sep 27 14:26 1983 spool/mqueue/syslog.6
+rw-r--r--  1/10      0 Sep 27 14:27 1983 spool/mqueue/syslog.7
+rwxrwxrwt  0/0      0 Oct  9 23:22 1999 tmp/
+rwxr-xr-x  0/10      0 Oct  2 21:18 1999 ucb/
+rws--s--x  0/1  32768 Oct  2 18:13 1999 ucb/lpr
+rwxr-xr-x  0/10  64512 Oct  2 21:17 1999 ucb/pxp
+rwxr-xr-x  3/10  11264 Oct  2 21:18 1999 ucb/apply
+rwxr-xr-x  3/10  12288 Oct  2 21:18 1999 ucb/biff
+rwxr-xr-x  3/10  19456 Oct  2 21:18 1999 ucb/checknr
+rwxr-xr-x  3/10  11264 Oct  2 21:18 1999 ucb/colcrt
+rwxr-xr-x  3/10   6144 Oct  2 21:18 1999 ucb/colrm
+rwxr-xr-x  3/10  23552 Oct  2 21:17 1999 ucb/ctags
+rwxr-xr-x  3/10  13312 Oct  2 21:18 1999 ucb/expand
+rws--s--x  0/1  43008 Oct  2 18:13 1999 ucb/lpq
+rwxr-xr-x  3/10  13312 Oct  2 21:18 1999 ucb/fold
+rwxr-xr-x  3/10  18432 Oct  2 21:18 1999 ucb/from
+rwxr-xr-x  3/10  32768 Oct  2 21:17 1999 ucb/indent
+rwxr-xr-x  3/10  16384 Oct  2 21:18 1999 ucb/groups
+rwxr-xr-x  3/10  11264 Oct  2 21:18 1999 ucb/head
+rwxr-xr-x  3/10  20480 Oct  2 21:18 1999 ucb/last
+rwxr-xr-x  3/10  23552 Oct  2 21:18 1999 ucb/lastcomm
+rwxr-xr-x  3/10  15360 Oct  2 21:18 1999 ucb/leave
+rwxr-xr-x  3/10  25600 Oct  2 21:18 1999 ucb/lock
+rwxr-xr-x  3/10  23552 Oct  2 21:18 1999 ucb/logger
+rwxr-xr-x  3/10  17408 Oct  2 21:17 1999 ucb/man
+rwxr-xr-x  3/10  15360 Oct  2 21:18 1999 ucb/mkstr
+rwxr-xr-x  3/10   5120 Oct  2 21:18 1999 ucb/printenv
+rwxr-xr-x  3/10   2323 Oct  2 21:18 1999 ucb/vgrind
+rwxr-xr-x  3/10  14336 Oct  2 21:18 1999 ucb/ruptime
+rwxr-xr-x  3/10  17408 Oct  2 21:18 1999 ucb/rwho
+rwxr-xr-x  3/10  29696 Oct  2 21:18 1999 ucb/sccs
+rwxr-xr-x  3/10  18432 Oct  2 21:18 1999 ucb/script
+rwxr-xr-x  3/10  13312 Oct  2 21:18 1999 ucb/soelim
+rwxr-xr-x  3/10  14336 Oct  2 21:18 1999 ucb/wc
+rwxr-xr-x  3/10  14336 Oct  2 21:18 1999 ucb/strings
+rwxr-xr-x  3/10  16384 Oct  2 21:18 1999 ucb/symorder
+rwxr-xr-x  3/10  13312 Oct  2 21:18 1999 ucb/tail
+rwxr-xr-x  3/10  45056 Oct  2 21:18 1999 ucb/telnet
+rwxr-xr-x  3/10  13312 Oct  2 21:18 1999 ucb/unexpand
+rwxr-xr-x  3/10  14336 Oct  2 21:18 1999 ucb/unifdef
+rws--s--x  0/1  41984 Oct  2 18:13 1999 ucb/lprm
+rwxr-xr-x  3/10  12288 Oct  2 21:18 1999 ucb/whereis
+rwxr-xr-x  3/10  15360 Oct  2 21:18 1999 ucb/whoami
+rwxr-xr-x  3/10  23552 Oct  2 21:18 1999 ucb/whois
+rwxr-xr-x  3/10  13312 Oct  2 21:17 1999 ucb/gzcompat
+rwxr-xr-x  3/10  16384 Oct  2 21:18 1999 ucb/xstr
+rwxr-xr-x  3/10   5120 Oct  2 21:18 1999 ucb/yes
+rwxr-xr-x  3/10   8192 Oct  2 21:18 1999 ucb/clear
+rwxr-xr-x  3/10  20480 Oct  2 21:18 1999 ucb/ul
+rwxr-xr-x  3/10  26624 Oct  2 21:18 1999 ucb/vacation
+rwxr-sr-x  3/2  17408 Oct  2 21:18 1999 ucb/gcore
+rwxr-sr-x  3/2  20480 Oct  2 21:18 1999 ucb/vmstat
+rwxr-xr-x  3/10   5120 Oct  2 18:13 1999 ucb/lptest
+rwsr-xr-x  0/10  20480 Oct  2 21:18 1999 ucb/quota
+rwsr-xr-x  0/10  33792 Oct  2 21:18 1999 ucb/rlogin
+rwsr-xr-x  0/10  31744 Oct  2 21:18 1999 ucb/rsh
+rwxr-xr-x  3/10  56320 Oct  2 21:17 1999 ucb/zcat
+rwxr-xr-x  3/10  18432 Oct  2 21:17 1999 ucb/fmt
+rwxrwxr-x  0/10 103424 Oct  2 21:17 1999 ucb/pi
+rwxr-xr-x  0/10   6144 Oct  2 21:18 1999 ucb/pix
+rwxr-xr-x  0/10  25600 Oct  2 21:18 1999 ucb/pxref
+rwxr-xr-x  0/10  20480 Oct  2 21:18 1999 ucb/pc
+rwxr-xr-x  0/10  17408 Oct  2 21:18 1999 ucb/pmerge
+rwxr-xr-x  0/10      0 Oct  2 18:13 1999 ucb/newaliases symbolic link to /usr/lib/sendmail
+rwxr-xr-x  3/10 128000 Oct  2 21:18 1999 ucb/tn3270
+rwxr-xr-x  3/10  25600 Oct  2 21:18 1999 ucb/mset
+rwxr-xr-x  3/10  36864 Oct  2 21:17 1999 ucb/msgs
+rwxr-xr-x  3/10  49152 Oct  2 21:18 1999 ucb/talk
+rwxr-xr-x  3/10  72704 Oct  2 21:17 1999 ucb/ftp
+rwxr-sr-x  3/2  29696 Oct  2 21:18 1999 ucb/sysline
+rwxr-sr-x  3/2  55296 Oct  2 21:17 1999 ucb/netstat
+rwsr-x--x  0/10  64512 Oct  2 21:18 1999 ucb/rdist
+rwxr-xr-x  3/10  38912 Oct  2 21:17 1999 ucb/error
+rwxr-xr-x  0/10      0 Oct  2 18:13 1999 ucb/mailq symbolic link to /usr/lib/sendmail
+rwxr-xr-x  3/10  13312 Oct  2 21:15 1999 ucb/fpr
+rwxr-xr-x  3/10  12288 Oct  2 21:15 1999 ucb/fsplit
+rwxr-xr-x  3/10  75776 Oct  2 21:17 1999 ucb/Mail
+rwxr-sr-x  3/2  76800 Oct  2 21:18 1999 ucb/systat
+rwxr-xr-x  3/10  33792 Oct  2 21:18 1999 ucb/tftp
+rwxr-xr-x  3/10 171008 Oct  2 21:17 1999 ucb/dbx
+rwxr-xr-x  3/10  78848 Oct  2 21:18 1999 ucb/window
+rwxr-xr-x  0/10  91136 Oct  2 21:17 1999 ucb/pdx
+rwxr-xr-x  0/10  48128 Oct  2 21:17 1999 ucb/px
+rwxr-xr-x  3/10  28672 Oct  2 21:17 1999 ucb/gprof
+rwxr-xr-x  3/10  23552 Oct  2 21:17 1999 ucb/grep
+rwxr-xr-x  3/10  14336 Oct  2 21:17 1999 ucb/apropos
+rwxr-xr-x  3/10   1408 Oct  2 21:18 1999 ucb/sendbug
+rwxr-xr-x  3/10   1204 Oct  2 21:18 1999 ucb/which
+rwxr-xr-x  3/10  29696 Oct  2 21:17 1999 ucb/more
+rwxr-xr-x  3/10  16384 Oct  2 21:18 1999 ucb/tcopy
+rwxr-xr-x  3/10  37888 Oct  2 21:18 1999 ucb/f
+rwxr-xr-x  3/10  24576 Oct  2 21:18 1999 ucb/reset
+rwxr-xr-x  3/10  10240 Oct  2 21:18 1999 ucb/users
+rwxr-sr-x  3/2  21504 Oct  2 21:18 1999 ucb/uptime
+rwxr-xr-t  3/10 120832 Oct  2 21:17 1999 ucb/ex linked to bin/ex
+rwxr-xr-t  3/10 120832 Oct  2 21:17 1999 ucb/edit linked to bin/ex
+rwxr-xr-t  3/10 120832 Oct  2 21:17 1999 ucb/e linked to bin/ex
+rwxr-xr-t  3/10 120832 Oct  2 21:17 1999 ucb/vi linked to bin/ex
+rwxr-xr-t  3/10 120832 Oct  2 21:17 1999 ucb/view linked to bin/ex
+rwxr-xr-x  3/10  56320 Oct  2 21:17 1999 ucb/compress linked to ucb/zcat
+rwxr-xr-x  3/10  75776 Oct  2 21:17 1999 ucb/mail linked to ucb/Mail
+rwxr-xr-x  3/10  56320 Oct  2 21:17 1999 ucb/uncompress linked to ucb/zcat
+rwxr-xr-x  3/10  23552 Oct  2 21:17 1999 ucb/fgrep linked to ucb/grep
+rwxr-xr-x  3/10  23552 Oct  2 21:17 1999 ucb/egrep linked to ucb/grep
+rwxr-xr-x  3/10  14336 Oct  2 21:17 1999 ucb/whatis linked to ucb/apropos
+rwxr-xr-x  3/10  29696 Oct  2 21:17 1999 ucb/page linked to ucb/more
+rwxr-xr-x  3/10  37888 Oct  2 21:18 1999 ucb/finger linked to ucb/f
+rwxr-xr-x  3/10  24576 Oct  2 21:18 1999 ucb/tset linked to ucb/reset
+rwxr-xr-x  3/10  10240 Oct  2 21:18 1999 ucb/u linked to ucb/users
+rwxr-sr-x  3/2  21504 Oct  2 21:18 1999 ucb/w linked to ucb/uptime
+rwxr-xr-x  3/10  61440 Oct  2 21:16 1999 ucb/nslookup
+rwxr-xr-x  3/10  20480 Oct  2 21:16 1999 ucb/nsquery
+rwxr-xr-x  3/10   5120 Oct  2 21:18 1999 ucb/20b

@@ -1,0 +1,20 @@
+Tape Labeled
+
+          DIST. TAPE
+   DELAWARE USENIX MEETING - 6/80
+
+            PWB
+          1600 BPI
+
+Contents appear to be similar to Henry Spencer's Delaware Usenix
+tape with the following exceptions:
+
+This tape is missing the "delaware/cwru.v7", "delaware/duke.v7",
+"delaware/melbourne.v7", and "delaware/usgs.v7" trees which
+are present in Henry's tape.
+
+This tape has a directory tree "delaware/tektronix" which appears
+to be 100% identical to the tree "delaware/tektronix.v7" on Henry's
+tape.
+
+Tim.

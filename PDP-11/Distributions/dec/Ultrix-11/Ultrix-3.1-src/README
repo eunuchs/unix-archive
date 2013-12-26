@@ -1,0 +1,28 @@
+The tarball in this directory contains the source code to Ultrix-11 3.1.
+This was donated by Steven Schultz who says:
+
+	I have the Ultrix-11 source tape that DEC gave/donated to UCB. Keith
+	Bostic sent me a copy years ago saying "2.xBSD can use whatever it
+	likes". I've not done much with it since 2.10 and later is quite a
+	bit more advanced than Ultrix-11 in most areas (and I never liked the
+        Sys-III/Sys-V features that DEC cobbled on).
+
+        Be warned: it's NOT a 'self regenerating' capable kit. DEC apparently
+        didn't distribute 'source kits' that were complete enough to do that.
+
+        							Steven
+
+Here are the top few paragraphs from /src/SRCKIT.README:
+
+
+                         ULTRIX-11 Version 3.1 Source Kit
+
+       The ULTRIX-11 Version 3.1 source kit contains the directories and
+       files from which the ULTRIX-11 Version 3.1 binary system was built.
+       These source directories and files are intended for reference only.
+
+       To build an ULTRIX-11 Version 3.1 system from these sources, you
+       already must be running an ULTRIX-11 Version 3.1 binary system.
+       Then, you can install this source kit on top of your ULTRIX-11
+       Version 3.1 binary system.
+

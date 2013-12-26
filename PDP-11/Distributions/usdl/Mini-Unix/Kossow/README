@@ -1,0 +1,18 @@
+Date: Fri, 21 Sep 2007 15:33:18 -0700
+From: Al Kossow <aek@bitsavers.org>
+To: tuhs@minnie.tuhs.org
+Subject: [TUHS] mini-unix distribution tape recovered
+    
+I beleive I have sucessfully read a Dec, 1979 mini-unix
+distribution tape yesterday evening. I've placed it for
+the next week or so under http://bitsavers.org/miniunix
+    
+It is in .tap format, which should work with SIMH.
+  
+It is a single large file blocked 512 bytes/record
+
+
+_______________________________________________  
+TUHS mailing list
+TUHS@minnie.tuhs.org
+https://minnie.tuhs.org/mailman/listinfo/tuhs

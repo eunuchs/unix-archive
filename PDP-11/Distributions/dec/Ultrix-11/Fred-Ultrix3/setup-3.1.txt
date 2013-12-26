@@ -1,0 +1,868 @@
+    Installing ULTRIX-11 V3.1(1)
+
+Fred N. van Kempen, Senior Consultant
+MicroWalt Corporation, Palo Alto, CA
+
+Email: fred.van.kempen@microwalt.nl
+
+
+
+INTRO
+First of all, make _sure_ your hardware is in working order.  It is
+quite hard to debug misbehaving installation procedures if you run
+it on faulty hardware !
+
+I am doing this test load on the following machine:
+
+- MicroPDP-11/53, 512KB onboard RAM, 2 SLU's (console and aux)
+- RQDX3 disk controller, with internal RD31 drive (20MB)
+- TQK50 tape controller, with internal TK50 drive
+
+I just did a new low-level format on the hard drive, so it's very,
+very empty.  The system will of course complain about not having a
+bootable drive.
+
+
+SUPPORTED SYSTEMS
+Although in theory ULTRIX-11 should work on all PDP-11 processors,
+certain design and capacity issues make it (nearly?) impossible to
+get it to run on certain processors.
+
+The official list of supported processors is:
+
+        23, 23+, 24, 34, 40, 44, 45, 55, 60, 70, 73, 83, 84
+
+I have personally tested it on a 23+, 53 and 83.  I know it runs
+fine on the 73.  The smaller machines (34, 40 etc) should work
+akin to the 23, meaning using overlays and be very tight on RAM
+for the drivers.  TCP/IP is a biiiiig load for those systems!
+
+For now, you can only load ULTRIX-11 onto your system with a
+working tape drive... TK50, magtape, etc.  My distribution kit
+was made for the TK50, but future releases will have support for
+all the available (and usable... no TU58 support, sorry :) tape
+drives/controllers.
+
+Also, note that the next release of this kit will fully support
+the (very much enhanced) VTserver 2.0 system, which will allow
+you to download the distribution tape file (currently a tar file,
+but my new TDF format soon), tell VTserver about it, and install
+the kit off the VT server over serial line.  Slow, but it works.
+
+(and HEY... the TK50 isn't much faster... trust me ;)
+
+Don't be anal about your systems... ULTRIX-11 is a fairly hefty
+version of UNIX for the PDP-11... I'd say that with 2.11BSD, it
+is the most bloated one you can get.  Don't try to run it on
+systems which have little hardware (memory, disk, etc).. it's
+not going to work.
+
+According to the kernel sources, the very minimum amount of RAM
+to actually _boot_ (i.e. loading /boot) is 192KB.  If boot detects
+less RAM, it aborts, because the kernel needs to live in that
+{falafel:~} $ cat setup.txt
+    Installing ULTRIX-11 V3.1(1)
+
+Fred N. van Kempen, Senior Consultant
+MicroWalt Corporation, Palo Alto, CA
+
+Email: fred.van.kempen@microwalt.nl
+
+
+
+INTRO
+First of all, make _sure_ your hardware is in working order.  It is
+quite hard to debug misbehaving installation procedures if you run
+it on faulty hardware !
+
+I am doing this test load on the following machine:
+
+- MicroPDP-11/53, 512KB onboard RAM, 2 SLU's (console and aux)
+- RQDX3 disk controller, with internal RD31 drive (20MB)
+- TQK50 tape controller, with internal TK50 drive
+
+I just did a new low-level format on the hard drive, so it's very,
+very empty.  The system will of course complain about not having a
+bootable drive.
+
+
+SUPPORTED SYSTEMS
+Although in theory ULTRIX-11 should work on all PDP-11 processors,
+certain design and capacity issues make it (nearly?) impossible to
+get it to run on certain processors.
+
+The official list of supported processors is:
+
+        23, 23+, 24, 34, 40, 44, 45, 55, 60, 70, 73, 83, 84
+
+I have personally tested it on a 23+, 53 and 83.  I know it runs
+fine on the 73.  The smaller machines (34, 40 etc) should work
+akin to the 23, meaning using overlays and be very tight on RAM
+for the drivers.  TCP/IP is a biiiiig load for those systems!
+
+For now, you can only load ULTRIX-11 onto your system with a
+working tape drive... TK50, magtape, etc.  My distribution kit
+was made for the TK50, but future releases will have support for
+all the available (and usable... no TU58 support, sorry :) tape
+drives/controllers.
+
+Also, note that the next release of this kit will fully support
+the (very much enhanced) VTserver 2.0 system, which will allow
+you to download the distribution tape file (currently a tar file,
+but my new TDF format soon), tell VTserver about it, and install
+the kit off the VT server over serial line.  Slow, but it works.
+
+(and HEY... the TK50 isn't much faster... trust me ;)
+
+Don't be anal about your systems... ULTRIX-11 is a fairly hefty
+version of UNIX for the PDP-11... I'd say that with 2.11BSD, it
+is the most bloated one you can get.  Don't try to run it on
+systems which have little hardware (memory, disk, etc).. it's
+not going to work.
+
+According to the kernel sources, the very minimum amount of RAM
+to actually _boot_ (i.e. loading /boot) is 192KB.  If boot detects
+less RAM, it aborts, because the kernel needs to live in that
+space.  So, with 192KB for the kernel, you need at least 248KB
+of RAM to get a shell going.  And therefore, we state (listen up,
+y'all!) that:
+
+  ULTRIX-11 V3.1(1) AND UP NEED 248KB OF RAM AT THE VERY LEAST !
+
+So there.  If you have a PDP-11/03 with 56KB of memory and a
+TU58, then look elsewhere... RT11 is nice, and so is Xinu.
+
+
+BOOT THE SYSTEM
+Let's start her up:
+
+------------------------------------------------------------------
+9 8 7 6 5 4 3 2 1 
+
+
+KDJ11-D/S   E.01
+No bootable devices found
+Boot in progress - Type CTRL C to exit <CTRL-C typed here>
+
+Commands are Help, Boot, List, Map, Test and Wrap.
+Type a command then press the RETURN key:
+------------------------------------------------------------------
+
+This looks good so far.  No complaints about failing hardware other
+than the missing bootable device.
+
+Insert the ULTRIX-11 V3.1(1) load kit into the TK50 drive, and type
+
+        B MU0
+
+to start it up.  The system will respond with:
+
+-----------------------------------------------------------------
+MU0
+
+
+Sizing Memory...  
+
+To list options, type help then press <RETURN>
+
+Boot: 
+-----------------------------------------------------------------
+
+Welcome to Ultrix!  You have just started up the primary boot
+program of the Ultrix system.  We have to load the system install
+program from the tape, so type:
+
+        tk(0,2)
+
+and the tape will spin again.  The above means "load file number
+2 from the tape in tape drive zero".  That is the "sdload" (System
+Disk Load) program, which greets us with:
+
+----------------------------------------------------------------
+       ****** ULTRIX-11 System Disk Load Program ******
+
+This program loads the base ULTRIX-11 system from the distribution
+media onto the system disk, then bootstraps the system disk. After
+booting, the setup program begins the initial setup dialogue.
+
+Before loading can begin, you need to answer some questions about
+your system's configuration. Enter your answer, using only lowercase
+characters, then press <RETURN>. If you need help answering any of
+the questions, enter a ? then press <RETURN>.
+
+To correct typing mistakes press the <DELETE> key to erase a single
+character or <CTRL/U> to erase the entire line.
+
+Press <RETURN> to continue:
+
+
+                  ****** WARNING ******
+
+Installing the ULTRIX-11 software will overwrite your system disk.
+In addition, the ULTRIX-11 V3.0 file system is not compatible with
+the file systems used by previous ULTRIX-11 releases or any other
+software systems. Existing user disks must be converted to the new
+1K block file system.
+
+DO NOT PROCEED UNTIL YOU HAVE READ INSTALLATION GUIDE SECTION 1.7
+
+Proceed with the installation <y or n> ? y
+
+Target processor is an 11/53 <y or n> ? y
+
+CURRENT CPU = 11/53, TARGET CPU = 11/53
+
+System disk type <? for help> ? ?
+
+Please enter the generic name of your system disk.
+Select from the following list of supported disks:
+
+rd31 rd32 rd51 rd52 rd53 rd54 rl01 rl02 
+rk06 rk07 rp02 rp03 rp04 rp05 rp06 rm02 
+rm03 rm05 ra60 ra80 ra81 rc25 
+
+System disk type <? for help> ? rd31
+
+
+                ****** CAUTION ******
+
+You must scan MSCP disks for bad blocks, type ?<RETURN> for help!
+
+Scan system disk(s) for bad blocks <y or n> ? y
+
+****** SCANNING SYSTEM DISK(s) FOR BAD BLOCKS ******
+-----------------------------------------------------------------
+
+The SDLOAD program halts, and in turn loads the "rabads" program
+from the tape, which checks the drive(s) for bad sectors it needs
+to re-map to good sectors:
+
+-----------------------------------------------------------------
+ULTRIX-11 MSCP Disk Initialization Program
+
+Disk type < ra60 ra80 ra81 rx33 rx50 rd31 rd32 rd51 rd52 rd53 rd54 rc25
+>: rd31
+
+Unit number < 0-3 >: 0
+
+Starting block number < 0 >: 0
+
+Number of blocks to check < 41560 >: 
+
+READING...
+
+
+41560 blocks checked
+0 bad blocks found
+0 bad blocks replaced
+
+Exit called
+
+-----------------------------------------------------------------
+
+We are now thrown back into SDLOAD, which tells us that the bad block
+scan has finished, and that it is now ready to create an empty file
+system on that drive:
+
+-----------------------------------------------------------------
+****** BAD BLOCK SCAN COMPLETE ******
+
+
+****** MAKING EMPTY (ROOT) FILE SYSTEM ******
+
+File system size: 4850
+Disk type: rd31
+Processor type: 53
+File system name: root
+Volume name: sd_rd0
+File system: rd(0,0)
+isize = 3104
+m/n = 1 72
+Exit called
+
+****** EMPTY FILE SYSTEM COMPLETED ******
+--------------------------------------------------------------
+
+Now that we have a file system to work with, we can load (restore)
+a standard root file system from the tape.  SDLOAD will call the
+"restor" program to do just that:
+
+---------------------------------------------------------------
+****** RESTORING (ROOT) ONTO SYSTEM DISK ******
+
+Input: tk(0,0)root
+Disk: rd(0,0)
+
+End of dump media
+
+****** FILE SYSTEM RESTORE COMPLETE ******
+---------------------------------------------------------------
+
+SDLOAD will now call the "icheck" program to check the newly restord
+file system for any errors.  This should not be needed, but hey, you
+never know....
+
+----------------------------------------------------------------
+****** CHECKING (ROOT) FILE SYSTEM ******
+
+File: rd(0,0)
+Salvage free list <y or n> ? n
+rd(0,0):
+files 305 (r=280,d=17,b=1,c=7,p=0,l=0)
+used 3389 (i=182,ii=0,iii=0,d=3207)
+free 1265
+missing 0
+
+****** FILE SYSTEM CHECK COMPLETE ******
+------------------------------------------------------------------
+
+Well, all seems to be well.  It continues with creating an empty
+file system for the /usr file system:
+
+-----------------------------------------------------------------
+****** MAKING EMPTY (USR) FILE SYSTEM ******
+
+File system size: 14364
+Disk type: rd31
+Processor type: 53
+File system name: /usr
+Volume name: sd_rd0
+File system: rd(0,12800)
+isize = 9184
+m/n = 1 72
+Exit called
+
+****** EMPTY FILE SYSTEM COMPLETED ******
+------------------------------------------------------------------
+
+restore data to it from tape:
+
+------------------------------------------------------------------
+****** RESTORING (USR) ONTO SYSTEM DISK ******
+
+Input: tk(0,0)usr
+Disk: rd(0,12800)
+
+End of dump media
+
+****** FILE SYSTEM RESTORE COMPLETE ******
+------------------------------------------------------------------
+
+and of course will go and check this one, too:
+
+------------------------------------------------------------------
+****** CHECKING (USR) FILE SYSTEM ******
+
+File: rd(0,12800)
+Salvage free list <y or n> ? n
+rd(0,12800):
+files 619 (r=570,d=49,b=0,c=0,p=0,l=0)
+used 4824 (i=228,ii=1,iii=0,d=4594)
+free 8965
+missing 0
+
+****** FILE SYSTEM CHECK COMPLETE ******
+------------------------------------------------------------------
+
+Now that we have the basic system set up, it's time to install the
+secondary bootstrap for the selected device (RQDX MSCP) and rebooting
+the newly installed system:
+
+--------------------------------------------------------------------
+****** COPYING BOOT TO SYSTEM DISK BLOCK ZERO ******
+
+
+****** BLOCK ZERO BOOT LOADED ******
+
+
+****** BOOTING ULTRIX-11 SYSTEM TO SINGLE-USER MODE ******
+
+Sizing Memory...  
+
+Boot: rd(0,0)unix    (CTRL/C will abort auto-boot)
+
+rd(0,0)unix:
+14784+17024+8192+8000+8064+8000+8064+8128+8000+7808+7936+7936+7680+
+7360+1344
+
+ULTRIX-11 Kernel V3.1
+
+realmem = 524288
+buffers = 25600
+clists  = 1600
+usermem = 365120
+maxumem = 212992
+erase = delete, kill = ^U, intr = ^C
+
+
+            ****** ULTRIX-11 Setup Program ******
+
+
+This program performs operating system setup functions during
+installation and normal system operation. Setup operates in one
+of three possible modes (phases), depending on the current state
+of the system. The three modes are:
+
+ Phase 1: Initial setup -- prepares system for first sysgen.
+ Phase 2: Final setup -- completes the system setup.
+ Phase 3: Change setup -- handles system setup changes.
+
+The program will ask several setup questions. Enter your answer
+to each question, using lowercase characters, then press <RETURN>.
+
+The questions include helpful hints enclosed in angle brackets < >
+and/or parenthesis ( ). If you need additional help answering any
+question, enter a ? or the word help then press <RETURN>.
+
+You can correct typing mistakes by pressing the <DELETE> key to
+erase a single character or <CTRL/U> to erase the entire line.
+You can interrupt the setup program by typing <CTRL/C>. This
+allows you to abort the setup process or restart it.
+
+Press <RETURN> to continue: 
+--------------------------------------------------------------------
+
+Heh.  Welcome back!  This is fun, isn't it?  We're now running the
+Ultrix system, and we are going to set it up.
+
+First, answer the questions:
+
+--------------------------------------------------------------------
+Is the console terminal a CRT (video terminal) <y or n> ? y
+
+PLEASE CONFIRM: console is a VIDEO terminal <y or n> ? y
+
+****** READING SETUP DATA FROM setup.info FILE ******
+
+SETUP PHASE      = 1 (Initial Setup)
+LOAD DEVICE TYPE = TK50 UNIT 0
+SYSTEM DISK TYPE = RD31
+CURRENT CPU TYPE = 11/53
+TARGET  CPU TYPE = 11/53
+
+Is the above information correct <y or n> ? y
+
+****** ENTERING SETUP PHASE 1 ******
+
+Is this the target processor (? for help) <y or n> ? y
+
+PLEASE CONFIRM: on the target processor <y or n> ? y
+
+Terminal type for CONSOLE terminal < vt100 > ? 
+
+What is your AC power line frequency in hertz < 50 or 60 > ? 50
+
+PLEASE CONFIRM: AC line frequency is 50 hertz <y or n> ? y
+
+What is your local time zone < hours west/behind GMT > ? 0
+
+PLEASE CONFIRM: time zone is 0 hours west/behind GMT <y or n> ? y
+
+Does your local area use daylight savings time <y or n> ? y
+
+PLEASE CONFIRM: daylight savings time in use <y or n> ? y
+
+Choose the Geographic Area for the daylight savings time from  the table
+below
+
+                Geographic Area Selection
+                --------------- ---------
+                USA                1
+                Australia          2
+                Western Europe     3
+                Central Europe     4
+                Eastern Europe     5
+
+Enter the selection number <1> 3
+
+PLEASE CONFIRM:  Geographic area is 3 <y or n> ?y
+
+Please enter the current date/time < yymmddhhmm.ss > ? 0103062237
+
+Fri Mar  6 22:37:00 GMT 1970
+
+PLEASE CONFIRM: date/time correct <y or n> ? y
+
+****** SELECTING SPLIT I/D COMMANDS (/bin) ******
+
+****** ZEROING THE ERROR LOG FILE ******
+
+****** MAKING SYSTEM DISK(s) SPECIAL FILES ******
+
+****** MAKING MAGTAPE SPECIAL FILES ******
+
+****** SELECTING SPLIT I/D COMMANDS (/usr/bin, lib, ucb) ******
+
+****** ULTRIX-11 Setup Phase 1 Completed ******
+
+You can now run the sysgen program and generate a new ULTRIX-11
+kernel to match your system's hardware configuration. Return to
+the Installation Guide for instructions.
+
+
+# 
+---------------------------------------------------------------
+
+Ohyeah.  Did you notice how the "date" command did not work? The
+system thinks it's 1970 now.  Ahwell, we'll fix that later, and
+actually fix the code in the next release of this kit.
+
+We now type:
+
+        sync
+        sync
+        sync
+
+and reboot the machine:
+
+------------------------------------------------------------
+9 8 7 6 5 4 3 2 1 
+
+DU0
+
+
+Sizing Memory...  
+
+Boot: rd(0,0)unix    (CTRL/C will abort auto-boot)
+
+rd(0,0)unix: 37534+54720+8128+8000+7488+5312+3648
+
+ULTRIX-11 Kernel V3.1
+
+realmem = 524288
+buffers = 76800
+clists  = 2080
+usermem = 285568
+maxumem = 285568
+erase = delete, kill = ^U, intr = ^C
+
+
+            ****** ULTRIX-11 Setup Program ******
+
+
+This program performs operating system setup functions during
+installation and normal system operation. Setup operates in one
+of three possible modes (phases), depending on the current state
+of the system. The three modes are:
+
+ Phase 1: Initial setup -- prepares system for first sysgen.
+ Phase 2: Final setup -- completes the system setup.
+ Phase 3: Change setup -- handles system setup changes.
+
+The program will ask several setup questions. Enter your answer
+to each question, using lowercase characters, then press <RETURN>.
+
+The questions include helpful hints enclosed in angle brackets < >
+and/or parenthesis ( ). If you need additional help answering any
+question, enter a ? or the word help then press <RETURN>.
+
+You can correct typing mistakes by pressing the <DELETE> key to
+erase a single character or <CTRL/U> to erase the entire line.
+You can interrupt the setup program by typing <CTRL/C>. This
+allows you to abort the setup process or restart it.
+
+Press <RETURN> to continue: 
+
+Is the console terminal a CRT (video terminal) <y or n> ? y
+
+PLEASE CONFIRM: console is a VIDEO terminal <y or n> ? y
+
+****** READING SETUP DATA FROM setup.info FILE ******
+
+SETUP PHASE      = 2 (Final Setup)
+LOAD DEVICE TYPE = TK50 UNIT 0
+SYSTEM DISK TYPE = RD31
+CURRENT CPU TYPE = 11/53
+TARGET  CPU TYPE = 11/53
+
+Is the above information correct <y or n> ? y
+
+****** ENTERING SETUP PHASE 2 ******
+
+Please enter the current date/time < yymmddhhmm.ss > ? 0003062257
+
+Sat Mar  7 22:57:00 GMT 1970
+
+PLEASE CONFIRM: date/time correct <y or n> ? y
+
+DIGITAL recommends you add the following information to the
+configuration work sheet located in the Installation Guide.
+This work sheet will be helpful if you need to remake your
+device special files using setup phase 3.
+
+The program will pause periodically to allow time for you
+to record the configuration information.
+
+Press <RETURN> to continue: 
+
+****** DETERMINING SYSTEM'S DISK CONFIGURATION ******
+
+ULTRIX-11 System's Disk Configuration:
+
+X = disk not configured, NED = disk configured but not present.
+
+Disk    Cntlr  System  Unit  Unit  Unit  Unit  Unit  Unit  Unit  Unit
+Cntlr   #      Disk    0     1     2     3     4     5     6     7
+-----   -----  ------  ----  ----  ----  ----  ----  ----  ----  ----
+RQDX3   0      UNIT 0  RD31  X     X     X     X     X     X     X     
+
+Press <RETURN> to continue: 
+
+****** MAKING DISK SPECIAL FILES ******
+
+****** DETERMINING SYSTEM'S TAPE CONFIGURATION ******
+
+Magtape Controller       # Units
+------------------       -------
+TK50/TU81                1
+
+Press <RETURN> to continue: 
+
+****** MAKING MAGTAPE SPECIAL FILES ******
+
+****** DETERMINING SYSTEM'S COMMUNICATIONS DEVICE CONFIGURATION ******
+
+Device  # Units  Lines/Unit
+------  -------  ----------
+NO COMMUNICATIONS DEVICES FOUND!
+
+****** DETERMINING NUMBER OF PSEUDO TTYS ******
+
+Number of PTTYs = 4
+
+Press <RETURN> to continue: 
+
+****** DETERMINING NUMBER OF MAUS SEGMENTS ******
+
+Number of MAUS segments = 4
+
+****** MAKING MAUS SPECIAL FILES ******
+
+****** CREATING /etc/ttys and /etc/ttytype FILES ******
+
+Terminal type for CONSOLE terminal < vt100 > ? 
+
+****** NAMING YOUR ULTRIX-11 SYSTEM ******
+
+Please enter your system's hostname <? for help> ? kwek
+
+PLEASE CONFIRM: hostname is `kwek' <y or n> ? y
+
+Set up line printer spooler and printer ports <y or n> ? n
+
+Set up user file systems <y or n> ? n
+
+Load/unload optional software <y or n> ? y
+
+
+ULTRIX-11 SETUP: Optional Software Load Program.
+
+For instructions type `help', then press <RETURN>.
+
+Command <help free rxunit rxdir list load unload exit>: list
+
+Item    # K- On-  Load  Item
+Name    Byte Disk Dir.  Description
+------- ---- ---- ----  ----------------------------------------------
+dict     210   no /USR  Spell dictionary and hash lists
+                        (Not needed unless remaking spell dictionary)
+docprep  980   no /USR  Document prepration software: nroff troff roff
+                        refer (+ dict/papers) tbl eqn fonts macros
+f77      350   no /USR  Fortran 77 programs and libraries
+                        (f77, ratfor, structure and beautify)
+games    300   no /USR  Games (Programmer's Manual, Vol. 1, Section 6)
+learn    860   no /USR  Learn scripts (Computer Aided Instruction)
+libsa     60   no /USR  Library for building stand-alone programs
+manuals 2100   no /USR  On-line ULTRIX-11 Programmer's Manual, Volume 1
+                        (for use with man(1) and catman(8) commands)
+orphans  360   no /USR  ORPHAN files: old versions of some software
+                        (refer to /usr/orphan/README for help)
+pascal   250   no /USR  PASCAL interpreter, executer, and profiler
+                        (University of California at Berkeley 2.9 BSD)
+plot     185   no /USR  Plot libraries (graphics filters and programs)
+saprog   125  yes ROOT  Stand-alone programs in /sas directory: scat
+                        copy icheck mkfs restor bads rabads dskinit
+sccs     300   no /USR  Source Code Control System
+spell    175   no /USR  Spelling checker and associated programs
+                        (programs to rebuild hlists from dictionary)
+sysgen   890  yes /USR  System generation programs and files
+tcpip    410   no /USR  TCP/IP ethernet networking software
+                        (for local area network over an ethernet)
+usat     205   no /USR  ULTRIX-11 System Acceptance Test
+                        (verifies the system is installed and working)
+usep     400   no /USR  User-mode System Exerciser Package
+                        (verifes system hardware working properly)
+userdev  140   no /USR  User written device driver sources and
+documentation
+uucp     340   no /USR  UUCP (unix to unix copy)
+                        (connect to other systems via phone or hardwire)
+
+Command <help free rxunit rxdir list load unload exit>: load
+
+Please enter a list of items to LOAD (? for help).
+
+List: dict docprep f77 games learn libsa manuals orphans pascal plot
+saprog sccs
+ spell tcpip usat usep userdev uucp
+
+Load any items with symbolic links (? for help) <y or n> ? n
+
+Make sure the distribution tape (or TK50 cartridge) is
+mounted in unit zero and the unit is on-line and ready.
+
+Press <RETURN> to continue:
+
+****** LOADING (dict) ******
+
+****** LOADING (docprep) ******
+
+****** LOADING (f77) ******
+
+****** LOADING (games) ******
+
+****** LOADING (learn) ******
+
+****** LOADING (libsa) ******
+
+****** LOADING (manuals) ******
+
+****** LOADING (orphans) ******
+
+****** LOADING (pascal) ******
+
+****** LOADING (plot) ******
+
+****** UNLOADING (saprog) ******
+
+****** LOADING (saprog) ******
+
+****** LOADING (sccs) ******
+
+****** LOADING (spell) ******
+
+****** LOADING (tcpip) ******
+
+****** LOADING (usat) ******
+
+****** LOADING (usep) ******
+
+You can recover some disk space by removing exercisers
+for devices not configured on your system.
+
+****** LOADING (userdev) ******
+
+Unpacking files in /usr/src/userdev...
+
+****** LOADING (uucp) ******
+
+Command <help free rxunit rxdir list load unload exit>: exit
+
+
+Make symbolic link for /usr/spool <y or n> ? n
+
+****** ULTRIX-11 Setup Phase 2 Completed ******
+
+The automated portion of the ULTRIX-11 software installation is
+now complete. Return to the Installation Guide for instructions.
+
+
+# 
+----------------------------------------------------------------
+
+We are now done installing stuff from the tape, so unload and
+remove the tape in drive 0.
+
+Then prepare for and perform the reboot:
+
+---------------------------------------------------------------
+
+        sync
+        sync
+        sync
+        <reboot>
+
+9 8 7 6 5 4 3 2 1 
+
+DU0
+
+
+Sizing Memory...  
+
+Boot: rd(0,0)unix    (CTRL/C will abort auto-boot)
+
+rd(0,0)unix: 37534+54720+8128+8000+7488+5312+3648
+
+ULTRIX-11 Kernel V3.1
+
+realmem = 524288
+buffers = 76800
+clists  = 2080
+usermem = 285568
+maxumem = 285568
+erase = delete, kill = ^U, intr = ^C
+#
+---------------------------------------------------------
+
+Looks good to me!  Move on to multi-user mode by logging
+out of the shell (ctrl-d):
+
+---------------------------------------------------------
+Restricted rights:
+
+        Use, duplication, or disclosure is subject
+        to restrictions stated in your contract with
+        Digital Equipment Corporation.
+
+*UNIX is a trademark of AT&T Bell Laboratories.
+
+Mounted /dev/rd06 on /usr
+
+Sat Mar  7 22:57:00 GMT 1970
+
+ERROR LOG has - 1 of 100 blocks used
+
+
+ULTRIX-11 System V3.1 (kwek)
+
+login: 
+----------------------------------------------------------
+
+Yay!  Log on as root and try some fun commands:
+
+----------------------------------------------------------
+
+Welcome to the ULTRIX-11 System
+
+erase = delete, kill = ^U, intr = ^C
+kwek#
+
+kwek# uname -a
+ULTRIX-11 kwek 3 0 PDP-11/53
+kwek#
+
+kwek# df
+Filesystem    total    kbytes  kbytes  percent
+   node       kbytes    used    free   used    Mounted on
+/dev/rd00       4654    3201    1453    69%    /
+/dev/rd06      13788   11461    2327    83%    /usr
+kwek#
+
+kwek# ps ax
+
+   PID TTY TIME CMD
+     0 ?   0:00 swapper
+     1 ?   0:00 /etc/init
+     2 ?   0:00 /etc/elc
+    42 co  0:00 -sh 
+    52 co  0:00 ps ax 
+    34 ?   0:00 /etc/update
+    38 ?   0:00 /etc/cron
+kwek# 
+------------------------------------------------------------
+
+You're now all set.  Have fun with UNIX on your PDP-11 !
+
+------------------------------------------------------------------------
+
+
+Fred

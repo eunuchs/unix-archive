@@ -1,0 +1,74 @@
+	Second Distribution of Berkeley PDP-11 Software for UNIX
+		   Release 2.9 (revised June 1983)
+
+A new release of the UNIX system with many enhancements is available
+from the Computer Science Division of the University of California at
+Berkeley. It is a complete V7 UNIX system, including the kernel, all
+standard utilities, and additional Berkeley products. The kernel will
+run on any PDP-II with memory management hardware and at least 192K
+bytes of memory, including the 11/23, 11/24, 11/34, 11/34A, 11/40,
+11/44, 11/45, 11/55, and 11/70. It supports most common disks
+(RK05/06/07, RL01/02, RM02/03/05, RP03/04/05/06, and emulations of
+these) and tapes (TM02/03, TM 11, and TS 11). With only a few
+exceptions (pcc and INGRES), all of the programs in the release will
+also run on all of the supported machines. The major kernel changes
+since the 2.8BSD distribution are:
+
+	Process control, a mechanism for stopping and restarting jobs
+	in foreground or background, and the new reliable signal
+	mechanism that supports it. This is nearly identical to the
+	process control facility of 4.1BSD VMUNIX (the Berkeley VAX
+	UNIX system).
+
+	Vfork, a more efficient version of fork.
+
+	Automatic reboots, after crashes or on demand.
+
+	Automatic detection of hardware configuration at boot time,
+	with most of the configuration-dependent addresses and vectors
+	in a single ASCII file.
+
+	Much easier kernel configuration process, with most parameters
+	in one machine description file.
+
+	There are numerous efficiency changes. System overhead has
+	markedly decreased in a number of areas: floating point traps
+	(90% decrease) overlay switches (45% decrease), and system
+	calls (22% decrease).
+
+There have been many bug fixes. The system is now far more robust.
+Other features of the kernel, which were also in the 2.8BSD release,
+include hashing buffers and inodes, moving buffers and clists out of
+kernel data space, and the 1K block filesystem. The system supports
+kernel overlays, allowing it to run on nonseparate I/D machines. It
+also supports user overlays, so that ex version 3 can be run, even on
+nonseparate machines!
+
+The Berkeley tty driver is included; it correctly handles erase and
+kill characters on crt and printing terminals, including correctly
+backspacing over tabs and control characters.  The enhanced Berkeley
+implementation of the TCP/IP network facility is included.
+
+Changes to the kernel are conditionally compiled with mnemonic names,
+making it easy to turn on and off features you decide you do or do not
+want. This kernel contains contributions from Berkeley's Computer
+Systems Research Group, the U.S. Geological Survey system, DEC's UNIX
+Engineering Group, and Tektronix (to mention only a few).
+
+This package also includes the instructional Pascal system, the editor
+ex, the INGRES database management system, and other software (some of
+which is described below). Source code, binaries and machine readable
+versions of all documentation are included. The distribution is
+provided on two 9-track 800BPI magnetic tapes, one of which is bootable
+and contains the standalone utilities required to bring up a root
+filesystem and the kernel. The remainder of the sources, documentation
+and binaries are in tar format, blocked by a factor of 20 (1024.0 byte
+records).  Tapes written at 1600BPI are available, as are tapes
+intended for use on the DEC TS-11 tape drive. We will supply the
+magnetic tape(s) on which the software will be written. Distributions
+of the software on disk media are not available. Tp and cpio formats
+are also not available.
+
+___
+DEC, PDP, and VAX are trademarks of Digital Equipment Corporation.
+UNIX is a trademark of Bell Laboratories.

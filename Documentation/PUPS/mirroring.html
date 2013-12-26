@@ -1,0 +1,407 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<!--Converted with LaTeX2HTML 99.2beta6 (1.42)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Mirroring/Copying the Unix Archive</TITLE>
+<META NAME="description" CONTENT="Mirroring/Copying the Unix Archive">
+<META NAME="keywords" CONTENT="mirroring">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<META NAME="Generator" CONTENT="LaTeX2HTML v99.2beta6">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+
+</HEAD>
+
+<BODY BGCOLOR="#ffffff">
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<P>
+<DIV ALIGN="CENTER">
+<FONT SIZE="+3"><B>Mirroring/Copying the Unix Archive</B></FONT>
+</DIV>
+<P>
+<DIV ALIGN="CENTER">Last update: May 28, 2001
+
+</DIV>
+
+<P>
+
+<OL>
+<LI><A HREF="mirroring.html#intro">Introduction to the Unix Archive</A>
+</LI>
+<LI><A HREF="mirroring.html#mirror">Mirroring the Unix Archive</A>
+</LI>
+<LI><A HREF="mirroring.html#media">Distributing the Unix Archive on Media</A>
+</LI>
+<LI><A HREF="mirroring.html#cd">Making a CD Image of the Unix Archive</A>
+</LI>
+<LI><A HREF="mirroring.html#duping">Duplicating Unix Archive CDs</A>
+</LI>
+<LI><A HREF="mirroring.html#online">Providing the Unix Archive On-line</A>
+</LI>
+</OL>
+
+<P>
+Welcome to this document which describes how you can mirror the Unix
+Archive from <I>minnie.tuhs.org</I>. Once you have a copy of the archive,
+you might like to volunteer to distribute copies of the archive on
+CD-ROM or other media, or to set up an on-line mirror of the archive.
+If you do become such a Unix Archive Volunteer, Warren will add you to a
+volunteers mailing list so that we can discuss any problems or issues, suggest
+new approaches and keep each other informed of relevant events.
+
+<P>
+If you don't have the disk space to mirror the archive, but you do have a
+CD writer, then skip down to the section on
+<A HREF="mirroring.html#duping">duplicating Unix Archive CDs</A>.
+
+<P>
+
+<H1><A NAME="SECTION00010000000000000000"></A><A NAME="intro"></A>
+<BR>
+Introduction to the Unix Archive
+</H1>
+
+<P>
+The Unix Archive is a collection of files related to the UNIX system.
+Currently, the archive occupies around 1 Gigabyte of storage.
+The main areas of the Unix Archive are:
+
+<P>
+
+<UL>
+<LI><B>Applications:</B> Programs and applications for old UNIXes.
+</LI>
+<LI><B>Documentation:</B> Useful manuals and setup instructions.
+
+<P>
+</LI>
+<LI><B>4BSD:</B> Verions of 4BSD from UCB.
+</LI>
+<LI><B>PDP-11:</B> UNIXes for the PDP-11 family of computers.
+</LI>
+<LI><B>VAX:</B> UNIXes for the VAX family of computers.
+</LI>
+<LI><B>Other:</B> UNIXes for other hardware platforms.
+
+<P>
+</LI>
+<LI><B>lists:</B> Lists of files in the archive, with checksums.
+</LI>
+<LI><B>tools:</B> Useful tools to work with the old distributions.
+</LI>
+<LI><B>misc:</B> Anything which doesn't fit in the other areas.
+</LI>
+</UL>
+
+
+<H1><A NAME="SECTION00020000000000000000"></A><A NAME="mirror"></A>
+<BR>
+Mirroring the Unix Archive
+</H1>
+
+<P>
+There are two main ways of mirroring the 1 Gig of files in the Unix Archive:
+by <I>rsync</I> or by FTP. The <I>rsync</I> method is the preferred way, as it
+minimises data transfer.
+
+<P>
+The archive changes very slowly. If you are mirroring to provide an FTP
+mirror, you will only need to mirror the archive once a week or fortnight.
+If you are mirroring to distribute the archive by CD-ROM or other media,
+you will only need to mirror every few months.
+
+<P>
+
+<H2><A NAME="SECTION00021000000000000000">
+Bootstrapping the Mirroring via Rsync</A>
+</H2>
+
+<P>
+Mirroring the Unix Archive by <I>rsync</I> is pretty simple. First, obtain a
+recent copy of the rsync program from
+<A NAME="tex2html2"
+  HREF="ftp://samba.anu.edu.au/pub/rsync">ftp://samba.anu.edu.au/pub/rsync</A>. Any version from 2.4 up will be fine.
+Compile and install the program on your Unix system.
+
+<P>
+You can now use your existing Unix Archive username and password, plus
+<I>rsync</I> to mirror the <I>Mirroring</I> directory in the archive.
+Firstly, create a directory to hold the archive, on a disk with at least 1G
+of free disk space. Change into this directory and run the command:
+
+<P>
+<PRE>
+rsync -avuz --exclude 'CD_IMAGE.*' minnie.tuhs.org::UA_Mirroring  Mirroring
+</PRE>
+
+<P>
+Eventually you will
+have a synchronised copy of the <I>Mirroring</I> directory.
+<B>Note:</B> For now I am placing the two ISO CD images of the Unix Archive
+in this directory. If you can burn CDs, and are prepared to become a
+Unix Archive Volunteer, you might like to grab these images, and read
+the section on <A HREF="mirroring.html#media">Distributing the Unix Archive on Media</A>.
+
+<P>
+
+<H2><A NAME="SECTION00022000000000000000">
+Completing the Mirroring via Rsync</A>
+</H2>
+
+<P>
+<B>Hint:</B> if you have an existing copy of the Unix Archive on CD-ROMs,
+then you should copy it all into your Archive directory before you run
+<I>rsync</I> for the first time. This will greatly reduce the data transfer,
+saving time and money.
+
+<P>
+Once you have obtained a copy of the <I>Mirroring</I> directory, change into
+this directory. Copy the file <I>.depend.sample</I> to <I>.depend</I>, and:
+
+<P>
+
+<UL>
+<LI>Edit <TT>PD</TT> to be the full pathname to your Archive directory.
+</LI>
+<LI>Comment out the <TT>N</TT> variable, once you are sure the mirroring
+	 will work. The <TT>N</TT> variable makes <I>rsync</I> do a dry-run
+	without transferring any files. I have made this the default, so that
+	you can try things without making a big initial mistake. When you
+	feel confident that things will work, comment this out.
+</LI>
+<LI>Edit <TT>RSERVER</TT> if there is a closer Archive mirror than
+	<I>minnie.tuhs.org</I>.
+</LI>
+</UL>
+
+<P>
+From now on, you can mirror the full Unix Archive by going into
+<I>Mirroring</I> and doing <TT>make sync</TT>.
+
+<P>
+
+<H2><A NAME="SECTION00023000000000000000">
+Mirroring via FTP</A>
+</H2>
+
+<P>
+You can also mirror the Unix Archive by FTP, assuming you already have
+password-protected FTP access to the Unix Archive on <I>minnie</I>. Find
+a suitable FTP mirroring program, and use it to mirror the whole archive.
+Examples mirroring programs I know of are
+<A NAME="tex2html3"
+  HREF="http://noc.intec.co.jp/ftpmirror.html">ftpmirror</A>,
+<A NAME="tex2html4"
+  HREF="http://jmirror.ruin.org/">jmirror</A>,
+<A NAME="tex2html5"
+  HREF=" http://sunsite.org.uk/packages/mirror/">mirror</A>,
+<A NAME="tex2html6"
+  HREF="http://www.idata.sk/~ondrej/pavuk/">pavuk</A>, and
+<A NAME="tex2html7"
+  HREF="ftp://ftp.luth.se/pub/unix/mirror/">spegla</A>.
+
+<P>
+There is one drawback with this approach: you'll have to copy
+whole files if they change; <I>rsync</I> only copies differences.
+
+<P>
+
+<H1><A NAME="SECTION00030000000000000000"></A><A NAME="media"></A>
+<BR>
+Distributing the Unix Archive on Media
+</H1>
+
+<P>
+If you are prepared to distribute the Unix Archive on media such as CD-ROM
+or tapes, and you have contacted
+<A NAME="tex2html8"
+  HREF="mailto:wkt@tuhs.org">Warren</A>, then your geographic location
+(but not name) will be added to the web page describing how people can obtain
+archive copies.
+
+<P>
+If a person wishes to geta  copy of the Archive, they can go to
+<A NAME="tex2html9"
+  HREF="http://minnie.tuhs.org/cgi-bin/pups_req.cgi">http://minnie.tuhs.org/cgi-bin/pups_req.cgi</A>
+and order a copy of all or part of the Archive on some medium from some
+geographical area. The script will make sure that one of the volunteers
+can actually copy the requested media within that area.
+
+<P>
+When a person fills in an archive request on this web page for your
+geographic area, you will receive e-mail with the following information:
+
+<P>
+
+<UL>
+<LI>The person's full name
+</LI>
+<LI>Their e-mail address
+</LI>
+<LI>Their postal address
+</LI>
+<LI>Their UNIX source code license number
+</LI>
+<LI>Details of what they want (CD, tape, contents of tape)
+</LI>
+</UL>
+
+<P>
+Once you are satisfied that the request is okay,
+you can then contact the person by e-mail. You should get further details
+on the request, tell them how much the request will cost them, and arrange a
+method of payment.
+Strictly speaking, you should work on a <B>cost recovery basis</B>, and not
+make a profit from the operation. However, you should charge for media,
+your own time, maintenance of equipment, postage and handling.
+The requester might get several offers, so don't do
+anything until they <B>confirm</B> that you are the chosen one.
+
+<P>
+Once you send off the request, then go to the web page
+named in the original e-mail,
+find the matching request, and tick it off, so it is removed from the list.
+Warren will scan this list periodically, and remind the mailing list if a
+request has been pending too long.
+
+<P>
+I have no idea how many requests you will receive. You might like to burn
+a number of CDs in one go, and then you can send them off as requests come in.
+
+<P>
+
+<H2><A NAME="SECTION00031000000000000000"></A><A NAME="cd"></A>
+<BR>
+Making CD Images of the Unix Archive
+</H2>
+
+<P>
+The Unix Archive is much bigger than one CD-ROM, so the <TT>Makefile</TT>
+in the <I>Mirroring</I> directory can create two CD images, using <I>mkisofs</I>.
+If you <TT>make image1</TT>, you get the CD image with the PDP-11 area on it. If
+you <TT>make image2</TT>, you get the CD image with the VAX and 4BSD areas on it.
+Read through the <I>Makefile</I> to see what sections from the archive are
+excluded. Also read through and modify <I>.depend</I>, as this sets the
+location of the local Unix Archive and the output image.
+
+<P>
+To build the CD image, you will have to get a copy of the <I>mkisofs</I> program,
+compile it and install it on your system. This can be obtained as part
+of the <A NAME="tex2html10"
+  HREF="http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html">cdrecord</A>
+software.
+You'll also need a spare 650Megs of disk space to create each CD image. You can
+use any CD writing software &amp; hardware to burn this Rock Ridge image onto
+a blank CD. It would be a good idea to verify the CD's contents after you
+do your first <TT>make image1</TT>.
+
+<P>
+As the Unix Archive changes and grows, I'll have to modify the <I>Makefile</I>
+in <I>Mirroring</I>. I'll let you know via the mailing list when this happens.
+
+<P>
+
+<H2><A NAME="SECTION00032000000000000000"></A><A NAME="isos"></A>
+<BR>
+Mirroring the Two CD Images
+</H2>
+
+<P>
+As required, I will make the two CD images and place them in the
+<I>Mirroring</I> directory. If you want to mirror these images, please
+edit the <I>.depend</I> file and comment out the NOISO line.
+
+<P>
+Email <A NAME="tex2html11"
+  HREF="mailto:wkt@tuhs.org">Warren</A>
+to get the images
+rebuilt, before you bother to mirror them.
+
+<P>
+
+<H2><A NAME="SECTION00033000000000000000"></A><A NAME="artwork"></A>
+<BR>
+Unix Archive CD Artwork
+</H2>
+
+<P>
+The files in <I>Mirroring/Covers</I> contains the artwork for the CD case,
+in both PostScript and Acrobat format. Each month, the date in the files
+is changed on <I>minnie.tuhs.org</I>, so this should reflect the date of your
+last archive synchronisation.
+
+<P>
+
+<H2><A NAME="SECTION00034000000000000000"></A><A NAME="duping"></A>
+<BR>
+Duplicating Unix Archive CDs
+</H2>
+
+<P>
+If you don't have disk space to mirror the archive, but do have a CD writer,
+then you can still help out by buying the Unix Archive CDs from another
+volunteer.  As requests for the CDs come in, you can duplicate your CDs
+and send them on to people, on a cost recovery basis as described above.
+
+<P>
+You should keep your Archive CDs up to date by obtaining new copies from the
+other volunteers when the archive contents change significantly. You may
+find that you can get the CDs for free, because you are helping us out!
+
+<P>
+If you decide to take this approach, e-mail 
+<A NAME="tex2html12"
+  HREF="mailto:wkt@tuhs.org">Warren</A>
+once you have
+obtained your CDs, and he will add you to the list of CD volunteers.
+
+<P>
+
+<H1><A NAME="SECTION00040000000000000000"></A><A NAME="online"></A>
+<BR>
+Providing the Unix Archive On-line
+</H1>
+
+<P>
+If you are prepared to make an on-line mirror of the archive, you'll
+be expected to have it on-line continuously. Archive users will be
+informed of your site and how to access it.
+<P>
+Make sure you mirror the archive weekly or fortnightly!
+
+<P>
+
+<H1><A NAME="SECTION00050000000000000000">
+Finally...</A>
+</H1>
+
+<P>
+If, after reading this, you still have questions, or have suggestions on
+how things can be improved, then please send them in to 
+<A NAME="tex2html13"
+  HREF="mailto:wkt@tuhs.org">Warren</A>
+or to the 
+Archive Volunteers mailing list, so that we can help each other
+out and improve what we do by consensus.
+
+<P>
+And from me, many thanks for being a Unix Archive Volunteer.
+<HR>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Warren Toomey <BR>
+2001-05-28</I>
+</ADDRESS>
+</BODY>
+</HTML>

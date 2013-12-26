@@ -1,0 +1,39 @@
+This tape was provided to me (Rick Copeland) for transciption by Mr.
+Kirk McKusick.  The tape is 9 track magnetic media recorded at 6250 bpi.
+The following markings where observed on the physical reel:
+
+	Back of tape:
+	4.3 RENO	6250 VAX
+	30 JUL 90	Distribution Master
+
+
+	Front of tape:
+        4.3BSD-RENO Vax UNIX System 7/1/90
+	7 files on tape
+	1 bootstrap FS,  bs=1024
+	2 mini root,  bs=10240
+	3 root dump,  bs=10240
+	4 /usr
+	5 /usr/src
+	6 /usr/src/sys
+	7 /usr/src/contrib
+
+	Last 4 are tar, 6250bpi bs=20480
+
+The above is just as I found it on the reel however below is what I
+found recorded on the actual tape.  The only change is in the block 
+size of the first file which is clearly 512 bytes/block.
+
+
+ contents are as follows:
+
+1. bootstrap   		bs=512   	records=292	149504 bytes
+2. miniroot 		bs=10240	records=205	2099200 bytes
+3. rootfs 		bs=10240   	records=320	32768000 bytes
+4. /usr 		bs=20480	records=2135	43724800 bytes
+5. /usr/src 		bs=20480	records=3427	70184960 bytes
+6. /usr/src/sys 	bs=20480	records=838	17172240 bytes
+7. /usr/src/contrib 	bs=20480 	records=738	15114240 bytes
+ 
+File 3 (rootfs) is a dump of the root file system, files 4,5,6 and 7 are
+tar archives.

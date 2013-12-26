@@ -1,0 +1,17 @@
+Autah-cs.160
+net.bugs.v7
+utzoo!decvax!ucbvax!ihnss!cbosg!harpo!utah-cs!lepreau
+Thu Jan  7 21:08:57 1982
+Explicit fix for %= compiler bug
+Yes, it's easy to find once one knows where to look!  Thanks to dmr
+for this.  Search for '=xor'; this change goes in right before it.
+
+Changed /usr/src/cmd/c/table.s. Reason for change:
+Install fix for %= bug as outlined by dmr in netnews 1/7/81, research.203.
+Change listing:
+----------------------------
+673c673
+< 	mov	R,*(sp)+
+---
+> 	movB1	R,*(sp)+
+----------------------------

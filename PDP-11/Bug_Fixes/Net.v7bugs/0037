@@ -1,0 +1,23 @@
+Autzoo.1055
+net.v7bugs
+utzoo!henry
+Sun Oct 25 00:49:57 1981
+signals vs uids
+Standard V7 lets signals through to a process only if the effective uid
+matches.  Problem:  one sometimes needs to kill a setuid process one
+has started.  No way.  There are two relevant considerations:
+
+1. Clearly, if you start it, you should be able to stop it.
+
+2. Equally clearly, one reason a setuid program goes setuid is to diddle
+	a privileged database.  Killing passwd(1) in the middle of an
+	update to /etc/passwd is a poor idea.
+
+Consideration #2 means you cannot just test both real and effective uids.
+Privileged updates can get arbitrarily complex, and there is no general
+way for the kernel to tell whether a process is doing one.
+
+Proposal:  a signal is transmitted if the effective uids match, or if the
+real uids match AND THE SIGNAL IS BEING CAUGHT.  This solves the problem
+by letting signals through to setuid processes only if the process is
+explicitly prepared for them.  Comments?

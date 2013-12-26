@@ -1,0 +1,27 @@
+BSD4.3 VAX Foreign Master Revision 2.0
+
+This tape was provided to me (Rick Copeland) for transcription by Mr. Kirk 
+McKusick.  The tape is of the 1/2", 9 track magnetic media type. The following
+labels and nomenclature appeared on the physical tape reel:
+
+	Back off reel:
+	4.3BSD  VAX
+	Foreign Master
+	Revision 2.0
+
+There was no listing on the physical reel of this tape. The following list of 
+files did NOT appear of the tape or physical reel and is a record of what I 
+observed as I copied it to disk.
+
+1) bootstrap		bs=512	  	  210 records	     107,520 bytes
+2) miniroot		bs=10240	  205 records 	   2,099,200 bytes
+3) rootdump		bs=10240	  446 records	   4,567,040 bytes
+4) /usr			bs=10240	 3024 records	  30,965,760 bytes
+5) /sys			bs=10240	  581 records	   5,943,296 bytes
+6) /usr/src		bs=10240	 2406 records	  24,633,344 bytes
+7) /usr/lib/vfont	bs=10240	  572 records	   5,857,280 bytes
+8) contrib		bs=10240	 3826 records	  39,178,240 bytes
+9) /usr/ingres 		bs=10240  	  247 records	   2,535,424,bytes
+
+File 3 is a dump of the root file system, files 4 through 9 are tar archives.	
+

@@ -1,0 +1,27 @@
+Here are the MINI-UNIX files.
+
+    TAPE0.BIN   The standalone tape to disk program
+    TAPE1.BIN   The BIN disk (RK05)
+    TAPE2.BIN   The SRC disk (RK05)
+    TAPE3.BIN   The MAN disk (RK05)
+
+When booting TAPE1.BIN, type rkmx at the @ prompt.
+
+I also uploaded MXUTIL.ZIP .  That is the version of the V6 file
+system routines I wrote to poke around on my Mini-Unix disk images
+while I was waiting to add RK's to my collection.  They are pretty
+gross, but they mostly work.  I actually used them to extract the
+source code for as and ld, and I then used that to write versions
+in C.  Those should also be laying around on my hard disk, and if
+so, I will send them too.  They were actually enough to build a 
+Mini-Unix system with, if I remember correctly.
+
+Found my "as".  Uploaded it as MXAS.ZIP .  What it is is "as" 
+re-written in C.  MXLD.C  is just that: ld.c from the Mini-Unix
+distribution (perhaps tweaked for MS-DOS: I don't recall).
+FULLLD.C is the same thing, for v6. As such, this stuff is obviously
+dependent on a v6 (or Mini-Unix) license.
+
+---     
+Jay R. Jaeger                                   The Computer Collection
+cube1@home.com		visit http://members.home.net/thecomputercollection

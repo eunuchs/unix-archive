@@ -1,0 +1,1448 @@
+From: "Steven M. Schultz" <sms@moe.2bsd.com>
+Date: Tue, 22 Sep 1998 17:43:44 -0700 (PDT)
+
+4.3 CAN run on a uVax. But, in true chicken-and-egg fashion, you must
+have access to a working TK50 tape drive so that you may build a TK50
+boot tape for that medium.
+
+Check out the README in the shar file. It is assumed that you have installed
+previous fixes in /sys/vax regarding uVaxen. But just in case you haven't,
+another article has been posted with those fixes.
+
+Rick
+
+#!/bin/sh
+#
+# This is a shell archive.  Remove anything before the above #! line,
+# then unpack it by saving it in a file and typing "sh file".  (Files
+# unpacked will be owned by you and have default permissions.)
+#
+# This archive contains:
+#	README
+#	mdec.Makefile.diff
+#	mdec.rdboot.s
+#	mdec.tmscpboot.s
+#	stand.Makefile.diff
+#	stand.autoconf.c.diff
+#	stand.conf.c.diff
+#	stand.srt0.c.diff
+#	stand.tmscp.c.diff
+#	stand.uda.c.diff
+
+echo x - README
+cat > "README" << '//E*O*F README//'
+THE RECIPE
+
+or, how to make a tk50 boot tape and/or boot a uVax.
+
+These are really two separate problems. They are only related if all
+you have is a tk50 drive on your uVax.
+
+These are not idiot-proof instructions, but I've tried to make them
+as complete as possible. All these instructions (and some of the
+code; see srt0.c) assume root on the uVax will be ra0.
+
+YOU MUST ALREADY HAVE A WORKING VAX! These instructions are useless on
+a cold machine. You must have a 4.3 machine and a working uVax (probably
+Ultrix!) with a tk50 drive.
+
+The enterprising person can also make a 9-track boot tape, if your
+uVax is so equipped. However, I've not examined what changes or values
+may be necessary for those standalone drivers, so I won't speculate.
+To the ambitious: autoconf.c probably contains the magic you need, and
+/sys/dist (and Installing and Operating 4.3bsd -- Appendix A) contains
+the programs and instructions on how to build a boot tape.
+
+You will also require a spare, root-size partition on the working 4.3
+machine. This is primarily to build the miniroot.
+
+I. Install the patches. Note that you MUST have installed the uVax
+    instruction emulation fix posted some time ago to the net. Because
+    it was posted some time ago, I've not included it as part of the
+    diffs. However, because it was posted some time ago :) I've posted
+    it again as a second shar file for those who didn't grab it the
+    first time.
+
+    These diffs should be applied to copies of the source on the
+    working 4.3 machine. (Copies, in case you or "patch" make some
+    terrible error.)
+
+II. The format of a TK50 boot tape.
+
+    The basic format of the tape should be:
+
+    tape 1:
+    file 1: tmscpboot, and tp file containing boot and copy
+    file 2: miniroot
+    file 3: dump of /
+    file 4: tar image of /usr
+    file 5: tar image of /sys
+    file 6: tar image of /usr/src
+    file 7: tar image of /usr/lib/vfont
+
+    tape 2:
+    file 1: tar image of /usr/src/new
+    file 2: tar image of /usr/ingres
+
+    Now mostly because tk50's take so darn long to write, I suggest the
+    following shorter tape:
+
+    file 1: as before
+    file 2: as before
+    file 3: as before
+    file 4: as before
+    file 5: as before
+
+    You can pull in the other stuff later if you want via tk50 or (more
+    likely) the network; this will be enough for you to come up multi-user.
+
+III. Building the tape.
+    I assume below that /dev/rmt8 is the tk50 tape drive to which you
+    are writing, and nrmt8 is the non-rewind drive (also known as rmt12).
+    References to /sys/... here actually refer to your copy of the
+    sources, wherever you may have chosen for them to live.
+
+    Persons familiar with building boot tapes may be able to shorten this
+    procedure by taking any file after #3 directly from the distribution
+    tape instead of doing what is listed here.  Since this shortcut can
+    be difficult to explain for all the various commands involved, it
+    is not gone into here. Shortcuts will be briefly mentioned in [].
+    Where possible, methods of moving things from one machine to another
+    via rsh are mentioned. This will require a /.rhosts to do this as root.
+    It's not the *only* method, just a suggested one.
+
+    How to build file 1:
+
+    cd mdec
+    make tmscpboot
+    cd /sys/stand
+    make tpboot tpcopy
+    mv tpboot boot; mv tpcopy copy
+    tp cmf tp.file boot copy
+    cat /sys/mdec/tmscpboot tp.file | dd of=/dev/nrmt8 bs=512 conv=sync
+		(or, remotely)
+    cat /sys/mdec/tmscpboot tp.file | rsh uVax dd of=/dev/nrmt8 bs=512 conv=sync
+
+    How to build file 2:
+
+    Here you will need that spare partition. I'll call it, rather
+    generically, /dev/rraXX here.
+
+    You must remake the GENERIC kernel. Alter /sys/conf/GENERIC and add
+    the line
+
+	cpu	"VAX630"
+    
+    Then make the directory /sys/GENERIC, if it doesn't exist, and
+
+    cd /sys/conf
+    config GENERIC
+    cd ../GENERIC
+    make depend
+    make vmunix
+    
+    The last two will take some time, the last one taking longest.
+
+    After this is finished, you will use that spare partition.
+    Now you must build the miniroot and add the new GENERIC kernel.
+    [You can also retrieve the miniroot from the original
+    distribution tape, move your new GENERIC kernel onto the
+    miniroot, and put the miniroot to the tk50 tape.]
+
+    You will need to investigate /sys/dist/buildmini.
+    It is a simple shell script, but it will need to be tailored to
+    fit your setup. Change "miniroot" and "minitype" at the top to
+    reflect the disk you are using.
+
+	mv /genvmunix /genvmunix.old
+	cp /sys/GENERIC/vmunix /genvmunix
+	/sys/dist/buildmini
+	mount /dev/raXX /mnt
+	cp /sys/GENERIC/vmunix /mnt/vmunix
+	ln /mnt/vmunix /mnt/genvmunix
+	umount /dev/raXX
+	dd if=/dev/rraXX of=/dev/nrmt8 bs=10k conv=sync
+		(or, remotely)
+	rsh uVax dd of=/dev/nrmt8 bs=10k conv=sync < /dev/rraXX
+
+    How to make file 3:
+    
+    This is a simple dump.  Just make a dump of your own /.
+    [ Or, you may copy the one from the distribution tape. In
+      this case, be sure to copy the generic kernel to your
+      new root partition after "copy"ing in the Installation,
+      or your kernel won't know about uVaxen.]
+
+	dump 0f /dev/nrmt8 /
+	    (or, remotely)
+	rdump 0f uVax:/dev/nrmt8 /
+	
+    How to make file 4:
+    
+    You only want *some* directories from /usr. The following minimal
+    set is suggested. You can retrieve others later from the working
+    4.3 vax via the network (or more laborious tk50 tapes):
+
+	cd /usr
+	tar cf /dev/nrmt8 adm bin include lib man mdec ucb
+    
+    [ or copy the one on the distribution. More directories there,
+      but certainly easier. ]
+
+    How to make file 5:
+
+    MAKE SURE YOU ARE USING YOUR CHANGED SET OF SYS SOURCES HERE!!
+
+    cd /sys;
+    tar cf /dev/nrmt8 .
+
+IV. Booting from tape.
+
+    Once you have the TK50 tape built, you should be able to insert it on
+    your cold machine and issue the command "b mu0" in response to the >>>
+    prompt. It will take between 1 and 2 minutes to load and issue a '='
+    prompt. Then you proceed as directed in "Installing and Operating",
+    except when booting, use "genvmunix" rather than "vmunix" until
+    you have made a machine-specific kernel.
+
+V. Booting from disk.
+    
+    Once you have a running Unix system, you will quickly tire of having
+    to boot from tape every time. It is easy to boot from disk (and thus
+    have autoboot work.)
+
+    Rdboot.s is the key. You want your root disk to have rdboot in its
+    boot block (first sector) and bootra in the next 15 sectors. First,
+    recompile them.
+	
+	cd /sys/stand; make bootra
+	cd /sys/mdec; make rdboot
+    
+    Then install them on the root disk:
+
+	cd /usr/mdec
+	installboot rdboot bootra /dev/ra0a
+    
+    You will also need a new /boot:
+
+	cd /sys/stand; make boot
+	cp boot /boot
+    
+    Anytime you newfs your root partition, you will need to do this,
+    because newfs will, by default, copy rdboot and bootrd or raboot
+    and bootra. In fact, you may need to link bootra to bootrd to
+    keep newfs happy.
+
+//E*O*F README//
+
+echo x - mdec.Makefile.diff
+cat > "mdec.Makefile.diff" << '//E*O*F mdec.Makefile.diff//'
+*** /tmp/Makefile	Thu Dec 10 09:28:12 1987
+--- Makefile	Thu Dec 10 09:27:46 1987
+***************
+*** 60,65 ****
+--- 60,79 ----
+    dd if=a.out of=b.out bs=32 skip=1
+    dd if=b.out of=tmboot conv=sync
+  
++ rdboot: rdboot.s
++ 	as rdboot.s
++ 	nm -u a.out
++ 	strip a.out
++ 	dd if=a.out of=b.out bs=32 skip=1
++ 	dd if=b.out of=rdboot conv=sync
++ 
++ tmscpboot: tmscpboot.s
++ 	as tmscpboot.s
++ 	nm -u a.out
++ 	strip a.out
++ 	dd if=a.out of=b.out bs=32 skip=1
++ 	dd if=b.out of=tmscpboot conv=sync
++ 
+  tsboot: tsboot.s
+    as tsboot.s
+    nm -u a.out
+//E*O*F mdec.Makefile.diff//
+
+echo x - mdec.rdboot.s
+cat > "mdec.rdboot.s" << '//E*O*F mdec.rdboot.s//'
+/*
+** This is a VMB boot block for microvax.  For more info, see
+** the KA-630 User's manual.
+*/
+
+/*
+**          ---------------------------------------------------
+** BB + 0: |      1     |      N     |      any value          |
+**          ---------------------------------------------------
+*/
+xxx:	.long	0x001040000
+/*
+**          ---------------------------------------------------
+**      4: |        low  lbn         |      high lbn           |
+**          ---------------------------------------------------
+*/
+    .long	0x000010000
+/*
+** BB + 2*N
+**          ---------------------------------------------------
+**    + 0: | check byte |      K     |     0     |   18 (HEX)  |
+**          ---------------------------------------------------
+*/
+    .long	0x0e7000018
+/*
+**          ---------------------------------------------------
+**    + 4: |     any  value          |  1 or 81  |      0      |
+**          ---------------------------------------------------
+*/
+    .long	0x000008100
+/*
+**          ---------------------------------------------------
+**    + 8: |     size in blocks of the image                   |
+**          ---------------------------------------------------
+*/
+    .long	0x00000000f
+/*
+**          ---------------------------------------------------
+**    +12: |     load offset from default load address         |
+**          ---------------------------------------------------
+*/
+    .long	0x000000000
+/*
+**          ---------------------------------------------------
+**    +16: |     offset into image to start execution          |
+**          ---------------------------------------------------
+*/
+    .long	0x000000002
+/*
+**          ---------------------------------------------------
+**    +20: |     sum of previous three longwords               |
+**          ---------------------------------------------------
+*/
+    .long	0x000000011
+/*
+**
+** BB +0:	These two bytes can have any value
+**
+** BB+2:	This value is the word offset from the start of the
+**		bootblock to the identification area described below.
+**
+** BB+3:	This byte must be one.
+**
+** BB+4:	This longword contains the logical block number
+**		(word swapped) of the secondary image.
+**
+** BB+(2*n)+0:	This byte defines the expected instruction set.
+**		18(hex) means VAX.
+**
+** BB+(2*n)+1:	This byte defines the expected controller type, 0
+**		means unknown.
+**
+** BB+(2*n)+2:	This byte defines the file structure on the volume,
+**		it may be any value.
+**
+** BB+(2*n)+3:	This byte must be the ones complement of the sum of
+**		the previous three bytes.
+**
+** BB+(2*n)+4:	This byte must be zero.
+**
+** BB+(2*n)+5:	This byte must be 1 or 81 (hex).  This byte defines
+**		the version number of the format standard and the
+**		type of disk.  The version is one, the high bit is 0
+**		for single sided, 1 for double sided.
+**
+** BB+(2*n)+6:	These two bytes may be any value, but generally they
+**		are zero.
+**
+** BB+(2*n)+8:	This entry is a longword containing the size in
+**		blocks of the secondary bootstrap image.
+**
+** BB+(2*n)+12:	This entry is a longword containing a load offset
+**		(usually zero) from the default load address of the
+**		secondary bootstrap.
+**
+** BB+(2*n)+16:	This entry is a longword containing the byte offset
+**		into the secondary bootstrap where execution is to
+**		begin.
+**
+** BB+(2*n)+20:	This entry is a longword containing the sum of the
+**		previous three longwords.
+*/
+//E*O*F mdec.rdboot.s//
+
+echo x - mdec.tmscpboot.s
+cat > "mdec.tmscpboot.s" << '//E*O*F mdec.tmscpboot.s//'
+#
+# TK50 tape boot block for distribution tapes
+# works on Q-bus tk50 drive on uVaxen
+#
+# reads a program from a tp directory on a tape and executes it
+# program must be stripped of the header and is loaded ``bits as is''
+# you can return to this loader via ``ret'' as you are called ``calls $0,ent''
+#
+    .set	RELOC,0x70000
+/*  tp directory definitions */
+    .set	FILSIZ,38	# tp direc offset for file size
+    .set	BNUM,44		# tp dir offset for start block no.
+    .set	ENTSIZ,64	# size of 1 TP dir entry, bytes
+    .set	PTHSIZ,32	# size of TP path name, bytes
+    .set	BLKSIZ,512	# tape block size, bytes
+    .set	NUMDIR,24	# no. of dir blocks on tape
+    .set	ENTBLK,8	# no. of dir entries per tape block
+/* processor registers and bits */
+    .set	RXCS,32
+    .set	RXDB,33
+    .set	TXCS,34
+    .set	TXDB,35
+    .set	RXCS_DONE,0x80
+    .set	TXCS_RDY,0x80
+    .set	TXCS_pr,7	/* bit position of TXCS ready bit */
+    .set	RXCS_pd,7	/* bit position of RXCS done bit */
+/* UBA registers */
+    .set	MAPSTART,0x20088000	# for a uVax, anyway
+    .set	UBAMEM,0x1ffc2000	# again, for a uVax
+    .set	MRV,0x80000000		# map register valid bit
+/* TMSCP UBA registers */
+    .set	TMSCP_CSR, 0774500	# CSR of tk50
+    .set	TMSCPip,0		# initialization and polling
+    .set	TMSCPsa,2		# status and address
+/* handy values for tmscp communication area */
+    .set	TMSCP_OWN,0x80000000
+    .set	TMSCP_ERR,0x8000
+    .set	TMSCP_STEP4,0x4000
+    .set	TMSCP_STEP3,0x2000
+    .set	TMSCP_STEP2,0x1000
+    .set	TMSCP_STEP1,0x800
+    .set	TMSCP_IE,0x80
+    .set	TMSCP_GO,1
+/* handy offsets into tmscp communication area (from tmscpca) */
+    .set	cmdint,4
+    .set	rspint,6
+    .set	rspdsc,8
+    .set	cmddsc,12
+/* handy offsets into mscp packets (from %rCMD or %rRSP) */
+    .set	msglen,0
+    .set	vcid,3
+    .set	unit,8
+    .set	op,12
+    .set	status,14
+    .set	modifier,14
+    .set	bytecnt,16
+    .set	cntflgs,18
+    .set	buffer,20
+    .set	tmkcnt,20
+    .set	lbn,32
+    .set	dscptr,40
+/* TMSCP commands and modifiers */
+    .set	M_OP_STCON,4
+    .set	M_OP_ONLIN,9
+    .set	M_OP_READ,33
+    .set	M_OP_REPOS,37
+    .set	M_MD_REWND,2
+    .set	M_MD_IMMED,0x80
+    .set	M_MD_CLSEX,0x200
+    .set	M_ST_MASK,0x1f
+    .set	M_ST_TAPEM,14
+/* miscellaneous */
+    .set	IUR, 0x37
+    .set	SID, 0x3e
+    .set	VAX_630,8
+/* local stack variables */
+    .set	tmscpca,-240-PTHSIZ-26	# struct tmscpca (see tmscpreg.h)
+    .set	rsp,-240-PTHSIZ-10	# tmscp response area
+    .set	cmd,-120-PTHSIZ-10	# tmscp command area
+    .set	name,-PTHSIZ-10		# operator-typed file name
+    .set	dirread,-10		# is the tape directory incore already?
+    .set	mtapa,-8		# cur tape addr (last blk we read)
+    .set	tapa,-4			# desired tape addr (inclusive)
+/* register usage */
+    .set	rCMD,r7
+    .set	rRSP,r8
+    .set	rUBADDR,r9
+    .set	rMAPREGS,r10
+    .set	rCSR,r11
+/* ===== */
+
+/* initialization */
+init:
+    /*
+     * if on a uVax, we were loaded by VMB from tape. We also have
+     * only one unibus, at 0x1fffc2000 (see above). Elstwise, this
+     * boot program will almost certainly need help.
+     */
+    mfpr	$SID,r0
+    cmpzv	$24,$8,r0,$VAX_630
+    beql	1f
+    halt
+    /*
+     * We must have been loaded by VMB, and thus we are at a non-zero
+     * location.  sp will contain the base address of the area at which
+     * we were loaded. So we add sp to $end to get the true end-of-program
+     * address.
+     */
+1:	movl	sp,r6		# r6 - beginning of program
+    movl	$RELOC,fp	# core loc to which to move this program
+    addl3	$-512,fp,sp	# set stack pointer; leave room for locals
+    addl3	$-512,fp,r0	# zero our destination mem .. we start here
+    addl3	$end,fp,r1	# and end here
+clr:
+    clrl	(r0)+
+    cmpl	r0,r1
+    jlss	clr
+
+    movc3	$end,(r6),(fp)	# copy to relocated position
+#	movzbl	$'a,r0
+#	bsbw	putc
+    addl3	$reginit,$RELOC,r0
+    jmp	(r0)		# and go there
+reginit:
+    /* initialize our registers. Should need to do this only once */
+#	movzbl	$'b,r0
+#	bsbw	putc
+    addl3	$UBAMEM, $TMSCP_CSR, %rCSR	# set up CSR register
+    movl	$MAPSTART, %rMAPREGS	# locate map registers
+
+    moval	tmscpca(fp), %rUBADDR	# set unibus address for comm area
+    extzv	$0,$9,%rUBADDR,%rUBADDR	# format: (MR# << 9) | (&comm & 0x1ff)
+    ashl	$-9,$RELOC-512,r0	# setting up map register for our stack
+    bisl3	$MRV,r0,(%rMAPREGS)	# mark our stack valid (MR #0)
+
+    moval	cmd(fp),%rCMD		# location of cmd mscp packet
+    moval	rsp(fp),%rRSP		# location of rsp mscp packet
+    bsbw	inittmscp		# init the unit
+    bsbw	onlin			# set tape online
+    bsbw	rew			# rewind tape
+
+start:
+#	movzbl	$11,r0			# newline
+#	bsbw	putc
+#	movzbl	$13,r0			# return
+#	bsbw	putc
+    movzbl	$'=,r0			# prompt
+    bsbw	putc			
+    bsbw	getname
+
+    # desired TP filename is in name(fp).  Now read in entire tp directory
+    # contents into low core, starting at loc 0
+
+    tstw	dirread(fp)	# if directory needs to be read in, do so
+    bneq	1f
+    bsbw	readdir
+1:
+
+    # all of directory is now in locore, @ 0.
+    # search for filename; return to start if it isn't there.
+
+    clrl	r0			# start at location 0
+nxtdir:	moval	name(fp),r2
+    movl	r0,r1
+1:	cmpb	(r1),(r2)
+    bneq	2f
+    tstb	(r1)
+    beql	found
+    incl	r1
+    incl	r2
+    brb	1b
+2:	acbl	$NUMDIR*BLKSIZ-1,$ENTSIZ,r0,nxtdir
+    brw	start			# entry not in directory; start over
+
+    # entry IS here; read it in from tape
+
+found:	movzwl	BNUM(r0),tapa(fp)	# start block no., 2 bytes
+    addl2	$2-1,tapa(fp)		# skip over this program (2 blocks)
+				    # minus 1 because we will read THROUGH
+				    # this block; so we want to stop just
+				    # before it
+    movzwl	FILSIZ(r0),r4		# low 2 bytes file size
+    insv	FILSIZ-1(r0),$16,$8,r4  # file size, high byte
+    cmpl	r4,$RELOC-512		# check if file fits below stack
+    bgeq	start 			# file too large
+
+    # Now advance to proper place on tape. tapa has our
+    # desired address
+
+    clrw	dirread(fp)	# we are about to obliterate our incore copy
+			    # of the directory
+2:	clrl	r3	# rrec expects r3 to point to a buffer. 0 will do ...
+    bsbw	rrec
+    cmpl	mtapa(fp),tapa(fp)
+    blss	2b
+
+    # tape now positioned correctly. Read in program. Number of bytes
+    # to read is in r4. We must round up to an even BLKSIZ boundary.
+    # Clear the area we are putting it at; unix expects zeroes in its
+    # data and bss section.
+
+    addl2	$BLKSIZ-1,r4		# round up
+    bicl2	$BLKSIZ-1,r4		# mask out
+    movl	r4,r5			# use r5; need to save r4 for later
+1:	clrl	(r5)
+    sobgtr	r5,1b
+
+    # now read in file.
+
+    clrl	r3			# read into page 0 (incremented by rrec)
+    ashl	$-9,r4,r5		# r5 now holds # blks to read
+    addl2	r5,tapa(fp)		# compute desired tape blk #
+1:	bsbw	rrec
+    cmpl	mtapa(fp),tapa(fp)	# got it yet?
+    blss	1b
+
+    # begin execution. Call as a function.
+    clrl	r5
+    calls	$0,(r5)
+
+    # now, since the called function has reset the tape drive for
+    # us (!) we must reinit it again ourselves.
+
+    ashl	$-9,$RELOC-512,r0	# set up map register for our stack
+    bisl3	$MRV,r0,(%rMAPREGS)	# mark our stack valid (MR #0)
+    bsbw	inittmscp		# re-init drive
+    bsbw	onlin			# re-online it
+    brw	start
+
+    # getname will set name(fp) and leave len(name(fp)) in r6
+getname:moval	name(fp),r1		# mov to register for ease of access
+nxtc:	bsbw	getc
+    cmpb	r0,$012			# end of line?
+    beql	nullc
+    movb	r0,(r1)+
+    brb	nxtc
+nullc:	moval	name(fp),r0
+    subl3	r0,r1,r6		# length of path name
+    jeql	start			# just hit return; nothing useful here
+    clrb	(r1)+			# add null at end
+    incl	r6			# add null to length
+    rsb
+
+getc:	mfpr	$RXCS,r0
+    bbc	$RXCS_pd,r0,getc	/* receiver ready ? */
+    mfpr	$RXDB,r0
+    extzv	$0,$7,r0,r0
+    cmpb	r0,$015
+    bneq	putc
+    bsbw	putc
+    movb	$0,r0
+    bsbw	putc
+    movb	$012,r0
+
+putc:	mfpr	$TXCS,r2
+    bbc	$TXCS_pr,r2,putc	/* transmitter ready ? */
+    extzv	$0,$7,r0,r0
+    mtpr	r0,$TXDB
+    rsb
+
+inittmscp:
+    movw	$0,TMSCPip(%rCSR)		# start step 1
+1:	bitw	$TMSCP_STEP1,TMSCPsa(%rCSR)
+    beql	1b
+#	movzbl	$'1,r0
+#	bsbw	putc
+init2:	movw	$TMSCP_ERR,TMSCPsa(%rCSR)	# start step 2
+2:	bitw	$TMSCP_STEP2,TMSCPsa(%rCSR)
+    beql	2b
+#	movzbl	$'2,r0
+#	bsbw	putc
+init3:	addl3	$8,%rUBADDR,r0			# start step 3
+    cvtlw	r0,TMSCPsa(%rCSR)
+3:	bitw	$TMSCP_STEP3,TMSCPsa(%rCSR)
+    beql	3b
+#	movzbl	$'3,r0
+#	bsbw	putc
+init4:	addl3	$8,%rUBADDR,r0			# start step 4
+    ashl	$-16,r0,r0
+    cvtlw	r0,TMSCPsa(%rCSR)
+4:	bitw	$TMSCP_STEP4,TMSCPsa(%rCSR)
+    beql	4b
+#	movzbl	$'4,r0
+#	bsbw	putc
+setchar:
+    movw	$TMSCP_GO,TMSCPsa(%rCSR)
+    moval	140(%rUBADDR),tmscpca+cmddsc(fp)
+    moval	tmscpca+cmddsc(fp),dscptr(%rCMD)
+    movb	$1,vcid(%rCMD)
+    moval	20(%rUBADDR),tmscpca+rspdsc(fp)
+    moval	tmscpca+rspdsc(fp),dscptr(%rRSP)
+    clrw	cntflgs(%rCMD)
+
+    movb	$M_OP_STCON,op(%rCMD)
+    clrw	modifier(%rCMD)
+    clrl	buffer(%rCMD)
+    clrl	bytecnt(%rCMD)
+    bsbw	tmscpcmd	
+#	movzbl	$'S,r0
+#	bsbw	putc
+
+    rsb
+
+tmscpcmd:
+    movw	$116,msglen(%rCMD)		# 116 -- size of an mscp packet
+    bisl2	$TMSCP_OWN,tmscpca+cmddsc(fp)
+    movw	$116,msglen(%rRSP)
+    bisl2	$TMSCP_OWN,tmscpca+rspdsc(fp)
+    movw	TMSCPip(%rCSR),r0		# start polling
+wait:	cvtwl	TMSCPsa(%rCSR),r0
+    bitl	$TMSCP_ERR,r0
+    beql	1f
+    movw	modifier(%rRSP),r1	# so we can read status easily
+    halt				# some error or other
+1:	tstl	tmscpca+4(fp)
+    beql	2f
+    clrw	tmscpca+4(fp)
+2:	bitl	$TMSCP_OWN,tmscpca+rspdsc(fp)
+    bneq	wait
+
+    # cmd done
+
+    clrw	tmscpca+rspint(fp)
+    extzv	$0,$5,status(%rRSP),r0
+    tstl	r0
+    beql	ok			# no errors
+    cmpl	$M_ST_TAPEM, r0
+    beql	ok			# not an error, just a tape mark
+    halt				# some unknown error
+ok:	rsb
+
+rew:	movb	$M_OP_REPOS,op(%rCMD)
+    movw	$M_MD_REWND|M_MD_IMMED,modifier(%rCMD)
+    clrl	buffer(%rCMD)
+    clrl	bytecnt(%rCMD)
+    bsbw	tmscpcmd
+#	movzbl	$'r,r0			# to indicate r)ewind
+#	bsbw	putc
+    movl	$-1,mtapa(fp)		# no blocks read yet
+    rsb
+    
+onlin:	movb	$M_OP_ONLIN,op(%rCMD)
+    clrw	modifier(%rCMD)
+    clrl	buffer(%rCMD)
+    clrl	bytecnt(%rCMD)
+    bsbw	tmscpcmd
+#	movzbl	$'O,r0			# to indicate O)nline
+#	bsbw	putc
+    rsb
+    
+    # Read the tp directory. Number of blocks to read is in tapa(fp),
+    # and will be read into memory starting at location 0.
+readdir:bsbw	rew			# beginning of tape
+    addl3	$2,$NUMDIR,tapa(fp)	# blocks to read (skip this 1k program)
+    clrl	r3			# using mem starting at 0 as free space
+    bsbw	rrec; bsbw rrec		# read and discard first two blocks --
+				    # those are this program
+    bsbw	rrec			# read and discard first tp block
+    clrl	r3			# reset starting place
+    incw	dirread(fp)		# show that directory is incore
+1:	bsbw	rrec
+    cmpl	mtapa(fp),tapa(fp)	# done yet?
+    blss	1b
+    rsb
+
+    # read 1 block from mag tape into page indicated by r3, which will
+    # automatically be incremented here. mtapa is also advanced.
+
+rrec:	bisl3	$MRV,r3,4(%rMAPREGS)	# using map register #1
+    movl	$BLKSIZ,bytecnt(%rCMD)	# how much to read
+    ashl	$9,$1,buffer(%rCMD)	# indicating mr #1. We just happen to
+				    # be on a page boundary, so filling in
+				    # the low 9 bits is not necessary.
+    movb	$M_OP_READ,op(%rCMD)
+    clrw	modifier(%rCMD)
+    bsbw	tmscpcmd
+#	movzbl	$'R,r0			# to indicate R)ead a record
+#	bsbw	putc
+    incl	mtapa(fp)
+    incl	r3
+    rsb
+end:
+//E*O*F mdec.tmscpboot.s//
+
+echo x - stand.Makefile.diff
+cat > "stand.Makefile.diff" << '//E*O*F stand.Makefile.diff//'
+*** /sys/stand/Makefile	Thu Jun  5 01:48:32 1986
+--- Makefile	Wed Dec  9 14:31:56 1987
+***************
+*** 8,25 ****
+  DESTDIR=/
+  INCPATH=-I. -I../h
+  CFLAGS=	-O ${INCPATH} -DSTANDALONE ${COPTS} 
+! COPTS=	-DVAX780 -DVAX750 -DVAX730 -DVAX8600
+  730OPTS=-O ${INCPATH} -DSTANDALONE -DVAX730
+  RELOC=	70000
+  
+! SRCS=	sys.c conf.c prf.c machdep.c \
+    autoconf.c hp.c hpmaptype.c ht.c idc.c mba.c mt.c rk.c \
+! 	rl.c tm.c ts.c up.c upmaptype.c uba.c uda.c ut.c \
+    drtest.c format.c up.old.c hp.old.c ../vax/dkbad.c
+  DUMMIES= bootxx.c confxx.c
+  DRIVERS=autoconf.o hp.o hpmaptype.o ht.o idc.o mba.o mt.o \
+    rk.o rl.o tm.o ts.o \
+! 	up.o upmaptype.o uba.o uda.o ut.o
+  # These drivers don't have ecc correction and bad sector forwarding;
+  # they are placed in the file system boot area for 750's.  If your
+  # root has bad sectors you can try and squeeze the newer drivers in...
+--- 8,25 ----
+  DESTDIR=/
+  INCPATH=-I. -I../h
+  CFLAGS=	-O ${INCPATH} -DSTANDALONE ${COPTS} 
+! COPTS=	-DVAX780 -DVAX750 -DVAX730 -DVAX8600 -DVAX630
+  730OPTS=-O ${INCPATH} -DSTANDALONE -DVAX730
+  RELOC=	70000
+  
+! SRCS=	sys.c conf.c prf.c machdep.c strings.c \
+    autoconf.c hp.c hpmaptype.c ht.c idc.c mba.c mt.c rk.c \
+! 	rl.c tm.c ts.c up.c upmaptype.c uba.c uda.c ut.c tmscp.c \
+    drtest.c format.c up.old.c hp.old.c ../vax/dkbad.c
+  DUMMIES= bootxx.c confxx.c
+  DRIVERS=autoconf.o hp.o hpmaptype.o ht.o idc.o mba.o mt.o \
+    rk.o rl.o tm.o ts.o \
+! 	up.o upmaptype.o uba.o uda.o ut.o tmscp.o
+  # These drivers don't have ecc correction and bad sector forwarding;
+  # they are placed in the file system boot area for 750's.  If your
+  # root has bad sectors you can try and squeeze the newer drivers in...
+***************
+*** 32,38 ****
+  
+  all: ${ALL}
+  
+! ${LIBSA}: sys.o conf.o ${DRIVERS} prf.o machdep.o dkbad.o
+    ar crv ${LIBSA} $?
+    ranlib ${LIBSA}
+  
+--- 32,38 ----
+  
+  all: ${ALL}
+  
+! ${LIBSA}: sys.o conf.o ${DRIVERS} prf.o machdep.o dkbad.o strings.o
+    ar crv ${LIBSA} $?
+    ranlib ${LIBSA}
+  
+//E*O*F stand.Makefile.diff//
+
+echo x - stand.autoconf.c.diff
+cat > "stand.autoconf.c.diff" << '//E*O*F stand.autoconf.c.diff//'
+*** /usr/tmp/autoconf.c	Wed Dec  9 14:38:25 1987
+--- autoconf.c	Wed Dec  9 14:31:56 1987
+***************
+*** 51,56 ****
+--- 51,70 ----
+  #undef	UTR
+  #undef	UMA
+  
++ 	/*
++ 	 * The map registers start right at 20088000 on the
++ 	 * ka630, so we have to subtract out the 2k offset to make
++ 	 * the pointers work ...
++ 	 */
++ #define	UTR(i)	((struct uba_regs *)((caddr_t) (NEX630+(i))-0x800))
++ #define	UMA	((caddr_t)UMEM630)
++ 
++ struct	uba_regs *ubaddr630[] = { UTR(0) };
++ caddr_t	umaddr630[] = { UMA };
++ 
++ #undef	UTR
++ #undef	UMA
++ 
+  configure()
+  {
+    union cpusid cpusid;
+***************
+*** 82,87 ****
+--- 96,107 ----
+	    umaddr = umaddr730;
+	    nmba = nuba = 0;
+	    break;
++ 	
++ 	case VAX_630:
++ 		ubaddr = ubaddr630;
++ 		umaddr = umaddr630;
++ 		nmba = nuba = 0;
++ 		break;
+    }
+    /*
+     * Forward into the past...
+***************
+*** 96,101 ****
+--- 116,128 ----
+		    ubaddr[i]->uba_cr = UBACR_ADINIT;
+    if ((cpu != VAX_780) && (cpu != VAX_8600))
+	    mtpr(IUR, 0);
++ 	/* 
++ 	 * enable external access to local memory
++ 	 * - aka the interprocessor doorbell
++ 	 * cf Emulex QD01/D disk controller technical manual, p 6-9
++ 	 */
++ 	if (cpu == VAX_630)
++ 	    *(ubamem(0,017777500)) = 0x20;
+    /* give unibus devices a chance to recover... */
+    if (nuba > 0)
+	    DELAY(2000000);
+//E*O*F stand.autoconf.c.diff//
+
+echo x - stand.conf.c.diff
+cat > "stand.conf.c.diff" << '//E*O*F stand.conf.c.diff//'
+*** /usr/tmp/conf.c	Wed Dec  9 14:38:26 1987
+--- conf.c	Wed Dec  9 14:31:57 1987
+***************
+*** 94,99 ****
+--- 94,102 ----
+  int	idcstrategy(), idcopen(), idcioctl();
+  #endif
+  int	rlstrategy(), rlopen(), rlioctl();
++ #if defined(VAX630)
++ int	tmscpstrategy(), tmscpopen(), tmscpclose();
++ #endif
+  #ifndef BOOT
+  int	tmstrategy(), tmopen(), tmclose();
+  int	tsstrategy(), tsopen(), tsclose();
+***************
+*** 117,122 ****
+--- 120,128 ----
+    { "rb",	idcstrategy,	idcopen,	nullsys,	idcioctl },
+  #endif
+    { "rl",	rlstrategy,	rlopen,		nullsys,	rlioctl },
++ #if defined(VAX630)
++ 	{ "tk",	tmscpstrategy,	tmscpopen,	tmscpclose,	nullioctl },
++ #endif
+  #ifndef BOOT
+    { "ts",	tsstrategy,	tsopen,		tsclose,	nullioctl },
+  #if defined(VAX780) || defined(VAX750) || defined(VAX8600)
+//E*O*F stand.conf.c.diff//
+
+echo x - stand.srt0.c.diff
+cat > "stand.srt0.c.diff" << '//E*O*F stand.srt0.c.diff//'
+*** /tmp/,RCSt1a19865	Tue Mar 22 17:22:57 1988
+--- srt0.c	Tue Mar 22 17:12:22 1988
+***************
+*** 3,9
+   * All rights reserved.  The Berkeley software License Agreement
+   * specifies the terms and conditions for redistribution.
+   *
+!  *	@(#)srt0.c	7.1 (Berkeley) 6/5/86
+   */
+  
+  #include "../vax/mtpr.h"
+
+--- 3,9 -----
+   * All rights reserved.  The Berkeley software License Agreement
+   * specifies the terms and conditions for redistribution.
+   *
+!  *	@(#)srt0.c	7.3 (Berkeley) 4/2/87
+   */
+  
+  #include "../vax/mtpr.h"
+***************
+*** 23,28
+    .globl	_configure
+    .globl	_cpu
+    .globl	_openfirst
+  
+    .set	HIGH,31		# mask for total disable
+  
+
+--- 23,30 -----
+    .globl	_configure
+    .globl	_cpu
+    .globl	_openfirst
++ 	.globl	_boothowto
++ 	.globl	_bootdev
+  
+    .set	HIGH,31		# mask for total disable
+  
+***************
+*** 27,33
+    .set	HIGH,31		# mask for total disable
+  
+  entry:	.globl	entry
+! 	.word	0x0
+    mtpr	$HIGH,$IPL		# just in case
+  #ifdef REL
+    movl	$RELOC,sp
+
+--- 29,35 -----
+    .set	HIGH,31		# mask for total disable
+  
+  entry:	.globl	entry
+! 	nop; nop			# .word	0x0101
+    mtpr	$HIGH,$IPL		# just in case
+  
+  #ifdef REL
+***************
+*** 29,34
+  entry:	.globl	entry
+    .word	0x0
+    mtpr	$HIGH,$IPL		# just in case
+  #ifdef REL
+    movl	$RELOC,sp
+  #else
+
+--- 31,37 -----
+  entry:	.globl	entry
+    nop; nop			# .word	0x0101
+    mtpr	$HIGH,$IPL		# just in case
++ 
+  #ifdef REL
+    # we need to do special stuff on microvax II
+    mfpr	$SID,r0
+***************
+*** 30,35
+    .word	0x0
+    mtpr	$HIGH,$IPL		# just in case
+  #ifdef REL
+    movl	$RELOC,sp
+  #else
+    movl	$RELOC-0x2400,sp
+
+--- 33,65 -----
+    mtpr	$HIGH,$IPL		# just in case
+  
+  #ifdef REL
++ 	# we need to do special stuff on microvax II
++ 	mfpr	$SID,r0
++ 	cmpzv	$24,$8,r0,$VAX_630
++ 	bneq	1f
++ 
++ 	/*
++ 	 * Were we booted by VMB?  If so, r11 is not boothowto,
++ 	 * but rather the address of the `Extended RPB' (see KA630
++ 	 * User's Manual, pp 3-21).  These tests were devised by
++ 	 * richl@tektronix, 11/10/87.
++ 	 */
++ 	cmpl	(r11),r11		# if boothowto, r11 will be small
++ 	bneq	1f			# and these will not fault
++ 	cmpl	4(r11),$0
++ 	bneq	1f
++ 	cmpl	8(r11),$-1
++ 	bneq	1f
++ 	tstl	0xc(r11)
++ 	bneq	1f
++ 
++ 	/*
++ 	 * Booted by VMB: get flags from extended rpb.
++ 	 * We can only guess at the boot device (here ra(0,0)).
++ 	 */
++ 	movl	0x30(r11),r11
++ 	movl	$9,r10			# device = ra(0,0)
++ 1:
+    movl	$RELOC,sp
+  #else
+    movl	$RELOC-0x2400,sp
+***************
+*** 35,40
+    movl	$RELOC-0x2400,sp
+  #endif
+  start:
+    movl	aedata,r0
+  clr:
+    clrl	(r0)+
+
+--- 65,74 -----
+    movl	$RELOC-0x2400,sp
+  #endif
+  start:
++ #ifndef REL
++ 	/*
++ 	 * Clear bss segment
++ 	 */
+    movl	aedata,r0
+  clr:
+    clrl	(r0)+
+***************
+*** 40,51
+    clrl	(r0)+
+    cmpl	r0,sp
+    jlss	clr
+! #ifdef REL
+! 	movc3	aedata,*$0,(sp)
+! /*
+!  * Reclear bss segment separately from text and data
+!  * since movc3 can't move more than 64K bytes
+!  */
+  dclr:
+    clrl	(r3)+
+    cmpl	r3,$_end
+
+--- 74,86 -----
+    clrl	(r0)+
+    cmpl	r0,sp
+    jlss	clr
+! #else
+! 	/*
+! 	 * `entry' below generates a pc-relative reference to the
+! 	 * code, so this works no matter where we are now.
+! 	 * Clear bss segment *after* moving text and data.
+! 	 */
+! 	movc3	aedata,entry,(sp)
+  dclr:
+    clrl	(r3)+
+    cmpl	r3,$_end
+***************
+*** 58,63
+    jmp	*abegin
+  begin:
+  #endif
+    mtpr	$0,$SCBB
+    calls	$0,_configure
+    movl	$1,_openfirst
+
+--- 93,101 -----
+    jmp	*abegin
+  begin:
+  #endif
++ 	movl	r11,_boothowto
++ 	movl	r10,_bootdev
++ again:
+    mtpr	$0,$SCBB
+    calls	$0,_configure
+    movl	$1,_openfirst
+***************
+*** 62,69
+    calls	$0,_configure
+    movl	$1,_openfirst
+    calls	$0,_main
+! #ifndef TP
+! 	jmp	start
+  #else
+    ret
+  #endif
+
+--- 100,107 -----
+    calls	$0,_configure
+    movl	$1,_openfirst
+    calls	$0,_main
+! #ifdef REL
+! 	jmp	again
+  #else
+    ret
+  #endif
+***************
+*** 75,80
+  #else
+  aedata:	.long	_edata
+  #endif
+  
+  __rtt:
+    .word	0x0
+
+--- 113,121 -----
+  #else
+  aedata:	.long	_edata
+  #endif
++ _bootdev:	.long	0
++ _boothowto:	.long	0
++ 	.text
+  
+  __rtt:
+    .word	0x0
+***************
+*** 84,89
+    jmp	start
+  #endif
+  
+    .globl	_badloc
+  _badloc:
+    .word	0
+
+--- 125,131 -----
+    jmp	start
+  #endif
+  
++ 	.globl	_badaddr
+    .globl	_badloc
+  _badloc:
+  _badaddr:
+***************
+*** 86,91
+  
+    .globl	_badloc
+  _badloc:
+    .word	0
+    movl	$1,r0
+    movl	4(ap),r3
+
+--- 128,134 -----
+    .globl	_badaddr
+    .globl	_badloc
+  _badloc:
++ _badaddr:
+    .word	0
+    movl	$1,r0
+    movl	4(ap),r3
+***************
+*** 89,94
+    .word	0
+    movl	$1,r0
+    movl	4(ap),r3
+    movl	$4,r2
+    movab	9f,(r2)
+    tstl	(r3)
+
+--- 132,138 -----
+    .word	0
+    movl	$1,r0
+    movl	4(ap),r3
++ 	movl	8(ap),r4
+    movl	$4,r2
+    movab	9f,(r2)
+    bbc	$0,r4,1f; tstb	(r3)
+***************
+*** 91,97
+    movl	4(ap),r3
+    movl	$4,r2
+    movab	9f,(r2)
+! 	tstl	(r3)
+  1:	clrl	r0			# made it w/o machine checks
+  2:	movl	$4,r2
+    clrl	(r2)
+
+--- 135,143 -----
+    movl	8(ap),r4
+    movl	$4,r2
+    movab	9f,(r2)
+! 	bbc	$0,r4,1f; tstb	(r3)
+! 1:	bbc	$1,r4,1f; tstw	(r3)
+! 1:	bbc	$2,r4,1f; tstl	(r3)
+  1:	clrl	r0			# made it w/o machine checks
+  2:	movl	$4,r2
+    clrl	(r2)
+***************
+*** 104,109
+    .word	5f-0b		# 2 is 750
+    .word	5f-0b		# 3 is 730
+    .word	6f-0b		# 4 is 8600
+  5:
+    mtpr	$0xf,$MCESR
+    brb	1f
+
+--- 150,159 -----
+    .word	5f-0b		# 2 is 750
+    .word	5f-0b		# 3 is 730
+    .word	6f-0b		# 4 is 8600
++ 	.word	5f-0b		# 5 is 8200
++ 	.word	1f-0b		# 6 is 8800
++ 	.word	1f-0b		# 7 is 610
++ 	.word	5f-0b		# 8 is 630
+  5:
+    mtpr	$0xf,$MCESR
+    brb	1f
+***************
+*** 116,118
+    addl2	(sp)+,sp		# discard mchchk trash
+    movab	2b,(sp)
+    rei
+
+--- 166,206 -----
+    addl2	(sp)+,sp		# discard mchchk trash
+    movab	2b,(sp)
+    rei
++ 
++ /*
++  * Short assembly versions of strcmp, strcpy, and strlen
++  * that do not use special instructions.
++  */
++ 	.globl	_strcmp
++ _strcmp:
++ 	.word	0
++ 	movq	4(ap),r0
++ 0:	cmpb	(r0),(r1)+
++ 	bneq	1f
++ 	tstb	(r0)+
++ 	bneq	0b
++ 	clrl	r0
++ 	ret
++ 1:	cvtbl	(r0),r0
++ 	cvtbl	-(r1),r1
++ 	subl2	r1,r0
++ 	ret
++ 
++ 	.globl	_strcpy
++ _strcpy:
++ 	.word	0
++ 	movq	4(ap),r0
++ 0:	movb	(r1)+,(r0)+
++ 	bneq	0b
++ 	movl	4(ap),r0
++ 	ret
++ 
++ 	.globl	_strlen
++ _strlen:
++ 	.word	0
++ 	movl	4(ap),r0
++ 0:	tstb	(r0)+
++ 	bneq	0b
++ 	decl	r0
++ 	subl2	4(ap),r0
++ 	ret
+//E*O*F stand.srt0.c.diff//
+
+echo x - stand.tmscp.c.diff
+cat > "stand.tmscp.c.diff" << '//E*O*F stand.tmscp.c.diff//'
+*** /usr/tmp/tmscp.c	Wed Dec  9 14:38:32 1987
+--- tmscp.c	Wed Dec  9 14:31:58 1987
+***************
+*** 46,53 ****
+  #include "../machine/pte.h"
+   
+  #include "../h/param.h"
+! #include "../h/gnode.h"
+! #include "../h/devio.h"
+   
+  #include "savax.h"
+   
+--- 46,53 ----
+  #include "../machine/pte.h"
+   
+  #include "../h/param.h"
+! #include "../h/inode.h"
+! #include "../h/fs.h"
+   
+  #include "savax.h"
+   
+***************
+*** 177,182 ****
+--- 177,188 ----
+	    _stop("tms: bad offset");
+    else if (io->i_boff > 0)
+	    /*
++ 		 * rewind tape -- incidentally clears serious exception,
++ 		 * if present
++ 		 */
++ 		tmscprew(io);
++ 
++ 		/*
+	     * Skip forward the appropriate number of files on the tape.
+	     */
+	    {
+***************
+*** 193,202 ****
+  tmscpclose(io)
+    register struct iob *io;
+  {
+! 	tmscpcmd(M_OP_REPOS, M_MD_REWND);
+  }
+   
+-  
+  /*
+   * Set up tmscp command packet.  Cause the controller to poll to pick up
+   * the command.
+--- 199,224 ----
+  tmscpclose(io)
+    register struct iob *io;
+  {
+! 	tmscprew(io);
+  }
++ 
++ /*
++  * rewind the tape. Clear the serious exception that may have occured if we
++  * hit EOF previously.
++  */
++ tmscprew(io)
++     register struct iob *io;
++ {
++ 	tmscp.tmscp_cmd.mscp_unit = io->i_unit;
++ 	tmscp.tmscp_cmd.mscp_buffer = 0;
++ 	tmscp.tmscp_cmd.mscp_bytecnt = 0;
++ 	if (tmscpcmd(M_OP_REPOS, M_MD_REWND|M_MD_CLSEX) == 0) {
++ 		printf("tms: rewind failed\n");
++ 		return(1);
++ 		}
++ 	return(0);
++ }
+   
+  /*
+   * Set up tmscp command packet.  Cause the controller to poll to pick up
+   * the command.
+***************
+*** 281,291 ****
+    ubafree(io, ubinfo);
+    /*
+     * Detect hitting tape mark so we do it gracefully and return a
+! 	 * character count of 0 to signify end of copy.  Rewind the tape
+! 	 * before returning.
+     */
+! 	if ((mp->mscp_status & M_ST_MASK) == M_ST_TAPEM)
+	    return(0);
+    return(io->i_cc);
+  }
+   
+--- 303,315 ----
+    ubafree(io, ubinfo);
+    /*
+     * Detect hitting tape mark so we do it gracefully and return a
+! 	 * character count of 0 to signify end of copy. Clear the exception
+! 	 * and rewind before returning.
+     */
+! 	if ((mp->mscp_status & M_ST_MASK) == M_ST_TAPEM) {
+! 		tmscprew(io);
+	    return(0);
++ 		}
+    return(io->i_cc);
+  }
+   
+//E*O*F stand.tmscp.c.diff//
+
+echo x - stand.uda.c.diff
+cat > "stand.uda.c.diff" << '//E*O*F stand.uda.c.diff//'
+*** /usr/tmp/uda.c	Wed Dec  9 14:38:34 1987
+--- uda.c	Wed Dec  9 14:31:59 1987
+***************
+*** 7,12 ****
+--- 7,20 ----
+   */
+  
+  /*
++  * decided NOT to put an RCS header into standalone code -- don't know how
++  * critical space may be ...
++  *
++  *  $Header: uda.c,v 1.1 87/03/27 16:26:37 richl Exp $
++  *
++  */
++ 
++ /*
+   * UDA50/RAxx disk device driver
+   */
+  #include "../machine/pte.h"
+***************
+*** 48,62 ****
+  int ra25_off[] = { 0, 15884, 0, -1, -1, -1, 25916, -1 };
+  int ra60_off[] = { 0, 15884, 0, 49324, 131404, 49324, 242606, 49324 };
+  int ra80_off[] = { 0, 15884, 0, -1, 49324, 49324, 49910, 131404 };
+- #ifndef	UCBRA
+- #ifdef RA_COMPAT
+- int ra81_off[] = { 0, 16422, 0, 49324, 131404, 412490, 375564, 83538 };
+- #else
+- int ra81_off[] = { 0, 16422, 0, 375564, 391986, 699720, 375564, 83538 };
+- #endif
+- #else
+  int ra81_off[] = { 0, 15884, 0, 242606, 258490, 565690, 242606, 49324 };
+! #endif
+  
+  struct mscp *udcmd();
+  static int ratype[NRA];
+--- 56,64 ----
+  int ra25_off[] = { 0, 15884, 0, -1, -1, -1, 25916, -1 };
+  int ra60_off[] = { 0, 15884, 0, 49324, 131404, 49324, 242606, 49324 };
+  int ra80_off[] = { 0, 15884, 0, -1, 49324, 49324, 49910, 131404 };
+  int ra81_off[] = { 0, 15884, 0, 242606, 258490, 565690, 242606, 49324 };
+! int rd52_off[] = { 0, 15884, 0, -1, -1, -1, 25650, -1 };
+! int rd53_off[] = { 0, 15884, 0, -1, 0, 33440, 49324, 15884 };
+  
+  struct mscp *udcmd();
+  static int ratype[NRA];
+***************
+*** 128,133 ****
+--- 130,141 ----
+	    break;
+    case    81:
+	    off = ra81_off[io->i_boff];
++ 		break;
++ 	case    52:
++ 		off = rd52_off[io->i_boff];
++ 		break;
++ 	case    53:
++ 		off = rd53_off[io->i_boff];
+	    break;
+    default:
+	    printf("uda%d: don't support ra%d's\n", i, ratype[i]);
+//E*O*F stand.uda.c.diff//
+
+exit 0

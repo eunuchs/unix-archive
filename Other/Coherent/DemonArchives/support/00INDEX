@@ -1,0 +1,20 @@
+ginstall.tgz         11528 GNU install binary and manual page
+perl.tgz             407370 complete binary distribution of Perl 4.036
+users.tgz            38245 tool for user administration Coherent 4.2
+gnubifl.tgz          97227 GNU bison + flex binaries and manual pages
+gld2.4.z             76920 GNU linker 2.4
+coh42sdb.tar.z       693579 all you need for source code debuging under 4.2
+gnubin.tgz           414206 GNU awk bash m4 install make patch sed binaries +
+                     manuals
+dialog.z             30639 create color menus from shell scripts sources in
+                     cohsrc
+emacs.tgz            1083818 GNU emacs 18.59 binary distributions
+cd-kit.tgz           364794 CD-ROM support for Coherent 4.2
+gdb49.z               329574 GNU source code debuger 4.9
+gtar.z                49302 GNU tar 1.11.2 binary
+gunzip.Z              29263 GNU unzip binary
+bm.o.z                825 Harry C. Pulley's generic bitmap driver compiled
+                     under r70
+gmake.z               53067 GNU make 3.69 binary
+gsed.z                18026 GNU sed binary
+gm4.z                 30279 GNU m4 binary

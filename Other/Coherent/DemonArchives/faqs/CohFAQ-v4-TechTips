@@ -1,0 +1,1002 @@
+From oznet.demon.co.uk!news.demon.co.uk!dispatch.news.demon.net!demon!tank.news.pipex.net!pipex!news.mathworks.com!zombie.ncsc.mil!simtel!harbinger.cc.monash.edu.au!bunyip.cc.uq.oz.au!nanguo!earth Sun Sep  3 12:01:10 1995
+Newsgroups: comp.os.coherent
+Path: oznet.demon.co.uk!news.demon.co.uk!dispatch.news.demon.net!demon!tank.news.pipex.net!pipex!news.mathworks.com!zombie.ncsc.mil!simtel!harbinger.cc.monash.edu.au!bunyip.cc.uq.oz.au!nanguo!earth
+From: earth@nanguo.chalmers.com.au (Robert Chalmers)
+Subject: Coherent FAQ. Tech-tips for 4.0 & 4.2
+Last-Modified: Tue Jun  6 21:01:17 1995 EST
+Reply-To: robert%chalmers.com.au@bunyip.cc.uq.oz.au
+Archive-Name: coh-faq/ver.4.2
+Organization: China House.
+Date: Sat, 2 Sep 1995 12:33:50 GMT
+Approved: none
+Message-ID: <DEA2wE.AD6@nanguo.chalmers.com.au>
+Lines: 987
+
+	
+Some general notes:
+
+no contributions have been forthcoming. Sources are still available
+from nanguo.chalmers.com.au 
+
+When used alone, the word "Coherent" is used to mean any of the
+versions that may have been released.
+
+
+Many people have contributed to this list, directly or indirectly.  In
+some cases, an answer has been adapted from one or more postings on the
+comp.os.coherent newsgroup.  Our thanks to all of those who post answers.
+The name (or names) at the end of an entry indicate that the information
+was taken from postings by those individuals; the text may have been
+edited for this FAQ.  These citations are only given to acknowledge the
+contribution.
+
+	The Mark Williams Company is no longer trading. 
+	There will be no further releases of Coherent.
+
+
+      C O H E R E N T  T I P S,  T R I C K S  a n d  T R A P S.
+
+
+A N  I N T R O D U C T I O N  T O  C O H E R E N T   S E T U P S  &  F I X E S
+
+A compendium of tips, of tricks, and of traps for the innocent & the unwary
+
+
+Table of Contents.
+  	  ------------ Introduction --------------
+		Serial & Communication Things
+	        =============================
+A1.	Those perennial problems with COM ports.
+A2.	Using ASY ports as opposed to COM ports.
+A3.	Serial Printers and how to..............
+A4.	UUCP, pronounced (y)ukcup, and Taylor...
+A5.	A Thousand and One Modems Made easy.....
+A6.	Hard Wiring... Hot Irons, Long Nights...
+          ----------------------------------------
+             Electronic Mail, and News Handling
+             ==================================
+*Mail, changing to ELM, the mail handler.
+*Using ELM utilities, like autoanswer....
+*Putting smail V3.2 onto your system.....
+*Using Wnews, some changes and tips......
+*Let's not forget TIN, the news reader...
+*Beware permissions on the above things..
+
+   * Yet to be written. watch this space.
+----------------------------------------
+	Installation Woes, Compiling Headaches..
+	========================================
+A12.	Help With Installation..................
+A13.	Compiling programs......................
+A14.	Creating a Bootable Floppy..............
+A15.	Rescuing A Root Partition...............
+	----------------------------------------
+	User Contributions, Random Ramblings....
+A16.	Shell scripts...........................
+R16.	Setting tty type........................
+R17.	Getting your latest patches & Updates...
+	========================================
+
+Introduction --------------
+
+	If you feel that you have a contribution to make, either by 
+way of a short shell script, a tip, trick or trap, please contribute 
+them to this document. Post them to robert@chalmers.com.au, set out if
+you like, with your name attached so you get the credit.
+
+
+	Serial & Communication Things
+	-----------------------------
+A1.	Those perennial problems with COM ports. Ver 4.0 & 4.2
+
+By far the most common question asked about com ports on Coherent
+systems is that relating to the ability to dial into, and out of the one
+com port. There has always been an element of chance involved with this,
+up to now. The whole problem is in the setting out of the /etc/ttys file, 
+more specifically, the order in which the references to each port are listed.
+
+ IT ALSO REQUIRES that /etc/enable have the following permissions.
+-r-s--s--x  3 root       root          8892 Mon May 23 22:11 /etc/enable
+
+This up to now undocumented feature has caused many a sleepless night for more
+than a few users I suspect. The problem of course surfaces most often when
+using uucp or uucico, or cu. Communications programs like ckermit, kermit
+and others aren't smart enough to know about disabling ports, so you simply
+have to do it for them. Actually, they don't need to know.
+	The other part of the problem surfaces because some assumptions are
+made about your needs. If you are going to dial OUT of a port, it seems it
+doesn't need to be in the ttys file. So long as it is NOT enabled, I would
+put it there if only to keep track of just which ports you are using.
+
+
+Lets suppose that you have 4 com ports on your computer. If you are using 
+the asy ports, the same rules apply. We will come to asy in a later section.
+Your /etc/ttys file will look something like this;
+
+	0lPcom1l
+	0lPcom1pl
+	1rPcom2r
+	0lPcom2l
+	0lPcom3pl
+	1lPcom4pl
+	1lPcolor0
+	1lPcolor1
+	1lPcolor2
+	1lPcolor3
+	1lPcolor4
+	1lPcolor5
+	1lPcolor6
+	1lPcolor7
+	0lPconsole
+
+Ignore the color settings, they are just the console multiscreens. The first
+six lines are the ones we are interested in.
+
+	0lPcom1l
+	0lPcom1pl
+	1rPcom2r
+	0lPcom2l
+	0lPcom3pl
+	1lPcom4pl
+
+The modem in this case takes calls incoming on COM2.
+Now you will notice that I have the enabled line, com2r, placed in order of
+precedence before com2l. It's as simple as that. If you have com2l in order
+before the enabled line com2r, you get the message ;
+
+	Sorry, can't open connection: /dev/com2l: Device busy (mount)
+
+Note of course, that I am using com2. You may be using any com port. The same
+rule applies. The enabled 'r' port must come before the disabled 'l' port
+where the one port is being used by uucp for both incoming and outgoing calls.
+If you want to use ckermit on the port, then you must log in as root, and
+type 'disable com2r', run ckermit, and when finished, type 'enable com2r'.
+But for uucp/uucico/cu, the above is the fix. r before l, and permissions
+on etc/enable.
+
+
+A2.	Using ASY ports as opposed to COM ports. Version 4.0 & 4.2
+	----------------------------------------
+asy ports are exactly the same as the com ports that are a left over from
+the old 286/V3.1 days. Indeed, there is some value in learning and becoming
+used to using the asy ports, you never know when you may decide to install
+a multi/port board. But even if you never do, asy ports are a direct, drop in
+replacement for the com port terminology, and the drivers are a little more 
+up-market, with more control allowable on ports, at a technical level.
+
+
+However, for normal use, follow the instructions in the manual for making 
+the appropriate /dev/asyxxxx entries, then go through your /etc/ttys file
+and replace the com port words, with the asy words. 
+
+A word of caution though: asy ports are numbered from 0 to 3, not 1 to 4.
+Any where else you use com port notation, like in the Taylor uucp configuration
+files, you must substitute the com references with asy.
+
+If you are using the /dev/modem link to the port device, give it up, you'll go
+blind... Use the correct port device name. /dev/modem is only a link to the
+actual port that is being used. /dev/modem <--- ln ---> /dev/com1l for example.
+So why not actually use /dev/com1l, and avoid any confusion. You will find that
+as you start using more ports and devices, the forgotten link to /dev/modem
+will confuse the issue something terrible. The only link I would allow to a 
+device is in the case of printers, where the naming convention is consistent
+across most unix platforms, and the floppy disk drives, where the same applies.
+ But never on modem and tty ports.
+
+
+A3.	Serial Printers and how to.............. Version 4.0 & 4.2
+	-----------------------------------------
+
+Not a lot is said about attaching serial printers, so here goes. Very easy
+really. Take the ports I have listed above: You can see from the comments
+that you can run a variety of things, even on a small system.
+
+Note, the # sign is to comment the line, in case of system interpretation.
+# 0lPasy00l      -- a cable to another computer, used sometimes as a dumb tty.
+# 0lPasy00pl     -- just in case I need it.
+# 1rPasy01r      -- dial in line to the modem. Port enabled. autoanswer enabled.
+# 0lPasy01l      -- dial out line, through the modem of course.
+# 0lPasy02pl     -- line to the HUGE ancient serial printer.
+# 1lPasy03pl     -- enabled tty, a DOS machine in the office used as a terminal.
+
+You will notice the arrangements with the polled ports, and the interrupt 
+driven ports.  Because I use both asy0 and asy1 ( com1 and com2 ) in 
+interrupt driven mode, then I must use the polled mode on the other ports, 
+asy02 and asy03 ( com3 and com4 ). asy03 is polled, because the modem is on 
+asy01. I should swap the enabled tty port with the printer port, 
+and run the tty port in interrupt, but I have made up the cables now, and 
+couldn't be bothered changing them.... I'll just pay the penalty. Not a lot 
+anyway.
+
+So, all a standard serial printer needs is lines 2, 3 and 7. TXD. RXD. GND. Get
+them in the right order. 
+
+The computer port TXD <----> RXD printer port.  2
+The computer port RXD <----> TXD printer port.  3
+The computer port GND <----> GND printer port.  7
+
+Turn on your printer, and type 
+
+cat /etc/uucpname > /dev/com4l	(If that's where you have your printer)
+
+If all is well, your printer should print out your computer's name. 
+If all is not well. Check the cables. Check that you have the device 
+names right in /etc/ttys, check that you have the devices in the /dev 
+directory, and check that your printer is set to 9600bps. The default.
+ Sometimes this step can even require that you reboot, once you know 
+everything is in the right place, a reboot can sometimes be needed to 
+reset the actual port cards.
+Link your lp device to the appropriate port.
+
+Particular to Version 4.2. The Print Spooler.
+Now, the manual goes into getting printers to work in some detail, and does a
+fine job of explaining it all. I'll just add my 2 cents worth, on the subject
+of serial printers, and clear up a few areas of confusion.
+
+
+Having established that you can send something to the printer, now is the time
+to set up the lp print spooler so you can use the serial printer. In the 
+directory /usr/spool/mlp you will find a file called controls. Use vi, and
+go to the end of the file, it should look something like this;
+
+# logroll     This is the time at which the log file is renamed to log.o
+#             and a fresh log file is begun.  The time is expressed in hours
+#             and defaults to a week.  This is done so that the log file
+#             does not grow without bounds.
+#
+logroll = 240
+
+printer = disk, /dev/null, disk
+printer = hpfont, /dev/rhp, default
+printer = main, /dev/lp, default
+printer = draft, /dev/lp, default
+default = draft
+
+Now, notice that I have added a printer, called draft, and then changed
+the default from main to draft. I took a while to figure out that the 
+default printer was actually called "main" in the install. Not the main printer,
+as I thought it was, and what was the main printer called..... main.!! Anyway,
+I wanted my default printer, the serial printer, called "draft", and I had
+put it on to the device /dev/lp. NOTE: This means that any other printer can
+not use the named device /dev/lp, unless it is a serial printer. To do this,
+you simply type:
+
+ln -f /dev/asy03pl /dev/lp
+
+and /dev/lp is now linked to, in my case, /dev/asy03pl. My serial printer
+port. Now when I type "man printer | lp", out it comes on the draft serial
+printer. You should edit this file by hand. lpadmin just doesn't do it!
+
+
+A4.  Version 4.0 & Version 4.2
+Notes and tips on UUCP and Fast Modems.  and in the near future. Taylor.
+From Peter Wemm. Dialix. Perth
+
+>I am womdering if there is a definitive answer to the qquestion of
+>error checking modems, compression and uucp.?
+>	Does one turn off compression/error checking when using uucp?
+>	Does one turn off compression only when using uucp?
+>	Does one turn them both off when using uucp.
+>	Does it matter at all what they are set at.?
+
+We have personally found that the g(64,3) protocol is *really* lousy
+on long-distance lines. Since the round-trip-time is so long, the
+throughput with a 192 byte window sucks.  Any increase in
+round-trip-time makes this worse.. correction/compression can add up
+to 100ms per trip or so, adding a 2/10 second delay for a round-trip.
+We *usually* find that the slower throughput is worse than the
+corresponding errors would have caused.
+
+However, as soon as you get a more advanced protocol g(64,7) or
+(g1024,7) you only benefit from correction/compression.  the 'i'
+protocol *loves* it.(i1024,16)
+
+Remember:  error-correction runs at 120% of the line speed..  Why?
+Because it speaks syncronously over the line...  ie: the start and
+stop bits of the bytes are stripped.  So, with no correction, a 9600
+bps line is capable of 960 bytes/sec (each character is 10 bits).
+Just by turning correction on, you *immediately* get 9600/8 = 1200
+bytes/sec..  The only cost is a longer transmission delay.  decent,
+smart compression can only make this better. V42bis will compress a
+packet, and then send the sortest of the compressed and uncompressed
+data.  so, if you get 1200 bytes/sec, it should theoretically never
+get worse than that.
+
+However, the handshake-delays caused by the computers at each end are
+usually what slow down the throughput.  That's why taylor-uucp's "i"
+protocol is so popular... it has practically no handshake delays.
+
+-- 
+Peter Wemm <peter@DIALix.oz.au> - NIC Handle: PW65 - The keeper of "NN"
+
+
+A5.
+ Help with serial ports and terminals:  Version 4.0 & Version 4.2
+
+If you follow the installation instructions, and choose their defaults,
+you will end up with a ttys file very similar to the following. (Ver 4.0)
+
+	0lPcom1l <--|
+	0lPcom2l    | -- The four standard COM1, COM2,
+	0lPcom3l    |	 COM3 & COM4 ports. NOT CONFIGURED.
+	0lPcom4l <--|    See the notes below for configuration.
+	1lPmono0 <--|
+	1lPmono1    | -- The terminal virtual consoles.
+	1lPmono2    |    These REPLACE the V3.x's 1Pconsole
+	1lPmono3 <--|     entry in that versions ttys file.
+			  You dont have to touch these.
+
+
+For example, on my system I had the following hardware.
+One standard HDD/FDD Controller (IDE) with COM1, COM2 and LPT1
+on board, and enabled. These live at 3F8 - IRQ4, and 2F8 - IRQ3. 
+LPT1 uses 378 and IRQ7.
+
+One standard Taiwan Multi I/O card with 2 COM ports, one printer
+port, and one game port. This card can be configured as COM1/2 
+or COM3/4, and LPT1 or LPT2. I have the jumpers set for the
+following. COM3 at 3E8 - IRQ4 and COM4 at 2E8 - IRQ3, with the
+second printer, LPT2 at 278 - IRQ5.
+
+Now, setting them up, as applied to this type of 2 board setup.
+If you are not sure if your installation configured the ports correctly,
+then follow the instructions in the Release Notes and Installation Guide
+under 'Asy' exactly as they appear, regarding the making of the devices.
+Dont change anything. yet.
+Now, the thing to note is the rule on IRQs and Polling. If you are using
+COM2 as your modem port, (seems to be the most used option), and COM1
+as a terminal connection, and both are using IRQs, then the other two
+must be Polled. COM3 and COM4 must be Polled. Observe my settings listed,
+
+
+#	0lPcom1l --- Serial terminal on COM1. IRQ4
+#	1rLcom2r --- Modem, incoming, on COM2. IRQ3
+#	0lLcom2l --- Modem, outgoing (the same modem) on COM2. IRQ3
+#	0lPcom3pl --- Serial terminal on COM3. Polled
+#	0lPcom4pl --- Serial terminal on COM4. Polled
+#	1lPmono0 -|
+#	1lPmono1  |
+#	1lPmono2  | --virtual screens.
+#	1lPmono3 -|
+#
+
+The Serial terminals are shown as 'disabled' in the above listing,
+but when they are connected, you simply type 'enable com3pl' and
+presto!, you get a login prompt on that terminal.
+
+A6.		Getting The Wiring Right.... Version 4.0 & 4.2
+============================================
+Install with all defaults.
+Run the three configuration commands in the Asy entry.
+The asyxxx entries in your /dev directory are the prototypes for
+the comxx devices, so you can ignore them for the purposes of this.
+Decide which lines you will use, and check your IRQ/Poll combination.
+Check your physical wiring.
+
+	For terminals, you only need three wires:
+
+	D25 connectors. TXD to RXD, RXD to TXD, Common Ground.
+	2 --> 3
+	3 <-- 2
+	7 <-> 7
+	D9 connector. TXD to RXD, RXD to TXD, Common Ground.
+	2 --> 3
+	3 <-- 2
+	5 <-> 5
+
+
+In the above setting, to call out on the modem with ckermit, you MUST type
+ 'disable com2r' before you can call out on com2l. When you are
+finished, type 'enable com2r' to put your modem back on line.
+
+Other things of note: Old Xt's with a com port and any version of
+TELIX/PROCOMM/etc etc make good cheap terminals, as do old terminals
+that businesses throw away as obsolete.
+
+Windows 3.1's Terminal will emulate a vt100. If you have a second
+PC connected to a Coherent serial port, its 'almost!' like
+having Xterm running Coherent in a Term window. You can even cut and
+paste between Word for Windows etc and vi. So who needs X I ask?
+
+TIPS.
+
+Well, just a couple here. If you only have the standard com1 to com4, there is
+no need to patch the /etc/default/async file, unless you want to change the 
+default 9600 speed for the port.
+
+Make sure you get the r before the l for any port that has a login on it.
+
+DON'T mess with the permissions on any of the devices. The defaults will do
+just fine. 
+
+
+/------------------------------------------------------------------\
+| Installation Woes, Compiling Headaches..			   |
+\------------------------------------------------------------------/
+
+A12.	Version 4.0 specific.
+Help With Installation:     From: Bob Hemedinger <support@mwc.com>
+-----------------------
+
+1) I'm updating from a previous version and am being asked for 
+   a serial number from a registration card. I don't have one.
+
+	- updating users do not need new serial numbers. Use
+	  the number supplied with your current version. If you don't
+	  know what it is, read the file /etc/serialno.
+
+2) I'm seeing various characters in the upper right hand corner of
+   my screen when Coherent boots.
+
+	- These are used by MWC for debugging some installation
+	  problems. If installation fails to boot, the last character(s)
+	  displayed in the corner of the screen will give a significant
+	  clue as to where the failure occurred.
+
+3) I get a core dump during the installation. The last digits of the
+   eip register are 2EF.
+
+	- Call MWC for a new set of installation diskettes.
+
+4) I see a prepare_gift() message when Coherent boots.
+
+	- The tertiary boot program, /tboot, is attempting to read your
+	  CMOS to get your hard drive parameters and other information.
+	  This process met with an unexpected error, usually related to
+	  the initialization of cache memory. If Coherent continues to boot
+	  and run, ignore the message. If the boot fails, try this:
+
+		- hit <space> when prompted by tboot to abort the 
+		  boot process. Type 'info' at the first '?' prompt.
+		  Ignore the returned data. At the next '?' prompt,
+		  type 'update' or 'begin' if updating or installing,
+		  or enter the name of the kernel to boot. Follow
+		  this procedure exactly. Do NOT try the 'info' command
+		  more than once.
+
+5) When booting the installation, I come to a # prompt with a message
+   displayed that I didn't boot properly and need to reboot.
+
+	- tboot failed to pass what you typed at the '?' prompt
+	  to the installation program. A prepare_gift() message
+	  was probably displayed before this, sometimes too quickly
+	  to be seen unless one is looking for it specifically.
+	  One can either reboot and use the procedure from item #4
+	  (above), or type 'build' at the # prompt to install, or
+	  type 'build -u' at the # prompt to update from 3.x.
+
+6) During boot, I see a message about not being able to release a
+   modified buffer.
+
+	- In most cases, Coherent will continue to boot normally. In some,
+	  the message will scroll endlessly. This is an indication of an
+	  incompatible bios and is a very rare case. The Epson bios set
+	  has sometimes produced this problem. If at all possible, update
+	  the bios chips in the computer. Phoenix is the bios chipset
+	  MWC recommends.
+
+7) After installing disk #1, I reboot Coherent from the hard drive, but
+   am never prompted to enter a diskette -or-, I reboot Coherent from the
+   hard drive, and the system hangs with a Coherent banner message on the
+   screen.
+
+	- Thou hast most likely chosen to use either virtual consoles,
+	or no virtual consoles but did select a loadable keyboard
+	table. Coherent is hanging at the point where keyboard initialization
+	takes place, indicating that the keyboard does not properly support
+	IBM scan code 3. This is a different keyboard mode than DOS 
+	uses, and probably a good 10% of keyboards of Asian origin will
+	have problems with this. Reinstallation without virtual consoles
+	nor loadable keyboard tables should resolve this.
+
+8) All diskettes install without a hitch, but after rebooting, fsck finds
+   all sorts of DUP blocks and bad i-nodes.
+
+	- This is rare, but is usually the result of installing onto a
+	  large partition. This is possibly related to sector translation
+	  firmware and/or the manner in which the firmware deals with
+	  bad blocks... we don't know yet. Break the large partition into
+	  smaller partitions and try installation again. If this is an ESDI
+	  drive, and the controller is doing sector translation, try switching
+	  it to native mode.
+
+
+A13.
+Compiling programs:	Version 4.0 specific
+-------------------
+
+
+1) The compiler is complaining about not enough memory.
+
+	- You may have a significant amount of memory, say 2 or 4 Megabytes,
+	  but one must also account for other running processes. The compiler
+	  by default tries to do all of its work in core (memory). If it
+	  aborts due to not enough memory, then add a -T0 to your cc command
+	  line. This will force the compiler to use temporary files on
+	  the hard drive, rather than in core.
+
+2) I'm trying to port software from a bbs or the net. Is Coherent closer to
+   System V or BSD?
+
+	- You should select System V wherever possible. We tend to 
+	  avoid BSDisms.
+
+3) When compiling a package, the linker complains that getwd() doesn't
+   exist. This worked under 3.x. What happened?
+
+	- With Coherent 4.0, we have gone to getcwd() in place of
+	  getwd(). We have supplied _getwd() for people that need
+	  getwd(), but we are planning on dropping this in the
+	  future.
+
+A14.
+ Creating a Bootable Floppy for Emergency Use:		Version 4.2 specific
+  Udo and Vlad have done a MARVELOUS job here. -- Robert Chalmers
+
+A couple of little mods by Bob.
+
+The following works for 4.2. Cut it and save it to mkboot.uue.
+Unencode, and uncompress. 
+This avoids the problem of mail/news translating parts of the shell 
+code.
+NOTE: You should hand copy some of the specialised files that you might
+want, onto the disk. Space is at a premium.
+
+"=========================== cut here ================================="
+begin 755 mkboot.sh.Z
+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
+B87Y A"$F&418U!@/IC(GH0,MD )?22NGE9=ZN9=\V9?D 4UO
+ 
+end
++  -------------------------End Here-------------------------------
+
+
+
+A15.	watch this space.
+
+A16. Version 4.0 & version 4.2
+/-----------------------------------------------------------------\
+| User Contributions, Random Ramblings....			  |
+\-----------------------------------------------------------------/
+====================================================================
+
+I have a mixed DOS/Coherent system which I want to turn back into a
+pure DOS system.
+
+enter the following command from the DOS prompt:
+FDISK /MBR <CR>
+this will rewrite the Master Boot Record and exit
+" ============================================================== "
+
+
+I have installed MGR successfully and there are no big problems with 
+Coh. 4.0.1r77, but my mouse (Truemouse - Model TX3000) will not work
+correct. After starting MGR the mousecursor will jump around the 
+screen without any sense and sometimes there are menus and windows on 
+the screen too. 
+
+I have also a original Microsoft mouse and this mouse will work fine.
+
+Are there any additional things that I can do to get the Truemouse 
+running with MGR ?
+
+  Look at the baud-rate at which your mouse is working.
+
+  	Microsoft mice are normally operated at 1200.
+  	Logitech's default baud-rate is 2400.
+
+  I've seen (IBM-)mice that worked at 9600 baud ...
+
+  I hope this helped ...
+
+R16. Setting the term type
+There are a number of inquiries about setting the TERM type depending on
+the line being used. I found the following in a book called "Unix
+Administration Guide for System V". Works fine.
+
+in /etc/ttytype  ( rw.r..r.. /etc/ttytype )
+
+ansipc color0
+ansipc color1
+ansipc color2
+ansipc color3
+vt100 com2r
+vt100 com1pl
+
+	Use what ever combinations suit your specific setup.
+
+In /usr/local/bin/newtset ( rwxr.xr.x /usr/local/bin/newtset )
+
+( remove the + signs )
+
++ :
++ # newtset - get terminal type from /etc/ttytype
++ TTY=`tty | sed 's./dev/..'`
++ set - `grep $TTY /etc/ttytype`
++ echo $1
+
+In your .profile ( sh or ksh ) put the line,
+
+TERM=`newtset`
+export TERM
+
+assuming that /usr/local/bin is in the system default path.
+
+Logging off unused terminals
+Thanks to Ray Swartz, President of Berkley Decision/Systems, and author
+of the "Answers to Unix" column in Unix World for the following script.
+A little bit of tweeking to get it Coh-aware, and it works fine.
+
+Having a problem with users leaving terminals logged on for hours on end
+while they go off to play golf? apart from bad security, it can tie up
+valuable serial lines - not to mention phone lines. It can also cost the
+unwary a fortune, if timed calls are being used, and they dont hang up
+correctly. This script watches the port specified, for the time specified
+at the top of the script, and if there is no activity for a set period,
+it will gracefully shut down running pid's and hangup.
+
+Remove the + signs.
+
+============================ cut here =========================
++ MAXTIME=2        # minutes of idle time allowed
++ DEVMODEM=com1pl  # terminal line to watch
++ while true; do
++     if ps -e | grep $DEVMODEM | grep getty > /dev/null
++     then  # don't try to kill getty
++         count=`expr 60 \* $MAXTIME `
++         sleep $count
++     fi
++     set `date | awk '{print $4}' | sed 's/:/ /g'`
++     now=`expr $1 \* 60 + $2 `
++     lastentry=`ls -lu /dev/$DEVMODEM | sed 's/:/ /' |
++                awk '{print $10 * 60 + $11}'`  # end of pipeline
++     idle=`expr $now - $lastentry `
++     if [ $idle -ge $MAXTIME ]
++     then
++         echo "\007
++ This terminal have been idle for $MAXTIME minutes.
++ You will be logged off in 1 minute unless you
++ press <return> now." > /dev/$DEVMODEM
++         sleep 60    # wait for a minute
++         logouttest=`ls -lu /dev/$DEVMODEM | sed 's/:/ /' |
++                     awk '{print $10 * 60 + $11}'`  # end of pipeline
++         if [ $lastentry -eq $logouttest ]
++         then
++             ps -e | awk '$1 == "'$DEVMODEM'" {print $2}' |
++             sort -nr | while read pid  # kill in reverse order
++             do
++                 kill -1 $pid   # send the hangup signal
++             done
++         fi
++     fi
++     sleep 60
++ done
+============================= cut here ================================
+I havent put comments in the script, it's fairly self evident. I am now
+running r77 kernel/ps thingy so you may need to tweek the $1 fields
+to get the right variable values if you are running earlier ps or kernel
+releases, but I'm not sure. .
+
+Notes on zipped file types.
+---------------------------
+
+> But what is tgz file type. I have zip and gzip and lha, but tgz is not
+> familiar.
+
+tgz is used by gzip if the filename without compression is longer than 11
+chars because tar.gz won't fit. The newer version of gzip ( 1.23 ) creates
+a suffig .gz, but handles .tgz as .tar.gz , too.
+* michael@jester.gun.de * Michael Gerhards 
+
+Random Notes on Various things...
+----------------------------------
+AMI BIOS
+
+>    Coherent will not run on an AT&T 6300, IBM PS/2 model, or with the
+>    Western Digital WD1004-27X (XT) or other XT controllers.  Coherent
+>    exhibits a slight problem with some 386 AMI  BIOS, whereas
+>    Coherent requires a cold boot (hit the reset switch, not CTL-
+>    ALT-DEL) to boot Coherent after previously running DOS. The latest
+>    revisions of the AMI BIOS may not exibit this problem.
+
+The 486 AMI BIOS dated June 6, 1992 still exhibits this problem.
+I'm not sure if there are more recent versions; I bought my 486
+(50 MHx DX) in December 1992.
+
+
+Subject: Re: Disk upgrade suggestions?
+Udo says:
+
+> : MWC says that 4.2 will support Adaptec, Future Domain, and Seagate
+> : SCSI controllers -- anybody have any recommendations as to which
+> : controllers work best with Coherent?
+>
+> Buy an Adaptec, it's the fastest one because of the busmaster DMA.
+> Also SCSI tape support for the Adaptek already is done and does work.
+
+But I would like to warn you for a problem that I experienced. The Adaptec
+(1542C in my case) is a very good controller, but conflicts with my
+busmastering NE2100 ethernet card. No fault of the Adaptec, the problem is
+the ethernet card. Brand is Escom, but an article in C'T (Udo should be
+familiar with it since it is a German magazine) mentioned that the original
+NE2100 has the same problem, as do most of it's clones. If you happen to be
+using one of those, you're in for a disappointment. I'm trying to find an
+ethernet card that doesn't use busmastering now.
+
+Taco Graafsma
+IJselland Polytechnic, Chemistry department
+Deventer, The Netherlands
+taco.graafsma@hto.rhij.nl
+
+Subject: Re: Disk upgrade suggestions?
+> I'm having a tough time finding any detailed info on Adaptec
+> controllers, like what's the difference between the 1540, 1542A, 1542B
+> and 1542C?  What additional goodies are included in a "kit?"
+
+The difference between 1540 and 1542 is that the latter supports diskette
+drives. There are several more model ranges, 1740 (EISA) among them. I'm not
+completely sure about the differences between A, B and C models. C
+obviously is newer than B etc.. C is SCSI-2, which does make a difference
+for faster SCSI drives. Installation and configuration is a lot easier for
+C and it has active termination (software controlled), which if I remember
+correctly is a requirement for SCSI-2. There are many more improvements
+I'm sure, but I can't produce them from the top of my head. I use a 1540C
+and like it a lot, but I have heard of problems because timing is so
+sensitive. They mainly turn up when using external SCSI devices. It seems
+you need very good cables.
+As for the driver kits: they contain drivers for DOS, Netware en SCO Unix
+(again, I must drag this from the dark crevices of my memory so correct me
+if I'm wrong) and configuration programs for DOS and Windows. I think it is
+comparable to a stripped version of Corel SCSI. If you are going to use it
+for standard environments (DOS with no more than 1 IDE, several Unices e.g.
+Linux) then you don't need the driver kit. Most O.S.es provide support for
+it, and configuration is possible with a BIOS setup. In my case I already
+had 2 IDE drives installed, so I needed aspi-drivers to get the SCSI drive
+working.
+
+>
+> Unless I find out something unexpected, I plan on getting an Adaptec
+> 1542B and either a Conner 540M or a Quantum 525M drive.  The Conner
+
+I remember a test in C'T that was very enthusiastic about the Quantum: fast
+and large. It was too expensive for me, but I understand it is a good
+drive. Can't say anything about the Conner.
+
+Taco Graafsma
+IJselland Polytechnic, chemistry department
+Deventer, The Netherlands
+taco.graafsma@hto.rhij.nl
+
+Housekeeping Shell Script to Keep Down News Log File Sizes
+----------------------------------------------------------
+============================ cut here ============================
+
+Contribution.....
+
+# A shell script to look after wnews log files, from an original idea
+# by bill@twinbrk.uucp Bill Shotts.
+# This script will dump log and errlog files, and keep the last 100 entries 
+# of the history file. This ensures that Control: commands will work correctly.
+
+NEWSDIR=/usr/lib/news
+DAYS=7
+# The number of days between clean outs. Adjust to suit yourself.
+#  expire old news
+$NEWSDIR/expire -e $DAYS
+
+# control length of log files
+cp $NEWSDIR/log $NEWSDIR/log.1
+cp $NEWSDIR/errlog $NEWSDIR/errlog.1
+rm -f $NEWSDIR/log
+rm -f $NEWSDIR/errlog
+
+# control length of history file
+mv $NEWSDIR/history $NEWSDIR/history.1
+
+# Pour the saved history file through the awk script...
+cat history.1 | awk 'BEGIN {
+		MAXLINES = 100;
+	   }
+{ line[NR] = $0 }
+END   { for (i = NR-MAXLINES; i <= NR; i++) {
+  	 # dump the blank lines
+         if (length(line[i]) > 0 )
+	 print line[i]
+	}
+} ' $* > history
+# stuff the last 100 lines back into the history file so cancel will work.
+============================= cut here ================================
+
+The end of the line baby..... in all the bars in all the world......
+
+Coming... how to put your 1.2Mb Coherent Install onto 1.44Mb Install disks.
+and why would you want to I ask.....
+
+============================= dkdf ======================================
+#Keeping track of disk space on all mounted drives.
+
+begin 755 dkdf.Z
+M'YV09,R :$$'! D5(/B "'-G#8@3"H04.9+$"8@]((94:4(DR90E/6#LT-C$
+MB)0B14+N,,,FS!F5((2P>3-FS9PT>LKTJ!%#A@N1()J(R4-'9PP8-'#4N&'C
+MYXZ,3YQ,H1+$"94>,6?6O)D3Q(N@0XN"Z*-@3UD%:02BF%-'S!PZ<E"0B,&"
+M;HP4/7J(X/)"1(J+"A(D,".G3)DY<,*,*0,"*PD:*V $3F DRY3&(%" (&P8
+ML6+&"(=$G5J5"HB_+4#\A%%CLI$IEC'/G<S2)8@56&/LF-P'!%JU;-W"E6NW
+M+EZ]5/Q>]"V8RALZ8=A,2;Q8MHS(DZE<QJK9.73IU$%#E4K5ZNF!JF&PIMWR
+MS.W<NP6331 X;>;-[1MCE7'>; (H0_10V64('07#3UZ!H%U@)'7TT7L*3L'@
+M1B:A!.& @<$A1QINT&$&"GO1@4()<Z3 !1U$I#&'0YXMI@,()30E@T!-" '"
+M&P+%Z,*,0=D8AAUAI-&2&&PP-F(-.YI10@F;%59&"BYPX08((K  PFN663F@
+ME=I9"6 *@=7F'E:2)4"6 F>BJ4 13A"QW(1- &@:5B156 0(!:J'X%<->K0$
+M?0EHR*&'5$IYHG?1@4"&BBR&]R((,,I(HXTX1IIDCPL!*6081!I9 I(S+MFD
+385!*666=)Q7!0I\?64F2G&1!!"((
+ 
+end
+=============================  cut here ==================================
+or, in a somewhat simple script, kdf.uue
+============================= cut here ===================================
+begin 755 kdf
+M9&8@+78@?"!A=VL@)R]D978O('MP<FEN=&8@(B4Q,BXR9B!-8B!F<F5E('-P
+M86-E+"4Q,BXR9B!-8B!U<V5D(&]N("4M.7-<;B(L*"0V+S(P,# N,"DL*"@D
+2-2\R,# P+C I*2PD,7T@)R *
+ 
+end
+================================= cut here ============================
+R17.
+	Getting your latest Patches & Updates.
+
+
+Subject: Australian Coherent Users README
+Newsgroups: comp.os.coherent
+Organization: CSTPL (Comms)
+Summary: Coherent updates available in Oz
+Keywords: updates mwcbbs coherent
+
+	This message is for the attention primarily of Australian users
+of Coherent, but may have some value to users around the world as well.
+
+		Coherent Updates Now Available In Australia.
+		============================================
+
+	CSTPL is making available, with the approval of MWC, the Coherent
+updates as they become available. The updates are now available for
+retrieval by two methods: automatic reply email, and uucp for those without
+an internet account that they can use for such things. Uucp within Australia
+is not expensive, a call will set you back a mere $11 for an hours
+downloading in off peak time on Sunday. 
+
+	As near as possible the full range of updates and patches are available
+and conform to the following criteria. Take Note if you intend retrieving it.
+
+[1]
+	By Email:  send email 	     To: updates@chalmers.com.au
+					 ^^^^^^
+					Note spelling. 
+
+				Subject: list
+
+	The message does not need any text, as only the machine sees it, 
+	unless of course you cock it up, then I see it, care of the daemon.
+	This will generate a reply message to you, with a file attached
+	that is a LIST of the available patches. To retrieve any of the
+	required files, put the name of the wanted file as the Subject: .
+	The file will be sent back to you as UUENCODED email. You take
+	it from there. Simply uudecode it.
+
+ 	Using this method, you are making use of my Internet connection,
+	which is attached by Long Distance (STD) to the backbone. If you
+	want ALL the files, ask MWC to send you a disk, or send me bulk
+	money to pay for the extended phone call duration made on your
+	behalf. Otherwise, I have no problem with users from anywhere 
+	requesting the occasional update. Lets face it. You rarely need them
+	all! This is a voluntary service, and I get NO support by way of
+	money or goods for doing it. Just remember us when you want to
+	buy your next copy of Coherent, or you want an Internet connection
+	from anywhere in the world. Remember us in your will yet ! :-)
+	Last note: Some of the files are BIG. So if you have traffic limits,
+	your system might choke!... blaaaa...
+
+[2]
+	By UUCP:	EASY...... I can't believe it.... Where has this
+	been all my life? You mean I can actually get these things by
+	dial-up in Australia?
+
+	You should set up a system in your sys file (L.sys) with the
+	following.
+
+		SYSTEM=nanguo SEND=yes RECIEVE=yes MYNAME=anon
+	and the dial file,
+	Login: anon  Passwd: update
+
+	The phone number is +61 79 524527,  speed 9600 V42/MNP etc.
+
+	Got that?  piece of cake.
+	Once you have that right, use the old reliable uucp command to
+	get the list of updates. UUCP users must note, I say must note,
+	that ALL files in the updates directory, including the list,
+	actually have their NAMES IN UPPERCASE. That's capitals for the
+	semiliterate! So note the following command example.
+
+	uucp nanguo!/usr/spool/uucppublic/downloads/updates/LIST ~/
+
+	All things being equal, that should shoot back the LIST of updates
+	to you. If not, check your configs etc. I know I have it right here,
+	I have just spent most of today getting it right. :-)   enjoy.
+
+	Users should also note: There is NO direct login here. You can NOT
+	SEND me files, and you can only pick up files from the $PUBDIR.
+
+	APPENDIX: semiliterate persons are recognisable by the two pens kept
+		  in the coat's brest pocket.
+		  illiterate persons are recognisable by the three pens kept
+		  in the coat's brest pocket.
+		  literati are recognisable as those persons who take the
+		  Coherent manual to the loo with them for a little light
+		  reading.
+
+
+
+Sun Jun  5 16:10:03 1994 AST
+
+

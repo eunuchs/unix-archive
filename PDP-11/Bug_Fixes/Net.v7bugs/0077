@@ -1,0 +1,13 @@
+Aucf-cs.428
+net.bugs.v7,net.bugs.4bsd
+utcsrgv!utzoo!decvax!duke!ucf-cs!whm
+Thu Feb 18 20:38:27 1982
+Re: watmath.1776: uuxqt bug fix
+Watmath!dmmartindale didn't mention why to add the fclose(xfp), but
+before we added that on our system, uuxqt would stop after running
+every 16 X files, and have to be restarted.
+
+The bug causes files to be left open and causes all sorts of trouble
+in programs that uuxqt starts up.  The most notable problem that we
+had with this was that rmail (actually delivermail) would die with
+a rc of 17192, and drop the incoming letter in the process.

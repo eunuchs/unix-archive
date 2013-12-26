@@ -1,0 +1,108 @@
+Aittvax.187
+net.bugs.v7,net.bugs.4bsd
+utzoo!decvax!ittvax!swatt
+Fri Jan  8 21:32:41 1982
+pwd bug
+Fri Jan  8 21:22:38 EST 1982 (ittvax!freb)
+
+[ ]	The command "pwd" will do strange things if any of the
+	directories above the present one lack execute permission.  It
+	will print some random string, but not exit with an error
+	status.  Programs which do 'popen ("pwd", "r")' in order to get
+	the current directory can get fooled.
+
+	The reason is in several places "pwd" never checks the return
+	status on certain system calls.
+
+	The fix is:
+	===============================================================
+	cp /usr/src/cmd/pwd.c /tmp/upd.$$.tmp ; chmod +w /tmp/upd.$$.tmp
+	ed - /tmp/upd.$$.tmp <<\!xxFUNNYxx
+	34c
+			/* @@@ check */
+			if (chdir(dotdot)) {
+				fprintf (stderr, "Cannot stat %s:%s\n", dotdot,
+					 sys_errlist[errno]);
+				exit (1);
+			}
+	.
+	30c
+				fprintf(stderr,"pwd: cannot open \"%s\":%s\n",
+					dotdot, sys_errlist[errno]);
+	.
+	26c
+			if (stat(dot, &d)) {
+				fprintf (stderr, "Cannot stat \"%s\":%s\n",
+					 dot, sys_errlist[errno]);
+				exit (1);
+			}
+	.
+	22c
+		if (stat("/", &d)) {
+			fprintf (stderr, "TERRIBLE ERROR: cannot stat \"/\"!:%s\n",
+				 sys_errlist[errno]);
+			exit (1);
+		}
+	.
+	17a
+	extern	errno;
+	extern	char *sys_errlist[];
+
+	.
+	1c
+	static char *sccsid = "@(#)pwd.c	4.2 (ITT) 01/08/82";
+	.
+	w
+	q
+	!xxFUNNYxx
+	diff /usr/src/cmd/pwd.c /tmp/upd.$$.tmp >/tmp/upd.$$.dif
+	if cmp - /tmp/upd.$$.dif <<\!xxFUNNYxx
+	1c1
+	< static char *sccsid = "@(#)pwd.c	4.1 (Berkeley) 10/1/80";
+	---
+	> static char *sccsid = "@(#)pwd.c	4.2 (ITT) 01/08/82";
+	17a18,20
+	> extern	errno;
+	> extern	char *sys_errlist[];
+	> 
+	22c25,29
+	< 	stat("/", &d);
+	---
+	> 	if (stat("/", &d)) {
+	> 		fprintf (stderr, "TERRIBLE ERROR: cannot stat \"/\"!:%s\n",
+	> 			 sys_errlist[errno]);
+	> 		exit (1);
+	> 	}
+	26c33,37
+	< 		stat(dot, &d);
+	---
+	> 		if (stat(dot, &d)) {
+	> 			fprintf (stderr, "Cannot stat \"%s\":%s\n",
+	> 				 dot, sys_errlist[errno]);
+	> 			exit (1);
+	> 		}
+	30c41,42
+	< 			fprintf(stderr,"pwd: cannot open ..\n");
+	---
+	> 			fprintf(stderr,"pwd: cannot open \"%s\":%s\n",
+	> 				dotdot, sys_errlist[errno]);
+	34c46,51
+	< 		chdir(dotdot);
+	---
+	> 		/* @@@ check */
+	> 		if (chdir(dotdot)) {
+	> 			fprintf (stderr, "Cannot stat %s:%s\n", dotdot,
+	> 				 sys_errlist[errno]);
+	> 			exit (1);
+	> 		}
+	!xxFUNNYxx
+	then
+		: 'compare equal, ok'
+		rm -f pwd.c
+		cp /tmp/upd.$$.tmp pwd.c ; chmod a-w pwd.c
+	else
+		echo "Old source file not same version;" \
+			"use diff listings by hand"
+	fi
+	rm -f /tmp/upd.$$.tmp /tmp/upd.$$.dif
+	===============================================================

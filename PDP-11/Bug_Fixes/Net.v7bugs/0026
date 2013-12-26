@@ -1,0 +1,40 @@
+Areed.183
+net.v7bugs
+utzoo!decvax!ucbvax!ihnss!cbosg!harpo!chico!duke!reed!valer
+Fri Jul 31 20:51:10 1981
+proc on q
+/*
+ *	This program helps generate the "proc on q"
+ *	diagnostic.  By putting a 9600 keyboard in
+ *	CBREAK mode and pounding on the keyboard,
+ *	we have been able to consistently produce the
+ *	diagnostic in the first line or two of typing.
+ *	This diagnostic comes from an interrupt window
+ *	in the following code in sig.c:
+ *		if(p->p_stat == SSLEEP && p->p_pri > PZERO)
+ *			setrun(p);
+ *	The fix is to bracket the code as follows:
+ *		s = spl6();
+ *		<above code>
+ *		splx(s);
+ */
+brkpt() { }
+main()
+{
+	char	c;
+	int	child;
+
+	switch(child = fork()) {
+	case 0:
+		for (signal(5, brkpt); ; )
+			read(0, &c, 1);
+	case -1:
+		perror("fork");
+		break;
+	default:
+		sleep(2);
+		printf("start typing\n");
+		for ( ; ; )
+			kill(child, 5);
+	}
+}

@@ -1,0 +1,52 @@
+Apur-ee.244
+net.bugs.v7
+utcsrgv!utzoo!decvax!pur-ee!bruner
+Fri Feb 19 10:46:16 1982
+another bug in PDP-11 'ld'
+Someone here recently discovered another problem with the PDP-11 "ld".
+While in the course of investigating it, I found several cases of
+signed arithmetic in the compiler/assembler/loader.  Compile the files:
+
+	f1.c:
+		short junk[16383];
+
+	f2.c:
+		short junk[];
+		main(){}
+
+and everything works just great.  Now, change the 16383 to 16384 and
+try again.  This time, the loader will complain that "junk" is
+undefined.  I suspect that this occurs because it is using an "int"
+rather than an "unsigned" to hold the size of ".comm" symbols.
+If there is no explicit declaration of the storage (there is none
+in the example above), the loader takes the maximum size of all
+".comm" definitions.  In this case, the sizes that it compares are
+zero (junk[]) and -32768, so the maximum size is zero and it appears
+that the symbol is undefined.
+
+You can't even get this far if you use a "char" array:
+
+	char junk[32768];
+
+because the compiler gets mad at the (apparently negative) constant
+and says "Constant required".
+
+You can force the array into the data segment by adding an initializer:
+
+	short junk[16384] = {};
+
+but the assembler gets mad at this because the compiler passes it
+the code:
+
+	.globl	_junk
+	.data
+	_junk:
+	0
+	.=.+100000
+
+and it thinks you are trying to decrease "." (a forbidden operation)
+by adding -32768.
+
+--John Bruner
+decvax!pur-ee!bruner
+ucbvax!pur-ee!bruner

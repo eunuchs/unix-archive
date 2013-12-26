@@ -1,0 +1,15 @@
+Autzoo.1392
+net.bugs.v7
+utcsrgv!utzoo!henry
+Tue Feb 16 19:16:30 1982
+DZ failure mishandling
+The Bell DZ driver (and the fixed-up one from Duke as well) can infinite-
+loop in the presence of certain kinds of hardware failures.  The scanning
+loop in the transmitter-interrupt routine runs forever if stuck bits cause
+the TRDY bit to stay on.  We had this happen not long ago.  The infinite
+loop is at interrupt priority and hence effectively hangs the system.
+
+A reasonable way to be paranoid about this is to decrement a counter from,
+say, 10000, and drop out if it hits zero.  Our driver, in such circumstances,
+prints a message and sets the offending DZ's CSR to 0 to try and get rid of
+it long enough for an orderly shutdown.

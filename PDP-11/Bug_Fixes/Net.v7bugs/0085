@@ -1,0 +1,20 @@
+Autzoo.1437
+net.bugs.v7
+utcsrgv!utzoo!henry
+Thu Feb 25 23:37:58 1982
+getlogin bug
+The getlogin() routine supplied with V7 has a serious bug, a result
+of an apparent misunderstanding.  The utmp(5) manual page never gets
+around to giving a precise definition of what a utmp entry looks like
+if there is no user on that line.  In practice, what init does is to
+write NULs on the user name.  But the standard getlogin does not check
+for this!  The result is a null-string (rather than NULL) return from
+getlogin.  The fix is quite straightforward;  add the following after
+"close(uf);":
+
+	if (ubuf.ut_name[0] == '\0')
+		return(0);
+
+While you're at it, you might want to add a "close(uf);" to the error
+return that immediately precedes this code:  it carelessly leaves the
+file descriptor open.

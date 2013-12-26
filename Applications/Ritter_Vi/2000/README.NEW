@@ -1,0 +1,34 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !!!                                                                         !!!
+!!!                         THIS IS NOT FREE SOFTWARE                       !!!
+!!!                                                                         !!!
+!!!                   SEE YOUR CONTRACT WITH SCO FOR DETAILS                !!!
+!!!                                                                         !!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+This is basically ex/vi 3.7, 6/7/85, from the 2.11BSD distribution. I
+added the manual pages and the 2.11 termcap and made some smaller fixes.
+
+A larger addition is the ability to handle ISO character sets. It is
+enabled by default, although it may produce subtle changes in vi's
+behaviour I did not discover yet. The handling is not perfect since
+it does not apply to the character range 0200 to 0239 that contains
+seldom-used control sequences and since the regular expression code
+has not been updated at all. In case you prefer the 7-bit only,
+classic version, remove -DISO from OPTIONS in the Makefile.
+
+I compiled this only on my Linux 2.2.15 / glibc 2.1.3 box. Compilation
+reports from other systems are highly welcome, whether successful or
+not (in the latter case add a detailed description). You will get
+some warnings about signal handler types; ignore them. The additional
+tools (expreserve, exrecover, mkstr, xstr) will not be built by
+default; they probably will not compile.
+
+In any case, the included version of the termcap library must be used
+since the use of malloc() in other implementations collides with the
+sbrk() calls in vi. All you need is an /etc/termcap file; if your
+system lacks one, fetch it from <http://www.tuxedo.org/terminfo>.
+
+Gunnar Ritter
+Freiburg i. Br.
+Germany
+<g-r@bigfoot.de>

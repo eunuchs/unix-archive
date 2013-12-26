@@ -1,0 +1,23 @@
+This directory contains information about these old versions of Unix. The
+PUPS_Mail directory holds an archive of the mailing list for the PDP UNIX
+Preservation Society. Finally, a snapshot of the PUPS web pages at
+http://minnie.cs.adfa.oz.au/PUPS/ is included in the directory PUPS_Html.
+
+This directory itself contains the manual pages for installing and configuring
+some of the Unix flavours in the archive. Note the following:
+
+v5 is similar to v6 & so you can use the v6 docs.
+
+Both v5 and v6 came as RK05 disk pack images. You will have lots of
+trouble installing either if you don't have RK05s.
+
+If you have a tape drive, use Keith Bostic's v7. Otherwise try the disk images
+in Boot_Images. The Henry Spencer version I got as a tar file, and is the
+original v7 minus the tape bootstraps. The Torsten version is an RL02 disk
+pack image, and the source code has been hacked significantly.
+
+Both the 2.9BSD and 2.11BSD versions in Distributions/ucb come with full
+tape blocks for tape installation.
+
+Finally, the html versions of the setup documents are suspect, as I don't
+think unroff(1) can cope with ancient nroff macros.

@@ -1,0 +1,47 @@
+Here are the conf files needed to port V7 to the 11/34.
+
+On the PUPS mailing list: John Holden wrote:
+
+While a user program will not see any
+difference between a 11/34 and 11/40 (except for floating point instructions),
+the behaviour after a memory management fault IS different. The non ID space
+processors (11/23/34/35/40/60) don't have a register to record the changes
+in the general cpu registers after a fault, and it has to be calculated in
+software. The 34 and 40 leave the registers in different states after a fault.
+
+The classic example is "cmp -(sp), -(sp)" to extend the stack. This may generate
+a fault because the stack needs to grow dynamically. The kernel extends the
+stack (where automatic variables are allocated), and then attempts to 
+reexecute the instruction. In the case of a 34 using a standard m40.s,
+it sometimes gets it wrong, and is very program and data dependent.
+
+Does this ring any bells with people having ported unix to 11/34's?
+
+Then Dave Horsfall wrote:
+
+   Date: Wed, 28 Feb 2001 15:02:28 +1100 (EST)
+   From: Dave Horsfall <dave@horsfall.org>
+   To: <wkt@cs.adfa.edu.au>
+   Subject: Re: [pups] Swap device in V6?
+   
+   As attached...  I see it actually came from ChemEng.  It's for the 11/60,
+   but has the 11/34 stuff in there as well.
+   
+   PS: I'm sure I did a port to the 11/34 :-)
+
+No documentation, you'll have to work it out for yourself.
+
+Dave then submitted an nroff paper he wrote for AUUG about porting Unix
+to the 11/34. This is in the file unix_on_1134.nr and unix_on_1134.txt.
+
+I asked him:
+> Ok, is the UNIX you are referring to V6, V7 or something else?
+> Just so when I drop it into the archive, 10 years from now it
+> will still be useful :)
+
+Uhh, Edition 6.9999...
+
+I.e. Edition 6, heavily modified at UNSW (Ausam, TTY flow control that I
+swiped from Edition 7, funky disk drivers, etc).  Edition 7 really needed
+sep I/D space, which was only on the few 11/70s around at the time, so I
+stuck as much V7 stuff into V6 as would fit.

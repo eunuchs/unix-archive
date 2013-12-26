@@ -1,0 +1,48 @@
+Aucbvax.107
+NET.v7bugs
+utzoo!duke!vax135!ucbvax!mark
+Sun May 18 22:54:56 1980
+c2
+>From uucp Wed Sep 26 13:16:38 1979
+>From tom Tue Sep 25 22:01:30 1979 remote from ucsfcgl
+To: Bob Kridle, Ed Gould, Bill Joy
+Re: Bug in version 7 optimizer of dmr's pdp-11 compiler
+
+A bug involving unsigned integers has surfaced in the version 7 C compiler.
+After installing the following fix you should recompile:
+	mkfs.c
+	dcheck.c
+	passwd.c
+	getty.c
+	mail.c
+	pstat.c
+
+>From uucp Mon Jul 23 22:53:59 1979
+>From dmr Mon Jul 23 23:59:07 1979 remote from research
+Here is the change needed to fix the optimizer.
+The file is /usr/src/cmd/c/c21.c.
+This is in routine rmove, after case CBR, the first two
+lines in the 'if r==0' clause:
+
+190,191c
+< 				p->back->back->forw = p->forw;
+< 				p->forw->back = p->back->back;
+---
+> 				if (p->forw->op==CBR
+> 				  || p->forw->op==SXT
+> 				  || p->forw->op==CFCC) {
+> 					p->back->forw = p->forw;
+> 					p->forw->back = p->back;
+> 				} else {
+> 					p->back->back->forw = p->forw;
+> 					p->forw->back = p->back->back;
+> 				}
+
+The old code deleted a test or compare with constant operands
+and a following conditional branch that would always fail.
+The new code only deletes the branch (leaves the test)
+if the combination is followed by another instruction that
+needs the condition codes.  The test and second branch are liable
+to be deleted later.
+
+

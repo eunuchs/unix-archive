@@ -1,0 +1,74 @@
+These programs are used to get files back from old Unix disk images. Many were
+written ages ago, and my need to be ported to 32-bit and/or big-endian machines.
+
+Here's a chart of what each is supposed to do what, and my success with using
+it on a 32-bit little-endian machine (an i486 running FreeBSD).
+
+	     v5        v6        v7      2.9BSD	     32V
+	   filesys   filesys   filesys   filesys   filesys
+cpfs			?
+getunix			?	  ?	    ?	      ?
+grab          Y         Y         Y         ?
+traverse		?
+
+  ? = it's supposed to, but I haven't tried it yet
+  Y = it worked on my FreeBSD box
+
+
+v7fs-0.1.tar.gz Readme
+----------------------
+
+This is a heavily updated version of the v7 version 7 Unix filesystem access
+program as written by Mike Karels back in the early 1980s. The original
+program assumed that it was being compiled on a PDP-11 and was written in
+'old' style C. The purpose behind the program is to allow easy access to a
+V7 filesystem image from the native Unix system. Many people running V7 Unix
+are doing so within an emulator running on some other flavour of Unix, and
+easy access to the files resident on the V7 filesystem can be useful.
+
+Bostic Tools Readme
+-------------------
+
+Keith Bostic sent these tools in to the archive. They used to be able to
+read v6 and v7 filesystems, and ar(1) archives. I didn't get them to compile
+cleanly on a i486 running FreeBSD -- Warren
+
+Cpfs Readme
+-----------
+Cpfs is a program which converts an image of a version 6 UNIX file
+system into a 4.2 Unix directory hierarchy.
+
+
+Getunix Readme
+--------------
+
+       Getunix retrieves the named sourcefile from a UNIX file sys-
+       tem.  If a targetfile is specified,  the  copy  is  placed
+       there;  otherwise  the contents of the file are written to
+       standard output.  If the targetfile named is a  directory,
+       the  file  is  copied  there with the same basename as the
+       original.
+
+
+Grab Readme
+-----------
+This is meant to be used with dual-ported disks or controllers
+when it is either impossible or undesirable to mount another
+file system on that medium.  It should allow any Version 6 or
+Version 7 (2.9BSD, 4.1BSD) system to read filesystems from any
+Version 6 or Version 7 (2.9BSD, 4.1BSD) system even if the systems
+are not of the same type.  Version 6 systems will need at least
+a Phototypesetter level C compiler to make "grab".  "Grab" will
+copy any conceivable (?) object on a filesystem including directories
+(recursively), links, file holes, setuid/setgid/sticky files and
+device nodes.  "Grab" tries to prevent unauthorized readers from
+gazing at remote files but the only reliable way of maintaining
+security is to make "grab" setgid and then make fs's readable by
+group and not by other.  ("Df" should work this way too.)
+
+Traverse Readme
+---------------
+I also just dumped the "traverse.c" program I use to extract the RK05
+image stuff into the modern world. It is far from pretty (only run on a
+DEV/MIPS box running Ultrix 4.2 so I've no idea about the portability,
+circa 1991).  -- Ken Wellsch

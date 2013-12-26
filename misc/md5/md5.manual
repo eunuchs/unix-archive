@@ -1,0 +1,67 @@
+
+
+
+MD5(1)							   MD5(1)
+
+
+NNAAMMEE
+       md5  -  calculate  a message-digest fingerprint (checksum)
+       for a file
+
+SSYYNNOOPPSSIISS
+       mmdd55 [ -p | -t | -x | -sstring | filename(s) ]
+
+DDEESSCCRRIIPPTTIIOONN
+       mmdd55 takes as input a message of arbitrary length and  pro-
+       duces  as  output  a  128-bit  "fingerprint"  or  "message
+       digest" of the input.  It is conjectured that it is compu-
+       tationally  infeasible  to produce two messages having the
+       same message digest, or to produce any  message	having	a
+       given  prespecified  target message digest.  The MD5 algo-
+       rithm is  intended  for	digital  signature  applications,
+       where a large file must be "compressed" in a secure manner
+       before being encrypted with a private (secret) key under a
+       public-key cryptosystem such as _R_S_A_.
+
+OOPPTTIIOONNSS
+       The following four options may be used in any combination,
+       except that ffiilleennaammee((ss)) must be the last  objects  on  the
+       command line.
+
+       --ssssttrriinngg prints a checksum of the given "string".
+
+       --pp  echos  stdin to stdout and appends the MD5 sum to std-
+       out.
+
+       --tt runs a built-in time trial.
+
+       --xx runs a built-in test script.
+
+       ffiilleennaammee((ss)) prints a checksum(s) for each of the files.
+
+SSEEEE AALLSSOO
+       cckkssuumm(1)
+
+       RFC 1321 describes in detail the MD2, MD4,  and	MD5  mes-
+       sage-digest algorithms.
+
+AACCKKNNOOWWLLEEDDGGEEMMEENNTTSS
+       This  program is placed in the public domain for free gen-
+       eral use by RSA Data Security.
+
+
+
+
+
+
+
+
+
+
+
+
+
+			   Feb 14, 1994 			1
+
+
+[34;1H[K

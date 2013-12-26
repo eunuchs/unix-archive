@@ -1,0 +1,73 @@
+These 4.2BSD tapes are from Per Andersson, who writes:
+
+I have some old 4.2bsd tapes (which I think is original distributions from
+Berkeley).
+
+Each tape has two labels, one is a notice about the license agreement
+(with a handwritten number on) and the other is says somthing about the
+contents:
+
+4.2bsd VAX UNIX System 8/23/83
+
+6 files on tape:
+ 1 (boot stuff) 2 (mini root)
+ 3 (root dump) 4 (/sys) 5 (/usr)
+ 6 (/usr/lib/vfont)
+last three are tar; 1600 bpi
+
+
+4.2bsd VAX UNIX System 8/23/83
+
+tape 2: 3 files on tape
+ 1 (/usr/src)
+ 2 (user contributed software)
+ 3 (/usr/ingres)
+all files are tar; 1600 bpi
+
+
+I tried to read the tapes and found the following:
+
+Tape 1 file 1, 15 512 byte records OK?
+Tape 1 file 2, 183 512 byte records OK?
+Tape 1 file 3, 205 10240 byte records OK?
+Tape 1 file 4, 383 10240 byte records, seems OK (ultrix restore can extract it).
+		Seems to be a root filesystem.
+Tape 1 file 5, 441 10240 byte records, tar archive /sys OK?
+Tape 1 file 6, 2148 10240 byte records, tar archive /usr OK?
+No trace of /usr/lib/vfont.
+
+Tape 2 file 1, 10240 byte records with some bad records, tar archive /usr/src
+Tape 2 file 2, 592 10240 byte records, tar archive OK?
+Tape 2 file 3, 380 10240 byte records, tar archive OK?
+
+Here are some md5 checksums for the files:
+MD5 (tape1-file1) = 33e73d06d52efdd66069ec55a018308a
+MD5 (tape1-file2) = d4866a58f2cc346e4200175e820622ce
+MD5 (tape1-file3) = 36dc86b6a3a884fbff15a02ad53da359
+MD5 (tape1-file4) = e797db884764e4a40261b5413a161691
+MD5 (tape1-file5) = cce78384026a0c8d7a75ae1870943791
+MD5 (tape2-file1a) = 770fea0360bd7aaf841cfe92c5b075ea
+MD5 (tape2-file1b) = 93dbc99b6b656e03a70cc33805df6a89
+MD5 (tape2-file2) = f07884f828f30cd7ae5a741ab12533a7
+MD5 (tape2-file3) = 8ca2b5ae19afff8321efccc3b35f5bb8
+
+MD5 (tape1-file1.gz) = f20f044481f431a3a432a87708dc60e0
+MD5 (tape1-file2.gz) = 5500cef38dbf769bd045219462977e5f
+MD5 (tape1-file3.gz) = 6056c9b23cf0d549b2ff7fb9db3af8ad
+MD5 (tape1-file4.gz) = 327f37c940077a19aeff6ae544cabffd
+MD5 (tape1-file5.gz) = a15b5ee74564c8546d1071744fe97ef6
+MD5 (tape1-file6.gz) = 9fdf09ea23703286deef1ea4ec2190dd
+MD5 (tape2-file1a.gz) = e93518df8a29ee0a655b7720b1b7d162
+MD5 (tape2-file1b.gz) = 8b90d1c6ddd3752cd6a7e9ac6637749f
+MD5 (tape2-file2.gz) = 039584bb97b31d005a9164c1e8593851
+MD5 (tape2-file3.gz) = ec5917dc53c0944e8d84d954fc17d5fa
+
+
+Please note that it looks like I got some undetected read errors so if
+you can verify the contents in any way it would be good. I would be extra
+suspicious against file 2 on tape 1, I was only able to read it once without
+any strange behavior. There is also a solid error in the beginning of
+file 1 on tape 2, but you can have the parts that I succeded in reading.
+	
+	/Per Andersson
+

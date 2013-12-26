@@ -1,0 +1,36 @@
+Autzoo.1511
+net.bugs.v7
+utcsrgv!utzoo!henry
+Thu Mar 25 22:46:09 1982
+(unsigned)char again
+I should have been clearer about a couple of points in my recent
+notes about (unsigned)c in net.bugs.v7.  The interpretation of casts
+as semantically equivalent to assignment to a temporary is straight
+from Dennis Ritchie (as of Santa Monica USENIX two months ago) and
+is therefore the Official Word.  To my mind this supersedes Hans
+Spiller's paper.  Dennis also does not seem to agree with Hans's
+idea of always making char signed on all machines;  what Dennis said
+in my presence was about what I'd always thought his view was, i.e the
+signed nature of char on the 11 is a lamentable historical accident
+that should not be blindly imitated.
+
+[Dennis, I apologize if I am misrepresenting your views.  I'm working
+from notes made in the evening about conversations during the day.]
+
+Dennis was not sure whether the definitive interpretation of casts
+had made it into the 3.0 compiler.  Hans's paper indicates it didn't.
+
+Who's right?  I dunno.  Making casts systematically equivalent to
+assignment seems a good idea to me;  it gives them an exact definition
+for the first time and eliminates needing two sets of conversion rules.
+I do wish my compiler had unsigned char, though.  Whether char should
+be considered signed in future implementations is less clear.  My own
+view is that they ought to have been unsigned from the beginning, and
+given that they weren't, any code which relies on EITHER interpretation
+is wrong and unportable.
+
+If there is interest in further discussion of this, please mail to me
+and I'll summarize for the network.
+
+					Henry Spencer
+					decvax!utzoo!henry

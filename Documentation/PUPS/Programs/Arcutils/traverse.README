@@ -1,0 +1,4 @@
+I also just dumped the "traverse.c" program I use to extract the RK05
+image stuff into the modern world. It is far from pretty (only run on a
+DEV/MIPS box running Ultrix 4.2 so I've no idea about the portability,
+circa 1991).  -- Ken Wellsch

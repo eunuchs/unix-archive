@@ -1,0 +1,241 @@
+Here are a bunch of tapes that I rescued from the School of Computer Science 
+at ADFA, which is an outpost of UNSW. The most interesting tapes here
+contain the AUSAM modifications to 6th Edition.
+
+UNSW 01
+-------
+	Tape label: System Source Disk
+		    DD format URK? BS=24B count=203 800bpi 9track
+		    UNIX System Source 1 of 1
+		    25/1/78
+
+A distribution of UNIX source from UNSW, with several changes. record0.gz is
+an RK05 image laid out according to the `Boston Children's Museum' format
+(i-nodes in the middle). Latest file timestamp is Jan 24 1978. There is only
+kernel source, plus a `unswbatch' directory. The latter seems to hold the
+source to a UNIX batch system developed by Ian Johnstone and other at the
+School of Electrical Engineering at UNSW.
+
+record0.tar.gz is a tar archive of the RK05 image.
+
+UNSW 02
+-------
+	Tape label: UNIX Fun & Games & Pics
+		    800 bpi  9 track itp Format Reel 1 of 1
+		    25/1/78
+
+
+Lots of BASIC programs and Ascii lineprinter pictures. record0.gz is an
+itp archive. There is no UNIX-related stuff. Everything is dated Jan 22 1978.
+
+UNSW 03
+-------
+	Tape label: System Disk
+		    DD format URK? 800bpi 9track UNIX System Disk
+		    1 of 1
+		    25/1/78
+
+Binaries to a UNIX system, no source code. Latest date is Jan 24th 1978.
+
+UNSW 04
+-------
+	Tape label: UNSW 4th Distrib (2 files)
+		    PWB-UNIX (Part 1) (1 file) TP format  800bpi
+		    Sizes: 4303 5101 7326 records
+		    NO RING EVER
+
+Record0.gz is a tp format archive of the AUSAM modifications done at UNSW of
+6th Edition UNIX, dated November 1979. Documentation and kernel sources exist,
+but there is no source for libraries or ordinary commands. Most recent file
+date is November 1st, 1979. The kernel diffs against UNSW 106 are small, so
+UNSW 04 evolved from UNSW 106.
+
+Record1.gz is a tp format archive of AUSAM programs and library source. This
+is an assumption, as again the most recent file date is November 1st, 1979.
+
+Record2.gz is a tp format archive of binaries and man pages for PWB-UNIX.
+Latest date is September 8th 1978. There is no source code on the tape.
+
+
+UNSW 05
+-------
+	Tape label: PWB UNIX (Part 2) 1 file   205
+		    Level 7 UNIX      1 file   640
+		    Berkeley Pascal \
+		    Vrije Pascal    / 1 file   319 blocks
+		    No Ring Ever
+
+
+Record0.gz is a dtp archive of PWB-UNIX. Unfortunately there is a hard error
+in record 0, and I was unsuccessful in recovering the rest of record 0, nor
+record 1 and 2. The dirlist file shows what is in record 0. Latest date is
+September 8th 1978.
+
+UNSW 06
+-------
+	Tape label: Hebrew Distribution
+		    Toronto Graphics Distribution DTP No Ring Ever
+
+
+Yet another tp format, dtp. This one puts the offset of data in the first 8
+bytes, starts the dir at offset 128, with 114-byte names. Progs/dtp can
+extract it. The tape has no UNIX src. There are top-level directories gpac,
+huji and tor. Latest date is December 20th 1979.
+
+UNSW 07
+-------
+	Tape label: UNIX Source & Documentation
+		    800 bpi  9 track itp Format Reel 1 of 1
+		    25/1/78
+
+Record0.gz is an itp archive of UNIX source code and documentation. I have no
+clear idea as to the version archived. File dates range from August 21th 1976
+to January 24th 1978. It has some UNSW modifications, with the highest
+labelled `fix016' in param.h, and that's 16 decimal.
+
+
+UNSW 81
+-------
+	Tape label: UNIX Level 7 Source
+		    from tape #5 part 2 13/4/81
+
+Just as it says. dtp format, also includes binaries. No WECo boot
+records though (as described in `Setting up UNIX' in the V7 manuals).
+The most recent timestamp on any file is August 22nd 1979.
+
+UNSW 81 and UNSW 83 are identical. They contain Seventh Edition UNIX.
+Looks like a complete distribution as well. There are hptmunix,
+rphtunix and rptmunix kernels. No rk or rl ones, though.
+
+[Compare these to Henry's tape]
+
+
+UNSW 82
+-------
+	Tape label: UNIX L6
+		    VRIJE and Berkeley Pascal from tape #5 part 3
+		    14/4/81
+
+Record0.gz is a dtp archive of at least Berkeley Pascal, in the pascal
+directory. Actually there's a csh, and install.ms indicates that this is in
+fact 2BSD. The READ_ME file in the pascal directory has a timestamp inside of
+April 19th 1979.
+
+The pc directory contains Pascal-VU (dated May 29th 1979) from Vrije
+University, the Netherlands. Latest file date in the pascal directory is
+August 1st 1979, and for the pc directory is October 30th 1979.
+
+UNSW 83
+-------
+	Tape label: UNIX Level 7 Sources
+		    from tapes 92 & 93
+		    reel 1 of 1
+		    5/1/83
+
+dtp format. As the label says. Looks very much like tape 81. In
+fact a comparison of the contents show it to be exactly the same.
+
+UNSW 85
+-------
+	Tape label: UNIX L6 Source (tp)
+		    from tape #4, part of file 2
+		    13/2/81
+
+tp format, no man pages. The file seems to be truncated, I got
+block errors with my tp program.
+
+UNSW 86
+-------
+	Tape label: UNIX L6 Source (tp)
+		    from tape #4, file 3
+		    28/7/81
+
+tp format. /bin, /usr, /etc, man pages, i.e all but src.
+
+UNSW 87
+-------
+	Tape label: UNIX Level 6 Source
+		    PWB Part 2 from tape #5, part 1
+		    dtp
+		    10/12/81
+
+This looks like it contains the source code to PWB 1.0. There are
+no manuals and no binaries (well, a few scattered in source dirs).
+
+UNSW 88
+-------
+	Tape label: UNIX Level 6 Source
+		    Languages etc,
+		    dtp
+		    16/3/81
+
+dtp format. Source for lots of languages. No system source.
+
+UNSW 89
+-------
+	Tape label: UNIX Level 6 Source
+		    Nroff Tables
+		    dtp
+		    16/3/81
+
+dtp format. Yep, nroff tables, not very exciting.
+
+UNSW 90
+-------
+	Tape label: UNIX Level 6
+		    Source Archive
+		    dtp
+		    7/5/81
+
+dtp format. Applications source, no system source.
+
+
+UNSW 92
+-------
+	Tape label: UNIX Level 7 Source
+		    UNSW (dtp)
+		    25/3/81
+
+The kernel on this tape has lots of diffs compared to unsw 81.  I
+cannot tell which is older, but from the dates (1979 vs 1981), I
+assmume that this tape is older than unsw 81. It would be good to
+compare unsw 81, unsw 92, Henry Spencer's V7 and the tape from Torsten
+Hippe. There is only source on the tape, no binaries.
+
+
+UNSW 93
+-------
+	Tape label: UNIX Level 7 Source
+		    UNSW (dtp)
+		    30/9/81
+
+I got hard read errors on this tape, so it's probably incomplete.
+
+UNSW 106
+--------
+	Tape label: UNIX L6 Source 1
+		    (tp)
+		    29/1/81
+
+This seems to be a 6th Edition patched with AUSAM, and something
+else: the code has `fix025' style comments scattered around. This
+needs investigation. The tape only has kernel source.
+
+
+UNSW 107
+--------
+	Tape label: UNIX L6 Source 2
+		    (RK05 #24) (tp)
+		    5/2/81
+
+UNSW 108
+--------
+	Tape label: UNIX L6 Source 3
+		    (tp)
+		    12/2/81
+
+UNSW 110
+--------
+	Tape label: UNIX L6 Source
+		    macro-linker, make, dostp, yacc, libS.old
+		    7/5/81

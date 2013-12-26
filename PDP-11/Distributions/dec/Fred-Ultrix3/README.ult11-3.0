@@ -1,0 +1,31 @@
+DEC ULTRX-11 V3.0 Master Distribution Kit
+
+
+This directory contains the files needed to build a complete
+installation kit of version 3.0 of the ULTRIX-11 Unix system
+for the DEC PDP-11.
+
+This distribution contains files from both the V3.0 binary
+kit donated to PUPS by Ken Wellsch.  Some of the tools used
+to initially dump the tapes (rat, wat and wtu) were also Ken's
+idea.
+
+To get the ball rolling, check the value of the TAPE variable
+at the top of the "build" script.  It is set to what MY tape
+device (TK50 on TQK50 controller) under Ultrix-11 V3.1 is,
+so you may have to change it.
+
+Then, type
+
+    ./build
+
+and watch things go.  After about an hour of tape activity,
+you should be woken up by two BEEPs telling you that it is all
+done.  Unload the tape and you're all set.
+
+If you run into problems, drop me a note!
+
+Have fun !
+
+Fred N. van Kempen, <fred@microwalt.nl>
+March 6th, 2001

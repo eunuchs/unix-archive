@@ -1,0 +1,206 @@
+rwxrwxr-x 13/13      0 Feb 10 02:35 1988 xgremlin/
+rwxrwxr-x 13/13      0 Dec  1 16:41 1987 xgremlin/RCS/
+r--rw-r-- 13/13   3213 May 15 11:28 1987 xgremlin/RCS/graphics3.c,v
+r--rw-r-- 13/13    606 May 15 11:28 1987 xgremlin/RCS/grem2.h,v
+r--rw-r-- 13/13  12102 May 15 11:30 1987 xgremlin/RCS/path.c,v
+r--rw-r-- 13/13   2848 May 15 11:28 1987 xgremlin/RCS/gremlin.h,v
+r--rw-r-- 13/13  21012 May 15 11:28 1987 xgremlin/RCS/graphics2.c,v
+r--rw-r-- 13/13  26665 May 15 11:29 1987 xgremlin/RCS/long1.c,v
+r--rw-r-- 13/13  26182 May 15 11:29 1987 xgremlin/RCS/long2.c,v
+r--rw-r-- 13/13   2384 May 15 11:30 1987 xgremlin/RCS/menu.c,v
+r--rw-r-- 13/13   2664 May 15 11:30 1987 xgremlin/RCS/point.c,v
+r--rw-r-- 13/13  26319 May 15 11:30 1987 xgremlin/RCS/short.c,v
+r--rw-r-- 13/13   4737 May 15 11:30 1987 xgremlin/RCS/undodb.c,v
+r--rw-r-- 13/13  81131 May 15 11:29 1987 xgremlin/RCS/icons.c,v
+r--rw-r-- 13/13    473 Jan 29 04:06 1987 xgremlin/RCS/textio.c,v
+r--rw-r-- 13/13  10133 Oct 28 14:06 1987 xgremlin/RCS/X.c,v
+r--rw-r-- 13/13   2592 May 15 11:28 1987 xgremlin/RCS/graphics1.c,v
+r--rw-r-- 13/13  16886 Oct 28 14:06 1987 xgremlin/RCS/main.c,v
+r--rw-r-- 13/13   2515 May 15 11:28 1987 xgremlin/RCS/db3.c,v
+r--rw-r-- 13/13   6215 May 15 11:28 1987 xgremlin/RCS/display.c,v
+r--rw-r-- 13/13   4121 May 15 11:28 1987 xgremlin/RCS/db2.c,v
+r--rw-r-- 13/13  11831 May 15 11:28 1987 xgremlin/RCS/db1.c,v
+r--rw-r-- 13/13  13696 Oct 28 14:06 1987 xgremlin/RCS/help.c,v
+r--rw-r-- 13/13  17375 Oct 28 14:06 1987 xgremlin/RCS/X1.c,v
+rwxrwxr-x 13/13      0 Dec  1 16:49 1987 xgremlin/icons/
+rw-rw-r-- 13/13   1083 Jan 29 04:06 1987 xgremlin/icons/mirrorh
+rw-rw-r-- 13/13    221 Jan 29 04:06 1987 xgremlin/icons/pencil
+rw-rw-r-- 13/13    236 Jan 29 04:06 1987 xgremlin/icons/icon_cursor
+rw-rw-r-- 13/13    221 Jan 29 04:06 1987 xgremlin/icons/pencil.mask
+rw-rw-r-- 13/13    251 Jan 29 04:06 1987 xgremlin/icons/icon_cursor_mask
+rw-rw-r-- 13/13   1086 Jan 29 04:06 1987 xgremlin/icons/location
+rw-rw-r-- 13/13   1074 Jan 29 04:06 1987 xgremlin/icons/area
+rw-rw-r-- 13/13   1074 Jan 29 04:06 1987 xgremlin/icons/bold
+rw-rw-r-- 13/13   1080 Jan 29 04:06 1987 xgremlin/icons/broken
+rw-rw-r-- 13/13   1074 Jan 29 04:06 1987 xgremlin/icons/copy
+rw-rw-r-- 13/13   1083 Jan 29 04:06 1987 xgremlin/icons/current
+rw-rw-r-- 13/13   1080 Jan 29 04:07 1987 xgremlin/icons/dashed
+rw-rw-r-- 13/13   1086 Jan 29 04:07 1987 xgremlin/icons/draw_arc
+rw-rw-r-- 13/13   1104 Jan 29 04:07 1987 xgremlin/icons/draw_arrowhead
+rw-rw-r-- 13/13   1086 Jan 29 04:07 1987 xgremlin/icons/draw_box
+rw-rw-r-- 13/13   1092 Jan 29 04:07 1987 xgremlin/icons/draw_curve
+rw-rw-r-- 13/13   1095 Jan 29 04:07 1987 xgremlin/icons/draw_vector
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/four
+rw-rw-r-- 13/13   1077 Jan 29 04:07 1987 xgremlin/icons/three
+rw-rw-r-- 13/13   1071 Jan 29 04:07 1987 xgremlin/icons/two
+rw-rw-r-- 13/13   1071 Jan 29 04:07 1987 xgremlin/icons/one
+rw-rw-r-- 13/13   1080 Jan 29 04:07 1987 xgremlin/icons/dotted
+rw-rw-r-- 13/13   1077 Jan 29 04:07 1987 xgremlin/icons/erase
+rw-rw-r-- 13/13   1083 Jan 29 04:07 1987 xgremlin/icons/gravity
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/grid
+rw-rw-r-- 13/13   1092 Jan 29 04:07 1987 xgremlin/icons/horizontal
+rw-rw-r-- 13/13   1080 Jan 29 04:07 1987 xgremlin/icons/italic
+rw-rw-r-- 13/13   1068 Jan 29 04:07 1987 xgremlin/icons/bc
+rw-rw-r-- 13/13   1083 Jan 29 04:07 1987 xgremlin/icons/justify
+rw-rw-r-- 13/13   1089 Jan 29 04:07 1987 xgremlin/icons/manhattan
+rw-rw-r-- 13/13   1080 Jan 29 04:07 1987 xgremlin/icons/medium
+rw-rw-r-- 13/13   1083 Jan 29 04:07 1987 xgremlin/icons/mirrorv
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/move
+rw-rw-r-- 13/13   1080 Jan 29 04:07 1987 xgremlin/icons/narrow
+rw-rw-r-- 13/13   1077 Jan 29 04:07 1987 xgremlin/icons/roman
+rw-rw-r-- 13/13    236 Jan 29 04:07 1987 xgremlin/icons/page_cursor
+rw-rw-r-- 13/13   1080 Jan 29 04:07 1987 xgremlin/icons/rotate
+rw-rw-r-- 13/13   1077 Jan 29 04:07 1987 xgremlin/icons/scale
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/text
+rw-rw-r-- 13/13   1077 Jan 29 04:07 1987 xgremlin/icons/thick
+rw-rw-r-- 13/13   1086 Jan 29 04:07 1987 xgremlin/icons/vertical
+rw-rw-r-- 13/13   1083 Jan 29 04:07 1987 xgremlin/icons/special
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/quit
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/read
+rw-rw-r-- 13/13   1077 Jan 29 04:07 1987 xgremlin/icons/write
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/undo
+rw-rw-r-- 13/13   1077 Jan 29 04:07 1987 xgremlin/icons/align
+rw-rw-r-- 13/13   1068 Jan 29 04:07 1987 xgremlin/icons/bl
+rw-rw-r-- 13/13   1068 Jan 29 04:07 1987 xgremlin/icons/br
+rw-rw-r-- 13/13   1071 Jan 29 04:07 1987 xgremlin/icons/buf
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/buf1
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/buf2
+rw-rw-r-- 13/13   1068 Jan 29 04:07 1987 xgremlin/icons/cc
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/buf3
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/buf4
+rw-rw-r-- 13/13   1092 Jan 29 04:07 1987 xgremlin/icons/csetpoints
+rw-rw-r-- 13/13   1068 Jan 29 04:07 1987 xgremlin/icons/cl
+rw-rw-r-- 13/13   1095 Jan 29 04:07 1987 xgremlin/icons/clearpoints
+rw-rw-r-- 13/13   1068 Jan 29 04:07 1987 xgremlin/icons/cr
+rw-rw-r-- 13/13   1089 Jan 29 04:07 1987 xgremlin/icons/movepoint
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/path
+rw-rw-r-- 13/13   1080 Jan 29 04:07 1987 xgremlin/icons/point1
+rw-rw-r-- 13/13   1080 Jan 29 04:07 1987 xgremlin/icons/point2
+rw-rw-r-- 13/13   1080 Jan 29 04:07 1987 xgremlin/icons/redraw
+rw-rw-r-- 13/13   1092 Jan 29 04:07 1987 xgremlin/icons/showpoints
+rw-rw-r-- 13/13   1068 Jan 29 04:07 1987 xgremlin/icons/tc
+rw-rw-r-- 13/13   1068 Jan 29 04:07 1987 xgremlin/icons/tl
+rw-rw-r-- 13/13   1068 Jan 29 04:07 1987 xgremlin/icons/tr
+rw-rw-r-- 13/13    218 Jan 29 04:07 1987 xgremlin/icons/mouse
+rw-rw-r-- 13/13   1086 Jan 29 04:07 1987 xgremlin/icons/noadjust
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/bang
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/help
+rw-rw-r-- 13/13   1074 Jan 29 04:07 1987 xgremlin/icons/cset
+rw-rw-r-- 13/13    150 Jan 29 04:07 1987 xgremlin/icons/README
+rwxrwxr-x 13/13      0 Dec  1 17:27 1987 xgremlin/new/
+rw-rw-r-- 13/13  26394 May 15 11:46 1987 xgremlin/new/short.c
+rw-rw-r-- 13/13  22311 May 15 11:45 1987 xgremlin/new/long2.c
+rw-rw-r-- 13/13    275 May 15 11:32 1987 xgremlin/new/grem2.h
+rw-rw-r-- 13/13   1179 May 15 11:46 1987 xgremlin/new/Makefile
+rw-rw-r-- 13/13   2516 May 15 11:32 1987 xgremlin/new/gremlin.h
+rw-rw-r-- 13/13   1052 May 15 11:44 1987 xgremlin/new/CH
+rw-rw-r-- 13/13   9581 May 15 11:45 1987 xgremlin/new/X1.c
+rw-rw-r-- 13/13   9435 May 15 11:45 1987 xgremlin/new/help.c
+rw-rw-r-- 13/13  12963 May 15 11:46 1987 xgremlin/new/main.c
+rw-rw-r-- 13/13  15255 May 15 11:32 1987 xgremlin/new/test.grn
+rw-rw-r-- 13/13   1179 May 15 11:39 1987 xgremlin/Makefile
+rw-rw-r-- 13/13   7869 Oct 28 14:06 1987 xgremlin/help.c
+rw-rw-r-- 13/13  15354 Jan 29 04:07 1987 xgremlin/gremlin.p
+rw-rw-r-- 13/13   2652 May 15 11:28 1987 xgremlin/db2.c
+rw-rw-r-- 13/13   1048 May 15 11:28 1987 xgremlin/db3.c
+rw-rw-r-- 13/13   4677 May 15 11:28 1987 xgremlin/display.c
+rw-rw-r-- 13/13    807 May 15 11:28 1987 xgremlin/graphics1.c
+rw-rw-r-- 13/13  14750 May 15 11:28 1987 xgremlin/graphics2.c
+rw-rw-r-- 13/13   1201 May 15 11:28 1987 xgremlin/graphics3.c
+rw-rw-r-- 13/13    275 May 15 11:28 1987 xgremlin/grem2.h
+rw-rw-r-- 13/13  76641 May 15 11:29 1987 xgremlin/icons.c
+rw-rw-r-- 13/13  23035 May 15 11:29 1987 xgremlin/long1.c
+rw-rw-r-- 13/13  22246 May 15 11:30 1987 xgremlin/long2.c
+rw-rw-r-- 13/13    986 May 15 11:30 1987 xgremlin/menu.c
+rw-rw-r-- 13/13   9849 Jan 23 07:43 1988 xgremlin/X1.c
+rw-rw-r-- 13/13   9752 May 15 11:28 1987 xgremlin/db1.c
+rw-rw-r-- 13/13   2517 May 15 11:28 1987 xgremlin/gremlin.h
+rw-rw-r-- 13/13  13398 Oct 28 14:06 1987 xgremlin/main.c
+rw-rw-r-- 13/13   6248 Oct 28 14:06 1987 xgremlin/X.c
+rw-rw-r-- 13/13   8743 May 15 11:30 1987 xgremlin/path.c
+rw-rw-r-- 13/13   1273 May 15 11:30 1987 xgremlin/point.c
+rw-rw-r-- 13/13  22944 May 15 11:30 1987 xgremlin/short.c
+rw-rw-r-- 13/13   3114 May 15 11:30 1987 xgremlin/undodb.c
+rw-rw-r-- 13/13   7335 Jan 29 04:07 1987 xgremlin/tags
+rwxrwxr-x 13/13 143360 Feb 17 07:50 1987 xgremlin/gremlin
+rw-rw-r-- 13/13   2775 Oct 27 06:38 1987 xgremlin/db1.o
+rw-rw-r-- 13/13    915 Oct 27 06:38 1987 xgremlin/db2.o
+rw-rw-r-- 13/13    270 Oct 27 06:38 1987 xgremlin/db3.o
+rw-rw-r-- 13/13    277 Oct 27 06:38 1987 xgremlin/graphics1.o
+rw-rw-r-- 13/13   8095 Oct 27 06:39 1987 xgremlin/graphics2.o
+rw-rw-r-- 13/13   1035 Oct 27 06:39 1987 xgremlin/graphics3.o
+rw-rw-r-- 13/13    429 Oct 27 06:39 1987 xgremlin/point.o
+rw-rw-r-- 13/13   1109 Oct 27 06:39 1987 xgremlin/undodb.o
+rw-rw-r-- 13/13  11299 Oct 27 06:40 1987 xgremlin/long1.o
+rw-rw-r-- 13/13  10633 Oct 27 06:40 1987 xgremlin/long2.o
+rw-rw-r-- 13/13  10871 Oct 27 06:41 1987 xgremlin/short.o
+rw-rw-r-- 13/13    594 Oct 27 06:41 1987 xgremlin/menu.o
+rw-rw-r-- 13/13   1036 Oct 27 06:42 1987 xgremlin/display.o
+rw-rw-r-- 13/13   2470 Oct 27 06:42 1987 xgremlin/path.o
+rw-rw-r-- 13/13  10594 Jan 23 07:27 1988 xgremlin/main.o
+rw-rw-r-- 13/13   4790 Jan 23 07:27 1988 xgremlin/X.o
+rw-rw-r-- 13/13  18469 Oct 27 06:44 1987 xgremlin/icons.o
+rw-rw-r-- 13/13   9347 Jan 23 07:50 1988 xgremlin/X1.o
+rw-rw-r-- 13/13  11199 Jan 23 07:28 1988 xgremlin/help.o
+rwxrwxr-x1510/13      0 Feb 10 02:36 1988 xgremlin/man/
+rw-r--r--1510/13  34977 Feb 10 02:35 1988 xgremlin/man/g.man
+rw-r--r--1510/13    568 Feb 10 02:35 1988 xgremlin/man/ex5.g
+rw-r--r--1510/13   4267 Feb 10 02:35 1988 xgremlin/man/sample.g
+rw-r--r--1510/13   1003 Feb 10 02:35 1988 xgremlin/man/ex16.g
+rw-r--r--1510/13  12635 Feb 10 02:35 1988 xgremlin/man/fonts.g
+rw-r--r--1510/13   2342 Feb 10 02:35 1988 xgremlin/man/cursor.g
+rw-r--r--1510/13  12862 Feb 10 02:35 1988 xgremlin/man/brushes.g
+rw-r--r--1510/13    389 Feb 10 02:35 1988 xgremlin/man/points.g
+rw-r--r--1510/13    439 Feb 10 02:35 1988 xgremlin/man/vector.g
+rw-r--r--1510/13    602 Feb 10 02:35 1988 xgremlin/man/gdump.manl
+rw-r--r--1510/13  13406 Feb 10 02:35 1988 xgremlin/man/gremlin.manl
+rw-r--r--1510/13   2861 Feb 10 02:35 1988 xgremlin/man/gprint.manl
+rw-r--r--1510/13    747 Feb 10 02:35 1988 xgremlin/man/ex1.g
+rw-r--r--1510/13    825 Feb 10 02:36 1988 xgremlin/man/ex2.g
+rw-r--r--1510/13   1105 Feb 10 02:36 1988 xgremlin/man/ex3.g
+rw-r--r--1510/13   1156 Feb 10 02:36 1988 xgremlin/man/ex4.g
+rw-r--r--1510/13    698 Feb 10 02:36 1988 xgremlin/man/ex6.g
+rw-r--r--1510/13   3045 Feb 10 02:36 1988 xgremlin/man/ex7a.g
+rw-r--r--1510/13   3111 Feb 10 02:36 1988 xgremlin/man/ex7b.g
+rw-r--r--1510/13    801 Feb 10 02:36 1988 xgremlin/man/ex8.g
+rw-r--r--1510/13   1125 Feb 10 02:36 1988 xgremlin/man/ex9.g
+rw-r--r--1510/13    844 Feb 10 02:36 1988 xgremlin/man/ex10.g
+rw-r--r--1510/13   1403 Feb 10 02:36 1988 xgremlin/man/ex11.g
+rw-r--r--1510/13   1452 Feb 10 02:36 1988 xgremlin/man/ex12.g
+rw-r--r--1510/13   2489 Feb 10 02:36 1988 xgremlin/man/ex13.g
+rw-r--r--1510/13   1289 Feb 10 02:36 1988 xgremlin/man/ex14.g
+rw-r--r--1510/13   2249 Feb 10 02:36 1988 xgremlin/man/ex15.g
+rw-r--r--1510/13    117 Feb 10 02:36 1988 xgremlin/man/icon.arrow
+rw-r--r--1510/13    309 Feb 10 02:36 1988 xgremlin/man/icon.box
+rw-r--r--1510/13    339 Feb 10 02:36 1988 xgremlin/man/icon.boxinc
+rw-r--r--1510/13    287 Feb 10 02:36 1988 xgremlin/man/icon.vector
+rw-r--r--1510/13    421 Feb 10 02:36 1988 xgremlin/man/icon.copy
+rw-r--r--1510/13    221 Feb 10 02:36 1988 xgremlin/man/icon.curve
+rw-r--r--1510/13    213 Feb 10 02:36 1988 xgremlin/man/icon.erase
+rw-r--r--1510/13    217 Feb 10 02:36 1988 xgremlin/man/icon.gravity
+rw-r--r--1510/13    231 Feb 10 02:36 1988 xgremlin/man/icon.grid
+rw-r--r--1510/13    200 Feb 10 02:36 1988 xgremlin/man/icon.horizontal
+rw-r--r--1510/13    213 Feb 10 02:36 1988 xgremlin/man/icon.horvert
+rw-r--r--1510/13    417 Feb 10 02:36 1988 xgremlin/man/icon.include
+rw-r--r--1510/13    204 Feb 10 02:36 1988 xgremlin/man/icon.mirror
+rw-r--r--1510/13    313 Feb 10 02:36 1988 xgremlin/man/icon.move
+rw-r--r--1510/13    214 Feb 10 02:36 1988 xgremlin/man/icon.rotate
+rw-r--r--1510/13    313 Feb 10 02:36 1988 xgremlin/man/icon.scale
+rw-r--r--1510/13    178 Feb 10 02:36 1988 xgremlin/man/icon.arc
+rw-r--r--1510/13    209 Feb 10 02:36 1988 xgremlin/man/icon.vertical
+rw-rw-r--1510/13     65 Feb 10 02:36 1988 xgremlin/man/made
+rw-r--r--1510/13    852 Feb 10 02:36 1988 xgremlin/man/icon.buffer
+rw-r--r--1510/13   3174 Feb 10 02:36 1988 xgremlin/man/sample.out
+rw-rw-r--1510/13  90198 Feb 10 02:36 1988 xgremlin/man/g.man.grn
+rw-rw-r--1510/13 152128 Feb 10 02:36 1988 xgremlin/man/g.out
+rw-r--r--1510/13    200 Feb 10 02:36 1988 xgremlin/man/Makefile

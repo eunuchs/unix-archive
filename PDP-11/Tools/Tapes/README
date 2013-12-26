@@ -1,0 +1,68 @@
+These programs are used to get files back from old Unix tape backup images.
+Many were written ages ago, and my need to be ported to 32-bit and/or
+big-endian machines.
+
+Here's a chart of what each is supposed to do what, and my success with using
+it on a 32-bit little-endian machine (an i486 running FreeBSD).
+
+	     tp      itp      dtp      v6
+	   backup   backup   backup   dump
+512restor			       ?
+tp-progs     Y        Y        Y
+
+  ? = it's supposed to, but I haven't tried it yet
+  Y = it worked on my FreeBSD box
+
+
+512restor Readme
+----------------
+This directory contains sources for 512restor and 1024restor, restore
+programs which can read V7-style dump tapes generated on 512-block
+file systems (straight V7), and 1024-block file systems (Ultrix-11),
+respectively.
+
+Scott Narveson, August 1988
+
+Tarx Readme
+-----------
+
+Tarx is a newer, cleaner, more versatile replacement for my old targ/tarl
+programs for salvaging information from damaged tar tapes.  It does a
+better job on various details and has been extensively tidied up.
+
+					Henry Spencer at U of Toronto Zoology
+                                        henry@zoo.toronto.ca
+
+Tp-progs Readme
+---------------
+These programs list the table of contents and extract files from tp, dtp
+and itp Unix archives. These archive formats were used in 6th and 7th
+Edition Unix, and predate tar(1) format.
+
+	Warren Toomey	wkt@cs.adfa.oz.au    March 1995
+
+Vtserver Readme
+---------------
+The VTserver software allows you to install 7th Edition UNIX onto a PDP-11
+without requiring a tape drive.
+
+
+Tarboot Readme
+--------------
+
+Tarboot is a standalone bootstrap which will load a program from an
+(unblocked) tar-format tape on a TM11 or equivalent. When started,
+it prompts with `=' for a filename;  it then rewinds the tape and
+searches it for a file of that name. The first file of that name is
+loaded into core and executed.
+					Henry Spencer at U of Toronto Zoology
+                                        henry@zoo.toronto.ca
+
+Newoldar Readme
+---------------
+
+A modified 2.9BSD ar which handles archives created on a PDP-11 directly from
+non-PDP platforms.  Archives identified as "old PDP-11 archive" by file(1)
+or otherwise having a 2-byte header of value 177545 (0xff65) can be 
+manipulated using this utility.  The omnipresent "cont.a" archives 
+fall into this category.

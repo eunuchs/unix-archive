@@ -1,0 +1,33 @@
+Autzoo.1273
+net.bugs.v7
+utzoo!henry
+Wed Jan 13 17:25:11 1982
+su ps display
+The standard su(1) just shows "su" as the command name of the shell it
+fires up.  This can upset managerial types who think "su" is "superuser"
+and want to know why Joe Blow has superuser powers (actually, of course,
+Joe has done something like "su fred").  Not entirely clear this should
+be called a bug, it's more like an obscurity.  Anyway, the fix is simple
+and goes roughly like this (line numbers are approximate because our su
+has other modifications):
+
+	30,34c30,38
+	< 
+	< 	if(argc > 1)
+	< 		nptr = argv[1];
+	< 	else
+	< 		nptr = "root";
+	---
+	> 	char show[15];	/* What to show for shell on ps listing. */
+	> 
+	> 	if(argc > 1) {
+	> 		nptr = argv[1];
+	> 		sprintf(show, "su %.8s", nptr);
+	> 	} else {
+	> 		nptr = "root";
+	> 		strcpy(show, "su");
+	> 	}
+	66c70
+	< 		execl(shell, "su", 0);
+	---
+	> 		execl(shell, show, 0);

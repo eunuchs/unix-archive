@@ -1,0 +1,47 @@
+FLOG (I)                      PWB/UNIX 4/1/77                     FLOG (I)
+
+NAME
+flog - speed up a process
+
+SYNOPSIS
+flog [-ln] [-am] [-u] process-id...
+
+DESCRIPTION
+Flog is used to simulate an improvement in the performance of a process that 
+is already in execution.
+
+The process-id is the number of the process that is to be disciplined.
+
+The value n of the l keyletter argument is the flagellation constant, ie, the 
+number of lashes to be administered per minute. If this argument is omitted, 
+the default is 17, which is the most random number.
+
+The value m of the keyletter argument is the number of times the inducement to 
+speed up is to be administered. If this argument is omitted, the default is 
+one, which is based on the possibility that after that the process will rectify
+its behavior of its own volition.
+
+The presence of the u keyletter argument indicates that flog is to be 
+unmerciful in its actions. This nullifies the effects of the other keyletter 
+arguments. It is recommended that this option be used only on extremely 
+stubborn processes, as its over-use may have detrimental effects.
+
+FILES
+Flog will read the file /have/mercy for any entry containing the process-id of 
+the process being speeded-up. The file can contain whatever supplications are 
+deemed necessary, but, of course, these will be ignored if the u keyletter 
+argument is supplied.
+
+SEE ALSO
+On Improving Process Performance by the Administration of Corrective 
+Stimulation, CACM, vol. 4, 1657, pp. 356-654.
+
+DIAGNOSTICS
+If a named process does not exist, flog replies "flog you" on the standard 
+output. If flog kill(II)s the process, which usually happens when the u 
+keyletter is supplied, it writes "RIP", followed by the process-id of the 
+deceased on the standard output.
+
+BUGS
+Spurious supplications for mercy by the process being flogged sometimes wind 
+up on the standard output, rather than in /shut/up.

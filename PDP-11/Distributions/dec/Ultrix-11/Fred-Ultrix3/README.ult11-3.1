@@ -1,0 +1,45 @@
+DEC ULTRX-11 V3.1 Master Distribution Kit
+
+
+This directory contains the files needed to build a complete
+installation kit of version 3.1 of the ULTRIX-11 Unix system
+for the DEC PDP-11.  Version 3.1 was also the final release;
+no more development was done after, as UEG shifted its focus
+to the new VAX systems.  Ultrix effectively was ported to the
+VAX. and called Ultrix-32.  Later releases were called either
+Ultrix/VAX or Ultrix/RISC, depending on which DEC platform it
+was for.
+
+This distribution contains files from both the V3.1 binary
+kit (dug up by Wilko Bulte), the V3.1 source kit from Steven
+Schultz, and some other tools and files grabbed from anywhere.
+
+The kit is basically a regeneratable V3.1 binary boot kit,
+with the official SRCKIT added to it (as tape file 35). The
+top-level "build" script does what it says.. it builds the
+tape so you can start it up and go to get some sleep :)
+
+To get the ball rolling, check the value of the TAPE variable
+at the top of the "build" script.  It is set to what MY tape
+device (TK50 on TQK50 controller) under Ultrix-11 V3.1 is,
+so you may have to change it.
+
+Then, type
+
+    ./build
+
+and watch things go.  After about two hours of tape activity,
+you should be woken up by two BEEPs telling you that it is all
+done.  Unload the tape and you're all set.
+
+Extreme thanks go to Wilko and Steven for digging up this stuff;
+to Bill Gunshannon, Ed "The Wanderer", Kees Stravers and Warren
+Toomey for their support while I was fighting hardware problems
+and debug weird software issues.  Thanks guys!!
+
+If you run into problems, drop me a note!
+
+Have fun !
+
+Fred N. van Kempen, <fred@microwalt.nl>
+March 5th, 2001

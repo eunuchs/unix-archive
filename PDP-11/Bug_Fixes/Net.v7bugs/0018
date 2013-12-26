@@ -1,0 +1,10 @@
+Areed.173
+NET.v7bugs
+utzoo!duke!reed!valer
+Fri May 22 01:46:11 1981
+uuxqt bug
+uuxqt.c should have an
+	fclose(xfp)
+following the
+	unlink(xfile)
+after the rmfiles label.

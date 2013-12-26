@@ -1,0 +1,2555 @@
+!/bin/sh
+# This is a shell archive (produced by GNU sharutils 4.2).
+# To extract the files from this archive, save it to some FILE, remove
+# everything before the `!/bin/sh' line above, then type `sh FILE'.
+#
+# Made on 1998-10-12 10:36 CDT by <eric@rainbow>.
+# Source directory was `/nfs/rainbow/ars/eric/pups/ug/1/london'.
+#
+# Existing files will *not* be overwritten unless `-c' is specified.
+#
+# This shar contains:
+# length mode       name
+# ------ ---------- ------------------------------------------
+#   5480 -rw------- em.n
+#  23036 -rw------- em1.c
+#   8870 -rw------- em2.c
+#   3560 -rw------- emdoc
+#    676 -rw------- emhelp
+#
+save_IFS="${IFS}"
+IFS="${IFS}:"
+gettext_dir=FAILED
+locale_dir=FAILED
+first_param="$1"
+for dir in $PATH
+do
+  if test "$gettext_dir" = FAILED && test -f $dir/gettext \
+     && ($dir/gettext --version >/dev/null 2>&1)
+  then
+    set `$dir/gettext --version 2>&1`
+    if test "$3" = GNU
+    then
+      gettext_dir=$dir
+    fi
+  fi
+  if test "$locale_dir" = FAILED && test -f $dir/shar \
+     && ($dir/shar --print-text-domain-dir >/dev/null 2>&1)
+  then
+    locale_dir=`$dir/shar --print-text-domain-dir`
+  fi
+done
+IFS="$save_IFS"
+if test "$locale_dir" = FAILED || test "$gettext_dir" = FAILED
+then
+  echo=echo
+else
+  TEXTDOMAINDIR=$locale_dir
+  export TEXTDOMAINDIR
+  TEXTDOMAIN=sharutils
+  export TEXTDOMAIN
+  echo="$gettext_dir/gettext -s"
+fi
+touch -am 1231235999 $$.touch >/dev/null 2>&1
+if test ! -f 1231235999 && test -f $$.touch; then
+  shar_touch=touch
+else
+  shar_touch=:
+  echo
+  $echo 'WARNING: not restoring timestamps.  Consider getting and'
+  $echo "installing GNU \`touch', distributed in GNU File Utilities..."
+  echo
+fi
+rm -f 1231235999 $$.touch
+#
+if mkdir _sh13396; then
+  $echo 'x -' 'creating lock directory'
+else
+  $echo 'failed to create lock directory'
+  exit 1
+fi
+# ============= em.n ==============
+if test -f 'em.n' && test "$first_param" != -c; then
+  $echo 'x -' SKIPPING 'em.n' '(file already exists)'
+else
+  $echo 'x -' extracting 'em.n' '(text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'em.n' &&
+X.th EM I 4/2/76
+X.if t .ds q \(aa
+X.if n .ds q '
+X.sh NAME
+em \*- editor for mortals
+X.sh SYNOPSIS
+em
+[
+X.bd \*-
+] [ -p ] [ name ]
+X.sh DESCRIPTION
+X.it Em
+is a QMC variant of the standard Unix text editor - ed.
+It includes all of ed, so the documentation for ed
+is fully applicable to em.
+Em also has a number of new commands and facilities designed to
+improve its interaction
+and increase its usefulness to users at fast vdu terminals (such
+as the ITT's at QMC).
+X
+X.it Em
+differs from ed in that it normally prefixes command lines with a '>'.
+For those who prefer silence, if the editor is invoked by any
+name not having 'm' as its second character, no prompts will appear.
+Other ways of controlling prompts are described below.
+X
+Commands to em may be typed in upper- or lower-case letters.
+X
+X.it Em
+has the following extra commands. They are designed principally
+for use at
+any Teletype-compatible terminal operating at speeds of 1200 baud
+or more.
+X.s3
+X.lp +5 5
+b
+X.lp+5 5
+b-
+X.br
+The 'break' command 'b'
+turns on automatic line breaks. During subsequent input to the 'open'
+command (see below), the first space after character position
+60 of each line typed will be replaced by a 'newline'.
+Automatic line breaks are inserted only during input with one of
+the variants of the 'o' command.
+They may be suppressed by the command 'b-'.
+If the current saved filename ends in '.n' or '.r', then 'b' is automatically
+invoked.
+X.s3
+X.lp +5 5
+h
+X.br
+The 'help' command displays a summary of the commands available in em.
+The summary resides
+in /usr/lib/emhelp, and is designed to fill exactly 18 lines of
+80 characters. 
+X.s3
+X.lp +5 5
+( \fB. \fR, \fB. \fR)o
+X.lp +5 5
+( \fB. \fR, \fB. \fR)o/regular expression/
+X.lp+5 5
+( \fB. \fR, \fB. \fR)o+
+X.lp+5 5
+( \fB. \fR, \fB. \fR)o-
+X.lp+5 5
+( \fB. \fR, \fB. \fR)o\\
+X.br
+The 'open' command provides an additional level of editing
+for interactive corrections during input of new lines of text
+and for alterations to existing lines.
+The first two forms of the 'o' command operate on an existing
+line. The line
+is opened with the cursor positioned at the first occurence of the regular
+expression if present,
+otherwise at the start of the line.
+X
+The commands 'o+', 'o-' and 'o\\' are equivalent to the 'a', 'i'
+and 'c' commands respectively, except in their use of the control
+keys listed below, and in that they are not terminated by a line
+containing a single '.', but by an ESCAPE or ^D. 'o;' is equivalent
+to 'o+'.
+In all variants of the 'o' command it is possible to position
+the cursor within the line, to delete characters, words or portions
+of the line, 
+and to insert new text at any point, using control keys
+as follows:
+X
+X.nf
+X.in +5
+X 
+^A              re-display curent line to cursor
+^B        	move cursor back one word
+ESCAPE or ^D    exit from 'o' mode
+^E              display all of current line
+^F              delete forwards to end of current line
+^H              gives summary of control keys
+^Q              display next character
+^R              Release margin
+^S              re-scan from start of current line
+^V		verify spelling of preceding alphabetic
+X			string (see "spell(I)")
+^W              display next word
+^Z              delete preceding word
+# or ^X         delete preceding character
+@               delete backwards to start of current line
+RUBOUT          exit with current line unchanged
+X.in -5
+X.fi
+X
+X
+Other characters (including RETURN) are inserted as typed.
+In this mode, diagnostic information is provided on ITT terminals
+in the form of a
+backward '?' when control keys are used inappropriately. When the automatic
+line break facility is operative, a 'bell' is transmitted to
+the terminal before each newline is inserted. The newline may
+be inhibited by the '^R' code.
+X
+X.s3
+X.lp +5 5
+( \fB. \fR, \fB. \fR)x/regular expression/replacement/
+X.br
+The exchange command performs exactly the same functions
+as an equivalent substitute command 's', except that it enables
+the user to determine
+interactively whether or not each replacement is to be
+performed.
+Each instance of the specified regular expression
+is displayed, underscored with '^' characters.
+The user must type '.' RETURN to perform the replacement or
+just RETURN to omit it.
+X
+X.s3
+X.lp +5 5
+( \fB. \fR)
+"
+X.br
+The " command is equivalent to '.+1,.+17p'.
+X.s3
+X.lp +5 5
+( \fB. \fR)
+%
+X.br
+The % command is equivalent to '.-7,.+7p', except that the value
+of '.' is unchanged by it, and the current line is separated from its
+neighbours on the screen by a line of '-'s.
+X.s3
+X.lp +5 5
+( \fB. \fR)
+&
+X.br
+This is equivalent to '.-16,.p'.
+X.s3
+X.lp +5 5
+!
+X.br
+Two additional facilities are available under the '!' (escape to UNIX)
+command. '!!'repeats the last command executed in ! mode.
+X '%' anywhere in a '!' line is replaced by the currently selected
+filename.
+X.s3
+X.lp +5 5
+>
+X.lp +5 5
+<
+X.br
+X '>' turns prompting off, '<' turns it on again.
+X
+X.in -5
+When using 'x' or 's' in em it is possible to obtain a count of the
+number of replacements performed by postfixing the command with an 'n'.
+Unsuccessful searches for strings in em are indicated by '??'.
+X.sh FILES
+X /usr/emhelp
+X.sh "SEE ALSO"
+ed(I), spell(I)
+X.br
+A Tutorial Introduction to the ED Text Editor
+(B. W. Kernighan)
+X.sh BUGS
+The underscoring in the 'x' command is sometimes incorrect on ITT terminals,
+especially when the
+line contains {,},\\- or \\!.
+The
+",% and & commands should restrict their scope to the dimensions
+of whatever screen is in use.
+Tab settings are assumed to be at every eighth character position.
+SHAR_EOF
+  $shar_touch -am 0218224596 'em.n' &&
+  chmod 0600 'em.n' ||
+  $echo 'restore of' 'em.n' 'failed'
+  if ( md5sum --help 2>&1 | grep 'sage: md5sum \[' ) >/dev/null 2>&1 \
+  && ( md5sum --version 2>&1 | grep -v 'textutils 1.12' ) >/dev/null; then
+    md5sum -c << SHAR_EOF >/dev/null 2>&1 \
+    || $echo 'em.n:' 'MD5 check failed'
+6d0c85d7e66ef971facf99c427afb330  em.n
+SHAR_EOF
+  else
+    shar_count="`LC_ALL= LC_CTYPE= LANG= wc -c < 'em.n'`"
+    test 5480 -eq "$shar_count" ||
+    $echo 'em.n:' 'original size' '5480,' 'current size' "$shar_count!"
+  fi
+fi
+# ============= em1.c ==============
+if test -f 'em1.c' && test "$first_param" != -c; then
+  $echo 'x -' SKIPPING 'em1.c' '(file already exists)'
+else
+  $echo 'x -' extracting 'em1.c' '(text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'em1.c' &&
+#
+X
+/*
+X * Unix 6
+X * Editor
+X * with QMC mods Feb. 76, by  George Coulouris
+X * mods are:
+X	prompts (suppress with '-p' flag)
+X	",%,&, to display a screen full of context
+X	'x' - as 's' but interactive
+X	'n' flag when appended to 's' or 'x' commands prints number of replacements
+X
+X * also mods by jrh 26 Feb 76
+X	% == current file name in ! commands
+X	!! == repeat the last ! command you executed
+X	-e flag == "elfic" mode :-
+X		no "w", "r\n" commands, auto w before q
+X
+X    More mods by George March 76:
+X
+X	'o' command for text input with local editing via control keys
+X	'b' to set a threshold for automatic line breaks in 'o' mode.
+X	'h' displays a screen full of help with editor commands
+X		(the help is in /usr/lib/emhelp)
+bugs:
+X	should not use printf in substitute()
+X	(for space reasons).
+X */
+X
+/* this file contains all of the code except that used in the 'o' command.
+X	that is in a second segment called em2.c */
+X
+/* screen dimensions */
+#define LINES	18
+#define LENGTH	80
+#define SPLIT	'-'
+#define PROMPT	'>'
+#define CONFIRM	'.'
+#define SCORE	"^"
+#define FORM	014
+#define	SIGHUP	1
+#define	SIGINTR	2
+#define	SIGQUIT	3
+#define	FNSIZE	64
+#define	LBSIZE	512
+#define	ESIZE	128
+#define	GBSIZE	256
+#define	NBRA	5
+#define	EOF	-1
+X
+#define	CBRA	1
+#define	CCHR	2
+#define	CDOT	4
+#define	CCL	6
+#define	NCCL	8
+#define	CDOL	10
+#define	CEOF	11
+#define	CKET	12
+X
+#define	STAR	01
+X
+#define	error	goto errlab
+#define	READ	0
+#define	WRITE	1
+X
+X
+#define UNIXBUFL 100
+X
+extern int margin;	/* used to set threshold in 'open' */
+X
+int	elfic	0;	/* true if "elfic" (-e) flag */
+int firstime	1;	/* ugh - used to frigg initial "read" */
+int	peekc;
+int	lastc;
+char	unixbuffer [UNIXBUFL];
+char	savedfile[FNSIZE];
+char	file[FNSIZE];
+char	linebuf[LBSIZE];
+char	rhsbuf[LBSIZE/2];
+char	expbuf[ESIZE+4];
+int	circfl;
+int	*zero;
+int	*dot;
+int	*dol;
+int	*endcore;
+int	*fendcore;
+int	*addr1;
+int	*addr2;
+char	genbuf[LBSIZE];
+int	count[2];
+char	*nextip;
+char	*linebp;
+int	ninbuf;
+int	io;
+int	pflag;
+int	onhup;
+int	onquit;
+int	vflag	0;
+int	xflag	0;	/*used in 'xchange' command */
+int	listf;
+int	col;
+char	*globp;
+int	tfile	-1;
+int	tline;
+char	*tfname;
+char	*loc1;
+char	*loc2;
+char	*locs;
+char	ibuff[512];
+int	iblock	-1;
+char	obuff[512];
+int	oblock	-1;
+int	ichanged;
+int	nleft;
+int	errfunc();
+int	*errlab	errfunc;
+char	TMPERR[] "TMP";
+int	names[26];
+char	*braslist[NBRA];
+char	*braelist[NBRA];
+X
+main(argc, argv)
+char **argv;
+{
+X	register char *p1, *p2;
+X	extern int onintr();
+X
+X	onquit = signal(SIGQUIT, 1);
+X	onhup = signal(SIGHUP, 1);
+X	if(*(*argv+1) == 'm') vflag = 1;
+X	argv++;
+X	if (argc > 1 && **argv=='-') {
+X		p1 = *argv+1;
+X		while (*p1) {
+X			switch (*p1++) {
+X		case 'q':
+X				signal(SIGQUIT, 0);
+X				break;
+X		case 'e':
+X				elfic = 1;
+X				break;
+X		case 'p':
+X				vflag = 0;
+X				break;
+X		case 's':
+X				vflag = -1;
+X				break;
+X			}
+X		}
+X		if (!(*argv)[1])
+X			vflag = -1;
+X		argv++;
+X		argc--;
+X	}
+X	if (argc>1) {
+X		p1 = *argv;
+X		p2 = savedfile;
+X		while (*p2++ = *p1++);
+X		breaks(p1-3);
+X		globp = "r";
+X	}
+X	fendcore = sbrk(0);
+X	if (vflag>0) puts("Editor");
+X	init();
+X	if ((signal(SIGINTR, 1) & 01) == 0)
+X		signal(SIGINTR, onintr);
+X	setexit();
+X	commands(vflag);
+X	unlink(tfname);
+}
+X
+commands(prompt)
+{
+X	int getfile(), gettty();
+X	register *a1, c;
+X	register char *p;
+X	char *p1,*p2;
+X	int fd, r, n;
+X
+X	for (;;) {
+X	if (pflag) {
+X		pflag = 0;
+X		addr1 = addr2 = dot;
+X		goto print;
+X	}
+X	if (prompt>0 && globp == 0) putch(PROMPT);
+X	addr1 = 0;
+X	addr2 = 0;
+X	xflag = 0;
+X	do {
+X		addr1 = addr2;
+X		if ((a1 = address())==0) {
+X			c = getchar();
+X			break;
+X		}
+X		addr2 = a1;
+X		if ((c=getchar()) == ';') {
+X			c = ',';
+X			dot = a1;
+X		}
+X	} while (c==',');
+X	if (addr1==0)
+X		addr1 = addr2;
+X	if (c>= 'A' && c<= 'Z')
+X		c =| 040;
+X	switch(c) {
+X
+X	case 'a':
+X		setdot();
+X		newline();
+X		append(gettty, addr2);
+X		continue;
+X
+X	case 'b':
+X			if((c=peekc=getchar())== '+' || c =='-')
+X				peekc = 0;
+X				else if(c != '\n') error;
+X			margin = c == '-' ? LBSIZE - 40 : LENGTH - 20;
+X			newline();
+X			continue;
+X
+X	case 'c':
+X		setdot();
+X		newline();
+X		delete();
+X		append(gettty, addr1-1);
+X		continue;
+X
+X	case 'd':
+X		setdot();
+X		newline();
+X		delete();
+X		continue;
+X
+X	case 'e':
+X		if (elfic)
+X			error;
+X		setnoaddr();
+X		if ((peekc = getchar()) != ' ')
+X			error;
+X		savedfile[0] = 0;
+X		init();
+X		addr2 = zero;
+X		goto caseread;
+X
+X	case 'f':
+X		if (elfic)
+X			error;
+X		setnoaddr();
+X		if ((c = getchar()) != '\n') {
+X			peekc = c;
+X			savedfile[0] = 0;
+X			filename();
+X		}
+X		puts(savedfile);
+X		continue;
+X
+X	case 'g':
+X		global(1);
+X		continue;
+X
+X	case 'h':
+X		newline();
+X		if((fd = open("/usr/lib/emhelp",0))<0) {
+X			puts("/usr/lib/emhelp not found");
+X			continue;
+X		}
+X			while (n = read( fd, linebuf, 512))
+X				write(1, linebuf, n);
+X			close( fd);
+X			continue;
+X
+X	case 'i':
+X		setdot();
+X		nonzero();
+X		newline();
+X		append(gettty, addr2-1);
+X		continue;
+X
+X	case 'k':
+X		if ((c = getchar()) < 'a' || c > 'z')
+X			error;
+X		newline();
+X		setdot();
+X		nonzero();
+X		names[c-'a'] = *addr2 | 01;
+X		continue;
+X
+X	case 'm':
+X		move(0);
+X		continue;
+X
+X	case '\n':
+X		if (addr2==0)
+X			addr2 = dot+1;
+X		addr1 = addr2;
+X		goto print;
+X
+X	case 'l':
+X		listf++;
+X	case 'p':
+X		newline();
+X	print:
+X		setdot();
+X		nonzero();
+X		a1 = addr1;
+X		do
+X			puts(getline(*a1++));
+X		while (a1 <= addr2);
+X		dot = addr2;
+X		listf = 0;
+X		continue;
+X
+X	case 'o':
+X		setdot();
+X		op(globp);
+X		continue;
+X
+X	case 'q':
+X		setnoaddr();
+X		newline();
+X		if (elfic) {
+X			firstime = 1;
+X			goto writeout;
+X		}
+X	quitit:
+X		unlink(tfname);
+X		exit();
+X
+X	case 'r':
+X	caseread:
+X		filename();
+X		if ((io = open(file, 0)) < 0) {
+X			lastc = '\n';
+X			error;
+X		}
+X		setall();
+X		ninbuf = 0;
+X		append(getfile, addr2);
+X		exfile();
+X		continue;
+X
+X	case 'x':
+X		xflag = 1;
+X	case 's':
+X		setdot();
+X		nonzero();
+X		substitute(globp);
+X		xflag = 0;
+X		continue;
+X
+X	case 't':
+X		move(1);
+X		continue;
+X
+X	case 'v':
+X		global(0);
+X		continue;
+X
+X	case 'w':
+X		if (elfic)
+X			error;
+X	writeout:
+X		setall();
+X		nonzero();
+X		if (elfic) {
+X			p1 = savedfile;
+X			if (*p1==0)
+X				error;
+X			p2 = file;
+X			while (*p2++ = *p1++);
+X		}
+X		else
+X			filename ();
+X		if ((io = creat(file, 0666)) < 0)
+X			error;
+X		putfile();
+X		exfile();
+X		if (elfic)
+X			goto quitit;
+X		continue;
+X
+X	case '"':
+X		setdot();
+X		newline();
+X		nonzero();
+X		dot = addr1;
+X		if (dot == dol) error;
+X		addr1 = dot+1;
+X		addr2 = dot +LINES-1;
+X		addr2 = addr2>dol? dol: addr2;
+X	outlines:
+X		putchar(FORM);
+X		a1 = addr1-1;
+X		while (++a1 <= addr2) puts(getline(*a1));
+X		dot = addr2;
+X		continue;
+X
+X	case '&':
+X		setdot();
+X		newline();
+X		nonzero();
+X		dot = addr1;
+X		addr1 = dot - (LINES-2);
+X		addr2 = dot;
+X		addr1 = addr1>zero? addr1: zero+1;
+X		goto outlines;
+X
+X	case '%':
+X		newline();
+X		setdot();
+X		nonzero();
+X		dot = addr1;
+X		addr1 = dot - (LINES/2 - 2);
+X		addr2 = dot + (LINES/2 - 2);
+X		addr1 = addr1>zero? addr1 : zero+1;
+X		addr2 = addr2>dol? dol : addr2;
+X		a1 = addr1 - 1;
+X		putchar(FORM);
+X		while(++a1 <= addr2) {
+X			if (a1 == dot) screensplit();
+X			puts(getline(*a1));
+X			if (a1 == dot) screensplit();
+X		}
+X		continue;
+X
+X	case '>':
+X		vflag = vflag>0? 0: vflag;
+X		reset();
+X
+X	case '<':
+X		vflag = 1;
+X		reset();
+X
+X	case '=':
+X		setall();
+X		newline();
+X		count[1] = (addr2-zero)&077777;
+X		putd();
+X		putchar('\n');
+X		continue;
+X
+X	case '!':
+X		unix();
+X		continue;
+X
+X	case EOF:
+X		if(prompt == -2 || ttyn(0) == 'x') return;
+X		continue;
+X
+X	}
+X	error;
+X	}
+}
+X
+address()
+{
+X	register *a1, minus, c;
+X	int n, relerr;
+X
+X	minus = 0;
+X	a1 = 0;
+X	for (;;) {
+X		c = getchar();
+X		if ('0'<=c && c<='9') {
+X			n = 0;
+X			do {
+X				n =* 10;
+X				n =+ c - '0';
+X			} while ((c = getchar())>='0' && c<='9');
+X			peekc = c;
+X			if (a1==0)
+X				a1 = zero;
+X			if (minus<0)
+X				n = -n;
+X			a1 =+ n;
+X			minus = 0;
+X			continue;
+X		}
+X		relerr = 0;
+X		if (a1 || minus)
+X			relerr++;
+X		switch(c) {
+X		case ' ':
+X		case '\t':
+X			continue;
+X	
+X		case '+':
+X			minus++;
+X			if (a1==0)
+X				a1 = dot;
+X			continue;
+X
+X		case '-':
+X		case '^':
+X			minus--;
+X			if (a1==0)
+X				a1 = dot;
+X			continue;
+X	
+X		case '?':
+X		case '/':
+X			compile(c);
+X			a1 = dot;
+X			for (;;) {
+X				if (c=='/') {
+X					a1++;
+X					if (a1 > dol)
+X						a1 = zero;
+X				} else {
+X					a1--;
+X					if (a1 < zero)
+X						a1 = dol;
+X				}
+X				if (execute(0, a1))
+X					break;
+X				if (a1==dot)
+X					{putchar('?'); error;}
+X						/* two '?'s for failed search */
+X			}
+X			break;
+X	
+X		case '$':
+X			a1 = dol;
+X			break;
+X	
+X		case '.':
+X			a1 = dot;
+X			break;
+X
+X		case '\'':
+X			if ((c = getchar()) < 'a' || c > 'z')
+X				error;
+X			for (a1=zero; a1<=dol; a1++)
+X				if (names[c-'a'] == (*a1|01))
+X					break;
+X			break;
+X	
+X		default:
+X			peekc = c;
+X			if (a1==0)
+X				return(0);
+X			a1 =+ minus;
+X			if (a1<zero || a1>dol)
+X				error;
+X			return(a1);
+X		}
+X		if (relerr)
+X			error;
+X	}
+}
+X
+setdot()
+{
+X	if (addr2 == 0)
+X		addr1 = addr2 = dot;
+X	if (addr1 > addr2)
+X		error;
+}
+X
+setall()
+{
+X	if (addr2==0) {
+X		addr1 = zero+1;
+X		addr2 = dol;
+X		if (dol==zero)
+X			addr1 = zero;
+X	}
+X	setdot();
+}
+X
+setnoaddr()
+{
+X	if (addr2)
+X		error;
+}
+X
+nonzero()
+{
+X	if (addr1<=zero || addr2>dol)
+X		error;
+}
+X
+newline()
+{
+X	register c;
+X
+X	if ((c = getchar()) == '\n')
+X		return;
+X	c = c >= 'A' && c <= 'Z' ? c + 32 : c;
+X	if (c=='p' || c=='l') {
+X		pflag++;
+X		if (c=='l')
+X			listf++;
+X		if (getchar() == '\n')
+X			return;
+X	}
+X	error;
+}
+X
+filename()
+{
+X	register char *p1, *p2;
+X	register c;
+X
+X	count[1] = 0;
+X	c = getchar();
+X	if (c=='\n' || c==EOF) {
+X		if (elfic && !firstime)
+X			error;
+X		else
+X			firstime = 0;
+X		p1 = savedfile;
+X		if (*p1==0)
+X			error;
+X		p2 = file;
+X		while (*p2++ = *p1++);
+X		return;
+X	}
+X	if (c!=' ')
+X		error;
+X	while ((c = getchar()) == ' ');
+X	if (c=='\n')
+X		error;
+X	p1 = file;
+X	do {
+X		*p1++ = c;
+X	} while ((c = getchar()) != '\n');
+X	*p1++ = 0;
+X	if (savedfile[0]==0) {
+X		p1 = savedfile;
+X		p2 = file;
+X		while (*p1++ = *p2++);
+X		breaks(p1 - 3);
+X	}
+}
+X
+breaks(p) char *p;
+X
+{
+X	if(*p++ == '.')
+X		if(*p == 'r' || *p == 'n') margin = LENGTH -20;
+}
+X
+exfile()
+{
+X	close(io);
+X	io = -1;
+X	if (vflag>=0) {
+X		putd();
+X		putchar('\n');
+X	}
+}
+X
+onintr()
+{
+X	signal(SIGINTR, onintr);
+X	putchar('\n');
+X	lastc = '\n';
+X	error;
+}
+X
+errfunc()
+{
+X	register c;
+X
+X	listf = 0;
+X	puts("?");
+X	count[0] = 0;
+X	seek(0, 0, 2);
+X	pflag = 0;
+X	if (globp)
+X		lastc = '\n';
+X	globp = 0;
+X	peekc = lastc;
+X	while ((c = getchar()) != '\n' && c != EOF);
+X	if (io > 0) {
+X		close(io);
+X		io = -1;
+X	}
+X	reset();
+}
+X
+getchar()
+{
+X	if (lastc=peekc) {
+X		peekc = 0;
+X		return(lastc);
+X	}
+X	if (globp) {
+X		if ((lastc = *globp++) != 0)
+X			return(lastc);
+X		globp = 0;
+X		return(EOF);
+X	}
+X	if (read(0, &lastc, 1) <= 0)
+X		return(lastc = EOF);
+X	lastc =& 0177;
+X	return(lastc);
+}
+X
+gettty()
+{
+X	register c, gf;
+X	register char *p;
+X
+X	p = linebuf;
+X	gf = globp;
+X	while ((c = getchar()) != '\n') {
+X		if (c==EOF) {
+X			if (gf)
+X				peekc = c;
+X			return(c);
+X		}
+X		if ((c =& 0177) == 0)
+X			continue;
+X		*p++ = c;
+X		if (p >= &linebuf[LBSIZE-2])
+X			error;
+X	}
+X	*p++ = 0;
+X	if (linebuf[0]=='.' && linebuf[1]==0)
+X		return(EOF);
+X	return(0);
+}
+X
+getfile()
+{
+X	register c;
+X	register char *lp, *fp;
+X
+X	lp = linebuf;
+X	fp = nextip;
+X	do {
+X		if (--ninbuf < 0) {
+X			if ((ninbuf = read(io, genbuf, LBSIZE)-1) < 0)
+X				return(EOF);
+X			fp = genbuf;
+X		}
+X		if (lp >= &linebuf[LBSIZE])
+X			error;
+X		if ((*lp++ = c = *fp++ & 0177) == 0) {
+X			lp--;
+X			continue;
+X		}
+X		if (++count[1] == 0)
+X			++count[0];
+X	} while (c != '\n');
+X	*--lp = 0;
+X	nextip = fp;
+X	return(0);
+}
+X
+putfile()
+{
+X	int *a1;
+X	register char *fp, *lp;
+X	register nib;
+X
+X	nib = 512;
+X	fp = genbuf;
+X	a1 = addr1;
+X	do {
+X		lp = getline(*a1++);
+X		for (;;) {
+X			if (--nib < 0) {
+X				write(io, genbuf, fp-genbuf);
+X				nib = 511;
+X				fp = genbuf;
+X			}
+X			if (++count[1] == 0)
+X				++count[0];
+X			if ((*fp++ = *lp++) == 0) {
+X				fp[-1] = '\n';
+X				break;
+X			}
+X		}
+X	} while (a1 <= addr2);
+X	write(io, genbuf, fp-genbuf);
+}
+X
+append(f, a)
+int (*f)();
+{
+X	register *a1, *a2, *rdot;
+X	int nline, tl;
+X	struct { int integer; };
+X
+X	nline = 0;
+X	dot = a;
+X	while ((*f)() == 0) {
+X		if (dol >= endcore) {
+X			if (sbrk(1024) == -1)
+X				error;
+X			endcore.integer =+ 1024;
+X		}
+X		tl = putline();
+X		nline++;
+X		a1 = ++dol;
+X		a2 = a1+1;
+X		rdot = ++dot;
+X		while (a1 > rdot)
+X			*--a2 = *--a1;
+X		*rdot = tl;
+X	}
+X	return(nline);
+}
+X
+unix()
+{
+X	register savint, pid, rpid;
+X	int retcode;
+X	char c,*lp,*fp;
+X	pid = 0;
+X	if ((c=getchar ()) != '!') {
+X		lp = unixbuffer;
+X		do {
+X			if (c != '%')
+X				*lp++ = c;
+X			else {
+X			pid = 1;
+X				fp = savedfile;
+X				while ((*lp++ = *fp++));
+X				lp--;
+X			}
+X			c = getchar();
+X		} while (c != '\n');
+X		*lp = '\0';
+X	}
+X	else { pid = 1;
+X		while (getchar () != '\n');}
+X	if(pid) {
+X		putchar('!');
+X		puts(unixbuffer);
+X	}
+X	setnoaddr();
+X	if ((pid = fork()) == 0) {
+X		signal(SIGHUP, onhup);
+X		signal(SIGQUIT, onquit);
+X		execl ("/bin/sh", "sh", "-c", unixbuffer, 0);
+X		exit();
+X	}
+X	savint = signal(SIGINTR, 1);
+X	while ((rpid = wait(&retcode)) != pid && rpid != -1);
+X	signal(SIGINTR, savint);
+X	puts("!");
+}
+X
+delete()
+{
+X	register *a1, *a2, *a3;
+X
+X	nonzero();
+X	a1 = addr1;
+X	a2 = addr2+1;
+X	a3 = dol;
+X	dol =- a2 - a1;
+X	do
+X		*a1++ = *a2++;
+X	while (a2 <= a3);
+X	a1 = addr1;
+X	if (a1 > dol)
+X		a1 = dol;
+X	dot = a1;
+}
+X
+getline(tl)
+{
+X	register char *bp, *lp;
+X	register nl;
+X
+X	lp = linebuf;
+X	bp = getblock(tl, READ);
+X	nl = nleft;
+X	tl =& ~0377;
+X	while (*lp++ = *bp++)
+X		if (--nl == 0) {
+X			bp = getblock(tl=+0400, READ);
+X			nl = nleft;
+X		}
+X	return(linebuf);
+}
+X
+putline()
+{
+X	register char *bp, *lp;
+X	register nl;
+X	int tl;
+X
+X	lp = linebuf;
+X	tl = tline;
+X	bp = getblock(tl, WRITE);
+X	nl = nleft;
+X	tl =& ~0377;
+X	while (*bp = *lp++) {
+X		if (*bp++ == '\n') {
+X			*--bp = 0;
+X			linebp = lp;
+X			break;
+X		}
+X		if (--nl == 0) {
+X			bp = getblock(tl=+0400, WRITE);
+X			nl = nleft;
+X		}
+X	}
+X	nl = tline;
+X	tline =+ (((lp-linebuf)+03)>>1)&077776;
+X	return(nl);
+}
+X
+getblock(atl, iof)
+{
+X	extern read(), write();
+X	register bno, off;
+X	
+X	bno = (atl>>8)&0377;
+X	off = (atl<<1)&0774;
+X	if (bno >= 255) {
+X		puts(TMPERR);
+X		error;
+X	}
+X	nleft = 512 - off;
+X	if (bno==iblock) {
+X		ichanged =| iof;
+X		return(ibuff+off);
+X	}
+X	if (bno==oblock)
+X		return(obuff+off);
+X	if (iof==READ) {
+X		if (ichanged)
+X			blkio(iblock, ibuff, write);
+X		ichanged = 0;
+X		iblock = bno;
+X		blkio(bno, ibuff, read);
+X		return(ibuff+off);
+X	}
+X	if (oblock>=0)
+X		blkio(oblock, obuff, write);
+X	oblock = bno;
+X	return(obuff+off);
+}
+X
+blkio(b, buf, iofcn)
+int (*iofcn)();
+{
+X	seek(tfile, b, 3);
+X	if ((*iofcn)(tfile, buf, 512) != 512) {
+X		puts(TMPERR);
+X		error;
+X	}
+}
+X
+init()
+{
+X	register char *p;
+X	register pid;
+X
+X	close(tfile);
+X	tline = 0;
+X	iblock = -1;
+X	oblock = -1;
+X	tfname = "/tmp/exxxxx";
+X	ichanged = 0;
+X	pid = getpid();
+X	for (p = &tfname[11]; p > &tfname[6];) {
+X		*--p = (pid&07) + '0';
+X		pid =>> 3;
+X	}
+X	close(creat(tfname, 0600));
+X	tfile = open(tfname, 2);
+X	brk(fendcore);
+X	dot = zero = dol = fendcore;
+X	endcore = fendcore - 2;
+}
+X
+global(k)
+{
+X	register char *gp;
+X	register c;
+X	register int *a1;
+X	char globuf[GBSIZE];
+X
+X	if (globp)
+X		error;
+X	setall();
+X	nonzero();
+X	if ((c=getchar())=='\n')
+X		error;
+X	compile(c);
+X	gp = globuf;
+X	while ((c = getchar()) != '\n') {
+X		if (c==EOF)
+X			error;
+X		if (c=='\\') {
+X			c = getchar();
+X			if (c!='\n')
+X				*gp++ = '\\';
+X		}
+X		*gp++ = c;
+X		if (gp >= &globuf[GBSIZE-2])
+X			error;
+X	}
+X	*gp++ = '\n';
+X	*gp++ = 0;
+X	for (a1=zero; a1<=dol; a1++) {
+X		*a1 =& ~01;
+X		if (a1>=addr1 && a1<=addr2 && execute(0, a1)==k)
+X			*a1 =| 01;
+X	}
+X	for (a1=zero; a1<=dol; a1++) {
+X		if (*a1 & 01) {
+X			*a1 =& ~01;
+X			dot = a1;
+X			globp = globuf;
+X			commands(-2);
+X			a1 = zero;
+X		}
+X	}
+}
+X
+substitute(inglob)
+{
+X	register gsubf, *a1, nl;
+X	int nflag, nn, getsub();
+X
+X	gsubf = compsub();
+X	nflag = gsubf > 1 ? 1 : 0;
+X	nn = 0;
+X	gsubf =& 01;
+X	gsubf =| xflag;
+X	for (a1 = addr1; a1 <= addr2; a1++) {
+X		if (execute(0, a1)==0)
+X			continue;
+X		inglob =| 01;
+X		if (confirmed()) { dosub(); nn++; }
+X		else donothing();
+X		if (gsubf) {
+X			while (*loc2) {
+X				if (execute(1)==0)
+X					break;
+X		if(confirmed()) {  dosub(); nn++; }
+X		else donothing();
+X		}
+X	}
+X		*a1 = putline();
+X		nl = append(getsub, a1);
+X		a1 =+ nl;
+X		addr2 =+ nl;
+X	}
+X	if (inglob==0)
+X		{putchar('?'); error; }
+X			/* two queries distinguish failed match */
+X	/* should use putd() and count here */
+X	if (nflag) printf( " %d \n", nn);
+}
+X
+donothing() {
+X	char t1,t2;
+X			t1 = rhsbuf[0];
+X			t2 = rhsbuf[1];
+X			rhsbuf[0] = '&';
+X			rhsbuf[1] = 0;
+X			dosub();
+X			rhsbuf[0] = t1;
+X			rhsbuf[1] = t2;
+}
+X
+confirmed()
+{
+int ch;
+X	if(xflag) {
+X		puts(linebuf);
+X		underline(linebuf, loc1, loc2, SCORE);
+X		ch = getchar();
+X		if ( ch != '\n') { while (getchar() != '\n');
+X				if ( ch != CONFIRM ) puts("? '.' to confirm");
+X		}
+X		return (ch == CONFIRM ? 1: 0);
+X		}
+X	return 1;
+}
+X
+X
+underline (line, l1, l2, score)
+char *line, *l1, *l2, *score;
+{
+X	char *ch, *ll; int i;
+X	register char *p;
+X
+X	p = line;
+X	ch = " ";
+X	ll = l1;
+X	i = 2;
+X	while (i--) {
+X		while (*p && p < ll) {
+X			write (1, (*p == '\t' ? p : ch),1);
+X			p++;
+X		}
+X		ch = score;
+X		ll = l2;
+X	}
+}
+X
+screensplit()
+{
+X	register a;
+X
+X		a = LENGTH;
+X		while(a--) putchar(SPLIT);
+X		putchar('\n');
+}
+X
+compsub()
+{
+X	register seof, c;
+X	register char *p;
+X	int gsubf;
+X
+X	gsubf = 0;
+X	if ((seof = getchar()) == '\n')
+X		error;
+X	compile(seof);
+X	p = rhsbuf;
+X	for (;;) {
+X		c = getchar();
+X		if (c=='\\')
+X			c = getchar() | 0200;
+X		if (c=='\n')
+X			error;
+X		if (c==seof)
+X			break;
+X		*p++ = c;
+X		if (p >= &rhsbuf[LBSIZE/2])
+X			error;
+X	}
+X	*p++ = 0;
+X	if(((peekc = getchar())| 040) == 'g') {
+X		peekc = 0;
+X		gsubf =| 1;
+X	}
+X	if (((peekc = getchar())| 040)  == 'n') {
+X		peekc = 0;
+X		gsubf =| 2;
+X	}
+X	newline();
+X	return(gsubf);
+}
+X
+getsub()
+{
+X	register char *p1, *p2;
+X
+X	p1 = linebuf;
+X	if ((p2 = linebp) == 0)
+X		return(EOF);
+X	while (*p1++ = *p2++);
+X	linebp = 0;
+X	return(0);
+}
+X
+dosub()
+{
+X	register char *lp, *sp, *rp;
+X	int c;
+X
+X	lp = linebuf;
+X	sp = genbuf;
+X	rp = rhsbuf;
+X	while (lp < loc1)
+X		*sp++ = *lp++;
+X	while (c = *rp++) {
+X		if (c=='&') {
+X			sp = place(sp, loc1, loc2);
+X			continue;
+X		} else if (c<0 && (c =& 0177) >='1' && c < NBRA+'1') {
+X			sp = place(sp, braslist[c-'1'], braelist[c-'1']);
+X			continue;
+X		}
+X		*sp++ = c&0177;
+X		if (sp >= &genbuf[LBSIZE])
+X			error;
+X	}
+X	lp = loc2;
+X	loc2 = sp + linebuf - genbuf;
+X	while (*sp++ = *lp++)
+X		if (sp >= &genbuf[LBSIZE])
+X			error;
+X	lp = linebuf;
+X	sp = genbuf;
+X	while (*lp++ = *sp++);
+}
+X
+place(asp, al1, al2)
+{
+X	register char *sp, *l1, *l2;
+X
+X	sp = asp;
+X	l1 = al1;
+X	l2 = al2;
+X	while (l1 < l2) {
+X		*sp++ = *l1++;
+X		if (sp >= &genbuf[LBSIZE])
+X			error;
+X	}
+X	return(sp);
+}
+X
+move(cflag)
+{
+X	register int *adt, *ad1, *ad2;
+X	int getcopy();
+X
+X	setdot();
+X	nonzero();
+X	if ((adt = address())==0)
+X		error;
+X	newline();
+X	ad1 = addr1;
+X	ad2 = addr2;
+X	if (cflag) {
+X		ad1 = dol;
+X		append(getcopy, ad1++);
+X		ad2 = dol;
+X	}
+X	ad2++;
+X	if (adt<ad1) {
+X		dot = adt + (ad2-ad1);
+X		if ((++adt)==ad1)
+X			return;
+X		reverse(adt, ad1);
+X		reverse(ad1, ad2);
+X		reverse(adt, ad2);
+X	} else if (adt >= ad2) {
+X		dot = adt++;
+X		reverse(ad1, ad2);
+X		reverse(ad2, adt);
+X		reverse(ad1, adt);
+X	} else
+X		error;
+}
+X
+reverse(aa1, aa2)
+{
+X	register int *a1, *a2, t;
+X
+X	a1 = aa1;
+X	a2 = aa2;
+X	for (;;) {
+X		t = *--a2;
+X		if (a2 <= a1)
+X			return;
+X		*a2 = *a1;
+X		*a1++ = t;
+X	}
+}
+X
+getcopy()
+{
+X	if (addr1 > addr2)
+X		return(EOF);
+X	getline(*addr1++);
+X	return(0);
+}
+X
+compile(aeof)
+{
+X	register eof, c;
+X	register char *ep;
+X	char *lastep;
+X	char bracket[NBRA], *bracketp;
+X	int nbra;
+X	int cclcnt;
+X
+X	ep = expbuf;
+X	eof = aeof;
+X	bracketp = bracket;
+X	nbra = 0;
+X	if ((c = getchar()) == eof) {
+X		if (*ep==0)
+X			error;
+X		return;
+X	}
+X	circfl = 0;
+X	if (c=='^') {
+X		c = getchar();
+X		circfl++;
+X	}
+X	if (c=='*')
+X		goto cerror;
+X	peekc = c;
+X	for (;;) {
+X		if (ep >= &expbuf[ESIZE])
+X			goto cerror;
+X		c = getchar();
+X		if (c==eof) {
+X			*ep++ = CEOF;
+X			return;
+X		}
+X		if (c!='*')
+X			lastep = ep;
+X		switch (c) {
+X
+X		case '\\':
+X			if ((c = getchar())=='(') {
+X				if (nbra >= NBRA)
+X					goto cerror;
+X				*bracketp++ = nbra;
+X				*ep++ = CBRA;
+X				*ep++ = nbra++;
+X				continue;
+X			}
+X			if (c == ')') {
+X				if (bracketp <= bracket)
+X					goto cerror;
+X				*ep++ = CKET;
+X				*ep++ = *--bracketp;
+X				continue;
+X			}
+X			*ep++ = CCHR;
+X			if (c=='\n')
+X				goto cerror;
+X			*ep++ = c;
+X			continue;
+X
+X		case '.':
+X			*ep++ = CDOT;
+X			continue;
+X
+X		case '\n':
+X			goto cerror;
+X
+X		case '*':
+X			if (*lastep==CBRA || *lastep==CKET)
+X				error;
+X			*lastep =| STAR;
+X			continue;
+X
+X		case '$':
+X			if ((peekc=getchar()) != eof)
+X				goto defchar;
+X			*ep++ = CDOL;
+X			continue;
+X
+X		case '[':
+X			*ep++ = CCL;
+X			*ep++ = 0;
+X			cclcnt = 1;
+X			if ((c=getchar()) == '^') {
+X				c = getchar();
+X				ep[-2] = NCCL;
+X			}
+X			do {
+X				if (c=='\n')
+X					goto cerror;
+X				*ep++ = c;
+X				cclcnt++;
+X				if (ep >= &expbuf[ESIZE])
+X					goto cerror;
+X			} while ((c = getchar()) != ']');
+X			lastep[1] = cclcnt;
+X			continue;
+X
+X		defchar:
+X		default:
+X			*ep++ = CCHR;
+X			*ep++ = c;
+X		}
+X	}
+X   cerror:
+X	expbuf[0] = 0;
+X	error;
+}
+X
+execute(gf, addr)
+int *addr;
+{
+X	register char *p1, *p2, c;
+X
+X	if (gf) {
+X		if (circfl)
+X			return(0);
+X		p1 = linebuf;
+X		p2 = genbuf;
+X		while (*p1++ = *p2++);
+X		locs = p1 = loc2;
+X	} else {
+X		if (addr==zero)
+X			return(0);
+X		p1 = getline(*addr);
+X		locs = 0;
+X	}
+X	p2 = expbuf;
+X	if (circfl) {
+X		loc1 = p1;
+X		return(advance(p1, p2));
+X	}
+X	/* fast check for first character */
+X	if (*p2==CCHR) {
+X		c = p2[1];
+X		do {
+X			if (*p1!=c)
+X				continue;
+X			if (advance(p1, p2)) {
+X				loc1 = p1;
+X				return(1);
+X			}
+X		} while (*p1++);
+X		return(0);
+X	}
+X	/* regular algorithm */
+X	do {
+X		if (advance(p1, p2)) {
+X			loc1 = p1;
+X			return(1);
+X		}
+X	} while (*p1++);
+X	return(0);
+}
+X
+advance(alp, aep)
+{
+X	register char *lp, *ep, *curlp;
+X	char *nextep;
+X
+X	lp = alp;
+X	ep = aep;
+X	for (;;) switch (*ep++) {
+X
+X	case CCHR:
+X		if (*ep++ == *lp++)
+X			continue;
+X		return(0);
+X
+X	case CDOT:
+X		if (*lp++)
+X			continue;
+X		return(0);
+X
+X	case CDOL:
+X		if (*lp==0)
+X			continue;
+X		return(0);
+X
+X	case CEOF:
+X		loc2 = lp;
+X		return(1);
+X
+X	case CCL:
+X		if (cclass(ep, *lp++, 1)) {
+X			ep =+ *ep;
+X			continue;
+X		}
+X		return(0);
+X
+X	case NCCL:
+X		if (cclass(ep, *lp++, 0)) {
+X			ep =+ *ep;
+X			continue;
+X		}
+X		return(0);
+X
+X	case CBRA:
+X		braslist[*ep++] = lp;
+X		continue;
+X
+X	case CKET:
+X		braelist[*ep++] = lp;
+X		continue;
+X
+X	case CDOT|STAR:
+X		curlp = lp;
+X		while (*lp++);
+X		goto star;
+X
+X	case CCHR|STAR:
+X		curlp = lp;
+X		while (*lp++ == *ep);
+X		ep++;
+X		goto star;
+X
+X	case CCL|STAR:
+X	case NCCL|STAR:
+X		curlp = lp;
+X		while (cclass(ep, *lp++, ep[-1]==(CCL|STAR)));
+X		ep =+ *ep;
+X		goto star;
+X
+X	star:
+X		do {
+X			lp--;
+X			if (lp==locs)
+X				break;
+X			if (advance(lp, ep))
+X				return(1);
+X		} while (lp > curlp);
+X		return(0);
+X
+X	default:
+X		error;
+X	}
+}
+X
+cclass(aset, ac, af)
+{
+X	register char *set, c;
+X	register n;
+X
+X	set = aset;
+X	if ((c = ac) == 0)
+X		return(0);
+X	n = *set++;
+X	while (--n)
+X		if (*set++ == c)
+X			return(af);
+X	return(!af);
+}
+X
+putd()
+{
+X	register r;
+X	extern ldivr;
+X
+X	count[1] = ldiv(count[0], count[1], 10);
+X	count[0] = 0;
+X	r = ldivr;
+X	if (count[1])
+X		putd();
+X	putchar(r + '0');
+}
+X
+puts(as)
+char *as;
+{
+X	register char *sp;
+X
+X	sp = as;
+X	col = 0;
+X	while (*sp)
+X		putchar(*sp++);
+X	putchar('\n');
+}
+X
+char	line[70];
+char	*linp	line;
+X
+putchar(ac)
+{
+X	register char *lp;
+X	register c;
+X
+X	lp = linp;
+X	c = ac;
+X	if (listf) {
+X		col++;
+X		if (col >= 72) {
+X			col = 0;
+X			*lp++ = '\\';
+X			*lp++ = '\n';
+X		}
+X		if (c=='\t') {
+X			c = '>';
+X			goto esc;
+X		}
+X		if (c=='\b') {
+X			c = '<';
+X		esc:
+X			*lp++ = '-';
+X			*lp++ = '\b';
+X			*lp++ = c;
+X			goto out;
+X		}
+X		if (c<' ' && c!= '\n') {
+X			*lp++ = '\\';
+X			*lp++ = (c>>3)+'0';
+X			*lp++ = (c&07)+'0';
+X			col =+ 2;
+X			goto out;
+X		}
+X	}
+X	*lp++ = c;
+out:
+X	if(c == '\n' || lp >= &line[64]) {
+X		linp = line;
+X		write(1, line, lp-line);
+X		return;
+X	}
+X	linp = lp;
+}
+X
+/*
+X * Get process ID routine if system call is unavailable.
+getpid()
+{
+X	register f;
+X	int b[1];
+X
+X	f = open("/dev/kmem", 0);
+X	if(f < 0)
+X		return(-1);
+X	seek(f, 0140074, 0);
+X	read(f, b, 2);
+X	seek(f, b[0]+8, 0);
+X	read(f, b, 2);
+X	close(f);
+X	return(b[0]);
+}
+X */
+SHAR_EOF
+  $shar_touch -am 0218224596 'em1.c' &&
+  chmod 0600 'em1.c' ||
+  $echo 'restore of' 'em1.c' 'failed'
+  if ( md5sum --help 2>&1 | grep 'sage: md5sum \[' ) >/dev/null 2>&1 \
+  && ( md5sum --version 2>&1 | grep -v 'textutils 1.12' ) >/dev/null; then
+    md5sum -c << SHAR_EOF >/dev/null 2>&1 \
+    || $echo 'em1.c:' 'MD5 check failed'
+71a0843ed5d56b34c769dc3ad44f97f3  em1.c
+SHAR_EOF
+  else
+    shar_count="`LC_ALL= LC_CTYPE= LANG= wc -c < 'em1.c'`"
+    test 23036 -eq "$shar_count" ||
+    $echo 'em1.c:' 'original size' '23036,' 'current size' "$shar_count!"
+  fi
+fi
+# ============= em2.c ==============
+if test -f 'em2.c' && test "$first_param" != -c; then
+  $echo 'x -' SKIPPING 'em2.c' '(file already exists)'
+else
+  $echo 'x -' extracting 'em2.c' '(text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'em2.c' &&
+#
+/*	This is the second and final segment of the QMC Unix Editor - em */
+#define EOF -1
+#define LBSIZE	512
+#define	SIGHUP	1
+#define	SIGINTR	2
+#define	SIGQUIT	3
+#define UNIXBUFL 100
+#define error	goto errlab
+#define TABSET	7	/* this should be determined dynamically */
+X
+#define RAW	040
+#define ECHO	010
+#define OPEN	'/'
+#define BELL	07
+#define ESCAPE	033
+#define SPACE	040
+#define BACKSL	0134
+#define RUBOUT	0177
+#define CTRLA	01
+#define CTRLB	02
+#define CTRLC	03
+#define CTRLD	04
+#define CTRLE	05
+#define CTRLF	06
+#define CTRLH	010
+#define CTRLI	011
+#define CTRLQ	021
+#define CTRLR	022
+#define CTRLS	023
+#define	CTRLV	026
+#define CTRLW	027
+#define CTRLX	030
+#define CTRLZ	032
+X
+#define ITT	0100000
+X
+extern char	peekc, *linebp, *loc2, linebuf[LBSIZE], genbuf[LBSIZE],
+X			unixbuffer[UNIXBUFL];
+extern int	onquit,onhup;
+extern int	*zero, *addr1, *addr2;
+extern int	*errlab;
+int	margin	LBSIZE - 40;
+int	oflag;
+char	*threshold, *savethresh;
+char	*lnp,*gnp,*brp;
+int	savetty, tty[3];
+X
+X
+op(inglob)
+{	register *a1;
+X	register char *lp, *sp;
+X	char seof, ch;
+X	int t, nl, getopen(), getnil();
+X
+X	threshold = genbuf + margin;
+X	savethresh = 0;
+X
+X	switch (ch = peekc = getchar()) {
+X		case BACKSL:
+X			t = 1;
+X			delete();
+X			addr2 = addr1;
+X			break;
+X
+X		case ';':
+X		case '+':
+X			t = 0;
+X			break;
+X
+X		case '-':
+X			t =1;
+X			break;
+X
+X		default:
+X			goto normal;
+X
+X	}
+X
+X	peekc = 0;
+X	if(addr1 != addr2) error;
+X	oflag = 0;
+X	append(getnil, addr2 - t);
+X	addr1 = addr2 =- (t-1);
+X	setdot();
+X	nonzero();
+X
+X
+normal:
+X	if(addr1 == zero) error;
+X	if ((seof = getchar()) == '\n') { loc2 = linebuf-1;
+X						seof = 0;}
+X		else compile(seof);
+X	setraw(); /* terminal into raw mode*/
+X
+X	for ( a1 = addr1; a1 <= addr2; a1++) {
+X		if (seof) {if (execute(0,a1) == 0) continue;}
+X			else getline(*a1);
+X		puts("\\\r");
+X		lp = linebuf;
+X		sp = genbuf;
+X		inglob =| 01;
+X		while (lp < loc2){ putch(*lp); *sp++ = *lp++; }
+X		lnp = lp;
+X		gnp = sp;
+X
+X
+X		oflag = gopen(); /* open the current line */
+X		*a1 = putline(); /* write revised line */
+X			nl = append( getopen,a1);
+X			a1 =+ nl;
+X			addr2 =+ nl;
+X	}
+X	setcook(); /* terminal in cook mode */
+X	putchar('\n');
+X	if (inglob == 0) { putchar('?'); error;}
+}
+X
+getnil()
+{
+X	if(oflag == EOF) return EOF;
+X	linebuf[0] = '\0';
+X	oflag = EOF;
+X	return 0;
+}
+X
+setraw()
+{
+X	if(gtty(0,tty) == -1) error;
+X	savetty = tty[2];
+X	tty[2] =| RAW;
+X	stty(0, tty);
+}
+X
+setcook()
+{
+X	tty[2] = savetty;
+X	stty(0, tty);
+}
+X
+inword(c) char c;
+{	if(c -'0' < 0 ) return 0;
+X	if(c - '9' <= 0) return 1;
+X	c =& 0137;
+X	if(c -'A' < 0) return 0;
+X	if(c - 'Z' <= 0) return 1;
+X	return 0;
+}
+X
+rescan()
+{	register char *lp, *sp;
+X
+X	if(savethresh) { threshold = savethresh; savethresh = 0; }
+X	lp = linebuf;
+X	sp = genbuf;
+X	while(*lp++ = *sp++) if(lp>linebuf+LBSIZE) {
+X				*(--lp) = 0;
+X				return 0;
+X				}
+}
+X
+X
+gopen()
+X	/*leaves revised line in linebuf,
+X	returns 0 if more to follow, EOF if last line */
+{	register char *lp, *sp, *rp;
+X	char ch, *br, *pr;
+X	int tabs;
+X	int retcode, savint, pid, rpid;
+X
+X	lp = lnp;
+X	sp = gnp;
+X	tabs = 0;
+X	for (rp = genbuf; rp < sp; rp++) if (*rp == CTRLI) tabs =+ TABSET;
+X
+X	for(;;){
+X		switch (ch = getchar()) {
+X
+X			case CTRLD:
+X			case ESCAPE:	/* close the line (see case '\n' also) */
+X			close:
+X				putb(lp);
+X				while(*sp++ = *lp++);
+X				rescan();
+X				return(EOF);
+X
+X			case CTRLA:	/* verify line */
+X			verify: puts("\\\r");
+X				*sp = '\0';
+X				putb(genbuf);
+X				continue;
+X
+X			case CTRLB:	/* back a word */
+X				if(sp == genbuf) goto backquery;
+X
+X				while((*(--lp) = *(--sp)) == SPACE)
+X					if(sp < genbuf) goto out;
+X				if(inword(*sp)) {
+X					while(inword((*(--lp) = *(--sp))))
+X						 if(sp < genbuf) goto out;
+X					if(*sp == SPACE)
+X						while((*(--lp) = *(--sp)) == SPACE)
+X							if(sp < genbuf) goto out;
+X				}	
+X				else while(sp >= genbuf && !inword(*sp))
+X					if((*lp-- = *sp--) == CTRLI) tabs =- TABSET;
+X			out:	sp++;
+X				lp++;
+X				goto verify;
+X
+X			case CTRLC:
+X			case CTRLQ: /* forward one char */
+X				if(*lp == 0) goto backquery;
+X				putch(*lp);
+X			forward:
+X				if(*lp == SPACE && sp + tabs > threshold) {
+X					putch('\r');
+X					ch = '\n'; putch(ch);
+X					lp++;
+X					*sp++ = ch;
+X					br = sp;
+X					break;
+X				}
+X				if(*lp == CTRLI) tabs =+ TABSET;
+X				*sp++ = *lp++;	/* one character */
+X				if(sp + tabs == threshold) putch(BELL);
+X				continue;
+X
+X
+X			case CTRLF:
+X			/* delete forward */
+X				while(*lp++);
+X				lp--;
+X				goto verify;
+X
+X			case CTRLE:
+X				putb(lp);
+X				goto verify;
+X
+X			case CTRLH:  help(); goto verify;
+X
+X			case CTRLR:	/* margin release */
+X				if(threshold-genbuf<LBSIZE-40) {
+X					savethresh = threshold;
+X					threshold = genbuf+LBSIZE-40;
+X				}
+X				else goto backquery;
+X				continue;
+X
+X			case CTRLS:	/* re-set to start of line */
+X				while(*sp++ = *lp++);
+X				rescan();
+X				lp = linebuf; sp = genbuf;
+X				tabs = 0;
+X				goto verify;
+X
+X			case CTRLV:	/* verify spelling */
+X				rp = sp;
+X				pr = unixbuffer+UNIXBUFL-2;
+X				*pr = 0;
+X				while(*(--rp) == SPACE);
+X				while(inword(*rp) && rp >= genbuf)
+X					*(--pr) = *rp--;
+X				if(*pr == 0) goto backquery;
+X				puts("!!");
+X				setcook();
+X				if((pid = fork()) == 0)
+X					{signal(SIGHUP, onhup);
+X					  signal(SIGQUIT, onquit);
+X					  execl("/bin/spell", "spell", pr, 0);
+X					  puts("sorry, can't spell today");
+X					  exit();
+X				}
+X				savint = signal(SIGINTR,1);
+X				while((rpid = wait(&retcode)) != pid
+X					 && rpid != -1);
+X				signal(SIGINTR, savint);
+X				setraw();
+X				puts("!!");
+X				goto verify;
+X
+X
+X			case CTRLW:	/* forward one word */
+X				if(*lp == '\0') goto backquery;
+X				while(*lp == SPACE)
+X					putch(*sp++ = *lp++);
+X				if(inword(*lp)) {
+X					while(inword(*lp)) {
+X						putch(*sp++ = *lp++);
+X						if(sp+tabs==threshold) putch(BELL);
+X					}
+X					if(*lp == SPACE) {
+X						if(sp+tabs>threshold) {
+X							ch = '\n';
+X							lp++;
+X							*sp++ = ch;
+X							br = sp;
+X							putch('\r');
+X							putch('\n');
+X						}
+X						if(*lp == SPACE)
+X							while(*(lp+1) == SPACE)
+X							   putch(*sp++ = *lp++);
+X					}
+X				}
+X				else while(*lp && !inword(*lp)) {
+X					if(*lp == CTRLI) tabs =+ TABSET;
+X					putch(*sp++ = *lp++);
+X					if(sp+tabs==threshold) putch(BELL);
+X				}
+X				break;
+X
+X
+X			case CTRLZ:	/* delete a word */
+X				if(sp == genbuf) goto backquery;
+X
+X				while(*(--sp) == SPACE) if(sp < genbuf) goto zout;
+X				if(inword(*sp)) {
+X					while(inword(*(--sp)))
+X						 if(sp < genbuf) goto zout;
+X					if(*sp == SPACE)
+X						while(*(--sp) == SPACE)
+X							if(sp < genbuf) goto zout;
+X				}	
+X				else while(sp >= genbuf && !inword(*sp))
+X					if(*sp-- == CTRLI) tabs =- TABSET;
+X			zout:	sp++;
+X				goto verify;
+X
+X			case '@':	/*delete displayed line */
+X			/* delete backward */
+X				sp = genbuf;
+X				tabs = 0;
+X				goto verify;
+X
+X			case RUBOUT:
+X				puts("\\\r");
+X				setcook();
+X				error;
+X
+X			case CTRLX:
+X				putch('#');
+X			case '#':
+X				if( sp == genbuf) goto backquery;
+X				if(*(--sp) == CTRLI) tabs =- TABSET;
+X				if( ch == CTRLX) goto verify;
+X				continue;
+X
+X			case '\n':
+X			case '\r': /* split line, actually handled at
+X					end of switch block */
+X				ch = '\n';
+X				*sp++ = ch;
+X				br = sp;
+X				break;
+X
+X			case BACKSL: /* special symbols */
+X				switch (ch = peekc = getchar()) {
+X				case '(':  ch = '{'; peekc = 0; break;
+X				case ')':  ch = '}'; peekc = 0; break;
+X				case '!':  ch = '|'; peekc = 0; break;
+X				case '^':  ch = '~'; peekc = 0; break;
+X				case '\'':  ch = '`'; peekc = 0; break;
+X				case BACKSL:
+X				case '#':
+X				case '@':  peekc = 0; break;
+X
+X				default:  if(ch >= 'a' && ch <= 'z') {
+X						peekc = 0; ch =- 040;}
+X					else {
+X						*(--lp) = BACKSL;
+X						goto forward;
+X						}
+X				}
+X
+X			default:	*(--lp) = ch;
+X					goto forward;
+X			}
+X
+X		if (ch == '\n') { /* split line */
+X			if(*(br-1) != '\n') puts("!!");	/*debugging only */
+X			lnp = sp;
+X			while(*sp++ = *lp++); /*move the rest over */
+X			brp  = linebuf +(br - genbuf);
+X			lnp = linebuf + (lnp - br);
+X			rescan();
+X			*(brp-1) ='\0';
+X			return(0);
+X			}
+X		else continue;
+X	backquery: putch(CTRLZ);
+X		} /* end of forloop block */
+} /* end of gopen */
+X
+X
+X
+getopen()  /* calls gopen, deals with multiple lines etc. */
+{	register char *lp, *sp;
+X	if (oflag == EOF) return EOF;
+X
+/* otherwise, multiple lines */
+X
+X	lp = linebuf;
+X	sp = brp;
+X	while(*lp++ = *sp++); /*move it down */
+X	sp = genbuf;
+X	lp = linebuf;
+X	while (lp < lnp) *sp++ = *lp++;
+X	gnp = sp;
+X	/* should check whether empty line returned */
+X	oflag = gopen();
+X	return 0;
+}
+X
+putch(ch) char ch;
+{ write(1, &ch, 1); }
+X
+putb(ptr)	char *ptr;	/*display string */
+X
+{	register char *p;
+X
+X	p = ptr;
+X	if(*p == '\0') return;
+X	while(*(++p));
+X	write(1,ptr,p-ptr);
+}
+X
+help()
+{	puts("\n");
+X	puts("	^A	display Again		^Q	next character");
+X	puts("	^B	backup word		^R	Release margin");
+X	puts("	ESCAPE				^S	re-scan from Start");
+X	puts("	or ^D	close line and exit	^V	verify spelling");
+X	puts("	^E	display to End		^W	next Word");
+X	puts("	^F	delete line Forward	^Z	delete word");
+X	puts("	^H	Help			# or ^X delete character");
+X	puts("	RUBOUT	exit unchanged		@	delete line backward\n");
+X	puts("	Other characters (including RETURN) inserted as typed");
+}
+X
+SHAR_EOF
+  $shar_touch -am 0218224596 'em2.c' &&
+  chmod 0600 'em2.c' ||
+  $echo 'restore of' 'em2.c' 'failed'
+  if ( md5sum --help 2>&1 | grep 'sage: md5sum \[' ) >/dev/null 2>&1 \
+  && ( md5sum --version 2>&1 | grep -v 'textutils 1.12' ) >/dev/null; then
+    md5sum -c << SHAR_EOF >/dev/null 2>&1 \
+    || $echo 'em2.c:' 'MD5 check failed'
+8a9e8dbe61a35f6708884acefc9dd94e  em2.c
+SHAR_EOF
+  else
+    shar_count="`LC_ALL= LC_CTYPE= LANG= wc -c < 'em2.c'`"
+    test 8870 -eq "$shar_count" ||
+    $echo 'em2.c:' 'original size' '8870,' 'current size' "$shar_count!"
+  fi
+fi
+# ============= emdoc ==============
+if test -f 'emdoc' && test "$first_param" != -c; then
+  $echo 'x -' SKIPPING 'emdoc' '(file already exists)'
+else
+  $echo 'x -' extracting 'emdoc' '(text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'emdoc' &&
+X     How to Generate 'em'
+X
+X
+X     gfc 17
+X
+X      Thu Apr 29 1976
+X
+X
+X                          How to Generate the QMC Unix Editor 'em'
+X                          ---------------------------------------
+X
+X
+X          Author:                 George Coulouris
+X
+X                                Computer Systems Laboratory
+X               Queen Mary College  Mile End Road  London E1 4NS (01-980 4811 x751)
+X
+X
+X
+X          Summary
+X
+X               This is the system documentation for 'em'. It should  be  used
+X               in  conjunction  with  the  manual  section supplied with 'em'
+X               (EM(I), 3/22/76).  A  tutorial  introduction  to  'em'  is  in
+X               preparation.
+X
+X
+X
+X
+X          Files
+X
+X               There are five relevant files:
+X
+X                       emdoc           - the text of this document
+X
+X                       em.n            - the text of the manual section
+X                                               on 'em' in 'nroff' format
+X
+X                       emhelp          - a file containing a summary of
+X                                               editor commands, used in
+X                                               the 'help' command
+X
+X                       em1.c           - the first of the two C  source  seg-
+X               ments
+X
+X                       em2.c           - the second and last segment
+X
+X
+X          Generation
+X
+X               To compile 'em':
+X
+X                       cc -n -s em1.c em2.c
+X
+X               leaves a suitable object program in 'a.out'. Just move  it  to
+X               '/bin/em':
+X
+X                       mv a.out /bin/em
+X
+X                                                                          1
+X     How to Generate 'em'
+X
+X
+X               to produce a command 'em'. If you also want a version with all
+X               of the 'em' features except prompting, you can make a link  to
+X               the  same  object  program with any name not having 'm' as its
+X               second character. We use the 'ed' name:
+X
+X                       ln /bin/em /bin/ed
+X
+X               If you want the editor to be  permanently  held  in  the  disc
+X               swapping  area (and therefore entered more quickly in response
+X               to the 'em' command) change the mode:
+X
+X                       chmod 1755 /bin/em
+X
+X          Frills
+X
+X               If  you want the 'h' command to provide a screen full of help,
+X               put the text for the help in /usr/lib/emhelp. You can use  the
+X               file supplied, or make your own.
+X
+X               There is a rather pleasing feature  available  when  you  type
+X               '^V' in the 'o' command that enables the spelling of a word to
+X               be given from a lexicon file once the first few letters of the
+X               word  have  been typed.  This is implemented through a command
+X               in our Unix system:
+X
+X                       spell arg
+X
+X               that takes an argument containing  an  alphabetic  string  and
+X               outputs  all  of  the  words in a lexicon file that begin with
+X               that string.  Our version of the spell program is a crude (but
+X               fast) affair using 26 files. There must be a better way, so if
+X               you want the '^V' facility we suggest you implement  your  own
+X               spell  command.  'em' will use it if it is there, otherwise it
+X               will display a suitable message.
+X
+X
+X                              ---------------/----------------
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X
+X                                                                          2
+SHAR_EOF
+  $shar_touch -am 0218224596 'emdoc' &&
+  chmod 0600 'emdoc' ||
+  $echo 'restore of' 'emdoc' 'failed'
+  if ( md5sum --help 2>&1 | grep 'sage: md5sum \[' ) >/dev/null 2>&1 \
+  && ( md5sum --version 2>&1 | grep -v 'textutils 1.12' ) >/dev/null; then
+    md5sum -c << SHAR_EOF >/dev/null 2>&1 \
+    || $echo 'emdoc:' 'MD5 check failed'
+7f5f5d332db74c87835569e501b949b3  emdoc
+SHAR_EOF
+  else
+    shar_count="`LC_ALL= LC_CTYPE= LANG= wc -c < 'emdoc'`"
+    test 3560 -eq "$shar_count" ||
+    $echo 'emdoc:' 'original size' '3560,' 'current size' "$shar_count!"
+  fi
+fi
+# ============= emhelp ==============
+if test -f 'emhelp' && test "$first_param" != -c; then
+  $echo 'x -' SKIPPING 'emhelp' '(file already exists)'
+else
+  $echo 'x -' extracting 'emhelp' '(text)'
+  sed 's/^X//' << 'SHAR_EOF' > 'emhelp' &&
+X
+b   line breaks on			r   read file
+b-  line breaks off			s   substitute /old/new/
+d   delete line(s)			t   copy line(s)
+e   edit a new file			v   globally if not
+f   set file name			w   write on file
+g   globally if				x   substitute interactively
+h   display this summary			('.' to confirm)
+k   mark line				/   delimit search string
+m   move line(s)			?   delimit backward
+l   list line(s)				search string
+o   open line(s) for mods		!   unix command
+X	(^H for help in 'o')		=   line number
+o\  replace line(s)			>   prompts off
+o-  insert new lines			%   display context
+o+  append new lines			&   .-16,.p
+p   print line(s)			"   .+1,.+17p
+q   quit editor				+,- .+1p,.-1p
+SHAR_EOF
+  $shar_touch -am 0218224596 'emhelp' &&
+  chmod 0600 'emhelp' ||
+  $echo 'restore of' 'emhelp' 'failed'
+  if ( md5sum --help 2>&1 | grep 'sage: md5sum \[' ) >/dev/null 2>&1 \
+  && ( md5sum --version 2>&1 | grep -v 'textutils 1.12' ) >/dev/null; then
+    md5sum -c << SHAR_EOF >/dev/null 2>&1 \
+    || $echo 'emhelp:' 'MD5 check failed'
+6caaa0cd1d6a484d717d6674d38d1545  emhelp
+SHAR_EOF
+  else
+    shar_count="`LC_ALL= LC_CTYPE= LANG= wc -c < 'emhelp'`"
+    test 676 -eq "$shar_count" ||
+    $echo 'emhelp:' 'original size' '676,' 'current size' "$shar_count!"
+  fi
+fi
+rm -fr _sh13396
+exit 0

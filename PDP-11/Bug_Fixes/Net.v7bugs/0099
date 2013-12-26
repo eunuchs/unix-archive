@@ -1,0 +1,87 @@
+Autzoo.1588
+net.bugs.v7
+utzoo!henry
+Tue Apr 20 19:51:59 1982
+yacc library
+The V7 distribution does not include the -ly library at all.  This is
+not serious since it can be built from the description in the manual.
+I also added a default yylex to ours.  The following are the sources,
+the makefile, and a simple test program.
+
+--- main.c ---
+main()
+{
+	return(yyparse());
+}
+--- yyerror.c ---
+#include <stdio.h>
+
+yyerror(s)
+char *s;
+{
+	fprintf(stderr, "%s\n", s);
+}
+--- yylex.c ---
+#include <stdio.h>
+
+int
+yylex()
+{
+	return(getchar());
+}
+--- Makefile ---
+CFLAGS=-O
+
+all:	liby.a
+
+cp:	liby.a
+	cp liby.a /usr/lib/liby.a
+
+liby.a:	main.o yyerror.o yylex.o
+	ar cr liby.a main.o yyerror.o yylex.o
+
+clean:
+	rm -f liby.a *.o test
+
+test:	test.o liby.a
+	$(CC) -n test.o liby.a -o test
+--- test.y ---
+%%
+all:
+	word
+	|
+	all space word
+	;
+
+word:
+	if
+	|
+	but
+	|
+	maybe
+	;
+
+if:
+	'i' 'f' {
+		printf("if\n");
+	}
+
+but:
+	'b' 'u' 't' {
+		printf("but\n");
+	}
+
+maybe:
+	'm' 'a' 'y' 'b' 'e' {
+		printf("maybe\n");
+	}
+
+space:	aspace
+	|
+	space aspace
+	;
+
+aspace:	' '
+	|
+	'\n'
+	;

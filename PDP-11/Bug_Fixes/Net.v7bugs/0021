@@ -1,0 +1,10 @@
+Autzoo.681
+NET.v7bugs
+utzoo!henry
+Tue Jun  2 16:08:27 1981
+ldiv/lrem on 23, ch.2
+Addendum to my previous NET.v7bugs message about the ldiv/lrem bug on
+the 44 and 23:  the people who discovered that the problem also occurs
+on the 23 have supplied test cases.  If you want to see the problem on
+a 23, try  11335500/100  or  11335577%100  .  Thanks to Chris Sturgess
+and Ron Gomes of Human Computing Resources for this one.

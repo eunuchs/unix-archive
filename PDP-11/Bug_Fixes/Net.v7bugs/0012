@@ -1,0 +1,11 @@
+Aucsfcgl.112
+NET.v7bugs
+utzoo!duke!vax135!ucbvax!ucsfcgl!tef
+Fri Aug 29 02:02:46 1980
+ptx bug
+There is a bug in the distributed version of ptx (permuted index)
+which may cause the program to hang unexpectedly.  The code is a bit
+"unusual" as it is, but if an execl to the sort(1) program fails
+ptx falls through a switch case statement and a child process ends up
+up waiting for itself to exit (forever).  The fix is left to the
+interested hacker.

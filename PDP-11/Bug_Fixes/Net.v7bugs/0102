@@ -1,0 +1,11 @@
+Astolaf.321
+net.bugs.v7
+utzoo!decvax!harpo!eagle!mhtsa!ihnss!ihps3!stolaf!sys
+Tue May  4 19:55:03 1982
+v7 mail bug revisited...
+After fixing the bug in mail, we found legal transmissions being saved in
+dead.letter.  It turns out that uux was exiting non-zero, by falling
+off the end of main with non-zero junk on the stack.  An 'exit(0);'
+at the end of main in uux fixes all of this.
+							-Vic Lee
+							stolaf!vtl

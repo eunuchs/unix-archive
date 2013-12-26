@@ -1,0 +1,30 @@
+Aharpo.577
+net.v7bugs
+utzoo!decvax!duke!chico!harpo!jerry
+Mon Oct  5 21:27:24 1981
+why export shell variables
+I am putting this in net.v7bugs because the item I am replying to
+appeared there.  However, the requirement that variables be explicity
+exported before seting them changes the environment is not a bug.
+It was, I have been told, a deliberate decision and there are reasons
+for it.
+
+The bourne shell is dealing with environment values, and its own local
+variables.  Unlike csh, it uses the same syntax to set these different
+kinds of values.  Therefore, it requires a declaration of some sort
+to distinguish them.  It uses "export".  I suppose requiring local
+variables to be declared would also be reasonable.  Local variables
+are important in writing shell procedures and it would be a real loss
+to eliminate the distinction between them and environment variables.
+
+Problems arise because people frequently set up an interactive shell
+(e.g. via an escape from the editor) and don't realize that they must
+export a variable before they can change its value in the environment.
+For this reason, I would prefer to make the distinction in
+the assignment syntax (ala csh).  But, I consider the current situation
+preferable to one in which a shell procedure might inadvertantly
+interfer with the transfer of a value from outside (i.e.
+the environment) to a command that it invokes.
+
+						Jerry Schwarz
+						harpo!jerry

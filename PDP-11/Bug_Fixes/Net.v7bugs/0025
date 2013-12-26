@@ -1,0 +1,25 @@
+Areed.182
+net.v7bugs
+utzoo!decvax!ucbvax!ihnss!cbosg!harpo!chico!duke!reed!valer
+Fri Jul 31 20:33:23 1981
+uucico hanging
+We have been having a problem with a slave uucico
+hanging and have identified one cause of this problem.
+It turns out that there is no timeout provisions for
+the protocol starting routine "startup".  The following
+is a simple if not pretty patch to cico.c to provide
+the timeout.
+	309,311c309,315
+	<	ret = startup(Role);
+	<	if (ret != SUCCESS) {
+	<		logent("startup", "FAILED");
+	---
+	> 	alarm(MAXMSGTIME);
+	> 	if (setjmp(Sjbuf))
+	> 		goto Failure;
+	> 	ret = startup(Role);
+	> 	alarm(0);
+	> 	if (ret != SUCCESS) {
+	> Failure:	logent("startup", "FAILED");
+I understand that there are other problems with uucico hanging
+which this does not explain.

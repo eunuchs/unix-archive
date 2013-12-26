@@ -1,0 +1,132 @@
+
+
+
+GETUNIX(1)                                             GETUNIX(1)
+
+
+NNAAMMEE
+       cp11, cpv, cpu; ls11, lsv, lsu - read UNIX filesystems
+
+SSYYNNOOPPSSIISS
+       ccpp?  [options] sourcefile [targetfile]
+       llss?  [options] directory
+
+DDEESSCCRRIIPPTTIIOONN
+       _C_p?   retrieves the named _s_o_u_r_c_e_f_i_l_e from a UNIX file sys-
+       tem.  If a _t_a_r_g_e_t_f_i_l_e is specified,  the  copy  is  placed
+       there;  otherwise  the contents of the file are written to
+       standard output.  If the _t_a_r_g_e_t_f_i_l_e named is a  directory,
+       the  file  is  copied  there with the same basename as the
+       original.
+
+       _L_s?  is similar to _c_p?  (in fact, it is merely a  link  to
+       it),  but  lists the contents of the directory _s_o_u_r_c_e_f_i_l_e;
+       if the file is not a directory, it is  listed  by  itself.
+       Normally,  just  filenames  are  listed; if the --ll flag is
+       given, more information (protection, modes) is printed.
+
+       Other options recognized by both _c_p_?  and _l_s_?:
+
+
+       --dd device Filesystem  resides  on  the  named  _d_e_v_i_c_e  (or
+                 file), rather than the default.
+
+       --vv        Filesystem is a VAX (32V) filesystem.
+
+       --77        Filesystem is a version 7 filesystem.
+
+       --66        Filesystem is a version 6 filesystem.
+
+       --ss        Silent mode; error messages are suppressed.
+
+FFIILLEESS
+       /dev/v*   VAX filesystems
+       /dev/v7*  V7 filesystems
+       /dev/v6*  V6 filesystems
+       /bin/sort
+
+SSEEEE AALLSSOO
+       ls(1)
+
+DDIIAAGGNNOOSSTTIICCSS
+       Most are self-explanatory.
+
+       "File has hole(s)" means that the file contains an unallo-
+       cated block.  This usually indicates something weird  with
+       the  file,  but  may  be a normal condition.  Holes in the
+       output file are created as allocated  blocks  filled  with
+       zeros.
+
+
+
+
+
+                               HEP                              1
+
+
+
+
+
+GETUNIX(1)                                             GETUNIX(1)
+
+
+HHEEPP IINNFFOO
+       Written  at  HEP  by  Rob Pike.  Modified by Mark Bartelt.
+       Further hacked by Norman Wilson.   Hacked  still  more  by
+       Mark Bartelt.
+
+       On  the  UNIX VAX, the program is named _c_p_1_1 and _l_s_1_1, and
+       is used to fetch files  from  the  PDP-11/45  RJE  system.
+       Since the RJE system is now running a V7 system, --77 is the
+       default.
+
+       On the 11/45, the program is named _c_p_v  and  _l_s_v,  and  is
+       used to fetch files from the VAX.  The default is --vv.
+
+       Now  also  runs  under  VMS (ported via EUNICE), where the
+       disks containing UNIX filesystems are mounted foreign with
+       names $UNIX0, $UNIX1, and so forth.  The following foreign
+       commands are defined:
+            cpu*nix :== $sys$sysdisk:[bin]getunix cpunix
+            lsu*nix :== $sys$sysdisk:[bin]getunix lsunix
+            cpv*ax :== $sys$sysdisk:[bin]getunix cpvax
+            lsv*ax :== $sys$sysdisk:[bin]getunix lsvax
+            cp11 :== $sys$sysdisk:[bin]getunix cp11
+            ls11 :== $sys$sysdisk:[bin]getunix ls11
+
+       On the VMS VAX, _c_p_u_/_l_s_u (and _c_p_v_/_l_s_v) are  used  to  fetch
+       files from the UNIX VAX, _c_p_1_1_/_l_s_1_1 to fetch files from the
+       11/45.  Defaults are, obviously, --vv and --77,  respectively.
+
+       File  protection modes are checked to ensure that the per-
+       son running the program actually  has  appropriate  access
+       permission.   When  running  under VMS, the access test is
+       modified somewhat: Since there is no convenient way to map
+       UNIX UIDs and VMS UIC member numbers onto each other, only
+       group and world access are checked.  Furthermore, a  group
+       match is defined to exist if the decimal representation of
+       the UNIX GID is the same as the  octal  representation  of
+       the  VMS  UIC  group  number.  This is done to make things
+       easier for people who set up accounts: If a group  on  the
+       VMS  machine is, say, 123 (octal), that same group must be
+       123 (decimal) on the UNIX machines, and vice-versa.   For-
+       tunately,  that's  the  way  things are set up here.  Note
+       that files which are readable  only  to  owner  cannot  be
+       copied to the VMS system.
+
+       The  UNIX  version needs to read ``cooked'' devices rather
+       than ``raw'' ones, since it does _l_s_e_e_ks that aren't whole-
+       block multiples.
+
+       The VMS version of _l_s?  does not produce sorted output.
+
+
+
+
+
+
+
+
+                               HEP                              2
+
+

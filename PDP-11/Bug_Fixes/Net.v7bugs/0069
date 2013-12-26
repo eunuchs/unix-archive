@@ -1,0 +1,11 @@
+Autah-cs.185
+net.bugs.v7,net.bugs.4bsd
+utcsrgv!utzoo!decvax!ucbvax!ihnss!vax135!harpo!utah-cs!lepreau
+Tue Feb  9 00:38:32 1982
+uuxqt security hole
+uuxqt takes pains to restrict the PATH variable; unfortunately it never
+exports it!  Just tack on "export PATH;" to the #define PATH near the
+beginning of uuxqt.c.  (Actually it appears from the sh man entry that
+you could just replace the trailing ';' with a space, but I'm no sh expert.)
+This occurs in both vanilla v7 and 4.1bsd at least.
+	Jay Lepreau

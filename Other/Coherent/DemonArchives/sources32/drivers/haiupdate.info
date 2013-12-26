@@ -1,0 +1,25 @@
+haiupdate.gz is an update to the Mark Williams hai driver for people with
+adaptec aha-154xA or C cards and the cards compatible with the adaptec
+aha-154x series of SCSI host adapters. It is for use with Coherent 4.2.05
+or later and is included in Coherent 4.2.08. To install this fix you
+must have Coherent running on your hard drive. To do this you may
+install the aha driver (The alternate driver without tape support) from
+the installation disks and apply this fix to generate a new kernel.
+
+Notes:
+
+If you are using a 1.0 GB disk on an aha-154xC and have the extended
+BIOS turned on you cannot install this patch. For details write to
+support@mwc.com.
+
+There is a problem in the instructions included with this fix. To
+install it you must disable the aha and enable the hai driver after
+installation by typing:
+
+	/etc/conf/bin/idenable -d aha
+	/etc/conf/bin/idenable -e hai
+
+from the shell prompt as root.
+ 
+
+	-Chris Hilton

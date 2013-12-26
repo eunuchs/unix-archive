@@ -1,0 +1,4 @@
+The files in this directory are all Coherent files. All are Disk Images.
+You will need to use "dd" to create floppy disk images with the files,
+so that you can install them.
+robert@chalmers.com.au

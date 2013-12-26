@@ -1,0 +1,11 @@
+1. stand (512 byte records)
+2. miniroot (10240 byte records)
+3. rootdump (10240 byte records)
+4. usr.tar (10240 byte records)
+---
+5. srcsys.tar (10240 byte records)
+6. src.tar (10240 byte records)
+---
+7. xproof.tar (10240 byte records)
+8. xgremlin.tar (10240 byte records)
+9. psdit.tar (10240 byte records)

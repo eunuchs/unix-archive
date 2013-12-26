@@ -1,0 +1,591 @@
+<html><head>
+<!-- This document was created from RTF source by rtftohtml version 2.7.4,
+extended by rtftoweb version 1.4. -->
+<title>History of UNIX - Part I</title></head><body>
+<a href="unix-Abstract.html">&lt;&lt;</a>
+, <a href="unix-Part_II.html">&gt;&gt;</a>
+, <a href="unix.html">Title</a>
+, <a href="unix-Contents.html">Contents</a>
+<hr>
+<h1>
+Part I</h1>
+<p>
+During the formative years in the creation of the Arpanet,
+which was to become the backbone to the Global Computer Network,
+there were similar seminal developments taking place at the Bell
+Laboratories, the Research and Development unit of the Bell
+System. These developments were to have a significant impact
+on the future course of computer science research and
+networking in the world. As early as 1957, Bell Labs found
+they needed an operating system for their inhouse computer
+center which was then running lots of short batch jobs. 
+Describing the situation facing the Labs, Victor Vyssotsky, who 
+had been involved the techanical head of the Multics project
+at Bell Labs and later Executive Director of Research in the
+Information Systems Division of AT&amp;T Bell Labs, explains,
+" We just couldn't take the time to get them on and off the
+machine manually. We needed an operating system to sequence
+jobs through and control machine resources." (from "Putting Unix
+in Perspective", Interview with Victor Vyssotsky, by Ned Pierce,
+in Unix Review, Jan. 1985, pg. 59)
+<p>
+The BESYS operating system was created at Bell Labs to deal
+with their inhouse needs. When asked by others outside the labs
+to make a copy available, they did so but with no obligation to provide 
+support. "There was no support when we shipped a BESYS tape to 
+somebody," Vyssotsky recalls, "we would answer reasonable 
+questions over the telephone. If they found troubles or we found 
+troubles, we would provide fixes." (Ibid., pg. 59)
+<p>
+By 1964, however, the Labs was adopting third generation 
+computer equipment and had to decide whether they would build 
+their own operating system or go with one that was built outside 
+the Labs. Vyssotsky recounts the process of deliberation at 
+the time, "Through a rather murky process of internal 
+deliberation we decided to join forces with General Electric and 
+MIT to create Multics," he explains. The Labs planned to use the
+Multics operating system "as a mainstay for Bell 
+Laboratories internal service computing in precisely the way that 
+we had used the BESYS operating system." (Ibid., pg. 59)
+<p>
+The collaborative project by GE, MIT and AT&amp;T to create a
+computer operating system that would be called Multics (1965-68)
+was to "show that general-purpose, multiuser, timesharing systems
+were viable." (See Douglas Comer, "Pervasive Unix: Cause for
+Celebration," Unix Review, October, 1985, pg. 42) Based on the results
+of research gained at MIT using the Compatible Time-Sharing System 
+(CTSS), AT&amp;T and G.E. agreed to work with MIT to build a "new 
+hardware, a new operating system, a new file system, and a new 
+user interface." (Ibid.) Though the project proceeded slowly and 
+it took several additional years to develop Multics, Doug Comer,
+a Professor of Computer Science at Purdue University, explains that
+"fundamental issues were uncovered, new approaches were explored
+and new mechanisms were invented." (Ibid) The most important, he
+explains, was that "participants and observers alike became devoted
+to a new form of computing (the interactive, multiuser, timesharing
+system.). As a result, the Multics project dominated computer systems
+research for many years, and many of its results are still considered
+seminal." (Ibid.)
+<p>
+Evaluating the influence of the MULTICS research on Bell Labs 
+researchers, Comer points out that top researchers in computer 
+science and mathematics from the world's premier industrial research 
+center, Bell Labs, were able to work with top researchers from
+academia. When Ken Thompson, Dennis Ritchie and their "Bell Laboratories
+colleagues," writes Comer, "later began work on their own implementation
+of a Multics-like time-sharing system, they drew heavily from the Multics
+experience. So, despite popular myth, UNIX was not an accidental discovery
+at all -- it evolved directly from experiences with academic research." 
+(Ibid., pg. 41-42)
+<p>
+By 1969, however, AT&amp;T made a decision to withdraw from the 
+project. Describing that period, Dennis Ritchie, another of the 
+inventors of unix at Bell Labs writes, "By 1969, Bell Labs 
+management, and even the researchers came to believe that the 
+promises of Multics could be fulfilled only too late and too 
+expensively." (from Dennis Ritchie, "The Development of the C 
+Language," ACM, presented at Second History of Programming 
+Languages conference, Cambridge, Mass, April 1993, pg. 1) 
+<p>
+Detailing the reasons for the decision, Vyssotsky responds, 
+"It turned out that from our point of view the Multics effort 
+simply went awry. In the first place, we were naive about how 
+hard it was going to be to create an operating system as 
+ambitious as Multics. It was the familiar second system syndrome. 
+You put in everything you wished you'd had in the other 
+one." (Vyssotsky, pg. 59) Also he details how GE, MIT, and AT&amp;T 
+each had different goals for the project, which made it difficult 
+for them to work together. While GE wanted to develop Multics to 
+"strengthen its product line," MIT wanted Multics "to advance the 
+state of art" of computing, and Bell Labs' purpose was to have a 
+good environment for our people to work in." (Ibid.) Given these 
+different objectives, Vyssotsky explains, "It turned out that 
+under the stress of slipping schedules and the increasing 
+realization that we had difficulty agreeing on a common course of 
+action, we ended up simply pulling out of Multics. We said, `OK, 
+it's too wet to plow. We aren't going to get from here to 
+there'." (Ibid.)
+<p>
+When the decision to pull out of the Multics project was made
+by AT&amp;T, Vyssotsky explains there was an operating system that he
+called a "precursor of Multics" running on their GE 645 computer.
+"From the point of view of the few people who could use it," he notes,
+"it was a very nice programming environment. In particular, Ken
+Thompson thought it was a very nice programming environment." (Ibid.)
+<p>
+However, when Bell Labs pulled out of the Multics project 
+they took the Multics precursor off their GE 645 computer and put 
+up GECOS, a much less state of the art operating system. "If you 
+were an old line Spanish American War type computer user like 
+me," Vyssotsky admits, "GECOS was a perfectly satisfactory 
+system for getting from here to there in a well-designed 
+application. You knew what it was going to do." (Ibid., pg. 60)
+<p>
+But for a research computer scientist like Ken Thompson, 
+GECOS was inadequate. According to Vyssotsky, "It was nowhere
+near as satisfactory if you were trying to do things that were
+technically difficult and imperfectly defined, which is the main
+task of research." (Ibid.)
+<p>
+Not only for Ken Thompson's work, but for the research 
+purposes of the Labs, an operating system more like what Multics 
+had promised was needed. "I wanted a much more flexible system 
+than BESYS or GECOS or OS360 or anything I could see," Vyssotsky
+recounts, "I had various things that I was trying to do with 
+computers that were just plain hard to do with existing operating 
+systems." (Ibid.) 
+<p>
+"Moreover, for people like Ken Thompson," Vyssotsky emphasizes,
+"having this embryonic version of Multics taken away and GECOS
+slapped down in its place was something of a disaster. Suddenly they
+were back to square one." (Ibid.)
+<p>
+With the loss of the Multics experimental operating system, 
+Ken Thompson, Dennis Ritchie and the others at the Labs who began 
+work on UNIX, realized they had to focus on creating an operating 
+system for their programming needs. "I don't think," Vyssotsky 
+relates, "that either of them was particularly fascinated by 
+operating systems until they found themselves cast back upon 
+GECOS. They sort of got interested in the subject out of self 
+defense." (Ibid.)
+<p>
+In his account of this period, Dennis Ritchie writes, "Even
+before the GE-645 Multics machine was removed from the premises, an 
+informal group, led primarily by Ken Thompson, had begun 
+investigating alternatives." (Ritchie, pg. 1) 
+<p>
+Thompson and Ritchie presented Bell Labs with proposals to 
+buy them a computer so they could build their own interactive, 
+time sharing operating system. Their proposals weren't acted on. 
+Eventually, Ken Thompson found a little used and obsolete PDP 7 
+computer. According to Vyssotsky the orphaned PDP-7 computer 
+was a tiny machine, "more nearly in the class of a Commodore
+64 than the class of a PC-AT." (Vyssotsky, pg. 60) 
+<p>
+Ritchie explains that Ken Thompson was attempting to create
+a programming environment which included "many of the innovative
+aspects of Multics," such as "an explicit notion of a process as
+a locus of control, a tree-structured file system, a command
+interpreter as a user-level program, simple representation of
+text files, and generalized access to devices." (Ritchie, pg. 1-2)
+<p>
+Describing the primitive conditions that Thompson faced,
+Ritchie writes, "At the start, Thompson "did not even program on the 
+PDP itself, but instead used a set of macros for the GEMAP 
+assembler on a GE-635 machine. A postprocesser generated a paper 
+tape readable by the PDP-7. These tapes were carried from the GE 
+machine to the PDP-7 for testing until a primitive UNIX kernel, 
+an editor, an assembler, a simple shell (command interpreter), 
+and a few utilities (like the Unix rm, cat, cp commands) were 
+completed. At this point, the operating system was self-
+supporting; programs could be written and tested without resort 
+to paper tape, and development continued on the PDP-7 itself." 
+(Ibid., pg 2)
+<p>
+The result, Ritchie explains, was that "Thompson's PDP-7 
+assembler outdid even DEC's in simplicity; it evaluated 
+expressions and emitted the corresponding bits. There were no 
+libraries, no loader or link editor: the entire source of a 
+program was presented to the assembler, and the output file -- 
+with a fixed name -- that emerged was directly executable. (Ibid., 
+pg. 2)
+<p>
+The operating system was named UNIX, to distinguish it from 
+the complexity of MULTICS. Vyssotsky recalls that in addition to
+Thompson and Ritchie, "the two most active contributors at that
+stage were Joe Ossanna and Rudd Canaday. I should also add," he
+explains, "that Doug McIlroy was tremendously influential on their
+thinking." (Vyssotsky, pg.60) Vyssotsky elaborates, "I don't think
+that Doug actually contributed much of the programming, but for
+example, the appearance of pipes in UNIX was clearly a result of
+Doug's discussions with Ken and Dennis." (Ibid.) Ken put them in,
+but "it was McIlroy who said, "Look you ought to do it. Pipes, like 
+most things in UNIX were not a radically new idea. Co-routines 
+had, after all, shown up in SIMULA by the end of 1967." (Ibid.)
+<p>
+As work continued on the Bell Labs operating system, the 
+researchers developed a set of principles to guide their work. 
+Among these principles were:
+<p>
+"(i) Make each program do one thing well. To do a new job, 
+build afresh rather than complicate old programs by adding 
+new features.
+<p>
+(ii) Expect the output of every program to become the input 
+to another, as yet unknown, program. Don't clutter output 
+with extraneous information. Avoid stringently columnar or 
+binary input formats. Don't insist on interactive input.
+<p>
+(iii)Design and build software, even operating systems, to 
+be tried early, ideally within weeks. Don't hesitate to 
+throw away the clumsy parts and rebuild them.
+<p>
+(iv)Use tools in preference to unskilled help to lighten a 
+programming task, even if you have to detour to build the 
+tools and expect to throw some of them out after you've 
+finished using them."
+<p>
+(from M.D. McIlroy, E.N.Pinson, and B.A. Tague
+"Unix Time-Sharing System Forward",
+The Bell System Technical Jounal, July -Aug 1978
+vol 57, number 6 part 2, pg. 1902)
+<p>
+By 1970, Ritchie writes, the UNIX researchers were "able to 
+acquire a new DEC PDP-11. The processor," he remembers, "was 
+among the first of its line delivered by DEC, and three months 
+passed before its disk arrived." (Ritchie, pg. 5) Soon after the 
+machine's arrival and while "still waiting for the disk, 
+Thompson," Ritchie recalls, "recoded the Unix kernel and some 
+basic commands in PDP assembly language. Of the 24K bytes of 
+memory on the machine, the earliest PDP-11 Unix system used 12K 
+bytes for the operating system, a tiny space for user programs, 
+and the remainder as a RAM disk." (Ibid., pg. 5) "By 1971," 
+Ritchie writes, "our miniature computer center was beginning to 
+have users. We all wanted to create interesting software more 
+easily. Using assembler was dreary enough that B, despite its 
+performance problems, had been supplemented by a small library of 
+useful service routines and was being used for more and more new 
+programs." (Ibid., pg. 6)
+<p>
+"C came into being in the years 1969-1973," Ritchie 
+explains, "in parallel with the early development of the Unix 
+operating system; the most creative period occurred during 
+1972." (Ibid., pg. 1) "By early 1973," the essential of modern C 
+were complete. The language and compiler were strong enough to 
+permit us to rewrite the kernel for the PDP-11 in C during the 
+summer of that year. (Thompson had made a brief attempt to 
+produce a system coded in an early version of C -- before 
+structures -- in 1972, but gave up the effort.)" (Ibid.) 
+<p>
+Each program they built developed some simple capability and 
+they called that program a tool. They wanted the programs to 
+be fun to use and to be helpful to programmers. Describing the 
+achievements of the lab, Doug McIlroy, one of the researchers and 
+Thompson's Dept Head when they created UNIX, describes
+the atmosphere at the lab: 
+<p>
+"Constant discussions honed the system....Should tools 
+usually accept output file names? How to handle demountable 
+media? How to manipulate addresses in a higher level 
+language? How to minimize the information deducible from 
+a rejected login? Peer pressure and simple pride in 
+workmanship caused gobs of code to be rewritten or discarded 
+as better or more basic ideas emerged. Professional 
+rivalry and protection of turf were practically unknown: 
+so many good things were happening that nobody needed to 
+be proprietary about innovations."
+[from M.D. McIlroy, "Unix on My Mind," Proc. 
+Virginia Computer Users Conference, vol 21, 
+Sept. 1991, Blacksburg, pg. 1-6.]
+<p>
+The research done at the Labs was concerned with using the 
+computer to automate programming tasks. By a scientific approach 
+to their work and careful attention to detail, Bell Labs 
+researchers determined the essential elements in a design and 
+then created a program to do as simple a job as possible. These 
+simple computer automation tools would then be available to build 
+programs to do more complicated tasks.
+<p>
+They created a UNIX kernel accompanied by a toolbox of 
+programs that could be used by others at Bell Labs. The kernel 
+consisted of about 11,000 lines of code. Eventually, 10,000 lines 
+of the code were rewritten in C and thus could be transported to 
+other computer systems. "The kernel," Ken Thompson writes, "is 
+the only UNIX code that cannot be substituted by a user to his 
+own liking. For this reason, the kernel should make as few real 
+decisions as possible." (from K. Thompson, "UNIX Implementation", 
+"The Bell System Technical Journal," vol 57, No. 6, July-August 
+1978, pg. 1931) 
+<p>
+Thompson describes creating the kernel:
+<p>
+"What is or is not implemented in the kernel represents both 
+a great responsibility and a great power. It is a soap-box 
+platform on `the way things should be done.' Even so, if 
+`the way' is too radical, no one will follow it. Every 
+important decision was weighed carefully. Throughout, 
+simplicity has been substituted for efficiency. Complex 
+algorithms are used only if their complexity can be 
+localized."
+(Ibid., pg. 1931-2)
+<p>
+The kernel was conceived as what was essential and other 
+features were left to be developed as part of the tools or 
+software that would be available. Thompson explains:
+<p>
+The UNIX kernel is an I/O multiplexer more than a complete 
+operating system. This is as it should be. Because of this 
+outlook, many features are found in most other operating 
+systems that are missing from the UNIX kernel. For example, 
+the UNIX kernel does not support file access methods, file 
+disposition, file formats, file maximum sizes, spooling, 
+command language, logical records, physical records, 
+assignment of logical file names, logical file names, more 
+than one character set, an operator's console, an operator, 
+log-in, or log-out. Many of these things are symptoms rather 
+than features. Many of these things are implemented in user 
+software using the kernel as a tool. A good example of this 
+is the command language. Maintenance of such code is as easy 
+as maintaining user code. The idea of implementing "system" 
+code and general user primitives comes directly from 
+MULTICS."
+(Ibid., pg. 1945-6) 
+<p>
+Evaluating the achievement represented by the 
+kernel, Vyssotsky explains, "I would say that the greatest 
+intellectual achievement embedded in UNIX is the success Ken 
+Thompson and Dennis Ritchie had in understanding how much you 
+could leave out of an operating system without impairing its 
+capability." (Vyssotsky, pg. 60-62)
+<p>
+"To some extent," he continues, "that was forced by the fact 
+that they were running on small machines. It may also have been a 
+reaction to the complexity of Multics...It took some very clear 
+thinking on the part of the creators of UNIX to realize that most 
+of that stuff didn't have anything to do with the operating 
+system and didn't have to be included." (Ibid., pg. 62)
+<p>
+Eventually the unix operating system was adopted in other 
+departments at AT&amp;T to do a variety of work. "There is one piece 
+of history that I think is very important to understand," 
+explains Vyssotsky, "When UNIX evolved within Bell Laboratories, 
+it was not a result of some deliberate management initiative. It 
+spread through channels of technical need and technical 
+contact....This was typical of the way UNIX spread around Bell 
+Laboratories. You had MTSS Supervisors and Department Heads 
+saying we had to go in this direction while Executive Directors 
+were saying, `Well, I'm awful nervous about it. But if you guys 
+say that is what we've got to do, I'll back your play." (Ibid, pg. 
+62-64) 
+<p>
+Explaining the importance of how unix was implemented 
+organizationally within the Bell System, Vyssotsky comments, 
+"There are a lot of organizations that do not work that way. I 
+brought out that little hunk of history to point out that the 
+spread and success of UNIX, first in the Bell organizations and 
+then in the rest of the world, was due to the fact that it was 
+used, modified, and tinkered up in a whole variety of 
+organizations within Bell Laboratories....The refinement of UNIX 
+was not done as the result of some management initiative or 
+council of vice presidents. It was the supervisors saying, "This 
+thing is already better than our other options and flexible 
+enough for us to make it a go." (Ibid. pg. 64)
+<p>
+During the same period that the search for an operating 
+system to replace the promise of Multics had begun by Bell Labs 
+computer programming researchers, the Bell System was faced with 
+the problem of automating their telephone operations using 
+minicomputers. Describing the problem facing the Bell System 
+during this period, August Mohr, in an article in Unix Review, 
+"The Genesis Story" (January 1985, pg. 22), writes "Bell was 
+starting to perceive the need for minicomputer support for its 
+telephone operations." (Mohr was editor of /usr/group 's 
+CommUNIXations newsletter.)
+<p>
+"The discovery that we had the need -- or actually, the 
+opportunity -- in the early '70s to use these minis to support 
+telephone company operations encouraged us to work with the UNIX 
+system," confirms Berkley Tague. ("Interview with Berkley Tague," 
+Unix Review, June 1985, pg. 59) "We knew we could do a better job 
+with maintenance, traffic control, repair, and accounting 
+applications." (Ibid.)
+<p>
+"The existing systems were made up of people and paper," he 
+relates, "The phone business was in danger of being overwhelmed 
+in the early '70s with the boom of the '60s. There was a big 
+interest then in using computers to help manage that part of the 
+business. We wanted to get rid of all of those Rolodex files and 
+help those guys who had to pack instruments and parts back and 
+forth just to keep things going."
+<p>
+During the late 1960's, AT&amp;T was under pressure from
+regulatory bodies like the New York Public Service Commission,
+to solve what was termed as a "service crisis." (See especially,
+"Wrong Number," by Alan Stone, N.Y., 1989, pg. 145) This pressure
+encouraged AT&amp;T to explore technological advances that would
+make its support operations more efficient.
+<p>
+Tague explains that there had been local mechanization of 
+processes but not large scale integration of the mechanization. 
+"Take repair," he suggests as an example, "A lot of it 
+deals with keeping the connections straight between what we call 
+the main distribution frames in the central office and the wires 
+that tie residential telephones into the switch. Prior to the use 
+of computers, `mechanization' consisted of somebody on a remote 
+test bench using electrical meters and instruments to test lines. 
+To get those connections made, an intercom was used to broadcast 
+requests to a bunch of people standing around with alligator 
+clips and soldering irons down in the wire center. The requests 
+went something like, `Would you kindly connect jumper x to 
+terminal y?' to get testing done." (Ibid, pg. 60)
+<p>
+Tague describes how the mini computer made it possible to
+automate this process. "First, we were able to get more instructions
+out to the people actually making the connections. And, at the other
+end, we were able to centralize information about entire systems and
+end-to-end circuits."
+<p>
+"This meant," he elaborates, "that if I was responsible for 
+keeping the Superbowl broadcast on the air between New Orleans 
+and New York, I could -- with a single console -- view all the 
+connections on that link and have access to all of the 
+information automatically being collected about it. If something 
+broke, I could immediately recognize that and orchestrate the 
+process of getting it repaired. The repair itself would 
+ultimately be left to a person working in much the same way as 
+before." (Ibid.)
+<p>
+This change affected workers like those "plugging in an 
+alternate module or pulling a manual switch and going to a backup 
+system," he clarifies. "Suddenly, their work became much faster 
+because the information was all in one place -- unlike earlier 
+days when eight guys would have had to collect and sort out the 
+trouble data in a series of phone calls before actually being 
+able to get down to the business of working on solutions." 
+(Ibid.)
+<p>
+Other applications were affected as well, he explains. 
+"in areas like cable and wiring layouts. The algorithms applying 
+to these layouts were well known here at the Laboratories, but 
+they were not the sort of thing you could usefully put into a 
+manual. They were, however, easily put into computer programs. 
+Optimum layouts could thus be generated using the computer to 
+assess all the complicated engineering tradeoffs." (Ibid.)
+<p>
+Not only did they need a good programming environment, but 
+Mohr emphasized that the Bell System applications required, 
+"Operations Systems, not Operating Systems. With the number of 
+systems under consideration, the possiblity of being tied to a 
+single vendor, or having each site tied to a different vendor, 
+induced a kind of paranoia. There just had to be another way." 
+(Mohr, pg. 22)
+<p>
+Tague elaborates, "If we faced the phone company with 
+18 different vendors and 19 different environments, neither the 
+developers nor the phone companies were going to be able to 
+maintain the thing once it got out in the field in large numbers. 
+As a planner, I was trying to focus on a few vendors. At that 
+time, it was primarily Hewlett-Packard and DEC, plus a few IBM 
+systems." (Tague, pg. 60)
+<p>
+This led to the realization of a need for an operating 
+system. "Vendor operating systems were available as a 
+starting point", he adds "but a number of people had already 
+started to build their own when they realized that what the 
+vendors had was not adequate." (Ibid.) 
+<p>
+Tague explains that his role in planning for the transition 
+meant that he tried to warn those involved that they would need a 
+good software environment to do the development of the software 
+needed to use the mini computers for these new roles.
+<p>
+"I observed," he comments, "that people were starting to put 
+these minis out in the operating company, and saw that it was an 
+area of both opportunity and potential problems. I found," he 
+adds, "that some of the people in development had never built 
+an operating system for any computer before; many of them had 
+very little software background. They were coming out of hardware 
+development and telephone technology backgrounds, and yet were 
+starting to build their own operating systems. Having been 
+through that phase of the business myself, it seemed silly to go 
+through it another hundred times, so I started pushing the UNIX 
+operating system into these projects." (Mohr, pg. 22)
+<p>
+Tague was familiar with UNIX and its capabilities and tells 
+the variety of reasons ranging from inadequate file systems, to 
+inadequate performance, to poor user interface that he 
+recommended the initial adoption of UNIX to start the work. "We 
+sold those first application developers on UNIX simply by 
+pointing out that the first job they were going to have to do was 
+program development and that by using the UNIX operating system 
+they could get that job done more easily. I did not argue with 
+them about whether or not they should develop their own operating 
+systems -- knowing in my heart of hearts that once they got on 
+UNIX they wouldn't be able to do any better with the experience 
+and the schedules they had. Indeed, that is what happened."
+(Tague, pg. 60-1)
+<p>
+Tague's backing of UNIX, as a development system for 
+operations, was not just a personal preference. "I had every 
+confidence in the people who built it because I'd worked with 
+them on Multics," he explained. "With their experience and 
+training, I figured they could build a much better operating 
+system than somebody who's building one for the first time, no 
+matter how smart that person is." (Mohr, pg 22)
+<p>
+Tague describes how UNIX had been functioning in the research 
+environment and thus had demonstrated that it could be used as a 
+beginning basis for this important job.
+<p>
+Also, he knew that there would be a need to develop 
+a support system for those operating companies around the country 
+that would begin to use UNIX: "We were starting to put these 
+things in the operating companies all around the countryside," explains
+Tague, "and the prospects were that there were going to be several
+hundred minis over the next few years that were going to have to be 
+maintained with all their software and hardware." (Ibid., pg. 24)
+<p>
+Bell had created the needed field support system to maintain
+the electronic switching machines and software that were now being
+upgraded. "Supporting a network of minicomputers would be a
+significantly different problem, though," August Mohr explains.
+"Maintaining an operating system is not at all like maintaining an
+electronic switching system. The minicomputers had different reliablity
+demands, requiring a different support structure in the organization
+-- one that did not yet exist in any form. In many ways, the
+operations group was breaking new ground," writes Mohr. (Ibid.)
+<p>
+As head of the Computer Planning Department, Tague had been 
+responsible for systems engineering. In 1971 Tague garnered 
+support for UNIX to be adopted. Then he pushed to have UNIX made 
+the internal standard and to provide central support through his 
+organization. By September, 1973, he was able to form a 
+development organization to provide support for a "standard 
+Unix." This group, called UNIX Development Support worked with 
+Bell Labs Research. Though the two groups sometimes diverged 
+regarding their priorities, Mohr explains that they agreed on the 
+need for UNIX portability. 
+<p>
+According to Mohr, "Tague foresaw the possiblity of UNIX 
+becoming an inteface between hardware and software that would 
+allow applications to keep running while the hardware underneath 
+was changing." (Ibid., pg. 24)
+<p>
+"From the support point of view," he continues, "such a 
+capability would solve a very important problem. Without UNIX and 
+its potential portability, the people building the operations 
+support systems were faced with selecting an outside vendor that 
+could supply the hardware on which to get their devlopment done. 
+Once that was complete, they would be locked into that vendor." 
+However, according to Mohr, "Portability obviated this limitation 
+and offered a number of other advantages. When making a hardware 
+upgrade, even to equipment from the same vendor, there are 
+variations version to version. That could cost a lot of money in 
+software revisions unless there were some level of portability 
+already written into the scenario." (Ibid., pg. 24-25)
+<p>
+Just as Operating Systems people in the Bell system had come to 
+recognize the need for portability in a computer operating 
+system, Ritchie and Thompson and the other programming 
+researchers at Bell Labs had created the computer language C and 
+rewritten the majority of the UNIX kernel in C and thus had made 
+the important breakthrough in creating a computer operating system 
+that was not machine dependent. Describing their breakthrough with 
+UNIX, Thompson and Ritchie presented their first paper on UNIX at 
+the Symposium on Operating Systems Principles, IBM Thomas J. Watson 
+Research Center, Yorktown Heights, New York, October 15-17, 
+1973, (reference from UNIX(tm) Time-Sharing System: Unix 
+Programmers Manual, 7th edition, vol 2, Murray Hill, f/n pg 20). 
+See also Ritchie's account of the creation of C by early 1973 
+in "The Development of the C Language," ACM, presented at Second 
+History of Programming Languages conference, Cambridge, Mass, 
+April 1993, pg. 1) Describing this important achievement by Bell 
+Labs researchers, Mohr writes, "the integral portability of the 
+system developed by Research proved adequate to make UNIX 
+portable over a wide range of hardware."
+<p><hr>
+<a href="unix-Abstract.html">&lt;&lt;</a>
+, <a href="unix-Part_II.html">&gt;&gt;</a>
+, <a href="unix.html">Title</a>
+, <a href="unix-Contents.html">Contents</a>
+</body></html>

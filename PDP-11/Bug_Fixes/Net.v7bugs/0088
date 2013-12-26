@@ -1,0 +1,19 @@
+Autzoo.1475
+net.bugs.v7
+utcsrgv!utzoo!henry
+Mon Mar  8 16:25:27 1982
+C bug/feature
+The C compiler rejects most control characters in source code with
+"Unknown character" error messages, but does not do so for control-A
+(ASCII SOH).  Furthermore, SOH suppresses the incrementing of cc's
+line-number counter for the first newline following, so it messes up
+line numbering for following error messages.
+
+This is actually vestigial code, rather than an error of omission.
+In the days before #line, the preprocessor had to have some way to
+suppress line-number incrementing in the text of a #include file,
+so it stuck an SOH on the front of each line, and the compiler paid
+special attention to this.
+
+Is there anything out there that still uses this cryptic feature?
+If not, it should die, as a possible source of user confusion.

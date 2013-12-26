@@ -1,0 +1,24 @@
+Astolaf.314
+net.bugs.v7
+utzoo!decvax!harpo!ihnss!ihps3!stolaf!sys
+Wed Apr 28 14:52:46 1982
+v7 mail bug
+This bug may have already been reported, but here goes anyway.
+We noticed problems when mailing to remote systems which weren't
+in our l.sys file.  mail (stock v7 mail, not the Berkekey interface)
+would call uux and ignore the return status when uux blew up, leaving
+your letter at the end of some pipe, rather than in dead.letter.
+
+The fix is at the bottom of the sendrmt() routine, change
+
+	pclose(rmf);
+	exit(0);
+to
+	exit(pclose(rmf)>>8);
+the shift gets the uux return status into the low bits, thus
+passing them back to the parent via exit.
+
+If anyone has a better fix, I'd like to see it.
+
+						Vic Lee
+						stolaf!vtl

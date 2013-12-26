@@ -1,0 +1,11 @@
+Net.v7bugs
+----------
+The Net.v7bugs directory contains postings from the Usenet newsgroup net.v7bugs
+over the period October 1979 to May 1982. These were contributed by Henry
+Spencer. In particular, there are several important bug fixes for vanilla V7.
+
+7th_Edition_Y2K: Year 2000 patches for 7th Edition UNIX
+
+V6enb: Year 2000 and other bug fixes for 6th Edition UNIX
+
+V7_on11-34: A port of V7 to the PDP-11/34

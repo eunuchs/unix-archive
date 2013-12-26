@@ -1,0 +1,22 @@
+I scanned these (and compressed them) as TIFF [with G4 compression].
+That is:
+
+% tiffinfo page01.tif
+
+	page01.tif:
+	TIFF Directory at offset 0xdd40
+	  Subfile Type: (0 = 0x0)
+	  Image Width: 2550 Image Length: 3300
+	  Resolution: 300, 300 pixels/inch
+	  Bits/Sample: 1
+	  Compression Scheme: CCITT Group 4
+	  Photometric Interpretation: min-is-white
+	  Thresholding: error diffused
+	  Samples/Pixel: 1
+	  Rows/Strip: 25
+	  Planar Configuration: single image plane
+
+As uncompressed TIFF, they are approximately 1Mb each in size.
+
+The files are scans of the 8 pages of documentation provided - the
+originals are photo-copies it would seem of hand-written instructions.

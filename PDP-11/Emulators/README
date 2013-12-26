@@ -1,0 +1,38 @@
+Here is a collection of PDP-11 simulators:
+
+
+			Comparison of PDP-11 Simulators
+
+		Eric		Ersatz		Supnik 1.0	Begemot
+-------------+---------------------------------------------------------------
+Version	     |	1994		1.0-BETA	1.0		p11-2.0
+	     |
+Platform     |	32-bit Unix	MS-DOS		32-bit Unix	BSDi,
+	     |							SunOS 4.1 & 5.x,
+	     |							OSF1 (Alpha)
+	     |
+CPU type(s)  |	PDP-11/40	PDP-11/34A,	PDP-11/45	KDJ11A
+	     |			PDP-11/35,
+	     |			PDP-11/40
+	     |
+Floating pt  |	No		FP11A		FP11A		FP11A
+	     |
+Memory	     |	124Kw (248Kb)	124Kw (248Kb)	124Kw (248Kb)	512 Kw (1Mbyte)
+	     |
+Peripherals  |	TM11		RL11/RL01-02	PC11		RLV12/RL02
+	     |	RL11/RL02	RK611/RK06-07	DL11		MRV12
+	     |	KL11		RX211/RX01-02	LP11		KL11A
+	     |	KW11		DL11		RK11/RK05	LP11
+	     |	LP11		LP11		RLV12/RL01-02
+	     |			KW11L		RX11/RX01
+	     |
+Speed(*)     |	86		19		84		56
+	     |
+
+	* Crude speed is the time in seconds to boot 2.9BSD to the single-user
+	  prompt from an RL02, on a 486DX2-66 machine with 16M of memory,
+	  running either MS-DOS 6.2 or FreeBSD 1.1
+
+There is also a simulator that runs 7th Edition a.out binaries, apout. This
+doesn't need to simulate devices, so is much faster than the above simulators
+when performing lots of I/O.

@@ -1,0 +1,23 @@
+Subject:  v24i077:  Tool to salvage data from damaged tar tapes
+Newsgroups: comp.sources.unix
+Approved: rsalz@uunet.UU.NET
+X-Checksum-Snefru: d94d3357 5075df9b f91b5436 4bc6db49
+
+Submitted-by: henry@zoo.toronto.edu
+Posting-number: Volume 24, Issue 77
+Archive-name: tarx
+
+Tarx is a newer, cleaner, more versatile replacement for my old targ/tarl
+programs for salvaging information from damaged tar tapes.  It does a
+better job on various details and has been extensively tidied up.
+
+It uses a simplistic pattern-matching approach to identify tar header
+blocks.  It will cheerfully persist despite all sorts of bad things about
+the archive (such as wrong checksums, read errors, and scraped-off
+magnetic surface...), up to a maximum of "errlimit" hard errors in a row
+
+It can be used to list the files, and extract as much of them as is
+possible.
+
+                                         Henry Spencer at U of Toronto Zoology
+                                          henry@zoo.toronto.edu   utzoo!henry

@@ -1,0 +1,24 @@
+Autzoo.1421
+net.bugs.v7
+utcsrgv!utzoo!henry
+Tue Feb 23 19:21:01 1982
+plot -Tver temporary
+As distributed, the Versatec filter in plot(1) makes its scan-conversion
+temporary in /usr/tmp/raster rather than using a unique name, and leaves
+it around afterwards.  It creates it rw-rw-rw- so that in theory the next
+user to run Versatec output simply stomps it.  Problem:  if the first user
+has a non-zero umask, this doesn't work.  Worse, vplot does not complain,
+and subsequent users get copies of the first user's output rather than
+their own.  This is easily fixed:
+
+	1. Change the initialization of picture to be "/tmp/verXXXXXX"
+		(or maybe "/usr/tmp/verXXXXXX").
+	2. Precede the creat of picture with mktemp(picture); .  You
+		might also want to change the creat mode to 0600.
+	3. Put an unlink(picture); before the exit() at the end of main.
+	4. Put an unlink(picture); before the exit() in onintr.
+
+The only capability this loses is the ability to replot an old raster
+file without scan-converting again.  This doesn't seem a real problem.
+In fact, does anybody know why such a useless capability was included
+in the first place?

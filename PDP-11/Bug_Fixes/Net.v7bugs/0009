@@ -1,0 +1,21 @@
+Agrumpy.314
+NET.v7bugs
+utzoo!duke!unc!grumpy!smb
+Sun Aug 24 21:18:23 1980
+learn bugs
+There are a few bugs in the distributed learn:
+	a) When a sub-shell is invoked by makpipe.c, its output on file 2
+	   is going direct to the terminal rather than through a pipe; this
+	   can cause prompts to be intermixed with other output.  Fix:  in
+	   makpipe.c, in the fork that will actually invoke the shell, close
+	   file 2 and dup(1).
+
+	b) In the distributed PDP 11 version (though not in UCB VAX UNIX),
+	   routine start.c uses its own structure to describe a directory;
+	   this structure in turn gives the type of an i-node as "int", which
+	   causes portability problems on 32-bit machines.
+
+	c) In tee.c, a single character is read into the &i, which is an "int";
+	   this value is then used as the argument to putc.  While this code
+	   works properly on PDP-11s and VAXes, it fails on any machine
+	   where the bytes aren't backwards.

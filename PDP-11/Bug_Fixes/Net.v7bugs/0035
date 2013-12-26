@@ -1,0 +1,27 @@
+Acbosgd.125
+net.v7bugs
+utzoo!decvax!ucbvax!mhtsa!ihnss!cbosg!cbosgd!mark
+Fri Oct 23 12:48:01 1981
+serious uucp bug
+I have tracked down a bug in uucp which causes one site to get stuff
+that was supposed to go to another.  This only happens if you talk to
+two different sites, one of whose names is a prefix of the other.
+(Thus, cbosg and cbosgd, or duke and duke34.)  If your (third) site
+spools something to, say, cbosgd, and the call doesn't go through,
+then later, if you happen to be talking to cbosg and the job is still
+spooled, cbosg will ask you "got anything for me?" and your system will
+say "Aha!  I see something that starts with cbosg - that must be for you@
+and send it.  I would appreciate it if anyone who talks to both cbosg
+and cbosg[bcd] would fix this.  (This includes research, mhtsa, chico,
+harpo, ucbvax.)  Likewise, if your L.sys contains two names such that
+one is a prefix of the other, you probably want to fix it.
+
+The bug is in anlwrk.c, in routine bldflst.  (If you have an old uucp,
+e.g. anything outside Bell Labs, the routine is gtwrk.)  A few lines into
+the code you see
+	if (!prefix(pre, filename))
+which should be changed to
+	if (!prefix(pre, filename) || strlen(filename)-strlen(pre) != 5)
+
+This bug seems to be fixed in UNIX 4.0 (anlwrk 4.0 11/11/80) but not in
+earlier versions.

@@ -1,0 +1,11 @@
+Autzoo.1328
+net.bugs.v7
+utcsrgv!utzoo!henry
+Tue Feb  2 21:48:47 1982
+i_count too small
+The i_count field of the in-core inode structure is a char.  This is not
+necessarily enough on a big system where counts can get large.  Damage
+potential is considerable.  It is difficult to do anything intelligent
+about this except enlarge the field to a short (or maybe int);  putting
+a ceiling on the count just postpones the problem, as was described a
+while ago in net.bugs.2bsd.  I haven't tried the enlargement yet.

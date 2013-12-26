@@ -1,0 +1,22 @@
+Autzoo.1084
+net.v7bugs
+utzoo!henry
+Fri Oct 30 17:06:46 1981
+shell bugfix bugfix
+Bill Reeves's fix to shell mail checking, which I broadcast a couple
+of days ago, inadvertently added a new bug.  Bill's mod fixed the shell
+so it did mail checking properly in the presence of a mail system that
+removes empty mailboxes;  the "fixed" shell misbehaves if your mail
+system does NOT remove empty mailboxes.  The code which works right
+either way is like this (about line 136 in main.c):
+
+		THEN	IF mailnod.namval ANDF mailnod.namval[0] != '\0'
+			    ANDF stat(mailnod.namval,&statb)>=0 
+			    ANDF (statb.st_mtime != mailtime)
+			THEN
+				IF mailtime ANDF statb.st_size THEN prs(mailmsg) FI
+				mailtime=statb.st_mtime;
+			FI
+
+This also incorporates another minor fix done here:  no mail checking
+if the value of $MAIL is null.

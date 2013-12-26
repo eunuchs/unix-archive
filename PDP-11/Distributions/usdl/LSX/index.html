@@ -1,0 +1,98 @@
+<html><head><title>LSX Unix Restoration page</title>
+</HEAD>
+<BODY>
+<h1>LSX Unix Restoration Page</h1>
+<p>
+<i>Note: this page mirrored from
+<a href="http://www.mailcom.com/lsx/index.html">
+http://www.mailcom.com/lsx/index.html</a></i>
+<p>
+For a very long time, the smallest Unix system for the PDP-11 compatible
+machines - <a href="http://minnie.tuhs.org/pipermail/pups/2001-March/000273.html">LSX, adapted from Unix V6 by Dr. Heinz Lycklama</a> - was feared lost because it was never
+officially released outside of Bell Labs and nobody bothered
+to keep it for posterity.
+<p>Luckily, some RX01 floppies labeled "LSX" were found by me during <a href="http://www.vintage.org/2004/main/exhibit.php">Vintage Computer Festival 2004</a> 
+in <a href="http://www.vintage.org/pictures/LARGE/VCF%207.0%20Exhibitor%20-%20Pavl%20Zachary.JPG">Pavl Zachary's PDP-11 software pile (blue boxes right in the center)</a>, and Pavl kindly invited me to his
+garage, where we managed to run LSX and spent some time capturing
+the octal dumps of the six 256 Kb disks we have found at 9600 baud with
+a notebook. Luckily there was the <code>od</code> executable - 
+but no <code>cat</code> executable!
+<p>Soon after I realized that these dumps were incomplete: the RX01 disks
+were 77 tracks by 26 sectors of 128 bytes each, totaling 256256 bytes. Not
+a multiple of 512, therefore 2 sectors were missing (We did not have time to
+figure out how to duplicate floppies nor there were any spares, and we were
+loath to edit or compile any new programs to keep the original contents intact).
+<p>
+Due to a peculiar mapping of physical to logical blocks those 2 sectors
+were among the ones used by the boot loader, so an attempt to boot LSX
+under <a href="http://simh.trailing-edge.com/">SIMH</a> failed miserably.
+I have brought the floppies kindly
+loaned by Pavl to someone known to have the necessary hardware connected
+to a contemporary computer in hope of obtaining full low-level dumps.
+Unfortunately, that path led nowhere, I got tired of asking and prodding, and
+let myself virtually forget about the project.
+
+<p>A few days ago, on a whim I tricked the Mini-Unix/SIMH combination
+to mount the LSX images and
+have found on one of them the data necessary to recreate the missing blocks,
+and LSX was brought back to life! 
+<a href="log.txt">(Do not look here if you want to experience it yourself.)</a>
+<p>Immediately, I wrote an e-mail to Dr. Heinz Lycklama, and he has responded
+with his permission to release the LSX images to include them in the PUPS
+archives. Meanwhile, here they are:
+
+<p>To run:
+<ol>
+<li>Familiarize yourself with <a href="http://simh.trailing-edge.com/">SIMH</a> 
+for PDP-11. Hint: the magic words are <a href="http://en.wikipedia.org/wiki/The_Magic_Words_are_Squeamish_Ossifrage"><s>squeamish ossifrage</s></a>, er, "Who is there?" (That's to say that the escape character is <nobr>ctrl-E</nobr>.)
+<li>Familiarize yourself with <a href="../Mini-Unix/">Unix V6, 
+preferably Mini-Unix</a>. 
+Or don't, but then don't complain that you have not been warned!
+Most importantly, on Unix V6, it's not <code>cd</code>, it's <code>chdir</code>!
+<li>Download the <a href="lsximgs.tar.bz2">LSX images</a>.
+<li>Create the lsx.ini file:<pre>
+at rx0 root.dsk
+at rx1 usr.dsk
+set cpu 48k
+boot rx0
+</pre>
+Despite claims to the contrary, LSX needed at least 40 kbytes. That's 20 
+kilowords: 8 kilowords (16 kilobytes, 40000<sub>8</sub>) for the system and 12 kilowords
+(24 kilobytes, 60000<sub>8</sub>) for the user programs.
+This is the LSX kernel:<pre>
+# ls -l /lsx
+-rwxrwxrwx 1 75      11272 Oct 29 03:10 /lsx
+# size /lsx
+10740+516+4346=15602 (36362)
+# 
+</pre>
+And this is <code>/lib/c1</code>, the second pass of the C compiler, the largest executable on the root disk: <pre>
+# ls -l /lib/c1
+-rwxr-xr-x 1 0       21278 Sep  8 12:07 /lib/c1
+# size /lib/c1
+14284+6978+1688=22950 (54646)
+</pre><p>
+Before the computers were byte-oriented (and for some time after the first byte-oriented computers appeared), people were thinking in words, not bytes; 
+and the mist of time can obscure anyone's memory.
+<li>Run <code>pdp11 lsx.ini</code>, type <code>lsx</code> at the prompt.
+<li>Imagine it is the year 1976. This will help avoiding excessive
+oohing and aahing, as well as spitting and cursing. 
+A possible undesirable side-effect: less laughing.
+<li>Please let me know of your experience or any problems.
+</ol>
+<p>For your convenience, <a href="lsxfs.tar.bz2">here</a> are the same images 
+with data in the logical sequence. They can be mounted by any Unix that 
+understands the V6 file system, e.g. Mini-Unix, if you map them to a common 
+hard disk device, e.g. RK. This is a sample SIMH .ini file for Mini-Unix:
+<pre>
+at rk0 tape1.bin
+at rk1 usr.fs
+set cpu 64k
+boot rk0
+</pre>
+Type "rkmx" at the prompt to boot Mini-Unix, login as root, <code>/etc/mount /dev/rk1 /mnt; chdir /mnt</code>.
+<p><div align="right">August 24, 2006</div>
+<p><hr><p>
+<div align="left"><a href="mailto:xleobx@qmailcomq.com">Leonid Broukhis, 
+without Xes and Ques</a>, 2006</div>
+</body></html>

@@ -1,0 +1,26 @@
+Autah-cs.156
+net.bugs.v7
+utzoo!decvax!duke!chico!harpo!utah-cs!lepreau
+Wed Jan  6 12:17:38 1982
+Re: sizeof type botch (utzoo.1248)
+We decided that this is a compiler bug and fixed it.  What prompted this
+rash action is that the "bug" has disastrous consequences for a
+canonical Unix code sequence:
+
+/* Read a "record" (struct), then back up to the beginning of it */
+/* in order to update it in place.				 */
+     read(fd, (char *) &record, sizeof record);
+     lseek(fd, (long) -(sizeof record), 1);
+
+Because the sizeof expr was unsigned, you seek to a very large positive number!
+(Of course one can write:  -((long) sizeof record) but it's easy to forget...)
+The obvious negative aspect of this change is that sizeof (objects > 32K)
+doesn't work, but we think that's the lesser evil.  One can always do
+(sizeof(array[0]) * ARRAYLEN).
+-------------
+The fix follows, to c01.c.
+43c43
+< 		t1->type = UNSIGN;
+---
+> 		t1->type = INT;		/* was UNSIGN;	 J.Lepreau 5/81 */
+-------------

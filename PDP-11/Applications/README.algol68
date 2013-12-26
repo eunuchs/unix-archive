@@ -1,0 +1,33 @@
+From: Andrew.Walker@nottingham.ac.uk
+
+        I attach a compressed tar archive.  In it you will find [with
+luck!] (a) two large [for the times!] binaries, the Algol RTE and
+compiler;  (b) two assembler source file, loaders for the compiler
+and the RTE;  (c) a test program in Algol;  (d) copies of the articles
+I've posted on this topic in the last two or three days.
+
+        The assembler stuff is heavily commented, and you may need to
+do some hacking or unhacking to get everything to work on your PDP-11s.
+You then need to assemble "a68.s" and "ago.s" into "a68" and "ago" resp;
+then "a68 lsquare.a68" will compile the test program into "a68.out" and
+"ago" [or "ago a68.out"] will run it.  IIRC, you need to put the large
+binaries in specified places, or else hack "a68.s" etc to match where
+they actually are.
+
+        The assembler and articles include some vague and ancient contact
+points.  You could possibly get source from one of them;  personally, I
+can't quite work up the energy to chase it.  As noted in the articles,
+I don't know what the restrictions might be -- I have no recollection at
+all of how this stuff arrived on our machine, but it was probably via
+QMW [Queen Mary College, London] in some form or another.  I'd expect it
+to be freely available for academic purposes, and certainly *we* have
+signed no special agreements [unlike the ones for the Amsterdam Compiler
+Kit and Malvern Algol 68 compilers, for which I had to sign in blood],
+so I am happy to pass it on as a academic activity -- but I have no
+reason at all to suppose that it is public domain [so you might need to
+be slightly careful how you archive it].
+
+See also http://vestein.arb-phys.uni-dortmund.de/~wb
+
+Andy Walker, School of MathSci., Univ. of Nott'm, UK.
+anw@maths.nott.ac.uk

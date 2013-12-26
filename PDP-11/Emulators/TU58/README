@@ -1,0 +1,52 @@
+This is the TU58 emulation program written at Rockefeller Univ., Dept. of
+Neurobiology. We copyright (C) it and permit its use provided it is not
+sold to others.
+
+It has been tested and extensively used as a mass storage replacement for
+DEC LSI 11/23's and 11/03's running RT-11 at 9600 baud. On a VAX 11/750
+running 4.2BSD, the character handling is not quite fast enough to permit
+reliable writes at 9600 baud. I believe writes work fine at 2400 and 4800
+baud. Given a faster host machine or a strip-down tty driver, 9600 baud and
+possibly above should be feasible.
+
+As it is, it is much faster in booting up RT-11 than a real TU58 - it can
+boot RT-11 in less than 30 seconds, a real TU58 takes more than five minutes.
+This speed difference is obviously because the real TU58 has a average access
+time of 30 seconds whereas the access time for the emulator is just the
+protocol overhead plus the UNIX filesystem lacency.
+
+It should be possible, though we have yet to try it, to replace the diagnostic
+TU58 on the VAX 11/750 with a serial line to this program running on another
+machine. This arrangement should speed up 11/750 diagnostics. If someone is
+really interested in this but doesn't have a real TU58 to dump the 11/750
+diagnostics to a UNIX file, we might do that.
+
+The TU58 emulator uses a non-blocking read() call which is possible under 4.2BSD
+and implementable using a call like the old RAND empty(), which checks if
+a read() on a tty would block (is the read queue empty ?). If you don't have
+4.2bsd, most versions of UNIX support some form of this functionality.
+	
+The command to use to mount filesystems is:
+
+	tu58 [-flags] serial_device filesys1 [filesys2] 2> /dev/null &
+
+To create a bootable 'tu58' tape it is easiest to copy an RT-11
+bootable filesystem and add the your own files with rtpip.
+
+If you need a sample RT-11 TU58 bootable filesystem and you have an RT-11
+license, I could send you one (they are usually 256kbytes of binary).
+
+Please report bug fixes and enhancements to us, we would like to track
+this program.
+
+Sorry if the documentation is not up to snuff.
+
+					Cheers,
+					Dan Ts'o
+					Dept. Neurobiology
+					Rockefeller Univ.
+					1230 York Ave.
+					NY, NY 10021
+					212-570-7671
+					...cmcl2!rna!dan
+					rna!dan@cmcl2.arpa

@@ -1,0 +1,90 @@
+This directory contains all the resources needed to install VenturCom
+Venix on a DEC PRO 350 or 380.  
+
+Use Venix 1.0 on a PRO 350 and Venix 2.0 on a PRO 380.  Your machine
+should have an RD50, RD51, RD51A, or RD31 disk drive.  Venix will
+not install properly on an RD52 or RD53 drive.
+
+venix1s.zip and venix1u.zip contain the VenturCom distribution of
+Venix 1.0 for the DEC PRO 350.
+
+venix2s.zip and venix2u.zip contain the VenturCom distribution of
+Venix 2.0 for the DEC PRO 380.
+
+Download venix1?.zip or venix2?.zip to your DOS machine, unpack it with
+PKUNZIP, then use TELEDISK to make RX50 floppies from the *.TD0 images. 
+There is a copy of TELEDISK.ZIP included in both archives.
+
+One of the RX50 disks will be a bootable transfer/installation diskette.
+The others are tar format diskettes which the XFER/Boot diskette
+will read as it builds your root and usr areas onto the hard drive.
+
+You will need the installation code, which can be computed
+from the 'proacc' program on the venix.tar collection.  Note
+that venix.tar is from a VAX development environment, not from
+a Venix machine.  You should FTP venix.tar to a Unix platform
+and compile and run proacc as explained below.
+
+venix.tar contains the VenturCom algorithm for generating installation
+codes for Venix 1.0 and 2.0 on the DEC PRO 350 and 380.  The source code
+is in dist/dist/proacc.c and the VAX executable is in dist/dist/proacc
+The algorithm can be compiled for other platforms as well.
+
+If you have no way to compile or run proacc, contact Barry Kort,
+bkort@musenet.org, and I'll run it for you.  You will need to
+give me the serial numbers that come up when you try to install
+Venix on your PRO.
+
+There are other utilities in venix.tar including some for writing
+the serial number on the XFER diskette.  This algorithm might also
+be usable to increase the number of permitted logins.
+
+The root password on Venix is 'gnomes'.
+
+Venix is essentially the same as Bell Labs' System III Unix.
+It includes UUCP, but there is no support for any TCP/IP.
+
+To make a raw copy of an RX50 diskette on Venix:
+
+        dd < /dev/f0 > /dev/f1 bs=10b count=79
+
+You can use RX50 floppies for raw tar backups.  You can create a 
+mountable file system on a floppy with 
+
+	/etc/mkfs -b /dev/f0 790
+	mount /dev/f0 /f0
+
+It is possible to log in via the serial port if /etc/ttys is
+edited appropriately.  A line in /etc/ttys is "on" if the first
+digit is a 1.  The second digit encodes the baud rate; for 
+9400, use the digit 1.  After editing /etc/ttys, either reboot
+or do kill -2 1.
+
+venix?u.zip includes an additional raw tar RX50, goodies.td0,
+which has Kermit and other goodies on it.  Binaries compiled
+for the PRO 350 will run on the 380, but generally not vice versa,
+since the 380 supports a more liberal overlay architecture than
+the 350.  The version of Kermit is 4e(70).  One final caution:
+goodies.td0 is a raw tar with ABSOLUTE PATHNAMES.  I suggest
+examining it first with tar tv, because you may not want to
+overwrite all the original files there.  The Goodies include
+Compress, Man, Head, Printenv, Kermit 4E and some UUCP stuff.
+
+RX50.notes is an archive collection of correspondence about 
+reading, formatting, and archiving RX50 diskettes  on an AT DOS
+machine, using various drivers and utilities.
+
+raind112.zip is one of the AT DOS driver packages discussed in
+RX50.notes.  rx50.zip contains the RX50DRVR.SYS driver package.
+You don't need either of these for TELEDISK, but I offer them
+for those who want them for whatever purpose on their DOS machine.
+
+teledisk.zip is the Sydex utility for archiving RX50 diskettes
+for distribution via the Internet.  It must be run on a DOS
+machine with a 5 1/4 HD floppy drive to create the RX50 format
+floppies from the *.TD0 archive files.
+
+Good luck!  Post comments to comp.sys.dec.com
+
+Barry Kort
+bkort@musenet.org

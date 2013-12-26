@@ -1,0 +1,10 @@
+Autzoo.1414
+net.bugs.v7
+utcsrgv!utzoo!henry
+Mon Feb 22 19:55:17 1982
+man(7) @ bug
+The manual-page macros will screw up in several places if the input
+contains at-signs.  In particular, if there is an @ in a page header
+or footer, or in the label line of a .TP, madness will ensue.  The
+fix is straightforward:  change all the @'s in tmac.an to control-B.
+(Not control-A, since that is the n/troff leader character!)

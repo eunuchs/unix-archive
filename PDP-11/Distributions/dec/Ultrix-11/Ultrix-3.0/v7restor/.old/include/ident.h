@@ -1,0 +1,1 @@
+char myname[] = "CGL UNIX";

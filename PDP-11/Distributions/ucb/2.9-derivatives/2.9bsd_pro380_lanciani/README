@@ -1,0 +1,83 @@
+Installing 2.9/net on a PRO380
+
+(Assumes RD52 or better.)
+(Cards must be in "standard" order, e.g., DECNA in 4'th slot.)
+
+1.  Create a boot floppy.  The file proboot.img contains an image
+of the boot floppy in "logical" block order.  It can be used with
+a compatible system that writes real RX50s.  The file proboot.pc
+contains a raw image that can be used to create a boot disk on
+a PC/AT.  Use the mkdisk.bat file which in turn invokes wdisk.exe.
+Wdisk defaults to drive A:.  Add the "-u 1" switch to instead specify
+B: (i.e., unit 1).
+
+2.  Connect console serial maintenance cable to PRO and terminal
+at 9600 baud.  Boot floppy.  At the boot prompt, enter r5(0,0)rdfmt
+and specify disk type when asked.  This will format the hard disk
+(takes a long time).
+
+3.  Disconnect console cable and boot floppy.  Be sure the
+rd driver correctly identifies your hard disk.  Additionally,
+a flag value equal to your hard disk's RD type will display
+if you did not lie to rdfmt.  You should get a shell on the PRO's
+screen.  Ignore the error about no children.  Create root & usr
+file systems:
+
+mkfs /dev/rd0a 4480
+[This would be 2240 for 4-head disks RD50, RD51.  But they are probably
+not big enough for rest of the procedure.]
+mkfs /dev/rd0c 26240
+[This would be 59008 for an RD53, 6528 for an RD51 and 1632 for an RD50.
+The real partitions are c,d,e,f for RD53,52,51,50.  But c works for all.]
+sync
+
+4.  Configure network:
+
+ifconfig dc0 <your IP address> up
+[Might want to add -trailers]
+
+5.  Mount /usr file system:
+
+mount /dev/rd0c /mnt
+
+6.  Connect to your ftp server and transfer root dump:
+
+ftp <server's ip address>
+[Don't worry about unknown service error.  This ftp can run without the
+usual database files.]
+[give user and password]
+bin
+[VERY important to put in binary mode!]
+get root.dump /mnt/root.dump
+quit
+sync
+
+7.  Restore the root dump:
+
+restor rf /mnt/root.dump /dev/rd0a
+[Tell restor yes.]
+sync
+
+8.  Unmount /usr and mount root:
+
+umount /dev/rd0c
+mount /dev/rd0a /mnt
+sync
+
+9.  Install boot block:
+
+dd if=/mnt/mdec/rdboot of=/dev/rd0h
+[This would be rdboot4 for 4-head disks RD50, RD51.]
+sync
+sync
+sync
+
+10.  Power off, remove floppy, power on.  System should boot from hard disk...
+unless... /boot or /unix include any remapped blocks (the boot block and stand
+alone drivers don't support them) or you used a 4-head disk (the boot string in
+that case is rd(2,64)unix while the default is rd(0,128)unix for 8-head disks)
+In the former case you can experiment with moving the files around after loading
+from the boot floppy.  In the latter case you can use the maintenance cable to
+enter the boot string manually.
+
+questions/comments to Dan Lanciani ddl@danlan.com

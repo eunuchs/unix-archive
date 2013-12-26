@@ -1,0 +1,8 @@
+Aduke.574
+NET.v7bugs
+utzoo!duke!trt
+Fri Dec 12 11:39:24 1980
+learn bug
+In learn/copy.c, routine scopy(), "fflush(fo);" should instead be:
+	if (fo != NULL)
+		fflush(fo);

@@ -1,0 +1,17 @@
+Areed.185
+net.v7bugs
+utzoo!decvax!ucbvax!ihnss!cbosg!harpo!chico!duke!reed!valer
+Tue Aug 11 00:29:45 1981
+mail bug
+The V7 mail(1) program has an annoying habit of not
+behaving properly on rather long entries.  The problem
+is in the routine "copylet" when a difference of two
+long integers is stored as an int.  The following should
+fix the problem.
+	325c325,328
+	< {	int ch, k;
+	---
+	> {
+	> 	int ch;
+	> 	long k;
+	> 

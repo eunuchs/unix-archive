@@ -1,0 +1,9 @@
+Autzoo.1380
+net.bugs.v7
+utcsrgv!utzoo!henry
+Thu Feb 11 17:06:55 1982
+C-library omission
+Although the source for pkon() is in the C-library source directories,
+it is not in /lib/libc.a as distributed, nor is it in the mklib command
+file.  Discovered this a few days ago when I recompiled the C library
+and did a few diff's on file lists out of general paranoia.

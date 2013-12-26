@@ -1,0 +1,43 @@
+Files with extension .Z are compressed with *-b16* to reduce disk space
+and transfer times!
+
+If you run COHERENT 3.x:
+To uncompress be sure, that you have increased the size of the ram1 device
+to 640kb (see your COHERENT documentation)! Please be *patient* while
+uncompressing, it needs much more time then files compressed with -b12.
+
+Files with extension .z are compressed with gzip, a port for COHERENT 4.0
+is available in the cohsrc directory.
+
+coh.appl.faq.z	Third party software packages for COHERENT
+coh.feat.faq.z	COHERENT 4.x features FAQ
+coh.gen.faq.z	General information FAQ for COHERENT
+coh.port.faq.z	Port/Application FAQ for COHERENT
+coh.tr.faq.z	Tricks and Traps FAQ for COHERENBT 4.0.x and 4.2.x
+coh.xasc.faq.z	FAQ, prices, supported graphic cards for X11R5 from ASC
+coh.xmwc.faq.z	FAQ for X11R5 from MWC/RTR
+coh3.tip.faq.z	Technical Tips for COHERENT 3.2
+coh4.2.10.z	A FAQ exclusively for COHERENT 4.2.10
+coh4.tip.faq.z	Technical Tips for COHERENT 4.x
+cpp.man.z	Manual page of GNU cpp
+g++.man.z	Manual page of GNU g++
+gcc.man.z	Manual page of GNU gcc
+gnu.licence.z	The GNU licence
+intel.x.faq.z	FAQ for running X on Intel-CPU based systems
+pc-unix.faq.z	Buyers guide for PC-UNIX
+tcl_65.ps.z	An Introduction To Tcl and Tk, postscript file
+tcp-ip-a.ps.z	Introduction to Administration of an Internet-based Local Network
+tcp-ip-i.ps.z	Introduction to the Internet Protocols
+tcp-ip-pc.z	FAQ about TCP/IP implementations for IBM-PC compatible systems
+tuucpdoc.tar.z	Documentation of Taylor UUCP 1.04
+uuinst.guide.z	Fast installation guide for COHERENT's uucp
+vi.tut.z	VI tutor for beginners
+x-faq.1.z	X11 FAQ from comp.windows.x part1
+x-faq.2.z	part 2
+x-faq.3.z	part 3
+x-faq.4.z	part 4
+x-faq.5.z	part 5
+x.perf.faq.z	FAQ about X11 performance
+xfree.faq.z	FAQ about Xfree, the X server for PC UNIX's
+xt.faq.z	FAQ for the Xt toolkit
+zen10.ps.z	Zen and the Art of the Internet, postscript file

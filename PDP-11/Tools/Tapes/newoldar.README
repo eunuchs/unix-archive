@@ -1,0 +1,24 @@
+newoldar							21 May 2000
+
+Description:
+
+A modified 2.9BSD ar which handles archives created on a PDP-11 directly from
+non-PDP platforms.  Archives identified as "old PDP-11 archive" by file(1)
+or otherwise having a 2-byte header of value 177545 (0xff65) can be 
+manipulated using this utility.  The omnipresent "cont.a" archives 
+fall into this category.
+
+Usage: newoldar [opt] archive
+
+See ar(1) for extended options and better documentation.
+Of interest to most users are t|x - test archive or extract.
+
+Tested under: 	FreeBSD/i386 and OpenBSD/i386
+with: 		1BSD source distribution and Shoppa's Usenix tapes.
+
+This quick hack brought to you by:
+Brandon Creighton
+
+Submitted by (didn't debug fast enough):
+Dan Frasnelli
+[dfrasnel@corewar.com]

@@ -1,0 +1,17 @@
+Autzoo.671
+NET.v7bugs
+utzoo!henry
+Thu May 28 19:09:51 1981
+disksort read/write order
+In /usr/sys/dev/dsort.c, the general seek-sort routine used by hp.c
+et al, the code as distributed queues reads before writes.  This is
+WRONG, the intent was to put writes before reads (I asked Dennis Ritchie
+at the San Francisco Usenix meeting).  The result is that on a very busy
+system, it can take a looooong time for data to get out to disk, which
+is risky and can hurt performance.
+
+The fix is simple;  in the two if's that check B_READ flags, "ap" should
+be changed to "bp" and vice-versa.
+
+This bug has been known for some time, but hasn't been seen on the net
+yet.  It was discovered by Peter Hardie at University of Saskatchewan.

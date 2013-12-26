@@ -1,0 +1,14 @@
+Autzoo.1145
+net.v7bugs
+utzoo!henry
+Mon Nov 23 16:58:49 1981
+spell(1) options
+As distributed with V7, the -x option to spell(1) does not work, at all.
+/usr/lib/spell is prepared to handle it but never gets to see it, because
+somebody forgot to allow for it in /bin/spell.  The fix is to add the
+following line just before the -a line:
+
+	-x)	B="$B -x" ;;
+
+Also, -v is misdocumented;  many people misread it as printing plausible
+derivations for things spell couldn't find at all.

@@ -1,0 +1,100 @@
+# This is a shell archive.  Save it in a file, remove anything before
+# this line, and then unpack it by entering "sh file".  Note, it may
+# create directories; files and directories will be owned by you and
+# have default permissions.
+#
+# This archive contains:
+#
+#	Readme
+#	uue.c
+#	uud.c
+#
+echo x - Readme
+sed 's/^X//' >Readme << 'END-of-Readme'
+X	uue & uud: Get binaries over to V7 via console
+X	
+XQuick hack to get binaries to V7 over 7-bit serial line. Assume you have
+Xa PDP-11 at one end running V7, and a 32-bit Unix at the other end, using
+Xsome terminal emulation like kermit.
+X
+XManually send uud.c over to the PDP-11 and compile it. For example:
+X
+X# ed
+Xa
+X<manually enter uud.c code>
+X.
+Xw uud.c
+Xq
+X# cc -o uud uud.c
+X
+XNow compile uue.c on your 32-bit Unix. To send binary file xyzzy, exit your
+Xterminal emulator, and run uue on the 32-bit Unix side:
+X
+X% ./uue xyzzy > /dev/ttyd1		(assume /dev/ttyd1 is serial line)
+X
+Xuue will set the PDP-11 Unix to cbreak no echo, start up uud, send the
+Xbinary file over, and restore the terminal state.
+X
+X2 text characters are sent for each binary byte, so it's not efficient.
+X
+X	Warren Toomey	wkt@cs.adfa.oz.au
+END-of-Readme
+echo x - uue.c
+sed 's/^X//' >uue.c << 'END-of-uue.c'
+X#include <stdio.h>
+X#include <sys/types.h>
+X#include <sys/stat.h>
+X
+X
+Xmain(int argc, char *argv[])
+X{
+X  struct stat st;
+X  int a, b, c, size;
+X  FILE *in;
+X  
+X  if (argc!=2) { fprintf(stderr, "Usage: uue filename\n"); exit(1); }
+X
+X  in=fopen(argv[1], "r");
+X  if (in==NULL) { fprintf(stderr, "Can't open %s\n",argv[1]); exit(1); }
+X  if (stat(argv[1], &st)==-1)
+X		{ fprintf(stderr, "Can't stat %s\n",argv[1]); exit(1); }
+X
+X	/* Send command to start up remote decoder */
+X  printf("stty cbreak -echo\n./uud > %s\n", argv[1]);
+X
+X	/* Send size, as short */
+X  size= st.st_size; printf("%d\n",  size);
+X
+X  while (size) {
+X    c= fgetc(in);
+X
+X	/* Send c as two printable ASCII characters */
+X 	a= ((c & 0xff) >> 4) | '@';
+X 	b= (c & 0x0f) | '@';
+X	putchar(a); putchar(b); size--;
+X  }
+X
+X	/* Send command to restore terminal */
+X  printf("stty -cbreak echo\n");
+X}
+END-of-uue.c
+echo x - uud.c
+sed 's/^X//' >uud.c << 'END-of-uud.c'
+X#include <stdio.h>
+Xmain()
+X{
+X  char s[8];
+X  unsigned int a,b,c;
+X  long size, atol();
+X  
+X  gets(s); size=atol(s);
+X
+X  while (size) {
+X    a= getchar(); b= getchar();
+X    c= ((a&0x0f)<<4) | (b&0x0f);
+X    putchar(c); size--;
+X  }
+X}
+END-of-uud.c
+exit
+

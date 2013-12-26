@@ -1,0 +1,18 @@
+These are RL01/RL02 images from a 11/23 V6 system rescued from the
+University of British Columbia's Surplus Equipment Recycling Facility
+by Tim Shoppa during the summer of 1997.
+
+unix_v6.rl02:           A V6 RL02 bootable on a 11/23.  Kernel is built
+                        for a 11/23, 2 RL02's, and 2 RX02's; Kernel source
+                        is available for building other configurations.
+
+user01.rl02:            \These are various RL02's to be mounted under
+user0_backup.rl02:      | "/user".
+user_backup2.rl02:      |
+copy_num1_user.rl02:    /
+
+junk:                   A pack that was labeled simply "junk".  No idea of
+                        contents
+
+scratch_disk_1123.rl02: A pack that was labeled simply "scratch disk".  No
+                        idea of contents - probably used to run diagnostics on.

@@ -1,0 +1,14 @@
+Autzoo.1329
+net.bugs.v7
+utcsrgv!utzoo!henry
+Tue Feb  2 22:05:50 1982
+shell [mis?]feature
+The shell sometimes ``knows'' characters are in quotes and should not
+be interpreted as metacharacters etc.;  this is a win in many situations
+but loses sometimes:
+
+	set `echo "'a b'" "'c d'"`
+
+yields positional parameters with imbedded quotes.  This is the heart
+of the problem in getting the getopt(1) I sent out a little while ago
+to cope properly with arguments with embedded metacharacters etc.

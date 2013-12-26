@@ -1,0 +1,553 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN">
+<!--Converted with LaTeX2HTML 96.1-beta (Jan 15, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Details of the PUPS Archive</TITLE>
+<META NAME="description" CONTENT="Details of the PUPS Archive">
+<META NAME="keywords" CONTENT="pups">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="pups.css">
+</HEAD>
+<BODY LANG="EN">
+ <H1><A NAME="SECTION00090000000000000000">Details of the PUPS Archive</A></H1>
+<A NAME="archivedetails">&#160;</A>
+The following is the list of `tapes' in the PUPS archive. Most of the tapes
+contain licensed material and cannot be publicly distributed. For each
+tape, an indented section describes the sticky label actually found on the
+tape.
+<P>
+<pre>
+Dennis_v5
+---------
+
+v5root.gz is an RK05 image with Fifth Edition UNIX installed, from Dennis
+Ritchie. Unfortunately, Dennis no longer has the documentation, so this
+is strictly an incomplete distribution of Fifth Edition. Originally, the disk
+wouldn't boot up under an 11/45; however, the book block from a 6th Edition
+RK disk image can be used instead. The v5.origbootblock file contains the
+original boot block. The most recent timestamp on any file is March 22nd 1975.
+
+v5root.tar.gz is a tar archive of the contents of the RK05 image.
+
+Dennis_v6
+---------
+
+v6root.gz, v6src.gz and v6doc.gz are a set of three RK05 images of Sixth
+Edition with root, /usr and documentation, from Dennis Ritchie. The tape
+bootstraps are not included. The most recent timestamp on any file is
+July 19th 1975.
+
+v6root.tar.gz, v6src.tar.gz and v6doc.tar.gz are tar archives of the
+three RK05 images.
+
+Ken_Wellsch_v6
+--------------
+
+v6.tape.gz is a copy of the Sixth Edition distribution tape which was sent in
+by Ken Wellsch. The first 100 512-byte tape blocks contain the tape bootstrap
+stuff. Blocks 100 - 4099 are the RK05 root image, blocks 4100 - 8099 are the
+/usr RK05 image, and the blocks 8100 - 12099 are the /doc RK05 image.
+
+[I should verify that this is identical to Dennis' copy of 6th Edition]
+The most recent timestamp on any file in /usr and /doc is July 19th 1975,
+as with Dennis' copy. However, the most recent file timestamp on root is
+October 11th, 1975.
+
+root.v6.tar.gz, usr.v6.tar.gz and doc.v6.tar.gz are tar archives of the
+three RK05 images.
+
+Henry_Spencer_v7
+----------------
+
+v7.tar.gz is a tar archive of 7th Edition from Henry Spencer. He says that
+the tarball was made when he originally received the distribution from Bell
+Labs, and it was ``just a matter of stripping out some preliminary goo that
+   made the distribution tape self-booting, but I don't remember the details.
+   ... So it's not in the original format, but it does have the original
+   contents. There was a small addendum tape that some V7 sites got, with a
+   few odds and ends of improvements and stuff that got left off the original
+   tape by accident.''
+
+v7.tar.gz is the distribution tar file. v7.patches.tar.gz is the patches file.
+I'll build a proper tape for this someday. You may want to get Torsten's v7
+and then bring this in over the top if you want a `virgin' v7.
+
+The most recent timestamp on any file is June 9th 1979.
+
+
+Keith_Bostic_v7
+---------------
+
+This set of files from Keith Bostic looks like the original tape records
+from the 7th Edition distribution tape. I haven't had a look at them as
+yet, but hopefully they are the virgin distribution.
+
+
+v7addenda.tar
+-------------
+This tarball contains an addenda to the 7th edition UNIX distribution tape,
+and was released on `12/2/80'. 12th February 1980, or 2nd December 1980?
+
+A brief summary of contents: many bug fixes. An lpr/lpd utility. A new awk.
+Fsck! A new f77. More robust mag tape drivers.
+
+v7m.tar
+-------
+
+V7M was an enhanced version of V7 that came out of DEC. A README in this
+tarball says that:
+
+                        UNIX/V7M SOURCE FILES
+
+        This directory contains the source files for unix/v7m, which
+        is unix version 7 modified to support the new DEC devices.
+        Such as, the PDP 1144, rm02/3, rk06/7, rl02, and ts11.
+        Unix/v7m has an overlay kernel for non-separate I/D space CPU's.
+        Unix/v7m also contains maintainability enhancements and bug fixes.
+
+	addenda - The Western Electric UNIX/V7 addenda dated 12/2/80.
+	h       - Header files used by the source files.
+	conf    - Assembley language and configuration files.
+	dev     - Device drivers.
+	ovdev   - Driver object modules for overlay kernel.
+	sys     - The unix kernel.
+	ovsys   - System object modules & LIB1 for overlay kernel.
+	sas     - Standalone stuff, unix/v7m two stage bootstrap monitor.
+	mdec    - Unix/v7m rp,rl,hp,hk disks, block zero boot code.
+
+
+Torsten_v7
+----------
+
+v7.gz is a bootable copy of Seventh Edition on an RL02 image, given to me by
+Torsten Hippe. The kernel source differs from Adfa 81 in that there is extra
+code, ifdef'd with the names XBUF, INSTRM, SYSACCT, LRUI and SEPID.
+
+[Actually, I should compare it with Henry Spencer's v7. It seems to be
+a heavily modified 7th Edition, dating a few years after Henry's copy.]
+The most recent timestamp on any file is September 22nd 1988.
+
+
+32V Tape
+--------
+
+Although 32V isn't strictly a PDP-11 UNIX system, it is a very close
+derivative of 7th Edition, so I thought it would be ok to archive it.
+
+The tape comes from Keith Bostic, and is composed of three images,
+file1, file2 and a tarball now called 32v_usr.tar. I assume that
+all three were originally three separate records on a tape.
+
+The information from Keith says:
+
+	Block size for file1 is 512, block size for file2 is 10240.
+	The first label on the tape:
+
+		BELL LABORATORIES INC
+		UNIX/32V* TIME-SHARING SYSTEM, VERSION 1.0
+		9 TRACK 800 BPI 3 FILES FILE1=232 RECORDS
+		FILE 2=480 RECORDS FILE 3=1202 RECORDS
+		*UNIX IS A TRADEMARK OF BELL LABORATORIES
+		(2/22/80 written in pencil)
+
+	The second label on the tape:
+
+		RESTRICTED RIGHTS
+		USE, DUPLICATION OR DISCLOSURE IS
+		SUBJECT TO RESTRICTIONS STATED IN
+		YOUR CONTRACT WITH WESTERN ELECTRIC
+		COMPANY, INC
+
+I haven't looked at file1 yet; I assume it's a set of bootstrap
+records. file2 is most likely a backup of the root filesystem, but
+I haven't tried to read it, or even work out what it is, yet.
+
+Mini-Unix
+---------
+
+tape0.bin.gz, tape1.bin.gz and tape2.bin.gz are three RK05 disk images
+containing Mini-UNIX, sent in by Jay Jaegar. [Details of exactly what
+Mini-UNIX is (a cut-down v6), and who wrote it, should go here].
+The most recent timestamp on any file is December 22nd 1976.
+
+Also in this directory are some files from ``an old Unix User Group tape''.
+ug091377-ar.tar.gz has the original ar archives and ug091377.tar.gz has the
+files from the archives. This tape dates from Sep 14 1977.
+
+tape0.tar.gz, tape1.tar.gz and tape2.tar.gz are tar archives of the three
+RK05 images.
+
+v6.compat
+---------
+
+The Readme in this tarball says that v6.compat is
+
+  A Package to Support VAX Compatability Mode on UNIX-32V
+
+                      Arthur W. Wetzel
+                        735 LIS Bldg
+    Interdisciplinary Department of Information Science
+                  University of Pittsburgh
+                   Pittsburgh, Pa. 15260
+                       (412)-624-5203
+
+This is a brief description of a package to support the exe-
+cution of PDP-11 programs on VAX UNIX-32V or Berkeley VMUNIX
+in compatability mode.
+
+1BSD
+----
+
+This tarball of the 1st Berkeley Software Distribution, created by Bill Joy,
+comes from Keith Bostic. Two files in the archive say:
+
+	This tape includes sources and binaries for a quantity of UC
+	Berkeley software.  The major items on this tape are the instructional
+	Pascal system and the text editor "ex".  Other software here includes
+	a modified shell, a new shell, new commands, and a "star trek" game.
+
+	This tape reflects updates to Thu Jan 19 10:34:29 PST 1978
+
+2BSD and 2.4BSD
+---------------
+
+The 2BSD tar archive comes from Keith Bostic, with a note that:
+
+	[this is] Extracted from a 2BSD distribution tape.
+
+	First [printed] label on the tape:
+
+        	Second Berkeley Software Tape May 10, 1979    TAR 800BPI
+        	%dd if=/dev/mt0 bs=1b skip=1 of=tar
+        	%chmod 755 tar
+        	% tar x
+        	10000 blocks
+
+	Second label on the tape:
+
+       		The contents of this tape are distributed to UNIX licensees
+        	only, subject to the software agreement you have with Western
+        	Electric and an agreement with the University of California.
+
+The top-level READ_ME in the archive gives a date of Thu Apr 19 1979.
+
+In email, Keith Bostic says that `there was only one 2BSD release'; I assume
+that this means that the others had minor numbers (2.8, 2.9, 2.10 etc.).
+
+What is strange here is that Peter Salus' book `A Quarter Century of UNIX'
+says that 2BSD was released in mid 1978. However, the dates above indicate
+April 1979.
+
+There is also a second copy of 2BSD on the UNSW 82 tape. I haven't
+cross-compared the contents of the two files, but the Apr 19 1979 date
+is also given, and the installation instructions are identical. I've left
+a copy of this 2BSD in the archive as 2.4bsd.tar.gz, but the .4 is bogus.
+
+
+2.9BSD
+------
+
+The files in this directory are a complete distribution of 2.9BSD, sent in
+by Steven Schultz.
+
+	file1.gz is the bootblock+bootprogram for the TU10/TU16 tape
+        file1.ts.gz is the bootblock+bootprogram for the TS11 tape
+        file2.gz is the standalone 'cat' program
+        file3.gz is the Table Of Contents (used by the 'cat' program)
+        file4.gz is the standalone 'mkfs' program
+        file5.gz is the standalone 'restor' program
+        file6.gz is the standalone 'icheck' program
+        file7.gz is the dump of the root filesystem
+        usr.tar.gz is a tar image of /usr with relative pathnames
+       		i.e. no leading /usr
+
+2.9BSD-Patch
+------------
+
+2.9BSD-30aug85.gz is a tar archive containing patches for 2.9BSD.
+Keith Bostic wrote the top-level README, which is dated  Aug 22 1985.
+
+2.11BSD
+-------
+
+This is a complete distribution of 2.11BSD up to patch level 277, sent in
+by Steven Schultz. The distribution includes the tape bootstrappers.
+Note that Steven Schultz is still distributing new patches to 2.11BSD.
+Steven writes:
+
+	The format of a 2.11BSD boot tape is:
+
+        File #  Block Size      Content
+        ----    ----------      -------
+         0      512             bootblock,bootblock,boot
+         1      1024            disklabel
+         2      1024            mkfs
+         3      1024            restor
+         4      1024            icheck
+         5      10240           root.dump
+         6      10240           tape1.tar1
+         7      10240           tape1.tar2
+         8      10240           tape2.tar1
+
+
+3BSD
+----
+
+As with the 32V release, this is worth archiving even though it isn't
+for the PDP-11 architecture. Unfortunately I don't have any information
+about this distribution except that I obtained it from Keith Bostic.
+Peter Salus' book `A Quarter Century of UNIX' says that 3BSD came out
+in late 1979.
+
+Xinu
+----
+
+DISTR.lsi.tar.gz is a tar archive of version 7 of the Xinu operating system,
+a Unix clone for the LS1-11. Xinu was written by Douglas Comer.
+
+UNSW 01
+-------
+	Tape label: System Source Disk
+		    DD format URK? BS=24B count=203 800bpi 9track
+		    UNIX System Source 1 of 1
+		    25/1/78
+
+A distribution of UNIX source from UNSW, with several changes. record0.gz is
+an RK05 image laid out according to the `Boston Children's Museum' format
+(i-nodes in the middle). Latest file timestamp is Jan 24 1978. There is only
+kernel source, plus a `unswbatch' directory. The latter seems to hold the
+source to a UNIX batch system developed by Ian Johnstone and other at the
+School of Electrical Engineering at UNSW.
+
+record0.tar.gz is a tar archive of the RK05 image.
+
+UNSW 02
+-------
+	Tape label: UNIX Fun & Games & Pics
+		    800 bpi  9 track itp Format Reel 1 of 1
+		    25/1/78
+
+
+Lots of BASIC programs and Ascii lineprinter pictures. record0.gz is an
+itp archive. There is no UNIX-related stuff. Everything is dated Jan 22 1978.
+
+UNSW 03
+-------
+	Tape label: System Disk
+		    DD format URK? 800bpi 9track UNIX System Disk
+		    1 of 1
+		    25/1/78
+
+Binaries to a UNIX system, no source code. Latest date is Jan 24th 1978.
+
+UNSW 04
+-------
+	Tape label: UNSW 4th Distrib (2 files)
+		    PWB-UNIX (Part 1) (1 file) TP format  800bpi
+		    Sizes: 4303 5101 7326 records
+		    NO RING EVER
+
+Record0.gz is a tp format archive of the AUSAM modifications done at UNSW of
+6th Edition UNIX, dated November 1979. Documentation and kernel sources exist,
+but there is no source for libraries or ordinary commands. Most recent file
+date is November 1st, 1979. The kernel diffs against UNSW 106 are small, so
+UNSW 04 evolved from UNSW 106.
+
+Record1.gz is a tp format archive of AUSAM programs and library source. This
+is an assumption, as again the most recent file date is November 1st, 1979.
+
+Record2.gz is a tp format archive of binaries and man pages for PWB-UNIX.
+Latest date is September 8th 1978. There is no source code on the tape.
+
+
+UNSW 05
+-------
+	Tape label: PWB UNIX (Part 2) 1 file   205
+		    Level 7 UNIX      1 file   640
+		    Berkeley Pascal \
+		    Vrije Pascal    / 1 file   319 blocks
+		    No Ring Ever
+
+
+Record0.gz is a dtp archive of PWB-UNIX. Unfortunately there is a hard error
+in record 0, and I was unsuccessful in recovering the rest of record 0, nor
+record 1 and 2. The dirlist file shows what is in record 0. Latest date is
+September 8th 1978.
+
+UNSW 06
+-------
+	Tape label: Hebrew Distribution
+		    Toronto Graphics Distribution DTP No Ring Ever
+
+
+Yet another tp format, dtp. This one puts the offset of data in the first 8
+bytes, starts the dir at offset 128, with 114-byte names. Progs/dtp can
+extract it. The tape has no UNIX src. There are top-level directories gpac,
+huji and tor. Latest date is December 20th 1979.
+
+UNSW 07
+-------
+	Tape label: UNIX Source & Documentation
+		    800 bpi  9 track itp Format Reel 1 of 1
+		    25/1/78
+
+Record0.gz is an itp archive of UNIX source code and documentation. I have no
+clear idea as to the version archived. File dates range from August 21th 1976
+to January 24th 1978. It has some UNSW modifications, with the highest
+labelled `fix016' in param.h, and that's 16 decimal.
+
+
+UNSW 81
+-------
+	Tape label: UNIX Level 7 Source
+		    from tape #5 part 2 13/4/81
+
+Just as it says. dtp format, also includes binaries. No WECo boot
+records though (as described in `Setting up UNIX' in the V7 manuals).
+The most recent timestamp on any file is August 22nd 1979.
+
+UNSW 81 and UNSW 83 are identical. They contain Seventh Edition UNIX.
+Looks like a complete distribution as well. There are hptmunix,
+rphtunix and rptmunix kernels. No rk or rl ones, though.
+
+[Compare these to Henry's tape]
+
+
+UNSW 82
+-------
+	Tape label: UNIX L6
+		    VRIJE and Berkeley Pascal from tape #5 part 3
+		    14/4/81
+
+Record0.gz is a dtp archive of at least Berkeley Pascal, in the pascal
+directory. Actually there's a csh, and install.ms indicates that this is in
+fact 2BSD. The READ_ME file in the pascal directory has a timestamp inside of
+April 19th 1979.
+
+The pc directory contains Pascal-VU (dated May 29th 1979) from Vrije
+University, the Netherlands. Latest file date in the pascal directory is
+August 1st 1979, and for the pc directory is October 30th 1979.
+
+UNSW 83
+-------
+	Tape label: UNIX Level 7 Sources
+		    from tapes 92 & 93
+		    reel 1 of 1
+		    5/1/83
+
+dtp format. As the label says. Looks very much like tape 81. In
+fact a comparison of the contents show it to be exactly the same.
+
+UNSW 85
+-------
+	Tape label: UNIX L6 Source (tp)
+		    from tape #4, part of file 2
+		    13/2/81
+
+tp format, no man pages. The file seems to be truncated, I got
+block errors with my tp program.
+
+UNSW 86
+-------
+	Tape label: UNIX L6 Source (tp)
+		    from tape #4, file 3
+		    28/7/81
+
+tp format. /bin, /usr, /etc, man pages, i.e all but src.
+
+UNSW 87
+-------
+	Tape label: UNIX Level 6 Source
+		    PWB Part 2 from tape #5, part 1
+		    dtp
+		    10/12/81
+
+This looks like it contains the source code to PWB 1.0. There are
+no manuals and no binaries (well, a few scattered in source dirs).
+
+UNSW 88
+-------
+	Tape label: UNIX Level 6 Source
+		    Languages etc,
+		    dtp
+		    16/3/81
+
+dtp format. Source for lots of languages. No system source.
+
+UNSW 89
+-------
+	Tape label: UNIX Level 6 Source
+		    Nroff Tables
+		    dtp
+		    16/3/81
+
+dtp format. Yep, nroff tables, not very exciting.
+
+UNSW 90
+-------
+	Tape label: UNIX Level 6
+		    Source Archive
+		    dtp
+		    7/5/81
+
+dtp format. Applications source, no system source.
+
+
+UNSW 92
+-------
+	Tape label: UNIX Level 7 Source
+		    UNSW (dtp)
+		    25/3/81
+
+The kernel on this tape has lots of diffs compared to Adfa 81.  I
+cannot tell which is older, but from the dates (1979 vs 1981), I
+assmume that this tape is older than Adfa 81. It would be good to
+compare Adfa 81, Adfa 92 and the Torsten tape. There is only source
+on the tape, no binaries.
+
+
+UNSW 93
+-------
+	Tape label: UNIX Level 7 Source
+		    UNSW (dtp)
+		    30/9/81
+
+I got hard read errors on this tape, so it's probably incomplete.
+
+UNSW 106
+--------
+	Tape label: UNIX L6 Source 1
+		    (tp)
+		    29/1/81
+
+This seems to be a 6th Edition patched with AUSAM, and something
+else: the code has `fix025' style comments scattered around. This
+needs investigation. The tape only has kernel source.
+
+
+UNSW 107
+--------
+	Tape label: UNIX L6 Source 2
+		    (RK05 #24) (tp)
+		    5/2/81
+
+UNSW 108
+--------
+	Tape label: UNIX L6 Source 3
+		    (tp)
+		    12/2/81
+
+UNSW 110
+--------
+	Tape label: UNIX L6 Source
+		    macro-linker, make, dostp, yacc, libS.old
+		    7/5/81
+</pre>
+<HR>
+<P><ADDRESS>
+<I>Warren Toomey <BR>
+Wed Feb 21 12:10:14 EST 1996</I>
+</ADDRESS>
+</BODY>
+</HTML>

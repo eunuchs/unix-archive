@@ -1,0 +1,435 @@
+<!--Converted with LaTeX2HTML 98.1p1 release (March 2nd, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Mirroring/Copying the Unix Archive</TITLE>
+<META NAME="description" CONTENT="Mirroring/Copying the Unix Archive">
+<META NAME="keywords" CONTENT="mirroring">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<P>
+<DIV ALIGN="CENTER">
+<FONT SIZE="+3"><B>Mirroring/Copying the Unix Archive</B></FONT>
+
+<P>
+Last update: May 16, 2000
+</DIV>
+<P>
+<DL COMPACT>
+<DT>1.
+<DD><A HREF="mirroring.html#intro">Introduction to the Unix Archive</A>
+<DT>2.
+<DD><A HREF="mirroring.html#mirror">Mirroring the Unix Archive</A>
+<DT>3.
+<DD><A HREF="mirroring.html#media">Distributing the Unix Archive on Media</A>
+<DT>4.
+<DD><A HREF="mirroring.html#cd">Making a CD Image of the Unix Archive</A>
+<DT>5.
+<DD><A HREF="mirroring.html#duping">Duplicating Unix Archive CDs</A>
+<DT>6.
+<DD><A HREF="mirroring.html#online">Providing the Unix Archive On-line</A>
+</DL>
+<P>
+Welcome to this document which describes how you can mirror the Unix
+Archive from <I>minnie.cs.adfa.edu.au</I>, either to provide an on-line
+mirror of the archive, or so that you can distribute copies of the archive
+on CD-ROM or other media.
+
+<P>
+If you do become such a Unix Archive Volunteer, Warren will add you to a volunteers
+mailing list so that we can discuss any problems or issues, suggest new
+approaches and keep each other informed of relevant events.
+
+<P>
+If you don't have the disk space to mirror the archive, but you do have a
+CD writer, then skip down to the section on
+<A HREF="mirroring.html#duping">duplicating Unix Archive CDs</A>.
+
+<P>
+
+<H1><A NAME="SECTION00010000000000000000">&#160;</A><A NAME="intro">&#160;</A>
+<BR>
+Introduction to the Unix Archive
+</H1>
+
+<P>
+The Unix Archive is a collection of files related to the UNIX system.
+Currently, the archive occupies around 1 Gigabyte of storage. Access
+to the archive requires a UNIX source license. These can now be obtained
+for free from <A NAME="tex2html1"
+ HREF="http://www.sco.com/offers/ancient.html">SCO's web site</A>; however, you <I>must</I> ensure
+that a person has a UNIX source license before you can give them access to
+your copy of the archive. This is achieved by a common pool of
+username/password pairs to be used on all Unix Archive mirrors.
+
+<P>
+The main areas of the Unix Archive are:
+
+<P>
+<UL>
+<LI><B>Applications:</B> Programs and applications for old UNIXes.
+<LI><B>Boot_Images:</B> Bootable disk images for various UNIX versions.
+<LI><B>Bug_Fixes:</B> Bugs and bug fixes from Usenet and other sources.
+<LI><B>Distributions:</B> Full or partial UNIX distributions.
+<LI><B>Documentation:</B> Useful manuals and setup instructions.
+<LI><B>Emulators:</B> Various PDP-11 emulators and tape emulators.
+<LI><B>Lists:</B> Lists of files in the archive, with checksums.
+<LI><B>Misc:</B> Anything which doesn't fit in the other areas.
+<LI><B>Tools:</B> Useful tools to work with the old distributions.
+<LI><B>Trees:</B> Exploded trees for particular distributions.
+</UL>
+<P>
+Miscellaneous areas in the archive are:
+
+<P>
+<UL>
+<LI><B>.miscfiles:</B> Files that have not made it into the above areas,
+	for various reasons.
+<LI><B>.other:</B> Files requiring a System V source license.
+<LI><B>.build:</B> Files &amp; scripts that Warren uses to manage the archive.
+<LI><B>.mirror:</B> Files &amp; scripts which are useful for people mirroring and
+	distributing the Unix Archive.
+</UL>
+<P>
+The latter area is of most interest to you! Please note that none of these
+four areas should be made available to normal UNIX source license holders.
+
+<P>
+
+<P>
+<BR>
+On <I>minnie.cs.adfa.edu.au</I>, different groups of users can access
+the Unix Archive with FTP, rsync or by normal Unix login. There are three
+categories of Archive users:
+
+<P>
+<UL>
+<LI><B>pupsarc, group-id 25:</B> Users who have a UNIX source license
+	and can access the main areas listed above. This includes those
+	people who are mirroring the archive, i.e <I>you!</I> Users with
+	an rsync password for mirroring purposes will also be able to
+	access <I>.mirror</I>, of course.
+
+<P>
+<LI><B>pupswork, group-id 26:</B> Users who have a UNIX source license
+	and are involved in curating the archive. These people have access
+	to the <I>.miscfiles</I> and <I>.mirror</I> areas as well as the
+	main areas.
+
+<P>
+<LI><B>sysv, group-id 27:</B> Users who have a System V UNIX source license.
+	These people have access to all areas of the Unix Archive except
+	<I>.build</I>.
+</UL>
+<P>
+Once you have mirrored the archive, you will need to setup similar
+protections for the same reasons. In fact, if you use rsync, you will
+probably want to have the same group names or group-ids owning the Archive files
+on your system. See the man page for rsync for details on how it deals
+with file ownership.
+
+<P>
+
+<H1><A NAME="SECTION00020000000000000000">&#160;</A><A NAME="mirror">&#160;</A>
+<BR>
+Mirroring the Unix Archive
+</H1>
+
+<P>
+There are two main ways of mirroring the 1 Gig of files in the Unix Archive:
+by rsync or by FTP. The rsync method is the preferred way, as it minimises
+data transfer.
+
+<P>
+The archive changes very slowly. If you are mirroring to provide an FTP
+mirror, you will only need to mirror the archive once a week or fortnight.
+If you are mirroring to distribute the archive by CD-ROM or other media,
+you will only need to mirror every few months.
+
+<P>
+
+<H2><A NAME="SECTION00021000000000000000">
+Mirroring via Rsync</A>
+</H2>
+
+<P>
+Mirroring the Unix Archive by rsync is pretty simple. First, obtain a
+recent copy of the rsync program from
+<A NAME="tex2html2"
+ HREF="ftp://samba.anu.edu.au/pub/rsync">ftp://samba.anu.edu.au/pub/rsync</A>. Any version from 2.3 up will be fine.
+Compile and install the program on your Unix system.
+
+<P>
+Now obtain an rsync username &amp; password by e-mail from
+<A NAME="tex2html3"
+ HREF="mailto:wkt@cs.adfa.edu.au">Warren</A>. You'll need to
+demonstrate a willingness to mirror as often as required, and to only
+give access to UNIX license holders. Because Warren can't send back the
+password unencrypted, you should either tell him your fax number, or tell
+him where he can obtain your PGP key.
+
+<P>
+Once you have your username &amp; password, make a directory to hold the
+Unix Archive on your system; remember, you need at least 1G of free disk space.
+Cd into this directory and run the command:
+
+<P>
+<PRE>
+rsync -avuz user@minnie.cs.adfa.edu.au::TUHS  .
+</PRE>
+<P>
+replacing <I>user</I> with your username in the command. You will then be
+prompted for your rsync password, and eventually you will have a synchronised
+copy of the Unix Archive on your system. If you run the rsync as <I>root</I>
+and have put the group-names <I>pupsarc</I> and <I>pupswork</I> in your
+<I>/etc/group</I> file, then the rsync will set the appropriate group
+ownerships. Otherwise, you'll end up with files having group-ids 25 and 26.
+
+<P>
+You can avoid the password prompt by setting the environment variable
+<TT>RSYNC_PASSWORD</TT> to the password you want to use or using the
+<code>--password-file</code> option. This may be useful when scripting rsync.
+
+<P>
+<B>Hint:</B> if you have a copy of the Unix Archive on CD-ROM, then you should
+copy it all into your Archive directory before you run rsync for the first time.
+This will greatly reduce the data transfer, saving time and money.
+
+<P>
+
+<H2><A NAME="SECTION00022000000000000000">
+Mirroring via Ongoing Rsync</A>
+</H2>
+
+<P>
+Once you have obtained a copy of the Unix Archive, edit
+<I>.mirror/rsync_exclude</I> and uncomment the last two lines. This will
+stop rsync from destroying any local changes you make in <I>.mirror</I>.
+
+<P>
+Edit <I>.mirror/.depend</I> and set <B>USER</B> and <B>RSERVER</B> to
+the remote rsync server that you used above, and the username you used.
+From now on, you can mirror the archive by going into <I>.mirror</I> and
+doing <TT>make sync</TT>.
+
+<P>
+
+<H2><A NAME="SECTION00023000000000000000">
+Mirroring via FTP</A>
+</H2>
+
+<P>
+You can also mirror the Unix Archive by FTP, assuming you already have
+password-protected FTP access to the Unix Archive on <I>minnie</I>. Find
+a suitable FTP mirroring program, and use it to mirror the whole archive.
+Examples mirroring programs I know of are
+<A NAME="tex2html4"
+ HREF="http://noc.intec.co.jp/ftpmirror.html">ftpmirror</A>,
+<A NAME="tex2html5"
+ HREF="http://jmirror.ruin.org/">jmirror</A>,
+<A NAME="tex2html6"
+ HREF=" http://sunsite.org.uk/packages/mirror/">mirror</A>,
+<A NAME="tex2html7"
+ HREF="http://www.idata.sk/~ondrej/pavuk/">pavuk</A>, and
+<A NAME="tex2html8"
+ HREF="ftp://ftp.luth.se/pub/unix/mirror/">spegla</A>.
+
+<P>
+There are some drawbacks with this approach. Firstly, you probably will
+lose the file permissions and ownerships. Secondly, you'll have to copy
+whole files if they change; rsync only copies differences. Finally, you
+won't be able to mirror the <I>.mirror</I> directory, and you'll have to
+get a copy of that some other way, e.g by a tarball e-mailed from Warren.
+
+<P>
+
+<H1><A NAME="SECTION00030000000000000000">&#160;</A><A NAME="media">&#160;</A>
+<BR>
+Distributing the Unix Archive on Media
+</H1>
+
+<P>
+If you are prepared to distribute the Unix Archive on media such as CD-ROM
+or tapes, then your geographic location (but not name) will be added to
+the web page describing how people can obtain archive copies.
+
+<P>
+Once a person gets their SCO license, they will go to
+<A NAME="tex2html9"
+ HREF="http://minnie.cs.adfa.edu.au/cgi-bin/pups_req.cgi">http://minnie.cs.adfa.edu.au/cgi-bin/pups_req.cgi</A>
+and order a copy of all or part of the Archive on some medium from some
+geographical area. The script will make sure that one of the volunteers
+can actually copy the requested media within that area.
+
+<P>
+When a person fills in an archive request on this web page for your
+geographic area, you will receive e-mail with the following information:
+
+<P>
+<UL>
+<LI>The person's full name
+<LI>Their e-mail address
+<LI>Their postal address
+<LI>Their UNIX source code license number
+<LI>Details of what they want (CD, tape, contents of tape)
+</UL>
+<P>
+The e-mail will tell you if the details supplied by the person match
+any known UNIX source license. If they don't, check by e-mail with
+Warren before continuing. You can also check the list of license holders
+in <I>.mirror/License_Holders</I>.
+
+<P>
+Once you are satisfied that the request is okay,
+you can then contact the person by e-mail. You should get further details
+on the request, tell them how much the request will cost them, and arrange a
+method of payment.
+Strictly speaking, you should work on a <B>cost recovery basis</B>, and not
+make a profit from the operation. However, you should charge for media,
+your own time, maintenance of equipment, postage and handling.
+The requester might get several offers, so don't do
+anything until they <B>confirm</B> that you are the chosen one.
+
+<P>
+Once you send off the request, then go to the web page
+<A NAME="tex2html10"
+ HREF="http://minnie.cs.adfa.edu.au/cgi-bin/pups_vol.cgi">http://minnie.cs.adfa.edu.au/cgi-bin/pups_vol.cgi</A>,
+find the matching request, and tick it off, so it is removed from the list.
+I will scan this list periodically, and remind the mailing list if a request
+has been pending too long.
+
+<P>
+I have no idea how many requests you will receive. You might like to burn
+a number of CDs in one go, and then you can send them off as requests come in.
+
+<P>
+
+<H2><A NAME="SECTION00031000000000000000">&#160;</A><A NAME="cd">&#160;</A>
+<BR>
+Making a CD Image of the Unix Archive
+</H2>
+
+<P>
+The Unix Archive is much bigger than one CD-ROM, so I've had to select which
+things in the archive get put onto the CD copies. If you go into the
+<I>.mirror</I> directory and do a <TT>make image</TT>, then a Rock Ridge
+image of most of the archive will be created. Read
+through the <I>Makefile</I> to see what sections from the archive are excluded.
+Also read through and modify <I>.depend</I>, as this sets the location of the
+local Unix Archive and the output image.
+
+<P>
+To build the CD image, you will have to get a copy of the mkisofs program,
+compile it and install it on your system. This can be obtained as part
+of the <A NAME="tex2html11"
+ HREF="http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html">cdrecord</A>
+software.
+You'll also need a spare 650Megs of disk space to create the CD image. You can
+use any CD writing software &amp; hardware to burn this Rock Ridge image onto
+a blank CD. It would be a good idea to verify the CD's contents after you
+do your first <TT>make image</TT>.
+
+<P>
+As the Unix Archive changes and grows, I'll have to modify the <I>Makefile</I>
+in <I>.mirror</I>. I'll let you know via the mailing list when this happens.
+
+<P>
+
+<H2><A NAME="SECTION00032000000000000000">&#160;</A><A NAME="artwork">&#160;</A>
+<BR>
+Unix Archive CD Artwork
+</H2>
+
+<P>
+The file <I>.mirror/cdcover.ps</I> contains the artwork for the CD case,
+in PostScript format. Each day, the date in the file is changed on
+<I>minnie.cs.adfa.edu.au</I>, so this should reflect the date of your
+last archive synchronisation.
+
+<P>
+If you need the artwork in a format other than PostScript, then please
+e-mail Warren with the details.
+
+<P>
+
+<H2><A NAME="SECTION00033000000000000000">&#160;</A><A NAME="duping">&#160;</A>
+<BR>
+Duplicating Unix Archive CDs
+</H2>
+
+<P>
+If you don't have disk space to mirror the archive, but do have a CD writer,
+then you can still help out by buying a Unix Archive CD from another volunteer.
+As requests for the CD come in, you can duplicate your CD and send them on
+to people, on a cost recovery basis as described above.
+
+<P>
+You should keep your Archive CD up to date by obtaining a new copy from the
+other volunteers when the archive contents change significantly. You may
+find that you can get the CD for free, because you are helping us out!
+
+<P>
+If you decide to take this approach, e-mail 
+<A NAME="tex2html12"
+ HREF="mailto:wkt@cs.adfa.edu.au">Warren</A>
+once you have
+obtained your CD, and he will add you to the list of CD volunteers.
+
+<P>
+
+<H1><A NAME="SECTION00040000000000000000">&#160;</A><A NAME="online">&#160;</A>
+<BR>
+Providing the Unix Archive On-line
+</H1>
+
+<P>
+If you are prepared to make an on-line mirror of the archive, you'll
+be expected to have it on-line continuously. Archive users will be
+informed of your site and how to access it.
+
+<P>
+Warren will provide you with a one-off list of usernames and passwords
+for access to the archive. These will be used by users who are known
+to have appropriate UNIX source licenses. Make sure that these users
+can't access the <I>.build</I>, <I>.miscfiles</I> <I>.mirror</I> or <I>.other</I>
+directories. You can provide access any way you want: FTP, HTTP, rsyncd etc.
+
+<P>
+Make sure you mirror the archive weekly or fortnightly!
+
+<P>
+
+<H1><A NAME="SECTION00050000000000000000">
+Finally...</A>
+</H1>
+
+<P>
+If, after reading this, you still have questions, or have suggestions on
+how things can be improved, then please send them in to 
+<A NAME="tex2html13"
+ HREF="mailto:wkt@cs.adfa.edu.au">Warren</A>
+or to the 
+<A NAME="tex2html14"
+ HREF="mailto://pupswork@minnie.cs.adfa.edu.au">Archive Volunteers mailing list</A>, so that we can help each other
+out and improve what we do by consensus.
+
+<P>
+And from me, many thanks for being a Unix Archive Volunteer.
+<HR>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>Warren Toomey <BR>
+2000-06-27</I>
+</ADDRESS>
+</BODY>
+</HTML>

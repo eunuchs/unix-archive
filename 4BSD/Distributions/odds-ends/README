@@ -1,0 +1,16 @@
+This directory contains various DEC odds and ends: microcodes, ROM images,
+diags, VMS/Ultrix booters and bits, etc.
+
+The following items are currently available:
+
+pcs750.bin.V98	pcs750.bin 11/750 microcode patch file V98.
+
+pcs750.bin.V99	pcs750.bin 11/750 microcode patch file V99. This is the correct
+		V99, not the broken one that came with 4.3-Tahoe and later
+		BSD distributions. This is the one I recommend using.
+
+rabads.a.out	Ultrix rabads program, a.out version for putting onto a UNIX
+		filesystem and loading via UNIX boot.
+
+rabads.core	Ultrix rabads program, pure core version for putting onto
+		console media and loading via console commands.

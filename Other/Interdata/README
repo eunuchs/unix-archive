@@ -1,0 +1,50 @@
+Wollongong Interdata 6th Edition Unix
+
+Sixth Edition Unix was ported to the Interdata 7/32 at the University
+of Wollongong, Australia during 1976-77.  Porting the C compiler and
+operating system kernel, writing device drivers and an assembler for
+the 32-bit Interdata architecture, and adaptation of most commands was
+done by Richard Miller.  Other work on commands and subroutine
+libraries was done by Ross Nealon.  The project was supervised by
+Professor Juris Reinfelds.
+
+For further information, see:
+  R Miller, "Unix, a Portable Operating System?", ACM Operating
+    Systems Review, 12, pp 32-37 (1978)
+  R Miller, "The First Unix Port", Proceedings of USENIX 1998 Annual
+    Technical Conference: Invited Talks, pp 21-25 (1998); available
+    online at http://www.usenix.org [ miller.ps in this directory ]
+
+Distribution Contents
+
+This is a distribution of "Release 1.2" made on 3 June 1979.  The
+original 9track 1600bpi tape held three files, which are gzipped
+here as:
+
+boot.tp.gz
+  a bootable 'tp' format archive containing Interdata Unix kernels
+  configured for Wollongong, Sydney (Sydney University or UNSW?)
+  and Oxford (Programming Research Group)
+
+root.gz
+  a binary image of the root filesystem on a 5 megabyte disk, in
+  Interdata 6th edition Unix format (like PDP-11 6th edition format,
+  but with ints byte-swapped and expanded to 32 bits); includes
+  copies of the kernels and boot block from the first tape file,
+  and kernel source in /usr/sys
+
+src.tp.gz
+  a 'tp' format archive containing command source and manual pages;
+  besides the original Bell Labs and Wollongong source there are
+  contributions from Melbourne University and various USENIX
+  distribution tapes, adapted as appropriate for the Interdata
+
+For convenience, the distribution contents are also supplied as:
+
+interdata_v6.tar.gz
+  a 'tar' format archive (with dates preserved) of all files as
+  they would appear after installing the distribution, with source
+  and documentation in /usr/source and /usr/doc respectively; note
+  however that special files in /dev appear as ordinary files
+
+-- Richard Miller <r.miller@acm.org>

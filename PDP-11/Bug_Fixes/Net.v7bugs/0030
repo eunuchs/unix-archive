@@ -1,0 +1,23 @@
+Autzoo.879
+net.v7bugs
+utzoo!henry
+Tue Aug 11 19:17:02 1981
+non-I/D floating-point
+Mike Tilson of Human Computing Resources has uncovered a fairly serious
+bug in the machine-language assist for non-I/D machines.  The code
+tests to see whether the machine has hardware floating-point, and
+sets the variable "fpp" appropriately;  said variable is consulted at
+context-switch time to determine whether floating-point registers should
+be saved and restored.  But in the version of this code for non-I/D
+machines, fpp is set just before the clearing of the kernel bss -- and
+fpp is IN THE BSS!  Hence, on a non-I/D machine, fpp is always 0,
+floating-point registers are NEVER saved/restored, and if the machine
+has floating-point hardware and more than one process is trying to use
+it, chaos and madness will ensue.
+
+Fix is to move the six lines of code starting "/ test for floating point"
+and ending "clr nofault", at about line 55 of /usr/sys/40/m40.s, to just
+after the clearing of the bss (i.e. to about line 69).
+
+This bug is present in both the Bell m40.s and the Dec-Merrimack mch_i.s .
+The I/D versions get things right in both cases.

@@ -1,0 +1,13 @@
+Aphs.119
+net.v7bugs
+utzoo!duke!phs!dennis
+Mon Jun  8 18:05:21 1981
+Tar bug
+There is a tar bug in the distributed v7: if you specify "-w" in
+the arguments, the confirmation prompt is written to stdout.  If
+you happen to specify "-wf -", this causes havoc.  The fix is
+pretty obvious.
+
+I haven't addressed the converse problem: that of "-xwf -"...  If
+you trust that stderr is really opened mode 2 (as the distributed
+init does), a similar fix will work.

@@ -1,0 +1,19 @@
+Date: Sun, 13 Jan 2013 20:38:21 +0200
+From: Aharon Robbins <arnold@skeeve.com>
+To: wkt@tuhs.org
+Subject: more old stuff
+User-Agent: Heirloom mailx 12.5 6/20/10
+
+I have a CD from ian@darwinsys.com dated 9/2005 with OpenLook-XView-1.0e
+on it, and what looks like another one with the same date with version 1.2.
+
+I'm still extracting the first one onto disk; it's in the 550+ Megabyte
+range.  This does fall into the Unix history category. L\:-)
+
+Files are dated 1995.
+  
+Should I put tarballs ups for you?
+  
+Thanks,
+
+Arnold

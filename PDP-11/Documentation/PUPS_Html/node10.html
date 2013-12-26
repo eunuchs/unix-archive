@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN">
+<!--Converted with LaTeX2HTML 96.1-beta (Jan 15, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Search the PUPS Tape Archive</TITLE>
+<META NAME="description" CONTENT="Search the PUPS Tape Archive">
+<META NAME="keywords" CONTENT="pups">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="pups.css">
+</HEAD>
+<BODY LANG="EN">
+ <H1><A NAME="SECTION000100000000000000000">Search the PUPS Tape Archive</A></H1>
+<A NAME="archiveindex">&#160;</A>
+The PDP Unix Preservation Society archive holds source code, documentation
+and full distributions of PDP Unixes. At the present time, you can
+search through the archive for filenames and directory names. Nothing in the
+archive can be made available to people without an appropriate Unix license.
+<P>
+The archive is organised into a collection of `tapes'. A 
+<A HREF="node9.html#archivedetails">description of each tape</A>
+in the archive is also available. Each result line from a search is of the form
+<PRE>filename  size  date  archive_name  full_file_name</PRE>
+<HR>
+<form action="http://minnie.cs.adfa.edu.au/cgi-bin/pupsarcnew.cgi" method="POST">
+Enter an egrep search word here:<p>
+<select name="second-menu" multiple>
+<option selected>Research Versions</option>
+<option>2.xBSD</option>
+<option>ADFA Tapes</option>
+<option>Other Tapes</option>
+</select>
+<input type="submit" value="Search">
+<input type="text" name="pupsearch">
+<input type="reset" value="Clear field">
+<br>
+<input type="checkbox" name="ignore_case" value="on" checked>
+Ignore case in the search pattern.
+<br><input type="checkbox" name="sort_name" value="on" checked>
+Sort result by file name.
+<input type="checkbox" name="sort_size" value="off">
+Sort result by file's size.
+</form><hr>
+<DL ><DT><STRONG><B>Research Versions:</B></STRONG>
+<DD> Currently we have 5th, 6th and 7th Editions.
+<P>
+<DT><STRONG><B>2.x BSD:</B></STRONG>
+<DD> 2.9BSD and 2.11BSD.
+<P>
+<DT><STRONG><B>ADFA Tapes:</B></STRONG>
+<DD> Tapes from the Australian Defence Force Academy,
+	including an AUSAM-patched 6th Edition.
+<P>
+<DT><STRONG><B>Other Tapes:</B></STRONG>
+<DD> Xinu for the PDP-11, Mini-UNIX.
+<P>
+ </DL><BR> <HR>
+<P><ADDRESS>
+<I>Warren Toomey <BR>
+Wed Feb 21 12:10:14 EST 1996</I>
+</ADDRESS>
+</BODY>
+</HTML>

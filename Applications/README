@@ -1,0 +1,13 @@
+This directory contains applications written specifically for particular
+versions of UNIX on PDP-11 systems.
+
+You will find sources to many contributed applications in the various 2BSD
+distributions in the archive. Note that many of these will be difficult to
+back-port to earlier versions of UNIX (e.g 6th & 7th Edition).
+
+Other places to look for PDP-11 UNIX software are the on-line archives of the
+comp.sources.unix USENET newsgroup. One such archive is at
+
+	http://ftp.digital.com/pub/usenet/comp.sources.unix/
+	
+This includes volume 1 through 29; the stuff in volume 1 is dated 1986.

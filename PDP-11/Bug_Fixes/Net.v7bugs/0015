@@ -1,0 +1,18 @@
+Aduke.583
+NET.v7bugs
+utzoo!duke!trt
+Tue Jan  6 22:01:40 1981
+du bug
+"du" works incorrectly if given a list of pathnames
+in which a relative pathname (one not beginning with '/')
+follows a pathname containing a '/':
+	cd /; du usr/tmp etc
+The reason is that in such cases "du" uses chdir()
+to leave the current directory, never to return.
+One cure is for "du" to invoke "pwd" initially
+to be able to get back to the current directory ("find" does that).
+
+Also, if there is more than one pathname argument
+there should be a grand total at the end -- it is often what is wanted.
+The documented non-directory argument bug should be fixed, too.
+And the diagnostic messages are not so hot either ...

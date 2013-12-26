@@ -1,0 +1,11 @@
+Autzoo.1551
+net.bugs.v7
+utzoo!henry
+Tue Apr 13 20:06:33 1982
+expr(1) misfeature
+Expr's : operator (pattern match), unlike every other pattern-matching
+facility in Unix, insists on matching the WHOLE string or failing.  This
+inconsistency trips up everyone who tries to use the @#$% thing for the
+first time.  There is no reason for it;  expr could use the ^$ convention
+for anchored matching the same way awk does.  Is there some reason for
+this botch?

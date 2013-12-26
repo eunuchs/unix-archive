@@ -1,0 +1,17 @@
+Autzoo.1194
+net.v7bugs
+utzoo!henry
+Mon Dec  7 20:14:52 1981
+make(1) vs spaces
+If you have a makefile like this (the tab is written \t for clarity,
+note the space preceding it):
+
+	foo: foo.o
+	 \tcc -n -s ...
+
+make(1) will produce an EXTREMELY cryptic message.  It can take a long
+time to track this one down, because the line LOOKS right.  Perhaps
+make should consider spaces and tabs equivalent, but I am not sure this
+is a good idea;  if it had been done that way from the beginning, ok,
+but as a retrofit I wonder how many makefiles would break.  Failing
+this, the error reporting definitely could stand some more smarts.

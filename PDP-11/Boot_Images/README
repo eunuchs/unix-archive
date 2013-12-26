@@ -1,0 +1,149 @@
+This directory contains bootable disk images for some versions of PDP-11 UNIX.
+In general, the images are compressed and have the name xx_yy_zz where xx is
+the version of UNIX, yy is the type of disk, and zz is the type of PDP-11 for
+which the image was built.
+
+There are several other bootable disk images in the Distributions section:
+
+	Distributions/research/Dennis_v5	RK05
+	Distributions/research/Dennis_v6	RK05
+	Distributions/research/Ken_Wellsch_v6	RK05
+	Distributions/other/Torsten		RL02 (modified 7th Edition)
+	Distributions/usdl/Minix-Unix		RK05
+
+The user/password for the Torsten image is root/pdp. Also, the following
+systems can be booted from tape:
+
+	Distributions/ucb/2.9BSD
+	Distributions/ucb/2.11BSD
+
+Caveats
+-------
+
+Most of the images are not full-sized, as only the filesystem was dumped.
+The swap space has been omitted. If you intend to use the images with a PDP-11
+emulator, you may need to extend the images with null blocks. An RK05 disk
+image should be 4,872 blocks (2,494,464 bytes) in size. An RL02 disk image
+should be 20,480 (10,485,760 bytes) in size.
+
+The disk images are in little-endian format. If you are running a PDP-11
+emulator on a big-endian computer, you MAY have to byte-swap the image.
+Check the emulator's documentation for details.
+
+For the Ersatz emulator, you will need to rename the uncompressed disk
+images to fit into MS-DOS' 8.3 file naming scheme. The images must end
+with the .dsk suffix.
+
+
+v6_rl02_unknown
+---------------
+
+6th Edition on an RL02, sent in by Tim Shoppa. I haven't looked at it yet,
+but it must have a modified kernel as vanilla V6 didn't support RL02. If I
+can find the kernel source, I'll certainly extract it and put it somewhere.
+
+Example simulator initialisation files:
+
+	Supnik 2.3d			Ersatz 2.0
+	set cpu 18b			set cpu 45
+	att rl0 v6_rl02_unknown		mount DL0: v6_rl02.dsk
+	boot rl				boot DL0:
+
+Following is what you will see and should type in if all goes well.
+
+!unix					<-- you type unix
+unix v6 11/23
+mem = 99 KW max = 63
+# 
+
+v7_rl02_1145
+------------
+
+7th Edition UNIX on a RL02. This is pretty much full V7 with usr/doc omitted
+to fit. The image should boot on some other models e.g 11/40. If it does/doesn't
+boot on your system, let me know so I can update this file.
+
+Example simulator initialisation files:
+
+	Supnik 2.3d			Ersatz 2.0
+	set cpu 18b			set cpu 45
+	att rl0 v7_rl02_1145		mount DL0: v7_rl02.dsk
+	boot rl				boot DL0:
+
+Following is what you will see and should type in if all goes well.
+
+@boot					<-- you type boot
+New Boot, known devices are hp ht rk rl rp tm vt 
+: rl(0,0)rl2unix			<-- you type rl(0,0)rl2unix
+mem = 177856
+# 
+
+
+v7_rk05_1145
+------------
+
+7th Edition UNIX on a RK05. There's only enough here to boot, as the file system
+has to fit into 4,000 blocks, i.e 2 Meg. You will want to bring the rest of 7th
+Edition in after you get this to boot. The image should boot on some other
+models e.g 11/40. If it does/doesn't boot on your system, let me know so I 
+can update this file.
+
+Example simulator initialisation files:
+
+	Supnik 2.3d			Ersatz 2.0
+	set cpu 18b			set cpu 45
+	att rk0 v7_rk05_1145		mount DM0: v7_rk05.dsk
+	boot rk				boot DM0:
+
+Following is what you will see and should type in if all goes well.
+
+@boot					<-- you type boot
+New Boot, known devices are hp ht rk rl rp tm vt 
+: rk(0,0)rkunix				<-- you type rk(0,0)rkunix
+mem = 178816
+# STTY -LCASE				<-- you type stty -lcase
+#
+
+
+2.9BSD_rl02_1145
+----------------
+
+I didn't build this so I have no idea how much of 2.9BSD it contains.
+Compare with the 2.9BSD in the Distributions directory. It boots on an 11/45,
+but I have no idea what else it will boot on.
+
+Example simulator initialisation files:
+
+	Supnik 2.3d			Ersatz 2.0
+	set cpu 18b			set cpu 45
+	att rl0 2.9BSD_rl02_1145	mount DL0: 29bsd_rl.dsk
+	boot rl				boot DL0:
+
+Following is what you will see and should type in if all goes well.
+
+:boot				<-- you type boot
+
+45Boot
+: rl(0,0)rlunix			<-- you type rl(0,0)rlunix
+
+Berkeley UNIX (Rev. 2.9.1) Sun Nov 20 14:55:50 PST 1983
+mem = 135872
+
+CONFIGURE SYSTEM:
+xp 0 csr 176700 vector 254 attached
+rk 0 csr 177400 vector 220 attached
+hk ? csr 177440 vector 210 skipped:  No CSR
+rl 0 csr 174400 vector 160 attached
+rp ? csr 176700 vector 254 interrupt vector already in use
+ht 0 csr 172440 vector 224 skipped:  No CSR
+tm 0 csr 172520 vector 224 attached
+ts 0 csr 172520 vector 224 interrupt vector already in use
+dh ? csr 160020 vector 370 skipped:  No CSR
+dm ? csr 170500 vector 360 skipped:  No autoconfig routines
+dz ? csr 160110 vector 320 skipped:  No CSR
+dz ? csr 160110 vector 320 skipped:  No CSR
+dn 0 csr 175200 vector 300 skipped:  No autoconfig routines
+vp ? csr 177500 vector 174 skipped:  No autoconfig routines
+lp 0 csr 177514 vector 200 attached
+Erase=^?, kill=^U, intr=^C
+# 

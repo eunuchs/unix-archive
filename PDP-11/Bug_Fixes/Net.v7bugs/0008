@@ -1,0 +1,16 @@
+Aduke.488
+NET.v7bugs
+utzoo!duke!trt
+Wed Aug 13 09:48:33 1980
+col
+The buffer-flush bug in col(1) that was mentioned in previous news
+is due to using an automatic (local) variable for buffering stdout:
+	char fbuff[BUFSIZ];
+should be changed to
+	static char fbuff[BUFSIZ];
+(exit() also works since main() will not return before flushing.)
+Col(1) is just one of several V7 programs with this flaw.
+
+In the Duke version of stdio one can bypass the problem with
+	setbuf(stdout, SYSBUF);
+where SYSBUF is a flag indicating buffering is desired.

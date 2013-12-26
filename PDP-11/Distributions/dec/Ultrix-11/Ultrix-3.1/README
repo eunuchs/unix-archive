@@ -1,0 +1,35 @@
+This directory contains a copy of the binaries to Ultrix 3.1.
+These were sent in by Wilko Bulte.
+
+ultrix-3.1-bootape.tar.gz
+-------------------------
+
+Wilko says:
+	I finally found the files from the Ultrix-11 V3.1 tape. Would you be 
+	interested to have them on the PUPS archive? 3.1 works fine on my
+	11/73, who is currently creating a TK50 with 2.11BSD on it.
+
+The contents of this tape are:
+
+File 1: 2 copies of magtape bootstrap (2 blocks total)
+        The standalone bootstrap (boot)
+File 2: System calls for standalone programs (DO NOT LOAD)
+File 3: System disk load program (sdload)
+File 4: A file to console copy program (scat)
+File 5: This file (contents)
+File 6: The program mkfs (make a ULTRIX-11 file system)
+File 7: The program restor (restore a dump onto a file system)
+File 8: The program dskinit (disk format and verify)
+File 9: The program bads (scan disk for bad blocks)
+File 10: The program rabads (RA/RD/RX disk initialize)
+File 11: The program copy (copy device to device)
+File 12: The program icheck (file system consistency check)
+File 13: Stand-alone programs for memory disk (file system image)
+File 14: rcmds: optional software loaded into ROOT (TAR image)
+File 15:
+|
+V
+File 31: ucmds: optional software loaded into /USR (TAR images)
+File 32: sysgen: optional software for re-loading sysgen (TAR image)
+File 33: The ULTRIX-11 root file system in dump/restor format
+File 34: The ULTRIX-11 /usr file system in dump/restor format

@@ -1,0 +1,31 @@
+Autzoo.1633
+net.bugs.v7
+utzoo!henry
+Tue May  4 22:02:15 1982
+overflow in C revisited
+Very entertaining things can happen with integer overflow in C.  This
+isn't really a bug, except that (as reported some months ago) the
+manual should say the effects of overflow are "undefined" instead of
+saying that it is "ignored".  Consider the following:
+
+-----
+/*
+ * Arithmetic in the presence of overflow is context-dependent in
+ * very strange ways.
+ */
+
+unsigned int compile = (56*1024)/64;
+
+main()
+{
+	printf("%u == %u\n", compile, (56*1024)/64);
+	printf("%u == %u == %u (!!)\n", compile, 57734/64, (56*1024)/64);
+}
+-----
+
+Can you guess what this prints?  Like this:
+
+	65408 == 65408
+	65408 == 0 == 902 (!!)
+
+Yes, friends, it's context-dependent!

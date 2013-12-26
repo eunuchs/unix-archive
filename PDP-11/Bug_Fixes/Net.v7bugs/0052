@@ -1,0 +1,23 @@
+Autzoo.1248
+net.bugs.v7
+utzoo!henry
+Mon Jan  4 19:16:17 1982
+sizeof type botch
+The following program displays a bug in the V7 C compiler.  Whether this
+should be fixed by revising the documentation or changing the code is a
+good question.
+
+/*
+ * sizeof is supposed to be semantically an integer constant.  It's not,
+ * in the V7 compiler:  its type is always "unsigned", which an integer
+ * constant never is.
+ */
+
+#define	BIG	20000	/* 40000 / sizeof(int) */
+
+int foo[BIG];
+
+main()
+{
+	printf("%D == %D (!)\n", 40000, sizeof(foo));
+}

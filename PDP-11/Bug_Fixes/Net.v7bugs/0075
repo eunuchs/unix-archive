@@ -1,0 +1,13 @@
+Autzoo.1397
+net.bugs.v7
+utcsrgv!utzoo!henry
+Wed Feb 17 14:59:56 1982
+ld vs huge a.outs
+ld does not check properly for output I or D bigger than 64K.  If you
+load together three files, each roughly this:
+
+	char foo[30000] = {0};
+
+ld will do it without complaining and the a.out will be the appropriate
+size, but of course the size numbers in the header will have overflowed
+and the result won't be too useful.

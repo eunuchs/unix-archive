@@ -1,0 +1,148 @@
+This file contains a list of major updates to the Unix Archive since the
+release of the SCO licenses on the 10th March 1998.
+
+Oct 17 2002
+-----------
+
+	Applications/Ritter_Vi/README says:
+	Gunnar Ritter has set up his own web site to track the developments of
+	his port of the original vi to modern systems. You can find it at:
+        http://ex-vi.berlios.de/
+
+	Applications/Portable_CC/README says:
+	Al Kossow sent in these versions of the portable C compiler for the
+	8086, Z8000, and 68000 done by MIT's Laboratory for Computer Science.
+
+	Other/V6on286 contains a port of 6th Edition UNIX to the 80286 PC
+	platform.
+
+	The various 2.9BSD variants have now been collected into the
+	directory PDP-11/Distributions/ucb/2.9-derivatives.
+
+	Documentation/Papers/lions_PCCpass2_jun1979.pdf contains a paper
+	written by John Lions about the second pass of the Portable
+	C Compiler.
+
+Jan 25 2002
+-----------
+
+	Caldera have released a BSD license for 1st to 7th Editions plus
+	32V. I have quickly removed all the password restrictions on
+	ftp, http and rsync, and tried to rewrite the various docs which
+	mentioned the SCO license and authorised access.
+
+Jun 27 2000
+-----------
+
+	The archive has been renamed from the PUPS Archive to the
+	Unix Archive, and has been rearranged into categories.
+
+May 26 2000
+-----------
+
+	Tom Burnett has contributed a System 3 ported to a Z8000 platform
+	(Plexis) in Other/Distributions/Plexis_Sys3.
+
+	Alexey Chupahin has contributed a modified 7th Edition UNIX system
+	which has had some Y2K bug fixes applied, in
+	PDP-11/Bug_Fixes/7th_Edition_Y2K.
+
+	Norman Wilson has contributed all or part of Ultrix-32M versions
+	1.0, 1.1 and 1.2 in VAX//Distributions/dec/Ultrix-32M
+
+Jan 20 2000
+-----------
+
+	Tim Shoppa has found & recovered the tapes from the following Usenix
+	conferences: 1983, 1987, 1988 and 1989. Their contents are now in
+	Applications/Shoppa_Tapes in the archive.
+
+	Dennis Ritchie has sent in two DECtape images, s1-bits and s2-bits.
+	s2-bits dates from 1972, and contains several 1st Edition binaries and
+	the binaries of an early C compiler. s1-bits is part of a disk image,
+	but I've been able to recover some of its contents: some application
+	source in both assembly and C. It seems to date from early 1973. Both
+	tapes are in PDD-11/Distributions/research/1972_stuff in the archive.
+
+	By using the C compiler binaries on s2-bits, I've been able to recompile
+	the two primeval C compilers whose source is in
+	Applications/Early_C_Compilers and which are described by Dennis on
+	his web page at http://cm.bell-labs.com/who/dmr/primevalC.html
+
+	Most recently, Dennis has also unearthed the on-line manual pages for
+	3rd and 4th Edition UNIX. They are in
+	PDP-11/Distributions/research/Dennis_v3 and
+	Distributions/research/Dennis_v3, respectively.
+
+Aug  3 1999
+-----------
+
+	Ken Wellsch has contributed a partial vesion of 2.9BSD for the
+	Pro 350/380 in PDP-11/Distributions/ucb/2.9bsd4pro350-kcwellsc.
+
+	Tim Shoppa has donated the tapes distributed at the 1980 and 1981
+	USENIX conferences in Applications/Shoppa_Tapes.
+
+Jan 27 1999
+-----------
+
+	There have been several 4BSD additions:
+
+        	new versions from the Quasijarus project,
+        	a modified 4.3BSD from the Uni of Wisconsin, and
+        	a copy of 4.3BSD revision 2
+        
+	We now have an early version of the 3rd Edition kernel source, in C.
+	There are some new tape manipulation tools. There is also a new
+	version of the Apout PDP-11 usermode emulator.
+
+Nov 17 1998
+-----------
+
+        4BSD/Distributions now has boot tapes for 4.3-reno/Vax and
+	4.3-tahoe/CCI.
+
+Sep 27 1998
+-----------
+
+	Now that Kirk McKusick has released the 4CD set of CSRG releases,
+	people have been asking for boot tapes to actually install the
+	4BSD releases. I've augmented the PUPS Archive with the directory
+	4BSD/Distributions. Per Andersson has donated a set of 4.2BSD tape
+	images, which are in the above directory. Steven Schultz has also
+	sent in some notes explaining how to get 4.3BSD installed on a uVax.
+
+Sep 19 1998
+-----------
+
+	A copy of the Software Tools (in C and Ratfor) has been donated by
+	Debbie Scherrer, with the tape being read by Tim Shoppa. It is
+	located in Applications/Software_Tools. The README says: This is the
+	"Software Tools for Unix 4.1BSD" distribution tape.
+
+June 1998
+---------
+
+	Wilko Bulte sent in a copy of the Ultrix 3.1 installation tape.
+
+May  1 1998
+-----------
+	A new version of Bob Supnik's PDP-11 emulator has been added.
+	System III for the PDP-11 has been donated by Kirk McKusick.
+
+Apr 20 1998
+-----------
+	A new version of the P11 PDP-11 emulator from Begemot has been added,
+	as well as 2.10.1BSD from Steven Schultz. The first CDs can now be
+	burned from the on-line PUPS Archive.
+
+Apr 15 1998
+-----------
+	A full distribution of V7M, Release 2.1, has been donated by Jean
+	Huens. This replaces the v7m.tar.gz tarball, which apparently was
+	just the patches to get virgin V7 to V7M.
+
+	The mythical `50 bugs' tape, described in Peter Salus' book `A Quarter
+	Century of UNIX' has been found lurking in the PUPS Archive. You can
+	find it in Applications/Spencer_Tapes/unsw3.tar.gz as the file
+	usr/sys/v6unix/unix_changes.

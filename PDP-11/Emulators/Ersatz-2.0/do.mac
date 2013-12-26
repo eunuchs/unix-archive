@@ -1,0 +1,684 @@
+	.title	do
+	.enabl	lc
+;++
+;
+; DOS file device handler for RT-11 V4.0 and later.
+;
+; By John Wilson.
+;
+; Copyright (C) 1998 by Digby's Bitpile, Inc. DBA D Bit.  All rights reserved.
+;
+; This handler allows RT-11 programs to access DOS files using the DOS file
+; device found in Ersatz-11.  It is currently fairly primitive and does not
+; handle stripping trailing NULs off of files (so text files written this way
+; will usually have some number of NUL characters in them).  It allows only
+; one file at a time to be read or written, similar to magtape files.  The
+; file must be located in the current DOS directory, and has to have a 6.3
+; filename with no non-RAD50 characters just like any other RT-11 filename.
+;
+; 02-Mar-1992	JMBW	Created (as unfinished Kermit device).
+; 21-Oct-1998	JMBW	Converted to DOS file interface.
+; 23-Oct-1998	JMBW	Added XM support.  Initial release.
+; 31-Oct-1998	JMBW	Whoops -- fixed SEEK bug with files .GE. 128 blocks.
+; 18-Dec-1998	JMBW	Whip up fake directory for DIR.SAV.
+;
+;--
+	.mcall	.drdef
+;
+nstmax=	8.	;max # nested opens
+		;(V5.X PIP!!!)
+;
+; CSR bits:
+dovec=	400	;7-bit vector/4 starts with this bit
+dopri=	20	;3-bit interrupt priority (4-7) starts with this bit
+dobsy=	4	;NZ => device busy
+dogo=	2	;set to start command
+doie=	1	;int enable
+;
+; Function codes (for CMDCMD field in command packet):
+doopn=	0	;open file
+docrt=	1	;create (but don't open) file
+dodel=	2	;delete file
+dordd=	3	;read data
+dowrd=	4	;write data
+dosek=	5	;seek
+dofst=	6	;find first wildcard match
+donxt=	7	;find next wildcard match
+docls=	8.	;close file
+;
+; MOVE address to register
+;
+	.macro	mova	arg,r
+	mov	pc,r
+	add	#<arg>-.,r
+	.endm
+;
+	.drdef	do,400-'D,specl$!spfun$,0,176470,240
+;
+do$ba=	do$csr+2	;bus addr reg
+do$bae=	do$csr+4	;bus addr ext reg
+;
+.if ne 0 ;;;;; SET options not yet supported
+	.drset	CSR,1,o.csr,OCT		;change CSR
+	.drset	VECTOR,3,o.vec,OCT	;change vector
+;
+o.csr:	bis	#160000,r0	;at least trap or something if way off
+	mov	r0,176		;set CSR
+	mov	r0,docsr	;set all
+	add	#2,r0
+	mov	r0,doba
+	add	#2,r0
+	mov	r0,dobae
+clcrts:	clc			;happy
+	rts	pc
+;
+o.vec:	bic	#3,r0		;guarantee OK
+;;	mov	r0,do$vtb	;set vector
+	rts	pc
+;
+.iif gt <.-1000>, .error .-1000	;SET code too big
+.endc ;;;;;
+;+
+;
+; I/O initiation.
+;
+;-
+	.drbeg	do
+	mov	docqe,r4	;get curr Q-el
+;	movb	q$unit(r4),r0	;get unit #
+;	bic	#^C7,r0		;isolate
+;	asl	r0		;*2 for use as table index
+;	mov	r0,unit		;save
+;;; (we don't do anything with that yet, indexing tables with PIC is a pain!)
+	movb	q$func(r4),r0	;get special function code
+	bne	spec		;NZ => handle it
+	asl	q$wcnt(r4)	;WC*2=BC
+	beq	20$		;seek, done
+	bcs	50$		;.WRITE
+	; .READ
+	call	seek		;set up "seek" command
+	bcs	60$		;(no open file, skip)
+	call	docmd		;send it
+	bcs	40$		;failed
+	call	addr		;load up buffer addr
+	mov	#dordd,cmdcmd	;set command
+	call	docmd		;do command
+	bcs	40$
+	mov	cmdlen,r5	;get actual length
+	beq	30$		;EOF, special
+	add	r5,q$buff(r4)	;update addr
+	sub	r5,q$wcnt(r4)	;and byte count
+	beq	20$		;nothing to do
+10$:	; zero fill
+	clr	r5		;load zero
+	call	putb		;store it
+	bne	10$		;loop until buf is full
+20$:	jmp	dodone		;finished
+30$:	bis	#eof$,@-(r4)	;end of file
+	jmp	dodone		;finished
+40$:	jmp	doerr
+50$:	br	write
+60$:	; not a file, must be trying to read from raw disk
+	mov	q$blkn(r4),r0	;get starting block #
+	cmp	r0,#6		;before directory?
+	blo	10$		;yes, just return zeros (probably home blk)
+	beq	70$		;starting new directory
+	cmp	r0,#6+<31.*2>	;after directory?
+	bhis	10$		;yes, who knows what they're up to
+	cmp	r0,dirblk	;is this next in sequence?
+	beq	80$		;yes
+	clr	dirblk		;forget about dir lookup
+	br	10$		;go return NULs
+70$:	mov	r0,dirblk	;starting a fresh directory
+	clr	diroff		;init offset in segment
+80$:	jmp	dir		;go handle directory access
+;
+write:	; .WRITE
+	neg	q$wcnt(r4)	;positive byte count
+	call	seek		;set up "seek" command
+	bcs	10$		;(no open file, skip)
+	call	docmd		;send it
+	bcs	20$		;failed
+	call	addr		;load up buffer addr
+	mov	#dowrd,cmdcmd	;set command
+	call	docmd		;do command
+	bcs	20$
+10$:	jmp	dodone		;finished
+20$:	jmp	doerr
+;+
+;
+; Special function or directory access.
+;
+;-
+spec:	mova	spfuns-2,r1	;get ptr to special function list
+10$:	tst	(r1)+		;skip a word
+	mov	(r1)+,r2	;get function
+	beq	badspf		;end of list
+	cmp	r0,r2		;is this it?
+	bne	10$		;no, keep searching
+	add	(r1),pc		;jump
+spfuns:	.word	1,close-spfuns
+	.word	2,delete-spfuns
+	.word	3,lookup-spfuns
+	.word	4,enter-spfuns
+	.word	0
+;
+badspf:	jmp	doerr		;bad .SPFUN
+;+
+;
+; Close innermost open file.
+;
+;-
+close:	call	gethnd		;get file handle
+	bcs	10$		;not open
+	mov	#docls,cmdcmd	;func=close
+	call	docmd		;close the handle
+10$:	sub	#2,opensp	;back up stack pointer
+	bcc	20$
+	 clr	opensp		;stop at 0
+20$:	jmp	dodone
+;+
+;
+; Delete a file.
+;
+;-
+delete:	call	getnam		;convert filename
+	mov	#dodel,cmdcmd	;func=delete
+	call	docmd		;execute it, come back on interrupt
+	bcs	doerr		;error
+	br	dodone
+;+
+;
+; Look up an existing file.
+;
+;-
+lookup:	call	nulfil		;convert filename, see if it's null
+	bcs	10$		;yes
+	mov	#1,cmdprm	;access=RO, sharing=compatibility mode
+	clr	cmdcmd		;func=open
+	call	docmd		;execute it, come back on interrupt
+	bcs	doerr		;error
+	call	savhnd		;save handle
+10$:	mov	docqe,r4	;restore qel ptr (NULFIL may trash)
+	clr	q$wcnt(r4)	;FSM.MAC does this (say file length=0)
+				;(V5.6 Quick Ref confirms .LOOKUP behavior)
+	br	dodone		;success
+;+
+;
+; Enter a new file.
+;
+;-
+enter:	call	nulfil		;convert filename, see if it's null
+	bcs	10$		;yes
+	mov	#docrt,cmdcmd	;func=create
+	call	docmd		;execute it, come back on interrupt
+	bcs	doerr		;error
+	clr	cmdprm		;access=RW, sharing=compatibility mode
+	clr	cmdcmd		;func=open
+	call	docmd		;execute it, come back on interrupt
+	bcs	doerr		;error
+	call	savhnd		;save handle
+10$:	br	dodone
+;
+doerr:	bis	#hderr$,@-(r4)	;hard error bit in CSW
+dodone:	;clr	@krcsr		;kill ints
+	;clr	@ktcsr
+	.drfin	do
+;+
+;
+; Handle directory reads.
+;
+; We read filenames from the host OS one at a time, and build up RT-11 dir
+; segments on the fly.  Unfortunately we get no size/date information.
+;
+; r4	I/O qel
+; DIRBLK  starting blk # of this segment (assumed to be even, screwy results
+;	if not but nothing will get damaged)
+;
+;-
+dir:	bit	#1,dirblk	;begn of segment?
+	bne	10$		;no, starting midway through
+	; prepend segment header
+	mov	#31.,r5		;total # of segments
+	call	putw
+	mov	dirblk,r5	;get curr dir blk
+	sub	#6-2-2,r5	;find next segment (2-32.) *2
+	asr	r5		;*1
+	bic	#^C37,r5	;change to 0 if 32. (end of chain)
+	call	putw
+	mov	#31.,r5		;highest seg in use (say all of them)
+	call	putw
+	clr	r5		;# extra bytes
+	call	putw
+	mov	#6+<32.*2>,r5	;all our null files start after dir
+	call	putw
+	; if this is the first dir seg, get the dir search started
+	cmp	dirblk,#6	;first block of dir?
+	bne	20$		;no
+	clr	dirdon		;not done yet
+	mova	file,r5		;point at buf
+	mov	#"*.,(r5)+	;init to "*.*"<0>
+	mov	#'*,(r5)
+	mov	#dofst,cmdcmd	;command=find first match
+	br	30$		;skip
+10$:	; starting midway through block, we owe the creation date from the
+	; file entry that spanned the block boundary
+	clr	r5		;creation date=0
+	call	putw
+20$:	; retrieve next filename
+	mov	#donxt,cmdcmd	;command=find next match
+30$:	tst	dirdon		;already hit EOF?
+	bne	90$		;yes
+	mova	file,r5		;point at buf
+	mov	r5,cmdba	;set addr
+	clr	cmdbae
+	mov	#lfile,cmdlen	;length of buf
+	call	docmd		;get next dir entry
+	bcs	80$		;failed
+	clrb	efile		;guarantee terminating NUL
+	cmp	diroff,#<<1000-<5*2>>/16>*16+<5*2> ;about to wrap to 2nd blk?
+	bne	40$		;(that number works out to 764)
+	 inc	dirblk		;yes, plan ahead
+40$:	mov	#2000,r5	;status=permanent file
+	call	putw
+	; convert filename to RAD50, and trim off path in the process
+	mova	file,r5		;point at filename
+	mov	r0,-(sp)	;save
+	mov	r1,-(sp)
+	mov	r2,-(sp)
+50$:	call	getrad		;get filename
+	cmp	r2,#'.		;it *is* the filename right?
+	beq	60$		;yes
+	tst	r2		;filename with no extension?
+	bne	50$		;no, device or path element, ignore
+60$:	mov	r5,-(sp)	;save ptr
+	mov	r0,r5		;save first word
+	call	putw
+	mov	r1,r5		;save second word
+	call	putw
+	mov	(sp)+,r5	;restore ptr
+	mov	r2,r0		;extension?  (R0=0 if not)
+	beq	70$		;no, go save the zero
+	call	getrad		;parse extension
+70$:	mov	r0,r5		;save
+	call	putw
+	mov	(sp)+,r2	;restore
+	mov	(sp)+,r1
+	mov	(sp)+,r0
+	clr	r5		;length=0 (since we don't know)
+	call	putw
+	clr	r5		;channel/job=0
+	call	putw
+	; if they're reading the segment (which is 2 blocks) one block at a
+	; time, we can get kicked out on the next write (i.e. they only asked
+	; for the first block and this dir entry is overflowing into the 2nd)
+	; we compensate by starting odd blocks off with a zero word
+	clr	r5		;creation date=0
+	call	putw
+	cmp	diroff,#2000-<16+2> ;space for one more entry and EOS marker?
+	bhis	90$		;no, write end-of-segment marker now
+	br	20$		;back for next file
+80$:	mov	(pc),dirdon	;done reading dir
+90$:	; finish off segment
+	mov	#4000,r5	;mark end of segment
+	call	putw
+100$:	bit	#777,diroff	;finished filling out blk?
+	beq	120$		;yes
+110$:	clr	r5		;write a 0
+	call	putw
+	br	100$
+120$:	; prepare for next segment
+	inc	dirblk		;bump to next blk
+	cmp	diroff,#2000	;had we finished padding whole segment?
+	bne	110$		;no, go pad second block of seg
+	clr	diroff		;reinit offset
+	tst	q$wcnt(r4)	;req finished?
+	beq	130$		;yes
+	jmp	dir
+130$:	jmp	dodone		;finish up
+;+
+;
+; Store a byte in the user's buffer.
+;
+; r5	byte to store
+; r4	I/O qel
+;
+; R0-R4 preserved, Z=1 on return if buf is full.
+;
+;-
+putb:
+.if ne mmg$t
+	movb	r5,-(sp)	;store byte
+	call	@$ptbyt		;(and update Q$BUFF)
+.iff
+	movb	r5,@q$buff(r4)	;store byte
+	inc	q$buff(r4)
+.endc
+	dec	q$wcnt(r4)	;done all?  (Z=1 if so)
+	rts	pc
+;+
+;
+; As above, but stores a word, updates DIROFF, and punts if out of space.
+;
+;-
+putw:	cmp	q$wcnt(r4),#2	;got space?
+	blo	10$
+	add	#2,diroff	;update offset
+	call	putb		;write low byte
+	swab	r5		;get high byte
+	br	putb		;write that too, return
+10$:	tst	(sp)+		;flush return address
+	jmp	dodone		;say I/O is finished
+;+
+;
+; Get filename passed by monitor.
+;
+;-
+getnam:
+.if ne mmg$t
+	mova	file50,r5	;point at buffer
+	mov	#3*2,r0		;counter (# bytes to copy)
+10$:	call	@$gtbyt		;get a byte
+	movb	(sp)+,(r5)+	;catch it
+	dec	r0		;loop through all
+	bne	10$
+	sub	#6,r5		;point at filename
+.iff
+	mov	q$buff(r4),r5	;get ptr to .RAD50 name
+.endc
+	mova	file,r4		;point at filename buf
+	mov	r4,cmdba	;set addr
+	clr	cmdbae
+	call	rad$		;filename
+	call	rad$
+	movb	#'.,(r4)+	;.
+	call	rad$		;ext
+	clrb	(r4)
+	sub	cmdba,r4	;find length
+	mov	r4,cmdlen	;save length
+	rts	pc
+;+
+;
+; Set up a "seek" command packet for file addr in qel at R4.
+;
+;-
+seek:	call	gethnd		;get handle
+	bcs	10$		;not open
+	mov	q$blkn(r4),r0	;get starting block #
+	mov	r0,r1		;copy
+	swab	r0		;left 8
+	clrb	r0		;(clear LSB)
+	asl	r0		;left 9
+	mov	r0,cmdba	;set low addr
+	swab	r1		;right 8, old b7 in b15
+	asl	r1		;right 7, old b7 in C
+	adc	r1		;old b7 in b0
+	bic	#^C777,r1	;isolate high 9
+	mov	r1,cmdbae
+	clr	cmdprm		;seek from BOF (C=0)
+	mov	#dosek,cmdcmd	;[func=seek]
+10$:	rts	pc
+;+
+;
+; Load up address (etc.) information for DOS file device access.
+;
+; r4	qel (preserved)
+;
+;-
+addr:
+.if ne mmg$t
+	mov	r4,r5		;copy qel ptr
+	add	#q$buff,r5	;index to buf addr
+	call	@$mpptr		;call $MPPHY
+	mov	(sp)+,cmdba	;low addr
+	mov	(sp)+,r5	;catch high addr
+	asr	r5		;right-justify
+	asr	r5
+	asr	r5
+	asr	r5
+	mov	r5,cmdbae	;save
+.iff
+	mov	q$buff(r4),cmdba ;save addr
+	clr	cmdbae		;high bits = 0
+.endc
+	mov	q$wcnt(r4),cmdlen ;length
+	rts	pc
+;+
+;
+; Get file handle for innermost open file.
+;
+; Returned in CMDHND, or C=1 if raw device or no file.
+;
+; R0 trashed, others preserved.
+;
+;-
+gethnd:	tst	opensp		;could there be files open?
+	beq	10$		;no
+	mova	flgstk,r0	;point at file flag stack
+	add	opensp,r0	;index to our entry
+	tst	-(r0)		;open file?
+	beq	10$		;no
+	mov	hndstk-flgstk(r0),cmdhnd ;yes, fetch the handle
+	tst	(pc)+		;C=0, skip SEC
+10$:	 sec			;no file
+	rts	pc
+;+
+;
+; Save file handle for newly opened file.
+;
+; Stack space already checked by NULFIL.
+;
+; R0 trashed, others preserved.
+;
+;-
+savhnd:	add	#2,opensp	;advance to next
+	mova	flgstk,r0	;point at file flag stack
+	add	opensp,r0	;index to our entry
+	mov	#1,-(r0)	;say open file
+	mov	cmdhnd,hndstk-flgstk(r0) ;save handle
+	rts	pc
+;+
+;
+; Parse filename, see if they're opening the null filename.
+;
+; Return C=1 if so (or if out of stack space), stack entry created.
+; C=0 if not, so open the file and add its stack entry.
+;
+;-
+nulfil:	cmp	opensp,#nstmax*2 ;stack full?
+	beq	10$		;yes, give up now
+	call	getnam		;convert filename
+	cmp	cmdlen,#1	;anything besides the "." we added?
+	bne	20$		;yes, C=0
+	add	#2,opensp	;advance to next
+	mova	flgstk,r0	;point at file flag stack
+	add	opensp,r0	;index to our entry
+	clr	-(r0)		;say no open file
+10$:	sec
+20$:	rts	pc
+;
+docsr:	.word	do$csr		;addrs of device regs
+doba:	.word	do$ba
+dobae:	.word	do$bae
+	.even
+;+
+;
+; Do the current command, appear to return when done.
+;
+; On return, only R4/R5 may be used (because we're on an interrupt).
+; C=1 if DOS file device returned error, R4 points at I/O qel.
+;
+;-
+docmd:	mov	(sp)+,docont	;save continuation addr
+	mova	cmdpkt,r0	;point at packet buf
+	mov	r0,@doba	;set packet addr
+	clr	@dobae
+	mov	#do$vec,r0	;get vector
+	asr	r0		;/4
+	asr	r0
+	swab	r0		;in LH
+	bis	#<4*dopri>!dogo!doie,r0 ;set PRI=4, GO, IE
+	mov	r0,@docsr	;start command
+	rts	pc
+;+
+;
+; Interrupt service routine.
+;
+;-
+	.drast	do,4,doabrt
+	clr	@docsr		;kill further ints
+	tst	docont		;spurious int?
+	beq	10$		;yes
+	mov	docqe,r4	;get qel back
+	cmp	#1,cmdsts	;C=1 if CMDSTS is non-zero
+	jmp	@docont		;continue
+10$:	rts	pc		;dismiss
+;
+doabrt:	clr	@docsr		;kill ints
+;;; no way to abort cmd in progress?
+	rts	pc
+;+
+;
+; Convert from ASCII to .RAD50.
+;
+; r0	returns first 3 chars
+; r1	returns second 3 chars
+; r2	returns terminator (non-RAD50 char that we stopped on)
+; r5	pointer into .ASCIZ string (updated on return)
+;
+; R3/R4 preserved.
+;
+;-
+getrad:	mov	r3,-(sp)	;save
+	call	20$		;get first 3
+	mov	r1,r0		;save
+	call	20$		;get last 3
+10$:	call	40$		;try to get another char
+	tst	r2		;was it a .RAD50 char?
+	bne	10$		;yes, skip it
+	movb	(r5)+,r2	;get terminator
+	mov	(sp)+,r3
+	rts	pc
+;
+20$:	; get 3 .RAD50 hars from (R5)+ into R1
+	call	40$		;get 1st char
+	mov	r2,r1		;copy
+	call	30$		;add 2nd char, then drop through for 3rd
+30$:	asl	r1		;*10
+	asl	r1
+	asl	r1
+	mov	r1,r2		;save value *10
+	asl	r1		;*40
+	asl	r1
+	add	r2,r1		;*50
+	call	40$		;get new char
+	add	r2,r1		;add it in
+	rts	pc
+;
+40$:	; get .RAD50 char from (R5)+ into R2, trashes R3
+	movb	(r5)+,r3	;get char
+	mov	#<^R  $>,r2	;try $
+	cmp	r3,#'$
+	beq	60$
+;;	mov	#<^R  .>,r2	;try .
+;;	cmp	r3,#'.
+;;	beq	60$
+	mov	r3,r2		;try digit
+	add	#<^R  0>-'0,r2	;convert value if digit
+	cmp	r3,#'0
+	blo	50$
+	cmp	r3,#'9
+	blos	60$		;yes it's a digit
+	add	#<<^R  A>-'A>-<<^R  0>-'0>,r2 ;translate to letter
+	cmp	r3,#'A		;is it a letter?
+	blo	50$
+	cmp	r3,#'Z
+	blos	60$
+	sub	#40,r2		;suppose it's lower case somehow
+	cmp	r3,#'a
+	blo	50$
+	cmp	r3,#'z
+	blos	60$
+50$:	dec	r5		;none of the above, it's a delimiter
+	clr	r2		;return a blank to pad out field
+60$:	rts	pc
+;+
+;
+; Routine to convert a word from .RAD50 to ASCII.
+;
+; r5	input ptr (+2 on return)
+; r4	output ptr (+0:3 on return)
+;
+;-
+rad$:	mov	r5,-(sp)	;save
+	mov	(r5),r5		;fetch word
+	mova	bittab,r3	;pt at table
+	br	40$		;jump into loop
+10$:	; next digit
+	clr	r0		;clear it
+	mov	#6,r2		;bit count (each .RAD50 dig is 5.625 bits)
+20$:	asl	r0		;*2
+	cmp	r1,r5		;OK?
+	bhi	30$		;no (C=0)
+	sub	r1,r5		;remove the bit (C=0)
+	inc	r0		;count it
+30$:	ror	r1		;/2 (C=0 either way above)
+	dec	r2		;loop
+	bne	20$
+	add	pc,r0		;index into R50
+	add	#r50-.,r0
+	movb	(r0),(r4)+	;convert, save
+	bne	40$
+	 dec	r4		;un-put NUL
+40$:	mov	(r3)+,r1	;get next value
+	bne	10$		;loop if non-zero
+	add	pc,r5		;index into R50
+	add	#r50-.,r5
+	movb	(r5),(r4)+	;convert last, save
+	bne	50$
+	 dec	r4		;un-put NUL
+50$:	mov	(sp)+,r5	;restore
+	tst	(r5)+		;skip the word we just did
+	rts	pc
+;
+bittab:	.word	40*50*50,40*50,0
+r50:	.ascii	<0>/ABCDEFGHIJKLMNOPQRSTUVWXYZ$.?0123456789/
+strstr:	.asciz	/*.*/		;wildcard for dir lookup
+;
+docont:	.word	0		;continuation address (called on int)
+				;or 0 if no int expected
+;
+opensp:	.word	0		;offset into "open file" stacks
+hndstk:	.blkw	nstmax		;DOS handle for each file
+flgstk:	.blkw	nstmax		;NZ if handle is valid (0 => opened raw dev)
+;
+dirblk:	.word	0		;next block # in sequence during dir lookup
+				;(or 0 if not in dir lookup)
+diroff:	.blkw			;offset into current 1 KB dir segment, 0-1777
+dirdon:	.blkw			;NZ => finished reading dir
+;
+;unit:	.blkw			;current DOn: unit # *2 (used as table index)
+;
+.if ne mmg$t
+file50:	.blkw	3		;FILNAMEXT buffer
+.endc
+	.even			;DIR expects an even addr
+file:	.blkb	10.		;FILNAM.EXT buffer
+	.blkb	128.-10.	;more space for pathname in DOFST/DONXT
+lfile=	.-file			;length of buf
+efile:	.blkb			;guaranteed NUL at end
+;
+	.even
+cmdpkt:	; command packet goes here
+cmdcmd:	.blkw			;command code, 0-8.
+cmdsts:	.blkw			;status (-1=timeout, 0=OK, >0=DOS err)
+cmdhnd:	.blkw			;DOS file handle
+cmdprm:	.blkw			;parameter (if defined by cmd)
+cmdlen:	.blkw			;length of data buffer in bytes
+cmdba:	.blkw			;22-bit absolute addr of data buffer
+cmdbae:	.blkw
+;
+	.even
+;
+	.drend	do
+	.end

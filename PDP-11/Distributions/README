@@ -1,0 +1,36 @@
+The subdirs in this directory contain all the old versions of PDP-11 Unix that
+we have been able to find. These are all copyright by various companies and
+people.
+
+Dir		Means		Contains
+----------------------------------------
+research	Stuff from Bell Labs research
+			5th, 6th & 7th Edition UNIX
+
+ucb		Stuff from the University of California, Berkeley
+			1BSD, 2BSD, 2.7.9, 2.8, 2.9, 2.10 and 2.11BSD
+
+usdl		Stuff from AT&T, but not research editions
+			Mini-UNIX (a cut-down 6th Edition)
+			32V
+			PWB (incomplete at this stage)
+
+dec		Versions of V7 and Ultrix for the PDP-11 from Digital
+
+unsw		Stuff from the University of New South Wales
+			AUSAM
+			lots of other stuff incl. v6, v7, PWB, 2BSD
+
+other		Other software:
+			Xinu
+			Torsten, a modified version of v7
+			Venix, for the Pro 350 and 380. This is off the 'net
+			    at ftp://ftp.update.uu.se/pub/professional/venix
+
+In most directories you will find one or more gzip'd tape images. Where
+possible, I have also made a tar file corresponding to the contents of each
+tape.
+
+The file DETAILS in this directory explains what is in each subdirectory.
+The file RELEASE_DATES lists the release dates for many things, as far as
+I can make out.

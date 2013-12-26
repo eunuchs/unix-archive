@@ -1,0 +1,22 @@
+Aihnss.1458
+net.bugs.v7
+utcsrgv!utzoo!decvax!duke!chico!harpo!mhtsa!ihnss!warren
+Fri Jan 22 12:50:11 1982
+cpio bug
+Subject: cpio bug
+
+(This really concerns the internal BTL version of unix, 4.0, but is
+probably a more general problem).
+
+I have had several files that had been put through cpio into an
+archive and out again slightly altered.  Wherever there was a 0 byte
+(null), it and the following character dissappeared.  I can't find
+any reference in the documentation for cpio that it won't take files
+with nulls in them, and I am reasonably sure that I have used cpio
+archives for binary files before.  Is this a bug or a misfeature?
+Has anyone else been similarly burned?
+
+Warren Montgomery
+
+ihnss!warren
+csvax.warren at Berkeley

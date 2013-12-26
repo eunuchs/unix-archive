@@ -1,0 +1,18 @@
+This directory contains distributions of Mini UNIX (a cut-down v6) and PWB.
+
+Currently, there is no unified distribution of any PWB version in the archive.
+The file bostic_pwb.tar.gz contains a number of apparently incomplete PWB
+versions from Keith Bostic. The file spencer_pwb.tar.gz comes from Henry
+Spencer, who says that this is:
+
+	A full PWB distribution, *almost* certainly straight off the
+	Bell tapes except for conversion to tar format. It ought to be
+	correct and complete except perhaps for file dates. It'll be
+	the one the outside world got, PWB/UNIX (which I think is roughly
+	identical to PWB/1.0).
+
+I haven't had a chance to look at the latter yet.
+
+The document unix_program_description_jan_1976.pdf describes the functions
+in a UNIX kernel, and I'm guessing that this is PWB/1.0, but this has not
+yet been confirmed.

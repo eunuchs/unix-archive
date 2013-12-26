@@ -1,0 +1,14 @@
+Autzoo.1481
+net.bugs.v7
+utcsrgv!utzoo!henry
+Thu Mar 11 17:29:19 1982
+(unsigned)char
+Casting a char value to unsigned in the V7 compiler does a very nice
+job of something that is awkward to get otherwise:  zero-extending
+rather than sign-extending a char.  The trouble is, that's a bug:  be
+warned.  The official behavior of casts, according to DMR, is that
+they act like assignment to a temporary variable of that type.  Which
+means that casting char to unsigned goes via int the same way a normal
+assignment does, and the sign gets extended.  This is fixed in DMR's
+more recent C compilers (when I asked him, he wasn't sure whether the
+3.0 compiler was recent enough).

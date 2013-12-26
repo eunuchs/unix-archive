@@ -1,0 +1,325 @@
+$AT
+@file
+
+Reads in "file" as if its contents had been entered at the E11 prompt.  The
+default extension is ".CMD".  Indirect files cannot be nested.
+$ASNTTY
+ASSIGN pdpdev pcdev /switches
+
+Assigns a PDP-11 character device (TTn: or LPn:) a physical PC device, which
+is either a COM port, COM1:-COM4:, an LPT port, LPT1:-LPT4:, or a video
+console, CON1:-CON12: (the keyboard and primary monitor may be switched to that
+port by pressing Alt-F1 through Alt-F12, or the secondary monitor may be
+switched to that port if you press Ctrl-F1 through Ctrl-F12).  Switches are
+/IRQn, /SHARE, /FIFO[:n], and /NOFIFO for COM ports, and /IRQn, /NOIRQ, and
+/SHARE for LPT ports.
+$ASNETH
+ASSIGN XEn: PKTD[=int] [prot1 prot2 ...]
+
+Assigns a DELUA (XEn:) port to an ethernet board for which a packet driver has
+been loaded (from DOS, prior to starting E11).  The packet driver is found at
+the specified INT vector (hex), or if it's not specified then the range from 20
+to FF is searched for any packet driver not already in use by E11.  The driver
+must conform to version 1.09 or later of FTP Software's packet driver spec.  If
+prot1 etc. are specified, they are the hex DIX protocol numbers of up to ten
+packet types that the DELUA will be able to receive (to allow cooperation with
+other protocol stacks on the same PC);  if no protocols are specified then the
+DELUA arranges to receive all packet types.
+$BOOT
+BOOT pdpdev [/switches]
+
+Boots the PDP-11 from the specified mass storage device (must be MOUNTed).
+Switches are /RT11 or /RSTS (to control mechanism for passing date/time
+information to those systems) or /HALT to stop the CPU after loading the boot
+block.
+$CALC
+CALCULATE expr
+& expr
+
+Calculate the value of an expression.
+
+Binary operators:  * / + - (usual precedence)
+Unary operators:   + - ^C
+Primaries:         (expr) octno decno. ^Xhexno ^Rrad50no 'char
+                   r0 r1 r2 r3 r4 r5 sp pc ps r0' r1' r2' r3' r4' r5'
+$DEASN
+DEASSIGN pdpdev
+
+Undoes an ASSIGN command, disconnecting the specified PDP-11 device from its
+assigned PC device.
+$DELAY
+SET DELAY device c:n c:n ...
+SHOW DELAY device
+
+SET DELAY sets the number of instructions that the specified commands appear to
+take to complete on the indicated device.  The device may be DELUA, DL11,
+DOSFILE, LP11, PC11, RK11D, RL11, RK611, RS03, RS04 (syn. for RS03 in this
+case) RX11, RX211, RXT11, TA11, TM03, or TM11.  For each parameter "c:n", c is
+the command number (meaning depends on the device), and n is the number of
+PDP-11 instructions the emulator should delay before signaling completion of
+that command;  both are octal unless followed by ".". c may be "*" to set the
+same delay for all command numbers for the device.  SHOW DELAY shows the delays
+set for each of device's commands.  See the Ersatz-11 documentation for
+details.
+$DEPOS
+DEPOSIT addr data1 data2 ...
+
+Deposits the specified word(s) at the specified memory address (and following
+addresses if more than one data word is given), in the address space specified
+by the optional switch(es).  See HELP EXAMINE for switches.
+$DLL
+INSTALL filename[.DLL]
+REMOVE module
+SHOW MODULE module
+
+Installs, removes, or displays information about a dynamic link library, which
+contains user-supplied device emulation code that may be loaded into Ersatz-11
+at run time.  Not available in Lite or demo versions.
+$DUMP
+DUMP filename[.PDP] [A1:B1 A2:B2 ... An[:[Bn]] ]
+
+Dumps PDP-11 memory to the specified DOS file.  Any number of address ranges
+"Ai:Bi" may be given, and bytes from the specified ranges of memory are stored
+in the file in the order given in the command line.  If a range has no ending
+address (the colon may be omitted in this case), data are saved all the way to
+the end of memory.  If no ranges are given then all of memory is dumped
+starting at 000000.
+
+DUMP {/ROM | /EEPROM} [/BANKED] filename[.PDP] [A:B]
+
+Dumps the specified ROM or EEPROM to a DOS file.  /BANKED means the ROM is
+banked and accessed through a 512.-byte window at (17)773000 or (17)765000
+(using the page control register to switch banks), if you leave out the ending
+address the entire banked ROM will be dumped instead of just the first 512.
+bytes.
+$EXAM
+EXAMINE [/sw] [start [end]]
+
+Examines (displays) the word(s) at the specified absolute memory address or
+range, in the address space specified by the optional switch(es).  If only one
+address is given then one word is displayed.  If nothing is given then the 8
+words following the most recent EXAMINE or DEPOSIT command are displayed.  The
+address space defaults to whatever was used on the most recent EXAMINE or
+DEPOSIT command, or /CURRENT /DATA if none was ever given.  Switches:
+
+/CURRENT       current virtual address space (from PSW<15:14>)
+/PREVIOUS      previous virtual address space (from PSW<13:12>)
+/KERNEL        Kernel mode
+/SUPERVISOR    Supervisor mode
+/USER          User mode
+/INSTRUCTIONS  I space
+/DATA          D space
+/PHYSICAL      physical address space (used anyway if MMU disabled)
+$FPREG
+FPREGISTER [ac v1 v2 v3 v4]
+
+Displays all FP registers, or sets the value of the specified AC (0-5) to the
+specified four octal words.
+$GO
+GO reladdr
+
+Starts the CPU at the specified virtual address.
+$HALT
+HALT
+
+Halts the CPU immediately if it is running.
+$INIT
+INITIALIZE
+
+Reinitializes all devices, disables the MMU, sets kernel mode.
+$KEY
+DEFINE {KEYPRESS | KEYRELEASE} key def
+SHOW {KEYPRESS | KEYRELEASE} key
+
+Defines or displays the definition of a key.  Most keys only do something when
+pressed, so they have no KEYRELEASE definition, except for the Shift and Ctrl
+keys which have to clear the flags that were set when they were pressed.  See
+the Ersatz-11 documentation for key names and definition syntax.
+$LED
+DEFINE LED led flag
+SHOW LED led
+
+Specifies which keyboard flag (from the DEFINE KEYPRESS script language) is
+tied to each of the three keyboard LEDs (names are CAPS, NUM, SCROLL).  OFF may
+also be used to turn a keyboard LED off permanently.  SHOW LED shows an LED's
+current definition.
+$LIST
+LIST [/sw] [addr]
+
+Disassembles the next eight instructions starting at addr, in the address space
+specified by the optional switch(es).  If either is omitted, the default is to
+continue immediately after the most recent LIST command or REGISTER display
+(any time a register dump is given, either from a REGISTER command or
+implicitly due to a halt or STEP command, the default LIST space is set to
+/CURRENT /INSTRUCTIONS).  See HELP EXAMINE for other switches.
+$LOAD
+LOAD filename[.PDP] [A1:B1 A2:B2 ... An[:[Bn]] ]
+
+Loads the specified DOS file into PDP-11 memory.  Any number of address ranges
+"Ai:Bi" may be given, and bytes from the file are loaded into the specified
+ranges in the order they appear in the command line.  The last range may have
+no ending address, in which case data are loaded until end-of-file is reached.
+If no ranges are given then the file is loaded at 000000.
+
+LOAD {/ROM | /EEPROM} [/BANKED] filename[.PDP] [A:B]
+
+Loads the specified DOS file into a simulated ROM or EEPROM.  /BANKED means
+the ROM is banked and accessed through a 512.-byte window at (17)773000 or
+(17)765000 (using the page control register to switch banks).
+$LOGDSK
+LOG ddcu: [filename] [/APPEND]
+
+Logs disk or tape commands to the specified controller (unit number is
+insignificant), or turns off logging if no filename is given.  /APPEND means to
+append to an existing log file instead of replacing it.
+$LOGTTY
+LOG ddcu: [filename] [/APPEND]
+
+Logs TT: or LP: output to a file, or turns off logging if no filename is given.
+/APPEND means to append to an existing log file instead of replacing it.
+$LOGETH
+LOG XEn: [filename] [/[NO]COMMANDS] [/[NO]RECEIVE] [/[NO]TRANSMIT] [/APPEND]
+
+Logs ethernet events;  the switches specify which events are logged.
+/[NO]COMMANDS logs (or suppresses logging of) all commands issued to a DELUA by
+the PDP-11;  similarly, /[NO]RECEIVE and /[NO]TRANSMIT enable or disable
+logging of received or transmitted frames.  LOG XEn: with no parameters closes
+the log file, LOG XEn: with switch(es) but no filename adjusts what event types
+are logged on a file which is already open.  If a log file is opened with no
+switches, the default is /RECEIVE /TRANSMIT.  /APPEND means to append to an
+existing log file instead of replacing it.
+$MOUNT
+MOUNT pdpdev dosfile /switches
+MOUNT pdpdev f: /switches
+DISMOUNT pdpdev
+
+Mounts/dismounts the specified PDP-11 mass storage unit using the specified DOS
+container file, or floppy drive if only "f:" is given.  Switches are /RONLY (or
+/WPROTECT) and /RW (default) for disks, and drive type if ambiguous.
+
+CTcu:   TU60 cassette tape
+DLcu:   RL01/02 5/10 MB disk, /RL01, /RL02, or file size tells which
+DMcu:   RK06/07 14/28 MB disk, /RK06, /RK07, or file size tells which
+DScu:   RS03/04 512KB/1024KB fixed head disk, /RS03, /RS04, size tells which
+DTcu:   TU56 DECtape
+DXcu:   RX01 floppy disk
+DYcu:   RX01/02/03 floppy disk, distinguished by MOUNT switch, SET DY: command,
+        file size, or disk format if real drive is mounted
+HDcu:   hypothetical disk device, compatible with "Russian" LSI-11/2 emulator
+MMcu:   RH11/RH70,TM03,TE16 etc. tape drive
+MTcu:   TU10 tape drive
+PDcu:   RX01 floppy disk (PDT-11/150 RXT11 controller)
+PP:     PC11 paper tape punch
+PR:     PC11 paper tape reader
+$PROC
+PROCEED [breakaddr]
+
+Restarts the CPU at the current address, optionally setting a single hard
+breakpoint (i.e. not visible to software) at the specified virtual address.
+$QUIT
+QUIT
+
+Exits Ersatz-11.
+$REG
+REGISTER [r v]
+r=v
+c=v
+
+Displays the CPU general registers and disassembles the next instruction, or
+sets the specified register (0-7) to the specified value if r and v are
+specified.  Registers may also be set by just typing "PC=1000" etc. at the
+command prompt, condition flags may be set with "C=0" etc., CPU priority may be
+set with "PRIO=5" etc., and current mode and previous mode may be set with
+"CM=U" etc.
+$STEP
+STEP [count]
+
+Executes the specified number of PDP-11 instructions (default=1), displaying
+CPU registers after each.
+$SETSR
+SET SWITCH n
+SET SWITCH PORT n
+
+The first command form specifies the octal value for the virtual switch
+register (initially 000000), which is readable at PDP-11 address 777570.  The
+second command form specifies the octal I/O address (use ^Xnnn for hex) of a
+16-bit port which gives the switch register value when read using an 80x86 word
+IN instruction.  Building the interface is left as an exercise to the reader.
+$SETDR
+SET DISPLAY NONE
+SET DISPLAY PORT n
+SET DISPLAY LPTn:
+SET DISPLAY {DR | CDR | R0 | R1 ... | PC}
+
+The first command specifies that no hardware display register exists (the
+default condition) and that values written to PDP-11 address 777570 should be
+thrown away.  The second command specifies the octal I/O address (use ^Xnnn for
+hex) of a 16-bit port to which the display register value should be written
+with an 80x86 word OUT instruction.  The third command specifies that the
+display register should be simulated using the parallel port LED board
+described in the documentation (or available from the author).  The fourth
+command specifies which register is displayed on the hardware lights port
+defined by either the second or third command;  DR is the default but some OSes
+use R0 for their null job displays.
+$SETKB
+SET KEYBOARD {SWAP | NOSWAP}
+
+Tells Ersatz-11 whether to swap the functions of the Caps Lock and left Ctrl
+keys.  Useful for people who have 101-key Enhanced keyboards, and hate them.
+$SETHZ
+SET HERTZ {50 | 60}
+
+Sets the actual frequency of the emulated KW11L line clock.  This should be
+changed only if your software expects 50 Hz, 60 Hz is the default.
+$SETSCP
+SET [NO]SCOPE
+
+Sets the style of rubout processing used with input typed to the Ersatz-11
+prompt.  Mainly useful if you ASSIGN TT0: to a DECwriter (etc.) on a COM port.
+SCOPE is the default.
+$SETSCR
+SET SCROLL {HARD | SOFT}
+
+Sets the type of scrolling to use for video display.  HARD (the default)
+scrolling works by resetting the base address of the screen and is very fast,
+but may expose bugs in the video emulation in your GUI OS's DOS box, or cause
+problems with TSRs that touch the screen.  SOFT scrolling works by copying the
+whole screen up a line on each line feed and should work in even the most
+rudimentary DOS emulation window.
+$setdev
+SET ddcu: parm1 [parm2...]
+
+Sets various device-specific parameters for the specified PDP-11 device and
+unit.  More than one parameter may be specified in the same command.
+The possible parameters for each device type are:
+
+CTcu:   CSR=nnnnnn VECTOR=nnn
+DKcu:   CSR=nnnnnn VECTOR=nnn
+DLcu:   CSR=nnnnnn VECTOR=nnn
+DMcu:   CSR=nnnnnn VECTOR=nnn
+DScu:   RH11 RH70 CSR=nnnnnn VECTOR=nnn
+DTcu:   CSR=nnnnnn VECTOR=nnn
+DXcu:   CSR=nnnnnn VECTOR=nnn
+DYcu:   SS DS CSR=nnnnnn VECTOR=nnn
+LPu:    CSR=nnnnnn VECTOR=nnn
+MMcu_s: RH11 RH70 CSR=nnnnnn VECTOR=nnn
+MTcu:   CSR=nnnnnn VECTOR=nnn
+PDcu:   CSR=nnnnnn VECTOR=nnn
+PR:     REWIND
+RHc:    RH11 RH70 CSR=nnnnnn VECTOR=nnn
+TTu:    CSR=nnnnnn VECTOR=nnn
+XEu:    BOOT=DISABLE (default) or BOOT=ddcu:[/os] (to enable remote boot)
+        (not yet implemented)
+$SHWCSR
+SHOW CSR addr
+
+Shows the name of the CSR currently defined at the specified octal I/O page
+address.
+$SHWDEV
+SHOW ddcu:
+
+Shows current parameters for the specified PDP-11 device.
+$UNLOAD
+UNLOAD {/ROM | /EEPROM} [/BANKED] addr
+
+Unloads a ROM or EEPROM image.

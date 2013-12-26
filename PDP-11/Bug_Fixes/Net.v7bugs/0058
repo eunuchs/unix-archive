@@ -1,0 +1,8 @@
+Awatarts.1043
+net.bugs.v7
+utzoo!decvax!watmath!watarts!eric
+Thu Jan  7 17:16:45 1982
+inode access time
+di_atime is supposed to be the time a file was last read.
+however, it is also updated when the file is written.
+4bsd works as documented, but I can't see how it's been fixed.

@@ -1,0 +1,45 @@
+pipehelp.tgz         11452 avoids a problem with clients hanging the server
+mlp.tgz               55626 print spooler update
+dis402.tar.Z         43423 updated init sh disable and enable
+curses.tgz           64247 latest curses version for 4.2.14
+cc462.tgz            118730 C compiler release 4.6.2
+ft.tgz                632256 upgrade to use floppy tape drives under Coherent
+                     4.2
+ndplibc.a.z          45625 same fixes as for libc.a this is for /lib/ndp
+libc.a.z             47829 missing functions added some bugs fixed
+ld.z                  17118
+sh.z                  57457
+ksh.z                 57457
+rep.tar.z            1541 kernel fix to avoid several chipset problems
+wall.z                4300 fixed wall which doesn't hang on pty's anymore
+cc.z                  80410 unsigned int bug fixed debugging support improved
+uuconv.zip           439419 conversion commands from MWC uucp to Taylor uucp
+sh.LGN.Z             24674 updated bourne shell fixes login security problem
+dos402.zip           19455 updated dos command
+kbd40.readme         264 READ THIS BEFORE YOU INSTALL THE KBD40 UPDATE!!!
+msgs.tar.Z           14405
+as.GNU.Z             52312 updated as for kernel r72
+as.GNU.zip           39784 as with working -g use only with kernel r72+!
+uusecure.tar.Z       111528 secure versions of uucp and mail commands
+as.GNU3.Z            52342 with this version gdb now really works
+termcap               11417
+paxupd.tar.Z         36101
+make.Z                15599
+vi402.Z               61581
+kbd40.tar.Z          27804 allows to use virtual consoles with cheap
+                     keyboards
+uucp323.tar.Z        75893
+uucico.p4.Z          40149
+unctrl321.h.Z        81
+tar321.Z             11920
+libc321.a.Z          43187
+ldlib.a.Z            6529
+lcurs321.a.Z         20844
+help321.Z            6531
+drvld322.Z           6165
+curses321.h.Z        7550
+cron402.tar.Z        25350
+mwcbbs.tar.Z         55672 mwcbbs program
+lex402.tar.Z         17869
+tinfoupd.tar.Z       94267 latest version of libcurses.a and header files for
+                     r72+

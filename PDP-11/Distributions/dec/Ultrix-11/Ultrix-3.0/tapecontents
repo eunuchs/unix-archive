@@ -1,0 +1,42 @@
+ 
+File 1: (44Kb)
+        2 copies of magtape bootstrap (2 blocks total)
+        The standalone bootstrap (boot)
+File 2: (22Kb)
+        System calls for standalone programs (DO NOT LOAD)
+File 3: (45Kb)
+        System disk load program (sdload)
+File 4: (4Kb)
+        A file to console copy program (scat)
+File 5: (2Kb)
+        This file (contents)
+File 6: (10Kb)
+        The program mkfs (make a ULTRIX-11 file system)
+File 7: (11Kb)
+        The program restor (restore a dump onto a file system)
+File 8: (22Kb)
+        The program dskinit (disk format and verify)
+File 9: (12Kb)
+        The program bads (scan disk for bad blocks)
+File 10: (30Kb)
+        The program rabads (RA/RD/RX disk initialize)
+File 11: (4Kb)
+        The program copy (copy device to device)
+File 12: (7Kb)
+        The program icheck (file system consistency check)
+File 13: (264Kb)
+        Stand-alone programs for memory disk (file system image)
+File 14: (144Kb)
+        rcmds: optional software loaded into ROOT (TAR image)
+File 15:
+|
+V
+File 31:
+        ucmds: optional software loaded into /USR (TAR images)
+File 32: (1568Kb)
+        sysgen: optional software for re-loading sysgen (TAR image)
+File 33: (3704Kb)
+        The ULTRIX-11 root file system in dump/restor format
+File 34: (5312Kb)
+        The ULTRIX-11 /usr file system in dump/restor format
+$

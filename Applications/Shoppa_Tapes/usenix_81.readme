@@ -1,0 +1,126 @@
+Tape labeled
+
+  USENIX ASSOCIATION			68D
+  Box 8
+  Rockefeller University
+  1230 York Avenue
+  New York, NY 10021
+
+  1600 BPI   TAPE 81.1   V6
+
+Below I reproduce the file INFO from this archive.  Tim Shoppa, 2-MAY-1999.
+
+The file DISCLOSURES is a complete listing of all files in the 181
+Usenix Association Distribution.  The two character code in columns
+one and two indicate the Bell disclosure level of the file.
+The codes are:
+
+	ND No Disclosure
+	V6 Version 6 (or higher) source license required
+	PT Phototypesetter, Version 7, PWB, or 32V source license
+	V7 Version 7 or 32V source license required
+	32 32V source license required
+
+The list below contains the names and addresses of the individuals
+who signed the submission forms for each directory.
+
+All submissions were marked as follows:
+
+"Except for the Bell materials as indicated in the disclosure statement
+above, I declare that, to the best of my knowledge, the property rights
+to the MATERIALS are in The Public Domain."
+
+Recipients of this tape should note that while materials may be in the
+public domain, this copy of them is LICENSED MATERIAL and may be used
+and copied only in accordance with the USENIX ASSOCIATION license.
+Individuals wishing to use these materials in other ways, must
+secure a copy from some other source.
+
+
+afdsc		Walter D. Lazear
+		U. S. Air Force
+		AFDSC/CMS
+		Pentagon Room 1D988
+		Washington, DC 20330
+
+dod		Dennis L. Mumaugh
+		Dept. of Defense
+		9800 Savage Road
+		Ft. George G. Meade
+		MD 20705
+
+geotronics	Darrell R. Word
+		Geotronics Corp.
+		10317 McKalla Place
+		Austin, TX 78758
+
+lbl		Michael D. O'Dell
+		Lawrence Berkeley Laboratory
+		CSAM - 50B Room 3243
+		Univ. of California
+		Berkeley, CA 94720
+
+linclab		Robert L. Walton
+		MIT Lincoln Laboratory
+		P. O. Box 73
+		Lexington, MA 02173
+
+mit		Christopher J. Terman
+		MIT Laboratory for Computer Science
+		Mass. Inst. of Technology
+		Cambridge, MA 02139
+
+natint		Jeffrey Kodosky
+		National Instruments
+		8900 Shoal Creek Blvd
+		Austin, TX 78758
+
+nbs		Joan S. Bowden
+		National Bureau of Standards
+		A255 Bldg 225
+		Washington, DC 20234
+
+pitt		Daniel R. Strick
+		Office of Communications Programs
+		833 LIS Building
+		University of Pittsburgh
+		Pittsburgh, PA 15260
+
+rosemount	Scott Bertilson
+		Rosemount, Inc.
+		12001 West 78 Street
+		Eden Praire, MN 55344
+
+rosenberg	George K. Rosenberg
+		90 Woodland Road
+		Pittsburgh, PA 15232
+
+stanford	Joshua K. Knight, III
+		Stanford Solar Observatory
+		ERL 325
+		Stanford University
+		Stanford, CA 94305
+
+sytek		Samuel J. Leffler
+		Sytek, Inc.
+		1153 Bordeaux Drive
+		Sunnyvale, CA 94086
+		(Now at: Dept. of CS & EE, Berkeley)
+
+tektronix	Laurence J. Morandi
+		Tektronix, Inc.
+		P. O. Box 500, M/S 50-384
+		Beaverton, OR 97077
+		(Original from Clem Cole, now at ?)
+
+toronto		David R. Galloway
+		Computer Systems Research Group
+		University of Toronto
+		121 St. Joseph Street
+		Toronto, Ontario M5S 1A1
+
+ucol		Ernest W. Harkins
+		University of Colorado
+		CIRES
+		Campus Box 449
+		Boulder, CO 80309

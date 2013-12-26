@@ -1,0 +1,32 @@
+Date: Wed, 06 Sep 2000 11:17:17 -0700
+From: Ronald Joe Record <rr@sco.com>
+Organization: SCO
+To: clemc@mro.cpqcorp.net, wkt@cs.adfa.edu.au
+Cc: dmr@bell-labs.com, paulka@sco.com
+Subject: Re: Steve Bourne's UNIX Circuit Design System - Draw
+
+Hi Clem,
+
+I consulted with the folks here who setup the "Ancient UNIX
+Source" license and it appears perfectly acceptible to simply
+include the Draw package under this umbrella. The relevant
+portion of the license is as follows:
+
+   "The SOURCE CODE PRODUCTS to which SCO grants rights under this
+    AGREEMENT are restricted to the following UNIX Operating Systems, including
+    SUCCESSOR OPERATING SYSTEMs, that operate on the 16-Bit PDP-11 CPU and
+    early versions of the 32-Bit UNIX Operating System with specific exclusion
+    of UNIX System V and successor operating systems:
+        16-Bit UNIX Editions 1, 2, 3, 4, 5, 6, 7 32-bit 32V"
+
+So, i would suggest sending Warren Toomey (wkt@cs.adfa.edu.au)
+the source code for the most recent Draw package which you can
+retrieve (and which is included in one of the above UNIX Editions).
+
+Warren, is this acceptable to you or do we need to do anything more
+formal ? In our opinion, the Draw package was part of the already released
+editions and was late in delivery to you.
+
+Clem, congratulations on successfully reading a nearly 20 year old
+9-track tape !
+-rr-

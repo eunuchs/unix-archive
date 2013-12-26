@@ -1,0 +1,24 @@
+Autzoo.1190
+net.v7bugs
+utzoo!henry
+Sun Dec  6 05:49:07 1981
+lint vs static
+With two C files like this:
+
+file1.c:
+	static int stringscan()
+	{ return 1; }
+
+file2.c:
+	static char strings[2000];
+
+lint -hpc reports:
+	"file1.c", line 2: static variable stringsc$ unused
+	...
+	string multiply declared	"file1.c"(2)  ::  "file2.c"(1)
+
+Both complaints are wrong.  In the first, lint is mixing up variables
+and functions (there is a later complaint about the unused function,
+which I left out because it's legitimate).  In the second, lint is
+complaining about name conflicts between names that are supposed
+to be strictly local to their respective files and hence nonconflicting.

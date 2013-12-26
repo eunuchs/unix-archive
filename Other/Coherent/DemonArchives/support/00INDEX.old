@@ -1,0 +1,30 @@
+/usr/spool/uucppublic/support/files from site umunk, last updated at 03/09/95
+
+Files with extension .Z are compressed with *-b16* to reduce disk space
+and transfer times!
+
+If you run COHERENT 3.x:
+To uncompress be sure, that you have increased the size of the ram1 device
+to 640kb (see your COHERENT documentation)! Please be *patient* while
+uncompressing, it needs much more time then files compressed with -b12.
+
+Files with extension .z are compressed with gzip, a port for COHERENT 4.0
+is available in the cohsrc directory.
+
+bm.o.z		   825 Harry C. Pulley's generic bitmap driver, compiled under r70
+cd-kit.tgz	364794 CD-ROM support for Coherent 4.2
+coh42sdb.tar.z	693579 all you need for source code debuging under 4.2
+dialog.z	 30639 create color menus from shell scripts, sources in cohsrc
+emacs.tgz      1083818 GNU emacs 18.59 binary distributions
+gdb49.z		329574 GNU source code debuger 4.9
+ginstall.tgz	 11528 GNU install binary and manual page
+gld2.4.z	 76920 GNU linker 2.4
+gm4.z		 30279 GNU m4 binary
+gmake.z		 53067 GNU make 3.69 binary
+gnubifl.tgz	 97227 GNU bison + flex binaries and manual pages
+gnubin.tgz	414206 GNU awk, bash, m4, install, make, patch, sed binaries + manuals
+gsed.z		 18026 GNU sed binary
+gtar.z		 49302 GNU tar 1.11.2 binary
+gunzip.Z 	 29263 GNU unzip binary
+perl.tgz	407370 complete binary distribution of Perl 4.036
+users.tgz	 38245 tool for user administration, Coherent 4.2

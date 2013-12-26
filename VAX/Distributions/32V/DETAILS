@@ -1,0 +1,34 @@
+32V Tape
+--------
+
+Although 32V isn't strictly a PDP-11 UNIX system, it is a very close
+derivative of 7th Edition, so I thought it would be ok to archive it.
+
+The tape comes from Keith Bostic, and is composed of three images,
+file1, file2 and a tarball now called 32v_usr.tar. I assume that
+all three were originally three separate records on a tape.
+
+The information from Keith says:
+
+	Block size for file1 is 512, block size for file2 is 10240.
+	The first label on the tape:
+
+		BELL LABORATORIES INC
+		UNIX/32V* TIME-SHARING SYSTEM, VERSION 1.0
+		9 TRACK 800 BPI 3 FILES FILE1=232 RECORDS
+		FILE 2=480 RECORDS FILE 3=1202 RECORDS
+		*UNIX IS A TRADEMARK OF BELL LABORATORIES
+		(2/22/80 written in pencil)
+
+	The second label on the tape:
+
+		RESTRICTED RIGHTS
+		USE, DUPLICATION OR DISCLOSURE IS
+		SUBJECT TO RESTRICTIONS STATED IN
+		YOUR CONTRACT WITH WESTERN ELECTRIC
+		COMPANY, INC
+
+I haven't looked at file1 yet; I assume it's a set of bootstrap
+records. file2 is a 32V root filesystem, and a tar equivalent
+(minus some /dev/entries) is in file2.tar.gz. A list of what is in
+/dev/ in dev_files.

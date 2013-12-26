@@ -1,0 +1,12 @@
+Autzoo.1387
+net.bugs.v7
+utcsrgv!utzoo!henry
+Mon Feb 15 00:02:20 1982
+lock(2)
+The V7 lock() call has a major bug, which I heard about at the
+Usenix meeting.  The following should be added to the manual page
+BUGS section:
+
+.PP
+It actually doesn't work, because the scheduler doesn't know about
+it and keeps \fInice\fRing the process when it refuses to swap out.

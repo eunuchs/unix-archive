@@ -1,0 +1,14 @@
+The file full_file_list.gz contains a list of all file that are in tar, cpio
+or zip archives in the Unix Archive. The file has 5 tab-separated columns:
+
+Filename: the file's base name, minus any path in the archive
+Size:	  the file's size in decimal bytes
+Date:	  the file's date in yyyymmdd decimal format
+Path:	  the pathname of the file in the archive
+Archive:  the archive file's name relative to the top of the Unix Archive
+
+At present (Aug 2002), this file is recreated manually, but I will eventually
+update it weekly, and provide a web interface for searching the file if you
+don't wish to download it.
+
+	Warren Toomey

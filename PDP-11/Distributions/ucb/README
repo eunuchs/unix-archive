@@ -1,0 +1,16 @@
+The directories 2.9BSD and 2.11BSD contain these UNIX distributions, and
+were supplied by Steven Schultz. They contain a full distribution, including
+installation tape images.
+
+The remaining gzipped tar files are other 2BSD distributions supplied by
+Keith Bostic, except for spencer_2bsd.tar.gz which came from Henry Spencer.
+They do not contain installation tape images. The 2.9BSD-Patch directory
+contains patches to 2.9BSD dated August 85, and again supplied by Keith Bostic.
+
+Note that Steven Schultz is still maintaining 2.11BSD, fixing bugs and making
+improvements. The patches required to bring this archive version of 2.11BSD
+up to the current patch level can be obtained via anonymous ftp to
+ftp://ftp.to.gd-es.com/pub/2.11BSD/
+
+The 2.9-derivatives directory contains a number of 2.9BSD derivaties, mainly
+for the Pro/350 and Pro/380 series machines, and to add MSCP support to 2.9BSD.

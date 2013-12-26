@@ -1,0 +1,27 @@
+Autzoo.808
+NET.v7bugs,net.v7bugs
+utzoo!henry
+Mon Jul 13 21:59:44 1981
+uucp bugs
+In the distributed V7 uucp, uucp/chkpth.c/rdpth() has three separate bugs:
+
+1. Chaos and madness will ensue if there are more than 15 entries in the
+	USERFILE, because the Upt table has been misdeclared so that its
+	overflow check is against the wrong number.  Fix:  change the
+	"15" in the declaration of Upt (about line 16) to "MAXUSERS".
+
+2. Chaos and madness may ensue if there is no comma in the first field of
+	a USERFILE line.  Fix:  change the line (about line 130)
+		pc = u + strlen(u->us_lname);
+	to
+		pc = us->us_lname + strlen(u->us_lname);
+
+3. Any transfer request from a site with an 8-character (or longer)
+	system name will fail, giving PERMISSION (DENIED).  Unlike
+	all other uucp routines, rdpth is not truncating the system names
+	it reads from USERFILE to 7 characters max length.  Fix:  after
+	the line (about line 131):
+		u->us_mname = pc;
+	add:
+		if (strlen(u->us_mname) > 7)
+			u->us_mname[7] = '\0';

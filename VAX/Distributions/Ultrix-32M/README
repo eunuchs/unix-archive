@@ -1,0 +1,56 @@
+All of this material is Copyright Digital Equipment Corporation
+in the year given.
+
+These are all 400MB RX50 diskette images.  Most contain tar
+archives; a few (as noted) appear not to.  Perhaps the ones
+that aren't are some sort of bootable file system.  The tar
+archives presumably aren't all exactly 400MB; there is probably
+some padding at the end of the diskette images.
+
+The original diskettes are labelled e.g. 1/4 2/4 3/4 4/4.
+They are stored here with two-digit names: 01 02 03 04.
+
+32m-1.0-bin
+	Ultrix-32M V1.0 BIN; 1984
+	2 RX50 images; format unknown
+32m-1.0-sw
+	Ultrix-32M V1.0 D-SOFTWARE; 1984
+	13 RX50 images; tar
+
+32m-1.2-acct
+	Ultrix-32M V1.2 BIN ACCOUNTING; 1985
+	1 RX50 image; tar
+32m-1.2-bin
+	Ultrix-32M V1.2 BIN; 1986
+	4 RX50 images; tar
+	looks like kernel sources only
+32m-1.2-binxx
+	Ultrix-32M V1.2 BIN; 1986
+	1 RX50 image; tar
+	looks like field-service exercisers
+32m-1.2-comm
+	Ultrix-32M V1.2 BIN COMMUNICATIONS; 1985
+	5 RX50 images; tar
+32m-1.2-fort
+	Ultrix-32M V1.2 BIN FORTRAN; 1985
+	1 RX50 image; tar
+32m-1.2-filt
+	Ultrix-32M V1.2 BIN FILTERS; 1985
+	1 RX50 image; tar
+32m-1.2-prog
+	Ultrix-32M V1.2 BIN PROGRAMMER; 1985
+	4 RX50 images; tar
+	RX50 4/4 is mis-labelled EXERCISER but contains what is
+	pretty clearly PROGRAMMER contents (libc_p libplot libtermcap ...)
+32m-1.2-pas
+	Ultrix-32M V1.2 BIN PASCAL; 1985
+	2 RX50 images; tar
+32m-1.2-sccs
+	Ultrix-32M V1.2 BIN SCCS; 1985
+	2 RX50 images; tar
+32m-1.2-writ
+	Ultrix-32M V1.2 BIN WRITERS; 1985
+	2 RX50 images; tar
+decnet-1.1
+	DECNET-Ultrix V1.1 BIN; 1986
+	3 RX50 images; tar

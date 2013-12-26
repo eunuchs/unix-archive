@@ -1,0 +1,657 @@
+From barry@chezmoto.ai.mit.edu Tue Aug  4 08:14:38 1992
+From: barry@chezmoto.ai.mit.edu (Barry Kort)
+Newsgroups: comp.sys.dec.micro
+Subject: Re: reading rainbow disks on a '386 PC
+Date: 2 Aug 92 11:53:41 GMT
+Organization: MicroMuse
+In-reply-to: keithr@garfield.cs.mun.ca's message of 1 Aug 92 01:10:53 GMT
+
+I use the RX50DRVR on my AT which allows my 1.2 MB drive to read RX50
+diskettes.  What this does is to create a new driveletter (F:) which
+spins the HD drive as if it were an RX50 drive.  
+
+RX50DRVR does not know anything about the directory structure on 
+the disks.  If I do 'dir F:' it assumes DOS directory structure,
+which works fine on Rainbow diskettes, since they use the DOS
+directory structure.
+
+To read RT11 formatted diskettes, there is a utility called RT11
+which groks the RT11 file structure.  I have not yet found a similar
+utility which handles the RMS-11 file structure of the PRO 3xx series.
+
+I can use Norton Utilities with RX50DRVR to examine the RX50 diskette
+in the F: drive, but then I am accessing the diskette sector by sector,
+not by logical file.
+
+I haven't explored the new utilities from the gentlemen in the Former
+Soviet Union who have announced some DOS environment tools for
+manipulating RX50 diskettes.
+
+Using RX50DRVR in combination with the RT11 utility program, I can
+low-level format a blank HD diskette as an RX50 diskette, then
+put it in the PRO and do a high-level RMS-11 style Initialization.
+This allows me to create new RX50 diskettes out of plain old unformatted
+or recycled 1.2 MB HD diskettes.
+
+Using Venix on the PRO, I can do a raw image copy of a diskette in one 
+drive to a blank diskette in another drive.  (This kind of copy will fail
+if the target diskette has any bad sectors, since there is no attempt
+to rearrange sectors to detour around any bad blocks.)
+
+Finally, by hooking up the PRO to a Unix or DOS machine via the
+COM port (or to a Unix host via Ethernet/DECnet if you have a DECNA
+card), you can transfer files via any number of techniques, ranging
+>from straight ASCII upload/capture using ordinary terminal emulators,
+Kermit file transfers if you have Kermit on both machines, or by
+DECnet file transfer using NFT or dcp utilities.
+
+None of this is particularly trivial to implement, but the bottom
+line is that there are many ways to pull files off RX50 diskettes
+and transfer them to Unix or DOS machines.
+
+Barry Kort
+
+From cosc16to@menudo.uh.edu Tue Aug  4 08:14:48 1992
+From: cosc16to@menudo.uh.edu (Andy Hakim)
+Newsgroups: comp.sys.dec.micro
+Subject: Re: reading rainbow disks on a '386 PC
+Date: 2 Aug 92 19:45:22 GMT
+Organization: University of Houston
+X-Newsreader: Tin 1.1 PL4
+
+barry@chezmoto.ai.mit.edu (Barry Kort) writes:
+: 
+: Using RX50DRVR in combination with the RT11 utility program, I can
+: low-level format a blank HD diskette as an RX50 diskette, then
+: put it in the PRO and do a high-level RMS-11 style Initialization.
+: This allows me to create new RX50 diskettes out of plain old unformatted
+: or recycled 1.2 MB HD diskettes.
+: 
+: Using Venix on the PRO, I can do a raw image copy of a diskette in one 
+: drive to a blank diskette in another drive.  (This kind of copy will fail
+: if the target diskette has any bad sectors, since there is no attempt
+: to rearrange sectors to detour around any bad blocks.)
+
+ 
+Another method of obtaining a formatted disk for the Pro-3xx, is to
+use an image copy program called Teledisk (shareware) for the PC.  Not only
+does this program allow you to do a disk-to-disk copy, but it can also
+store a disk into a file (on the PC).  This way, it is possible to keep an
+image file of a blank P/OS formatted disk, and then crank out new copies
+easily.
+ 
+In my experience, low density disks (360k) on a high density (1.2m) AT class
+drives seem to work out best.
+ 
+-andy
+
+From lasner@watsun.cc.columbia.edu Tue Aug  4 08:14:56 1992
+From: lasner@watsun.cc.columbia.edu (Charles Lasner)
+Newsgroups: comp.sys.dec.micro
+Subject: Re: reading rainbow disks on a '386 PC
+Date: 3 Aug 92 06:39:56 GMT
+Reply-To: lasner@watsun.cc.columbia.edu (Charles Lasner)
+Organization: Columbia University
+Nntp-Posting-Host: watsun.cc.columbia.edu
+
+In article <1992Aug2.194522.18244@menudo.uh.edu> cosc16to@menudo.uh.edu (Andy Hakim) writes:
+> 
+>Another method of obtaining a formatted disk for the Pro-3xx, is to
+>use an image copy program called Teledisk (shareware) for the PC.  Not only
+>does this program allow you to do a disk-to-disk copy, but it can also
+>store a disk into a file (on the PC).  This way, it is possible to keep an
+>image file of a blank P/OS formatted disk, and then crank out new copies
+>easily.
+
+Where can I obtain Teledisk?  Does it require any low-level preformatting
+of the media on the target?
+
+IF you use DR-DOS and RAINDOS (but not RX50DRVR) you can use DISKCOPY and
+DISKCOMP to copy RX50 MS-DOS diskettes to each other, or to files on the
+hard disk:
+
+DISKCOPY E: C:\RX50DISK.IMG
+
+DISKCOPY E: E:
+
+DISKCOPY C:\RX50DISK.IMG E:
+
+DISKCOMP E: C:\RX50DISK.IMG
+
+When writing the file or disk image onto a target disk, the diskette has to
+be already formatted as a low-level RX50, yet there are no high-level
+considerations, so non-DOS RX50's can be directly used as targets!
+
+Of course input diskettes have to already be MS-DOS RX50 DECmate II/Rainbow
+diskettes because of DOS restrictions.
+
+Note that DOS 5 cannot do anything but "standard" disk sizes, and can't
+copy disk images to files at all.
+
+> 
+>In my experience, low density disks (360k) on a high density (1.2m) AT class
+>drives seem to work out best.
+
+And without hub rings is better.  If you suspect that a disk is actually
+high-density when it has no hub rings, there is a simple test:
+
+Just format it as a normal 1.2 Meg disk.  a low-density diskette will get
+hundreds of Kbytes in bad sectors, while a HD diskette will get little or
+no errors, thus proving it unsuitable for RX50 purposes.  Most disks with
+hub rings are already clearly low-density, but after you remove them, this
+will prove a quick check for actual diskette formulation.
+
+cjl
+
+From cosc16to@menudo.uh.edu Tue Aug  4 08:15:02 1992
+From: cosc16to@menudo.uh.edu (Andy Hakim)
+Newsgroups: comp.sys.dec.micro
+Subject: Re: reading rainbow disks on a '386 PC
+Date: 3 Aug 92 16:42:35 GMT
+Organization: University of Houston
+X-Newsreader: Tin 1.1 PL4
+
+lasner@watsun.cc.columbia.edu (Charles Lasner) writes:
+: 
+: Where can I obtain Teledisk?  Does it require any low-level preformatting
+: of the media on the target?
+: 
+I checked the ftp site "wuarchive.wustle.edu", it is in directory 
+"mirrors2/msdos/dskutl" as file "teled212.zip".
+
+Nope, this one does not require any low level preformatting.  It's possible
+to stick in a brand new ds/dd and let it go.  Incidently, teledisk is
+made by the same people, Sydex, who make 22disk.
+
+-andy
+
+From cosc16to@menudo.uh.edu Tue Aug  4 08:15:11 1992
+From: cosc16to@menudo.uh.edu (Andy Hakim)
+Newsgroups: comp.sys.dec.micro
+Subject: Re: reading rainbow disks on a '386 PC
+Date: 3 Aug 92 16:54:30 GMT
+Organization: University of Houston
+X-Newsreader: Tin 1.1 PL4
+
+: I checked the ftp site "wuarchive.wustle.edu", it is in directory 
+: "mirrors2/msdos/dskutl" as file "teled212.zip".
+
+Correction, it's spelled "wuarchive.wustl.edu" with a missing 'e'.
+ 
+Host nic.switch.ch   (130.59.1.40)
+    Location: /mirror/msdos/dskutl
+      FILE      rw-rw-r--     93805  Dec 23  1990   teled212.zip
+ 
+Host ftp.uu.net   (137.39.1.9)
+    Location: /systems/msdos/simtel20/dskutl
+      FILE      rw-r--r--     93805  Dec 22  1990   teled212.zip
+ 
+Host wuarchive.wustl.edu   (128.252.135.4)
+    Location: /mirrors3/garbo.uwasa.fi/diskutil
+      FILE      rw-rw-r--     94075  Dec 11  1990   teled212.zip
+    Location: /mirrors/msdos/dskutl
+      FILE      rw-r--r--     93805  Dec 23  1990   teled212.zip
+ 
+archie>
+
+From lasner@watsun.cc.columbia.edu Tue Aug  4 08:15:17 1992
+From: lasner@watsun.cc.columbia.edu (Charles Lasner)
+Newsgroups: comp.sys.dec.micro
+Subject: Re: reading rainbow disks on a '386 PC
+Date: 4 Aug 92 05:55:11 GMT
+Reply-To: lasner@watsun.cc.columbia.edu (Charles Lasner)
+Organization: Columbia University
+Nntp-Posting-Host: watsun.cc.columbia.edu
+
+In article <1992Aug3.164235.1187@menudo.uh.edu> cosc16to@menudo.uh.edu (Andy Hakim) writes:
+>lasner@watsun.cc.columbia.edu (Charles Lasner) writes:
+>: 
+>: Where can I obtain Teledisk?  Does it require any low-level preformatting
+>: of the media on the target?
+>: 
+>I checked the ftp site "wuarchive.wustle.edu", it is in directory 
+>"mirrors2/msdos/dskutl" as file "teled212.zip".
+>
+>Nope, this one does not require any low level preformatting.  It's possible
+>to stick in a brand new ds/dd and let it go.  Incidently, teledisk is
+>made by the same people, Sydex, who make 22disk.
+>
+>-andy
+
+Sydex also makes RAINDOS.
+
+I suspect that teledisk will only make sector-compatible descendents though,
+so if I have a specially layed-out version of a diskette (such as 2:1
+interleave or staggered, etc.) the descendent will lose that aspect of
+optimization, and will instead become "vanilla" RX50 format in the
+case of RX50 diskette.
+
+The point is that certain software, especially for DECmates not specifically
+geared to CP/M-80, and *any* bootable DECmate diskette (including CP/M-80) the
+format used in stock RX50 layout is non-optimal.  There are different 
+requirements for different specific applications, but just as on PC's, the
+use of non-interleaved non-staggered disks can be demonstrated to be
+inferior to a variant in terms of sector ordering at the low format level.
+
+Rainbow MS-DOS disks have an implied software interleave of 2:1 for the
+FAT area, and 1:1 in the rest; this is in software, so the standard disk
+layout should be maintained, except that the *stagger* is not taken into
+account.  Thus, like a PC, Rainbow MS-DOS disks should be formatted with a
+stagger of 2 per track.  Thus track 1 is layed out 1,2,3,4,5,6,7,8,9,10 and
+track 2 is layed out 9,10,1,2,3,4,5,6,7,8.  When the disk seeks from track 1
+to track 2, it will thus miss 9 and 10, but immediately find 1.  Were the
+stagger not there, it would miss 1 and 2, and reject 3,4,5,6,7,8,9 while
+waiting for 1 to come around again.  Thus staggering relieves rotational
+latency.
+
+For the DECmate, there are two additional problems:
+
+All bootable diskettes require the logically sequential reading of tracks
+78, 79 in the order 1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10.  But the RX
+interface of the DECmate can't perform 1:1 interleave ever, so this is
+anti-optimal not only in stagger but more importantly in interleave.  Thus, 
+this area of the disk should be formatted with an interleave of 2:1 as well
+as a stagger of 2.  Thus the disk is layed out:
+
+track 78: 1,6,2,7,3,8,4,9,5,10
+track 79: 5,10,1,6,2,7,3,8,4,9
+
+This restriction is based on the ROM routines that read in this area in linear
+order.  This is mostly why all DECmates take so long to boot up!  Changing to
+a better sector order will chop seconds out of the boot time.
+
+Further, all systems other than CP/M-80 require some form of help, mostly
+applying the stagger that helps the Rainbow as well (again other than CP/M).
+For DECmate MS-DOS, tracks 0-3 should be in 1-1 interleave because the software
+already maps the disk in 2:1 usage.  tracks 4-79 should be formatted 2:1
+interleave to help out the RX interface when the Rainbow-optimal ordering
+is invoked (similar to the DECmate ROM access, and just as inefficient on
+a DECmate).
+
+OS/278 does a software 2:1 interleave, so the only help needed is a
+disk-wide stagger factor of 2.
+
+Note that RT-11 and all other -11-oriented disks should use stock format only
+because this superior software maps all sectors to include both the 2-1
+interleave and stagger of 2 already.
+
+So, if Teledisk is a *really* good utility, it won't disturb the format's
+stagger and interleave as it copies the disks!
+
+cjl
+
+From lasner@watsun.cc.columbia.edu Tue Aug  4 08:15:23 1992
+From: lasner@watsun.cc.columbia.edu (Charles Lasner)
+Newsgroups: comp.sys.dec.micro
+Subject: Re: reading rainbow disks on a '386 PC
+Date: 3 Aug 92 05:39:27 GMT
+Reply-To: lasner@watsun.cc.columbia.edu (Charles Lasner)
+Organization: Columbia University
+Nntp-Posting-Host: watsun.cc.columbia.edu
+
+In article <BARRY.92Aug2075341@chezmoto.ai.mit.edu> barry@chezmoto.ai.mit.edu (Barry Kort) writes:
+>I use the RX50DRVR on my AT which allows my 1.2 MB drive to read RX50
+>diskettes.  What this does is to create a new driveletter (F:) which
+>spins the HD drive as if it were an RX50 drive.  
+
+RX50DRVR, like RAINDOS, creates a new logical drive past your last existent
+drive, so it's F: for you because you apparently have an A: through E: before
+the driver gets loaded in CONFIG.SYS.
+
+>
+>RX50DRVR does not know anything about the directory structure on 
+>the disks.  If I do 'dir F:' it assumes DOS directory structure,
+>which works fine on Rainbow diskettes, since they use the DOS
+>directory structure.
+
+That's not quite true, since the disk organization has to be DOS as implemented
+on DECmate II MSDOS/Rainbow MS-DOS only.  It is true only in the sense that
+you can make your own BIOS calls to read the disks yourself without caring
+about the significence.  But that's no different from doing so with any
+floppy on a PC.
+
+>
+>To read RT11 formatted diskettes, there is a utility called RT11
+>which groks the RT11 file structure.  I have not yet found a similar
+>utility which handles the RMS-11 file structure of the PRO 3xx series.
+
+Where can I get this RT11 utility?  It sounds useful.  Does it specifically
+require/recognize the RX50DRVR or does it merely work in an innocuous way
+with the same drive letter?  (Would it work also with A:? or must it have
+RX50DRVR present.  If so, would it work with RAINDOS as an alternative?)
+
+>
+>I can use Norton Utilities with RX50DRVR to examine the RX50 diskette
+>in the F: drive, but then I am accessing the diskette sector by sector,
+>not by logical file.
+>
+>I haven't explored the new utilities from the gentlemen in the Former
+>Soviet Union who have announced some DOS environment tools for
+>manipulating RX50 diskettes.
+
+Re the Soviet-originating files:
+
+The files come with a piece of shareware originating in Italy that intercepts
+DOS's calls for formatting commands, so that "odd" sizes, such as using:
+FORMAT A: /T:80 /N:10 are now legal.  The result is a double-sided disk that
+is quite suitably low-level formatted for RX50, but the high-level is PC
+compatible, *not* DECmate/Rainbow's idea of MS-DOS, and specifically must be
+used on a "normal" drive and *not* with RX50DRVR.  All media indicators are
+stock PC-type, not RX50.  However, since the low-level is now correct, and
+errors are recorded in a way that FORMAT indicated when it finished, and can
+be re-confirmed with CHKDSK, etc., the media can be determined to be error-
+free hopefully.  If so, then the companion program RX50INIT that comes with
+RX50DRVR can be used to initialize the directory so DECmate/Rainbow MS-DOS
+likes the disk, and of course the RX50DRVR-controlled logical device such as
+F: in your example.  Note also that RX50INIT can be used with RAINDOS as well.
+Also, RX50INIT requires ANSI.SYS be loaded purely for cosmetic reasons.
+RX50DRVR and RX50INIT were designed for DOS 3.3 usage.  They don't support the
+extensions to DOS brought into versions 4 and 5, so there are some problems.
+RX50INIT fails totally in those two systems, and CHKDSK can't work there
+either.  With some adjustment to the BUFFERS= statement in CONFIG.SYS, they
+can be made to work for read/write purposes under DOS 4 or 5.  
+
+
+When used with DR-DOS 6.0, all RX50DRVR and RX50INIT functions work fine.
+
+
+>
+>Using RX50DRVR in combination with the RT11 utility program, I can
+>low-level format a blank HD diskette as an RX50 diskette, then
+>put it in the PRO and do a high-level RMS-11 style Initialization.
+>This allows me to create new RX50 diskettes out of plain old unformatted
+>or recycled 1.2 MB HD diskettes.
+
+Just a word about using HD media:
+
+You can't reliably use HD media on an actual RX50, because the coercivity
+is too far off in HD media.  It was designed for the higher-frequency
+recording of the "real" 1.2 Meg format (500 KHz) and not the 250 KHz recording
+rate of the RX50, which is actually the same as good 'ol DS/DD media (360K
+kid of media).  Some revisions of RX50 drive in comination with certain RX
+controllers in some DEC machins fare better than others, but it can be
+demonstrated that a lot of combinations don't particularly "like" HD
+media.
+
+The designated media for RX50 is Maxell MD1DD-RX50 or equivalent, which is
+what used to be called "quad" media.  This is well-honed low-density media,
+so it is rated for use on 96 TPI (80 track) drives, not just 48 TPI (40 track)
+drives as is usual.  Note that MD2D is not MD2DD.  (The 2 just means two-sided
+which for all intents and purposes today can be ignored; virtuall *all* media
+is actually made double-sided :-).)  The DD means 80-track support, but since
+most media are made well-honed, most cheap disks can support 80 tracks anyway.
+These disks will *not* cause I/O errors on any RX50!  However, long-term usage
+requires the hub rings be removed completely (use alcohol to get the sticky
+stuff off, or ask your supplier for no-hub disks!).  Failing to remove
+hub rings means eventually the disks will get unreliable sooner than they
+ought to due to registration problems.  All 96 TPI disks have this problem.
+Note that MD2HD and MD1DD don't have hub rings!  It is rumored that there is
+a "premium" line of diskettes from Fuji apart from their standard line of
+inexpensive diskettes that has a specially reinforced hub area, that isn't
+a hub ring per se.  If the same mechanism is used in both HD and DD media, 
+then the DD type would be the best thing today to use with impunity for
+RX50.  Clearly the MD1DD or MD2DD or MD1DD or the 3M equivalents are too
+expensive, considering that what we want are the cheapest types of diskettes
+with the hub rings never added.  (We don't want to pay more for less!)
+
+Re RT-11 utility:
+
+I don't know anything about the RT11 utility program, but RX50DRVR cannot
+format disks; the code lacks support for the FORMAT command, and also some
+calls needed by both CHKDSK and FORMAT.  Attempts to use either on DOS 4
+or 5 will get error messages.  Even on 3.3, where CHKDSK is more "forgiving"
+you still get the message about "format not supported on device" when
+using RX50DRVR.  So, if your claim for formatting is true, the RT11 utility
+must contain low-level formatting code of its own, and perhaps only needs
+RX50DRVR to locate the proper device?
+
+RAINDOS is a share-ware mostly superset of RX50DRVR, and it totally supports
+CHKDSK and FORMAT in DOS 4 and 5.  It works fine with RX50INIT (assuming that
+RX50INIT can work!) and suffers from only two known problems:
+
+1)	Should you specify a format command with the FORMAT F: command,
+and the O/S is DR-DOS 6, then if it really does attempt a low-level format,
+it gets a cryptic error message and fails.  Note that MS-DOS 5 and DR-DOS 6
+will always attempt a "quick" format if possible, unless over-ridden.  This
+case of a quick format doesn't fail, but also isn't formatting!  Just 
+rewriting a cleaned-up high-level format directory initialize.
+
+2)	It is sometimes strangely slow, as compared to RX50DRVR where both
+could work.  When using Norton 4.5's DT program, RX50DRVR handles the
+disk at normal speed, and allows DT to mark bad clusters (if any) quite
+nicely.  When RAINDOS is used, it causes many recalibrates for unknown
+reasons.  In some cases, the sloth isn't that noticeable, but this is a
+sore point usage.
+
+Otherwise, RAINDOS is a total replacement for RX50DRVR, or so it would seem.
+Norton NU treats RX50DRVR diskettes and RAINDOS diskettes equally since it
+does one-sector I/O.
+
+>
+>Using Venix on the PRO, I can do a raw image copy of a diskette in one 
+>drive to a blank diskette in another drive.  (This kind of copy will fail
+>if the target diskette has any bad sectors, since there is no attempt
+>to rearrange sectors to detour around any bad blocks.)
+>
+>Finally, by hooking up the PRO to a Unix or DOS machine via the
+>COM port (or to a Unix host via Ethernet/DECnet if you have a DECNA
+>card), you can transfer files via any number of techniques, ranging
+>from straight ASCII upload/capture using ordinary terminal emulators,
+>Kermit file transfers if you have Kermit on both machines, or by
+>DECnet file transfer using NFT or dcp utilities.
+>
+>None of this is particularly trivial to implement, but the bottom
+>line is that there are many ways to pull files off RX50 diskettes
+>and transfer them to Unix or DOS machines.
+>
+>Barry Kort
+
+If the Soviet files prove to work, and apparently requiring the Italian
+TSR shareware program, we can probably make Files-11 RX50 diskettes as well.
+I have just received these programs and will be evaluating them when feasible.
+I am still working with the accompanying Italian shareware which has some
+interesting "generic" features of its own with respect to the entire RX50
+issue.  I suspect that its presence enhances any of these utilities, although
+it's possible redundant and perhaps extraneous to some of the utilities.
+
+In any case, there are many ways to get files moved around.
+
+Another excellent package is 22DISK from Sydex, the same shareware author
+as RAINDOS.  This package low-level formats RX50's in either DECmate CP/M-80
+or Rainbow CP/M-80/86 format.  (They are similar, but not identical, although
+they can read each other's disks no sweat; it's a matter of interleave, etc.
+and a throughput issue, not a format per se issue.)  It then high-level
+formats the disks for CP/M usage.  So, its a good place to do the low-level
+formatting required for all of these other utilities.  For example, on
+DR-DOS 6, you first run 22DISK to format the disk, then use RX50INIT to get
+an RX50 MS-DOS DECmate/Rainbow high-level structure, and then can use
+RAINDOS to transfer files, run CHKDSK, and do quick-formats with FORMAT /Q,
+etc.  Notice this avoids all of the Raindos/DR-DOS interaction :-).
+
+22DISK can get directory listings of CP/M disks, and can transfer files
+to/from MS-DOS from/to the designated CP/M diskette.  It supports literally
+hundreds of CP/M formats, which implies many low and high-level support
+variants.  This program is highly reminiscent of the former Rainbow, and
+later PC-based "Media Master" program, but is for PC/MS-DOS only, and
+requires HD drives for the RX50 formats.
+
+I believe there is an obscure PRO option for a CP/M-80 board, so this might
+be yet another way to get files in/out of a PRO.
+
+So, like cats, there are many ways to "skin" an RX50 :-).
+
+cjl
+
+From lasner@watsun.cc.columbia.edu Tue Aug  4 08:15:29 1992
+From: lasner@watsun.cc.columbia.edu (Charles Lasner)
+Newsgroups: comp.sys.dec.micro
+Subject: Good report on Teledisk.
+Date: 4 Aug 92 07:27:25 GMT
+Reply-To: lasner@watsun.cc.columbia.edu (Charles Lasner)
+Organization: Columbia University
+Nntp-Posting-Host: watsun.cc.columbia.edu
+
+I have down-loaded Sydex's teledisk, and have found it to exceed my
+expectations in some useful ways.
+
+For starters, all of my attentions are based on the problems of distributing
+RX50 diskettes not necessarily in stock format, and not yet having any
+satisfactory way of creating the necessary disks.
+
+Background:
+
+There are several desirable variant formats for RX50 that have been discussed
+elsewhere.  The only known program to create them is FDFORMAT for PC's.  While
+this freeware program is generally quite good, it has a few crucial bugs that
+make it unsuitable for RX50 usage.  It is conceivable that this will be
+solved by using some additional/non-standard parameters to FDFORMAT to create
+usable disks, but in any case, the use of all obvious parameters yields disks
+that are flakey on some RX50's, and downright unreadable on others.  In
+addition, these disks are so messed up that a DECmate can't even WRITE on the
+disks and read back what it just wrote reliably!  Yet, this isn't a media
+problem because it can be demonstrated that the problem disappears by
+low-level format of the same diskette with either Sydex's RAINDOS or 22DISK
+packages.  (Note that *some* RX50 systems using some newer-designed controllers
+and/or higher revision drives and/or RX50-compatibility modes on different
+drives have little or no problems with these FDFORMATted diskettes; indeed
+the diskettes are fine on a PC; there's some low-level detail that's incorrect
+about FDFORMATted diskettes.  Some parameter is being set to a PC-acceptable
+value that doesn't center on RX50's requirements.  Perhaps this will be
+uncovered at a later time obviating this entire discussion.  Until such a 
+time, FDFORMAT cannot be used to create RX50 diskettes that are readable on
+*all* RX50 systems.  FDFORMAT also has a few other operational bugs, such as
+incorrect recognition of certain I/O errors, etc., but these are exception
+cases, and for all other PC purposes, it serves quite admirably.)
+
+The reason why FDFORMAT is desirable is that it is the only known program
+capable of creating the variant RX50 formats where the format must be
+done with interleave and stagger factors, especially if the disk must have
+"zones" where the format changes.  For example, to create a disk best suited
+for DECmate OS/278 usage, the following *TWO* commands should be given:
+
+FDFORMAT A: /T:80 /N:10 /1 /Y:2 /I:2
+FDFORMAT A: /T:78 /N:10 /1 /Y:2
+
+The first command creates a disk with an interleave of 2:1 and a stagger of
+2 throughout.  The second command changes tracks 0-77 to have 1:1 interleave
+and a stagger of 2 throughout.
+
+When OS/278 is copied onto such a diskette, the "slushware" tracks are read
+in much faster than on standard RX50 diskettes, and all access to the rest of
+the diskette is speeded somewhat because of the stagger factor which overcomes
+the software's lack of stagger mapping.  But since the software does map the
+sector order into a 2:1 interleave, the hardware order must stay in 1:1
+interleave sequence.
+
+This would be a nice disk to use for the intended purpose, but many DECmates
+will be unable to read this diskette.  Literally, it will get a CRC error
+on *every* sector!  Furthermore, if you attempt to write an image of the
+software onto this diskette, it will get a CRC error on *every* sector even
+though it just wrote the disk out!
+
+Enter Teledisk to the rescue!
+
+When I read Teledisk's documentation, I had doubts that it could solve
+this problem, because I noticed it could be quite "smart", perhaps *too*
+smart!  It claims that it can get around certain copy-protection methods
+by virtue of how it operates, so I figured that it would likely copy the
+problems of FDFORMAT as well :-(.  Or, alternatively, it might guess that
+the diskette was an RX50 and proceed to format it in a stock manner, thus
+destroying the optimization applied by using the two FDFORMAT commands instead
+of just using RAINDOS or 22DISK to create stock low-level RX50 diskettes.
+
+Well, I was wrong on both counts!
+
+Teledisk understands how to maintain sector order, and pointed out the
+change of interleave from 1:1 to 2:1 at track 78, so that problem is
+hurdled.
+
+Teledisk understands that these sectors should be formatted with apparently
+the same parameters as the formatting routines in 22DISK and RAINDOS, so the
+resultant disk *is* readable on DECmates!  Of course, this is *not* an
+"exact" copy, but rather it is a "better" copy.  Apparently Teledisk only
+writes sectors in a "sane" format, and the copy-protection they refer to
+is the class of "funny" sector ordering, size, or count, not any lower-level
+details.  Apparently the Sydex code at work in RAINDOS and 22DISK is also
+within Teledisk, thus since Teledisk recognizes the disk as a 10-sector/track
+512 bytes/sector disk, it writes it as would RAINDOS, etc., except Teledisk
+is sensitive to sector ordering unlike the other Sydex programs, etc.
+
+Thus, the descendent disk is actually *better* than the original.  I can now
+therefore distribute diskettes in the intended format for working-copy usage
+of the best effort of each diskette :-).
+
+Additionally, if I modify distribution diskettes to be in their intended
+format instead of their original stock format (virtually all diskettes that
+need to be distributed are in stock RX50 format, because the need to create
+optimal diskette layout is generally newer than the software; indeed, this
+entire effort is to distribute software that performs *better* than the
+original!), then the master disks should be copied with Teledisk to create
+perfect copies in one step.
+
+There are additional advantages:
+
+Teledisk can also create an MS-DOS file that is the image of the diskette
+in either a rudimentary-compressed or advanced-compressed form.  These files
+can be transmitted down the net and then reconstructed on PC-AT's for use
+on RX50 targets.  Since they are compressed, this minimizes the overhead 
+as well, etc.
+
+So, Teledisk has made my day :-).
+
+cjl
+
+From barry@chezmoto.ai.mit.edu Wed Aug  5 10:12:06 1992
+From: barry@chezmoto.ai.mit.edu (Barry Kort)
+Newsgroups: comp.sys.dec.micro
+Subject: Re: reading rainbow disks on a '386 PC
+Date: 4 Aug 92 12:13:30 GMT
+Organization: MicroMuse
+In-reply-to: lasner@watsun.cc.columbia.edu's message of 3 Aug 92 05:39:27 GMT
+
+Charles,
+
+You can retreive rt11.zip by anonymous ftp from
+newton.canterbury.ac.nz, 132.181.40.1, in the pub/local directory.
+
+Barry
+
+From lasner@watsun.cc.columbia.edu Wed Aug  5 10:12:14 1992
+From: lasner@watsun.cc.columbia.edu (Charles Lasner)
+Newsgroups: comp.sys.dec.micro
+Subject: Re: reading rainbow disks on a '386 PC
+Date: 4 Aug 92 18:41:23 GMT
+Reply-To: lasner@watsun.cc.columbia.edu (Charles Lasner)
+Organization: Columbia University
+Nntp-Posting-Host: watsun.cc.columbia.edu
+
+In article <BARRY.92Aug4081330@chezmoto.ai.mit.edu> 
+arry@chezmoto.ai.mit.edu (Barry Kort) writes:
+
+>Charles,
+
+>You can retreive rt11.zip by anonymous ftp from
+>newton.canterbury.ac.nz, 132.181.40.1, in the pub/local directory.
+
+>Barry
+
+Got it.  It looks nice.  It produces what appears to be a nice RT-11-like
+environment on a PC for file transfers, etc., but is inferior to Teledisk
+for the purpose of making a compacted image of an entire disk as a DOS
+file.  Since this is a frill, it can be completely overlooked :-).
+
+And yes, it does Format DD-type media to stock RX50 as advertised.  I will
+only take you to task on the minor point: it doesn't require RX50DRVR at all.
+There was a little confusion as to whether they were tied together, which is
+not the case.
+
+This program is written in Turbo Pascal.  It would seem that someone who
+can understand enough TP and the quirky code to call BIOS routines should
+incorporate some of RT11.PAS into FDFORMAT (also a TP-based item) since
+the format routine works fine while FDFORMAT does not for RX50 as discussed
+elsewhere.
+
+Overall a nice program.
+
+cjl
+

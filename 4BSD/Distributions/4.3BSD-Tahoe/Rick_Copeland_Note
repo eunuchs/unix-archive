@@ -1,0 +1,29 @@
+This tape was provided to me (Rick Copeland) for transcription
+by Mr. Kirk McKusick.  The tape is of the 1/2", 9 track magentic
+media type. The following labels and nomenclature appear on the
+physical tape reel:
+
+	Back of tape:
+	DIST	4.3BSD-tahoe
+	25 July 88  6250 bpi
+
+	Front of tape:
+	(No nomenclature)
+
+There was no file listings on the physical reel of this tape. I
+have made no attempt to ascertain the file names from reading
+the tape other than what has been provided below. The following
+list did not appear on the tape and is a record of what I 
+observed as I copied it to disk.  
+
+1) boot		bs=1024		750 records	768,000 bytes
+2) miniroot	bs=10240	204 records   2,088,960 bytes
+3) rootfs	bs=10240	577 records   5,908,480 bytes
+4) unknown1	bs=20480       1488 records  30,474,240 bytes	
+5) unknown2	bs=20480	  7 records	143,360 bytes
+6) unknown3	bs=20480	405 records   8,294,400 bytes
+7) unknown4	bs=20480       1577 records  32,296,960 bytes
+
+File 3 is a dump of the root file system, files 4, 5, 6, and 7 
+are tar archives.
+

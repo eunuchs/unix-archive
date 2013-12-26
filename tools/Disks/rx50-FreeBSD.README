@@ -1,0 +1,57 @@
+This tarball contains a dumb hack to read and write DEC RX50 diskettes
+under FreeBSD. It consists of two pieces, a kernel patch and a set of
+filters. The kernel patch, which should be applied to SYS/isa/fd.c, adds
+the RX50 physical format to the FreeBSD floppy driver. The patch is based
+on FreeBSD 4.0-STABLE, your mileage may vary. However, it is conceptually
+simple and should be easy enough to apply by hand. Note that this format
+is identical to the 5.25" 800K format, but with only one side.
+
+Also in the kernel/ directory is a patch for MAKEDEV which adds device
+nodes for the new format, with the name fd[n].rx50. Note that using this
+node with a drive that is not a high-density 5.25" floppy results in a
+"device not configured" error.
+
+The filters/ directory contains two filters, rx50in and rx50out, which
+deal with the logical sector interleave performed by the RQDX controllers
+on the PDP-11 and VAX; ideally, this would be handled in the driver; like
+I said, this is a dumb hack. Note that the filters read or write the
+_entire_ disk; short input results in null-padding. This shouldn't be a
+big deal, but it does result in a bit of extra disk I/O. C'est la vie.
+They use standard input and standard output, and no output (except for an
+error message on standard error) is created if the input exceeds the
+capacity of an RX50. Also keep in mind that non-PDP, non-VAX
+implementations of the RX50 used different layouts, so the filters are not
+appropriate, for example, for DECmate or DEC Rainbow disks. The kernel
+patch is, however, and this is the sole advantage of doing the interleave
+in userland.
+
+EXAMPLES:
+
+Create a tar archive of 'directory' on an RX50:
+  tar cf- directory/ | rx50out >/dev/fd1.rx50
+
+Extract a tar archive from an RX50:
+  rx50in </dev/fd1.rx50 | tar xf-
+
+Finally, you can try to format a disk as an RX50 with
+  fdformat /dev/fd1.rx50
+
+I say 'try to format' because the diskettes I format in this fashion are
+prone to read/write errors on a real RX50. This is probably due to head
+alignment issues, but it could, of course, be something else. I've had no
+problems reading and writing disks formatted in other ways (by DEC or
+using custom hardware, in my case a Shaffstall 6000 media conversion unit)
+Bear in mind that RX50s, though they are written at 96tpi and thus require
+a high-density drive to read and write on a PC, are _not_ a high-density
+format, and using HD media will likely result in _lots_ of errors. I use
+96tpi double-density media myself, but good luck finding it. The best
+substitute that is commonly available seems to be standard 360K
+double-density media without hub rings. Once again, your mileage may vary.
+
+Please send any questions or comments, bugfixes or patches to
+jasomill@shaffstall.com; once again, this is a dumb hack, written in an
+evening, full of sound and fury, signifying nothing. The code is ugly, but
+the results, I'm happy to report, are not.
+
+-Jason T. Miller
+ June 9, 2000

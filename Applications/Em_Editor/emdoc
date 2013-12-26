@@ -1,0 +1,120 @@
+     How to Generate 'em'
+
+
+     gfc 17
+
+      Thu Apr 29 1976
+
+
+                          How to Generate the QMC Unix Editor 'em'
+                          ---------------------------------------
+
+
+          Author:                 George Coulouris
+
+                                Computer Systems Laboratory
+               Queen Mary College  Mile End Road  London E1 4NS (01-980 4811 x751)
+
+
+
+          Summary
+
+               This is the system documentation for 'em'. It should  be  used
+               in  conjunction  with  the  manual  section supplied with 'em'
+               (EM(I), 3/22/76).  A  tutorial  introduction  to  'em'  is  in
+               preparation.
+
+
+
+
+          Files
+
+               There are five relevant files:
+
+                       emdoc           - the text of this document
+
+                       em.n            - the text of the manual section
+                                               on 'em' in 'nroff' format
+
+                       emhelp          - a file containing a summary of
+                                               editor commands, used in
+                                               the 'help' command
+
+                       em1.c           - the first of the two C  source  seg-
+               ments
+
+                       em2.c           - the second and last segment
+
+
+          Generation
+
+               To compile 'em':
+
+                       cc -n -s em1.c em2.c
+
+               leaves a suitable object program in 'a.out'. Just move  it  to
+               '/bin/em':
+
+                       mv a.out /bin/em
+
+                                                                          1
+     How to Generate 'em'
+
+
+               to produce a command 'em'. If you also want a version with all
+               of the 'em' features except prompting, you can make a link  to
+               the  same  object  program with any name not having 'm' as its
+               second character. We use the 'ed' name:
+
+                       ln /bin/em /bin/ed
+
+               If you want the editor to be  permanently  held  in  the  disc
+               swapping  area (and therefore entered more quickly in response
+               to the 'em' command) change the mode:
+
+                       chmod 1755 /bin/em
+
+          Frills
+
+               If  you want the 'h' command to provide a screen full of help,
+               put the text for the help in /usr/lib/emhelp. You can use  the
+               file supplied, or make your own.
+
+               There is a rather pleasing feature  available  when  you  type
+               '^V' in the 'o' command that enables the spelling of a word to
+               be given from a lexicon file once the first few letters of the
+               word  have  been typed.  This is implemented through a command
+               in our Unix system:
+
+                       spell arg
+
+               that takes an argument containing  an  alphabetic  string  and
+               outputs  all  of  the  words in a lexicon file that begin with
+               that string.  Our version of the spell program is a crude (but
+               fast) affair using 26 files. There must be a better way, so if
+               you want the '^V' facility we suggest you implement  your  own
+               spell  command.  'em' will use it if it is there, otherwise it
+               will display a suitable message.
+
+
+                              ---------------/----------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                          2

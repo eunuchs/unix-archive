@@ -1,0 +1,34 @@
+Aittvax.150
+net.v7-bugs,net.4bsd-bugs
+utzoo!decvax!ittvax!swatt
+Wed Dec  2 12:03:34 1981
+fix to fix to uucp bug
+
+This is a correction to ittvax.149, which reported a fix to UUCP. I
+confess Art Feather was the one who made the patch and tested it; I
+reported the bug and the fix without having recompiled and tested (for
+shame, for shame).  As a result, an editing error leaving in an extra
+')' in my copy of the change never got caught.
+
+I won't go through the executable patch procedure again but in
+anlwrk.c, on or around line 67 which in the distribution reads:
+
+ 	if (listp == NULL || *listp == NULL || listp > (list + LLEN)
+
+should read:
+
+ 	if (listp == NULL || listp >= &list[LLEN] || *listp == NULL
+
+instead of:
+
+ 	if (listp == NULL || *listp == NULL || listp >= &list[LLEN])
+
+as the earlier news article stated.
+
+Thanks to duke!trt who suggested the evaluation order change and
+wolfvax!root who pointed out the parenthesis error.  The present
+evaluation order is ``safe'' but certainly not clear thinking.
+
+Sorry for the earlier bum steer.
+
+	- Alan S. Watt (decvax!ittvax!swatt)

@@ -1,0 +1,16 @@
+Autzoo.1251
+net.bugs.v7
+utzoo!henry
+Mon Jan  4 20:27:44 1982
+uucp seqno wrapping
+A few months ago I described a serious problem in uucp:  its four-digit
+sequence number can wrap around in a few days on a busy system, which
+leads to all kinds of ungood things for sites which infrequently poll
+a busy site.  A possible minimum-effort solution has occurred to me:
+anybody have any idea how hard it would be to mung uucp to use a larger
+alphabet than just [0-9] for its sequence numbers?  For example, if
+the alphabet was [0-9a-z], this would change decvax's current wraparound
+time of 3 days to roughly a year:  much more reasonable.  A quick
+glance at the code suggests it's not trivial but not hard;  any uucp
+hackers care to comment?  I seem to recall at least one site was working
+on an improved uucp -- how about incorporating this in your efforts?

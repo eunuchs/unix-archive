@@ -1,0 +1,16 @@
+mtboot 1
+mtboot 1
+boot 1
+* 1
+cat 1
+* 1
+rkcontents 1
+* 1
+mkfs 1
+* 1
+icheck 1
+* 1
+restor 1
+* 1
+/usr/local/src/v7shortroot 20
+* 1

@@ -1,0 +1,20 @@
+Asdcarl.155
+net.bugs.v7
+utcsrgv!utzoo!decvax!ucbvax!ucsfcgl!sdcarl!rusty
+Wed Feb 17 09:28:59 1982
+/bin/sh bug
+With sh if you say
+
+	$ var=value command
+
+then "var" is temporarily exported into the environment
+for the execution of "command". But you cannot say
+
+	$ exec var=value command
+
+because the silly shell tries to execute "var=value", and
+if you say
+
+	$ var=value exec command
+
+then "command" gets executed but "var" doesn't get exported.

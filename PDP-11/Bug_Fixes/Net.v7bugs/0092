@@ -1,0 +1,10 @@
+Acornell.2652
+net.bugs.v7
+utcsrgv!utzoo!decvax!duke!harpo!vax135!cornell!pavel
+Wed Mar 24 12:32:37 1982
+uuname buffer too small
+The buffers 's' and 'prev' are too small in uuname.c, only 128 characters.
+I recommend changing them to BUFSIZ.  This can easily be done with a global
+change of 128 to BUFSIZ.
+	Pavel Curtis
+	decvax!cornell!pavel

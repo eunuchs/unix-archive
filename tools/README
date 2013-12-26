@@ -1,0 +1,30 @@
+This directory contains useful tools to work with the old UNIX distributions.
+
+        CrossEnv        - Cross-system environment tools
+        Filesys         - Tools to work with filesystem images
+	Misc		- Miscellaneous stuff
+	Serial		- Tools useful for serial communications
+        Tapes           - Tools to work with tape images (extracting from, or
+                          creating new tapes)
+
+Note that Emulators/Apout will run V7 binaries on top of your existing
+32-bit Unix/Linux box, so it counts as a cross-environment tool.
+
+The authors of the tools here are:
+
+Misc/tih_sysgen.tar.gz		Tom I Helbekkmo <tih@Hamartun.Priv.NO>
+Misc/blktype.c.gz		Warren Toomey (wkt@cs.adfa.oz.au)
+Filesys/bostic_tools.tar.gz	Keith Bostic (bostic@bostic.com)
+Filesys/cpfs.tar.gz		Erick Delios <ejd@cs.rmit.edu.au>
+Filesys/getunix.tar.gz		Mark Bartelt <mark@cita.utoronto.ca>
+Filesys/grab.tar.gz		Donn Seeley <donn@BSDI.COM>
+Filesys/traverse.c.gz		Ken Wellsch <kcwellsc@math.uwaterloo.ca>
+CrossEnv/V6_Vax			Arthur W. Wetzel
+Disks/rx50-FreeBSD.tar.gz	Jason T. Miller <jasomill@indiana.edu>
+Tapes/512restor.tar.gz		Scott Narveson <psnarv@visi.com>
+Tapes/Vtserver			Warren Toomey (wkt@cs.adfa.oz.au)
+Tapes/tp-progs.tar.gz		Warren Toomey (wkt@cs.adfa.oz.au)
+Tapes/tarx.shar			Henry Spencer (henry@zoo.toronto.ca)
+Tapes/tarboot.tar		Henry Spencer (henry@zoo.toronto.ca)
+Serial/kermit4f.85.tar.gz	Frank da Cruz and many others
+Serial/kserve.mac		John Wilson <wilson@dbit.dbit.com>

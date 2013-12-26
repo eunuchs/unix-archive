@@ -1,0 +1,34 @@
+Research UNIX
+-------------
+1st Edition	November 3, 1971	[QCU]	QCU= A Quarter Century of UNIX
+2nd Edition	June 12, 1972		[QCU]	     Peter Salus
+3rd Edition	February, 1973		[QCU]	     Addison-Wesley
+4th Edition	November, 1973		[QCU]	     ISBN 0-201-54777-5
+5th Edition	June, 1974		[QCU]
+6th Edition	May, 1975		[QCU]   LWU= Life With UNIX
+7th Edition	January, 1979		[QCU]	     Don Libes, Sandy Ressler
+8th Edition	February, 1985		[QCU]	     Prentice-Hall
+9th Edition	September, 1986		[QCU]	     ISBN 0-13-536657-7
+10th Edition	October, 1989		[QCU]
+						SMS= Steven Schultz
+USDL UNIX					     sms@moe.2bsd.com
+---------
+PWB/UNIX	June 1977 (in use)	[QCU]	KKK=
+Mini-UNIX	around may 1977		[QCU]
+32V		early 1979		[LWU]	KSJ=
+
+BSD Releases
+------------
+
+1    BSD	March 9, 1978		[QCU]
+2    BSD	mid 1978		[QCU]
+3    BSD	late 1979		[QCU]
+2.8  BSD        July, 1981		[KSJ]
+2.8.1BSD        January, 1982		[QCU]
+2.9  BSD        July, 1983		[KSJ]
+2.9.1BSD        November, 1983
+2.9  BSD-Seismo August, 1985		[SMS]
+2.10 BSD	April, 1987		[KKK]
+2.10.1BSD       January, 1989		[SMS]
+2.11 BSD        February, 1992 		[SMS]
+2.11 BSD #366   February, 1997		[SMS]

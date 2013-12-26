@@ -1,0 +1,17 @@
+Aucbvax.117
+NET.v7bugs
+utzoo!duke!vax135!ucbvax!mark
+Tue May 27 23:39:00 1980
+uux bug
+A bug in uux prevents the - option from working with binary files.
+To fix it, in uux.c, search for "fputs".  (It's in an if (pipein) {.)
+replace the fgets/fputs loop by
+		while ((c = getc(stdin)) != EOF)
+			putc(c, fpd);
+and declare c somewhere to be an int.  (I put the line
+		register int c;
+right after the if (pipein).)
+
+Fixing this bug will allow the new uusend program, which will be released
+shortly, to work, allowing the transfer of binary files across indirect
+uucp links.

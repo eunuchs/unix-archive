@@ -1,0 +1,2492 @@
+	.title	KSERVE
+	.enabl	lc
+;++
+;
+; Kermit console server.
+;
+; Allows KERMIT communication with a microcomputer
+; connected in place of the CTY (TT:).
+;
+; By John Wilson.
+;
+; 23-Oct-88	Created.
+; 04-Dec-90	Added directory command.
+; 10-Dec-90	Receive (from us) command.
+; 24-Jan-92	Generate attribute packets.
+;
+;--
+	.mcall	.close,.dstat,.exit,.fetch,.print
+	.mcall	.purge,.releas,.ttinr,.ttyout,.wait
+;
+eis$$=	1	;NZ => processor has EIS
+rt11$$=	1	;NZ => OS is RT-11
+;
+soh=	1	;SOH character is ^A
+binlin=	0	;NZ => we have an 8-bit line
+		;Z => 7-bit line, will need QBIN escape
+;
+bufsiz=	4000		;buffer size, in bytes
+;
+.enter=	emt+375
+.lookup=emt+375
+.rctrlo=emt+355
+.read=	emt+375
+.readw=	emt+375
+.write=	emt+375
+;
+	.asect
+.=	44
+	.word	50000	;set LC, noecho bits in JSW
+	.psect
+;
+attr=	10		;CAPAS bit for attribute packets
+;
+lf=	12
+cr=	15
+;
+start:	; gentlemen, start your engines!
+	mov	#<^RDK >,defdev	;initial default device
+	clrb	binfil		;not binary files
+	; init packet parameters
+	movb	#cr,eol		;init eol
+	clrb	npad		;no pads
+	movb	#77.,maxl	;MAXL=80. (-header/checksum)
+loop:	clrb	seq		;always packet 0 in command wait
+	mov	#1,lchk		;check type is 1 until SEND-INIT
+	mov	#chk1,checka
+	call	getpac		;get a packet
+	bcc	10$		;handle it
+	call	nak		;NAK it
+	br	loop		;loop
+10$:	movb	r1,seq		;accept whatever they think we're at
+	mov	#cmds,r2	;pt at table
+	mov	#ncmds,r3	;# entries
+20$:	cmp	r0,(r2)+	;is this it?
+	beq	30$		;yes
+	tst	(r2)+		;no, skip addr
+	sob	r3,20$		;loop
+	movb	r0,pnsc		;save char
+	mov	#pns,r0		;pt at string
+	call	err		;send error
+	br	loop		;loop
+30$:	call	@(r2)+		;go
+	br	loop		;loop
+;
+cmds:	.word	'G,genric	;GENERIC
+	.word	'I,init		;INITIALIZE
+	.word	'K,kcmd		;KERMIT command
+	.word	'R,send		;RECEIVE-INIT
+	.word	'S,receiv	;SEND-INIT
+ncmds=	<.-cmds>/4
+	.sbttl	generic commands
+;+
+;
+; Generic commands (actual command in data field).
+;
+;-
+genric:	; unpack data field
+	mov	#buf1,bufptr	;set up ptr
+	mov	#80.,bufctr	;let's be reasonable
+	jsr	r1,iunpk	;unpack
+	 .word	secrts		;don't flush
+	bcs	10$		;error
+	mov	#buf1,r5	;init ptr
+	mov	bufptr,r4	;calc length
+	sub	r5,r4
+	beq	20$		;0, who cares
+	movb	(r5)+,r0	;get command byte
+	dec	r4		;count it
+	mov	#gcmds,r2	;pt at list
+	mov	#ngcmds,r3	;number of entries
+10$:	cmp	r0,(r2)+	;is this it?
+	beq	30$		;yes
+	tst	(r2)+		;skip address
+	sob	r3,10$		;loop
+	movb	r0,cnsc		;save char
+	mov	#cns,r0		;pt at string
+	jmp	err		;send error, return
+20$:	; null packet
+	jmp	ack		;just ack it, ignore, return
+30$:	jmp	@(r2)+		;dispatch
+;
+gcmds:	.word	'C,cwd
+	.word	'D,direct
+	.word	'F,finish
+	.word	'L,logout
+	.word	'U,usage
+ngcmds=	<.-gcmds>/4
+;+
+;
+; Change working directory.
+;
+; For RT-11 V4.0 this will just mean set default device,
+; since I don't know anything about the subdisks in V5.
+;
+;-
+cwd:	tst	r4		;any data field?
+	beq	20$		;no
+	mov	#buf1,bufptr	;set up ptr
+	mov	#80.,bufctr	;good length
+	jsr	r1,iunpk	;unpack
+	 .word	secrts		;don't flush
+	bcs	40$		;error
+	; parse it
+	mov	#buf1,r5	;ptr
+	movb	(r5)+,r4	;get 2nd length byte
+	sub	#40,r4		;unchar()
+	beq	20$		;length byte is 0, skip
+	add	r5,r4		;skip to end
+	clrb	(r4)		;.asciz
+	call	rad50		;parse
+	tst	r0		;end?
+	beq	10$		;yes
+	cmp	r0,#':		;must be colon
+	bne	40$		;no
+	tstb	(r5)		;followed by end?
+	bne	40$		;no
+10$:	; see if it's a valid dev name
+	mov	r1,fbuf		;save dev name
+	.dstat	#dstat,#fbuf	;see if it's OK
+	bcs	40$		;nope
+	mov	fbuf,defdev	;it's the new default
+	br	30$		;skip
+20$:	mov	#<^RDK >,defdev	;set it back to DK:
+30$:	; echo back the name
+	mov	#ddev,r5	;pt at string
+	mov	#ddev1,r4	;pt at dev name
+	mov	defdev,r1	;get name
+	call	r50nbl		;convert it
+	movb	#':,(r4)+	;colon
+	movb	#cr,(r4)+	;crlf
+	movb	#lf,(r4)+
+	sub	r5,r4
+	call	ldatn		;make data field
+	call	ldatf		;fix r4, r5
+	jmp	ack1		;ack, return
+40$:	mov	#bdn,r0		;bad device name
+	jmp	err
+;+
+;
+; Directory listing.
+;
+;-
+direct:	movb	#1,dirall	;assume we're showing everything
+	clrb	dirnon		;actually show it
+	mov	defdev,wlddev	;default device
+	tst	r4		;filespec given?
+	beq	40$		;no
+	; unpack data field
+	mov	#buf1,bufptr	;set up ptr
+	mov	#80.,bufctr	;let's be reasonable
+	jsr	r1,iunpk	;unpack
+	 .word	secrts		;don't flush
+	bcs	10$		;error
+	; parse it
+	mov	#buf1,r5	;ptr
+	movb	(r5)+,r4	;get 2nd length byte
+	sub	#40,r4		;unchar()
+	beq	40$		;length byte is 0, skip
+	add	r5,r4		;skip to end
+	clrb	(r4)		;.asciz, r4 is NZ for PWILD
+	call	pwild		;parse wildcard
+	bcc	30$		;skip if OK
+10$:	; invalid
+	mov	#bfs,r0		;bad file spec
+	jmp	err		;send error packet, return
+20$:	rts	pc
+30$:	clrb	dirall		;we're matching some wildcard
+40$:	; do the SEND-INIT thing
+	call	iparms		;init parms
+	call	sparms		;prepare ours
+	mov	#'S,r0		;SEND-INIT
+	call	makpac		;make a packet
+	call	sndack		;send it, get ACK
+	bcs	20$		;punt
+	call	rparms		;get their parms
+	call	fparms		;finish up
+	; send a blank text header
+	mov	#'X,r0		;type
+	call	sndsmp		;send it
+	bcs	20$		;error
+	; set up for dir read
+	call	dirini		;init dir read
+	bcs	120$		;err, punt
+	mov	#txbuf+3,-(sp)	;init LDAT parms
+	movb	maxl,r0
+	mov	r0,-(sp)
+50$:	; process next segment
+	call	dirseg		;get next seg
+	bcs	110$		;err or end
+60$:	; display next file
+	mov	#buf2,r4	;output line buf
+	mov	(r5)+,r1	;convert first word
+	beq	50$		;end of seg, get next
+	call	r50
+	mov	(r5)+,r1	;2nd word
+	call	r50
+	movb	#'.,(r4)+	;point
+	mov	(r5)+,r1	;extension
+	call	r50
+	mov	#10,r3		;column counter
+	add	r3,r4		;skip past end of field
+	mov	(r5)+,r1	;get length of file
+	mov	#10.,r2		;radix
+70$:	clr	r0		;0-extend
+	div	r2,r0		;divide
+	bis	#'0,r1		;convert remainder
+	movb	r1,-(r4)	;save
+	dec	r3		;count it
+	mov	r0,r1		;copy
+	bne	70$		;loop if there's more
+80$:	movb	#' ,-(r4)	;pad with blanks
+	sob	r3,80$		;loop
+	add	#10,r4		;skip to end of field
+	mov	(r5)+,r3	;get date
+	beq	100$		;meaningless, never mind
+	movb	#' ,(r4)+	;2 more blanks
+	movb	#' ,(r4)+
+	mov	r3,r1		;copy date
+	ash	#-5,r1		;right 5
+	bic	#^C37,r1	;isolate low 5
+	call	dec2		;day as 2-dig decimal
+	mov	r3,r1		;save
+	swab	r3		;put month in low byte
+	bic	#^C74,r3	;isolate month*4
+	add	#months-4,r3	;index to -Month-
+	mov	#5,r0		;count
+90$:	movb	(r3)+,(r4)+	;copy a byte
+	sob	r0,90$		;loop
+	bic	#^C37,r1	;isolate year
+	add	#72.,r1		;what's so special about 1972?
+	cmp	r1,#100.	;they should have just kept
+	blo	.+6		;the last 2 digs of year (7 bits)
+	 sub	#100.,r1	;handle 2000+ AD (ha!)
+	call	dec2		;convert
+100$:	movb	#cr,(r4)+	;crlf
+	movb	#lf,(r4)+
+	; send this line to the toy computer
+	mov	(sp)+,r2	;restore LDAT parms
+	mov	(sp)+,r1
+	mov	r5,-(sp)	;save dir ptr
+	mov	#buf2,r5	;begn of line
+	sub	r5,r4		;length
+	call	sdat		;send data
+	mov	(sp)+,r5	;[restore r5]
+	bcs	220$		;punt
+	mov	r1,-(sp)	;save
+	mov	r2,-(sp)
+	br	60$		;loop
+110$:	; end or error
+	beq	130$		;end, skip
+	add	#4,sp		;flush stack
+120$:	mov	#ioerr,r0	;pt at msg
+	jmp	err		;bitch, return
+130$:	; end of listing
+	call	dirsum		;get dir summary
+	; send summary to the toy computer
+	mov	(sp)+,r2	;restore LDAT parms
+	mov	(sp)+,r1
+	call	sdat		;send data
+	bcs	210$		;punt
+	mov	#txbuf+3,r5	;pt at buf
+	mov	r1,r4		;copy end
+	sub	r5,r4		;find it
+	beq	200$		;none
+	mov	#'D,r0		;packet type
+	call	makpac		;make it
+	call	sndack		;send, get ACK
+	bcs	210$		;punt
+200$:	mov	#'Z,r0		;end of file
+	call	sndsmp
+	bcs	210$		;punt
+	mov	#'B,r0		;break
+	call	sndsmp		;(don't worry about errors)
+210$:	rts	pc
+220$:	; retry limit reached, punt
+	.close	#0		;close dir
+	rts	pc
+;
+	.enabl	lsb
+10$:	; flush output buffer
+	mov	r5,-(sp)	;save buf posn
+	mov	r4,-(sp)
+	mov	#txbuf+3,r5	;pt at buf
+	mov	r1,r4		;copy end
+	sub	r5,r4		;find it
+	mov	#'D,r0		;packet type
+	call	makpac		;make a packet
+	call	sndack		;send it, get ACK
+	bcs	20$		;failed, skip
+	mov	(sp)+,r4	;restore
+	mov	(sp)+,r5
+	mov	#txbuf+3,r1	;reinit
+	movb	maxl,r2
+sdat:	call	ldat		;continue loading
+	bcs	10$		;full again, loop
+20$:	rts	pc
+	.dsabl	lsb
+;
+dec2:	; number in r1 to convert 2-digit decimal
+	clr	r0		;0-extend
+	div	#10.,r0		;divide
+	bis	#'0,r0		;convert high dig
+	movb	r0,(r4)+
+	bis	#'0,r1		;convert low dig
+	movb	r1,(r4)+
+	rts	pc
+;
+decv:	; convert variable-width decimal no. in r1
+	cmp	r1,#10.		;do we need to recurse?
+	blo	10$		;no
+	clr	r0		;0-extend
+	div	#10.,r0		;divide
+	mov	r1,-(sp)	;save remainder
+	mov	r0,r1		;copy quotient
+	call	decv		;recurse
+	mov	(sp)+,r1	;restore remainder
+10$:	bis	#'0,r1		;convert
+	movb	r1,(r4)+	;save
+	rts	pc
+;+
+;
+; Convert a radix-50 word to a 3-character ASCII string.
+;
+; r1	word
+; r4	buffer ptr
+;
+;-
+r50:	clr	r0		;0-extend
+	div	#50,r0		;divide
+	mov	r1,r2		;save remainder
+	mov	r0,r1		;copy
+	clr	r0		;0-extend
+	div	#50,r0		;divide
+	movb	r50t(r0),(r4)+	;first char
+	movb	r50t(r1),(r4)+	;second
+	movb	r50t(r2),(r4)+	;third
+	rts	pc
+;+
+;
+; Finish/logout.
+;
+; ACK and kill the server.
+;
+;-
+finish:
+logout:	call	ack		;ACK it
+	.exit			;bye
+;+
+;
+; Disk usage.
+;
+;-
+usage:	mov	defdev,wlddev	;copy dev name
+	movb	#1,dirall	;look at all files
+	movb	#1,dirnon	;but don't bother making a list
+	call	dirini		;init dir I/O
+	bcs	20$		;err
+10$:	call	dirseg		;scan next segment
+	bcc	10$		;loop until all done
+	bne	20$		;err
+	call	dirsum		;make dir summary
+	; send to toy computer
+	call	ldatn		;load data field
+	call	ldatf		;fix for ACK1
+	jmp	ack1		;ACK, return
+20$:	; I/O error
+	mov	#ioerr,r0	;point
+	jmp	err		;bitch, return
+;+
+;
+; Make a summary of a directory scan.
+;
+; On return:
+; r5	ptr to line (#buf2)
+; r4	length
+;
+;-
+dirsum:	mov	#buf2,r4	;pt at buf2
+	; display # of files
+	mov	files,r1	;print # files
+	call	decv
+	mov	#tfile,r0	;string
+10$:	movb	(r0)+,(r4)+	;copy
+	bne	10$
+	dec	r4
+	dec	files		;files=1?
+	beq	20$		;yes
+	 movb	#'s,(r4)+	;s
+20$:	; display # of blks used
+	movb	#',,(r4)+	;,
+	movb	#' ,(r4)+
+	mov	used,r1		;print # blks in use
+	call	decv
+	mov	#tblk,r0	;string
+30$:	movb	(r0)+,(r4)+	;copy
+	bne	30$
+	dec	r4
+	dec	used		;used=1?
+	beq	40$		;yes
+	 movb	#'s,(r4)+	;s
+40$:	movb	(r0)+,(r4)+	;copy " in use"
+	bne	40$
+	dec	r4
+	tstb	dirall		;showing frees too?
+	beq	60$		;no
+	; display # of free blks
+	movb	#',,(r4)+	;,
+	movb	#' ,(r4)+
+	mov	free,r1		;print # free blks
+	call	decv
+	mov	#tfree,r0	;string
+50$:	movb	(r0)+,(r4)+	;copy
+	bne	50$
+	dec	r4
+60$:	movb	#cr,(r4)+	;crlf
+	movb	#lf,(r4)+
+	mov	#buf2,r5	;begn of line
+	sub	r5,r4		;length
+	rts	pc
+;
+	.sbttl	initialize parameters
+;+
+;
+; Takes parms as usual, responds with ours.
+;
+;-
+init:	call	iparms		;init parm negotiation
+	call	rparms		;process the ones we got
+	call	sparms		;set up the ones to send
+	call	ack1		;send them
+	jmp	fparms		;finish up, return
+	.sbttl	kermit command
+;+
+;
+; Handle what would normally be keyboard commands.
+;
+;-
+kcmd:	mov	#buf1,bufptr	;set up ptr
+	mov	#132.,bufctr	;good length
+	clrb	buf1		;start with nothing
+	tst	r4		;is that all there is?
+	beq	10$		;yep
+	jsr	r1,iunpk	;unpack
+	 .word	secrts		;don't flush
+	bcs	20$		;error
+	clrb	@bufptr		;zap end
+10$:	mov	#buf1,r5	;ptr
+	mov	#cmdtab,r4	;pt at table
+	call	parskw		;look up keyword
+	bcs	what		;error
+	jmp	ack		;null, just ACK
+20$:	mov	#toolng,r0	;pt at msg
+	jmp	err		;punt, return
+;+
+;
+; Echo back the keyword we didn't understand.
+;
+;-
+what:	bcc	20$		;keyword was just missing
+	mov	#buf1,r5	;pt at buf
+	mov	r5,r4		;copy
+10$:	movb	(r3)+,(r4)+	;copy keyword
+	sob	r2,10$
+	movb	#'?,(r4)+	;huh?
+	movb	#'?,(r4)+
+	movb	#cr,(r4)+	;eol
+	movb	#lf,(r4)+
+	sub	r5,r4		;find length
+	call	ldatn		;make a packet
+	call	ldatf		;get length
+	mov	#'E,r0		;packet type
+	call	makpac		;make packet
+	jmp	putpac		;send it
+20$:	mov	#mkw,r0		;missing keyword
+	jmp	err
+;
+cmdtab:	.asciz	<2>/SET/<0>
+	.word	set
+;	.asciz	<2>/SHOW/
+;	.word	show
+	.word	0
+;+
+;
+; Set stuff.
+;
+;-
+set:	mov	#settab,r4	;pt at table
+	call	parskw		;parse a keyword
+	br	what		;complain
+;
+settab:	.asciz	<1>/FILE/
+	.word	setfil
+	.word	0
+;+
+;
+; Set file.
+;
+;-
+setfil:	mov	#stftab,r4	;pt at table
+	call	parskw		;parse a keyword
+	br	what		;complain
+;
+stftab:	.asciz	<1>/TYPE/
+	.word	stftyp
+	.word	0
+;+
+;
+; Set file type.
+;
+;-
+stftyp:	mov	#ftptab,r4	;pt at table
+	call	parskw		;parse a keyword
+	br	what		;complain
+;
+ftptab:	.asciz	<1>/BINARY/
+	.word	setbin
+	.asciz	<1>/TEXT/
+	.word	settxt
+	.word	0
+;+
+;
+; Set file type binary.
+;
+;-
+setbin:	movb	#377,binfil	;yep
+	jsr	r5,reply	;reply
+	.asciz	/Binary mode set.  All bytes will be transferred./<cr><lf>
+	.even
+;+
+;
+; Set file type text.
+;
+;-
+settxt:	clrb	binfil		;yep
+	jsr	r5,reply	;reply
+	.asciz	/Text mode set.  Trailing nulls will be stripped./<cr><lf>
+	.even
+;+
+;
+; Send a reply.
+;
+; Called through r5 with in-line .asciz string.
+;
+;-
+reply:	tst	(sp)+		;lose old r5
+	mov	r5,r4		;copy
+10$:	tstb	(r4)+		;count
+	bne	10$
+	dec	r4		;back up
+	sub	r5,r4		;find length
+	call	ldatn		;build data field
+	call	ldatf		;set up r4, r5
+	jmp	ack1		;send reply, return
+;+
+;
+; Parse a keyword and dispatch on it.
+;
+; r5	ptr to current posn in .asciz string
+; r4	ptr to dispatch table
+;
+; If the keyword is OK, we flush the return addr and
+; jump to the routine.  Otherwise we return C=1.
+; We return C=0 if there was nothing left on the line.
+;
+;-
+parskw:	movb	(r5)+,r0	;get next char
+	beq	100$		;eol
+	cmp	r0,#<' >	;blank or cc?
+	blos	parskw		;yes, ignore
+10$:	dec	r5		;back up
+	mov	r5,r3		;copy
+20$:	movb	(r5)+,r0	;get next char
+	beq	30$		;eol
+	cmp	r0,#<' >	;blank or cc?
+	blos	30$		;yes
+	cmp	r0,#'a		;lower case?
+	blo	20$		;no
+	cmp	r0,#'z
+	bhi	20$
+	bic	#40,r0		;convert
+	movb	r0,-1(r5)
+	br	20$
+30$:	dec	r5		;back up
+	mov	r5,r2		;copy
+	sub	r3,r2		;find length
+40$:	; search dispatch table for string
+	movb	(r4)+,r0	;get min length to match
+	beq	90$		;end of list
+	cmpb	r2,r0		;long enough to match?
+	blo	80$		;no, skip
+	mov	r3,r1		;copy addr
+	mov	r2,r0		;and len
+50$:	cmpb	(r1)+,(r4)+	;same?
+	bne	70$		;no
+	sob	r0,50$		;loop
+60$:	tstb	(r4)+		;skip to end of string
+	bne	60$		;loop
+	inc	r4		;round to even
+	bic	#1,r4
+	tst	(sp)+		;toss return addr
+	jmp	@(r4)+		;dispatch
+70$:	dec	r4		;might have been end of string
+80$:	tstb	(r4)+		;skip to end
+	bne	80$		;loop
+	add	#3,r4		;+2, round to even
+	bic	#1,r4
+	br	40$		;loop
+90$:	sec			;invalid
+	rts	pc
+100$:	clc			;eol
+	rts	pc
+	.sbttl	receive a file
+;+
+;
+; Receive a file from the toy computer.
+;
+;-
+receiv:	call	iparms		;init parm negotiation
+	call	rparms		;process theirs
+	call	sparms		;prepare ours
+	call	ack1		;send them
+	call	fparms		;finish up
+10$:	; start next file
+	call	getpac		;get a packet
+	bcc	20$		;got it
+;;;;; heuristic:
+; if we just ACKed with our parameters, and changed CHKT to
+; something other than '1, see if this packet would seem good
+; if it were a SEND-INIT with CHKT=1.  if so, re-ACK with CHKT=1.
+;;; we'll have to make sure GETPAC actually read a whole
+;;; packet and that the checksum was the only problem.
+	call	nak		;nope
+	br	10$		;loop
+20$:	cmpb	r1,seq		;current packet?
+	bne	30$		;no, must be previous
+	cmp	r0,#'F		;FILE-HEADER?
+	beq	50$		;yes
+	cmp	r0,#'B		;BREAK?
+	bne	40$		;no, skip
+	jmp	ack		;ACK it and return to loop
+30$:	call	reack		;re-ACK
+	br	10$		;try again
+40$:	; protocol violation
+	movb	r0,pvlc		;save char
+	mov	#pvl,r0		;pt at string
+	jmp	err		;error packet
+50$:	; starting a new file
+	mov	#buf1,bufptr	;set up for unpacking
+	mov	#bufsiz-1,bufctr ;allow for ^@ at end
+	jsr	r1,iunpk	;unpack
+	 .word	secrts		;don't flush
+	clrb	@bufptr		;mark end
+	mov	#buf1,r5	;pt at filename
+	call	file		;parse filename, get handler
+	bcc	60$		;skip
+	mov	#bfs,r0		;bad filespec
+	jmp	err		;bitch, return
+60$:	; set up for file output
+	mov	#buf2,wca	;set core addr
+	mov	#bufsiz/2,wwc	;word count
+	clr	wblk		;init blk #
+	mov	#buf1,cbuf	;current buf
+	mov	#buf1,bufptr	;pointer
+	mov	#bufsiz,bufctr	;and free count
+	; return the file name we're using
+	mov	#buf2,r4	;output line buf
+	mov	#fbuf,r5
+	mov	(r5)+,r1	;dev:
+	call	r50nbl
+	movb	#':,(r4)+
+	mov	(r5)+,r1	;filename
+	call	r50nbl
+	mov	(r5)+,r1
+	call	r50nbl
+	movb	#'.,(r4)+	;.
+	mov	(r5)+,r1	;ext
+	call	r50nbl
+	mov	#buf2,r5	;pt
+	sub	r5,r4		;find length
+	call	ldatn		;encode
+	call	ldatf		;fix for ACK1
+	call	ack1		;ACK, give filename
+70$:	; slurp attribute packet(s)
+	call	getpac		;get a packet
+	bcs	80$
+	cmpb	r1,seq		;is this curr pkt?
+	bne	90$		;no, must be previous
+	cmp	r0,#'A		;attribute packet?
+	bne	100$		;no
+	; handle attributes
+
+;;;;;;;;;;;
+
+	call	ack		;ACK
+	br	70$
+80$:	call	nak		;NAK it
+	br	70$		;try again
+90$:	call	reack		;re-ACK previous pkt
+	br	70$
+100$:	; not 'A packet, open file
+	mov	r0,-(sp)	;save
+	call	ldev		;make sure we have the dev handler
+	bcs	120$		;shouldn't happen
+	mov	#earea,r0	;point at it
+	.enter			;open the file
+	mov	(sp)+,r0	;[restore]
+	bcs	110$		;error
+	clr	-(sp)		;initial flags
+	mov	#1,-(sp)	;initial repeat count
+	br	150$		;groovy, go see if it was 'D or 'Z
+110$:	mov	#ucf,r0		;unable to create file
+	br	130$
+120$:	mov	#bdn,r0		;bad device name
+130$:	jmp	err		;bitch, return
+140$:	; read (another) data packet
+	call	getpac		;get a packet
+	bcs	160$		;bad, skip
+	cmpb	r1,seq		;is this curr pkt?
+	bne	170$		;no, must be previous
+150$:	cmp	r0,#'D		;data?
+	beq	180$
+	cmp	r0,#'Z		;eof?
+	beq	190$
+	mov	r0,r1		;save
+	.purge	#1		;reset the file
+	add	#4,sp		;flush stack
+	cmp	r0,#'E		;error packet?
+	beq	.+6
+	 jmp	40$		;no, protocol violation
+	rts	pc		;gracefully punt
+160$:	; bad checksum or timeout
+	call	nak		;nak it
+	br	140$		;more
+170$:	; they resent the previous packet
+	call	reack		;re-ACK previous packet
+	br	140$		;more
+180$:	; data packet
+	mov	r4,-(sp)	;save length & ptr
+	mov	r5,-(sp)
+	call	ack		;ACK the packet
+	mov	(sp)+,r5	;restore
+	mov	(sp)+,r4
+	beq	140$		;length=0, ignore
+	mov	(sp)+,r3	;restore flags
+	mov	(sp)+,r2
+	jsr	r1,unpack	;unpack packet
+	 .word	wrbuf		;flush routine
+	bcs	220$		;flush error
+	mov	r2,-(sp)	;save flags
+	mov	r3,-(sp)
+	br	140$		;get next packet
+190$:	; eof, flush buffer and close file
+	tst	r4		;is there a data field in the Z packet?
+	beq	.+4
+	 movb	(r5),r4		;get 1st char
+	mov	r4,-(sp)	;save
+	call	ack		;ACK the ^Z
+	mov	(sp)+,r4	;restore
+	mov	#bufsiz,r0	;find # bytes in buf
+	sub	bufctr,r0
+	beq	200$		;none, skip
+	inc	r0		;round up
+	asr	r0		;/2=wc
+	mov	r0,wwc		;save
+	clrb	@bufptr		;zap odd byte, if any (at least 1 byte free)
+	mov	cbuf,wca	;core addr
+	.wait	#1		;finish previous
+	mov	#warea,r0	;EMT area
+	.write			;write last buffer
+	bcs	210$		;error
+200$:	add	#4,sp		;purge stack
+	cmp	r4,#'D		;delete the file?
+	bne	230$		;no
+	; Z/D, delete the file (user aborted or something)
+	.purge	#1		;purge the file
+	jmp	10$		;start next
+210$:	; error writing file
+	add	#4,sp		;flush stack
+220$:	.purge	#1		;purge the file
+	mov	#werr,r0	;pt at string
+	jmp	err		;send, return
+230$:	; keep the file
+	.close	#1		;close the file
+;;; now's the time to apply 'A packets and set the date etc.
+	jmp	10$		;start next
+;
+wrbuf:	; flush buffer
+	.wait	#1		;wait for previous transfer
+	mov	wca,r0		;get previous buf addr
+	mov	cbuf,wca	;reset to current
+	mov	r0,cbuf		;prev is now current
+	mov	r0,bufptr	;set ptr
+	mov	#bufsiz,bufctr	;and counter
+	mov	#warea,r0	;queue a write
+	.write
+	bcs	10$		;just punt if C=1
+	add	#bufsiz/1000,wblk ;update blk #, C=0
+10$:	rts	pc
+;
+secrts:	; dummy flush routine for IUNPK/UNPACK
+	sec			;flush failed
+	rts	pc
+	.sbttl	send file(s)
+;+
+;
+; Send file(s) to the toy computer.
+;
+;-
+send:	tst	r4		;filespec given?
+	beq	20$		;no
+	; unpack data field
+	mov	#buf1,bufptr	;set up ptr
+	mov	#80.,bufctr	;let's be reasonable
+	jsr	r1,iunpk	;unpack
+	 .word	secrts		;don't flush
+	bcs	10$		;error
+	; parse it
+	clrb	@bufptr		;zap end
+	mov	#buf1,r5	;pt at string
+	clr	r4		;no weird defaults
+	call	pwild		;parse wildcard
+	bcc	20$		;skip if OK
+10$:	; invalid
+	mov	#bfs,r0		;bad file spec
+	jmp	err		;send error packet, return
+20$:	; set up for dir lookup
+	clrb	dirall		;we aren't showing everything
+	clrb	dirnon		;but give me the filenames
+;;; don't bother with any of this if it's a char device
+	call	dirini		;get psyched
+	bcs	60$		;error opening dev
+	; make sure at least 1 match exists
+30$:	call	dirseg		;get next segment
+	bcs	40$		;error
+	tst	(r5)		;anything?
+	beq	30$		;no, try next seg
+	br	80$		;OK, skip
+40$:	bne	60$		;I/O err
+	; file not found
+	tstb	wldflg		;were we in a wildcard search?
+	beq	50$		;no
+	mov	#nomtch,r0	;no matches found
+	br	70$
+50$:	mov	#fnf,r0		;file not found
+	br	70$
+60$:	; I/O error
+	mov	#ioerr,r0
+70$:	jmp	err		;later
+80$:	; do the SEND-INIT thing
+	mov	r5,-(sp)	;save file ptr
+	call	iparms		;init parms
+	call	sparms		;prepare ours
+	mov	#'S,r0		;SEND-INIT
+	call	makpac		;make a packet
+	call	sndack		;send it, get ACK
+	bcs	130$		;punt
+	call	rparms		;get their parms
+	call	fparms		;finish up
+	mov	(sp)+,r5	;recover r5
+	br	100$		;go send first file
+90$:	; handle next dir segment
+	call	dirseg		;get next
+	bcc	100$		;OK
+	bne	60$		;I/O error
+	mov	#'B,r0		;break transmission
+	jmp	sndsmp		;tell them, return (ignore err)
+100$:	; handle next file
+	mov	#fbuf+2,r3	;.LOOKUP buf
+	mov	#buf2,r4	;output line buf
+	mov	(r5)+,r1	;convert first word
+	beq	90$		;end of seg, get next
+	mov	r1,(r3)+	;save in fbuf
+	call	r50nbl
+	mov	(r5)+,r1	;2nd word
+	mov	r1,(r3)+
+	call	r50nbl
+	movb	#'.,(r4)+	;point
+	mov	(r5)+,r1	;extension
+	mov	r1,(r3)
+	call	r50nbl
+	mov	r5,-(sp)	;save r5
+	mov	#buf2,r5	;pt
+	sub	r5,r4		;find length
+	; open the file
+	mov	#larea,r0	;pt at area
+;;; mov #wlddev,2(r0) ;;;;;;; open the whole device
+	.lookup			;try to open file for input
+	bcs	120$		;guess not
+	; OK, send FILE-HEADER packet
+	call	ldatn		;go
+	call	ldatf		;fix
+	mov	#'F,r0		;FILE-HEADER
+	call	makpac		;make packet
+	call	sndack		;send it
+	bcs	130$		;punt
+	; should we send file attributes?
+;; br 110$ ;;; no attributes when sending whole device
+;;; is it a char dev?
+;;;	b<yes>	110$		;don't send attr pack
+	bitb	#attr,capas	;sending attribute packets?
+	bne	140$		;yes
+110$:	add	#4,(sp)		;no, skip size and date
+	br	160$		;go send file
+120$:	; .LOOKUP error
+	mov	#uof,r0		;unable to open file
+	tst	(sp)+		;flush r5
+	jmp	err		;later
+130$:	; retry limit reached, punt quietly
+	tst	(sp)+		;lose dir tab ptr
+	rts	pc		;timed out
+140$:	; send ATTRIBUTE packet
+	mov	(sp),r5		;get ptr
+	; size in K
+	mov	#txbuf+3,r4	;init ptr, skip size
+	movb	#'!,(r4)+	;length
+	inc	r4		;skip length of length
+	mov	(r5)+,r1	;get file size
+	add	#1,r1		;round up, C=0 (or 1 if 200000)
+	ror	r1		;(blks+1)/2 = K bytes
+	call	decv		;convert (r4=txbuf+3+2)
+	mov	r4,r0		;copy
+	sub	#txbuf+3+2-40,r0 ;find char(width of field)
+	movb	r0,txbuf+3+1	;poke it back
+	; date of creation
+	mov	(r5)+,r3	;get date
+	beq	150$		;no date, don't send any
+	movb	#'#,(r4)+	;date [& time - RT doesn't save times]
+	movb	#8.+40,(r4)+	;length=8.
+	mov	r3,r1		;copy date
+	bic	#^C37,r1	;isolate year
+	mov	r3,r0		;copy again (include RT V5 32s bit)
+	ash	#-10.,r0	;shift b15 to b5
+	bic	#^C40,r0	;isolate
+	bis	r0,r1		;OR it in
+	add	#1972.,r1	;origin is 1972
+	call	decv		;convert it (will always be 4 digits)
+	mov	r3,r1		;copy date again
+	ash	#-10.,r1	;right 10.
+	bic	#^C17,r1	;isolate month
+	call	dec2		;convert
+	mov	r3,r1		;copy yet again
+	ash	#-5,r1		;right 5
+	bic	#^C37,r1	;isolate day
+	call	dec2		;convert
+150$:	; machine/OS
+	movb	#'.,(r4)+	;machine/OS
+	movb	#2+40,(r4)+	;length=2
+	movb	#'D,(r4)+	;DEC
+.iif ne rt11$$,	movb #'B,(r4)+	;PDP-11/RT-11
+	; send it
+	mov	r5,(sp)		;update
+	mov	#txbuf+3,r5	;pt at begn
+	sub	r5,r4		;length
+	mov	#'A,r0		;type
+	call	makpac		;build the packet
+	call	sndack		;send it
+	bcs	130$		;punt
+	; skip this file if they refused it
+	tst	r4		;OK?
+	beq	160$		;yep
+	cmpb	(r5),#'Y	;OK?
+	bne	260$		;no, do next file
+160$:	; read initial bufferload
+	clr	rblk		;start at begn
+	mov	#bufsiz/2,rwc	;initial wc
+	mov	#buf1,rca	;initial buf
+	mov	#buf2,cbuf	;next buf
+	mov	#rarea,r0	;read begn of file
+	.read			;do it
+	bcc	170$		;skip if OK
+	tst	r0		;err=read from EOF?
+	beq	250$		;yes, null file, send ^Z
+;;; br 230$ ;;;;;; don't care if whole dev
+	br	230$		;no, I/O error
+170$:	mov	r0,rlen		;so we know what to expect
+	mov	#txbuf+3,r1	;for LDAT
+	movb	maxl,r2
+180$:	; swap buffers
+	mov	rlen,r4		;get # words expected
+	beq	240$		;eof, skip
+	asl	r4		;# bytes
+	.wait	#1		;wait for next buffer to fill
+	mov	rca,r5		;pt at this buf
+	mov	cbuf,rca	;old curr buf will be next buf
+	mov	r5,cbuf		;next buf is now curr buf
+	add	#bufsiz/1000,rblk ;update blk #
+	mov	#rarea,r0	;start next buffer reading
+	.read			;do it
+	bcc	190$		;OK
+	tst	r0		;rd from eof?
+;;;;; sending whole dev, don't care
+;; clr r0 ;;;;;;
+	bne	230$		;no, I/O error
+;;;;
+190$:	mov	r0,rlen		;# words expected
+	tstb	binfil		;binary file?
+	bne	210$		;yes
+	; scan off trailing nulls
+	mov	r4,r3		;copy length
+	add	r5,r3		;pt past end of blk
+200$:	tstb	-(r3)		;back 1
+	bne	210$		;skip
+	sob	r4,200$		;loop
+	br	180$		;all nulls, loop
+210$:	; send next buffer
+	call	ldat		;convert
+	bcc	180$		;it fit, loop
+	mov	r4,-(sp)	;save input ptr
+	mov	r5,-(sp)
+	call	ldatf		;get addr, len
+	mov	#'D,r0		;DATA packet
+	call	makpac		;build it
+	call	sndack		;send it, get ACK (C set)
+	mov	(sp)+,r5	;[restore]
+	mov	(sp)+,r4
+	mov	#txbuf+3,r1	;[init for next packet]
+	movb	maxl,r2
+	bcc	210$		;(C set by SNDACK) around for more
+220$:	; too many retries
+	.close	#1		;close file
+	tst	(sp)+		;lose r5
+	rts	pc
+230$:	; read error
+	.close	#1		;close
+	tst	(sp)+		;lose r5
+	mov	#rerr,r0	;err msg
+	jmp	err
+240$:	; end of file, flush last packet
+	call	ldatf		;get addr, len
+	tst	r4		;anything?
+	beq	250$		;no
+	mov	#'D,r0		;DATA packet
+	call	makpac		;build it
+	call	sndack		;send it, get ACK
+	bcs	220$		;oh well nice try
+250$:	; send END-OF-FILE
+	mov	#'Z,r0		;send END-OF-FILE
+	call	sndsmp
+	bcs	220$		;oh sure, NOW you wuss out
+260$:	.close	#1		;close the file
+	mov	(sp)+,r5	;restore ptr
+	jmp	100$		;handle next file
+	.sbttl	file-related routines
+;+
+;
+; Partially parse a wildcard and prepare for wildcard search.
+;
+; R5	ptr to .asciz string.
+; R4	NZ => default filename/ext to * if missing,
+;	Z => each is blank if missing,
+;	*but* if the filename.ext is blank (except possibly
+;	for a device) then we write nothing either way.
+;
+; Return WLDDEV and WILD set up, device loaded (name at FBUF).
+; C=1	wildcard contained invalid characters or bad format
+;	(two extensions, wildcard in device name, whatever)
+;
+; WLDFLG (byte) is set to non-zero (actually the # of wildcard chars)
+; if the filespec actually is a wildcard.  If WLDFLG=0, then it's
+; just a filename, parse it with FILE.
+;
+;-
+pwild:	clr	wlddev		;no device yet
+10$:	mov	#wild,r1	;point at buf
+	clr	r2		;no .'s yet
+	clr	r3		;no wildcard chars either
+20$:	; get next char
+	movb	(r5)+,r0	;get a char
+	beq	110$		;end, skip
+	cmp	r0,#<' >	;blank?
+	beq	20$		;ignore
+	cmp	r0,#':		;device name?
+	beq	90$		;yes
+	cmp	r0,#'?		;RSTS-style wildcard?
+	beq	70$		;change to %
+	cmp	r0,#'a		;lower case?
+	blo	30$		;no
+	cmp	r0,#'z		;hm?
+	bhi	30$		;no
+	bic	#40,r0		;yes, convert
+	br	40$		;we know char is OK
+30$:	; make sure char is OK
+	cmp	r0,#<' >	;blank?
+	beq	20$		;yes, ignore
+	cmp	r0,#'.		;. is OK, once
+	beq	50$
+	cmp	r0,#'%		;wildcards are OK
+	beq	80$
+	cmp	r0,#'*
+	beq	80$
+	cmp	r0,#'0		;digits are OK
+	blo	100$
+	cmp	r0,#'9
+	blos	40$
+	cmp	r0,#'A		;letters are OK
+	blo	100$
+	cmp	r0,#'Z
+	bhi	100$
+40$:	movb	r0,(r1)+	;save
+	br	20$		;loop
+50$:	; .
+	tst	r2		;is this the first .?
+	bne	100$		;no
+	tst	r4		;should we use default filename?
+	beq	60$		;no
+	cmp	r1,#wild	;is there any need?
+	bne	60$		;no
+	movb	#'*,(r1)+	;yes, save it
+60$:	inc	r2		;set "." flag
+	br	40$
+70$:	; ? as wildcard (= %)
+	movb	#'%,r0		;replace ? with %
+80$:	inc	r3		;wildcard
+	br	40$		;loop
+90$:	; device name
+	tst	wlddev		;do we have one already?
+	bne	100$		;yes, error
+	clrb	(r1)		;mark end
+	mov	r5,-(sp)	;save ptr
+	mov	#wild,r5	;pt at dev name
+	call	rad50		;parse it
+	mov	(sp)+,r5	;restore
+	tst	r0		;stopped on nul?
+	bne	100$		;no, bad filename
+	mov	r1,wlddev	;save
+	bne	10$		;there was something
+	mov	defdev,wlddev	;set default anyway, don't allow ":DEV:"
+	br	10$		;get filename
+100$:	sec			;bad filename
+	rts	pc
+110$:	; end of filespec
+	tst	wlddev		;did we ever get a device?
+	bne	120$		;yes
+	 mov	defdev,wlddev	;no, use default
+120$:	; make sure handler is loaded
+	mov	wlddev,fbuf	;copy
+	call	ldev		;load it
+	bcs	140$		;punt on err
+	; add ".*" to name if we're using default wildcards
+	tst	r4		;should we add ".*" if no ext?
+	beq	130$		;no
+	tst	r2		;was there an ext?
+	bne	130$		;yes
+	cmp	r1,#wild	;totally null name?
+	beq	130$		;yes, leave it alone
+	movb	#'.,(r1)+	;.*
+	movb	#'*,(r1)+
+130$:	movb	r3,wldflg	;remember whether it's a wildcard
+	clrb	(r1)		;C=0, mark end
+140$:	rts	pc
+;+
+;
+; Init for directory search.
+;
+; C=1 on directory open error.
+;
+;-
+dirini:	clr	free		;no free blks yet
+	clr	used		;no used blks either
+	clr	files		;and no files
+	; open disk non-file-structured to get dir
+	mov	#ludir,r0	;open the device
+	.lookup			;(non-file-structured)
+	; The directory should start at block 6, but SSM says that in case
+	; it's different the correct starting block no. should be read from
+	; the word at offset 724 in the home block (block 1).
+	; But, if the volume was initialized under RSTS/E by the FIT utility
+	; (like my SY:), this field is set to ASCII blanks.
+	; So, I'll hard code to block 6.  Sorry.
+	; DIR.SAV 4.0 can read my SY: so it seems that it doesn't worry about
+	; home+724 either.
+	mov	#1,segnxt	;next seg will be #1
+	rts	pc
+;+
+;
+; Process next segment of directory.
+;
+; On return:
+; C=0	OK, MATLST contains 0-terminated list of files
+; C=1	Z=1	no more dir segments (dir has been closed)
+; C=1	Z=0	dir read error
+;
+; r5 pts to all the matches we found in this segment.
+; There are up to 72. entries (the max possible # of file entries in a
+; segment) of the following format:
+; .rad50 /filnamext/
+; .word size, date
+;
+; If DIRALL (byte) .ne.0, all files are copied (no wildcard comparison is
+; performed), and empty blocks are copied as
+; ".EMPTY." with no date.
+;
+; If DIRNON (byte) .ne.0, no files are copied.  This is used to compute disk
+; usage without bothering to copy all the filenames all over the place.
+;
+;-
+dirseg:	mov	segnxt,r0	;get segment to read
+	beq	110$		;none, skip
+	call	getseg		;get it
+	bcs	100$
+	mov	#matlst,-(sp)	;pt at match list
+10$:	; process next directory entry
+	mov	(r5)+,r0	;get status word
+	bit	#4000,r0	;end of segment?
+	bne	90$
+	bit	#1000,r0	;empty block?
+	bne	80$
+	bit	#2000,r0	;permanent?
+	beq	60$		;no
+	tstb	dirnon		;showing nothing?
+	bne	50$
+	tstb	dirall		;showing everything?
+	bne	20$
+	; check this entry for wildcard match
+	mov	r5,-(sp)	;save
+	mov	#buf2,r4	;pt at buf
+	mov	(r5)+,r1	;convert filename
+	call	r50nbl
+	mov	(r5)+,r1
+	call	r50nbl
+	movb	#'.,(r4)+	;.
+	mov	(r5),r1		;extension
+	call	r50nbl
+	clrb	(r4)
+	mov	#wild,r5	;pt at pattern
+	mov	#buf2,r4	;test string
+	call	match		;match?
+	mov	(sp)+,r5	;[restore]
+	bcs	70$
+20$:	; match, save this entry
+	add	6(r5),used	;count as used
+	inc	files		;bump count
+30$:	mov	(sp)+,r4	;get ptr back
+	mov	(r5)+,(r4)+	;copy filename
+	mov	(r5)+,(r4)+
+	mov	(r5)+,(r4)+	;extension
+	mov	(r5)+,(r4)+	;length
+	tst	(r5)+		;skip tentative file info
+	mov	(r5)+,(r4)+	;get date
+	mov	r4,-(sp)	;save
+40$:	add	extbyt,r5	;skip extra bytes, if any
+	br	10$		;loop
+50$:	add	6(r5),used	;count the file's blocks
+	inc	files		;count it
+	br	70$		;skip
+60$:	add	6(r5),free	;count tentative files as free
+70$:	; skip this entry
+	add	#14,r5		;skip
+	br	40$
+80$:	; < UNUSED > block
+	add	6(r5),free	;update # free blks
+	tstb	dirall		;showing everything?
+	beq	70$		;no, skip this
+	mov	r5,r0		;copy
+	mov	#<^R.EM>,(r0)+	;.EMPTY.
+	mov	#<^RPTY>,(r0)+
+	clr	(r0)
+	clr	6(r0)		;zap date
+	br	30$		;go display
+90$:	; end of segment
+	mov	#matlst,r5	;pt at match list
+	mov	(sp)+,r4	;restore ptr
+	clr	(r4)		;mark end, C=0
+	rts	pc
+100$:	; I/O error
+	.close	#0		;close the dir
+	clz			;Z=0
+	sec			;C=1
+	rts	pc
+110$:	; end of dir
+	.close	#0		;close the dir
+	+sec!sez		;C=1, Z=1 (no more segs)
+	rts	pc
+;+
+;
+; Get dir segment in r0.
+;
+;-
+getseg:	asl	r0		;*2
+	add	#4,r0		;blks 6,7 are seg 1
+	mov	r0,dirblk	;copy ptr
+	mov	#rddir,r0	;get (next) segment
+	.readw			;read
+	bcs	10$		;bugged
+	mov	buf1+6,extbyt	;no. of extra bytes (FIT uses for RSTS RTSNAM)
+	clr	free		;no frees yet (C=0)
+	mov	buf1+2,segnxt	;save link to next
+	mov	#buf1+12,r5	;pt at begn of seg
+10$:	rts	pc
+;+
+;
+; Check for a wildcard match.
+;
+; % matches exactly one character.
+; * matches 0 or more characters.
+;
+; Wildcards may not span the ".".
+;
+; r5	.asciz /wildcard/
+; r4	.asciz /name to check/
+;
+; C=0 if they matched, C=1 if not.
+;
+;-
+match:	movb	(r5)+,r0	;get a char
+	beq	20$		;end of name
+	cmp	r0,#'%		;match one char?
+	beq	30$		;yes
+	cmp	r0,#'*		;match 0 or more chars?
+	beq	40$		;yes
+	cmpb	r0,(r4)+	;same?
+	beq	match		;yes
+10$:	sec			;no
+	rts	pc
+20$:	tstb	(r4)		;did both end at once?  (C=0)
+	bne	10$		;no
+	rts	pc
+30$:	; % match one character
+	movb	(r4)+,r0	;get it
+	beq	10$		;end
+	cmp	r0,#'.		;don't skip to extension
+	bne	match
+	br	10$
+40$:	; * match 0 or more characters
+	mov	r5,-(sp)	;save
+	mov	r4,-(sp)
+	call	match		;recurse
+	bcc	50$		;got it
+	mov	(sp)+,r4	;restore
+	mov	(sp)+,r5
+	movb	(r4)+,r0	;skip a char
+	beq	10$		;lose
+	cmp	r0,#'.		;extension separator?
+	beq	10$		;yep, don't skip that
+	br	40$		;recurse
+50$:	add	#4,sp		;flush stack (C=0)
+	rts	pc
+;+
+;
+; Convert a radix-50 word to a 0- to 3-character ASCII string.
+; Stop at first blank (all chars to right should be blank too).
+;
+; r1	word
+; r4	buffer ptr
+;
+;-
+r50nbl:	clr	r0		;0-extend
+	div	#50,r0		;divide
+	mov	r1,r2		;save remainder
+	mov	r0,r1		;copy
+	clr	r0		;0-extend
+	div	#50,r0		;divide
+	movb	r50tnb(r0),(r4)+ ;first char
+	beq	10$		;whoops
+	movb	r50tnb(r1),(r4)+ ;second
+	beq	10$
+	movb	r50tnb(r2),(r4)+ ;third
+	beq	10$
+	rts	pc
+10$:	dec	r4		;back up
+	rts	pc
+;+
+;
+; Parse a filename, save in FBUF.
+;
+; On entry:
+; r5	source pointer
+;
+; C=1 if filename is bad.
+;
+;-
+file:	mov	#fbuf,r4	;point at filename area
+	mov	defdev,(r4)+	;set default device
+	clr	(r4)+		;zap file & ext
+	clr	(r4)+
+	clr	(r4)
+	sub	#4,r4		;back up to filename
+	; file or device name first
+	call	rad50		;get it
+	cmp	r0,#':		;device?
+	bne	10$		;no
+	mov	r1,-2(r4)	;set it
+	call	rad50		;get filename
+10$:	mov	r1,(r4)+	;it must be the filename
+	mov	r2,(r4)+
+	cmp	r0,#'.		;extension given?
+	bne	20$		;no
+	call	rad50		;yes, eat it
+	mov	r1,(r4)		;save it
+20$:	; r0 should be blank, tab or null here
+	cmp	r0,#<' >	;blank or ctrl char?
+	bhi	30$		;no, bugged
+	clc			;OK
+	rts	pc
+30$:	sec			;error return
+	rts	pc
+;+
+;
+; Parse a radix-50 string.
+;
+; r5	source pointer
+;
+; On return:
+; r0	char we stopped on
+; r1	1st 3 chars of string
+; r2	2nd 3 chars of string
+; r5	points to char in r0 +1
+;
+;-
+rad50:	clr	r1		;init buf
+	clr	r2
+	call	chr50		;get a char
+	bcs	20$		;yow
+	asl	r0		;lookup 1st char
+	mov	rad50a(r0),r1	;get it
+	call	chr50		;get 2nd
+	bcs	20$		;end of string
+	asl	r0		;lookup 2nd
+	add	rad50b(r0),r1
+	call	chr50		;3rd
+	bcs	20$
+	add	r0,r1
+	call	chr50		;4th
+	bcs	20$
+	asl	r0
+	mov	rad50a(r0),r2
+	call	chr50		;5th
+	bcs	20$
+	asl	r0
+	add	rad50b(r0),r2
+	call	chr50		;6th
+	bcs	20$
+	add	r0,r2
+10$:	call	chr50		;skip anything left
+	bcc	10$
+20$:	rts	pc
+;+
+;
+; Get a char and cvt to radix 50 in r0.
+;
+; C=1 if we failed, char in r0.
+;
+;-
+chr50:	movb	(r5)+,r0	;get it
+	cmp	r0,#<' >	;blank?
+	beq	chr50		;yes, ignore
+	cmp	r0,#'0		;digit?
+	blo	10$
+	cmp	r0,#'9
+	blos	20$
+	cmp	r0,#'A		;u.c. letter?
+	blo	10$
+	cmp	r0,#'Z
+	blos	30$
+	cmp	r0,#'a		;l.c. letter?
+	blo	10$
+	cmp	r0,#'z
+	blos	40$
+10$:	sec			;error return
+	rts	pc
+20$:	; digit
+	sub	#'0-<^R  0>,r0	;convert (C=0)
+	rts	pc
+30$:	; upper case letter
+	sub	#'A-<^R  A>,r0	;convert (C=0)
+	rts	pc
+40$:	; lower case letter
+	sub	#'a-<^R  A>,r0	;convert (C=0)
+	rts	pc
+;+
+;
+; Make sure the device at FBUF is loaded.
+;
+; C=1 if invalid dev.
+;
+;-
+ldev:	.dstat	#dstat,#fbuf	;see if handler is loaded
+	bcs	20$		;invalid
+	tst	dstat+4		;is it loaded?
+	bne	20$		;yes (C=0 from TST)
+	; device is non-resident, load it in
+	tst	device		;is there a device already?
+	beq	10$		;no
+	.releas	#device		;yes, release it
+10$:	.fetch	#devhnd,#fbuf	;no, load it (set C)
+	mov	fbuf,device	;save device name
+20$:	rts	pc
+;
+	.sbttl	packet-level routines
+	.rem	$
+
+Packet format:
+
++-----------------------------------+
+| soh | len | seq | typ | dat | chk |
++-----------------------------------+
+
+soh = start-of-header character
+len = <length of seq through chk inclusive> +40
+seq = <sequence number mod 100> +40
+typ = type (ascii char)
+dat = data field (variable length, may be null)
+chk = 1, 2, or 3 byte checksum or CRC of len through dat inclusive
+$
+;+
+;
+; Init SEND-INIT parms for negotiation.
+;
+;-
+iparms:
+.if ne binlin
+	movb	#'Y,mqbin	;QBIN is OK with me but not needed
+.iff
+	movb	#'&,mqbin	;QBIN not OK
+.endc
+	clrb	chkt		;CHKT not decided yet
+	clrb	mchkt		;I haven't voted either
+	clrb	rept		;no REPT char yet
+	movb	#'~,mrept	;I'd like to
+	rts	pc
+;+
+;
+; Finish SEND-INIT parms processing.
+;
+;-
+fparms:	; make the CHKT change actually happen
+	movb	chkt,r0		;get check type
+	mov	r0,lchk		;save length
+	asl	r0		;*2
+	mov	checks-2(r0),checka ;look up routine to do checks
+	; fix MAXL to be max data field size
+	movb	maxl,r0		;get MAXL
+	sub	#2,r0		;don't count seq or typ
+	sub	lchk,r0		;or checksum
+	movb	r0,maxl		;save
+	rts	pc
+;+
+;
+; Prepare our SEND-INIT parms.
+;
+; Returns with:
+; r5	data field
+; r4	length
+;
+;-
+sparms:	tstb	mchkt		;have they specified MCHKT?
+	bne	10$		;yes
+	 movb	#'1,mchkt	;no, my default is 1
+10$:	mov	#mparms,r5	;ptr
+	mov	#nmprms,r4	;length
+	rts	pc
+;+
+;
+; Process SEND-INIT parms received from them.
+;
+; On entry:
+; r5	data field (with space for padding)
+; r4	length
+;
+;-
+rparms:	; pad with blanks so we'll use defaults as appropriate
+	mov	#' ,r1		;handy constant
+	mov	#nparms,r3	;expected max length
+	sub	r4,r3		;find # missing parms
+	blos	20$		;they must be a later version
+	add	r5,r4		;pt at end
+10$:	movb	r1,(r4)+	;pad
+	sob	r3,10$
+20$:	; read the parms
+	mov	#maxl,r4	;point at param table
+	; MAXL=80.
+	movb	(r5)+,r0	;get MAXL
+	sub	r1,r0		;unchar()
+	bne	.+6		;specified
+	 mov	#80.,r0		;default
+	movb	r0,(r4)+
+	; TIME=5
+	movb	(r5)+,r0	;get TIME
+	sub	r1,r0		;unchar()
+	bne	.+6		;given
+	 mov	#5,r0		;def
+	movb	r0,(r4)+
+	; NPAD=0
+	movb	(r5)+,r0	;get NPAD
+	sub	r1,r0		;unchar()
+	movb	r0,(r4)+
+	; PADC=^@
+	movb	(r5)+,r0	;get char
+	asl	r1		;*2=100
+	xor	r1,r0		;ctl()
+	movb	r0,(r4)+
+	; EOL=cr
+	movb	(r5)+,r0	;get char
+	asr	r1		;/2=40 again
+	sub	r1,r0		;unchar()
+	bne	.+6		;given
+	 mov	#cr,r0		;default
+	movb	r0,(r4)+
+	; QCTL=#
+	movb	(r5)+,r0	;get char
+	cmp	r0,r1		;given?  (blank?)
+	bne	.+6		;no
+	 movb	#'#,r0		;default
+	movb	r0,(r4)+
+	; QBIN=N
+	movb	(r5)+,r0	;get char
+.if ne binlin
+	movb	#'N,mqbin	;assume they don't want to QBIN
+.endc
+	cmp	r0,r1		;defaulted?
+	beq	30$
+	cmp	r0,#'Y		;up to us?
+	beq	30$
+	cmp	r0,#'N		;they don't want to?
+	beq	30$		;(we're screwed if BINLIN=0)
+	movb	r0,mqbin	;they want to, remember what
+	br	40$		;skip
+30$:	; our decision, tell them what we've already assumed
+.if ne binlin
+	clr	r0		;zap QBIN
+.iff
+	mov	#'&,r0		;we want to use &
+.endc
+40$:	movb	r0,(r4)+
+	; CHKT=1 or what they say if they went first
+	movb	(r5)+,r0	;get it
+	cmp	r0,r1		;default (=1)?
+	beq	50$		;yes
+	sub	#'1,r0		;find value (0,1,2)
+	cmp	r0,#2		;valid?
+	blos	60$		;yes
+50$:	clr	r0		;no
+60$:	inc	r0		;+1 (1,2,3)
+	movb	mchkt,r2	;have we already voted?
+	bne	70$		;yes
+	; they're going first, so their vote wins
+	movb	r0,(r4)+	;save
+	add	#'0,r0		;convert back
+	movb	r0,mchkt	;we'll agree
+	br	90$
+70$:	; we already decided, if they agree that's it, otherwise 1
+	sub	#'0,r2		;convert
+	cmp	r0,r2		;do they agree?
+	beq	80$		;yes
+	movb	#'1,mchkt	;no, we'll use 1
+	mov	#1,r0
+80$:	movb	r0,(r4)+
+90$:	; REPT=none
+	movb	(r5)+,r0	;get their char
+	movb	r0,mrept	;I'll agree if I haven't already
+	cmp	r0,r1		;will we do it?
+	bne	.+4		;yes
+	 clr	r0		;no
+	movb	r0,(r4)+
+	; CAPAS=none
+	movb	(r5)+,r0	;get theirs
+	sub	r1,r0		;UNCHAR()
+	movb	r0,(r4)+	;save bits
+	rts	pc
+;+
+;
+; Send error packet.
+;
+; r0	ptr to .asciz msg
+;
+;-
+err:	incb	seq		;seq +1
+	bicb	#^C77,seq	;isolate low 6
+	mov	r0,r5		;copy
+	mov	r0,r4		;twice
+10$:	tstb	(r4)+		;count
+	bne	10$
+	dec	r4		;-1
+	sub	r5,r4		;length
+	call	ldatn		;load packet
+	call	ldatf		;fix for MAKPAC
+	mov	#'E,r0		;type=ERROR
+	call	makpac		;make packet
+	jmp	putpac		;send it, return
+;+
+;
+; Send an ACK for the current packet.
+;
+;-
+ack:	clr	r4		;no data
+	mov	#txbuf+3,r5	;space for header stuff
+ack1:	; enter with data field at (r5), length in r4
+	mov	#'Y,r0		;type=ACK
+	call	makpac		;make a packet
+	mov	r5,ackdat	;save data
+	mov	r4,acklen
+	incb	seq		;bump seq
+	bicb	#^C77,seq	;mod 100
+	jmp	putpac		;send it, return
+;+
+;
+; Resend ACK for previous packet.
+;
+;-
+reack:	mov	ackdat,r5	;get ptr
+	mov	acklen,r4	;and length
+	jmp	putpac		;send it
+;+
+;
+; Send a NAK for the current packet.
+;
+;-
+nak:	mov	#'N,r0		;NAK
+	clr	r4		;no data
+	mov	#txbuf+3,r5	;space for header stuff
+	call	makpac		;make a packet
+	jmp	putpac		;send it, return
+;+
+;
+; Load data field.
+;
+; r5	data to load
+; r4	length of data
+; r2	length of buffer
+; r1	buffer addr
+;
+; Each code is as follows:
+; .byte	'~,count+40	;repeat count if rept.ne.0
+; .byte	'&		;8th-bit-quote if b7=1 and qbin.ne.0
+; .byte	'#		;ctrl-char-quote if needed ('# is my choice)
+; .byte	char		;char, with quoted bits trimmed
+;
+; Returns C=1 if output buf is full, in which case it's possible
+; that not all of the data were transferred (r5, r4 updated).
+;
+; The LDATN entry sets up r1 and r2 to start a new packet.
+; The LDATF entry converts r1, r2 returned from LDAT into r4, r5
+; needed by MAKPAC, assuming we were using TXBUF as the buffer.
+;
+;-
+ldatn:	; set up for new packet
+	mov	#txbuf+3,r1	;usual initial values for r1, r2
+	movb	maxl,r2
+	;br	ldat
+;
+ldat:	tst	r4		;nothing to do?
+	beq	170$		;C=0 from TST
+	br	150$		;jump into loop
+10$:	; dry run to see if this char will fit in the packet
+	; (we worry about this only when we're within 5 chars of full)
+	movb	(r5),r0		;get next char
+	; 1 char for the char itself
+	mov	#1,r3		;length so far
+	; 2 chars for repeat prefix
+	tstb	rept		;do we do compression?
+	beq	20$
+	cmp	r4,#3		;at least 3 chars left?
+	blo	20$
+	cmpb	r0,1(r5)	;next one the same?
+	bne	20$
+	cmpb	r0,2(r5)	;what about the one after?
+	bne	20$
+	add	#2,r3		;yep, compression takes 2 chars
+20$:	; 1 char for 8th bit quote
+	tstb	qbin		;do we quote 8th bit?
+	beq	30$
+	tstb	r0		;8th bit set?
+	bpl	30$
+	inc	r3		;yes, add 1 char
+30$:	; 1 char for ctrl quote or flag quote
+	bic	#^C177,r0	;trim to 7
+	cmp	r0,#177		;ctrl char?
+	beq	40$
+	cmp	r0,#40
+	blo	40$
+	cmpb	r0,#'#		;flag?
+	beq	40$
+	cmpb	r0,qbin
+	beq	40$
+	cmpb	r0,rept
+	bne	50$
+40$:	inc	r3		;add 1 char
+50$:	cmp	r2,r3		;enough space?
+	blo	170$		;no, return C=1
+60$:	; we're sure we have enough space, really do it
+	movb	(r5)+,r0	;get the char
+	tstb	rept		;try to compress?
+	beq	90$
+	cmp	r4,#3		;.GE.3 chars?
+	blo	90$
+	cmpb	r0,(r5)		;.GE.3 in a row the same?
+	bne	90$
+	cmpb	r0,1(r5)
+	bne	90$
+	; at least 3 in a row, do a repeat count
+	add	#2,r5		;skip the next 2
+	sub	#2,r4		;eat them
+	mov	#3,r3		;init count
+70$:	cmp	r4,#1		;anything left?  (r4 is still +1 here)
+	beq	80$		;no
+	cmpb	r0,(r5)		;yes, is it the same?
+	bne	80$
+	inc	r5		;yes, eat it
+	dec	r4		;count it
+	inc	r3		;rept count +1
+	cmp	r3,#94.		;field full?
+	blo	70$		;no, loop
+80$:	movb	rept,(r1)+	;save flag
+	add	#40,r3		;char(count)
+	movb	r3,(r1)+
+	sub	#2,r2		;count
+90$:	; quote 8th bit
+	tstb	qbin		;binary quoting?
+	beq	100$
+	tstb	r0		;does it need it?
+	bpl	100$
+	movb	qbin,(r1)+	;yes
+	dec	r2
+	bic	#^C177,r0	;isolate low 7
+100$:	; quote control chars
+	mov	r0,r3		;copy
+	bic	#^C177,r3	;trim
+	cmpb	r3,#177		;DEL?
+	beq	110$
+	cmpb	r3,#40		;ctrl char?
+	bhis	120$
+110$:	mov	#100,r3		;get 100
+	xor	r3,r0		;ctl(r0)
+	br	130$		;go quote
+120$:	; see if it's a flag char
+	; we got #@ above so r3 can't be nul - OK to cmpb to QBIN & REPT
+	cmpb	r3,#'#		;qctl?
+	beq	130$
+	cmpb	r3,qbin		;qbin?
+	beq	130$
+	cmpb	r3,rept		;rept?
+	bne	140$
+130$:	movb	#'#,(r1)+	;qctl
+	dec	r2
+140$:	; write the char itself
+	movb	r0,(r1)+	;write it
+	dec	r2
+	dec	r4		;dec count
+	beq	160$		;done, skip
+150$:	cmp	r2,#5		;could we overrun?
+	bhis	60$		;no, don't worry
+	br	10$		;yes, be careful
+160$:	clc			;no flush needed yet
+170$:	rts	pc		;(C set up)
+;
+ldatf:	; convert r1, r2 from LDAT into r4, r5 for MAKPAC
+	mov	#txbuf+3,r5	;point
+	mov	r1,r4		;copy
+	sub	r5,r4		;get length
+	rts	pc
+;+
+;
+; Unpack the data field of a text packet.
+;
+; Handles all escapes, and as long as r2 and r3 are preserved parsing may be
+; preserved around packet boundaries, which means that escape sequences may be
+; broken between packets.  After not mentioning whether this can happen in the
+; first few versions, the 6th edition of the Kermit spec says it can't, so we
+; won't generate them but we'll receive them OK.
+;
+; On entry:
+; r2	escape bits:  200 if & encountered, 100 if # encountered
+; r3	repeat count, or -1 if next char is char(repeat count)
+; r4	length of input packet buffer
+; r5	input packet buffer
+;
+; BUFPTR contains the current output buffer addr
+; BUFCTR contains the # of free bytes in the buf at bufptr
+;
+; Call is through r1:
+;	jsr	r1,unpack
+;	.word	flush
+;	... returns here, C=1 if flush error
+;
+; FLUSH is the addr of a routine which is called when BUFCTR reaches 0.  It
+; should start the old buf flushing and set up BUFPTR,BUFCTR to point to a
+; fresh buffer for subsequent data.  R0 may be destroyed by the routine, all
+; others must be preserved.  If the routine returns C=1, UNPACK returns
+; immediately with C=1.
+;
+; The initial values for r2 and r3 are 0 and 1, respectively
+; (no escapes yet and no repeat so we'll write 1 byte).
+; Call IUNPK instead to set these up.
+;
+;-
+iunpk:	; come here to init flags
+	clr	r2		;no escapes
+	mov	#1,r3		;repeat count = 1
+unpack:	; come here with flags already initted
+	tst	r4		;anything to unpack?
+	beq	60$		;no
+10$:	movb	(r5)+,r0	;get next char
+	tst	r3		;expecting repeat count?
+	bmi	90$		;yes
+	cmpb	r0,rept		;repeat flag?
+	beq	80$
+	cmpb	r0,qbin		;8th-bit flag (if any)?
+	beq	100$
+	cmpb	r0,qctl		;ctrl flag?
+	beq	110$
+20$:	xor	r0,r2		;we've finished the char, flip bits
+30$:	; save r2, r3 times
+	movb	r2,@bufptr	;put in buf
+	inc	bufptr		;bump ptr
+	dec	bufctr		;any space left?
+	beq	70$		;no, queue write
+40$:	sob	r3,30$		;loop
+	clr	r2		;re-init flags
+	inc	r3		;count=1
+50$:	sob	r4,10$		;loop
+60$:	tst	(r1)+		;skip flush addr, C=0
+	rts	r1
+70$:	; go flush buffer
+	call	@(r1)		;flush
+	bcc	40$		;loop if ok
+	tst	(r1)+		;skip flush addr
+	sec			;C=1
+	rts	r1
+80$:	; repeat flag
+	bit	#100,r2		;quoted?
+	bne	120$		;yes
+	mov	#-1,r3		;no, next char is count
+	br	50$		;get it
+90$:	; repeat count
+	sub	#40,r0		;unchar
+	mov	r0,r3		;save
+	br	50$		;get next
+100$:	; 8th bit flag
+	bit	#100,r2		;quoted?
+	bne	120$		;yes
+	bis	#200,r2		;no, set 8th bit
+	br	50$		;C4
+110$:	; ctrl flag
+	bit	#100,r2		;quoted?
+	bne	120$		;yes
+	bis	#100,r2		;no, set ctrl bit
+	br	50$		;C4
+120$:	bic	#100,r2		;clear flag (quoted, not ctrl)
+	br	20$		;save char
+;+
+;
+; Send a simple packet and get an ACK for it.
+;
+; Enter with packet type in r0.
+;
+; Exit with things set up from SNDACK.
+;
+;-
+sndsmp:	mov	#txbuf+3,r5	;ptr
+	clr	r4		;no data
+	call	makpac		;make a packet
+	;br	sndack		;send it, get ACK
+;+
+;
+; Send a packet and get an ACK for it.
+;
+; Enter with r4, r5 set up for PUTPAC.
+;
+; Return with C=1 = retry count exhausted,
+; C=0 = things are OK (getpac regs), seq updated.
+;
+;-
+sndack:	mov	#10.,-(sp)	;retry count
+10$:	call	putpac		;send
+	mov	r4,-(sp)	;save
+	mov	r5,-(sp)
+	call	getpac		;get a packet
+	bcc	30$		;got one
+20$:	mov	(sp)+,r5	;restore
+	mov	(sp)+,r4
+	dec	(sp)		;give up yet?
+	bne	10$		;no
+	tst	(sp)+		;yes, flush
+	sec			;C=1
+	rts	pc
+30$:	cmp	r0,#'Y		;ACK?
+	bne	40$		;no
+	cmpb	r1,seq		;correct sequence #?
+	beq	50$		;yes, skip
+40$:	cmp	r0,#'N		;NAK?
+	bne	20$		;no, keep trying
+	inc	r1		;seq+1
+	bic	#^C77,r1	;mod 100'
+	cmpb	r1,seq		;NAK for next packet?
+	bne	20$		;no, keep trying
+	clr	r4		;shouldn't be any data
+50$:	incb	seq		;bump seq
+	bicb	#^C77,seq	;mod 100'
+	add	#6,sp		;purge stack, C=0
+	rts	pc
+;+
+;
+; Make a packet.
+;
+; On entry:
+;
+; r0	packet type
+; r4	length of dat
+; r5	ptr to dat (must have 3 bytes free at each end)
+;
+; On return:
+;
+; r4	length of packet
+; r5	ptr to packet
+;
+;-
+makpac:	movb	r0,-(r5)	;save typ
+	movb	seq,r0		;get seq #
+	add	#40,r0		;char(seq)
+	movb	r0,-(r5)	;save seq
+	add	#2,r4		;count both
+	mov	r4,r0		;copy
+	add	lchk,r0		;add length of check
+	mov	r0,-(sp)	;save
+	add	#40,r0		;take char(len)
+	movb	r0,-(r5)	;save len
+	mov	r5,r1		;copy ptr
+	inc	r4		;count length field
+	add	r4,r1		;add length
+	mov	r5,-(sp)	;save
+	call	@checka		;compute check
+	mov	(sp)+,r5	;restore
+	mov	(sp)+,r4
+	inc	r4		;count length
+	rts	pc
+;+
+;
+; Send a packet.
+;
+; On entry,
+;
+; r4	length of len through chk fields
+; r5	ptr to len field
+;
+; Preserves r4 and r5.
+;
+;-
+putpac:	.rctrlo			;might have received ^O in line noise
+	movb	npad,r1		;get # pads to send
+	beq	20$		;none
+	movb	padc,r0		;get char
+10$:	.ttyout			;write one
+	sob	r1,10$		;loop
+20$:	.ttyout	#soh		;write SOH
+	mov	r4,r2		;copy
+	mov	r5,r3
+30$:	movb	(r3)+,r0	;get next char
+	.ttyout			;write it
+	sob	r2,30$		;loop
+	movb	eol,r0		;write eol char
+	.ttyout
+	rts	pc
+;+
+;
+; Receive a packet.
+;
+; On return:
+;
+; If successful, C=0 and
+;
+; r0	packet type
+; r1	packet sequence number
+; r4	length of data field
+; r5	ptr to data field
+;
+; C=1 on timeout, bad checksum, or obviously invalid length.
+;
+;-
+getpac:	jsr	r5,gtmout	;get mark
+	 .word	50$		;whoops
+	cmp	r0,#soh		;is this mark?
+	bne	getpac		;loop if not
+	mov	#rxbuf,r5	;pt at buf
+	mov	r5,r4		;copy
+	jsr	r5,gtmout	;get length
+	 .word	50$		;whoops
+	movb	r0,(r4)+	;save
+	sub	#40,r0		;unchar(len)
+	cmp	r0,#136		;valid?
+	bhi	50$		;nope, don't rape core
+	mov	lchk,r1		;get length of check
+	add	#2,r1		;+2 (seq, typ)
+	cmp	r0,r1		;too small for null data field?
+	blo	50$		;yes, forget it
+	mov	r0,r1		;copy length
+10$:	jsr	r5,gtmout	;get a char
+	 .word	50$		;whoops
+	movb	r0,(r4)+	;save the char
+	sob	r1,10$		;loop
+	; got the whole thing, check it
+	sub	r5,r4		;find length
+	sub	lchk,r4		;don't check the check
+	mov	r4,-(sp)	;save
+	mov	r5,-(sp)
+	mov	#chkbuf,r1	;pt at buf
+	call	@checka		;check the packet
+	mov	r5,r2		;copy check ptr
+	mov	(sp)+,r5	;restore
+	mov	(sp)+,r4
+	sub	r3,r1		;back up
+20$:	cmpb	(r1)+,(r2)+	;right?
+	bne	40$		;no
+	sob	r3,20$		;loop
+30$:	inc	r5		;skip LEN
+	movb	(r5)+,r1	;get seq
+	sub	#40,r1		;unchar
+	bcs	50$		;whoops
+	bit	#^C77,r1	;must fit in 6 bits
+	bne	50$		;doesn't, error
+	movb	(r5)+,r0	;get type
+	sub	#3,r4		;update length (C=0)
+	rts	pc
+40$:	; bad check -- if check type .NE. 1-char-checksum, see if the packet
+	; would have been valid if it were;  this way we can recover from them
+	; losing our half of parms negotiation
+;;; we may want to limit this check to cases when it could happen, otherwise
+;;; we'll blindly accept bad packets 1/256th of the time
+	mov	lchk,r0		;get check type
+	cmp	r0,#1		;=1?
+	beq	50$		;yes, no point in being cute
+	add	r0,r4		;fix length
+	dec	r4		;to include everything but 1-char-checksum
+	mov	r4,-(sp)	;save
+	mov	r5,-(sp)
+	mov	#chkbuf,r1	;pt at buf
+	call	chk1		;call 1-char-checksum routine
+	mov	r5,r2		;save
+	mov	(sp)+,r5	;restore
+	mov	(sp)+,r4
+	cmpb	(r1),(r2)	;match?
+	beq	30$		;yes, continue processing
+50$:	sec			;error return
+	rts	pc
+;
+gtmout:	; get char with timeout
+	.ttinr			;try to get a char
+	bcs	gtmout		;loop
+	tst	(r5)+		;skip return
+	rts	r5
+;+
+;
+; Check routines.
+;
+; On entry:
+;
+; r1	buffer to put check in
+; r4	length of len through dat fields
+; r5	len field of packet to check
+;
+; On return:
+;
+; r1	updated
+; r3	length of check generated
+; r5	end of region checked
+;
+;-
+chk1:	; 1-byte checksum
+	; chk = <<sum+<<sum/100>&3>>&77>+40 (sum is 8-bit sum of chars)
+	clr	r2		;init sum
+10$:	movb	(r5)+,r0	;get a char
+	add	r0,r2		;add it in
+	sob	r4,10$		;loop
+	mov	r2,r0		;copy
+	rolb	r2		;left 3
+	rolb	r2
+	rolb	r2
+	bic	#^C3,r2		;isolate <7:6>
+	add	r2,r0		;find total
+	bic	#^C77,r0	;isolate <5:0>
+	add	#40,r0		;char(chk)
+	movb	r0,(r1)+	;save
+	mov	#1,r3		;length
+	rts	pc
+;
+chk2:	; 2-byte checksum
+	; chk1 = sum&77+40, chk2 = <sum_-6>&77+40 (sum is 12-bit sum of chars)
+	clr	r2		;init sum
+10$:	clr	r0		;clear high
+	bisb	(r5)+,r0	;get a char
+	add	r0,r2		;add it in
+	sob	r4,10$		;loop
+	mov	r0,r2		;copy
+	bic	#^C77,r0	;low 6 bits
+	add	#40,r0		;char()
+	movb	r0,(r1)+	;save
+	asl	r2		;left 2
+	asl	r2
+	swab	r2		;and right 8 = right 6
+	bic	#^C77,r2	;high 6 bits
+	add	#40,r2		;char()
+	movb	r2,(r1)+	;save
+	mov	#2,r3		;length
+	rts	pc
+;
+chk3:	; 3-byte CRC (requires EIS)
+	; algorithm stolen from MS-Kermit V2.24
+	; (written by Columbia University)
+	clr	r2		;init
+10$:	movb	(r5)+,r0	;get next
+.if ne eis$$
+	xor	r2,r0		;XOR low byte of old value
+.iff
+	mov	r2,r3		;save
+	bis	r2,r0		;find IOR
+	com	r2		;find AND
+	bic	r2,r3
+	bic	r3,r0		;(r2!r0)&^C(r2&r0)
+.endc
+	bic	#^C377,r0	;isolate
+	asl	r0		;*2
+	mov	crc(r0),r0	;get bits
+	clrb	r2		;running total right 8.
+	swab	r2
+.if ne eis$$
+	xor	r0,r2		;find new value
+.iff
+	mov	r0,r3		;save
+	bis	r0,r2		;IOR
+	com	r0		;AND
+	bic	r0,r3
+	bic	r3,r2		;XOR
+.endc
+	sob	r4,10$		;yay
+.if ne eis$$
+	mov	r2,r3		;copy
+	ash	#-6,r2		;right 6
+	mov	r2,r0
+	ash	#-6,r0		;again
+.iff
+	mov	r2,r3		;copy
+	mov	r2,r0
+	swab	r0		;right 12. (right 8., right 4)
+	asr	r0
+	asr	r0
+	asr	r0
+	asr	r0
+	asl	r2		;right 6. (left 2, right 8.)
+	asl	r2
+	swab	r2
+.endc
+	bic	#^C17,r0	;<15:12>
+	bis	#40,r0		;char()
+	movb	r0,(r1)+
+	bic	#^C77,r2	;<11:6>
+	add	#40,r2		;char()
+	movb	r2,(r1)+
+	bic	#^C77,r3	;<5:0>
+	add	#40,r3		;char()
+	movb	r3,(r1)+
+	mov	#3,r3		;length
+	rts	pc
+;
+crc:	.word	1,2,3,4		;this table will be 256. words
+;
+	.rem	%
+	xor	dx,dx		;init crc
+	mov	bh,dl		;bh=0
+kchk3a:	lodsb			;get next byte
+	xor	al,dl		;XOR in old value
+	mov	dl,dh		;right 8 bits
+	mov	dh,al		;save low byte
+	mov	bl,al		;copy
+	and	bl,17		;isolate low 4
+	shl	bl,1		;*2
+	mov	ax,ds:crc1[bx]	;get low part
+	mov	bl,dh		;copy again
+	shr	bl,1		;right-justify high nibble, *2
+	shr	bl,1
+	shr	bl,1
+	and	bl,36		;isolate
+	xor	ax,ds:crc2[bx]	;bitwise add get high part
+	mov	dh,ah		;copy high half
+	xor	dl,al		;bitwise add low half
+	loop	kchk3a		;loop
+	mov	bx,dx		;copy
+	mov	cl,6		;bit count
+	shr	bx,cl		;right 6
+	mov	ax,bx		;one more time
+	shr	ax,cl		;right 6
+	or	al,40		;take char(CRC<15:12>)
+	mov	[di],al		;save it
+	inc	di		;+1
+	and	bl,77		;isolate CRC<6:11>
+	add	bl,40		;take char()
+	mov	[di],bl		;save
+	inc	di		;+1
+	and	dl,77		;isolate CRC<5:0>
+	add	dl,40		;take char()
+	mov	[di],dl		;save
+	inc	di		;+1
+	mov	cl,3		;byte count=3
+	ret
+%
+	.sbttl	pure data
+;
+rad50a:	; 1st char rad50 lookup table
+	.rad50	"   A  B  C  D  E  F  G  "
+	.rad50	"H  I  J  K  L  M  N  O  "
+	.rad50	"P  Q  R  S  T  U  V  W  "
+	.rad50	"X  Y  Z  $  .     0  1  "
+	.rad50	"2  3  4  5  6  7  8  9  "
+;
+rad50b:	; 2nd char rad50 lookup table
+	.rad50	"    A  B  C  D  E  F  G "
+	.rad50	" H  I  J  K  L  M  N  O "
+	.rad50	" P  Q  R  S  T  U  V  W "
+	.rad50	" X  Y  Z  $  .     0  1 "
+	.rad50	" 2  3  4  5  6  7  8  9 "
+;
+checks:	.word	chk1,chk2,chk3
+;
+larea:	.byte	1,1	;.LOOKUP, channel = 1
+	.word	fbuf	;filename
+	.word	-1	;start at head posn on magtape
+;
+ludir:	.byte	0,1	;.LOOKUP, channel = 0
+	.word	wlddev	;ptr to device name
+	.word	0	;(only for MT:)
+;
+r50t:	.ascii	" ABCDEFGHIJKLMNOPQRSTUVWXYZ$.%0123456789"
+r50tnb:	.ascii	<0>"ABCDEFGHIJKLMNOPQRSTUVWXYZ$.%0123456789"
+;
+months:	.ascii	"-Jan-Feb-Mar-Apr-May-Jun-Jul-Aug-Sep-Oct-Nov-Dec-"
+;
+; strings for dirsum
+tfile:	.asciz	" file"
+tblk:	.asciz	" block"
+	.asciz	" in use"	;must follow tblk
+tfree:	.asciz	" free"
+;
+bfs:	.asciz	'Bad file specification.'
+bdn:	.asciz	'Bad device name.'
+nomtch:	.asciz	'No matching files found.'
+fnf:	.asciz	'File not found.'
+ucf:	.asciz	'Unable to create file.'
+uof:	.asciz	'Unable to open file.'
+werr:	.asciz	'Error writing file.'
+rerr:	.asciz	'Error reading file.'
+ioerr:	.asciz	'I/O error.'
+toolng:	.asciz	'Line too long.'
+mkw:	.asciz	'Missing keyword.'
+;
+	.sbttl	some of both
+;
+	.even
+;
+earea:	.byte	1,2	;.ENTER, channel = 1
+ 	.word	fbuf	;dblk
+elen:	.word	-1	;length=max (or value if we know)
+	.word	-1	;add file at EOT if magtape
+;
+device:	.word	0	;currently loaded device handler, or 0 if none
+lchk:	.word	1	;length of checksum (bytes)
+checka:	.word	chk1	;addr of routine to compute checksum
+;
+warea:	.byte	1,11	;.WRITE, channel = 1
+wblk:	.word		;blk #
+wca:	.word		;core address
+wwc:	.word		;word count
+	.word	1	;no crtn
+;
+rarea:	.byte	1,10	;.READ, channel = 1
+rblk:	.word		;blk #
+rca:	.word		;core address
+rwc:	.word		;word count
+	.word	1	;no crtn
+;
+rddir:	.byte	0,10	;.READ, channel = 0
+dirblk:	.word		;blk #
+	.word	buf1	;core addr
+	.word	1000	;word cnt (dir segments are 2 blks)
+	.word	0	;wait for completion
+;
+wrdir:	.byte	0,11	;.WRITE, channel=0
+wdrblk:	.word		;blk #
+	.word	buf1	;core addr
+	.word	1000	;word cnt (2 blocks)
+	.word	0	;wait for completion
+;
+wlddev:	.word		;dev name for dir search
+	.word	0,0,0	;no filename or ext
+;
+	.blkb	3	;for len, seq, typ
+mparms:	; my parameters
+	.byte	94.+40	;MAXL (anything's OK with us)
+	.byte	5+40	;TIME (line speed should be only problem)
+	.byte	0+40	;NPAD (no pad chars)
+	.byte	'@	;PADC (doesn't matter)
+	.byte	cr+40	;EOL (doesn't matter)
+	.byte	'#	;QCTL (hard-coded - doesn't really matter)
+mqbin:	.byte		;QBIN (only if one of us needs it)
+mchkt:	.byte		;CHKT (whatever they want, or 1 byte)
+mrept:	.byte		;REPT (repeat char)
+	.byte	attr+40	;CAPAS (attr packets OK)
+nmprms=	.-mparms
+	.blkb	3	;for check
+;
+pns:	.ascii	'Packet type "'
+pnsc:	.byte
+	.asciz	'" not supported.'
+;
+cns:	.ascii	'Generic command "'
+cnsc:	.byte
+	.asciz	'" not supported.'
+;
+pvl:	.ascii	'Packet type "'
+pvlc:	.byte
+	.asciz	'" invalid at this point.'
+;
+ddev:	.ascii	'Default device is now '
+ddev1:	.blkb	3+1+2		;<ddu>:<crlf>
+;
+	.sbttl	pure storage
+;
+	.even
+defdev:	.blkw		;default device name (.rad50)
+fbuf:	.blkw	4	;device, filename, extension
+dstat:	.blkw	4	;.DSTAT area
+ackdat:	.blkw		;ptr to last ACK packet
+acklen:	.blkw		;length of last ACK packet
+; directory stuff:
+extbyt:	.blkw		;extra bytes per dir entry
+files:	.blkw		;no. of files in dir listing
+used:	.blkw		;total no. blks in use
+free:	.blkw		;total no. < UNUSED > blks
+segnxt:	.blkw		;next segment in dir
+;
+seq:	.blkb	1	;packet sequence #
+txbuf:	.blkb	3+91.+3	;tx packet buffer
+rxbuf:	.blkb	91.+3	;rx packet buffer
+chkbuf:	.blkb	3	;check buffer (for generated rx check)
+wild:	.blkb	91.+1	;wildcard buffer for GD and R
+wldflg:	.blkb		;NZ => WILD contains at least 1 wildcard char
+dirall:	.blkb		;NZ => show all dir entries (no wildcard check)
+dirnon:	.blkb		;NZ => don't build dir entry table (usage check)
+binfil:	.blkb		;NZ => don't trim NULs from ends of file blks
+;
+maxl:	.blkb		;maximum packet length (bytes)
+time:	.blkb		;packet timeout (seconds)
+npad:	.blkb		;no. of pad characters
+padc:	.blkb		;pad character (if npad.ne.0)
+eol:	.blkb		;eol char
+qctl:	.blkb		;ctrl char quote
+qbin:	.blkb		;8th bit quote
+chkt:	.blkb		;check type
+rept:	.blkb		;repeat char
+capas:	.blkb		;extra capabilities
+nparms=	.-maxl
+;
+	.even
+cbuf:	.blkw		;current buffer in double-buffering
+rlen:	.blkw		;number of words reading into next buffer
+bufptr:	.blkw		;ptr into buffer
+bufctr:	.blkw		;ctr in buffer
+;
+matlst:	.blkw	72.*5+1	;wildcard match list, up to 72. entries + zero
+;
+buf1:	.blkb	bufsiz	;buffers
+buf2:	.blkb	bufsiz
+;
+devhnd=	.		;device handlers go here
+	.end	start

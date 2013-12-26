@@ -1,0 +1,22 @@
+Aucbvax.106
+NET.v7bugs
+utzoo!duke!vax135!ucbvax!mark
+Sun May 18 22:54:14 1980
+icheck
+>From bill Thu Oct 18 01:41:53 1979
+To: v7bugs
+Subj: bug in icheck
+Cc:  sklower
+
+there is a bug in the icheck program due to the declaration of
+	unsigned short s_fsize
+in <filsys.h>... in the places where XXX.s_fsize is used in comparisons
+in icheck.c, it should be cast to an integer.  comparisons of the form
+	if (YYY < XXX.s_fsize)
+are deadly, since YYY may be negative.  since XXX.s_fsize is positive,
+but signed, YYY is treated as unsigned, and havoc results from the fact
+that the comparsion fails.   if an inode has a (bad) negative block
+number in it (YYY < 0) then icheck will (hopefully) core dump or screw
+up in some other way.
+	bill
+

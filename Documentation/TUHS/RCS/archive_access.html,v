@@ -1,0 +1,67 @@
+head	1.1;
+access;
+symbols;
+locks
+	mhol:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2001.09.27.05.26.51;	author mhol;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<!--Converted with LaTeX2HTML 98.1p1 release (March 2nd, 1998)
+originally by Nikos Drakos (nikos@@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Unix Archive Access Reqest Information</TITLE>
+<META NAME="description" CONTENT="Unix Archive Access Reqest Information">
+<META NAME="keywords" CONTENT="archive_access">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="STYLESHEET" HREF="archive_access.css">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<BR> <P>
+
+<!--End of Navigation Panel-->
+
+<P>
+
+<H1><A NAME="SECTION00010000000000000000">
+Unix Archive Access Request Information</A>
+</H1>
+
+<P>
+Access to the Unix Archive can now be obtained with no human
+intervention. Go to <A NAME="tex2html1"
+ HREF="http://www.sco.com/offers/ancient.html">SCO's free UNIX source license web page</A>, and click to agree to the
+SCO license. On the next page, click on `apply for access to the PUPS Archive'.
+This will take you to a web form on the main Unix Archive machine.
+Fill in your full name and e-mail address, and you will be given immediate
+access to the archive. You can then go to the 
+<A NAME="tex2html2"
+ HREF="archive_sites.html">list of Unix Archive mirrors</A>.
+<BR> <HR>
+<ADDRESS>
+<I>Warren Toomey <BR>
+2000-06-13</I>
+</ADDRESS>
+</BODY>
+</HTML>
+@

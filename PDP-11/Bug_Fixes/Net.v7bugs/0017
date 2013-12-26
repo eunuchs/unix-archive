@@ -1,0 +1,30 @@
+Autzoo.643
+NET.v7bugs
+utzoo!henry
+Thu May 21 20:22:51 1981
+ldiv/lrem on 44,23
+The V7 long-int divide and remainder routines, as distributed by Bell,
+make an invalid assumption about the DIV instruction on the 11.  DIV
+aborts if the quotient is too big for a signed 16-bit number;  the
+routines assume that the dividend register pair is untouched afterwards.
+This was generally true on early 11's, but Dec has never guaranteed it
+and it is NOT TRUE on the 11/44.  111111111 [that's nine 1's] % 10 yields 11.
+
+The fix is fairly easy;  it's the same fix for all six occurrences: the 
+libc ldiv, lrem, aldiv, and alrem, and the kernel ldiv and lrem in mch.s .
+Look for a DIV followed by a BVC.  If the BVC falls through, r0 and r1
+must be put back as they were before the DIV.  Specifically:
+
+	1. Before DIV, add "mov r0,-(sp)".
+	2. After BVC, add "mov r2,r1" and "mov (sp),r0".
+	3. After label "1", about 6 lines down, add "tst (sp)+".
+
+The fixed-up routines function properly whether the particular cpu manifests
+the problem or not, so this fix can be universally applied.
+
+This also may have cured the largest-negative-dividend bug that the
+V7-addenda-tape README alludes to;  at least, I can't reproduce said bug.
+
+Another local installation has discovered that similar divide anomalies
+occur on the 11/23 and can be cured with the same fixes.  I do not have
+a test case for the 23;  111111111%10 works fine on it.

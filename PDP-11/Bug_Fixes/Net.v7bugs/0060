@@ -1,0 +1,28 @@
+Autzoo.1271
+net.bugs.v7
+utcsrgv!utzoo!henry
+Wed Jan 13 16:48:29 1982
+stdio buffering
+Although setbuf(3) states that any output stream directed to a terminal
+is unbuffered by default, this in fact is wrong.  In fact, only stdout
+is checked to see whether it is going to a terminal and should therefore
+be unbuffered.  I checked with DMR, he says the documentation is wrong.
+So the last paragraph of DESCRIPTION in setbuf(3) should be changed to
+read something like:
+	A buffer is normally obtained from
+	.IR  malloc (3)
+	upon the first
+	.I getc
+	or
+	.IR  putc (3)
+	on the file,
+	except that the standard output stream
+	.I stdout
+	is normally not buffered when directed to a terminal,
+	and the standard error stream
+	.I stderr
+	is normally not buffered.
+
+(the changes are to the last 6 lines).
+
+Ron Gomes of Human Computing Resources found this one.

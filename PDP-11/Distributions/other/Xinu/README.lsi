@@ -1,0 +1,396 @@
+
+
+Jan 14 09:12 1987  Xinu Version 7 Distribution Tape README Page 1
+
+
+			   X I N U
+			   -------
+
+   Xinu is a layered, process-based operating system.  A detailed
+description can be found in the text:
+
+	Comer, Douglas E., Operating System Design: The Xinu
+	  Approach, Prentice-Hall, 1984.
+
+This directory contains version 7 of the software (including Internet
+protocol software and a user interface shell), and is described in:
+
+	Comer, Douglas E., Operating System Design Vol 2:
+	  Internetworking with Xinu, Prentice-Hall, 1987.
+
+   To run the software on this tape, you will need a Digital Equipment
+Corp. VAX or Microvax computer running the Berkeley 4.3 UNIX operating
+system, and at least one Digital Equipment Corporation LSI 11/2, LSI
+11/03, LSI 11/23 with 64K bytes of main memory and a DEQNA Ethernet
+interface.  The VAX is used to cross-compile, cross-assemble, and
+cross-load C programs.  The cross-development software produces a
+memory image for the LSI 11, which is then downloaded to the micro
+over an Ethernet (or an RS232 line if your VAX does not have an Ethernet
+interface).  Once downloaded, the micro runs independently, communicating
+with the VAX or other machines over an Ethernet, using standard DARPA
+Internet protocols (sometimes called TCP/IP).
+   If no machines on your Ethernet support standard RARP, time, and
+domain name servers, you can still experiment with the networking code
+by dedicating one LSI 11 to run server software and running Xinu on other
+LSI 11(s).  The source code and binary image needed for the server machine
+are included on this tape and explained in the directions below.  We
+recommend using standard servers if you have them, and using our (limited
+capacity) servers only if you have no alternatives.
+   The tape is self-contained.  It includes source programs for both
+Xinu and the cross-development system.  The tape can be read into any
+directory.  These programs do not need to be placed in system directories
+unless you want to do so.  The cross-development software has changed
+between the earlier versions and this release.  In particular, the
+downloading software now handles multiple classes of identical machines,
+automatically selects and reserves a free machine from a specified class,
+and consults a database of machine descriptions to automatically select
+a downloader appropriate for the machine.  For example, there is both a
+serial line downloader and an Ethernet downloader for 11/23 machines that
+have memory management and an Ethernet interface.  The database determines
+which to use for a given machine.   A significant advantage of the database
+approach is that it allows competition for a physical machine from multiple
+classes of users.
+
+Installation
+------------
+
+   Choose a directory for the Xinu software.  You need not be in this
+directory to cross-compile or download programs -- it's merely the place
+to store the Xinu software.  Moving the software to another directory
+requires recompilation (i.e., reinstallation).  Choosing /usr/Xinu as
+the directory will save time during installation because binary files on
+
+
+
+
+
+
+
+Jan 14 09:12 1987  Xinu Version 7 Distribution Tape README Page 2
+
+
+the tape are compiled for that directory.  Alternatively, you can choose
+to place the software in an arbitrary directory and make a symbolic link
+from /usr/Xinu to that directory.  Throughout this  documentation the
+directory into which you place Xinu is denoted {Xinu-directory}.
+
+   Make the Xinu directory and read in the tape by typing the following
+commands:
+
+	mkdir {Xinu-directory}
+	cd {Xinu-directory}
+	tar xbf 20 /dev/rmt0	(your 1600 bpi tape device may
+				 be named something other than
+				 /dev/rmt0)
+
+   Make a symbolic link from /usr/Xinu to the directory you chose to
+avoid recompilation.  You will need super user privilege to do so. This
+step is optional:
+
+	su
+	...supply super user password when asked...
+	ln -s {Xinu-directory} /usr/Xinu
+	CONTROL-d (to leave super user mode)
+
+Once the tape has been read, you must change all source programs that
+refer to {Xinu-directory} and recompile the binaries.  A shell script
+has been provided to do this for you.  To use it, move to the installation
+directory and run Install.  *NOTE: YOU MUST BE IN THE INSTALLATION DIRECTORY
+{Xinu-directory}/install WHEN YOU EXECUTE THIS SCRIPT OR IT WILL NOT WORK*
+
+	cd {Xinu-directory}/install
+	./Install
+
+Connect LSI 11 to The VAX
+------- --- -- -- --- ---
+
+   We recommend setting your LSI 11 to use 9600 baud and the vendor's
+standard console device address (octal 177560).  If you must use another
+device address or speed, you can edit the downloading software in
+{Xinu-directory}/src/cmd/download.  Speeds below 4800 baud are not
+recommended because serial downloading becomes intolerable.
+
+   Choose a tty line on the VAX and connect it to the LSI 11 console port.
+Then modify the UNIX system so that it does not run a login process (getty)
+on the tty device.  You need to be super user to do this.
+
+	su
+	...supply super user password when asked...
+	ln /dev/{tty-that-you-chose} /dev/LSI.1
+	...edit /etc/ttys; turn off getty on LSI tty line...
+	kill -1 1
+	chmod 0666 /dev/LSI.1
+	CONTROL-d (to leave super user mode)
+
+The cross-development system allocates an LSI whenever one is needed using
+the database in {Xinu-directory}/lib/machines.  The default name for machine
+are LSI.0, LSI.1, and so on.  Lock files in /tmp/xinu are used to specify the
+
+
+
+
+
+
+
+Jan 14 09:12 1987  Xinu Version 7 Distribution Tape README Page 3
+
+
+current machine owner.  Look at the reservation system software in
+{Xinu-directory}/src/cmd/download/lib for details.
+
+Compilation of Cross-Development Software
+----------- -- ----------------- --------
+
+   To complete installation you must recompile source programs that contain
+references to the Xinu directory.  Shell scripts have been provided to do
+the job.  For details, see file README in the installation directory:
+
+	cd {Xinu-directory}/install
+	cat README
+
+Talk to the LSI 11
+---- -- --- --- --
+
+   Test the serial line that connects the VAX to the LSI 11 using program
+{Xinu-directory}/bin/odt.  Odt connects your terminal to the LSI serial
+line such that everything you type goes to the LSI 11 and everything the
+LSI prints comes to your terminal.  Thus, you can talk to the LSI from
+any terminal on the VAX (or from an rlogin session).
+   Only three wires are needed on the RS232 connection between the
+machines: data in, data out, and ground.  The most common problem you'll
+have is getting the data-in and data-out connected the right way.  Try
+swapping them if things don't work the first time.  The wires to swap are
+on pins 2 and 3 of the 25-pin connector that plugs into the VAX.  The pin
+configuration on the LSI interface boards can be found under the DLV11J
+description in the vendor's hardware handbook.
+
+	odt -cLSI
+	...send a break using backslash followed by null...
+	\CONTROL-@
+	...you should get an @ prompt from the LSI...
+	...your're talking to hardware ODT; try displaying memory...
+	2/
+	...you should see the contents of location 2...
+	DEL or CONTROL-C to abort odt and return to the shell
+
+Network Servers
+------- -------
+
+   Now that installation is complete, you need to Configure the Xinu
+kernel software itself, and recompile it.  To do so, you must choose
+internet addresses for the domain name server, time server, and remote
+file server machines.  You can start the remote file server yourself
+on the VAX.  It is found in {Xinu-directory}/bin/fs.  You need to know
+the internet address of the VAX where fs runs, as well as the internet
+address of the machine that runs a time server (UDP port 37) and the
+internet address of a machine that runs a domain name server (UDP port
+53).  Ask your local network guru to tell you these internet addresses
+(in dotted decimal notation) and modify the SERVER constants found near
+the end of file {Xinu-directory}/src/sys/sys/Configuration.  If you do
+not have an assigned Internet address for your network (i.e., your network
+does not connect to the DARPA Internet), choose network an address for it.
+Using 128.10.2.0 (Which is actually the address of an Ethernet at Purdue),
+means you won't have to recompile the kernel.
+
+
+
+
+
+
+
+Jan 14 09:12 1987  Xinu Version 7 Distribution Tape README Page 4
+
+
+
+	cd {Xinu-directory}/src/sys/sys
+	...edit file Configuration; change SERVER address constants...
+	make install
+
+If your site does not have one or more of the required servers, or for
+any reason you want to isolate Xinu machines on their own Ethernet, you
+can still experiment with Xinu by having one of your LSI 11 machines
+run simplified server code.  Just download the binary image in file
+{Xinu-directory}/lib/serve11 onto one of the LSI 11 and use odt to
+answer questions and set options.
+
+	download -s -a5 -cSERVE11 {Xinu-directory}/lib/serve11
+	odt
+	...answer questions...
+	DEL or CONTROL-c to abort odt and leave server running
+
+The class "SERVE11" should map to a machine that is reserved for the
+server.  See {Xinu-directory}/lib/machines (the machine database) for
+details.
+
+Remote File Server
+------ ---- ------
+
+   The remote file server answers queries from the network and reads/writes
+files as directed.  If you run the file server on your VAX, then the file
+server has the permissions of the user who starts it.  We recommend that you
+install a new user account (e.g., "xinu"), and always execute the file server
+as that user.  Also, you should understand that the file server makes all
+world-readable files accessible over the network.  if you connect to the
+DARPA Internet, it makes world-readable files accessible from foreign sites.
+   The file server comes configured to use UDP port 2001.  Check with your
+local network guru to make sure 2001 is not in use, and if it is, choose a
+new port number for the file server.  Change the default port in the software
+in {Xinu-directory}/src/fs or just use the -p option when invoking fs.  You
+must also change the port number that the kernel uses - it can be found in
+file {Xinu-directory}/src/sys/sys/Configuration.
+   Start the file server:
+
+	...login to the VAX under the account that owns the file server...
+	{Xinu-directory}/bin/fs
+	logout
+
+Try Running Xinu
+--- ------- ----
+
+   Now that you have a network running RARP, time, and name servers,
+you can boot xinu.  Download and run it.
+
+	download -s -a5 -cLSI {Xinu-directory}/src/sys/sys/a.out
+	odt
+	...you should get Xinu boot message and login prompt...
+	type any login
+	...you should get prompt with machine name in it...
+	...try commands such as the following...
+	ps
+
+
+
+
+
+
+
+Jan 14 09:12 1987  Xinu Version 7 Distribution Tape README Page 5
+
+
+	date
+	dg
+	help
+	mount
+	...try accessing remote files as follows...
+	rls /
+	cat > /tmp/junk
+	Hi there - this is a file
+	created from Xinu
+	CONTROL-D
+	cat /tmp/junk
+	...you should see what you just created...
+
+Directories
+-----------
+
+   When the tar tape has been read, you will find a directory
+structure like this:
+
+1 .				Xinu-directory (usually /usr/Xinu)
+
+  2 README			This file
+
+  2 /bin			cross-development software
+
+  2 /include			include files
+
+  2 /install			installation shell script
+
+  2 /lib			various libraries and data files
+
+  2 /man			all manual pages for:
+    3 /man1			cross-development commands
+    3 /man2			Xinu system commands
+    3 /man3			library commands
+    3 /man4			device driver descriptions
+
+  2 /src			all source programs:
+    3 /cmd			cross-development software
+    3 /lib			libraries
+    3 /sys			Xinu and configuration:
+      4 /con			configuration program
+      4 /h			Xinu include files
+      4 /sys			Xinu kernel and Makefile
+	5 /shell		Xinu shell and commands
+    3 /serve11			Server software for sites that need it
+      4 /con			Server configuration
+      4 /h			Server include files
+      4 /sys			Server kernel and Makefile
+        5 /shell		Server shell and commands
+
+Server Directory
+------ ---------
+
+   The directory {Xinu-directory}/src/serve11 contains the software
+that comprises the LSI 11-based RARP/time/name/file server.  It duplicates
+
+
+
+
+
+
+
+Jan 14 09:12 1987  Xinu Version 7 Distribution Tape README Page 6
+
+
+much of the Xinu kernel, and is not necessary at all sites.  You can
+remove the directory entirely if you have standard network servers or if
+you are satisfied to run the binary found in {Xinu-directory}/lib/serve11.
+
+DEQNA Driver Explanation
+----- ------ -----------
+
+   The DEQNA driver configured in the kernel is NOT the same as that in the
+text book.  The version installed here uses a timeout to circumvent the
+hardware problem in early DEQNAs that causes them to hang.  If you have a
+lightly loaded network, or a DEQNA built after the summer of 1986, you can
+switch to the textbook driver.  Otherwise, we suggest you use the bullet-
+proof version.
+
+Problems or Questions
+-------- -- ---------
+
+Reports of errors in the software or documentation are gratefully accepted.
+Please mail all comments and bug reports to:
+
+	DARPA Internet/ CSNet address:
+		comer @ cs.purdue.edu
+	uucp address:
+		{allegra, ihnp4} ! purdue ! comer
+	Postal address:
+		Computer Science Department
+		Purdue University
+		West Lafayette, IN  47907
+		(317) 494-6009
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

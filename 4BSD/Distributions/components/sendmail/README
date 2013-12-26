@@ -1,0 +1,5 @@
+This directory contains the repository of all versions of BSD UNIX Sendmail
+that have ever been shipped with BSD UNIX releases. It includes versions 4.12,
+5.52, 5.60, 5.61, 5.61.1.1, 5.64, and 5.67. 5.52 is really 5.52, even though
+its src/Version.c (and hence the SMTP greeting) says 5.51 (whoever built it
+forgot to update src/Version.c).

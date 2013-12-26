@@ -1,0 +1,28 @@
+This directory contains the Xinu operating system for the LSI-11. More details
+are in README.lsi. The copyright details are in xinu-pdp11.README. Also note
+that the Xinu distribution contains the `SunCHIP' (aka CHIP) C compiler and
+assembler, both written in C:
+
+----------------------------------- README ----------------------------
+
+                                C H I P
+                                _______
+
+Chip is the "Cornell Hypothetical Instructional Processor."  It has a
+PDP11-like architecture and supports virtual memory.  A complete
+description can be found in the technical report:
+
+        Babaoglu, et al., Documentation for the CHIP Computer System,
+        Technical Report TR83-584, Department of Computer Science,
+        Cornell University, Ithaca, New York, 1983.
+
+To run the simulator for this machine, you need a 4.1bsd (or newer) Unix
+system. The distribution also contains a development environment for CHIP
+containing a C compiler, assembler, loader and various other tools.  To
+run the development software, you currently need Digital Equipment Corp.
+VAX computer.  However, with minimal effort, all of this software should
+be able to run on any host with UNIX.
+
+        [...]
+
+----------------------------------- end of README --------------------

@@ -1,0 +1,21 @@
+Autzoo.1180
+net.v7bugs
+utzoo!henry
+Thu Dec  3 18:43:14 1981
+ranlib bugs
+The distributed ranlib(1) complains about library members that look
+like object modules but have a 0-length symbol table.  There is one
+circumstance where a 0-length symbol table is legitimate:  in the
+presence of #ifdef's and the like, it is entirely possible to have
+a null object module (no text, no data, no bss, no symbol table).
+To fix ranlib not to complain about such things, change the fprintf
+complaining about "no name list" in about line 60 to:
+
+	if (exp.a_text!=0 || exp.a_data!=0 || exp.a_bss!=0)
+		fprintf...
+
+This should be a straight substitution, with the surrounding if and
+continue left unchanged.
+
+Also, two of ranlib's error messages identify it as "nm";  the fix is
+"g/nm:/s//ranlib:/p".

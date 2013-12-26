@@ -1,0 +1,786 @@
+From oznet.demon.co.uk!news.demon.co.uk!dispatch.news.demon.net!demon!tank.news.pipex.net!pipex!news.mathworks.com!news.kei.com!simtel!harbinger.cc.monash.edu.au!bunyip.cc.uq.oz.au!nanguo!earth Sun Sep  3 12:00:29 1995
+Newsgroups: comp.os.coherent
+Path: oznet.demon.co.uk!news.demon.co.uk!dispatch.news.demon.net!demon!tank.news.pipex.net!pipex!news.mathworks.com!news.kei.com!simtel!harbinger.cc.monash.edu.au!bunyip.cc.uq.oz.au!nanguo!earth
+From: earth@nanguo.chalmers.com.au (Robert Chalmers)
+Subject: Coherent FAQ. For Version 3.2.
+Version: 4.0
+Last-Modified: Tue Jun  6 20:48:51 1995 EST
+Reply-To: robert%chalmers.com.au@bunyip.cc.uq.oz.au
+Archive-Name: coh-faq/ver.3.2
+Organization: China House.
+Date: Sat, 2 Sep 1995 12:33:46 GMT
+Approved: none
+Message-ID: <DEA2wA.ACG@nanguo.chalmers.com.au>
+Lines: 770
+
+This is the Frequently (occassionally)
+Asked Questions posting for comp.os.coherent,
+with answers about the COHERENT operating system, V3.2.  It
+is also posted on comp.os.coherent, but it is not a full FAQ for
+comp.os.coherent.  Companion postings have answers that apply to both
+Version 4.0 and 4.2.nn and answers that apply to 4.2.05 and X11 alone.
+
+Some general notes:
+
+When used alone, the word "Coherent" is used to mean any of the
+versions that may have been released.
+
+Unless otherwise specified, these answers refer to COHERENT.3.2, which
+is the oldest release still seemingly still in use.
+
+Many people have contributed to this list, directly or indirectly.  In
+some cases, an answer has been adapted from one or more postings on the
+comp.os.coherent newsgroup.  Our thanks to all of those who post answers.
+The name (or names) at the end of an entry indicate that the information
+was taken from postings by those individuals; the text may have been
+edited for this FAQ.  These citations are only given to acknowledge the
+contribution.
+
+Cautionary Note.
+The Mark Williams Company is no longer trading. Coherent is no longer in
+development or production in any release, and the whole team is disbanded.
+
+This FAQ is put in the net occassionally by
+the Keeper Of The FAQ, Bob Chalmers. robert@chalmers.com.au.
+Contributions Are Welcome.   There have been no contributions for over 2 years.
+Sources can be found on nanguo.chalmers.com.au 
+
+    Thanks to "fingers" of no-real-name fame for puffing on the flame.
+
+       T E C H N I C A L  T I P S  F O R  C O H E R E N T  3.2 
+
+              Technical Tips FAQ for Rev 3.2 of Coherent
+
+	C O N T E N T S
+	================
+
+Q1.	Modem devices:
+Q2.	Remote logins:
+Q3.	Fast modems:
+Q4.	Simultaneous users:
+Q5.	Usenet news software:
+Q6.	Email packages:
+Q7.	The 64K question:
+Q8.	Compiler hints:
+Q9.	Hardware configurations:
+Q10.	Termio hints:
+Q11.	Curses:
+Q12.	More uucp:
+Q13.	How to create a bootable >>>R/W<<< floppy from Coherent:
+Q14.	Master Boot Reinstallation:
+Q15.	Line Printer Help:
+Q16.	Moving data from a Sun to Coherent:
+Q17.	Multi-Volume Archive:
+Q18.	SCSI MKFS Notes:
+Q19.	DOS to Coherent:
+Q20.	Uuinstall Bug Help:
+Q21.	Xwindows:
+Q22.	Tar Help:
+Q23.	Setting Boot Partition: DOS or Coherent?
+Q24.	A Backup Script:
+
+K E E P E R S  O F  T H E  F A Q:
+Robert Chalmers		robert@chalmers.com.au
+
+T E C H N I C A L  T I P S :
+-----------------------------------------------------------------------
+Q1.
+MODEM DEVICES:
+
+Q: What devices should I use with a modem for dialing in / dialing out
+
+A: For dialing in you should use a device with modem control. For example
+   com1r or com2r. That is important to ensure that when the calling site
+   dropped carrier, that also at your site SIGHUP is sent to already running
+   processes, to ensure that the modem hangs up (dropping DTR) and a new
+   getty is opened on that port to enable further logins.
+
+   For dialing out or local terminals you do not need modem control 
+   Also you do not have to worry about cabling problems, just use some
+   of those null modem cables available in most computer stores.
+
+Q2.
+REMOTE LOGINS:
+Q:  How do I enable logins via modem to my machine:
+
+A:  I assume that modem is set to AUTO-ANSWER (ATS0=1) and the cabling
+    is ok.
+    Edit the file  /etc/ttys. Here an example for com2:
+    
+    0rPcom2r
+  
+    0            = not yet enabled (enable = allow login, run getty)
+ 
+    r            = remote access   (will enable asking of a password
+                                    for remote-access (see /etc/passwd)
+                   Why ? System security, additional password
+
+    P            = speed (your modem is connected to the computer)
+                   P = 9600 Baud, I use this for my Telebit Modem
+       
+    com2r        = device with modem control, when CARRIER is lost it
+                   will sent SIGHUP to all processes running on that
+                   line and will also drop DTR so a modem hangup or 
+                   a modern modem does a hardware reset.
+
+     Now type the following:
+     enable com2r    (for Coherent 3.2 that's enough)
+     kill -1 1       (Coherent 3.0.0 or 3.1.0, Process INIT will start
+                      a getty on com2r)
+
+
+Q3.
+FAST MODEMS:
+Q:    Can I use fast modems with Coherent ?
+
+A:    Yes you can. But you must think about the following:
+
+      a) maximum  Baud rate between modem - machine is 9600 Baud
+         (Coherent as a multiuser/multitasking environment is
+          not fast enough for 19200 Baud)
+
+      b) cps-rates in transfer depend on modem/method
+
+         calling into my machine (T2500) with a USR, using sz for transfer:
+                   480 cps to 600 cps (compressed, uncompressed files)
+
+         calling out with uucp (T2500):
+                   860 cps
+
+         The rate may differ if you use a slow 286 or 386. The above results
+         were yielded with a 386/33.
+
+
+Q4.
+SIMULTANEOUS USERS:
+Q:    I want to use Coherent as a multiuser operating system. How many
+      users can work with it at the same time ?
+
+A:    Now 11 User:
+      console   : 1
+      com1      : 1
+      com2      : 1
+      Multiport : 8
+      --------------
+                 11
+
+      I still do not know if there are device drivers for intelligent
+      Multiport-Cards but as far as I know there are only drivers for
+      "dumb" Multiport-Cards and only in polled mode.
+      Therefore you need a very fast machine for "multiuser"
+
+
+Q5.
+USENET NEWS SOFTWARE:
+Q:    Is there any Net-News Software for Coherent ?
+
+A:    Yes, there are several packages available:
+
+      1. CNEWS  -  the famous package
+
+         difficult to install (although there is a nice installation
+         script in the Coherent version). Only for advanced users !
+         Has no reader !
+
+      2. WNEWS 3.0  -  News for MINIX, ported to Coherent
+
+         based on BNEWS - small, not bad
+         Has no reader
+
+      3.  GNEWS 2.0 (or newer now ?)
+ 
+         all you need for News, easy to install, Newsreader, nice
+
+      4.  rn
+
+          the well known newsreader
+
+      5.  tass 
+      
+            curses based newsreader. Nice, but you should not have
+            too much groups or articles in /usr/spool/news.
+
+      6.  bsnews
+ 
+          small news package for receiving news via email
+
+
+Q6.
+EMAIL PACKAGES:
+Q:    I do not like Coherent's mailer. What can I use instead of it ?
+
+A:    WMAIL 3.63  -  a minix port, MAILX-clone
+
+      comb 1.29   -  curses based mailer, nice interface
+
+      You should ensure that in both cases you have smail 2.5 as
+      a smart-mailer that understands domain addresses.
+      smail 2.5 is already in Coherent 3.2
+
+Q7.
+THE 64K QUESTION:
+Q:    Does Coherent really have a 64 kb limitation ? I want to port
+      the GNU-C-Compiler and compile big programs.
+
+A:    Coherent programs are limited to 64 K for code and 64 k for data
+      and stack. The limit is not in the compiler, it's in the kernel
+      or at least in the actual system design. No process can exceed this
+      limitation.
+      But Binaries in Coherent are about 40 % smaller so big programs
+      for "Real-UNIXES" may also be portable
+
+Q8.
+COMPILER HINTS:
+Q:    I write a C-program that seems to be ok but it still core dumped.
+      Is this a compiler error ? Is my program wrong ?
+
+A:    If a program needs a lot of space for local data (resided on the
+      stack in most cases) then the maximum size for the stack may be
+      exceeded and your return addresses or other important things were
+      overwritten.
+      With the program fixstack you can increase the size for the stack
+      (and also cut the space for data)
+      Try size my_prog before and after fixstacking to see the difference.
+
+Q9.
+HARDWARE CONFIGURATIONS:
+Q:     What hardware (Motherboard, hard disk) do I need for Coherent ?
+
+A:     Difficult question. Minimum is a AT 286 with 640 KB RAM and a
+       hard disk (MFM,RLL,ESDI,SCSI (some), IDE (some)) with at least
+       10 MB free disk space.
+
+       Nevertheless Coherent is not the fastest operating system, so
+       a 386 with at least 25 MHZ and 4 MB RAM and a fast hard disk
+       (a hard disk is always too small !!!!) is the minimum config-
+       uration for a usable multi-user-operating.
+
+Q10.
+TERMIO HINTS:
+Q:    I compiled a program that uses termio but it did not work.
+
+A:    The termio in Coherent (at least 3.1.0 and the first 3.2.0) did
+      not work in all cases. So try the sgtty, that works fine.
+      When porting programs try to find the -DBSD-parts. There you will
+      find in most cases the sgtty-parts you need for porting.
+
+Q11.
+CURSES:
+Q:    I compiled a program that uses curses but the screen sometimes get
+      garbled or the machine seems to hang
+
+A:    Maybe you still have an old libcurses.a. Replace it with a newer
+      copy.
+
+Q12.
+MORE UUCP:
+Q:    I often loose email or files after receiving them with UUCP.
+
+A:    Try to get the newest UUCP-update from MWCBBS. The old packages
+      still have some problems. Check the permissions, at least for example
+      with comparing them with those on your original diskettes.
+      Check also the permissions of the needed directories.
+      In /usr/spool/uucp/Logs./uucp-program you will find the "hints" of the
+      "uucp-program" (uucico, uucp, uux,uuxqt) what goes wrong.
+      In Coherent 3.2. you have the program uucheck that will check your
+      uucp-installation and is also able to "fix" problems. But you have to
+      run it twice if you run it as root because the first time it creates
+      the needed directories and the second run sets the correct permission.
+
+Q:    I am having a problem connecting to uucp sites not running Coherent 
+      after updating to Coherent 3.2.  The error looks like a parity 
+      problem, with an {expect} / {actually got} output like: 
+	uu315323t 342og310n:   (With backslashes before the numbers)
+
+A:      Again, get the latest UUCP package from MWCBBS.  The 3.2 Coherent 
+      release may exhibit a parity problem which is cured with the latest 
+      uucp release.
+
+Q13.
+HOW TO CREATE A BOOTABLE >>>R/W<<< FLOPPY from Coherent
+	From: Peter Fillingham 	fillingham@att.com
+
+The COHERENT Operating System Release Notes (Release 3.1.0)
+along with the main manual suggest ways of creating a bootable
+floppy.  One difficulty of this procedure is that, after 
+producing a bootable floppy, one can't write to it !
+The following shell programs are suggested as a way making a
+bootable floppy, and below is the fix recommended by mwc
+for making the bootable floppy system read-write.
+
+
+(0) first boot your system from your hard disk, login in as root,
+use mkdir to make a convenient subdirectory [e.g., /bin/temp ]. 
+cd to /bin/temp. Place disk #1 of your mwc original floppies in 
+drive A:, then enter
+
+
+dd if=/dev/fha0 of=cohboot count=80 bs=30b
+
+Run it in the background if you wish [follow the above line with 
+an &; use ps -axfl if you are curious].  This will take just over 
+three minutes depending on the speed of your system.  What is
+going on is that dd is creating an image of your boot floppy in
+you default directory with the file name cohboot. When it finishes,
+remove the mwc original floppy, and insert a blank disk.
+
+
+(1) Next run the following shell program:
+
+
+echo "/etc/fdformat -v /dev/fha0"
+/etc/fdformat -v /dev/fha0
+echo "/etc/badscan -o proto /dev/fha0 2400"
+/etc/badscan -o proto /dev/fha0 2400
+
+
+
+Run it in the background if you wish; it takes time.
+The echo lines simply display each command line just before it is
+carried out to tell you what is going on. The second and fourth
+lines format the floppy and check for bad blocks, respectively.
+In addition, a file (proto) is being built in your default
+subdirectory.  This file will contain a list of the bad blocks:
+look for a line with %b in it. Probably it is best to use only
+a floppy with NO bad blocks: so try until you find one.
+
+
+(2) make sure you have a subdirectory /f0 on your hard disk;
+
+if not, use mkdir /f0.
+
+(3) Next run the following shell program:
+
+
+echo "/etc/mkfs /dev/fha0 proto"
+/etc/mkfs /dev/fha0 proto
+echo "cp /conf/boot.fha /dev/fha0"
+cp /conf/boot.fha /dev/fha0
+echo "dd if=cohboot of=/dev/fha0 count=80 bs=30b"
+dd if=cohboot of=/dev/fha0 count=80 bs=30b
+echo "/etc/mount /dev/fha0 /f0"
+/etc/mount /dev/fha0 /f0
+echo "cd /f0 "
+cd /f0 
+echo "^G DONE but f0 still mounted !"
+
+
+
+The second line produces the file system on the floppy using the 
+information from file proto.  The fourth line copies boot.fha
+to the floppy.  The sixth line transfers the image of your
+system boot floppy to your newly formatted disk (note all
+these things take time). Finally, the floppy is mounted so that
+while you have booted from the hard disk and have root permissions
+you can write to the floppy. The last line simply rings the bell
+and tells you it is done.
+
+
+(4) next (noting that your default directory is /f0, i.e. the
+
+  floppy disk) enter:
+  
+  mv begin autoboot
+	then enter
+  db coherent
+	then enter
+  ronflag
+	the response is
+  ronflag=001
+	then enter
+  .=0
+	then a response appears
+  ronflag=000
+	then enter
+  :q
+	and you should get back your prompt.
+
+
+
+
+(5) Finally while the floppy is still mounted, cp over your most useful
+programs to the appropriate directories (e.g., vi or me, du, df ...)
+Lastly umount f0, shutdown, sync and boot your writable floppy.
+
+
+
+Q14.
+MASTER BOOT REINSTALLATION:
+	From: doug@mwc.com (Doug Peterson)
+I want to upgrade the DOS partition from MS-DOS 3.3 to 5.0, and the 
+installation program refuses to work with the Coherent master bootstrap
+program. It no longer asks for the ability to boot Coherent!
+
+The problem specifically is caused be Microsoft's faulty update install
+procedure. They assume you have no other operating system on the 
+computer.
+
+When the 5.0 update install is run, the procedure archives the original
+master boot block of the hard drive and rewrites a brand new one. 
+Problem is, it takes Coherent's master boot along with it. To restore 
+the master boot is very simple:
+
+Use dos 5.0 fdisk to change the active partition to COHERENT. Reboot.
+
+Use COHERENT's fdisk utility with the -b option to rewrite a new master
+boot. Specifically; fdisk -b /conf/mboot /dev/at0x <ENTER>
+
+Once completed, you can now boot either system no matter which one is 
+active or inactive.
+
+
+
+Q15.
+LINE PRINTER HELP: From: dave@uvm-gen!pete (Dave Peterson)
+I have my printer hooked up to lpt1 and cannot get any output.  I have 
+checked my files, but, no luck.  What's the problem?
+
+1) ls -li   ( The i will list the inode number, this will tell you where
+              you have linked /dev/lp to. )
+
+2) ln -f /dev/lpt2 /dev/lp  ( link to lpt2  IBM and MWC number the ports 
+                           differently thus lpt2 is the first printer )
+                           [ you need to be root or bin to do the link ]
+						    
+This is a partial listing of my /dev directory note the first number is
+the inode number.  I have linked lp to lpt2.
+  174 c-w--w--w-  2 bin        bin          3   1 Mon Nov 25 17:36 /dev/lp
+  101 c-w--w--w-  1 bin        bin          3   0 Fri Apr 27  1990 /dev/lpt1
+  174 c-w--w--w-  2 bin        bin          3   1 Mon Nov 25 17:36 /dev/lpt2
+  173 c-w--w--w-  1 bin        bin          3   2 Fri Apr 27  1990 /dev/lpt3
+
+As a final point when you send data to /dev/lpt2 use pipes not redirection.
+Try cat (file) | /dev/lpt2  it works for me.
+
+
+Q16.
+MOVING DATA FROM A SUN TO COHERENT:
+		(From: PINEAU@uqac.uquebec.ca (Louis Pineau))
+
+First, the floppy have to be formatted whether on the sun or on the
+Coherent system (with fdformat /dev/rfd0c on the sun). Once the floppy
+is formatted, there is no need to reformat or mkfs it for the life of the
+floppy or until something unusual happens.
+
+To write and read the floppy, on both system (sun and coherent), I use the
+command "ustar" since it can handle multi-volume files (files that are too
+large to fit on a single floppy).
+
+
+Thus, on the sun, I do:
+  /usr/5bin/ustar -cvf /dev/rfd0c file [files ...]    to write on the floppy
+  /usr/5bin/ustar -tvf /dev/rfd0c                     to list the floppy
+  /usr/5bin/ustar -xvf /dev/rfd0c [file ...]          to read the floppy
+
+
+On my coherent system, I use the same commands without the /usr/5bin prefix
+and with the proper floppy device (/dev/fva1 on my system).
+
+I know that there is a way to read or write ms-dos formatted floppy but in
+order to mount or unmount the floppy, you must become superuser.
+
+
+
+Q17.
+MULTI-VOLUME ARCHIVE: (From: jr@connie.de.convex.com (Joachim Riedel))
+
+I'm trying to archive a 5 mb file (which is itself a compressed cpio file)
+from hard disk onto floppy disk (fva1). I've tried cpio and tar and even pax
+directly but cannot get past one volume. 
+
+Use the raw device (i.e. /dev/rfva1 ) instead of the device  fva1.
+
+Q18.
+SCSI MKFS NOTES: Answer From: stephen@mwc.com (Stephen Davis)
+
+I am trying to add a second scsi drive to my system.  mkfs will not accept 
+a proto file.  What do I do?
+
+You do not badscan a SCSI drive. Instead of giving mkfs a proto file, you give
+it the total number of blocks in the partition. The number of blocks is listed
+in the partition table under f-disk.
+
+
+
+Q19.
+DOS TO COHERENT:
+Q: The question is, is it possible to read DOS-format 360KB-diskettes?
+
+A: yes it is :-)   From: lvds@tfpbbs.uucp (Laurent Cas)
+
+Here is the device type reference table:
+Device name  Sectors/track  Heads  Sectors  Bytes   Format
+/dev/f9a0          9          2      720    360 KB   5.25"
+/dev/fqa0          9          2     1440    720 KB   3.5"
+/dev/fha0         15          2     2400    1.2 MB   5.25"
+/dev/fva0         18          2     2880    1.44 MB  3.5"
+
+
+If your 360KB drive is 'A:' (MSDOS reference) you can do dos t /dev/f9a0
+to list your disk, or if your 360KB is 'B:' you will have to do dos t /dev/f9a1
+
+drive A is number 0 and drive B is number 1 ; same for partitions on your
+hard disk...
+
+
+Cheers, Laurent.
+
+
+Q20.
+UUINSTALL BUG HELP: (From norm@mwc.com)
+
+Using Coherent 3.2, I run UUINSTALL, upon exiting, I am back at my 
+prompt, but, the system hangs. the only way to restart via a reboot.
+Is this problem specific to 3.2 or is it something I have possibly done?
+
+This is a bug in the 3.2.0 release of uuinstall. Occasionally, upon exiting,
+it leaves your terminal in "raw" mode.  The Errata sheet which is included
+with 3.2 releases mentions this, as far as I know.  To fix your terminal
+after exiting uuinstall, enter the following (note that <ctrl-J> is the control
+key plus the letter J):
+
+
+	<ctrl-J> stty sane <ctrl-J>
+
+
+Q21.
+XWINDOWS:  (From doug@mwc:)
+
+From time to time, we get people asking about X windows on Coherent. Many new
+entrants into the field of UNIX have probably heard of the popular UNIX
+graphics interface called X-WINDOWS.
+
+X-WINDOWS was developed by MIT. To the best of our knowledge they still hold
+the rights to the source code and it is in the public domain.
+
+To the best of our knowledge, the source code takes up 110mb of disk space!
+The binaries, an additional 12 - 20mb's of disk space. It requires TCP or
+Streams support, neither of which is in COHERENT.
+
+X-windows it seems, has become somewhat of a popular GUI for
+UNIX in a very short time. Various hardware firms have developed and are
+marketing X-workstations, servers and cards.
+
+On page 14 of the November 1991 issue of UNIX REVIEW, is an ad for
+X11 Release 5 for System V/386. The price advertised is $495 with printed
+manuals, $395 without. So, X is not cheap via the commercial route.
+
+Given COHERENT'S small model compiler, it is obviously impossible at this
+time for COHERENT to even compile the code, let alone run it. COHERENT 386,
+currently undergoing intensive development, will feature a 32-bit native
+mode compiler.
+
+At this time, we don't envision COHERENT ever shipping with X-Windows
+given the fact that the size of it would double the size of COHERENT
+overnight.
+
+
+Q22.
+TAR HELP:
+
+The Coherent version of tar has been known to create problems for users.
+It is believed that the latest version of tar has alleviated most of these
+problems. Some of the original problems include inability to read a tar archive
+to tar creating recursive inode/file loops that can only be removed by
+"clri".  The more recent Coherent releases also includes ustar, which 
+appears to be much more robust.  It has been suggested to use the ustar
+command instead of the Coherent native tar command in most cases.
+
+
+Q23.
+SETTING BOOT PARTITION: DOS or Coherent?
+
+Occasionally, a user may want to boot to Coherent for the most part, rather
+than come up in DOS by default.  You can leave the DOS partition in tact,
+and switch between the preferred operating systems on as "as needed" basis.
+To do this, simply use the fdisk program in either operating system and 
+make the partition active for the operating system that resides there. Reboot
+the system, (AMI Bios system owners require a hard reset) and the system will
+now boot to the partition made active with fdisk. For example, if you wish
+to boot DOS by default, make the first partition active.  If you want to boot
+Coherent by default, make the partition active that Coherent resides on.
+
+Q24.
+A BACKUP SCRIPT:   From udo@umunk.gun.de Thu Aug 20 07:58:16 1992
+
+	[ This script was Written by Udo Munk, a name you will see thoughout 
+	the Coherent 4.0 manual.  Udo has ported a *lot* of software to
+	Coherent, and following is a backup script Udo sent me some time
+	ago.  I am very appreciative of his efforts, he has made a very
+	positive difference in the quality of software available for 
+	Coherent, as well as many features used in Coherent, (terminfo and
+	tic just to name two).  I wish I could contribute so much!  
+	Thanks Udo!  ]  --Mike 
+ ----- cut here -----
+ # shell script to backup Coherent's system files to disk
+ # Should work with Coherent 3.x and Coherent 4.0.
+ # At the end of the file are the installation dependent files, 
+ # please change to your needing.
+ # Written by Udo Munk (udo@umunk.GUN.de)
+
+ # the output device:
+ # [May need to be changed to reflect your particular floopy drive type --Mike ]
+ OUTDEV=/dev/fva1
+
+ echo -n "Put a disk with a filesystem in $OUTDEV and hit return: "
+ read dummy
+ /etc/mount $OUTDEV /mnt
+
+ echo "Copying files in / ..."
+ cp .profile /mnt
+ cp backup /mnt
+
+ echo "Copying files in /bin ..."
+ if [ ! -d /mnt/bin ]
+ then
+ 	mkdir /mnt/bin
+ fi
+ cp /bin/mount /mnt/bin
+ cp /bin/umount /mnt/bin
+
+ echo "Copying files in /etc ..."
+ if [ ! -d /mnt/etc ]
+ then
+ 	mkdir /mnt/etc
+ fi
+ cp /etc/.profile /mnt/etc
+ cp /etc/brc /mnt/etc
+ cp /etc/checklist /mnt/etc
+ cp /etc/domain /mnt/etc
+ cp /etc/drvld.all /mnt/etc
+ cp /etc/group /mnt/etc
+ cp /etc/logmsg /mnt/etc
+ cp /etc/modemcap /mnt/etc
+ cp /etc/motd /mnt/etc
+ cp /etc/mount.all /mnt/etc
+ cp /etc/newusr /mnt/etc
+ cp /etc/passwd /mnt/etc
+ cp /etc/profile /mnt/etc
+ cp /etc/rc /mnt/etc
+ cp /etc/serialno /mnt/etc
+ cp /etc/shutdown /mnt/etc
+ cp /etc/termcap /mnt/etc
+ cp /etc/timezone /mnt/etc
+ cp /etc/ttys /mnt/etc
+ cp /etc/umount.all /mnt/etc
+ cp /etc/uucpname /mnt/etc
+
+ # if available copy files in /etc/default
+ if [ -d /etc/default ]
+ then
+ 	echo "Copying files in /etc/default ..."
+ 	cpdir /etc/default /mnt/etc/default
+ fi
+
+ echo "Copying files in /usr/bin ..."
+ if [ ! -d /mnt/usr ]
+ then
+ 	mkdir /mnt/usr
+ fi
+ if [ ! -d /mnt/usr/bin ]
+ then
+ 	mkdir /mnt/usr/bin
+ fi
+ cp /usr/bin/modeminit /mnt/usr/bin
+ cp /usr/bin/ramdisk /mnt/usr/bin
+
+ echo "Copying files in /usr/lib ..."
+ if [ ! -d /mnt/usr/lib ]
+ then
+ 	mkdir /mnt/usr/lib
+ fi
+ if [ -f /usr/lib/crontab ]
+ then
+ 	cp /usr/lib/crontab /mnt/usr/lib
+ fi
+ cp /usr/lib/units /mnt/usr/lib
+
+ echo "Copying files in /usr/lib/mail ..."
+ if [ ! -d /mnt/usr/lib/mail ]
+ then
+ 	mkdir /mnt/usr/lib/mail
+ fi
+ cp /usr/lib/mail/aliases /mnt/usr/lib/mail
+ cp /usr/lib/mail/paths /mnt/usr/lib/mail
+
+ echo "Copying files in /usr/lib/uucp ..."
+ if [ ! -d /mnt/usr/lib/uucp ]
+ then
+ 	mkdir /mnt/usr/lib/uucp
+ fi
+ cp /usr/lib/uucp/L-devices /mnt/usr/lib/uucp
+ cp /usr/lib/uucp/L.sys /mnt/usr/lib/uucp
+ cp /usr/lib/uucp/Permissions /mnt/usr/lib/uucp
+
+ # if available save /usr/lib/news
+ if [ -d /usr/lib/news ]
+ then
+ 	if [ ! -d /mnt/usr/lib/news ]
+ 	then
+ 		mkdir /mnt/usr/lib/news
+ 	fi
+ 	echo "Copying files in /usr/lib/news ..."
+ 	cp /usr/lib/news/active /mnt/usr/lib/news
+ 	cp /usr/lib/news/distributions /mnt/usr/lib/news
+ 	cp /usr/lib/news/newsgroups /mnt/usr/lib/news
+ 	cp /usr/lib/news/organization /mnt/usr/lib/news
+ 	cp /usr/lib/news/sys /mnt/usr/lib/news
+ fi
+
+ # if available save /usr/spool/cron/crontabs
+ if [ -d /usr/spool/cron/crontabs ]
+ then
+ 	if [ ! -d /mnt/usr/spool ]
+ 	then
+ 		mkdir /mnt/usr/spool
+ 	fi
+ 	if [ ! -d /mnt/usr/spool/cron ]
+ 	then
+ 		mkdir /mnt/usr/spool/cron
+ 	fi
+ 	echo "Copying files in /usr/spool/cron/crontabs ..."
+ 	cpdir /usr/spool/cron/crontabs /mnt/usr/spool/cron/crontabs
+ fi
+
+ # save /usr/local/lib
+ # these are my personal needs! edit for your own!
+ if [ ! -d /mnt/usr/local ]
+ then
+ 	mkdir /mnt/usr/local
+ fi
+ if [ ! -d /mnt/usr/local/lib ]
+ then
+ 	mkdir /mnt/usr/local/lib
+ fi
+ echo "Copying files in /usr/local/lib ..."
+ cp /usr/local/lib/Cu.sys /mnt/usr/local/lib
+ cpdir /usr/local/lib/xc /mnt/usr/local/lib/xc
+ cpdir /usr/local/lib/minicom /mnt/usr/local/lib/minicom
+
+ /etc/umount $OUTDEV
+ /etc/fsck $OUTDEV
+ echo "Backup ready, remove disk from $OUTDEV."
+ ----- cut here -----
+
+
+Q24.
+DISCLAIMER:
+ANY REFERENCE TO THIS ARTICLE, IN ANY FORM, IS PURELY AT YOUR OWN RISK!
+All opinions, tips, and instructions in this article are those of the 
+contributors, and not of any company associated with the individual 
+contributor,
+or any company mentioned in this article.  Any reference to this article 
+is done purely AT YOUR OWN RISK!  The information contained within is
+not guaranteed to be free of errors in any way.  
+
+The intention of this note
+is only to inform curious usenet readers about some aspects of the operating
+system of Coherent, and those companies mentioned are encouraged to add
+corrections, additions, or suggest deletions to this note to as per their
+policy or willingness to provide positive criticism.
+
+
+TRADEMARKS
+Unix is the trademark of AT&T / Unix System Laboratories, Inc.
+Coherent is the trademark of the Mark Williams Company.
+

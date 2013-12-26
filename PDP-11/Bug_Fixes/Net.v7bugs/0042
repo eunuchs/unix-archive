@@ -1,0 +1,8 @@
+Autzoo.1170
+net.v7bugs
+utzoo!henry
+Tue Dec  1 06:46:23 1981
+ldiv bug fix
+The ldiv bug reported by watmath!egisin seems to be yet another bit of
+bad behavior in ldiv that is fixed by the div-abort bugfix I put out on
+net.v7bugs in May.  At least, his example works fine here.

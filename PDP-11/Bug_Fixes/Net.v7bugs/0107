@@ -1,0 +1,12 @@
+Autzoo.1645
+net.bugs.v7
+utzoo!henry
+Thu May  6 13:57:28 1982
+restor/dumpdir tempfiles
+Both dumpdir and the x subcommand of restor create temporary files
+with names of the form "rstXXXXXX" in the *current directory*.
+Moreover, they are very careless about cleaning up after themselves,
+which can lead to annoying junk files left around.  It is the work of
+a moment to change them to put these files in /tmp instead.  This may
+reduce their usability somehow under conditions of extreme system damage,
+but I can't visualize the circumstances.

@@ -1,0 +1,31 @@
+John Holden johnh@psych.usyd.edu.au says:
+
+The cabinets from left to right are probably :-
+
+1)      TU-10 tape drive (almost completely obscured by ken)
+
+2)      RF-11 disk controller (panel at top of cabinet)
+
+3)      RK03 disks (apparently compatible with RK05's)
+
+4)      TU56 DECtape (the beasts were block replaceable and could behave like a
+        disk drive)
+
+5)      TU56
+
+6)      PC-11 paper tape reader/punch. There is just a glimpse of a PDP11/35-45
+        hidden by the second ASR33 under the punch (probably 11/45).
+
+7)      PDP11/20. It's not one of the earliest, since you can clearly see
+        the /20 on the decal.
+
+8)      In the shadows to the right is a VT01A display (Tektronix 611 storage
+        display)
+
+Warren adds:
+According to the PDP-11 FAQ at
+http://www.village.org/pdp11/faq.pages/11model.html, the 11/20 was introduced
+in June 1970. Dennis Ritchie says that the 11/20 ``came during the summer of
+1970'', that being the Northern Hemisphere summer. It came without any disks;
+they arrived several months later. Therefore, the photo must date from the
+end of 1970, or 1971.

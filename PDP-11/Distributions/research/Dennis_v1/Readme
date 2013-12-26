@@ -1,0 +1,31 @@
+This directory contains a set of documents related to 1st Edition UNIX,
+along with a working 1st Edition UNIX kernel which was restored from the
+documents.
+
+Documents
+---------
+The man*.pdf PDF documents here are the scanned manual pages to 1st Edition
+Unix, taken from Dennis Ritchie's web page:
+http://cm.bell-labs.com/cm/cs/who/dmr/1stEdman.html
+A copy of the above HTML file is also cached here, but most of the
+hyperlinked documents are missing.
+
+UNIX_ProgrammersManual_Nov71.pdf is a file copied from
+http://www.bitsavers.org/pdf/bellLabs/unix/.
+It appears to be an aggregate of most of the PDF documents noted above.
+
+The file PreliminaryUnixImplementationDocument_Jun72.pdf, also from
+bitsavers, appears to be a study of the internals of the 2nd Edition UNIX kernel
+by Ted Bashkow, done around June to September 1972. We have no other information
+about the document. Also from the same place on bitsavers is
+Kernel_Subroutine_Descriptions_Mar72.pdf, which appears to be a preparatory
+document which formed the basis of Bashkow's study.
+
+Working Kernel
+--------------
+A small group of people, led by Tim Newsham and Warren Toomey, have scanned the
+kernel listing from the above document in, and successfully restored the kernel
+to working order, using the executables from the `s2' tape in ../1972_stuff.
+The team's web page is http://code.google.com/p/unix-jun72/. Here you will
+find a snapshot copy of their work along with some filesystem images:
+images-20080625.tgz and svntree-20081216.tar.gz

@@ -1,0 +1,220 @@
+Sat Nov 12 17:24:09 MET 1994
+
+	p11-2.0
+	-------
+
+This is my pdp-11 emulator. It currently runs under bsdi (i486), SunOS 4.1 and
+5.x (sparc), and OSF1 (alpha) systems. To compile it you need gcc 2.x and GNU
+make. Binary distributions still need gcc being installed to pre-process the
+configuration files. This release has been tested with gcc version 2.5.8 and
+GNU make 3.71. Any volunteers are welcome to port it to other architectures
+and/or OS (see porting section).
+
+P11 currently emulates the following configuration:
+	- a KDJ11A processor (including fpp)
+	- one or more RL-controllers (RLV12) with up to 4 RL02 each
+	- a MRV12 option (boot-rom/maintenance and display register)
+	- one or more KL11A controllers with up to 4 serial lines each
+	- a standard printer interface
+
+
+Emulation speed has not been fully evaluated yet. I tested vfy on a RL02 disk
+under RSX+ and got the following results:
+
+			    VFY DL2:/RC		      VFY DL2:
+
+Real KDJ11A+RL02		2:05			1:05
+BSD/386 1.1 486/66		1:10			2:55
+SunOS 4.1.3 SS10/41		0:39			2:08
+SunOS 4.1.3 SS10/512		0:36			1:53
+SunOS 5.3   SS20/612		0:24			1:22
+OSF1  1.3   3000/300LX AXP	0:44			2:08
+
+Recently I found a cpu speed test program written by B. Z. Lederman
+(ftp.update.uu.se:/pub/pdp11/rt/testit/spdcpu.{doc,mac}). Some of the results
+are in the file Misc/spdcpu.res (times in microseconds). You can see that on
+high-end workstations the emulator is slightly faster then the original KDJ11A
+not fetching instructions from cache. With instructions in cache the KDJ11A is,
+of course, faster. Disc I/O on the emulator is many times faster than real disc
+I/O - RMD shows up to 500kW/sec average througput during VFY (on a fast sparc).
+Anyway, emulation speed even on an i486/66 is tolerable. 
+
+P11 successfully runs RSX11M-PLUS and UN*X Version 7. I found nobody
+to test it with RT11 or TSX11, so you are welcome.
+
+Because I don't have any processor diagnostics there may be emulation bugs
+left. Some of the decisions to emulate a specific command in a specific way
+where made by writing a test program and run it on a real machine. This is
+especially true for the fpp commands. (btw., the fpp documentation is _very_
+bad. The documentation bugs once made in the very early versions are
+simply copied up to the KDJ11A documentation). If you have processor diags and
+could manage it to run them on p11, please let me know about the results.
+
+1. Getting started
+------------------
+
+Make sure you have at least 15 MBytes of free disk space (excluding disk
+images). If you have a binary distribution read section 2 below. If you have
+the source distribution unpack the tar file and set up the environment variable 
+PATH11 pointing to installation directory, i.e. if you are in '/usr/begemot' 
+and type 'tar xvf p11src-2.0.tar' you should set 'PATH11=/usr/begemot/11;
+export PATH11'. If you plan a regular use, do this in you .profile.
+
+The source tree is organized as follows:
+
+11/		- emulator root
+11/emu/		- emulator source
+11/emu/Utils	- support programs
+11/emu/IOProgs	- satellite programs for TTY and LP support
+11/emu/Misc	- real misc, look there
+11/emu/Tests	- sources for various test programs
+11/run/		- working directory for running p11
+11/disks/	- here you can store your disk images
+		
+
+2. Installing a binary distribution
+-----------------------------------
+
+Make an emulator root directory, say '11' and an emulator directory '11/emu'.
+cd into '11/emu' and unpack the tar file. Setup environment variable PATH11
+to point to '11'. Go into '11/emu/Tests' and copy '../Misc/p11conf.sample' to
+'p11conf'. Say '../p11 -f f.11', start telnet from another screen
+'telnet localhost 10000' and say 'p' to p11. Telnet should show you a list
+of instruction mnemonics and 'fpp test ok'. For more see section 'Running'.
+
+
+3. Compilation
+--------------
+
+Cd into 11/emu.
+
+Configuration should be easy on the supported platforms. There is a shell 
+script 'config' which generates the makefiles from template and option files by 
+using cpp. (I could have used imake, but I didn't want to complicate things. 
+Life is hard enough without imake, isn't it?) Typing config without arguments
+gets you a list of supported platforms. Use one of:
+
+	config i386-bsdi
+	config sparc-sunos
+	config sparc-solaris
+	config alpha-osf1
+
+or simply:
+
+	config -a
+
+(auto-configuration) to configure p11 for you local system.
+
+If all went ok you may try 'gmake deps ; gmake'. The building process
+may take 5-15 minutes, depending on your local system.
+
+If that also wents ok change to '11/run' and try p11. P11 should come up
+with '@' and you may play with the (somewhat extended) monitor.
+
+
+4. Running
+----------
+
+If you are lucky enough to have an OS for your PDP place the rl02 images
+into '11/disks'. Copy Misc/p11conf.sample to 11/run/p11conf and edit it to
+mount these images on the appropriate drives. (p11conf.sample shows how to
+run 2 (or more) different OS. To boot the right one you type -D??? at the
+command line.)
+
+If you have images for a different type of disks you may write an appropriate
+device emulation. I'll be happy to receive any enhancements being done.
+
+Enjoy.
+
+
+5. Selecting Options
+--------------------
+
+In each directory exists a Makefile.in master makefile. During the 
+configuration process these files get processed by cpp to produce Makefiles.
+Architecure and operating system dependencies are reflected by including
+Makefile.mach. Makefile.mach itself is a link to the appropriate 
+Config/M-${arch}-${sys} file. Edit this file to adopt p11 to you local
+environment.
+
+
+6. Porting/Adding new features
+------------------------------
+
+If you want to add devices to the emulator or you want to port it
+to a different architecture/OS and want me to include you code into
+future release, try to stick to the following rules:
+
+1. look at the existing code and try to figure out how it is organized
+
+2. if you write a device look at one of the existing ones (best is probably
+   dev_rl.c). This should help you to understand what is going on there. You
+   must include your device's file name in the Makefile.in CSRC section.
+
+3. if you port to a new cpu-architecture you should setup the Config/m-$arch.h
+   and Config/r-$arch.h appropriately. If you would like to have Floating Point
+   you need to create Config/f-$arch.h as well. If you are to lazy to
+   write the machine specific parts or you have a good compiler you can
+   try the generic code. If you don't create one of the files, the generic
+   variant is used.
+
+4. if you port to a new operating system for one of the already supported
+   cpu-architectures, you will have to craft the files Config/s-$sys.[ch].
+
+5. in both cases 3 or 4 you will also have to setup M-$arch-$sys.
+
+6. if you create a new subdirectory you can take advantage of the existing
+   Makefile.template. Don't forget to include the subdirectory name in the
+   Makefile.in SUBDIRS line.
+
+7. Wishes
+---------
+
+This is a unsorted list that comes into mind at the time of this writing.
+
+1. It would be nice to have processor/controller/device/... diagnostics
+
+2. if you have a great idea how to speed up the memory system, try it. I
+   think it eats up most of the time.
+
+3. I would really like to have an emulated DEQNA. The main problem seems
+   to be the rather bad documentation. It would be nice to speek IP with
+   the emulated pdp.
+
+4. It shouldn't be hard for let's say 3-4 people to create a v7 compatible
+   system in a couple of weeks from scratch (the kernal only of course)
+
+5. wouldn't it be nice to have rk05 (I love them - they are so nicely small)
+   and rx01/02 emulated?
+
+6. how about a vt220 emulator for these dummy pc consoles or X? (Especially
+   I would like to have the alternate keypad feature to use EDT)
+
+
+8. License restrictions
+-----------------------
+
+I don't like copyright's very much, the more if the claim and terms eat up
+the first screen entirely when editing files. But I must protect my own work,
+so the GNU General Public License applies to the entire code. Please
+look at the file LICENSE or feel free to contact me if you have any
+questions regarding reusage of the source.
+
+9. Acknowledgements
+-------------------
+
+I would like to thank the Deutsches Herzzentrum Berlin, Forschungsstelle
+fuer Kunstherz und Sensorik, for giving us access to their DEC AXP system.
+
+10. How to contact me
+---------------------
+
+Please send suggestions, bugs, bug-fixes, code, OS-sources, flying saucers to:
+
+	'micheel@fokus.gmd.de'
+
+Please include the string P11 in the message subject to simplify 
+sorting them out.
+
+
+	Begemot Willi (Joerg Micheel & Harti Brandt)

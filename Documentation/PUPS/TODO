@@ -1,0 +1,18 @@
+New fictitious user pups, gids 25,26,27, to own the archive files.
+
+CGI Script for archive copy:
+
+	List of volunteers by area
+	Get name, e-mail, license #, postal address
+	Submit
+
+Submit logs request, saves details to file, sends e-mail to particular
+volunteer.
+
+Also a CGI script so volunteer can click when job is done. Also stamp
+time of request in file so Warren & they can see how long a request
+has been outstanding.
+
+Web page for on-line access, just a set of hotlinks to various
+sites by geography, plus reminder that you need username and password
+as given by SCO.

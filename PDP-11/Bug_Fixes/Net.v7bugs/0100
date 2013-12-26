@@ -1,0 +1,20 @@
+Autzoo.1596
+net.bugs.v7
+utzoo!henry
+Thu Apr 22 20:47:40 1982
+lex bugs
+The following are locally-discovered bugs in lex:
+
+1. The minimal lex program, "%%", which supposedly copies input to
+	output, in fact exits immediately.
+
+2. Lex is weak on syntax checking.  In particular, a null action does
+	strange things and is not diagnosed.  The example in the Bell
+	manual page contains a null action that should be a semicolon.
+
+3. Ratfor output has been essentially abandoned, as is documented in the
+	machine-readable lex manual but *not* in the printed V7 manual.
+
+4. The lex library, which should be named libl.a, is in fact named
+	libln.a .  Its sources are in the lex source directory, and the
+	makefile there builds it properly.

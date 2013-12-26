@@ -1,0 +1,17 @@
+Autzoo.1503
+net.bugs.v7
+utcsrgv!utzoo!henry
+Wed Mar 24 19:16:53 1982
+cp misfeature
+The command "cp <directory> <file>" will work, but does not yield a very
+intelligible file as a result.  Most naive users don't really grasp the
+notion that directories are just a special kind of file, and are confused
+by the appearance of this strange little gibberish file.  We found this
+a headache, and since the command seems singularly useless, we added
+the following code just after the assignment to "mode" in cp.c/copy():
+
+	if ((mode&S_IFMT) == S_IFDIR) {
+		close(fold);
+		fprintf(stderr, "cp: %s is a directory -- ignored.\n", from);
+		return(1);
+	}

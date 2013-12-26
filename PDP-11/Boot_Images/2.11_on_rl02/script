@@ -1,0 +1,15 @@
+set rl0 rl02
+set rl1 rl02
+set rl2 rl02
+set rl3 rl02
+at rl0 211bsd.boot
+at rl1 211bsd.vol1
+at rl2 211bsd.vol2
+at rl3 211bsd.vol3
+at rk0 211bsd.vol4
+at rk1 211bsd.vol5
+at rk2 211bsd.vol6
+at rk3 211bsd.vol7
+at rk4 211bsd.vol8
+at rk5 211bsd.vol9
+b rl

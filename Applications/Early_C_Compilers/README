@@ -1,0 +1,12 @@
+Dennis Ritchie has placed some of the earliest surviving C compilers up on
+his web page at http://cm.bell-labs.com/who/dmr. The web page primevalC.html
+describes the history and features of both compilers.
+
+The two -bits files are the original V2 tap archives. There are matching
+.tar.gz files with file timestamps preserved. If you want to use these
+compilers, then the binaries and a suitable emulator are available via
+anonymous ftp at minnie.cs.adfa.edu.au in the directory pub/PDP-11/Sims/Apout.
+
+The prestructc compiler can be compiled using the above binaries with a few
+source code changes. The changed source is in fixed_prestructc.tar.gz,
+which also includes a context diff file showing the changes made to it.

@@ -1,0 +1,125 @@
+This directory contains a copy of Ultrix-11 3.0 from Ken Wellsch. He says:
+
+	This is purely a binary distribution. I used to run it on my 11/44
+	system. I forget the vintage of this tape, but I'm thinking circa
+	1985. The tape is the usual boot tape image -- in this case matched
+	up with the block size record info so that it can be reproduced to
+	match the same original blocking factors. The tape tools I used to
+	do this, as sloppy as they are, are also present.  -- Ken
+
+I haven't had a chance to look at this, however, here's what I can see:
+
+	tapedump.gz is the gzipped Ultrix-11 tape
+
+	tapelog show the number of blocks, their sizes, and the EOFs,
+	so it should be possible to restore the tape from the tapedump.
+	
+	tapecontents also indicates the sizes of all the tape records,
+	and also describes what they are
+
+	file33-toc, file34-toc and tarcontents (I think) describe
+	the files in Ultrix-11.
+
+I have no idea what hardware Ultrix-11 will run on or support. If anybody
+can help me here, I'd appreciate it very much. However, a strings on the
+tape image reveals the following install information:
+
+
+       	****** ULTRIX-11 System Disk Load Program ******
+
+This program loads the base ULTRIX-11 system from the distribution
+media onto the system disk, then bootstraps the system disk. After
+booting, the setup program begins the initial setup dialogue.
+Before loading can begin, you need to answer some questions about
+your system's configuration. Enter your answer, using only lowercase
+characters, then press <RETURN>. If you need help answering any of
+the questions, enter a ? then press <RETURN>.
+To correct typing mistakes press the <DELETE> key to erase a single
+character or <CTRL/U> to erase the entire line.
+
+                  ****** WARNING ******
+Installing the ULTRIX-11 software will overwrite your system disk.
+In addition, the ULTRIX-11 V3.0 file system is not compatible with
+the file systems used by previous ULTRIX-11 releases or any other
+software systems. Existing user disks must be converted to the new
+1K block file system.
+DO NOT PROCEED UNTIL YOU HAVE READ INSTALLATION GUIDE SECTION 1.7
+Proceed with the installation <y or n> ? 
+The target processor is the CPU on which the ULTRIX-11 software
+will actually be used, this may or may not be the current CPU.
+If you are installing from a magtape distribution and your CPU
+does not have a magtape unit, you can install the software on a
+processor with a magtape drive, then move the software to the
+target processor.
+Please enter one of the following supported processor types:
+    23, 24, 34, 40, 44, 45, 53, 55, 60, 70, 73, 83, 84
+The Micro/PDP-11 will be one of the following processor types:
+    23  KDF11-B
+    53  KDJ11-D
+    73  KDJ11-A
+    83  KDJ11-B
+
+		****** CAUTION ******
+You must surface verify RP04/5/6 disks, type ?<RETURN> for help!
+Disk surface verification involves a write/read/compare test of
+each block on the system disk, using a number of test patterns.
+Any disk block which fails this test will be entered into the bad
+block file and automatically replaced by an alternate disk block.
+DIGITAL recommends that you surface verify your disk, unless you
+are certain that the data integrity of your disk media is accept-
+able and that it contains a valid bad block file.
+For RP04/5/6 disks, you must surface verify the disk unless you
+are absolutely sure the pack has been initialized with DSKINIT.
+Even if the disk pack already has a valid bad block file, bad
+block replacement will not function properly until the disk has
+been initialized by the DSKINIT program.
+The disk surface may be verified using up to eight different
+test data patterns. The thoroughness of the surface verification
+increases with the number of test patterns that you run. However,
+using a large number of test patterns can be very time consuming
+because, each pattern writes and reads every block on the disk.
+The following table gives the approximate run time per pattern:
+Selecting <1> test pattern will cause the `worst case' data
+pattern to be used for disk surface verification.
+Formatting the disk involves organizing the data bits on each
+disk track into 512 byte sectors and writing the appropriate
+format information in the header words of each sector header.
+DIGITAL recommends that you format the disk, unless you are
+certain that it is properly formatted.
+The attempted operation failed to complete successfully. The
+procedure is to determine the cause of the failure, then retry
+the operation. Some possible causes of such failures are:
+    o  The system disk is write protected.
+    o  The system disk is off-line,
+    o  The system disk media may be defective.
+    o  There may be a fault in the system hardware.
+Answer `yes' if you wish to retry the operation.
+Answer `no' to abort the entire installation.
+
+		****** CAUTION ******
+You must scan MSCP disks for bad blocks, type ?<RETURN> for help!
+The bad block scan program qualifies disk media for use with the
+ULTRIX-11 software by reading the disk and printing information
+about any bad blocks encountered during the read.
+For MSCP disks (RD51 RD52 RD53 RC25 RA60 RA80 RA81) the bad block
+scan program automatically replaces each bad block by revectoring
+it to a replacement block. For all other disks, the bad block scan
+program only identifies bad blocks.
+When the bad block scan has been completed, the program will warn
+you if the disk cannot be used with the ULTRIX-11 software.
+DIGITAL recommends you answer `yes', unless you are certain your
+disk meets the UTLRIX-11 media requirements.
+FATAL ERROR: while attempting to return to Boot:
+Execute the hardware bootstrap for your distribution load device,
+that is, RX50, magtape, etc., to return to the Boot: prompt.
+A typical ULTRIX-11 system disk layout is:
+	+-------------+------------+
+	| SYSTEM AREA | USER FILES |
+	+-------------+------------+
+The system area consists of: ROOT, SWAP & ERROR LOG, and /USR.
+The remainder of the disk may be allocated for user file storage.
+DIGITAL recommends you scan the entire surface of your disks for
+bad blocks. However, you may choose to scan only the system area.
+This option can be used to expedite the installation if you are
+recovering from an error and/or you have already scanned the disks
+for bad blocks.

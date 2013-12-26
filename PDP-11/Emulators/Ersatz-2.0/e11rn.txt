@@ -1,0 +1,27 @@
+E11 V2.0 release notes
+
+Important differences between V1.1 and V2.0 of Ersatz-11:
+
+1. The default amount of memory allocated to the emulated PDP-11 has been
+   raised from 248 KB to 384 KB.  This, plus the growth of E11 itself, is
+   likely to cause "?Insufficient memory" errors on systems that have a
+   significant amount of memory used by TSRs or device handlers.  The PDP-11
+   memory allocation may be reduced to fix this, by using the "/MEMORY:n"
+   switch on the DOS command line that starts E11, e.g. "E11/MEM:248" will
+   restore the V1.1 memory size.
+
+2. DX: and DY: are no longer synonyms.  DX: refers specifically to an RX11
+   controller, DY: refers to an RX211.  The SET FLOPPY RX11/RX211 command
+   has been removed.
+
+3. The disk controllers are no longer created by default at startup, they
+   get created when the first drive is mounted on them and destroyed when
+   the last drive is dismounted.
+
+4. The HD: device has changed.  As a result the old HD.SYS and HDX.SYS drivers
+   (included with E11 V1.1) no longer work, you should use the ones included
+   with E11 V2.0 instead.
+
+5. Bug:  the SET CPU 44 command fails to enable the "MSER" CPU feature, this
+   will be fixed in future versions but meanwhile you should use "SET CPU 44
+   MSER" to set up an emulated PDP-11/44 CPU.

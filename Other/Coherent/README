@@ -1,0 +1,28 @@
+COHERENT 4.2.10 Archive.
+
+This archive contains both binary media and kernel source code
+for Mark Williams' COHERENT 4.2.10.
+
+base/         The base system (disk images).
+compiler/     The GNU C/C++ compiler (2.5.6).
+docs/         FAQ, and other documentation.
+dos/          The RAWRITE utility.
+ghostscript/  PostScript utilities (disk images).
+kernelsource/ The kernel source code (see notes).
+updates/      Various utility updates.
+x11r5/        The X11R5 window system (disk images).
+DemonArchive/ Partial COHERENT archive (see notes).
+
+
+Notes:
+
+1) boot.tgz in kernelsource/ appears to be corrupt.
+   This shouldn't cause a problem realy.
+
+2) The Demon Internet mirror is incomplete.  I chose to only
+   mirror the "essentials".
+   The full archive is available at:
+       ftp://ftp.demon.co.uk/pub/coherent/
+
+3) The original source for the COHERENT media was:
+       ftp://ftp.mayn.de/pub/coherent/

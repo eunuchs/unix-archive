@@ -1,0 +1,18 @@
+Autzoo.1581
+net.bugs.v7
+utzoo!henry
+Mon Apr 19 18:58:48 1982
+kill -1 -1
+The V7 kill program will not take -1 as a processid.  The kill system
+call likes it just fine (it sends the signal to all processes except
+0 and 1) but kill(1) thinks it is syntactically invalid.  The fix for
+this is to change the line:
+
+		if (**argv<'0' || **argv>'9')
+
+to something like:
+
+		if (!isdigit(**argv) && **argv != '-')
+
+(NB if you use isdigit rather than the explicit 0 and 9, you'll need
+to #include <ctype.h>.)

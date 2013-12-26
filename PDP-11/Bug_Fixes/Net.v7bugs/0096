@@ -1,0 +1,13 @@
+Autzoo.1549
+net.bugs.v7
+utzoo!henry
+Tue Apr 13 17:58:59 1982
+ld returns uncleanly
+The V7 ld has a nonzero exit status when undefined external symbols
+exist in its final output, even when the options fed to it clearly
+indicate that this is legitimate.  This screws up several things,
+including use with make.  Does anybody know if this "feature" really
+is of any use?  (Note that you can test for undefined externals using
+nm and grep, so this obvious use is unimportant.)  I would like to
+eliminate it by putting the exit-status "|= 01" inside the same set of
+if's that govern the undefined-symbols error messages.  Comments?

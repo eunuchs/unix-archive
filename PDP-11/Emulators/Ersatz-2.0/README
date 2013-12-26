@@ -1,0 +1,18 @@
+This directory contains a demo version of the Ersatz-11 PDP-11 simulator for
+PCs running DOS, by John Wilson.  Note that HD.SYS has changed since V1.1A,
+so you must install the new HD.* files when upgrading to V2.x.
+
+Files:
+
+install.exe	self-installing archive of Ersatz-11 V2.2 Demo
+e11demo.ps	Postscript version of the Adobe Acrobat documentation
+		file contained in install.exe
+
+fuzzball	subdirectory containing an experimental bootable Fuzzball pack
+
+lunar		subdirectory with VT11 lunar lander program by Jack Burness
+
+At the moment there is no plain text version of the E11 documentation file.
+If printing it out is impossible or undesirable, PC users can see e11demo.ps
+using Ghostscript, there's a version precompiled for DOS and/or Windows
+available for free download on prep.ai.mit.edu in the pub/gnu directory.

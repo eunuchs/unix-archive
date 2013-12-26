@@ -1,0 +1,37 @@
+Autah-cs.157
+net.bugs.v7
+utzoo!decvax!duke!chico!zeppo!harpo!utah-cs!lepreau
+Wed Jan  6 12:25:21 1982
+Another C compiler bug
+While I'm at it, here's another apparent bug in the v7 Ritchie compiler
+which Spencer Thomas found.  We have no fix, does anyone?
+------------------
+From: thomas
+Subj: C compiler bug
+Try this:
+{
+	char a[2][2];
+	register int i, j, k;
+
+	a[i][j] %= k;
+}
+
+and look at the assembly code:
+
+~a=177766
+~i=r4
+~j=r3
+~k=r2
+mov	r4,r1		// figure out index into array
+asl	r1
+add	r5,r1
+add	r3,r1
+add	$-12,r1
+mov	r1,-(sp)	// push array address
+mov	r2,-(sp)	// push divisor
+movb	*2(sp),r1	// get a[i][j]
+sxt	r0		// prepare for divide
+div	(sp)+,r0	// do divide
+mov	r1,*(sp)+	// and save remainder (into a word, not a byte!!)
+
+=S

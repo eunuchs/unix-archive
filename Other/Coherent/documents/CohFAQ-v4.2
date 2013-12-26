@@ -1,0 +1,2102 @@
+From oznet.demon.co.uk!news.demon.co.uk!dispatch.news.demon.net!demon!tank.news.pipex.net!pipex!news.mathworks.com!news.kei.com!simtel!harbinger.cc.monash.edu.au!bunyip.cc.uq.oz.au!nanguo!earth Sun Sep  3 12:01:28 1995
+Newsgroups: comp.os.coherent
+Path: oznet.demon.co.uk!news.demon.co.uk!dispatch.news.demon.net!demon!tank.news.pipex.net!pipex!news.mathworks.com!news.kei.com!simtel!harbinger.cc.monash.edu.au!bunyip.cc.uq.oz.au!nanguo!earth
+From: earth@nanguo.chalmers.com.au (Robert Chalmers)
+Subject: Coherent FAQ. V4.2.10.
+Last-Modified: Tue Jun  6 21:02:53 1995 EST
+Reply-To: robert%chalmers.com.au@bunyip.cc.uq.oz.au
+Archive-Name: coh-faq/ver42.10
+Organization: China House.
+Date: Sat, 2 Sep 1995 12:33:54 GMT
+Approved: none
+Message-ID: <DEA2wI.ADw@nanguo.chalmers.com.au>
+Lines: 2087
+
+Version: 4
+
+This is a Frequently Asked Questions posting for comp.os.coherent,
+with answers about the COHERENT operating system, 
+
+			  V4.2.10 
+			exclusively.
+
+Some general notes:  No new activity. No contributions in over 18 months.
+
+When used alone, the word "Coherent" is used to mean any of the
+versions that may have been released.
+
+Unless otherwise specified, these answers refer to COHERENT.4.2.10, which
+is the latest release available. 
+
+Many people have contributed to this list, directly or indirectly.  In
+some cases, an answer has been adapted from one or more postings on the
+comp.os.coherent newsgroup.  Our thanks to all of those who post answers.
+The name (or names) at the end of an entry indicate that the information
+was taken from postings by those individuals; the text may have been
+edited for this FAQ.  These citations are only given to acknowledge the
+contribution.
+
+		The Mark Williams Company is no longer trading.
+		There will be no further releases of Coherent.
+
+
+     C O H E R N T    V E R S I O N    4.2.10    S P E C I F I C S 
+
+
+	=======================================================
+
+A Description of Amazing and Wonderous attributes concerning the World Famous
+digital Human Effort enhansing Device, lately called Coherent Version 4.1.10.
+
+Table of Contents.
+  	  ------------ Introduction --------------
+
+	        =============================
+A1.	Those perennial problems with COM ports.
+A2.	Hardware & Configs, IRQ, IQ and ........
+A3.	Compiling tips......VI options..........	
+A4.	UUCP, and Taylor 1.05...................
+A5.     X11R5...................................	
+A6.	TCP/IP.	SLIP & Ethernet.................	
+          ----------------------------------------
+             Electronic Mail, and News Handling
+             ==================================
+A7	cnews...........  abcd goldfish, mno goldfish, sar, osicm.
+A8	smail.3.........  smail damit, smail for the camera.
+A9	tin.............  tin, for being rin .........
+A10	elm.............  street, for having nightmares on 
+A11	usenet..........  or fishing line, I still can't catch 'em.
+A12	The Commercial Sector. Sell your goodies worldwide.
+	( contact us, the fees are outrageous but we smile a lot )
+
+	========================================
+
+Introduction --------------
+Who We are. As if you didn't know!
+============================== Queensland ==============================
+		     right On the Great Barrier Reef.
+
+Site name -----> chalmers.com.au
+Organisation --> CSTPL (Commercial Software Training Pty Ltd)
+Location ------> Brisbane, Mackay
+Dialins -------> 3 * V32bis/V.42bis.
+Charges -------> $2.44Mb Metropolitan, $2.95Mb Regional, plus costs.
+Machine -------> Unix. 486
+Link ----------> Shell, UUCP, (SL)IP
+Features ------> AARNet VAR. Domain registration, International
+		 MX, UUCP, SLIP, Router, Shell.
+How -----------> By email, F:079424032 P:079524395 FC:1800067722
+Contact -------> Robert Chalmers. <robert@chalmers.com.au>
+	------------------- CSTPL ----------------------
+chalmers.com.au
+Commerical Software Training Pty Ltd is an AARNet Value Added
+Reseller, and is thus able to connect others to the network. This
+includes full domain registration assistance and MX record handling.
+chalmers.com.au is extending its operations and research into Queensland
+as well as seeking to provide network feeds to developing countries.
+The special area of interest is Asia, with on going research in
+China, and connections to Pakistan. The Queensland project is enabling
+Cairns, Mt Isa, Townsville, Mackay and Rockhampton to be connected to
+the Brisbane server via DDS, providing internet access for users, with
+servers in all cities. All options will be available to users as a
+local call. The time frame for completion of all links is early 1995.
+
+CSTPL is heavily involved in Applied Communications research. We attempt
+to establish useable communications between international sites and
+the Internet. Also covering Queensland, this research is based on all
+available technologies, including portable satellite ground stations.
+We try to keep the technical aspects to the bare minimum for users,
+and the costs reflect our committment to on going research.
+
+Email -----> <robert@chalmers.com.au> 
+PSTN ------> F:079424032 P:079524395 FC:1800067722
+Contact ---> Robert Chalmers. <robert@chalmers.com.au>
+Mail ------> 22 Minster St.4170 or 4 Corndale St.4129
+	=======================================================
+
+
+	If you feel that you have a contribution to make, either by 
+way of a short shell script, a tip, trick or trap, please contribute 
+them to this document. Post them to robert@chalmers.com.au, set out if
+you like, with your name attached so you get the credit.
+
+	This message is for the attention primarily of Australian users
+of Coherent, but may have some value to users around the world as well.
+
+		Coherent Updates Now Available In Australia.
+		============================================
+
+	CSTPL is making available, with the approval of MWC, the Coherent
+updates as they become available. The updates are now available for
+retrieval by two methods: automatic reply email, and uucp for those without
+an internet account that they can use for such things. Uucp within Australia
+is not expensive, a half hour call will set you back a mere $11 for an hours
+downloading in off peak time. 
+
+	As near as possible the full range of updates and patches is available
+and conforms to the following criteris. Take Note if you intend retrieving it.
+
+[1]
+	By Email:  send email 	     To: updates@chalmers.com.au
+				Subject: list
+					 ^^^^^^^^^^^^^^^^^^^^
+        Please.... watch the spelling of 'updates'.............
+
+	The message does not need any text, as only the machine sees it, 
+	unless of course you cock it up, then I see it, care of the daemon.
+	This will generate a reply message to you, with a file attached
+	that is a LIST of the available patches. To retrieve any of the
+	required files, put the name of the wanted file as the Subject: .
+	The file will be sent back to you as UUENCODED email. You take
+	it from there.
+
+ 	Using this method, you are making use of my Internet connection,
+	which is attached by Long Distance (STD) to the backbone. If you
+	want ALL the files, ask MWC to send you a disk, or send me bulk
+	money to pay for the extended phone call duration made on your
+	behalf. Otherwise, I have no problem with users from anywhere 
+	requesting the occasional update. Lets face it. You rarely need them
+	all! This is a voluntary service, and I get NO support by way of
+	money or goods for doing it. Just remember us when you want to
+	buy your next copy of Coherent, or you want an Internet connection
+	from anywhere in the world.
+	Last note: Some of the files are BIG. So if you have traffic limits,
+	your system might choke!... blaaaa...
+
+[2]
+	By UUCP:	EASY...... I can't believe it.... Where has this
+	been all my life? You mean I can actually get these things by
+	dial-up in Australia?
+
+	You should set up a system in your sys file (L.sys) with the
+	following. Or suitable entry in your Taylor sys file.
+
+		SYSTEM=nanguo SEND=yes RECIEVE=yes MYNAME=anon
+	and the dial file,
+	Login: anon  Passwd: update
+	/usr/spool/uucppublic/downloads/updates
+	The phone number is +61 79 524527,  speed 9600 V42/MNP etc.
+
+	Got that?  piece of cake.
+	Once you have that right, use the old reliable uucp command to
+	get the list of updates. UUCP users must note, I say must note,
+	that ALL files in the updates directory, including the list,
+	actually have their NAMES IN UPPERCASE. That's capitals for the
+	semiliterate! So note the following command example.
+
+	uucp nanguo!/usr/spool/uucppublic/downloads/updates/LIST ~/
+
+	All things being equal, that should shoot back the LIST of updates
+	to you. If not, check your configs etc. I know I have it right here,
+	I have just spent most of today getting it right. :-)   enjoy.
+
+	Users should also note: There is NO direct login here. You can NOT
+	SEND me files, and you can only pick up files from the $PUBDIR.
+
+****************************************************************************
+Subjects:
+	Communication with the Outside World.
+	-------------------------------------
+A1.	COM ports.
+
+	Things of Great Moment and Import.
+
+	1)  You can not use ckermit or and other interactive comms program
+	    to dial out of a com port that is already enabled so that a
+	    terminal can use it, or it is used to take incoming calls on a
+	    modem.
+
+		An enabled port looks like this, as seen in /etc/ttys
+		1rPcom1r
+		^
+		this indicates to you that the port is ENABLED.
+
+	2)  If you use the UUCP program called cu to dial out to other sites,
+	    then you don't need to worry about it, as you will have the UUCP
+	    configuration files so designed, that everything is taken care of
+	    for you. If you haven't got UUCP configured, read on. There is an
+	    entire section on configuring Taylor UUCP. V1.05 for Coherent.
+
+	3)  In order that programs like UUCP and cu can properly manage the
+	    com ports, your files /etc/enable & /etc/disable 
+		
+		must look like this:
+		-r-s--s--x 3 root  root  8892  Mon may 23 22:11 /etc/disable
+		-r-s--s--x 3 root  root  8892  Mon may 23 22:11 /etc/enable
+		^^^^^^^^^^^^^^^^^^^^^^^
+		important bits !
+
+		With Taylor uucp V1.05,
+		DISABLED COM PORTS MUST	NOT BE IN TTYS.
+		That is, previously you could have
+		1rPcom1r
+		0lPcom1l
+		to denote that you had that port actually in use for
+		something. Not so with Taylor 5.
+	=========================================================
+*****************************************************************************
+A2. Hardware & Configs, IRQ, IQ and ........
+		
+	Some jottings on IRQ lines. There is some discussion on IRQ 7
+	problems, but as it sounds like something that might just be
+	specific to a particular setting, I'll leave it out for now.
+
+	IRQ 7 is the printer(LPT1) IRQ.
+	LPT1	03BC	IRQ 7
+	LPT2	0378	IRQ 7
+	LPT3	0278	IRQ 5
+
+	The whole list up,
+
+	ISA, EISA AND MCA DEFAULT INTERRUPTS.
+
+	IRQ 0	SYSTEM TIMER
+	IRQ 1	KEYBOARD CONTROLLER
+	IRQ 2	SECOND IRQ CONTROLLER
+	IRQ 3	COM 2
+	IRQ 4	COM 1
+	IRQ 5   LPT 2, OR LPT 3
+	IRQ 6	FDD CONTROLLER
+	IRQ 7	LPT 1
+	IRQ 8	REAL TIME CLOCK
+	IRQ 9  	RE-DIRECTED IRQ 2   IRQ-2 is latched to the first port
+					on the second chip, IRQ 9.
+	IRQ 10	AVAILABLE
+	IRQ 11	AVAILABLE
+	IRQ 12	MOTHERBOARD MOUSE PORT  (available if no mouse)
+	IRQ 13	MATHS COPROCESSOR
+	IRQ 14	HDD CONTROLLER
+	IRQ 15	AVAILABLE
+
+
+Ok, lets enlarge on this a little. The following excerpts are from Dr Dobbs,
+the SCO configuration guide, and Programming Device Drivers, and the OAK Chip
+Set, specification Data Book.
+
+Lets start with the Interrupt controllers.
+
+Interrupt Control Logic.
+The interrupt control logic includes two Intel 8259A compatible interrupt 
+controllers. It has 15 levels of interrupt that are handled according to
+programming priority in the CPU chip. The list above shows the hardware 
+interrupts and their availability to the I/O channel. (PC bus)
+The I/O address for each register for each register in the interrupt 
+controller is defined in the the following table. (OAK DATA)
+
+		MASTER INTERRUPT CONTROLLER
+
+ADDRESS		W/R	Function
+			***initialization mode***
+0020		W	initialization command word ICW1
+0021		W	initialization command word ICW2,ICW3,ICW4
+			***operation mode***
+0021		W	operation control word OCW1
+0020		W	operation control word OCW2,OCW3
+			***read status register(operation mose)***
+0021		R	interrupt mask register(IMR)
+0020		R	interrupt request register(IRR), and interrupt
+			service register(ISR).IRR and ISR  are selected
+			through bit 0 and bit 1 in OCW3
+
+		SLAVE INTERRUPT CONTROLLER
+			***initialization mode***
+00A0		W	initialization command wordICW1
+00A1		W	.......
+			as for MASTER above.
+
+The interrupt acknowledge cycle requires two wait states.
+--------------------------------------------------------------------------
+from the SCO configuration book
+Typical device interrupts.
+	IRQ 0	clock
+	IRQ 1*	console
+	IRQ 2	networks, tapes and others
+	IRQ 3	COM 2
+	IRQ 4	COM 1
+	IRQ 5   LPT 2, OR LPT 3
+	IRQ 6*	FDD CONTROLLER
+	IRQ 7	LPT 1
+	8	not mentioned (but it is the battery clock)
+	IRQ 9* 	chain from IRQ2
+	IRQ 10	AVAILABLE
+	IRQ 11*	Adaptec 0
+	IRQ 12	Adaptec 1
+	IRQ 13*	FPU
+	IRQ 14* ST506 Controller 0
+	IRQ 15	ST506 Controller 1
+* do not use these interrupts.
+----------------------------------------------------------------------------
+Dr Dobbs journal. #186. March 1992.
+Page 44 - 50.
+
+On page 46. Along with a diagram of the Bus Architecture, there is a foot
+note that says.
+quote
+*IRQ7 and IRQ15 also receive "lost" interrupts for associated controller.
+end of quote
+
+That is, MASTER CONTROLLER, IRQ 0 - 7, lost interrupts spill onto #7
+On the  SLAVE CONTROLLER, IRQ8 -15, lost interrupts spill onto #15
+
+Now, I'm told reliably that a "lost" interrupt is one that the processor
+didn't process before another one came in from the same device. 
+See the following notes;
+
+
+quote(Dr Dobbs)
+386 ISA Interrupt Mechanism in Detail
+The ICUs are attached in a cascaded arrangement, with the master ICU directly
+connected to the 386 and the slace ICU connected to one of the eight interrupt
+input lines that each ICU possesses. Because of this layout, although we have 
+two ICUs with eight lines apiece, only 15 interrupts are actually generatable.
+as the third interrupt(IRQ2) is not allowed. Even more confusing is the 
+arrangement of relative priority. the interrupt priorities for the 
+slave interrupts (IRQ8-15) are jammed in between IRQ1 and IRQ3. And finally
+to maintain compatibility with the original PC, what used to be IRQ2 is now
+attached to the slave to IRQ9, with the newer interrupt signals on the slave
+ICU(other than IRQ9) available only to the AT or 16-bit wide cards.
+end quote.
+
+quote
+...Also, in deference to high speed 386 systems, what appear to be spurious
+input instructions are added after updating the ICU mask register. These 
+instructions do a read of a known "nonexistent" port. It is known that no
+data will be forced on the bus, and that any outstanding output operations
+on the ISA bus will have been written out before this instruction finishes.
+This code is necessary to mitigate the sins of "clever" hardware that holds
+port output contents in a "write buffer" so that output instructions
+can overlap execution. If this code is not insereted, when we turn on the 
+processor's interrupt processing again(sti), the new mask won't have made it
+to the ICU and we will be running at the "old" priority for a "while". If this
+happens at an inconvenient time(during an interrupt processing routine, for
+instance), we might endlessly recurse and overrun the processor. the 386 is
+very unforgiving in this regard - the processor will shut down and 
+spontaneously reset itself.
+end quote
+
+
+....there is more to come on this section....
+
+
+
+
+
+=============================================================================
+A3.
+		Compilation Environments and Feature Tests
+The COHERENT  header files are  designed to let  you invoke any  of several
+``compilation environments''.  Each environment offers its own features; in
+this way,  you can easily  import code that  conforms to the  POSIX or ANSI
+standards, compile device drivers, or otherwise fine tune how your programs
+are compiled.   To invoke a  given compilation environment, you  must set a
+feature test.
+As discussed  in the Lexicon article name space,  the ISO Standard reserves
+for  the  implementation   every  identifier  that  begins  with  a  single
+underscore followed  by an upper-case  letter.  The POSIX  Standards define
+several  symbols in  this name  space  that the  implementation can  use as
+``feature tests''  -- that is, as  symbols that you can  use in your source
+code  to determine  the  presence or  absence  of a  particular feature  or
+combination  of  features.   Note   that  a  feature  test  applies  to  an
+implementation of  C, rather than  to an operating system.   A feature test
+combines aspects of the host system and the language translator: some tests
+apply to the operating system, some purely to the C translator.
+
+The  operating  system's   header  files  can  define  them  (for  example,
+_POSIX_SAVED_IDS)  to control  compilation  of user  code or  to deal  with
+optional  features,  or  you can  define  them  (e.g., _POSIX_C_SOURCE)  to
+control how  the system's header files declare  or define constants, types,
+structures, and macros.
+
+In general,  a feature  test must  either be undefined  or have  an integer
+value.  It must not be defined  as having no expansion text, or expand into
+a string.  For example,
+
+    # CORRECT
+    cc -D_POSIX_C_SOURCE=1 foo.c
+
+is correct, as is:
+
+    # CORRECT
+    cc -U_POSIX_C_SOURCE foo.c
+
+However,
+
+    # WRONG
+    cc -D_POSIX_C_SOURCE foo.c
+
+is incorrect, as is:
+
+    # WRONG
+    cc -D_POSIX_C_SOURCE="yes" foo.c
+
+This is to permit the constants to be tested with expressions like
+
+    #if _POSIX_C_SOURCE > 1
+
+where an integer  value is required.  (If the symbol  is used in a #if test
+and is  undefined, cpp  replaces it  with zero, which  is still  an integer
+value).  This  permits the  implementation to  use different values  of the
+feature test  to invoke different  feature sets; and  it simplifies testing
+for complex combinations of feature tests.
+
+Although nearly  all feature tests behave  as shown above, there  are a few
+exceptions, namely _POSIX_SOURCE and _KERNEL. These symbols are not defined
+as having a  specific value, so many users do  not supply a value.  To deal
+with this,  the COHERENT  header files  check whether these  constants have
+expansion text.  If they do  not, the header files redefine these constants
+with value  1, so that they  can be used like the  other feature tests that
+the COHERENT header files define.
+
+The  following describes  the  feature tests  used in  the COHERENT  header
+files,  and briefly  describes  the compilation  environment each  invokes.
+Because we are continually adding new  features to the kernel, this list is
+not guaranteed to be complete.
+
+_DDI_DKI
+     Invoke the environment for compiling device drivers.  This environment
+     makes visible  all DDI/DKI  function prototypes and  data definitions,
+     and defines  all fundamental data types and  structures as mandated by
+     UNIX System V, Release 4.
+
+     Please note  that this feature  test is an COHERENT  extension, and is
+     not portable to other operating systems.
+
+_KERNEL
+     Invoke the  environment for compiling  the kernel or  a device driver.
+     This  environment gives  code full access  to system's  private header
+     files.  Under COHERENT, this option is equivalent to defining _DDI_DKI
+     to value  1, because COHERENT  only supports compiling  DDI/DKI driver
+     source code from System V, Release 4.  This means that the definitions
+     of many fundamental data types such as pid_t are changed to the System
+     V,  Release  4  definitions  rather  than  the  System  V,  Release  3
+     definitions used by user code.  (This is a System V convention.)
+
+_POSIX_SOURCE
+_POSIX_C_SOURCE
+     Select  a  ``clean'' compilation  environment,  in  which the  headers
+     defined in  the POSIX.1 or  POSIX.2 standards define  no symbols other
+     than   the   ones   that   those   environments   require.    Defining
+     _POSIX_C_SOURCE  with  value 1  selects  the  POSIX.1 environment,  as
+     defined in the  POSIX.1 standard.  Defining _POSIX_C_SOURCE with value
+     2 selects the POSIX.2 environment, as defined in the POSIX.2 standard.
+     Defining _POSIX_SOURCE has the same effect as defining _POSIX_C_SOURCE
+     with value 1.
+
+_STDC_SOURCE
+     Select a ``clean''  compilation environment.  In this environment, the
+     headers that the ANSI C  standard defines define no symbols other than
+     those that  the standard requires.   This feature test  is designed to
+     let you compile  conforming Standard C programs that themselves define
+     functions or macros that the COHERENT header files defined in addition
+     to those described in the ANSI standard.
+
+     Please note  that this feature  test is an COHERENT  extension, and is
+     not portable to other operating systems.
+
+_SUPPRESS_BSD_DEFINITIONS
+     This feature test  invokes a compilation environment that excludes all
+     definitions that  are included  for compatibility with  Berkeley UNIX.
+     As of  this writing,  this feature test  affects only the  header file
+     <string.h>, and prevents it from defining the macros bcopy(), bzero(),
+     index(),  and rindex().  Note  that selecting  a POSIX  or Standard  C
+     environment also suppresses these definitions.
+
+     Please note  that this feature  test is an COHERENT  extension, and is
+     not portable to other operating systems.
+
+_SYSV3
+     This  feature test  invokes  a compilation  environment  in which  all
+     fundamental types and data structures have the definitions mandated by
+     UNIX System V, Release 3.
+
+_SYSV4
+     This  feature test  invokes  a compilation  environment  in which  all
+     fundamental types and data structures have the definitions mandated by
+     UNIX  System V,  Release  4.  As  of  this writing,  this facility  is
+     incomplete and used mainly to develop device drivers and extensions to
+     the kernel.
+
+     Please note  that this feature  test is an COHERENT  extension, and is
+     not portable to other operating systems.
+
+	========================= Compliments of Fred. ==================
+These VI settings might help when using vi to cut code;
+
+
+================================ VI COMMANDS ==============================
+Used with :set, the following can be used to set up your document area. 
+They are either put into a .exrc file in your $HOME directory, or while in
+vi, with :set <option>. For example, :set showmode causes the current 
+input state to be displayed on the lower right corner.
+ 
+noautoindent      noflash           nonovice                 nosync
+autoprint         flipcase=""       nonumber                 tabstop=8  
+autotab           nohideformat      paragraphs="PPppIPLPQP"  taglength=0  
+noautowrite       noignorecase      prompt                   tags="tags"
+nobeautify        noinputmode       noreadonly               tagstack
+cc="cc -c"        keytime=2         remap                    term="ansipc"
+nocharattr        keywordprg="ref"  report=5                 noterse
+columns=80        lines=25          noruler                  timeout
+nodigraph         nolist            scroll=11                window=25 
+directory="/tmp"  magic             sections="NHSHSSSEse"    wrapmargin=0  
+noedcompatible    make="make"       shell="/usr/bin/ksh"     wrapscan
+equalprg="fmt"    mesg              noshowmatch              nowriteany
+errorbells        nomodelines       noshowmode               
+noexrc            more              shiftwidth=8  
+exrefresh         nearscroll=25     sidescroll=8  
+==========================================================================
+Used without :set, is the keyword 'color'. For example, :color blue white
+sets your screen to blue text on white background. Pretty.
+==========================================================================
+A4.
+A5.
+	
+The second edition of the COHERENT X manual contains a section on recompiling
+X applications under COHERENT.  It follows.  If somebody wants to begin a
+FAQ on porting to COHERENT, please feel free to use it.  If not, I hope
+people find it helpful.
+Fred.
+===============
+
+
+                         Recompiling X Applications
+
+
+A wealth of X source code  is available to the public.  In all probability,
+somebody  has already  written the  X program that  you want.   By checking
+publically accessible archives, you will find many interesting, useful, and
+amusing programs.   The following gives hints on how  to recompile X source
+code under COHERENT.
+
+In many cases,  importing an X application to COHERENT  is simply matter of
+recompiling its source code.  This section describes how to do so.  It also
+discusses some problems that are commonly encountered during recompilation.
+
+                          Imakefiles and Makefiles
+
+The UNIX/COHERENT  application make manages  the building of  programs.  It
+reads the contents of a Makefile, which describes how to build the program,
+and names the source modules from which the program is created.  If you are
+not familiar with  make, see tutorial for it that  appears in your COHERENT
+manual.
+
+Although make is the programmer's best friend, adapting a Makefile from one
+operating system  to another can  be difficult.  This  is because different
+operating systems  -- even different  flavors of UNIX  or UNIX-like systems
+like COHERENT -- can vary quite a bit in their capacities, in the functions
+available in their libraries, and  in how they have structured their header
+files and libraries.
+
+To help you  avoid this problem, most X applications  use the utility imake
+to  build a  Makefile. imake  reads the  contents of  an Imakefile  that is
+written by  the programmer, invokes  the C preprocessor cpp  to combine the
+Imakefile with  a set  of configuration  files designed for  your operating
+system, and writes a Makefile from which you can build the application.  In
+many  instances, the  Imakefile simply  names the  application you  wish to
+build and the source files from which it is built.  An example Imakefile is
+shown below.
+
+The script  xmkmf invokes imake with the  arguments and configuration files
+that are appropriate  for COHERENT.  In most instances, all  you have to do
+to build a Makefile is type  xmkmf; and once the Makefile is built, all you
+have to do to build the application is type make.
+
+Naturally, some problems may arise during this process.  The commonest ones
+are discussed below.
+
+                         Modifications to Makefiles
+
+Some applications come with a Makefile  instead of an Imakefile. If this is
+the  case, you  probably will  need  to modify  this Makefile  so that  the
+program will compile correctly under COHERENT.
+
+The following changes must be made to most Makefiles:
+
+-> X   Windows   for   COHERENT  keeps   X   header   files  in   directory
+   /usr/X11/include/X11. Most  other releases of X  keep their header files
+   in directory /usr/include/X11; therefore, you must add an instruction to
+   the Makefile to tell it to look in the correct directory.
+
+   A Makefile must use the option -I to name this directory explicitly:
+
+        -I/usr/X11/include
+
+
+   This tells  the C  compiler to look  in /usr/X11/include for  any header
+   file whose name is prefixed with X11, such as:
+
+        #include <X11/Xos.h>
+
+   Often, this is done as part  of the macro CCFLAGS. Therefore, if you see
+   an instruction of the form:
+
+        -I/usr/include/X11
+
+
+   change it to read:
+
+        -I/usr/X11/include
+
+
+-> X Windows for COHERENT  keeps its X libraries in directory /usr/X11/lib.
+   A Makefile  must name that  directory explicitly.  Many  Makefiles use a
+   macro  named something  like LIBFLAGS  to set  linking options  and name
+   libraries.  Before the list of libraries, you must add the option:
+
+        -L/usr/X11/lib
+
+
+-> Add -lXbsd  to the end  of the list  of libraries to be  linked into the
+   application.  This tells the  linker to link in library libXbsd.a, which
+   holds the socket-emulation routines.
+
+-> If  the option  -lsocket appears  on the list  of libraries,  remove it.
+   This library holds the  Berkeley socket functions; these are emulated in
+   libXbsd.a and so are not needed.
+
+-> Add  the  option  -DCOHERENT to  the  macro  CCFLAGS.  If  you make  any
+   COHERENT-specific changes to the  source code, you can bracket them with
+   the preprocessor directives
+
+        #ifdef COHERENT
+            ...
+        #endif
+
+
+   and  the instruction  -DCOHERENT  will ensure  that they  appear in  the
+   compiled program.
+
+Once you have made these changes, you can begin compiling.
+
+                      Problems Seen During Compilation
+
+The following discusses problems that can come up during compilation.
+
+-> The COHERENT compiler is not ANSI compliant, although it recognizes some
+   ANSI  extensions to  the C  language.  If the  X application  is written
+   using  ANSI-specific grammar (in  particular, function  prototypes), you
+   must  compile it  with an  ANSI-compliant compiler,  e.g., GNU  C.  When
+   doing so,  modify the Makefile  or Imakefile to  define the macro  CC to
+   gcc.
+
+-> During  the  link phase,  you  may  see the  linker  complain about  the
+   undefined symbol  select. This indicates that one  of the source modules
+   has called  the socket function select(). Under  X Windows for COHERENT,
+   this function is named soselect().
+
+   To fix  this problem, go  through the sources  and conditionally replace
+   every instance of
+
+        select( [arguments] );
+
+
+   with:
+
+        #if defined(COHERENT)
+             soselect ( [arguments] );
+        #else
+             select ( [arguments] );
+        #endif
+
+
+   Note that this is the proper  way to add new COHERENT-specific code to X
+   sources.  If  the application comes only with a  Makefile, you must make
+   sure the  instruction -DCOHERENT  appears as  part of the  macro CFLAGS;
+   however, this  is not  necessary if  you have built  a Makefile  from an
+   Imakefile,  as   xmkmf  ensures   that  this  instruction   is  included
+   automatically.
+
+-> The COHERENT  C compiler does not  include by default the  code to print
+   floating-point numbers,  as this code  increases the size  of the linked
+   executable noticeably.   If your X  application uses any  of the options
+   %e, %f, or %g with the  function printf(), and if you are compiling with
+   COHERENT's cc command,  you must add the option -f  to the macro CFLAGS.
+   Note that  you must  do this  in either a  Makefile or an  Imakefile, as
+   xmkmf does not add this option by default.
+
+   You do not need to do this if you are compiling with GNU C.
+
+-> Some applications redeclare  the manifest constant PI; COHERENT declares
+   this  constant in  header file  <math.h>. The  COHERENT C  compiler will
+   abort if manifest constants are redeclared  (GNU C does not); so if this
+   problem  arises, conditionalize  out the  declaration  of PI  within the
+   application, as shown above.
+
+-> You  may find  problems with  the  following routines:  bcopy(), bcmp(),
+   bzero(), index(), and rindex().  The problems usually consist of a clash
+   between  the manner  in  which these  routines are  declared or  defined
+   within the application, and they way they are declared or defined in the
+   COHERENT header files.  In most instances, you should conditionalize out
+   the  declaration within  the  application, and  ensure  that the  proper
+   COHERENT  header file  is included.   For details,  use the  command man
+   command to view the manual entries for the routine in question.
+
+-> Some versions  of UNIX declare  string-handling functions in  the header
+   file <strings.h>.  COHERENT, however, keeps  them in <string.h>.  If the
+   compiler complains that  it cannot open strings.h, conditionally replace
+   it in the sources with <string.h>, as described above.
+
+-> If you are compiling with GNU  C, the linker may complain of a number of
+   undefined symbols of the form _dmul.  This is due to the fact that GNU C
+   always creates code that performs hardware floating-point arithmetic and
+   by  default attempts  to  link in  the COHERENT  libraries that  contain
+   hardware  floating-point routines,  but  the COHERENT  X libraries  were
+   compiled to use  software floating-point arithmetic.  To get around this
+   problem, you must modify the file  specs for GNU C: change the line that
+   reads
+
+        %scrt1.o %scrtbegin.o -u _dtefg -L/lib/ndp -L/usr/lib
+
+   to:
+
+        %scrt1.o %scrtbegin.o -u _dtefg -L/lib -L/usr/lib
+
+
+   Note that  this is a work-around  for GNU C, and  may create problems of
+   its own.   For example, when you link  software floating-point code with
+   modules compiled to use hardware floating-point arithmetic, the function
+   atof() will always return NAN.
+
+   For  a  fuller   description  of  how  COHERENT  manages  floating-point
+   arithmetic, see the Lexicon entry for cc.
+
+If other problems arise that are not described here, please send a detailed
+description to MWC Technical Support, as described at the beginning of this
+manual.
+
+                     Recompiling an Example Application
+
+The  following walks  you through  the recompilation  of the  X application
+xwave. This  application, whose source code is included  with X Windows for
+COHERENT, was  written by Mike Friedman, Paul Riddle,  and Jim McBeath.  It
+draws  a three-dimensional  animation of a  wave.  By  setting command-line
+parameters, you can dictate the size  of the grid used and the type of wave
+to be plotted.  The following steps describe how to recompile this program:
+
+-> cd to directory /usr/X11/src.
+
+-> De-archive the sources by typing the command:
+
+        gtar -xvzf xwave.gtz
+
+
+-> cd to directory xwave.
+
+-> Type  the  command xmkmf.  This  builds a  Makefile  from the  Imakefile
+   included with this package.
+
+-> To recomile, type make.
+
+-> When compilation has finished, install the program as follows:
+
+        mv xwave /usr/X11/bin
+
+
+-> To test the  program, invoke X as described in  an earlier section; then
+   type xwave. The application opens a window and animates a sample wave.
+
+That's all there  is to it.  A formatted manual  page for xwave is included
+in directory /usr/X11/src/xwave/man.
+
+The following gives the contents of xwave's Imakefile:
+
+     LOCAL_LIBRARIES = $(XLIB)
+     OBJS = xwave.o force.o plot.o prop.o
+     SRCS = xwave.c force.c plot.c prop.c
+     SYS_LIBRARIES = -lm
+     ComplexProgramTarget(xwave)
+
+When xmkmf and imake process this five-line Imakefile, it expands in a 370-
+line Makefile. The following describes each line in the Imakefile.
+
+LOCAL_LIBRARIES names  the libraries  to be  linked into the  program.  The
+macro XLIB means that the programmer wants to include the standard suite of
+X  libraries for  your  system.  The  configuration files  included with  X
+Windows for  COHERENT give the information that imake  needs to expand XLIB
+into the correct set of libraries.
+
+OBJS  and  SRCS  name, respectively,  the  object  modules  from which  the
+application is  built, and  the source files  from which those  objects are
+compiled.
+
+SYS_LIBRARIES names  the system libraries to be included,  apart from the X
+libraries.  The  programmer has included the  argument -lm, which indicates
+that the program needs  routines within the mathematics library libm.a. For
+details on  the contents  of this  library, see its  entry in  the COHERENT
+Lexicon.
+
+Finally, the line
+
+     ComplexProgramTarget(xwave)
+
+is a macro whose body is kept in file /usr/X11/lib/config/Imake.rules. This
+macro  contains all  of the  instructions and commands  that make  needs to
+build a complex X program.  The  argument xwave names the application to be
+built.
+
+For a  discussion of the macros  that can be included  in an Imakefile, see
+the Lexicon entry for imake in this manual.
+
+                         Building Your Own Makefile
+
+If you  do not want  to use xmkmf  and imake, you  can build a  Makefile by
+hand.  You  probably will never need  to do this, but knowing  how to do so
+may come in handy some time:
+
+1. Build  a skeletal  Makefile.  Place the  following  declarations at  its
+   beginning:
+
+        CFLAGS  = -I/usr/X11/include
+        LIBS    = -L/usr/X11/lib -lX11 -lXbsd
+
+
+   Follow this  with a  declaration of the  object modules from  which this
+   application is built.  As a rule  of thumb, there is one object for each
+   source  module.  For  example,  if the  application  consists of  source
+   modules foo.c, bar.c, and baz.c, write the following into your Makefile:
+
+        OBJS    = foo.o bar.o baz.o
+
+
+   Finally, add the  target line for the executable you  wish to build.  If
+   the application is to be called xapp, add the following to your skeletal
+   Makefile:
+
+        xapp: $(OBJS)
+             $(CC) $(CFLAGS) $(OBJS) $(LIBS)
+
+
+2. Use the command
+
+        cc -c -I/usr/X11/include/X11 source.c
+
+
+   for  each source  module.  Some  modules will  compile correctly  on the
+   first  try; others  will require several  attempts.  Those  that require
+   several attempts may require that you use the cc option -D to set one or
+   more switches  within the source  module.  Use the command  grep to find
+   every instance  with the source  module of the  C preprocessor directive
+   #if.  These will  indicate  the options  that are  available within  the
+   source code, and suggest which switches you should set.
+
+3. Once you have succeeded in compiling all of the source files to objects,
+   type make.  Because all of the objects already  exist, make will attempt
+   to link an executable.
+
+   At this  stage, you  probably will  see errors about  undefined symbols.
+   Note which  symbols are undefined;  then use the COHERENT  utility nm to
+   list the  symbols in  all of  the X libraries  and find  which libraries
+   contains the symbols you need.  Include them in your Makefile.
+
+   Note  that  an X  application  always need  the  libraries libX11.a  and
+   libXbsd.a;   the  declarations  given   above  invoke   those  libraries
+   automatically.  The  difficulty is in  arranging the other  libraries in
+   the proper  order in the  Makefile. This can  be done only  by trial and
+   error: sometimes many trials and many errors.  When you have the correct
+   order, copy the information into your Makefile.
+
+   Unresolved identifiers within the program may also be manifest constants
+   that  the programs  expects  to be  set  with the  -D option  to the  cc
+   command.
+
+When  you have  finished linking  the  program, you  should have  a working
+executable.   Thereafter, you  can  use the  Makefile you  just created  to
+rebuild the application, should you decide to modify the source code.
+
+Most applications come with a manual page that describe the program and how
+to run it.  You may, for example, need to install a font or a resource file
+in  the appropriate  directory.   You will,  of  course, need  to test  the
+program to make  sure that it runs correctly.  We  have found that, in most
+instances, if a program can be  compiled and linked under COHERENT, it will
+also run correctly.
+
+                           Where To Get X Sources
+
+Numerous  X programs  have already  been ported  to COHERENT.   Archives of
+sources are available for free on the Mark Williams BBS.  For directions on
+how to  contact the MWC  BBS, see the  directions in the  tutorial for UUCP
+that appears in the COHERENT manual.
+
+If you have access to the  Internet, you can retrieve source files from the
+site  raven.alaska.edu.  Use  ftp to  access  that  site;  then  log in  as
+``anonymous''.  New sources are added continually.
+
+The master  site for  X software  is ftp.x.org. If  you have access  to the
+Internet,  you  can log  into  that  system via  anonymous  ftp. This  site
+contains many megabytes  of sources, so you would be  well advised to think
+about what you would like to retrieve before you enter this site.
+
+Finally, Mark  Williams Company sells packages of  X applications that have
+been  ported to  COHERENT.   Called Xware,  these  packages bring  together
+interesting, useful, and amusing programs for your COHERENT X system.  Each
+has been ported to COHERENT; most  include full source code and a formatted
+manual page that can be viewed  with the COHERENT man command.  For details
+on Xware, see the release notes that come with this manual.
+
+
+fred@lepanto.mwc.com        -- Fred Butzen --     Mark Williams Company
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+>
+> > Is anyone able to use this card in 800x600 mono even 
+> > with XFree 1.2?  
+>
+>I have a CL 5426 which would seem a close friend of your 5428. It works well in
+>mono with Coh-X on a CTX 14" SVGA monitor.  
+>
+>After much hair pulling to get it working, Xconfig contains: 
+>
+> #mono server 
+> vga2 
+> chipset "pvga1" 
+> videoRAM 1024 
+> Modes "640x480" "800x600" 
+> Clocks 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
+> Virtual 800 600 
+> Viewport 0 0 
+> # 
+> modeDB 
+> "640x480"  1   640 672 768 800  400 490 492 525 
+> "800x600"  4   800 808 944 1056 600 608 610 633 
+> # 
+>
+>TREV.
+
+
+A6.
+	Slip, Ethernet, and communications things generally!
+
+Starting & Stopping Cohulip. Coherent SLIP. Some examples
+To invoke this script, which I have called slip, one types for instance;
+
+	slip raven
+
+------------------------------- cut ---------------------------------------
+#!/bin/sh
+RMODEM=/dev/asy01fr
+LMODEM=/dev/asy01fl
+
+case $1 in
+	tafe)	TARGET=tafe;;
+	raven)	TARGET=raven;;
+	*)	echo "Usage: Net tafe|raven|...";
+esac
+
+# disable the port
+echo "Disabling port $RMODEM"
+/etc/disable $RMODEM
+
+# invoke net for the target network. if you want a log of the session
+# leave the '| tee slip.log' bit in, else delete it.
+net start.$TARGET | tee slip.log
+
+#after typing 'exit' at the 'net>' prompt,
+# reset modem and port after a net session
+echo "Resetting the modem"
+
+# get the modem's attention wiht the '+++' sequence.
+# I've taken this from modeminit. It's the only way I can get this
+# Hayes compatible modem to respond correctly.
+{
+echo "Get the modems attention. 3+++3"
+  sleep 3
+echo -n +++ > $LMODEM 
+  sleep 3
+}
+#give it at least 6 seconds, come on now.
+# hang up the phone, H0 should accomplish this on most systems.
+{ 
+  cat >&1 <<\!
+ATH0
+!
+} <$LMODEM >$LMODEM
+sleep 2
+
+# On my system, ATZ resets to the 'default' settings, in config area 0.
+# reload the standard modem settings
+{ 
+echo "Reset defaults. Allow logins"
+  cat >&1 <<\!
+ATZ
+!
+} <$LMODEM
+sleep 2
+
+# Make sure that the /etc/enable set of scripts has permissions for users.
+# re-enable the port
+echo "Re enabling port $RMODEM. Hasta lavista.. baby!"
+/etc/enable $RMODEM
+
+# end
+----------------------------------- cut -----------------------------------
+
+
+
+
+
+The following modifications have been suggested by; 
+Jake Odell  **  jake@pantheon.us.com  **  jodell@rahul.net
+In place of the escape sequence above use,
+
+ sleep 3 
+ echo -n +++ >$LMODEM
+ sleep 3
+[..............]
+ #give it at least 5 seconds, come on now.
+ # hang up the phone, H0 should accomplish this on most systems.
+ {
+   sleep 3
+   cat >&1 <<\!
+ ATH0
+ !
+ } <$LMODEM >$LMODEM
+[........................]
+ /usr/bin/modeminit
+ wait
+ /etc/enable $RMODEM
+[........................]
+Just a few quickies that I hope may help..
+Jake
+===========================================================================
+#start.raven This file is an example of connecting to a floating IP address.
+#
+hostname nanguo.chalmers.com.au
+#the next 3 lines should all be ONE line. This is for convenience here only.
+attach asy 0 /dev/asy01fl slip sl0 0 1500 9600 AT&F\r OK 
+    ATX0E1V1Q0M3DT...phone number...\r CONNECT \r 
+    UAF-DU-04> show\sport\sslip\r UAF-DU-04> c\sslip\r session
+#end of single line
+#the last word, session, allows me to read the assigned IP. At which time
+#I type 'ip address xxx.xxx.xxx.xxx' whqatever it is, then type,
+#domain addserver 137.229.10.39.
+#At that time I'm connected.
+route add default sl0
+ip ttl 32
+tcp mss 1048
+tcp window 1048
+tcp irtt 2000
+eol unix
+start smtp
+start telunix 23
+start echo
+start finger
+start ftp
+------------------------------------------
+This one is a local one to the college, with a permanent IP assigned.
+#start.tafe
+hostname nanguo.chalmers.com.au
+attach asy 0 /dev/asy01fl slip sl0 0 1500 9600 ATDT512692\r
+# At this point I am connected.
+ip address 203.1.96.1
+route add 147.132.76.1 sl0
+route add 147.132.77.3 sl0
+route add default sl0
+ip ttl 32
+tcp mss 1048
+tcp window 1048
+tcp irtt 2000
+eol unix
+start smtp
+start telunix 23
+start echo
+start finger
+start ftp
+-------------------------------------------------------------------------
+This next one is simply an ethernet connection to the DOS machine, running
+MSTCP/IP, and or Winsock+WinQvtNet.
+
+#startup.net  (the default)
+hostname nanguo.chalmers.com.au
+ip address 203.1.96.1
+attach nx 0 0 arpa ne0 5 1500
+route add default ne0
+route add prism ne0
+route add emerald ne0
+ip ttl 32
+tcp mss 1500
+tcp window 512
+tcp irtt 2000
+eol unix
+start telnet
+start smtp
+start telunix 23
+start echo
+start finger
+start ftp
+--------------------------------------------------------------------------
+I'm currently using about the 2nd release that Randy put out, but it works
+fine anyway.
+
+===========================================================================
+****************************************************************************
+A7.		
+
+		    Making, Installing & Configuring 
+				Cnews. 
+				======
+		    The Performance release of Cnews. 
+	      (There are NO later releases than this one.)
+	   The sources, in the README, are dated 2nd May, 1992.	
+	The sources are on raven.alaska.edu, and nanguo.chalmers.com.au.
+
+     THIS HAS ONLY BEEN TESTED WITH COHERENT RELEASE 4.2.10 AND GREATER.
+	It has been done with Coherent stock issue tools. No GNU tools.
+	As far as I can tell, none of the modifications are system
+	specific anyway, and should work equally well on any platform.
+
+I would STRONGLY advise you to print this out on fan-fold paper, and buy
+a 'high-lighter' pen...
+
+The first thing to do is make sure your cnews.tar.gz archive has all of
+the right ownership/group permissions. Unless you want a LOT of grief,
+follow my advice to the letter.! Create a spare directory, such as 
+like /pub/src. Move the archive to this directory. Make a directory
+yourself called cnews. Give it owner/group permissions of bin/bin.
+Use 'chmog 755 bin bin cnews'. You should now have a set up like this;
+
+/pub/src
+    drwxr-xr-x 28 bin        bin            592 Sat Aug 13 12:01 cnews
+    -rw-r--r--  1 root       root        559144 Sun Jul 31 17:48 cnews.tar.gz
+
+Now, just to be sure that you are dealing with a package that starts out 
+with the right permissions, log in a 'bin', change to /pub/src, and type
+in 'tar -xvzf cnews.tar.gz'.  The archive will unpack into the cnews directory
+with all of the files having the correct ownership/group of 'bin/bin'.
+Next: Move the existing archive to a safe place, and while still logged in
+as 'bin', and still in /pub/src directory, type in 'tar -cvzf cnews.tgz cnews/*'
+to create a new archive, with all files with correct 'bin' ownership.
+
+   I have discovered over time, that one of the biggest headaches is 
+forgetting that some files unpack with strange permissions attached to them.!
+
+Ok, thats done... Now change to the /usr/pub/cnews directory. It should look
+like this with a 'lc'  command,
+
+Directories:
+    batch      conf       contrib    dbz        doc        expire
+    explode    h          hfake      include    inject     input
+    libbig     libbsd42   libc       libcnews   libfake    libsmall
+    libstdio   libusg     libv7      libv8      man        misc
+    relay      rna
+
+Files:
+    COPYRIGHT  PATCHDATES README.Coh README.new README.old ROADMAP
+    clean.sh   libcnews.a medit
+
+Good advice, part 1.  Forget all the readme's and things. They are of NO
+interest until late Sunday when you have nothing better to do.
+
+LOG OUT........
+
+Log back in as 'root', and change to the /pub/src/cnews/conf' directory.
+^^^^^^^^^^^^^^^^^^^^^^
+Changed to the directory conf? This is where it all happens. DISREGARD old
+instructions about building things one at a time. That's Nightmare City.
+
+In the cnews/conf directory you should have these files. You may have some
+stray ones if you obtained your sources from elsewhere. The important one
+is 'build'.
+
+Directories:
+    save
+Files:
+    Makefile       README         again.root     ask            build
+    build.def      config.make    config.proto   cron.sh        doit.bin
+    doit.news      doit.root      dostatfs.c     doultrix.c     doustat.c
+    dowhatever.c   man.inst       newslock.sh    notinlist      postdefltgroup
+    proto.sh       queuelen.hdb   queuelen.old   queuelen.sub   rnews.stall
+    setnewsids.c   sf.proto       sf.statfs      subst          subst.1
+    subst.gc       subst.hs       subst.test     substitutions  substs
+    sys.proto      test3.sh       yesno
+
+Now, type ./build and follow the instructions. One of the FIRST things you
+are asked, is about ownerships. To the FIRST question about using previous
+answers as defaults, answer 'no'. You never know where its been!
+Ok, follow my lead from here, but check things as you go with the manual.
+User id for news files [news]
+Group id for news files [news]
+User id for news programs [bin]
+Group id for news programs [bin]
+Do c news sources belong to bin [yes]
+Where should articles live [/usr/spool/news]
+Where should control files live [/usr/lib/news]
+Where should programs live [/usr/lib/newsbin]    <------ thats RIGHT!,newsbin.
+Is bin:/usr/bin the correct path.. [yes]
+What umash should cnews use [022]
+Where should cnews mail trouble reports [usenet]  <------ create it yourself.
+Where should the shell configuration file be [/usr/lib/news/bin/config]
+What is the full pathname of the chown command [/bin/chown]
+Can I say chown news.news file to change owner/group [no]
+what is the full pathname of chgrp [/bin/chgrp]
+
+
+..... at this point it will say,
+
+      building doit.root
+      done.
+
+
+What best describes your system [usg]
+What best describes your system [big]   <-------  same question, different text
+Does your system have fsync [no]
+Does your system have getopt [yes]
+Does your system have memcpy [yes]
+Does your system have mamcmp [yes]
+Does your system have memchr [yes]
+Does your system have memset [yes]
+does your system have mkdir [yes]
+Does your system have putenv [yes]
+Does your system have strchr [yes]
+Does your system have strrchr [yes]
+Does your system have strpbrk [yes]
+Does your system have strspn [yes]
+Does your system have strcspn [yes]
+Does your system have strtok [yes]
+Does your system have symlink [no]
+Does your system have strerror [yes]
+
+Do you want to use our dbz library [yes]
+Do you want to use our fast stdio library [no]
+Is your compiler that good [no]
+Can this system do setuid/gid... [no]
+Does your system have an ANSI-C conforming string.h [yes]
+Does your system have an ANSI-C conforming stdlib.h [yes]
+Does your system havve an ANSI-C conforming stddef.h [yes]
+Does your system have sys/timeb.h [yes]
+Does your system use ranlib [no]
+Does your ar have a symdef feature [yes]
+What is the name of the c compiler to be used [/bin/cc]
+What options should be given to the compiler [-O -VNDP]
+What options should be given for linking []
+What libraries in addition should be picked up [-lm]
+Does your system have a hostname command [no]
+Does it have a 'uname -n' command [yes]
+Which uucp is supportd [hdb]			I know, taylor, but its hdb!
+Which one is most appropriate [ustat]
+Will 'df' accept any directory name as an arguement [yes]
+Are you planning to use expire to archive news on disk [no]
+Are you short of disk space [yes]
+hould news receptions stall if space gets short [yes]
+Do you want immediate processing [no]
+Are you running c-news on NFS, and want single server [no]
+What is the name of the system [xxxxx]  <------ put your machine name here.
+What is the full domain address [host.domain]  <---- use the full thing
+What is the Organisation [xxxxxx]  <---- whatever you are 
+What is the top level manual page directory [/usr/man]
+Has your system made man page location changes [no]    <------ who knows ???
+what directory should 'rnews' and 'cunbatch' go in [/usr/bin]
+Do you want to install our user interface [yes]
+What directory should they go in [/usr/bin]
+Will mail handle '@' addresses [yes]	      <--- you really should get smail3
+What is the default newsgroup [comp.os.coherent]
+What is the default distribution [world]
+Whatis the default readnews subscription [comp.os.coherent]
+What group should users be subscribed to [comp.os.coherent]
+Do you have any newsgroups containing confidential property [no]
+
+
+The system will then build "doit.bin", "doit.news", "again.root" and then
+finish with a small set of instructions.
+
+====== DO NOT UNDER ANY CIRCUMSTANCES RUN THOSE SCRIPTS YET ======
+
+You MUST follow these next instructions to the LETTER. 
+
+  NOW.... ta da...  some patches to the code. Yup, you guessed it.
+Firstly, and most importantly, the Makefiles need fixing.  
+
+  In some cases, this doesn't make a difference, but regardless, I discovered
+to my dismay that I couldn't second guess it. so. Its good coding practice
+anyway.
+
+
+Each and every one of them.
+
+	./doc/Makefile
+	./conf/Makefile
+	./batch/Makefile
+	./contrib/nntpmail/mailing_lists/appendfile/Makefile
+	./expire/Makefile
+	./h/Makefile
+	./hfake/Makefile
+	./input/Makefile
+	./libbig/Makefile
+	./libbsd42/Makefile
+	./libc/Makefile
+	./libcnews/Makefile
+	./libfake/Makefile
+	./libsmall/Makefile
+	./libstdio/Makefile
+	./libusg/Makefile
+	./libv7/Makefile
+	./libv8/Makefile
+	./dbz/Makefile
+	./man/Makefile
+	./misc/Makefile
+
+You MUST work through this list, and make sure that the leading <SPACES> are
+all changed to <TABS>.  Thats right. Don't complain. Just do it :-).
+Thats in a case like the following;
+This example is the cnews/batch Makefile, cut down for example only;
+
+
+PGMS=batcher batchih batchsm batchsplit comp compcun nocomp viainews viauux \
+	sendbatches compc7 c7encode viamail viapmail bencode compb viauuxz \
+	viaemail viarsh viauuxl viauuxcun batchcheck batchra vianowhere \
+	comp12
+^^^^^^^^
+This is made up of spaces, it MUST be <TABS>
+
+BP = batchparms.eg
+ALL = $(PGMS) $(BP)
+
+all:    $(ALL)
+	chmod +x $(PGMS)
+^^^^^^^^^
+and here and all the rest..........  enjoy.
+
+batcher:	batcher.o $(LIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) batcher.o $(PRE) $(LIBS) $(POST) -o $@
+^^^^^^^^
+and here to...  keep going, there is thousands.
+
+
+  You can do it a little quicker with a search/replace,
+  in vi,
+   eg;
+      1,$s/        /	/
+          ^^^^^^^^^  ^
+           8 spaces  1 tab
+
+============================== ok, Makefiles are fixed. Not ready yet..
+ Now, another Important - it won't work yet - fix.
+Copy cnews/conf/subst to subst.orig.
+Modify the subst file to look like the lines in the following diff output.
+The 'new' file looks like the first line in each case.
+
+diff subst subst.orig
+
+19 c 19
+< them="`sed -e '/^#/d' -e 's/^\([^	]*\)		*\([^	]*\)$/s#@<\1>@#\2#g/' $substs`"
+---
+> them="`sed '/^#/d; s/^\\([^	]*\\)		*\\([^	]*\\)$/s#@<\\1>@#\\2#g/' $substs`"
+27,28 c 27,28
+< 		file="`expr "$f" : '.*/\([^/]*\)'`"
+< 		dir="`expr "$f" : '\(.*\)/[^/]*'`"
+---
+> 		file="`expr \"$f\" : '.*/\\([^/]*\\)'`"
+> 		dir="`expr \"$f\" : '\\(.*\\)/[^/]*'`"
+63 c 63
+< #just a reminder
+---
+> 
+67,72 c 67,72
+< 	h
+< 	n
+< 	g
+< 	s/.*=()<//
+< 	s/>()=.*//
+< 	$them
+---
+> 		h
+> 		n
+> 		g
+> 		s/.*=()<//
+> 		s/>()=.*//
+> 		$them
+
+
+Now there is a few files to fix. 
+The first is include/libc.h
+	Comment out the umask(), bit like this, the first line is the original,
+and the second line is the new one.
+On both lines 24 and 33.
+
+libc.h
+24 c 24
+< extern int link(char *, char *), mkdir(char *, int), umask(int), unlink(char *);
+---
+> extern int link(char *, char *), mkdir(char *, int), /*umask(int),*/ unlink(char *);
+33 c 33
+< extern int access(), chown(), fork(), link(), mkdir(), umask(), unlink(), wait();
+---
+> extern int access(), chown(), fork(), link(), mkdir(),/* umask(),*/ unlink(), wait();
+
+
+The Next file........
+In the cnews/libc/Makefile, it defines YACC=/......bison
+Remove that, and change to 
+YACC=yacc
+Ignore the errors that it will then generate??? It seems to work anyway. who
+knows.
+
+
+Next one ===============
+In cnews/libc/closeall.c
+
+ ===================================
+ #include <sys/param.h>
+
+ #define NOFILE 100		<--------------
+  ^^^^^^^^^^^^^^^^^^
+ 
+ void
+ closeall(leavestd)
+ int leavestd;
+ {
+ 	register int i;
+ 
+ 	for (i = (leavestd? 3: 0); i < NOFILE; i++)
+ 		close(i);
+ }
+ ===================================
+
+One thing. If you opt to compile cnews utilities, you get an error in the
+complie for the rnews part. Its not important, and easily fixed. You'll
+know it when you see it. :-)
+
+Last thing I think.  Change to cnews/conf directory, and change the
+COPTS line in Makefile from '-O' to '-O -VNOWARN'. It will make the resulting
+output even easier to read.
+
+Ok, that looks like it folks......  There may be other traps for innocent
+players, so you will just have to suck it and see.
+
+
+Ok, now the fun part.
+
+Assuming you are currently logged in as 'root', do the following.
+The prompts are shown... as #, to signify that you are root: user, not to
+show that you are single user.
+
+ 	#./doit.root
+	#
+	#su bin
+	$./doit.bin -i		( -i builds without installing! )
+				( or you may just do a 'doit.bin)
+	$exit
+	#su news		( Naturally, you must have a user 'news')
+	$./doit.news
+	$exit
+	#./again.root
+
+	 
+If you are happy with the outcome... ta da... now you have lots of configuring
+to do.
+
+HOWEVER... you will most likely strike problems with some of the code. I
+have fixed my sources here, so if it gives error messages in particular files,
+let me know and I'll see if I can help.
+Some are a result of the differences in shell script commands, some in sed
+and so on. Nothing major though, so don't spit the dummy.
+
+SUGGESTION: ____________   Take your time. Watch carefully what you are
+			logged in as, and study the manual. Cnews is 
+			designed to be compiled on about 57000 different
+			types of Unix... yours amongst them.  enjoy.
+
+
+	+++++++++++++++++  CONFIGURATION SECTION +++++++++++++++++++++
+
+Allow yourself plenty of time for this. It's not hard, but requires care
+and attention, and a couple of hours. The result is worth it.
+
+**********************  IMPORTANT NOTE  *************************
+You MUST be aware that running 'build' will sometimes not create things
+just as you would like them. Be prepared to edit some things by hand.
+
+It is important here to stress this. +++++++
+You must have a user called 'root', a user called 'bin', a user called 'news'.
+You must be able to login as these users.
+
+If you need to do installation work by hand, 
+run 'doit.bin -i' as bin; 
+this will create the programs but won't install them.
+It is not necessary to log in as these users; 
+use of 'su' suffices, but the users MUST exist.  
+
+Note that the cnews install script actually gets it a wrong with perms
+in a couple of places. STUDY these permissions CAREFULLY, on each and every
+file.  If you think this takes ages, take it from me, it wont take as long
+as trying to find out why the thing doesn't run later. Do it NOW.
+
+Ok, configuring things to work, lets start with the users.
+========================================================================
+Password and group files:
+/etc/passwd
+news:*:30:30:C-NEWS System:/usr/lib/news:/bin/sh
+usenet:*:30:30:C-NEWS Administrator:/users/usenet:/bin/sh
+
+Note the similar UID/GID.
+
+/etc/groups
+news:*:30:news,usenet
+=========================================================================
+
+/usr/lib/news/news.cron.	Run this when you are SURE everything is
+OK!. Please note though. It takes a day or so for things to start actually
+happening. Study the following script carefully, and you will see why.
+If you are tempted to run things by hand, make sure you do so a 'news'
+Watch out for lock, and 'stop' files, especially in user/spool/news/in.coming
+and so on.
+
+# Cron Version 3.2. Installed on Mon May 23 19:30:04 1994
+# Source was news.cron.
+0,15,30,45 *	1-31 *	0-6	/usr/lib/newsbin/input/newsrun
+30 8	1-31 *	1-5	/usr/lib/newsbin/input/newsrunning off
+00 17	1-31 *	1-5	/usr/lib/newsbin/input/newsrunning on
+40 *	1-31 *	0-6	/usr/lib/newsbin/batch/sendbatches
+59 0	1-31 *	0-6	/usr/lib/newsbin/expire/doexpire 
+10 8	1-31 *	0-6	/usr/lib/newsbin/maint/newsdaily
+00 5,13,21	1-31 *	0-6	/usr/lib/newsbin/maint/newswatch | mail usenet
+========================================================================
+
+Now, after installing with the doit.xxxx files, make sure it all has perms
+and owner/groups like this.
+
+/usr/lib/newsbin
+drwxr-xr-x  9 bin        bin            352 Sat Apr 23 10:21 .
+drwxr-xr-x 12 bin        bin            832 Fri May  6 06:28 ..
+-rwxr-xr-x  1 bin        bin          42626 Sat Apr 23 10:21 canonhdr
+-rwxr-xr-x  1 bin        bin          15620 Sat Apr 23 10:21 ctime
+-rwxr-xr-x  1 bin        bin          34164 Sat Apr 23 10:20 dbz
+-rwxr-xr-x  1 bin        bin          16330 Sat Apr 23 10:20 doustat
+-rwxr-xr-x  1 bin        bin          27355 Sat Apr 23 10:21 getabsdate
+-rwxr-xr-x  1 bin        bin          23589 Sat Apr 23 10:21 getdate
+-rwxr-xr-x  1 bin        bin          25335 Sat Apr 23 10:21 gngp
+-rwxrwxr-x  1 bin        bin              9 Sat Apr 23 10:20 hostname
+-rwxr-xr-x  1 bin        bin            482 Sat Apr 23 10:21 newshostname
+-rwxr-xr-x  1 bin        bin           9068 Sat Apr 23 10:21 newslock
+-rwxr-xr-x  1 bin        bin            346 Sat Apr 23 10:20 queuelen
+-rwxr-xr-x  1 bin        bin          11342 Sat Apr 23 10:21 sizeof
+-rwxr-xr-x  1 bin        bin           1259 Sat Apr 23 10:20 spacefor
+
+./batch:
+drwxrwxr-x  2 bin        bin            432 Sat Apr 23 10:20 .
+drwxr-xr-x  9 bin        bin            352 Sat Apr 23 10:21 ..
+-rwxr-xr-x  1 bin        bin            766 Sat Apr 23 10:20 batchcheck
+-rwxr-xr-x  1 bin        bin          22513 Sat Apr 23 10:20 batcher
+-rwxr-xr-x  1 bin        bin            425 Sat Apr 23 10:20 batchih
+-rwxr-xr-x  1 bin        bin            810 Sat Apr 23 10:20 batchra
+-rwxr-xr-x  1 bin        bin            574 Sat Apr 23 10:20 batchsm
+-rwxr-xr-x  1 bin        bin           4795 Sat Apr 23 10:20 batchsplit
+-rwxr-xr-x  1 bin        bin          12786 Sat Apr 23 10:20 bencode
+-rwxr-xr-x  1 bin        bin           6982 Sat Apr 23 10:20 c7encode
+-rwxr-xr-x  1 bin        bin            160 Sat Apr 23 10:20 comp
+-rwxr-xr-x  1 bin        bin            166 Sat Apr 23 10:20 comp12
+-rwxr-xr-x  1 bin        bin            279 Sat Apr 23 10:20 compb
+-rwxr-xr-x  1 bin        bin            321 Sat Apr 23 10:20 compc7
+-rwxr-xr-x  1 bin        bin            178 Sat Apr 23 10:20 compcun
+-rwxr-xr-x  1 bin        bin             64 Sat Apr 23 10:20 nocomp
+-rwxr-xr-x  1 bin        bin           6672 Sat Apr 23 10:20 sendbatches
+-rwxr-xr-x  1 bin        bin            113 Sat Apr 23 10:20 viaemail
+-rwxr-xr-x  1 bin        bin            243 Sat Apr 23 10:20 viainews
+-rwxr-xr-x  1 bin        bin            113 Sat Apr 23 10:20 viamail
+-rwxr-xr-x  1 bin        bin             52 Sat Apr 23 10:20 vianowhere
+-rwxr-xr-x  1 bin        bin            103 Sat Apr 23 10:20 viapmail
+-rwxr-xr-x  1 bin        bin            134 Sat Apr 23 10:20 viarsh
+-rwxr-xr-x  1 bin        bin            315 Sat Apr 23 10:20 viauux
+-rwxr-xr-x  1 bin        bin            318 Sat Apr 23 10:20 viauuxcun
+-rwxr-xr-x  1 bin        bin            526 Sat Apr 23 10:20 viauuxl
+-rwxr-xr-x  1 bin        bin            318 Sat Apr 23 10:20 viauuxz
+
+./expire:
+drwxrwxr-x  2 bin        bin            192 Sat Apr 23 10:21 .
+drwxr-xr-x  9 bin        bin            352 Sat Apr 23 10:21 ..
+-rwxr-xr-x  1 bin        bin           1786 Sat Apr 23 10:21 doexpire
+-rwxr-xr-x  1 bin        bin          64086 Sat Apr 23 10:21 expire
+-rwxr-xr-x  1 bin        bin            555 Sat Apr 23 10:21 expireiflow
+-rwxr-xr-x  1 bin        bin            390 Sat Apr 23 10:21 histdups
+-rwxr-xr-x  1 bin        bin          23775 Sat Apr 23 10:21 histinfo
+-rwxr-xr-x  1 bin        bin          20380 Sat Apr 23 10:21 histslash
+-rwxr-xr-x  1 bin        bin            477 Sat Apr 23 10:21 mkadir
+-rwxr-xr-x  1 bin        bin           1907 Sat Apr 23 10:21 mkhistory
+-rwxr-xr-x  1 bin        bin           1292 Sat Apr 23 10:21 recovact
+-rwxr-xr-x  1 bin        bin           1522 Sat Apr 23 10:21 upact
+
+./input:
+drwxrwxr-x  2 bin        bin            176 Sat Apr 23 10:21 .
+drwxr-xr-x  9 bin        bin            352 Sat Apr 23 10:21 ..
+-rwxr-xr-x  1 bin        bin          19902 Sat Apr 23 10:21 bdecode
+-rwxr-xr-x  1 bin        bin          10046 Sat Apr 23 10:21 c7decode
+-rwxr-xr-x  1 bin        bin           1499 Sat Apr 23 10:21 cunbatch
+-rwxr-xr-x  1 bin        bin           3687 Tue May 17 19:36 newsrun
+-rwxr-xr-x  1 bin        bin            510 Sat Apr 23 10:21 newsrunning
+-rwsr-sr-x  1 news       news         24576 Sat Apr 23 10:21 newsspool
+-rwxr-xr-x  1 bin        bin            239 Sat Apr 23 10:21 recenews
+-rwxr-xr-x  1 bin        bin            279 Sat Apr 23 10:21 recpnews
+-rwxr-xr-x  1 bin        bin           1499 Sat Apr 23 10:21 rnews
+
+./relay:
+drwxrwxr-x  2 bin        bin            288 Tue Aug  2 18:31 .
+drwxr-xr-x  9 bin        bin            352 Sat Apr 23 10:21 ..
+-rwxr-xr-x  1 bin        bin            646 Sat Apr 23 10:21 canonsys.awk
+-rwxr-xr-x  1 bin        bin           1027 Sat Apr 23 10:21 chamod
+-rwxr-xr-x  1 bin        bin            864 Sat Apr 23 10:21 delsendsys
+-rwxr-xr-x  1 bin        bin            790 Sat Apr 23 10:21 delversion
+-rwxr-xr-x  1 bin        bin           1295 Sat Apr 23 10:21 dodelayed
+-rwxr-xr-x  1 bin        bin            558 Sat Apr 23 10:21 doexplode
+-rwxr-xr-x  1 bin        bin          29635 Sat Apr 23 10:21 explode
+-rwxr-xr-x  1 bin        bin            304 Sat Apr 23 10:21 mailnews
+-rwxr-xr-x  1 bin        bin            533 Sat Apr 23 10:21 mkpdir
+-rwxr-xr-x  1 bin        bin           1281 Sat Apr 23 10:21 newsreply
+-rwsr-sr-x  1 news       news         81407 Sat Apr 23 10:21 relaynews
+-rwxr-xr-x  1 bin        bin            274 Sat Apr 23 10:21 relayrun
+-rwxr-xr-x  1 bin        bin            221 Sat Apr 23 10:21 sendnews
+-rwxr-xr-x  1 bin        bin            306 Sat Apr 23 10:21 staleness
+
+./ctl:
+drwxrwxr-x  2 bin        bin            128 Tue Aug  2 18:31 .
+drwxr-xr-x  9 bin        bin            352 Sat Apr 23 10:21 ..
+-rwxr-xr-x  1 bin        bin           2958 Sat Apr 23 10:21 checkgroups
+-rwxr-xr-x  1 bin        bin           3518 Sat Apr 23 10:21 newgroup
+-rwxr-xr-x  1 bin        bin            879 Sat Apr 23 10:21 rmgroup
+-rwxr-xr-x  1 bin        bin            852 Sat Apr 23 10:21 sendsys
+-rwxr-xr-x  1 bin        bin            864 Sat Apr 23 10:21 version
+
+./maint:
+drwxrwxr-x  2 bin        bin            240 Sat Apr 23 10:21 .
+drwxr-xr-x  9 bin        bin            352 Sat Apr 23 10:21 ..
+-rwxr-xr-x  1 bin        bin            335 Sat Apr 23 10:21 act.to.times
+-rwxr-xr-x  1 bin        bin            453 Sat Apr 23 10:21 adddirs
+-rwxr-xr-x  1 bin        bin           1435 Sat Apr 23 10:21 addfeed
+-rwxr-xr-x  1 bin        bin           1152 Sun May 29 08:32 addgroup
+-rwxr-xr-x  1 bin        bin           2310 Sat Apr 23 10:21 addmissing
+-rwxr-xr-x  1 bin        bin           1059 Sun May 29 08:38 delgroup
+-rwxr-xr-x  1 bin        bin            579 Sat Apr 23 10:21 histfrom
+-rwxr-xr-x  1 bin        bin          20441 Sat Apr 23 10:21 locknews
+-rwxr-xr-x  1 bin        bin            617 Sat Apr 23 10:21 newsboot
+-rwxr-xr-x  1 bin        bin           4242 Sat Apr 23 10:21 newsdaily
+-rwxr-xr-x  1 bin        bin            312 Sat Apr 23 10:21 newsfrom
+-rwxr-xr-x  1 bin        bin            737 Sat Apr 23 10:21 newshist
+-rwxr-xr-x  1 bin        bin           1185 Sun Apr 24 09:21 newswatch
+
+./inject:
+drwxrwxr-x  2 bin        bin            224 Sat Apr 23 10:21 .
+drwxr-xr-x  9 bin        bin            352 Sat Apr 23 10:21 ..
+-rwxr-xr-x  1 bin        bin          25932 Sat Apr 23 10:21 actflag
+-rwxr-xr-x  1 bin        bin          31050 Sat Apr 23 10:21 defaults
+-rwxr-xr-x  1 bin        bin           4955 Sat Apr 23 10:21 defhdrs.awk
+-rwxr-xr-x  3 bin        bin           3315 Sat Apr 23 10:21 inews
+-rwxr-xr-x  2 bin        bin           4439 Sat Apr 23 10:21 injnews
+-rwxr-xr-x  1 bin        bin            314 Sat Apr 23 19:35 lines
+-rwxr-xr-x  1 bin        bin            491 Sat Apr 23 10:21 modroute
+-rwxr-xr-x  1 bin        bin           4124 Sat Apr 23 19:35 pnews
+-rwxr-xr-x  1 bin        bin           1785 Sat Apr 23 10:21 postnews
+-rwxr-xr-x  1 bin        bin            406 Sat Apr 23 10:21 stripinvis
+-rwxr-xr-x  1 bin        bin           1427 Sat Apr 23 10:21 submit.relay
+-rwxr-xr-x  1 bin        bin            722 Sat Apr 23 10:21 tear
+============================================================================
+
+Again, after installing with the doit.xxxx files, make sure it all has perms
+and owner/groups like this.
+
+/usr/lib/news
+drwxrwxr-x  5 news       news           848 Sat Aug 13 11:40 .
+drwxr-xr-x 12 bin        bin            832 Fri May  6 06:28 ..
+-r--------  1 news       news             0 Sat Aug 13 08:56 .lastlogin
+-rw-rw-r--  1 news       news          5008 Sat Aug 13 06:15 active
+-rw-rw-r--  1 news       news           501 Wed Aug  3 09:08 active.times
+-rw-rw-r--  1 news       news           372 Sat Aug 13 11:40 batchlog
+-rw-rw-r--  1 news       news          2278 Sat Aug 13 07:40 batchlog.o
+-rw-rw-r--  1 news       news          2268 Fri Aug 12 07:40 batchlog.oo
+-rw-rw-r--  1 news       news          2280 Thu Aug 11 07:40 batchlog.ooo
+-rw-r--r--  1 news       news           813 Sun May  1 13:42 batchparms
+-rw-r--r--  1 news       news           567 Sat Apr 23 10:23 batchparms.eg
+-rw-rw-r--  1 news       news             0 Sat Aug 13 08:18 delayed
+-rw-rw-r--  1 news       news             0 Sat Aug 13 08:10 errlog
+-rw-rw-r--  1 news       news             0 Fri Aug 12 08:10 errlog.o
+-rw-rw-r--  1 news       news             0 Thu Aug 11 08:10 errlog.oo
+-rw-rw-r--  1 news       news             0 Wed Aug 10 08:10 errlog.ooo
+-rw-r--r--  1 news       news           571 Thu Aug  4 12:29 explist
+-rw-rw-r--  1 news       news         59503 Sat Aug 13 06:15 history
+-rw-rw-r--  1 news       news            83 Sat Aug 13 06:15 history.dir
+-rw-rw-r--  1 news       news         58012 Fri Aug 12 06:15 history.o
+-rw-rw-r--  1 news       news          6212 Sat Aug 13 06:15 history.pag
+-rwxr-xr-x  3 bin        bin           3315 Sat Apr 23 10:21 inews
+-rw-r--r--  1 news       news          3389 Wed May 18 22:20 keep.active
+-rw-r--r--  1 news       news           223 Sat Apr 23 13:52 keepsys
+-rw-rw-r--  1 news       news            27 Sat Apr 23 10:24 localgroups
+-rw-rw-r--  1 news       news             0 Sat Aug 13 08:10 log
+-rw-rw-r--  1 news       news          6607 Sat Aug 13 06:15 log.o
+-rw-rw-r--  1 news       news            20 Sat Apr 23 10:24 mailname
+-rw-rw-r--  1 news       news            13 Sat Apr 23 10:24 mailpaths
+-rw-r--r--  1 news       news           384 Sat Apr 23 15:11 news.cron
+-rw-r--r--  1 news       news          4600 Mon Jun 13 14:51 newsgroups
+-rw-rw-r--  1 news       news            14 Sat Apr 23 10:24 organization
+-rw-rw-r--  1 news       news            17 Sat Apr 23 10:24 postdefltgroup
+-rw-rw-r--  1 news       news            59 Sat Apr 23 10:24 readnews.ctl
+-rw-r--r--  1 news       news           565 Sat Apr 23 10:24 readnews.help
+-rw-rw-r--  1 news       news             4 Sat Apr 23 10:24 rnews.stall
+-rwsrwxr-x  1 root       root         20839 Sat Apr 23 10:24 setnewsids
+-rw-r--r--  1 news       news          2742 Thu Jul 28 07:48 sys
+-rw-r--r--  1 news       news          3815 Wed May 18 21:42 temp
+-rw-r--r--  1 news       news          3469 Wed May 18 22:20 temp.1
+-rw-r--r--  1 news       news          4307 Wed May 18 22:30 temp2
+-rw-rw-r--  1 news       news             0 Sat Aug 13 05:00 watchtime
+-rw-rw-r--  1 news       news             7 Sat Apr 23 10:24 whoami
+
+./bin:
+drwxrwxr-x  2 news       news            48 Sat Apr 23 10:24 .
+drwxrwxr-x  5 news       news           848 Sat Aug 13 11:40 ..
+-rwxr-xr-x  1 news       news          1062 Sat Apr 23 10:24 config
+
+./.elm:
+drwx------  2 news       news            32 Sat Apr 23 15:09 .
+drwxrwxr-x  5 news       news           848 Sat Aug 13 11:40 ..
+
+./Mail:
+drwx------  2 news       news            32 Sat Apr 23 15:09 .
+drwxrwxr-x  5 news       news           848 Sat Aug 13 11:40 ..
+============================================================================
+
+
+
+You will note<---- the directories, in.coming, out.going, out.master.
+You must have these directories.
+In out.going you have subdirectories, named after the sites you feed.
+In in.coming there is a directory called bad. It can fill up with
+splattered files. at first.
+In out.master there are only transient files stored.
+You must have control and junk as well.
+
+/usr/spool/news
+drwxr-xr-x 18 news       news           320 Fri Jul 15 12:47 .
+drwxr-xr-x 20 bin        bin            320 Sat Aug  6 12:50 ..
+drwxrwxrwx  2 news       news           128 Sat Feb 19 21:33 .index
+drwxr-xr-x  6 news       news            96 Sun May  8 10:12 alt
+drwxr-xr-x 36 news       news           592 Mon Jun 27 08:47 aus
+drwxrwxr-x  3 news       news            48 Fri Jul 15 12:47 biz
+drwxr-xr-x 11 news       news           176 Fri Mar 11 13:33 comp
+drwxr-xr-x  2 news       news          1424 Sat Aug 13 06:15 control
+-rw-rw-r--  1 news       news         41131 Sat Jun 25 06:17 fake
+drwxrwxr-x  2 news       news            32 Sat Apr 23 14:16 general
+drwxr-x---  3 news       news          2544 Sat Aug 13 06:15 in.coming
+drwxr-xr-x  2 news       news         16208 Sat Jul 23 00:59 junk
+drwxr-xr-x  7 news       news           112 Sun Mar 20 11:02 k12
+-rwxr-xr-x  1 news       news            69 Sun Apr 10 20:17 ndf
+drwxrwxr-x  3 news       news            48 Sat Apr 23 14:17 news
+drwxrwxr-x  9 news       news           144 Sun May  1 13:42 out.going
+drwxrwxr-x  2 news       news            64 Sat Aug 13 06:15 out.master
+drwxr-xr-x  4 news       news            64 Tue Mar 15 17:53 rec
+drwxrwxr-x  3 news       news            48 Mon May  2 10:14 soc
+drwxrwxr-x  3 news       news            48 Mon Jun 27 08:49 test
+==============================================================
+Locations of inews, the bit that bolts it all together, all these files,
+except the man pages are actually links to the /usr/lib/newsbin/inject/inews
+file. They are all owner/group bin.
+/usr/bin/inews
+/usr/lib/news/inews
+/usr/lib/newsbin/inject/inews
+/usr/man/man1/inews
+==================================
+Location of rnews, the bit that actually handles incoming articles, all these
+files except the man pages are links to the /usr/lib/newsbin/input/rnews 
+file. They are all owner/group bin
+/usr/bin/rnews
+/usr/lib/newsbin/input/rnews
+/usr/man/man8/rnews
+================================================================
+
+All configuration files live in /usr/lib/news. Starting with the first in the
+list. This listing is produced by lc. Two directories are produced
+by running elm as the news user. The bin directory belongs to news. 
+
+
+Directories:
+    .elm           Mail           bin
+
+Files:
+    .lastlogin     active         active.times   batchlog       batchlog.o
+    batchlog.oo    batchlog.ooo   batchparms     batchparms.eg  delayed
+    errlog         errlog.o       errlog.oo      errlog.ooo     explist
+    history        history.dir    history.o      history.pag    inews
+    keep.active    keepsys        localgroups    log            log.o
+    mailname       mailpaths      news.cron      newsgroups     organization
+    postdefltgroup readnews.ctl   readnews.help  rnews.stall    setnewsids
+    sys            temp           temp.1         temp2          watchtime
+    whoami
+
+===========================================================================
+The following files are the only ones needing configuration, working
+in the basis that some files go with others, or are affected by others.
+
+Some files like active, have been chopped down in the interests of space.
+
+active:  [ goes with 'newsgroups' ]
+alt.dcom.telecom 0000000146 0000000001 y
+alt.save.the.earth 0000000147 0000000001 y
+alt.sports.football.pro.sf-49ers 0000000001 0000000001 y
+alt.tv.seinfeld 0000000352 0000000349 y
+aus.acs 0000000000 0000000000 y
+aus.ads.commercial 0000000024 0000000000 y
+aus.ads.forsale 0000000739 0000000275 y
+aus.ads.forsale.computers 0000000898 0000000084 y
+
+newsgroups: [ goes with 'active' ]
+alt.dcom.telecom
+alt.save.the.earth
+alt.sports.football.pro.sf-49ers
+alt.tv.seinfeld
+aus.acs				Old acs area
+aus.ads.commercial		Commercialism
+aus.ads.forsale			Junk for sale
+aus.ads.forsale.computers	Computer bits and pieces
+aus.ads.wanted			Place to sell your bits
+aus.archives			Announcements of available software
+
+Note that newsgroups can have descriptions or not. Its up to you.
+
+
+  ***** IMPORTNT ******
+When you have your active file ready, and hopefully matching your newsgroups
+file, you MUST change to /usr/lib/newsbin/maint, and as NEWS user, you must
+run the script 'adddirs'. Do this by typing ./adddirs.
+  ******* REALLY IMPORTANT ***********
+  If your directory permissions are wrong, and or file permissions are wrong,
+  or if you don't actually have a user called 'news', this will really really
+  really stuff up your system. It will create hundreds of news directories
+  in the spool area all owned by root, which of course NOTHING else can read.
+  IF---- you stuff it up, go to /usr/spool and type rm -r news, and rebuild all
+  the appropriate directories by hand. Then run adddirs again as news. I know,
+  adddirs is owned by bin, but you MUST run it as news.
+
+Now, chdir back to /usr/lib/news.
+-------------------------------------------------------------------------
+
+/usr/lib/news/batchlog
+This file will, or should contain lines like this. It is a dynamic file
+so doesn't need any attention.
+
+Sat Aug 13 08:40:03 1994 AST, sendbatches 423
+Sat Aug 13 08:40:06 1994 AST, sendbatches 423
+
+Sat Aug 13 09:40:03 1994 AST, sendbatches 601
+Sat Aug 13 09:40:06 1994 AST, sendbatches 601
+
+Sat Aug 13 10:40:03 1994 AST, sendbatches 703
+Sat Aug 13 10:40:06 1994 AST, sendbatches 703
+
+================================================
+/usr/lib/news/batchparms
+If you dont send to other sites, you can comment out all this
+stuff, just leave /default/ there.
+
+# 100KB, after compress, is 10 minutes at 1200 baud
+# 20 batches is somewhat arbitrary, about 1MB per site
+# defaults:  2.11-compatible compression, transfer by uux
+
+# site		size	queue	builder	muncher	sender
+# ----		----	-----	-------	-------	------
+/default/	100000	20	batcher	nocomp	viauux
+
+# big batches for fast modem (Trailblazer etc.), simple compression
+# These are sites you are sending news batches to.
+xanadu		300000	20	batcher	nocomp	viauux
+cstpl1		300000	20	batcher	nocomp	viauux
+bunyip		300000	20	batcher	nocomp	viauux
+marvin		300000	20	batcher	nocomp	viauux
+neilbar		300000	20	batcher	nocomp	viauux
+noonie		300000	20	batcher	nocomp	viauux
+copper		300000	20	batcher	nocomp	viauux
+
+# sample ihave/sendme setup
+#louie.wehave	40000	20	batchih	nocomp	viainews
+#louie.ihave	40000	20	batchsm	nocomp	viainews
+#louie.sendme	40000	20	batchra	nocomp	vianowhere
+=============================================================
+
+/usr/lib/news/errlog, [ goes with 'history' sort of. ]
+self explanitory, and should be 0 bytes in size. Ignoe the .o .oo and .ooo
+files. Thats just archiving. remove them from .ooo down if you must.
+
+/usr/lib/news/history, [ goes with errlog, sort of. ]
+It should look something like this,
+
+<31a200$jqj@blackice.winternet.com>	775512008~-
+<1994Jul26.101436.4777@vmsmail.gov.bc.ca>	775512008~-
+<12680@fury.SDC.CS.BOEING.COM>	775512009~-
+<1994Jul26.103425.4778@vmsmail.gov.bc.ca>	775512009~-
+<Ctou1C.Hv4@crash.cts.com>	775512009~-
+<CtLBv9.Btx@inter.NL.net>	775512009~-
+
+==============================================================
+
+/usr/lib/news/explist
+This file looks after expiring old news. Edit it to suit yourself.
+
+#
+# note that the order of lines in this file is significant
+
+# hold onto history lines 14 days, nobody gets >3 days
+/expired/			x	14	-
+/bounds/			x	0-3-14	-
+
+# override later defaults for some groups of note
+soc,rec				x	1-3-14	-
+
+# big non-tech groups held long enough for a long weekend
+sci,talk,misc,alt,aus		x	7	-
+
+# real noise gets thrown away fast
+news.groups			x	1	-
+junk,control			x	1	-
+
+# throw away some technical stuff not worth archiving
+comp.os.vms,comp.mail.maps	x	2	-
+
+# default:  5 days and archive
+all				x	5	-
+
+===================================================================
+/usr/lib/news/log   [ kind of goes with history, and errlog ]
+ A dynamic file of course. Looks a bit like this,
+
+Aug 13 06:15:23.180 cstpl1 + <CuDKy8.2I0@lynx.riga.lv> neilbar xanadu
+Aug 13 06:15:23.250 cstpl1 + <32ffg6$58a@pinyon.libre.com> neilbar xanadu
+Aug 13 06:15:23.370 cstpl1 + <9408120255.AA28065@mailserv-D.ftp.com> neilbar xanadu
+Aug 13 06:15:23.470 cstpl1 + <9408120119.aa08069@xenitec.xenitec.on.ca> xanadu
+Aug 13 06:15:23.570 cstpl1 + <9408112340.aa12375@srv150a.sco.com> xanadu
+Aug 13 06:15:23.700 cstpl1 + <32fn19$kjp@rivendell.apana.org.au> neilbar copper xanadu
+Aug 13 06:15:23.820 cstpl1 + <1994Aug10.222058.11951@mcshub.dcss.mcmaster.ca> neilbar xanadu
+Aug 13 06:15:23.910 cstpl1 + <CuC43z.66J@telly.on.ca> neilbar xanadu
+Aug 13 06:15:24.000 cstpl1 + <oranCuE9oK.ow@netcom.com> xanadu
+Aug 13 06:15:24.120 cstpl1 + <776679143snz@peeras.demon.co.uk> neilbar xanadu
+================================================================
+/usr/lib/news/mailname - mailpaths - organisation are text files about you,
+edit them accordingly.
+=================================================================
+/usr/lib/news/sys	************ IMPORTANT FILE ******************
+			With this one, to make sure you don't send news
+			BACK to the feed site, you should put the complete
+			From_ address in the name part. See the entry for
+			'bunyip' in the list below. If you don't do this,
+			you will end up with a HUMUNGOUS history file, as the
+			system will get into an endless news loop.
+			And your feed site will HATE you.
+
+
+# Only the ME line is mandatory; the others are just samples of how to do
+# things.  Virtually everything will need modifying for your local feeds
+# and newsgroups.
+
+# line indicating what we are willing to receive; note local groups near end
+ME:comp,news,sci,alt,rec,misc,soc,talk,k12,aus,junk,test,biz
+
+# sample insignificant feed not using batching (for special situations only)
+# huey:news.config,to.huey/all::uux - -r -gd huey!rnews
+
+# sample of mailing newsgroups to someone (note distribution)
+# daisy:soc.women,soc.couples/all::mail daisy@duck
+
+# sample small feed using batching
+# gladstone:comp.protocols.tcp-ip,rec.aviation/all:f:
+cstpl1/cstpl1:all/all,\
+	!control,!junk,!local,!misc.test:f:
+
+# sample small feed using batching
+neilbar:aus,\
+	comp.protocols/all,\
+	!control:f:
+
+# sample small feed using batching
+#
+
+#noonie:aus.ads.forsale,\
+#	aus.ads.forsale.computers,\
+#	aus.ads.wanted,\
+#	aus.net.aarnet,\
+#	aus.org.acs,\
+#	aus.org.auug,\
+#	comp.os.coherent,\
+#	comp.sys.3b1,\
+#	comp.sys.ncr,\
+#	comp.sys.att,\
+#	rec.models.scale,\
+#	rec.arts.erotica/all,\
+#	!control,!junk,!local:f:
+
+# Malcolm Chalmers. UUPC.
+marvin:rec.arts.movies.reviews,\
+	aus.jokes,\
+	aus.tv,\
+	aus.ads.forsale.computers/all,\
+	!control,!junk:f:
+
+#Cindy Hart. UUPC
+copper:aus.culture.china,\
+	aus.ads.forsale,\
+	aus.ads.forsale.computers,\
+	aus.comms,\
+	aus.conserve,\
+	aus.net.aarnet,\
+	comp.dcom.modems,\
+	comp.dcom.telecom,\
+	comp.mail.uucp,\
+	comp.os.msdos.mail-news,\
+	comp.os.coherent/all,\
+	!control:f:
+
+# sample major batched feed, including assorted regional newsgroups, with
+# (unnecessary) explicit file name
+# dewey:comp,news,sci,rec,misc,soc,talk,can,ont,tor,ut,to.dewey/all:f:dewey/togo
+
+xanadu:all/all:f:
+
+# sample long-haul feed; note no regional groups, exclusion of a local
+# distribution, and exclusion of anything that passed through him under
+# another name (needed because he puts that form, not just "donald", in
+# his Path lines)
+# donald/donald.angry.duck:comp,news,sci,rec,misc,soc,talk,to.donald/all,!ut:f:
+
+bunyip/bunyip.cc.uq.oz.au:all,\
+	!control,!junk,!test.misc,!misc.test,!local:f:
+
+# sample local-postings-only feed direct to major site (gets them out fast)
+# scrooge:comp,news,sci,rec,misc,soc,talk,to.scrooge/all:Lf:
+
+# sample ihave/sendme link
+# NOTE, this is uucp ihave/sendme, not related to NNTP in any way.
+# Send ihave telling louie what we have -- batcher turns the batch into a
+# giant control message and posts it to "to.louie".
+#    louie.wehave/louie:comp,news,sci,rec,misc,soc,talk,!to/all:I:
+# Send the actual control messages
+# louie:to.louie/all:f:
+
+# Also, since ihave/sendme is slow, send local postings to louie without
+# waiting for ihave/sendme
+#  louie:comp,news,sci,rec,misc,soc,talk,!to/all:Lf:
+
+===========================================================================
+/usr/lib/news/whoami
+
+Well, simply put your node name in that. The name of your system, not the
+domain.
+===========================================================================
+/etc/rc
+Put that on the end of /etc/rc
+
+# Clean up news things
+/usr/lib/newsbin/maint/newsboot
+# end of /etc/rc
+==========================================================================
+
+
+
+Ok, that's it. Work your way through it piece by piece. A labour of love.
+
+When its running, watch /usr/lib/log, errlog and history for what's happening,
+and log in as news, and watch your mail. cnews will send strange messages
+to you telling you what is happenig, every now and then.
+
+If you need any further help, feel free to call.
+One day, when someone pays me vast sums of money to do it, I might actually
+sit down and make it an installable program, ready built... oneday...
+
+Robert.
+
+robert@chalmers.com.au
+17/08/94    errors and ommissions, while causing grief in most cases, are
+		not intentional... :-)
+=============================================================================
+

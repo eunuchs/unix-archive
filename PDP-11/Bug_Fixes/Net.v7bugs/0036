@@ -1,0 +1,20 @@
+Autzoo.1052
+net.v7bugs
+utzoo!henry
+Sat Oct 24 19:27:01 1981
+shell mail checking
+Bill Reeves of Lucasfilm has found a subtle bug in the Bourne shell's
+mail checking:  if the mailbox is temporarily nonexistent (some mail
+systems remove an empty mailbox), the shell can get a garbage mail date
+into its memory, which can effectively suppress mail checking thenceforth.
+The fix is like this, in main.c (line numbers are approximate):
+
+139,140c139,141
+< 			    ANDF mailtime
+< 			THEN	prs(mailmsg)
+---
+> 			THEN
+> 				IF mailtime THEN prs(mailmsg) FI
+> 				mailtime=statb.st_mtime;
+142d142
+< 			mailtime=statb.st_mtime;
